@@ -11,5 +11,7 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<IAttachmentsService, AttachmentsService>();
         services.AddScoped<ICancellationsService, CancellationsService>();
+        services.AddScoped<IContainersService, ContainersService>();
+        services.AddScoped<IOperatorsService, OperatorsService>();
     }
 }

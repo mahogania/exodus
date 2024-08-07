@@ -13,4 +13,8 @@ public class StatementDbContext : IdentityDbContext<IdentityUser>
     public DbSet<AttachmentDbModel> Attachments { get; set; }
 
     public DbSet<CancellationDbModel> Cancellations { get; set; }
+
+    public DbSet<ContainerDbModel> Containers { get; set; }
+
+    public DbSet<OperatorDbModel> Operators { get; set; }
 }
