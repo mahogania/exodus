@@ -4,10 +4,6 @@ public class Attachment
 {
     public int? AtchDocSrno { get; set; }
 
-    public string? AtchFileId { get; set; }
-
-    public string? AtchFileNm { get; set; }
-
     public DateTime CreatedAt { get; set; }
 
     public bool? DelOn { get; set; }
@@ -17,6 +13,8 @@ public class Attachment
     public string? DocKndCd { get; set; }
 
     public string? DocNo { get; set; }
+
+    public string File { get; set; }
 
     public string? FrstRegstId { get; set; }
 

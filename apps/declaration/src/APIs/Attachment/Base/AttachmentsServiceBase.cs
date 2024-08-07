@@ -26,13 +26,12 @@ public abstract class AttachmentsServiceBase : IAttachmentsService
         var attachment = new AttachmentDbModel
         {
             AtchDocSrno = createDto.AtchDocSrno,
-            AtchFileId = createDto.AtchFileId,
-            AtchFileNm = createDto.AtchFileNm,
             CreatedAt = createDto.CreatedAt,
             DelOn = createDto.DelOn,
             DocDesc = createDto.DocDesc,
             DocKndCd = createDto.DocKndCd,
             DocNo = createDto.DocNo,
+            File = createDto.File,
             FrstRegstId = createDto.FrstRegstId,
             FrstRgsrDttm = createDto.FrstRgsrDttm,
             LastChgDttm = createDto.LastChgDttm,

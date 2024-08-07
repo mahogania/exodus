@@ -10,13 +10,12 @@ public static class AttachmentsExtensions
         return new Attachment
         {
             AtchDocSrno = model.AtchDocSrno,
-            AtchFileId = model.AtchFileId,
-            AtchFileNm = model.AtchFileNm,
             CreatedAt = model.CreatedAt,
             DelOn = model.DelOn,
             DocDesc = model.DocDesc,
             DocKndCd = model.DocKndCd,
             DocNo = model.DocNo,
+            File = model.File,
             FrstRegstId = model.FrstRegstId,
             FrstRgsrDttm = model.FrstRgsrDttm,
             Id = model.Id,
@@ -40,8 +39,6 @@ public static class AttachmentsExtensions
         {
             Id = uniqueId.Id,
             AtchDocSrno = updateDto.AtchDocSrno,
-            AtchFileId = updateDto.AtchFileId,
-            AtchFileNm = updateDto.AtchFileNm,
             DelOn = updateDto.DelOn,
             DocDesc = updateDto.DocDesc,
             DocKndCd = updateDto.DocKndCd,
@@ -60,6 +57,10 @@ public static class AttachmentsExtensions
         if (updateDto.CreatedAt != null)
         {
             attachment.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.File != null)
+        {
+            attachment.File = updateDto.File;
         }
         if (updateDto.UpdatedAt != null)
         {

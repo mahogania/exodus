@@ -9,12 +9,6 @@ public class AttachmentDbModel
     [Range(-999999999, 999999999)]
     public int? AtchDocSrno { get; set; }
 
-    [StringLength(1000)]
-    public string? AtchFileId { get; set; }
-
-    [StringLength(1000)]
-    public string? AtchFileNm { get; set; }
-
     [Required()]
     public DateTime CreatedAt { get; set; }
 
@@ -28,6 +22,9 @@ public class AttachmentDbModel
 
     [StringLength(1000)]
     public string? DocNo { get; set; }
+
+    [Required()]
+    public string File { get; set; }
 
     [StringLength(1000)]
     public string? FrstRegstId { get; set; }

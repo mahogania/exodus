@@ -11,4 +11,6 @@ public class StatementDbContext : IdentityDbContext<IdentityUser>
         : base(options) { }
 
     public DbSet<AttachmentDbModel> Attachments { get; set; }
+
+    public DbSet<CancellationDbModel> Cancellations { get; set; }
 }
