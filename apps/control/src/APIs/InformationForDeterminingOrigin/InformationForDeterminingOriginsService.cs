@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class InformationForDeterminingOriginsService : InformationForDeterminingOriginsServiceBase
 {
-    public InformationForDeterminingOriginsService(ClreDbContext context)
+    public InformationForDeterminingOriginsService(ControlDbContext context)
         : base(context) { }
 }

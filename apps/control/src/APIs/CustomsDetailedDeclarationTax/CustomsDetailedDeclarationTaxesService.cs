@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class CustomsDetailedDeclarationTaxesService : CustomsDetailedDeclarationTaxesServiceBase
 {
-    public CustomsDetailedDeclarationTaxesService(ClreDbContext context)
+    public CustomsDetailedDeclarationTaxesService(ControlDbContext context)
         : base(context) { }
 }

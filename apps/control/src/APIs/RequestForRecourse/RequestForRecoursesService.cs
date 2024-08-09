@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class RequestForRecoursesService : RequestForRecoursesServiceBase
 {
-    public RequestForRecoursesService(ClreDbContext context)
+    public RequestForRecoursesService(ControlDbContext context)
         : base(context) { }
 }

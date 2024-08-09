@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class CommonRegimeRequestsService : CommonRegimeRequestsServiceBase
 {
-    public CommonRegimeRequestsService(ClreDbContext context)
+    public CommonRegimeRequestsService(ControlDbContext context)
         : base(context) { }
 }

@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class GoodsAndWithReImportationInStatesService : GoodsAndWithReImportationInStatesServiceBase
 {
-    public GoodsAndWithReImportationInStatesService(ClreDbContext context)
+    public GoodsAndWithReImportationInStatesService(ControlDbContext context)
         : base(context) { }
 }

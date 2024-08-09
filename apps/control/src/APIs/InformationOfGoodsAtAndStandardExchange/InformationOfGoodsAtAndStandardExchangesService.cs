@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class InformationOfGoodsAtAndStandardExchangesService
     : InformationOfGoodsAtAndStandardExchangesServiceBase
 {
-    public InformationOfGoodsAtAndStandardExchangesService(ClreDbContext context)
+    public InformationOfGoodsAtAndStandardExchangesService(ControlDbContext context)
         : base(context) { }
 }

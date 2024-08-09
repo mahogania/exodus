@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class CommonActivePerfectioningGoodsRequestsService
     : CommonActivePerfectioningGoodsRequestsServiceBase
 {
-    public CommonActivePerfectioningGoodsRequestsService(ClreDbContext context)
+    public CommonActivePerfectioningGoodsRequestsService(ControlDbContext context)
         : base(context) { }
 }

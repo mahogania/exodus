@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class RawMaterialOfTheDetailedDeclarationCustomsItemsService
     : RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
 {
-    public RawMaterialOfTheDetailedDeclarationCustomsItemsService(ClreDbContext context)
+    public RawMaterialOfTheDetailedDeclarationCustomsItemsService(ControlDbContext context)
         : base(context) { }
 }

@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class RequestForCommonCarnetsService : RequestForCommonCarnetsServiceBase
 {
-    public RequestForCommonCarnetsService(ClreDbContext context)
+    public RequestForCommonCarnetsService(ControlDbContext context)
         : base(context) { }
 }

@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class FinalExportFollowedByReimportationInTheStatesService
     : FinalExportFollowedByReimportationInTheStatesServiceBase
 {
-    public FinalExportFollowedByReimportationInTheStatesService(ClreDbContext context)
+    public FinalExportFollowedByReimportationInTheStatesService(ControlDbContext context)
         : base(context) { }
 }

@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class PlaceOfExecutionAtWithReexportationInTheStatesService
     : PlaceOfExecutionAtWithReexportationInTheStatesServiceBase
 {
-    public PlaceOfExecutionAtWithReexportationInTheStatesService(ClreDbContext context)
+    public PlaceOfExecutionAtWithReexportationInTheStatesService(ControlDbContext context)
         : base(context) { }
 }

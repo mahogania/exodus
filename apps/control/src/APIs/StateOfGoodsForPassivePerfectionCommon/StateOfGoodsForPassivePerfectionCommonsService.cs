@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class StateOfGoodsForPassivePerfectionCommonsService
     : StateOfGoodsForPassivePerfectionCommonsServiceBase
 {
-    public StateOfGoodsForPassivePerfectionCommonsService(ClreDbContext context)
+    public StateOfGoodsForPassivePerfectionCommonsService(ControlDbContext context)
         : base(context) { }
 }

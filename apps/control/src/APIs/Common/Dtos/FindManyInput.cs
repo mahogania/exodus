@@ -1,6 +1,6 @@
-using Clre.APIs.Common.Attributes;
+using Control.APIs.Common.Attributes;
 
-namespace Clre.APIs.Common;
+namespace Control.APIs.Common;
 
 public abstract class FindManyInput<M, W> : PaginationInput, IFindManyInput<M, W>
     where W : class

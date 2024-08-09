@@ -1,10 +1,12 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class RequestForCancellationOfTheDetailedDeclarationCustomsItemsService
     : RequestForCancellationOfTheDetailedDeclarationCustomsItemsServiceBase
 {
-    public RequestForCancellationOfTheDetailedDeclarationCustomsItemsService(ClreDbContext context)
+    public RequestForCancellationOfTheDetailedDeclarationCustomsItemsService(
+        ControlDbContext context
+    )
         : base(context) { }
 }

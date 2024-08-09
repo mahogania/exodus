@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class RequestForTirCarnetOfTheArticlesService : RequestForTirCarnetOfTheArticlesServiceBase
 {
-    public RequestForTirCarnetOfTheArticlesService(ClreDbContext context)
+    public RequestForTirCarnetOfTheArticlesService(ControlDbContext context)
         : base(context) { }
 }

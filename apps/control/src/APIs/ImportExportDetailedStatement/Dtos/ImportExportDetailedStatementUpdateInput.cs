@@ -1,4 +1,4 @@
-namespace Clre.APIs.Dtos;
+namespace Control.APIs.Dtos;
 
 public class ImportExportDetailedStatementUpdateInput
 {

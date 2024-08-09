@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class StateForPerfectionsService : StateForPerfectionsServiceBase
 {
-    public StateForPerfectionsService(ClreDbContext context)
+    public StateForPerfectionsService(ControlDbContext context)
         : base(context) { }
 }

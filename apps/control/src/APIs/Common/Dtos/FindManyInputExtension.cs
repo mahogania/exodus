@@ -1,6 +1,6 @@
 using System.Linq.Dynamic.Core;
 
-namespace Clre.APIs.Common;
+namespace Control.APIs.Common;
 
 public static class FindManyInputExtension
 {

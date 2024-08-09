@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class GoodsMacSuiteAtAndWithReExportationInStatesService
     : GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
 {
-    public GoodsMacSuiteAtAndWithReExportationInStatesService(ClreDbContext context)
+    public GoodsMacSuiteAtAndWithReExportationInStatesService(ControlDbContext context)
         : base(context) { }
 }

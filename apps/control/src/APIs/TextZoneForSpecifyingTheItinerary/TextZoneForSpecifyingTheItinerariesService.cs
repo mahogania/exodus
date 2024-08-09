@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class TextZoneForSpecifyingTheItinerariesService
     : TextZoneForSpecifyingTheItinerariesServiceBase
 {
-    public TextZoneForSpecifyingTheItinerariesService(ClreDbContext context)
+    public TextZoneForSpecifyingTheItinerariesService(ControlDbContext context)
         : base(context) { }
 }

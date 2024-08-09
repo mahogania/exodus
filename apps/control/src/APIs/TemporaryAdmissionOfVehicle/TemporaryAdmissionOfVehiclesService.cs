@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class TemporaryAdmissionOfVehiclesService : TemporaryAdmissionOfVehiclesServiceBase
 {
-    public TemporaryAdmissionOfVehiclesService(ClreDbContext context)
+    public TemporaryAdmissionOfVehiclesService(ControlDbContext context)
         : base(context) { }
 }

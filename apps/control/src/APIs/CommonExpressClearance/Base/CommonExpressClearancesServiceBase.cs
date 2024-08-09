@@ -1,19 +1,19 @@
-using Clre.APIs;
-using Clre.APIs.Common;
-using Clre.APIs.Dtos;
-using Clre.APIs.Errors;
-using Clre.APIs.Extensions;
-using Clre.Infrastructure;
-using Clre.Infrastructure.Models;
+using Control.APIs;
+using Control.APIs.Common;
+using Control.APIs.Dtos;
+using Control.APIs.Errors;
+using Control.APIs.Extensions;
+using Control.Infrastructure;
+using Control.Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearancesService
 {
-    protected readonly ClreDbContext _context;
+    protected readonly ControlDbContext _context;
 
-    public CommonExpressClearancesServiceBase(ClreDbContext context)
+    public CommonExpressClearancesServiceBase(ControlDbContext context)
     {
         _context = context;
     }

@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class DemandForRcoClresService : DemandForRcoClresServiceBase
 {
-    public DemandForRcoClresService(ClreDbContext context)
+    public DemandForRcoClresService(ControlDbContext context)
         : base(context) { }
 }

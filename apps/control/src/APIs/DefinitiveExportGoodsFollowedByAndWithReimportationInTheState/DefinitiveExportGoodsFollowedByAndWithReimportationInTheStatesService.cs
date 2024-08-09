@@ -1,12 +1,12 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class DefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesService
     : DefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesServiceBase
 {
     public DefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesService(
-        ClreDbContext context
+        ControlDbContext context
     )
         : base(context) { }
 }

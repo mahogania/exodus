@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class CommonOriginCertificateRequestsService : CommonOriginCertificateRequestsServiceBase
 {
-    public CommonOriginCertificateRequestsService(ClreDbContext context)
+    public CommonOriginCertificateRequestsService(ControlDbContext context)
         : base(context) { }
 }

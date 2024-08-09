@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class GoodsSubjectToAuthorizationsService : GoodsSubjectToAuthorizationsServiceBase
 {
-    public GoodsSubjectToAuthorizationsService(ClreDbContext context)
+    public GoodsSubjectToAuthorizationsService(ControlDbContext context)
         : base(context) { }
 }

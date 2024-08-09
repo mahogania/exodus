@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class MacSuiteAtWithReexportationInTheStatesService
     : MacSuiteAtWithReexportationInTheStatesServiceBase
 {
-    public MacSuiteAtWithReexportationInTheStatesService(ClreDbContext context)
+    public MacSuiteAtWithReexportationInTheStatesService(ControlDbContext context)
         : base(context) { }
 }

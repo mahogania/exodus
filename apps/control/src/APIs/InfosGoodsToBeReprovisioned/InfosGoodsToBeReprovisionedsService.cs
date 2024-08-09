@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class InfosGoodsToBeReprovisionedsService : InfosGoodsToBeReprovisionedsServiceBase
 {
-    public InfosGoodsToBeReprovisionedsService(ClreDbContext context)
+    public InfosGoodsToBeReprovisionedsService(ControlDbContext context)
         : base(context) { }
 }

@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ExportedOrToBeExportedGoodsInformationsService
     : ExportedOrToBeExportedGoodsInformationsServiceBase
 {
-    public ExportedOrToBeExportedGoodsInformationsService(ClreDbContext context)
+    public ExportedOrToBeExportedGoodsInformationsService(ControlDbContext context)
         : base(context) { }
 }

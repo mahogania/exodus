@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ReplenishmentInDutyFreesService : ReplenishmentInDutyFreesServiceBase
 {
-    public ReplenishmentInDutyFreesService(ClreDbContext context)
+    public ReplenishmentInDutyFreesService(ControlDbContext context)
         : base(context) { }
 }

@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ExportedAndForImprovementGoodsItemsService
     : ExportedAndForImprovementGoodsItemsServiceBase
 {
-    public ExportedAndForImprovementGoodsItemsService(ClreDbContext context)
+    public ExportedAndForImprovementGoodsItemsService(ControlDbContext context)
         : base(context) { }
 }

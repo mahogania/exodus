@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ImportedGoodsInformationsService : ImportedGoodsInformationsServiceBase
 {
-    public ImportedGoodsInformationsService(ClreDbContext context)
+    public ImportedGoodsInformationsService(ControlDbContext context)
         : base(context) { }
 }

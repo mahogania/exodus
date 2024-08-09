@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class CommonExpressClearancesService : CommonExpressClearancesServiceBase
 {
-    public CommonExpressClearancesService(ClreDbContext context)
+    public CommonExpressClearancesService(ControlDbContext context)
         : base(context) { }
 }

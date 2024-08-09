@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class PlaceOfExecutionAndWithReImportationInStatesService
     : PlaceOfExecutionAndWithReImportationInStatesServiceBase
 {
-    public PlaceOfExecutionAndWithReImportationInStatesService(ClreDbContext context)
+    public PlaceOfExecutionAndWithReImportationInStatesService(ControlDbContext context)
         : base(context) { }
 }

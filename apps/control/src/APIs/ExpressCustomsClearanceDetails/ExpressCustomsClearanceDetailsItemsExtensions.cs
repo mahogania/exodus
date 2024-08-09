@@ -1,7 +1,7 @@
-using Clre.APIs.Dtos;
-using Clre.Infrastructure.Models;
+using Control.APIs.Dtos;
+using Control.Infrastructure.Models;
 
-namespace Clre.APIs.Extensions;
+namespace Control.APIs.Extensions;
 
 public static class ExpressCustomsClearanceDetailsItemsExtensions
 {

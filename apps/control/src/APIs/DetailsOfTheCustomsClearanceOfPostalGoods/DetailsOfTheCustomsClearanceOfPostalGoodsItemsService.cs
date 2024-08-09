@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class DetailsOfTheCustomsClearanceOfPostalGoodsItemsService
     : DetailsOfTheCustomsClearanceOfPostalGoodsItemsServiceBase
 {
-    public DetailsOfTheCustomsClearanceOfPostalGoodsItemsService(ClreDbContext context)
+    public DetailsOfTheCustomsClearanceOfPostalGoodsItemsService(ControlDbContext context)
         : base(context) { }
 }

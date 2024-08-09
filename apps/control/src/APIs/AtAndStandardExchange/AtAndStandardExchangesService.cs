@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class AtAndStandardExchangesService : AtAndStandardExchangesServiceBase
 {
-    public AtAndStandardExchangesService(ClreDbContext context)
+    public AtAndStandardExchangesService(ControlDbContext context)
         : base(context) { }
 }
