@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 [ApiController()]
 public class InfosGoodsToBeReprovisionedsController : InfosGoodsToBeReprovisionedsControllerBase

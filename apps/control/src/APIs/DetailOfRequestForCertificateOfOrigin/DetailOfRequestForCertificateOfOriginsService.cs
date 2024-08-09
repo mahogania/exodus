@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class DetailOfRequestForCertificateOfOriginsService
     : DetailOfRequestForCertificateOfOriginsServiceBase
 {
-    public DetailOfRequestForCertificateOfOriginsService(ClreDbContext context)
+    public DetailOfRequestForCertificateOfOriginsService(ControlDbContext context)
         : base(context) { }
 }

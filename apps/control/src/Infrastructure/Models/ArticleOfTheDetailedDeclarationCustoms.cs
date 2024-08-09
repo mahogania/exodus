@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Clre.Infrastructure.Models;
+namespace Control.Infrastructure.Models;
 
 [Table("ArticleOfTheDetailedDeclarationCustoms")]
 public class ArticleOfTheDetailedDeclarationCustomsDbModel

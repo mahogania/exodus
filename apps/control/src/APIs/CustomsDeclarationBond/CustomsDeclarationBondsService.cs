@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class CustomsDeclarationBondsService : CustomsDeclarationBondsServiceBase
 {
-    public CustomsDeclarationBondsService(ClreDbContext context)
+    public CustomsDeclarationBondsService(ControlDbContext context)
         : base(context) { }
 }

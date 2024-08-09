@@ -1,4 +1,4 @@
-namespace Clre.APIs.Errors;
+namespace Control.APIs.Errors;
 
 public class NotFoundException : Exception
 {

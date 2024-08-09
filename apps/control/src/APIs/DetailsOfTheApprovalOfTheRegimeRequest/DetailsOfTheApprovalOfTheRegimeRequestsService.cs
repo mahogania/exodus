@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class DetailsOfTheApprovalOfTheRegimeRequestsService
     : DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
 {
-    public DetailsOfTheApprovalOfTheRegimeRequestsService(ClreDbContext context)
+    public DetailsOfTheApprovalOfTheRegimeRequestsService(ControlDbContext context)
         : base(context) { }
 }

@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ModelSpecificationOfTheDetailedDeclarationCustomsItemsService
     : ModelSpecificationOfTheDetailedDeclarationCustomsItemsServiceBase
 {
-    public ModelSpecificationOfTheDetailedDeclarationCustomsItemsService(ClreDbContext context)
+    public ModelSpecificationOfTheDetailedDeclarationCustomsItemsService(ControlDbContext context)
         : base(context) { }
 }

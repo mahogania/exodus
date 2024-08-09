@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class MacSubjectToAuthorizationsService : MacSubjectToAuthorizationsServiceBase
 {
-    public MacSubjectToAuthorizationsService(ClreDbContext context)
+    public MacSubjectToAuthorizationsService(ControlDbContext context)
         : base(context) { }
 }

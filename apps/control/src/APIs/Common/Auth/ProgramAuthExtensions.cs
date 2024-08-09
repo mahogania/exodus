@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Controllers;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.Filters;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public static class ProgramAuthExtensions
 {
@@ -14,7 +14,7 @@ public static class ProgramAuthExtensions
         services
             .AddIdentityApiEndpoints<IdentityUser>()
             .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<ClreDbContext>();
+            .AddEntityFrameworkStores<ControlDbContext>();
     }
 
     public static void UseApiAuthentication(this WebApplication app)

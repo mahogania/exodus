@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ForeignOperatorRequestsService : ForeignOperatorRequestsServiceBase
 {
-    public ForeignOperatorRequestsService(ClreDbContext context)
+    public ForeignOperatorRequestsService(ControlDbContext context)
         : base(context) { }
 }

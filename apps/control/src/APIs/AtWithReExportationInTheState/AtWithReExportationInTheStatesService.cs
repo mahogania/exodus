@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class AtWithReExportationInTheStatesService : AtWithReExportationInTheStatesServiceBase
 {
-    public AtWithReExportationInTheStatesService(ClreDbContext context)
+    public AtWithReExportationInTheStatesService(ControlDbContext context)
         : base(context) { }
 }

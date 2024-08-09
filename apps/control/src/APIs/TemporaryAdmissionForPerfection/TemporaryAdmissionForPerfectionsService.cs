@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class TemporaryAdmissionForPerfectionsService : TemporaryAdmissionForPerfectionsServiceBase
 {
-    public TemporaryAdmissionForPerfectionsService(ClreDbContext context)
+    public TemporaryAdmissionForPerfectionsService(ControlDbContext context)
         : base(context) { }
 }

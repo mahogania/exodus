@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class InformationOfGoodsTransferredInWarehousePublicPrivatesService
     : InformationOfGoodsTransferredInWarehousePublicPrivatesServiceBase
 {
-    public InformationOfGoodsTransferredInWarehousePublicPrivatesService(ClreDbContext context)
+    public InformationOfGoodsTransferredInWarehousePublicPrivatesService(ControlDbContext context)
         : base(context) { }
 }

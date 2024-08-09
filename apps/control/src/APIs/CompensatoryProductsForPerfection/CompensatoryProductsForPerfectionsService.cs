@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class CompensatoryProductsForPerfectionsService
     : CompensatoryProductsForPerfectionsServiceBase
 {
-    public CompensatoryProductsForPerfectionsService(ClreDbContext context)
+    public CompensatoryProductsForPerfectionsService(ControlDbContext context)
         : base(context) { }
 }

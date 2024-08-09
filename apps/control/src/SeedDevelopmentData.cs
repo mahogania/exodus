@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
-using Clre.Infrastructure.Models;
+using Control.Infrastructure;
+using Control.Infrastructure.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace Clre;
+namespace Control;
 
 public class SeedDevelopmentData
 {
@@ -12,7 +12,7 @@ public class SeedDevelopmentData
         IConfiguration configuration
     )
     {
-        var context = serviceProvider.GetRequiredService<ClreDbContext>();
+        var context = serviceProvider.GetRequiredService<ControlDbContext>();
         var amplicationRoles = configuration
             .GetSection("AmplicationRoles")
             .AsEnumerable()

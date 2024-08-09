@@ -1,7 +1,7 @@
 using System.Reflection;
-using Clre;
-using Clre.APIs;
-using Clre.Infrastructure;
+using Control;
+using Control.APIs;
+using Control.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,7 +30,7 @@ builder.Services.AddCors(builder =>
     );
 });
 builder.Services.AddApiAuthentication();
-builder.Services.AddDbContext<ClreDbContext>(opt =>
+builder.Services.AddDbContext<ControlDbContext>(opt =>
     opt.UseNpgsql(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
 var app = builder.Build();

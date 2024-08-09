@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class DetailsOfGoodsForPassivePerfectionsService
     : DetailsOfGoodsForPassivePerfectionsServiceBase
 {
-    public DetailsOfGoodsForPassivePerfectionsService(ClreDbContext context)
+    public DetailsOfGoodsForPassivePerfectionsService(ControlDbContext context)
         : base(context) { }
 }

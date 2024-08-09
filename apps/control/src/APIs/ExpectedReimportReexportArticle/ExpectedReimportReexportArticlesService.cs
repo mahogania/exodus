@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ExpectedReimportReexportArticlesService : ExpectedReimportReexportArticlesServiceBase
 {
-    public ExpectedReimportReexportArticlesService(ClreDbContext context)
+    public ExpectedReimportReexportArticlesService(ControlDbContext context)
         : base(context) { }
 }

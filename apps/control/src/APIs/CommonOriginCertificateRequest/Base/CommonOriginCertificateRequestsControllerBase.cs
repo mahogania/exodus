@@ -1,11 +1,11 @@
-using Clre.APIs;
-using Clre.APIs.Common;
-using Clre.APIs.Dtos;
-using Clre.APIs.Errors;
+using Control.APIs;
+using Control.APIs.Common;
+using Control.APIs.Dtos;
+using Control.APIs.Errors;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 [Route("api/[controller]")]
 [ApiController()]

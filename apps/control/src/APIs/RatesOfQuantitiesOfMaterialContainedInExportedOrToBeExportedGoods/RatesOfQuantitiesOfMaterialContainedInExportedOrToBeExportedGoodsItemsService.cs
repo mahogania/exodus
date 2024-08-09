@@ -1,12 +1,12 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItemsService
     : RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItemsServiceBase
 {
     public RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItemsService(
-        ClreDbContext context
+        ControlDbContext context
     )
         : base(context) { }
 }

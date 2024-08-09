@@ -1,7 +1,7 @@
-using Clre.APIs.Common;
-using Clre.APIs.Dtos;
+using Control.APIs.Common;
+using Control.APIs.Dtos;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public interface IDefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesService
 {

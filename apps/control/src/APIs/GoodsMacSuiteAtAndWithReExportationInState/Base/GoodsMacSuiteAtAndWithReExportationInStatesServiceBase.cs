@@ -1,20 +1,20 @@
-using Clre.APIs;
-using Clre.APIs.Common;
-using Clre.APIs.Dtos;
-using Clre.APIs.Errors;
-using Clre.APIs.Extensions;
-using Clre.Infrastructure;
-using Clre.Infrastructure.Models;
+using Control.APIs;
+using Control.APIs.Common;
+using Control.APIs.Dtos;
+using Control.APIs.Errors;
+using Control.APIs.Extensions;
+using Control.Infrastructure;
+using Control.Infrastructure.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public abstract class GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
     : IGoodsMacSuiteAtAndWithReExportationInStatesService
 {
-    protected readonly ClreDbContext _context;
+    protected readonly ControlDbContext _context;
 
-    public GoodsMacSuiteAtAndWithReExportationInStatesServiceBase(ClreDbContext context)
+    public GoodsMacSuiteAtAndWithReExportationInStatesServiceBase(ControlDbContext context)
     {
         _context = context;
     }

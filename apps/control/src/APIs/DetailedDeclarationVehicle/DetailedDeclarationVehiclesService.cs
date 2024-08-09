@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class DetailedDeclarationVehiclesService : DetailedDeclarationVehiclesServiceBase
 {
-    public DetailedDeclarationVehiclesService(ClreDbContext context)
+    public DetailedDeclarationVehiclesService(ControlDbContext context)
         : base(context) { }
 }

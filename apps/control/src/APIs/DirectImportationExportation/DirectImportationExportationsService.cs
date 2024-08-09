@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class DirectImportationExportationsService : DirectImportationExportationsServiceBase
 {
-    public DirectImportationExportationsService(ClreDbContext context)
+    public DirectImportationExportationsService(ControlDbContext context)
         : base(context) { }
 }

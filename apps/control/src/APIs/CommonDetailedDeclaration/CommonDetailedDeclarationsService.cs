@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class CommonDetailedDeclarationsService : CommonDetailedDeclarationsServiceBase
 {
-    public CommonDetailedDeclarationsService(ClreDbContext context)
+    public CommonDetailedDeclarationsService(ControlDbContext context)
         : base(context) { }
 }

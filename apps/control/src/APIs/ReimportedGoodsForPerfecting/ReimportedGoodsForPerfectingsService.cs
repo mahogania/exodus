@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ReimportedGoodsForPerfectingsService : ReimportedGoodsForPerfectingsServiceBase
 {
-    public ReimportedGoodsForPerfectingsService(ClreDbContext context)
+    public ReimportedGoodsForPerfectingsService(ControlDbContext context)
         : base(context) { }
 }

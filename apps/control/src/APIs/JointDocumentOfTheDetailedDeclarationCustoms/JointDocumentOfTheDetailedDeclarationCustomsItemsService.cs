@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class JointDocumentOfTheDetailedDeclarationCustomsItemsService
     : JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBase
 {
-    public JointDocumentOfTheDetailedDeclarationCustomsItemsService(ClreDbContext context)
+    public JointDocumentOfTheDetailedDeclarationCustomsItemsService(ControlDbContext context)
         : base(context) { }
 }

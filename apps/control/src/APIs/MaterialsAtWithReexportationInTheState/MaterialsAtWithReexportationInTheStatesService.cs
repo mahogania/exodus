@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class MaterialsAtWithReexportationInTheStatesService
     : MaterialsAtWithReexportationInTheStatesServiceBase
 {
-    public MaterialsAtWithReexportationInTheStatesService(ClreDbContext context)
+    public MaterialsAtWithReexportationInTheStatesService(ControlDbContext context)
         : base(context) { }
 }

@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class DetailedDeclarationOperatorCustomsItemsService
     : DetailedDeclarationOperatorCustomsItemsServiceBase
 {
-    public DetailedDeclarationOperatorCustomsItemsService(ClreDbContext context)
+    public DetailedDeclarationOperatorCustomsItemsService(ControlDbContext context)
         : base(context) { }
 }

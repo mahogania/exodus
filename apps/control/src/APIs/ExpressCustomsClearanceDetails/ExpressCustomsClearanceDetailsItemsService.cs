@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ExpressCustomsClearanceDetailsItemsService
     : ExpressCustomsClearanceDetailsItemsServiceBase
 {
-    public ExpressCustomsClearanceDetailsItemsService(ClreDbContext context)
+    public ExpressCustomsClearanceDetailsItemsService(ControlDbContext context)
         : base(context) { }
 }

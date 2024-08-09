@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class StateWithReImportationInTheStatesService : StateWithReImportationInTheStatesServiceBase
 {
-    public StateWithReImportationInTheStatesService(ClreDbContext context)
+    public StateWithReImportationInTheStatesService(ControlDbContext context)
         : base(context) { }
 }

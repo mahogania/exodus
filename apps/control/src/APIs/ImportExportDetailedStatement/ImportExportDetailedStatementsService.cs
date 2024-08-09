@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ImportExportDetailedStatementsService : ImportExportDetailedStatementsServiceBase
 {
-    public ImportExportDetailedStatementsService(ClreDbContext context)
+    public ImportExportDetailedStatementsService(ControlDbContext context)
         : base(context) { }
 }

@@ -1,4 +1,4 @@
-namespace Clre.APIs.Common;
+namespace Control.APIs.Common;
 
 public abstract class PaginationInput
 {

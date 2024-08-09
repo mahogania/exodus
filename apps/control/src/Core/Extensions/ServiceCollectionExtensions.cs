@@ -1,6 +1,6 @@
-using Clre.APIs;
+using Control.APIs;
 
-namespace Clre;
+namespace Control;
 
 public static class ServiceCollectionExtensions
 {

@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class CommonDetailedDeclarationCustomsValueAssessmentsService
     : CommonDetailedDeclarationCustomsValueAssessmentsServiceBase
 {
-    public CommonDetailedDeclarationCustomsValueAssessmentsService(ClreDbContext context)
+    public CommonDetailedDeclarationCustomsValueAssessmentsService(ControlDbContext context)
         : base(context) { }
 }

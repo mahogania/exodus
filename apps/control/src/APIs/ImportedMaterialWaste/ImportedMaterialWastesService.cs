@@ -1,9 +1,9 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class ImportedMaterialWastesService : ImportedMaterialWastesServiceBase
 {
-    public ImportedMaterialWastesService(ClreDbContext context)
+    public ImportedMaterialWastesService(ControlDbContext context)
         : base(context) { }
 }

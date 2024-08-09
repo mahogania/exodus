@@ -1,10 +1,10 @@
-using Clre.Infrastructure;
+using Control.Infrastructure;
 
-namespace Clre.APIs;
+namespace Control.APIs;
 
 public class DetailsOfAtGoodsForActivePerfectingsService
     : DetailsOfAtGoodsForActivePerfectingsServiceBase
 {
-    public DetailsOfAtGoodsForActivePerfectingsService(ClreDbContext context)
+    public DetailsOfAtGoodsForActivePerfectingsService(ControlDbContext context)
         : base(context) { }
 }

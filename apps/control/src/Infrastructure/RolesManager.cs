@@ -1,6 +1,6 @@
 using Microsoft.AspNetCore.Identity;
 
-namespace Clre;
+namespace Control;
 
 public class RolesManager
 {
