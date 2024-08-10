@@ -1,0 +1,147 @@
+@page "/rco-request"
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Calendars
+@using Syncfusion.Blazor.Buttons
+@using Microsoft.Extensions.Localization
+
+@inject IStringLocalizer<RcoRequest> Localizer
+
+<div class="container">
+    <h3>@Localizer["RequestForBindingInformationOnOrigin"]</h3>
+    <SfTextBox Placeholder="@Localizer["RCONo"]" CssClass="e-outline" Value="RCO-2022-000001"></SfTextBox>
+    
+    <h4>@Localizer["Applicant"]</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["Applicant"]" CssClass="e-outline" Value="000000123"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["NRC"]" CssClass="e-outline" Value="000000123456789"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["Address"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["NIF"]" CssClass="e-outline" Value="000000123456789"></SfTextBox>
+        </div>
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["Email"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["PhoneNo"]" CssClass="e-outline"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["ConfidentialHolder"]</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["Holder"]" CssClass="e-outline" Value="000000123"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["NRC"]" CssClass="e-outline" Value="000000123456789"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["Address"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["NIF"]" CssClass="e-outline" Value="000000123456789"></SfTextBox>
+        </div>
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["Email"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["PhoneNo"]" CssClass="e-outline"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["RCOResubmission"]</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["RCOReferenceNumber"]" CssClass="e-outline"></SfTextBox>
+            <SfDatePicker Placeholder="@Localizer["StartDateOfValidity"]" CssClass="e-outline"></SfDatePicker>
+        </div>
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["ProductName"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["TariffPositionOrSubPosition"]" CssClass="e-outline"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["TypeOfOperation"]</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <SfRadioButton Label="@Localizer["Import"]" Name="operationType"></SfRadioButton>
+            <SfRadioButton Label="@Localizer["Export"]" Name="operationType"></SfRadioButton>
+        </div>
+    </div>
+
+    <h4>@Localizer["LegalFramework"]</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["NonPreferentialOrigin"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["PreferentialOrigin"]" CssClass="e-outline"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["CountryOfOriginEnvisagedByTheApplicant"]</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["CountryOfOrigin"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["CountryOfExportIfDifferent"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["CountryOfImport"]" CssClass="e-outline"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["AdditionalInformation"]</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <SfTextBox Placeholder="@Localizer["CommercialNameAndAdditionalInformation"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["HaveYouPreviouslyMadeARequestForSimilarGoods"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["AreYouAwareOfAnyExistingDecisionsForSimilarGoods"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["ElementsToProvide"]</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <SfCheckBox Label="@Localizer["Samples"]"></SfCheckBox>
+            <SfCheckBox Label="@Localizer["Brochures"]"></SfCheckBox>
+            <SfCheckBox Label="@Localizer["Photographs"]"></SfCheckBox>
+            <SfCheckBox Label="@Localizer["ReportsExpertise"]"></SfCheckBox>
+            <SfTextBox Placeholder="@Localizer["OthersSpecify"]" CssClass="e-outline"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["InformationForDeterminingOrigin"]</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <SfTextBox Placeholder="@Localizer["MaterialsUsed"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["TariffPositionOrSubPosition"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["CountryOfOrigin"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["Value"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["Weight"]" CssClass="e-outline"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["SuspensionReason"]</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <SfTextBox Placeholder="@Localizer["SuspensionReason"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["AdditionalInformationRequestedByAdministration"]</h4>
+    <div class="row">
+        <div class="col-md-12">
+            <SfTextBox Placeholder="@Localizer["AdditionalInformation"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-12 text-center">
+            <SfButton CssClass="e-primary">@Localizer["New"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Print"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Save"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Modify"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Delete"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Send"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Withdraw"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["RequestSuspension"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["ControlResult"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Contest"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+    public class RcoRequest
+    {
+        // Add any necessary code here
+    }
+}

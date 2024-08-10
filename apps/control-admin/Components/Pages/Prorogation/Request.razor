@@ -1,0 +1,105 @@
+@page "/extension-request-details"
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.DropDowns
+@inject IStringLocalizer<Pages.ExtensionRequestDetails> Localizer
+
+<div class="container">
+    <h3>@Localizer["ExtensionRequestDetailsTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["Status"]" CssClass="e-outline" Value="Validation"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <h4>@Localizer["DeclarationDetails"]</h4>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" Value="EX1 - Déclaration de l'exportation"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["NumberOfArticles"]" CssClass="e-outline" Value="2"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["NumberOfPackages"]" CssClass="e-outline" Value="1"></SfTextBox>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DestinationCountry"]" CssClass="e-outline" Value="KOREA"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker Placeholder="@Localizer["LoadingDueDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 4, 28))"></SfDatePicker>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER - Bureaux de Douane d'Alger"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["EPC"]" CssClass="e-outline" Value="1100"></SfTextBox>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["NetWeight"]" CssClass="e-outline" Value="2,640"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["TransportMode"]" CssClass="e-outline" Value="10 - Transport maritime"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["ExtensionRequest"]</h4>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DDENo"]" CssClass="e-outline" Value="2022-F-000001"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 4, 10))"></SfDatePicker>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker Placeholder="@Localizer["NewDueDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 5, 10))"></SfDatePicker>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <SfTextArea Placeholder="@Localizer["ExtensionReason"]" CssClass="e-outline"></SfTextArea>
+        </div>
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["AttachedDocument"]" CssClass="e-outline"></SfTextBox>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["Save"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Edit"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Delete"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Send"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+    public List<string> StatusOptions = new List<string>
+    {
+        "Réceptionner",
+        "Autoriser",
+        "Rejeter"
+        // Add more statuses as needed
+    };
+}

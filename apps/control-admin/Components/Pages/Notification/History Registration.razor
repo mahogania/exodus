@@ -1,0 +1,108 @@
+@page "/registration-notification-history"
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Buttons
+@inject IStringLocalizer<Pages.RegistrationNotificationHistory> Localizer
+
+<div class="container">
+    <h3>@Localizer["RegistrationNotificationHistoryTitle"]</h3>
+
+    <h4>@Localizer["General"]</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" Value="IMP"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["RegionalDirection"]" CssClass="e-outline" Value="ALGER-M"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline" Value="ALGER-2022-C000001"></SfTextBox>
+        </div>
+        <div class="col-md-6">
+            <SfDatePicker Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 3, 30))"></SfDatePicker>
+            <SfTextBox Placeholder="@Localizer["EPC"]" CssClass="e-outline" Value="4100"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["DocumentType"]" CssClass="e-outline" Value="Final Declaration"></SfTextBox>
+        </div>
+    </div>
+    <SfTextBox Placeholder="@Localizer["Remark"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+
+    <h4>@Localizer["PaymentNotificationHistory"]</h4>
+    <SfGrid DataSource="@PaymentHistoryData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="PaymentNoticeNo" HeaderText="@Localizer["PaymentNoticeNo"]" Width="150"></GridColumn>
+            <GridColumn Field="PaymentType" HeaderText="@Localizer["PaymentType"]" Width="150"></GridColumn>
+            <GridColumn Field="TotalNotificationAmount" HeaderText="@Localizer["TotalNotificationAmount"]" Width="150"></GridColumn>
+            <GridColumn Field="Encashment" HeaderText="@Localizer["Encashment"]" Width="100"></GridColumn>
+            <GridColumn Field="NotificationDate" HeaderText="@Localizer["NotificationDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="PaymentDueDate" HeaderText="@Localizer["PaymentDueDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="Extinction" HeaderText="@Localizer["Extinction"]" Width="100"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["PaymentNoticeNo"]" CssClass="e-outline" Value="DZ-2022-G-000001-I"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["NIF"]" CssClass="e-outline" Value="2351205401"></SfTextBox>
+            <SfDatePicker Placeholder="@Localizer["PaymentDueDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 4, 28))"></SfDatePicker>
+            <SfTextBox Placeholder="@Localizer["Extinction"]" CssClass="e-outline" Value="N/NON"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["Encashment"]" CssClass="e-outline" Value="N/NON"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["Refunded"]" CssClass="e-outline" Value="N/NON"></SfTextBox>
+        </div>
+        <div class="col-md-6">
+            <SfDatePicker Placeholder="@Localizer["NotificationDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 3, 30))"></SfDatePicker>
+            <SfTextBox Placeholder="@Localizer["Payable"]" CssClass="e-outline" Value="IMPORTER COMPANY NAME"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["DeferredPayment"]" CssClass="e-outline" Value="N/NON"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["TotalNotificationAmount"]" CssClass="e-outline" Value="53,582,840"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["NotificationStatus"]" CssClass="e-outline" Value="Create Payment Notice"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["RefundedAmount"]" CssClass="e-outline" Value="0"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["PaymentAmountDetails"]</h4>
+    <SfGrid DataSource="@PaymentAmountDetailsData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="InstitutionName" HeaderText="@Localizer["InstitutionName"]" Width="150"></GridColumn>
+            <GridColumn Field="AccountType" HeaderText="@Localizer["AccountType"]" Width="150"></GridColumn>
+            <GridColumn Field="BankAccountName" HeaderText="@Localizer["BankAccountName"]" Width="150"></GridColumn>
+            <GridColumn Field="Amount" HeaderText="@Localizer["Amount"]" Width="150"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["Close"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+    public class PaymentHistory
+    {
+        public string PaymentNoticeNo { get; set; }
+        public string PaymentType { get; set; }
+        public decimal TotalNotificationAmount { get; set; }
+        public string Encashment { get; set; }
+        public DateTime NotificationDate { get; set; }
+        public DateTime PaymentDueDate { get; set; }
+        public string Extinction { get; set; }
+    }
+
+    public class PaymentAmountDetails
+    {
+        public string InstitutionName { get; set; }
+        public string AccountType { get; set; }
+        public string BankAccountName { get; set; }
+        public decimal Amount { get; set; }
+    }
+
+    public List<PaymentHistory> PaymentHistoryData = new List<PaymentHistory>
+    {
+        new PaymentHistory { PaymentNoticeNo = "DZ-2022-G-000001-I", PaymentType = "G/General", TotalNotificationAmount = 53582840, Encashment = "N/NON", NotificationDate = new DateTime(2022, 3, 30), PaymentDueDate = new DateTime(2022, 4, 28), Extinction = "N/NON" }
+        // Add more data as needed
+    };
+
+    public List<PaymentAmountDetails> PaymentAmountDetailsData = new List<PaymentAmountDetails>
+    {
+        new PaymentAmountDetails { InstitutionName = "NATIONAL TREASURY", AccountType = "01/Treasury", BankAccountName = "NATIONAL TREASURY", Amount = 53330091 },
+        new PaymentAmountDetails { InstitutionName = "PRIVATE INSTITUTION", AccountType = "04/Private Organizations", BankAccountName = "SHINHAN", Amount = 252749 }
+        // Add more data as needed
+    };
+}

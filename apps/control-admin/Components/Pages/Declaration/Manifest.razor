@@ -1,0 +1,80 @@
+@page "/manifest-consultation"
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.DropDowns
+@inject IStringLocalizer<Pages.ManifestConsultation> Localizer
+
+<div class="container">
+    <h3>@Localizer["ManifestConsultationTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["TransportTitleNo"]" CssClass="e-outline" Value="TRAININGBLIMPP0001"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["CRN"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker Placeholder="@Localizer["ArrivalDate"]" CssClass="e-outline"></SfDatePicker>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList Placeholder="@Localizer["Unloading"]" CssClass="e-outline" DataSource="@UnloadingOptions" TItem="string" Value="OUI"></SfDropDownList>
+        </div>
+        <div class="col-md-3 mt-2">
+            <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <SfGrid DataSource="@ManifestData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="TransportTitleNo" HeaderText="@Localizer["TransportTitleNo"]" Width="150"></GridColumn>
+            <GridColumn Field="ArrivalDate" HeaderText="@Localizer["ArrivalDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="CRN" HeaderText="@Localizer["CRN"]" Width="150"></GridColumn>
+            <GridColumn Field="GoodsLocation" HeaderText="@Localizer["GoodsLocation"]" Width="150"></GridColumn>
+            <GridColumn Field="Container" HeaderText="@Localizer["Container"]" Width="150"></GridColumn>
+            <GridColumn Field="TransportNationality" HeaderText="@Localizer["TransportNationality"]" Width="150"></GridColumn>
+            <GridColumn Field="TransportMode" HeaderText="@Localizer["TransportMode"]" Width="150"></GridColumn>
+            <GridColumn Field="TransportIdentificationNo" HeaderText="@Localizer["TransportIdentificationNo"]" Width="150"></GridColumn>
+            <GridColumn Field="EntryWeight" HeaderText="@Localizer["EntryWeight"]" Width="150"></GridColumn>
+            <GridColumn Field="StockWeight" HeaderText="@Localizer["StockWeight"]" Width="150"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["Confirm"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Close"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+    public class Manifest
+    {
+        public string TransportTitleNo { get; set; }
+        public DateTime ArrivalDate { get; set; }
+        public string CRN { get; set; }
+        public string GoodsLocation { get; set; }
+        public string Container { get; set; }
+        public string TransportNationality { get; set; }
+        public string TransportMode { get; set; }
+        public string TransportIdentificationNo { get; set; }
+        public int EntryWeight { get; set; }
+        public int StockWeight { get; set; }
+    }
+
+    public List<string> UnloadingOptions = new List<string>
+    {
+        "OUI",
+        "NON"
+        // Add more options as needed
+    };
+
+    public List<Manifest> ManifestData = new List<Manifest>
+    {
+        new Manifest { TransportTitleNo = "TRAININGBLIMPP0001", ArrivalDate = new DateTime(2022, 3, 30), CRN = "A00012022000001-0001", GoodsLocation = "FOO002", Container = "Y", TransportNationality = "JP", TransportMode = "10", TransportIdentificationNo = "1234567", EntryWeight = 2640, StockWeight = 2640 }
+        // Add more data as needed
+    };
+}

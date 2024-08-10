@@ -1,0 +1,56 @@
+@page "/declaration-notifications"
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Buttons
+@inject IStringLocalizer<Pages.DeclarationNotifications> Localizer
+
+<div class="container">
+    <h3>@Localizer["DeclarationNotificationsTitle"]</h3>
+
+    <SfGrid DataSource="@NotificationData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="Number" HeaderText="@Localizer["Number"]" Width="50"></GridColumn>
+            <GridColumn Field="Type" HeaderText="@Localizer["Type"]" Width="200"></GridColumn>
+            <GridColumn Field="ModificationVersion" HeaderText="@Localizer["ModificationVersion"]" Width="150"></GridColumn>
+            <GridColumn Field="Status" HeaderText="@Localizer["Status"]" Width="150"></GridColumn>
+            <GridColumn Field="SendDateTime" HeaderText="@Localizer["SendDateTime"]" Width="200" Format="g"></GridColumn>
+            <GridColumn Field="ProcessingDateTime" HeaderText="@Localizer["ProcessingDateTime"]" Width="200" Format="g"></GridColumn>
+            <GridColumn Field="NotificationDetails" HeaderText="@Localizer["NotificationDetails"]" Width="200" Template="@DetailsTemplate"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["Close"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+    public class Notification
+    {
+        public int Number { get; set; }
+        public string Type { get; set; }
+        public string ModificationVersion { get; set; }
+        public string Status { get; set; }
+        public DateTime SendDateTime { get; set; }
+        public DateTime ProcessingDateTime { get; set; }
+        public string NotificationDetails { get; set; }
+    }
+
+    public List<Notification> NotificationData = new List<Notification>
+    {
+        new Notification { Number = 4, Type = "Validation Notification", ModificationVersion = "Validation", Status = "Validation", SendDateTime = new DateTime(2022, 3, 30, 10, 23, 56), ProcessingDateTime = new DateTime(2022, 3, 31, 11, 55, 32), NotificationDetails = "Details of the notification" },
+        new Notification { Number = 3, Type = "Control Results Notification", ModificationVersion = "Evaluated", Status = "Evaluated", SendDateTime = new DateTime(2022, 3, 30, 10, 23, 56), ProcessingDateTime = new DateTime(2022, 3, 30, 10, 30, 11), NotificationDetails = "Details of the notification" },
+        new Notification { Number = 2, Type = "Reception Notification", ModificationVersion = "Received", Status = "Received", SendDateTime = new DateTime(2022, 3, 30, 10, 23, 56), ProcessingDateTime = new DateTime(2022, 3, 30, 10, 28, 42), NotificationDetails = "Details of the notification" },
+        new Notification { Number = 1, Type = "Successfully Received", ModificationVersion = "Received", Status = "Received", SendDateTime = new DateTime(2022, 3, 30, 10, 23, 56), ProcessingDateTime = new DateTime(2022, 3, 30, 10, 24, 02), NotificationDetails = "-" }
+        // Add more data as needed
+    };
+
+    private RenderFragment<Notification> DetailsTemplate = (context) => __builder =>
+    {
+        __builder.OpenElement(0, "a");
+        __builder.AddAttribute(1, "href", "#");
+        __builder.AddContent(2, context.NotificationDetails);
+        __builder.CloseElement();
+    };
+}

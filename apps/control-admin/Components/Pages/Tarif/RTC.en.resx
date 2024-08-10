@@ -1,0 +1,150 @@
+<data name="Title" xml:space="preserve">
+  <value>Request for Binding Tariff Information</value>
+</data>
+<data name="RTCNumber" xml:space="preserve">
+  <value>RTC Number</value>
+</data>
+<data name="Requester" xml:space="preserve">
+  <value>Requester</value>
+</data>
+<data name="NRC" xml:space="preserve">
+  <value>NRC</value>
+</data>
+<data name="NIF" xml:space="preserve">
+  <value>NIF</value>
+</data>
+<data name="Address" xml:space="preserve">
+  <value>Address</value>
+</data>
+<data name="Email" xml:space="preserve">
+  <value>Email</value>
+</data>
+<data name="HolderConfidential" xml:space="preserve">
+  <value>Holder (Confidential)</value>
+</data>
+<data name="Holder" xml:space="preserve">
+  <value>Holder</value>
+</data>
+<data name="OeaNumber" xml:space="preserve">
+  <value>OEA Number</value>
+</data>
+<data name="ReissueRTC" xml:space="preserve">
+  <value>Reissue of RTC</value>
+</data>
+<data name="ReferenceRTCNumber" xml:space="preserve">
+  <value>Reference RTC Number</value>
+</data>
+<data name="StartDateValidity" xml:space="preserve">
+  <value>Start Date of Validity</value>
+</data>
+<data name="GoodsDescription" xml:space="preserve">
+  <value>Goods Description</value>
+</data>
+<data name="TariffPosition" xml:space="preserve">
+  <value>Tariff Position</value>
+</data>
+<data name="OperationType" xml:space="preserve">
+  <value>Type of Operation</value>
+</data>
+<data name="Import" xml:space="preserve">
+  <value>Import</value>
+</data>
+<data name="Export" xml:space="preserve">
+  <value>Export</value>
+</data>
+<data name="ImportantNote" xml:space="preserve">
+  <value>Important Note</value>
+</data>
+<data name="CommercialDenomination" xml:space="preserve">
+  <value>Commercial Denomination</value>
+</data>
+<data name="CountryOfOrigin" xml:space="preserve">
+  <value>Country of Origin</value>
+</data>
+<data name="Value" xml:space="preserve">
+  <value>Value</value>
+</data>
+<data name="Weight" xml:space="preserve">
+  <value>Weight</value>
+</data>
+<data name="ClassificationEnvisaged" xml:space="preserve">
+  <value>Classification Envisaged</value>
+</data>
+<data name="InterpretationRules" xml:space="preserve">
+  <value>Interpretation Rules</value>
+</data>
+<data name="ElementsAndProofs" xml:space="preserve">
+  <value>Elements and Proofs</value>
+</data>
+<data name="Samples" xml:space="preserve">
+  <value>Samples</value>
+</data>
+<data name="Brochures" xml:space="preserve">
+  <value>Brochures</value>
+</data>
+<data name="Photographs" xml:space="preserve">
+  <value>Photographs</value>
+</data>
+<data name="Reports" xml:space="preserve">
+  <value>Reports</value>
+</data>
+<data name="OthersSpecify" xml:space="preserve">
+  <value>Others (Specify)</value>
+</data>
+<data name="SampleReturn" xml:space="preserve">
+  <value>Do you want your samples to be returned?</value>
+</data>
+<data name="Yes" xml:space="preserve">
+  <value>Yes</value>
+</data>
+<data name="No" xml:space="preserve">
+  <value>No</value>
+</data>
+<data name="OtherRTCRequests" xml:space="preserve">
+  <value>Other RTC Requests</value>
+</data>
+<data name="RequestDate" xml:space="preserve">
+  <value>Request Date</value>
+</data>
+<data name="RTCReference" xml:space="preserve">
+  <value>RTC Reference</value>
+</data>
+<data name="KnowledgeOfExistingDecision" xml:space="preserve">
+  <value>Knowledge of Existing Decision</value>
+</data>
+<data name="Description" xml:space="preserve">
+  <value>Description</value>
+</data>
+<data name="PhotoUpload" xml:space="preserve">
+  <value>Photo Upload</value>
+</data>
+<data name="SuspensionReason" xml:space="preserve">
+  <value>Suspension Reason</value>
+</data>
+<data name="AdditionalInformation" xml:space="preserve">
+  <value>Additional Information</value>
+</data>
+<data name="Save" xml:space="preserve">
+  <value>Save</value>
+</data>
+<data name="Modify" xml:space="preserve">
+  <value>Modify</value>
+</data>
+<data name="Delete" xml:space="preserve">
+  <value>Delete</value>
+</data>
+<data name="Send" xml:space="preserve">
+  <value>Send</value>
+</data>
+<data name="Withdraw" xml:space="preserve">
+  <value>Withdraw</value>
+</data>
+<data name="RequestSuspension" xml:space="preserve">
+  <value>Request Suspension</value>
+</data>
+<data name="ControlResult" xml:space="preserve">
+  <value>Control Result</value>
+</data>
+<data name="Contest" xml:space="preserve">
+  <value>Contest</value>
+</data>

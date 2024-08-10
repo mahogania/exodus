@@ -1,0 +1,35 @@
+@page "/rco-criteria"
+@using Syncfusion.Blazor.Grids
+@using Microsoft.Extensions.Localization
+
+@inject IStringLocalizer<RcoCriteria> Localizer
+
+<div class="container">
+    <h2>@Localizer["ScreenCriteria"]</h2>
+    <SfGrid DataSource="@GridData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }">
+        <GridColumns>
+            <GridColumn Field="GroupName" HeaderText="@Localizer["GroupName"]" Width="200"></GridColumn>
+            <GridColumn Field="ElementName" HeaderText="@Localizer["ElementName"]" Width="200"></GridColumn>
+            <GridColumn Field="IsMandatory" HeaderText="@Localizer["Mandatory"]" Width="100"></GridColumn>
+            <GridColumn Field="Remarks" HeaderText="@Localizer["Remarks"]" Width="300"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+</div>
+
+@code {
+    public class RcoCriteria
+    {
+        public string GroupName { get; set; }
+        public string ElementName { get; set; }
+        public bool IsMandatory { get; set; }
+        public string Remarks { get; set; }
+    }
+
+    private List<RcoCriteria> GridData = new List<RcoCriteria>
+    {
+        new RcoCriteria { GroupName = "Group 1", ElementName = "Element 1", IsMandatory = true, Remarks = "Remark 1" },
+        new RcoCriteria { GroupName = "Group 1", ElementName = "Element 2", IsMandatory = false, Remarks = "Remark 2" },
+        new RcoCriteria { GroupName = "Group 2", ElementName = "Element 1", IsMandatory = true, Remarks = "Remark 3" },
+        // Add more data as needed
+    };
+}

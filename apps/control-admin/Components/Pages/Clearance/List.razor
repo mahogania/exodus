@@ -1,0 +1,100 @@
+@page "/pending-clearance"
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.DropDowns
+@inject IStringLocalizer<Pages.PendingClearance> Localizer
+
+<div class="container">
+    <h3>@Localizer["PendingClearanceTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string"></SfDropDownList>
+        </div>
+        <div class="col-md-3">
+            <SfDateRangePicker Placeholder="@Localizer["DeclarationRegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList Placeholder="@Localizer["ExecutionStatus"]" CssClass="e-outline" DataSource="@ExecutionStatuses" TItem="string"></SfDropDownList>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfRadioButton Label="@Localizer["DeclarantNo"]" Name="searchCriteria" Value="DeclarantNo" Checked="true"></SfRadioButton>
+            <SfRadioButton Label="@Localizer["NIF"]" Name="searchCriteria" Value="NIF"></SfRadioButton>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["Details"]" CssClass="e-outline" Value="H0001"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <SfGrid DataSource="@PendingDeclarationsData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="DeclarationNo" HeaderText="@Localizer["DeclarationNo"]" Width="150"></GridColumn>
+            <GridColumn Field="DeclarationRegistrationDate" HeaderText="@Localizer["DeclarationRegistrationDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="DeclarationType" HeaderText="@Localizer["DeclarationType"]" Width="150"></GridColumn>
+            <GridColumn Field="EPC" HeaderText="@Localizer["EPC"]" Width="150"></GridColumn>
+            <GridColumn Field="Importer" HeaderText="@Localizer["Importer"]" Width="150"></GridColumn>
+            <GridColumn Field="Exporter" HeaderText="@Localizer["Exporter"]" Width="150"></GridColumn>
+            <GridColumn Field="CustomsZone" HeaderText="@Localizer["CustomsZone"]" Width="150"></GridColumn>
+            <GridColumn Field="DueDate" HeaderText="@Localizer["DueDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="ExecutionDate" HeaderText="@Localizer["ExecutionDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="BasePrice" HeaderText="@Localizer["BasePrice"]" Width="150"></GridColumn>
+            <GridColumn Field="ExecutionStatus" HeaderText="@Localizer["ExecutionStatus"]" Width="150"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["DownloadExcel"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+    public class PendingDeclaration
+    {
+        public string DeclarationNo { get; set; }
+        public DateTime DeclarationRegistrationDate { get; set; }
+        public string DeclarationType { get; set; }
+        public string EPC { get; set; }
+        public string Importer { get; set; }
+        public string Exporter { get; set; }
+        public string CustomsZone { get; set; }
+        public DateTime DueDate { get; set; }
+        public DateTime ExecutionDate { get; set; }
+        public decimal BasePrice { get; set; }
+        public string ExecutionStatus { get; set; }
+    }
+
+    public List<string> DeclarationTypes = new List<string>
+    {
+        "IMS - Admission Temporaire",
+        "IM4 - Déclaration de l'importation",
+        "EX1 - Déclaration de l'exportation"
+        // Add more types as needed
+    };
+
+    public List<string> ExecutionStatuses = new List<string>
+    {
+        "Apurée avant l'échéance",
+        "En cours",
+        "Rejetée"
+        // Add more statuses as needed
+    };
+
+    public List<PendingDeclaration> PendingDeclarationsData = new List<PendingDeclaration>
+    {
+        new PendingDeclaration { DeclarationNo = "ALGER-2022-C000001", DeclarationRegistrationDate = new DateTime(2022, 2, 10), DeclarationType = "IMS - Admission Temporaire", EPC = "5100", Importer = "Importateur", Exporter = "Exportateur", CustomsZone = "221345", DueDate = new DateTime(2022, 4, 10), ExecutionDate = new DateTime(2022, 4, 10), BasePrice = 3000, ExecutionStatus = "Apurée avant l'échéance" }
+        // Add more data as needed
+    };
+}

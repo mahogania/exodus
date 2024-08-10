@@ -1,0 +1,92 @@
+@page "/verification-details"
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Inputs
+@using Syncfusion.Blazor.Buttons
+@using Syncfusion.Blazor.DropDowns
+@inject IStringLocalizer<Pages.VerificationDetails> Localizer
+
+<div class="container">
+    <h3>@Localizer["VerificationDetailsTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline" Value="ALGER-2022-C000001"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" Value="IM4 - Déclaration de l'importation"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker Placeholder="@Localizer["RequestDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 2, 10))"></SfDatePicker>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarantNo"]" CssClass="e-outline" Value="H0001 | CUSTOMS BROKER COMPANY NAME"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["Exporter"]" CssClass="e-outline" Value="EXPORTER COMPANY NAME"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["NumberOfArticles"]" CssClass="e-outline" Value="1"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["GrossWeight"]" CssClass="e-outline" Value="2,640"></SfTextBox>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["Status"]" CssClass="e-outline" Value="Vérif/Contrôle en cours"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["Verifier"]" CssClass="e-outline" Value="AMI"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["VisitLocation"]" CssClass="e-outline" Value="Lieu de vérification de douane"></SfTextBox>
+        </div>
+    </div>
+
+    <h4>@Localizer["VerificationNote"]</h4>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["VisitLocationName"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker Placeholder="@Localizer["ScheduledVerificationDate"]" CssClass="e-outline"></SfDatePicker>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker Placeholder="@Localizer["RequestDateByDeclarant"]" CssClass="e-outline"></SfDatePicker>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-6">
+            <SfTextArea Placeholder="@Localizer["NotificationContent"]" CssClass="e-outline"></SfTextArea>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList Placeholder="@Localizer["NotifyDeclarant"]" CssClass="e-outline" DataSource="@NotifyOptions" TItem="string"></SfDropDownList>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["VisitAgent"]" CssClass="e-outline" Value="HONG GIL DONG"></SfTextBox>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["ConfirmPresence"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+    public List<string> NotifyOptions = new List<string>
+    {
+        "OUI",
+        "NON"
+    };
+}
