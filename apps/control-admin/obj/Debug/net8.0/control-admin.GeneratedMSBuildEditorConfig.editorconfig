@@ -22,12 +22,136 @@ build_property._RazorSourceGeneratorDebug =
 build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Counter.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Db3VudGVyLnJhem9y
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Appeal/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BcHBlYWwvTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
-[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/RtcRequest.razor]
-build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9SdGNSZXF1ZXN0LnJhem9y
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Appeal/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9BcHBlYWwvUmVxdWVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Backlog/Grid.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9CYWNrbG9nL0dyaWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Backlog/Kanban.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9CYWNrbG9nL0thbmJhbi5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Clearance/Consult.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9DbGVhcmFuY2UvQ29uc3VsdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Clearance/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9DbGVhcmFuY2UvTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Clearance/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9DbGVhcmFuY2UvUmVxdWVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Declaration/Anticipated.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EZWNsYXJhdGlvbi9BbnRpY2lwYXRlZC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Declaration/Cancellation.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EZWNsYXJhdGlvbi9DYW5jZWxsYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Declaration/Fill.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EZWNsYXJhdGlvbi9GaWxsLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Declaration/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EZWNsYXJhdGlvbi9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Declaration/Manifest.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EZWNsYXJhdGlvbi9NYW5pZmVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Declaration/Modification.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EZWNsYXJhdGlvbi9Nb2RpZmljYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Declaration/Previous.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EZWNsYXJhdGlvbi9QcmV2aW91cy5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Declaration/Temporary.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9EZWNsYXJhdGlvbi9UZW1wb3JhcnkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Notification/History Acceptance.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob3RpZmljYXRpb24vSGlzdG9yeSBBY2NlcHRhbmNlLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Notification/History Registration.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob3RpZmljYXRpb24vSGlzdG9yeSBSZWdpc3RyYXRpb24ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Notification/History Result.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob3RpZmljYXRpb24vSGlzdG9yeSBSZXN1bHQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Notification/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Ob3RpZmljYXRpb24vTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Origin/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9PcmlnaW4vTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Origin/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9PcmlnaW4vUmVxdWVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Payment/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9QYXltZW50L0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Prorogation/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Qcm9yb2dhdGlvbi9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Prorogation/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9Qcm9yb2dhdGlvbi9SZXF1ZXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Q&A/Consult.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9RJkEvQ29uc3VsdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Q&A/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9RJkEvTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Representant/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9SZXByZXNlbnRhbnQvTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Representant/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9SZXByZXNlbnRhbnQvUmVxdWVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Tarif/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9UYXJpZi9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Tarif/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9UYXJpZi9SZXF1ZXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Tax/History.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9UYXgvSGlzdG9yeS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Verification/Consult.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9WZXJpZmljYXRpb24vQ29uc3VsdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Pages/Verification/List.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9QYWdlcy9WZXJpZmljYXRpb24vTGlzdC5yYXpvcg==
 build_metadata.AdditionalFiles.CssScope = 
 
 [/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/Components/Routes.razor]

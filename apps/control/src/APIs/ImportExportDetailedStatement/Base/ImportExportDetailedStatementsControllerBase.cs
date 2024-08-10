@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ImportExportDetailedStatementsControllerBase : ControllerBase
 {
     protected readonly IImportExportDetailedStatementsService _service;
@@ -21,9 +20,9 @@ public abstract class ImportExportDetailedStatementsControllerBase : ControllerB
     }
 
     /// <summary>
-    /// Create one IMPORT/EXPORT DETAILED STATEMENT
+    ///     Create one IMPORT/EXPORT DETAILED STATEMENT
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ImportExportDetailedStatement>
@@ -41,12 +40,12 @@ public abstract class ImportExportDetailedStatementsControllerBase : ControllerB
     }
 
     /// <summary>
-    /// Delete one IMPORT/EXPORT DETAILED STATEMENT
+    ///     Delete one IMPORT/EXPORT DETAILED STATEMENT
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteImportExportDetailedStatement(
-        [FromRoute()] ImportExportDetailedStatementWhereUniqueInput uniqueId
+        [FromRoute] ImportExportDetailedStatementWhereUniqueInput uniqueId
     )
     {
         try
@@ -62,35 +61,35 @@ public abstract class ImportExportDetailedStatementsControllerBase : ControllerB
     }
 
     /// <summary>
-    /// Find many IMPORT/EXPORT DETAILED STATEMENTS
+    ///     Find many IMPORT/EXPORT DETAILED STATEMENTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<ImportExportDetailedStatement>>
-    > ImportExportDetailedStatements([FromQuery()] ImportExportDetailedStatementFindManyArgs filter)
+    > ImportExportDetailedStatements([FromQuery] ImportExportDetailedStatementFindManyArgs filter)
     {
         return Ok(await _service.ImportExportDetailedStatements(filter));
     }
 
     /// <summary>
-    /// Meta data about IMPORT/EXPORT DETAILED STATEMENT records
+    ///     Meta data about IMPORT/EXPORT DETAILED STATEMENT records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ImportExportDetailedStatementsMeta(
-        [FromQuery()] ImportExportDetailedStatementFindManyArgs filter
+        [FromQuery] ImportExportDetailedStatementFindManyArgs filter
     )
     {
         return Ok(await _service.ImportExportDetailedStatementsMeta(filter));
     }
 
     /// <summary>
-    /// Get one IMPORT/EXPORT DETAILED STATEMENT
+    ///     Get one IMPORT/EXPORT DETAILED STATEMENT
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ImportExportDetailedStatement>> ImportExportDetailedStatement(
-        [FromRoute()] ImportExportDetailedStatementWhereUniqueInput uniqueId
+        [FromRoute] ImportExportDetailedStatementWhereUniqueInput uniqueId
     )
     {
         try
@@ -104,14 +103,13 @@ public abstract class ImportExportDetailedStatementsControllerBase : ControllerB
     }
 
     /// <summary>
-    /// Update one IMPORT/EXPORT DETAILED STATEMENT
+    ///     Update one IMPORT/EXPORT DETAILED STATEMENT
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateImportExportDetailedStatement(
-        [FromRoute()] ImportExportDetailedStatementWhereUniqueInput uniqueId,
-        [FromQuery()]
-            ImportExportDetailedStatementUpdateInput importExportDetailedStatementUpdateDto
+        [FromRoute] ImportExportDetailedStatementWhereUniqueInput uniqueId,
+        [FromQuery] ImportExportDetailedStatementUpdateInput importExportDetailedStatementUpdateDto
     )
     {
         try

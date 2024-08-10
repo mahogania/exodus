@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class NoticesServiceBase : INoticesService
     }
 
     /// <summary>
-    /// Create one NOTICE
+    ///     Create one NOTICE
     /// </summary>
     public async Task<Notice> CreateNotice(NoticeCreateInput createDto)
     {
@@ -73,41 +72,32 @@ public abstract class NoticesServiceBase : INoticesService
             VehicleOn = createDto.VehicleOn
         };
 
-        if (createDto.Id != null)
-        {
-            notice.Id = createDto.Id;
-        }
+        if (createDto.Id != null) notice.Id = createDto.Id;
 
         _context.Notices.Add(notice);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<NoticeDbModel>(notice.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one NOTICE
+    ///     Delete one NOTICE
     /// </summary>
     public async Task DeleteNotice(NoticeWhereUniqueInput uniqueId)
     {
         var notice = await _context.Notices.FindAsync(uniqueId.Id);
-        if (notice == null)
-        {
-            throw new NotFoundException();
-        }
+        if (notice == null) throw new NotFoundException();
 
         _context.Notices.Remove(notice);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many NOTICES
+    ///     Find many NOTICES
     /// </summary>
     public async Task<List<Notice>> Notices(NoticeFindManyArgs findManyArgs)
     {
@@ -121,7 +111,7 @@ public abstract class NoticesServiceBase : INoticesService
     }
 
     /// <summary>
-    /// Meta data about NOTICE records
+    ///     Meta data about NOTICE records
     /// </summary>
     public async Task<MetadataDto> NoticesMeta(NoticeFindManyArgs findManyArgs)
     {
@@ -131,24 +121,21 @@ public abstract class NoticesServiceBase : INoticesService
     }
 
     /// <summary>
-    /// Get one NOTICE
+    ///     Get one NOTICE
     /// </summary>
     public async Task<Notice> Notice(NoticeWhereUniqueInput uniqueId)
     {
-        var notices = await this.Notices(
+        var notices = await Notices(
             new NoticeFindManyArgs { Where = new NoticeWhereInput { Id = uniqueId.Id } }
         );
         var notice = notices.FirstOrDefault();
-        if (notice == null)
-        {
-            throw new NotFoundException();
-        }
+        if (notice == null) throw new NotFoundException();
 
         return notice;
     }
 
     /// <summary>
-    /// Update one NOTICE
+    ///     Update one NOTICE
     /// </summary>
     public async Task UpdateNotice(NoticeWhereUniqueInput uniqueId, NoticeUpdateInput updateDto)
     {
@@ -163,13 +150,8 @@ public abstract class NoticesServiceBase : INoticesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Notices.Any(e => e.Id == notice.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

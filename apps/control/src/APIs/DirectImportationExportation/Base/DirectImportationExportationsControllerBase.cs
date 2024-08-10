@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DirectImportationExportationsControllerBase : ControllerBase
 {
     protected readonly IDirectImportationExportationsService _service;
@@ -21,9 +20,9 @@ public abstract class DirectImportationExportationsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Create one DIRECT IMPORTATION/EXPORTATION
+    ///     Create one DIRECT IMPORTATION/EXPORTATION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DirectImportationExportation>
@@ -39,12 +38,12 @@ public abstract class DirectImportationExportationsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Delete one DIRECT IMPORTATION/EXPORTATION
+    ///     Delete one DIRECT IMPORTATION/EXPORTATION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDirectImportationExportation(
-        [FromRoute()] DirectImportationExportationWhereUniqueInput uniqueId
+        [FromRoute] DirectImportationExportationWhereUniqueInput uniqueId
     )
     {
         try
@@ -60,35 +59,35 @@ public abstract class DirectImportationExportationsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Find many DIRECT IMPORTATION/EXPORTATIONS
+    ///     Find many DIRECT IMPORTATION/EXPORTATIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<DirectImportationExportation>>
-    > DirectImportationExportations([FromQuery()] DirectImportationExportationFindManyArgs filter)
+    > DirectImportationExportations([FromQuery] DirectImportationExportationFindManyArgs filter)
     {
         return Ok(await _service.DirectImportationExportations(filter));
     }
 
     /// <summary>
-    /// Meta data about DIRECT IMPORTATION/EXPORTATION records
+    ///     Meta data about DIRECT IMPORTATION/EXPORTATION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DirectImportationExportationsMeta(
-        [FromQuery()] DirectImportationExportationFindManyArgs filter
+        [FromQuery] DirectImportationExportationFindManyArgs filter
     )
     {
         return Ok(await _service.DirectImportationExportationsMeta(filter));
     }
 
     /// <summary>
-    /// Get one DIRECT IMPORTATION/EXPORTATION
+    ///     Get one DIRECT IMPORTATION/EXPORTATION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<DirectImportationExportation>> DirectImportationExportation(
-        [FromRoute()] DirectImportationExportationWhereUniqueInput uniqueId
+        [FromRoute] DirectImportationExportationWhereUniqueInput uniqueId
     )
     {
         try
@@ -102,13 +101,13 @@ public abstract class DirectImportationExportationsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Update one DIRECT IMPORTATION/EXPORTATION
+    ///     Update one DIRECT IMPORTATION/EXPORTATION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDirectImportationExportation(
-        [FromRoute()] DirectImportationExportationWhereUniqueInput uniqueId,
-        [FromQuery()] DirectImportationExportationUpdateInput directImportationExportationUpdateDto
+        [FromRoute] DirectImportationExportationWhereUniqueInput uniqueId,
+        [FromQuery] DirectImportationExportationUpdateInput directImportationExportationUpdateDto
     )
     {
         try

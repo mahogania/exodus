@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class DetailsServiceBase : IDetailsService
     }
 
     /// <summary>
-    /// Create one DETAIL
+    ///     Create one DETAIL
     /// </summary>
     public async Task<Detail> CreateDetail(DetailCreateInput createDto)
     {
@@ -59,41 +58,32 @@ public abstract class DetailsServiceBase : IDetailsService
             VehicleType = createDto.VehicleType
         };
 
-        if (createDto.Id != null)
-        {
-            detail.Id = createDto.Id;
-        }
+        if (createDto.Id != null) detail.Id = createDto.Id;
 
         _context.Details.Add(detail);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<DetailDbModel>(detail.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DETAIL
+    ///     Delete one DETAIL
     /// </summary>
     public async Task DeleteDetail(DetailWhereUniqueInput uniqueId)
     {
         var detail = await _context.Details.FindAsync(uniqueId.Id);
-        if (detail == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detail == null) throw new NotFoundException();
 
         _context.Details.Remove(detail);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many DETAILS
+    ///     Find many DETAILS
     /// </summary>
     public async Task<List<Detail>> Details(DetailFindManyArgs findManyArgs)
     {
@@ -107,7 +97,7 @@ public abstract class DetailsServiceBase : IDetailsService
     }
 
     /// <summary>
-    /// Meta data about DETAIL records
+    ///     Meta data about DETAIL records
     /// </summary>
     public async Task<MetadataDto> DetailsMeta(DetailFindManyArgs findManyArgs)
     {
@@ -117,24 +107,21 @@ public abstract class DetailsServiceBase : IDetailsService
     }
 
     /// <summary>
-    /// Get one DETAIL
+    ///     Get one DETAIL
     /// </summary>
     public async Task<Detail> Detail(DetailWhereUniqueInput uniqueId)
     {
-        var details = await this.Details(
+        var details = await Details(
             new DetailFindManyArgs { Where = new DetailWhereInput { Id = uniqueId.Id } }
         );
         var detail = details.FirstOrDefault();
-        if (detail == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detail == null) throw new NotFoundException();
 
         return detail;
     }
 
     /// <summary>
-    /// Update one DETAIL
+    ///     Update one DETAIL
     /// </summary>
     public async Task UpdateDetail(DetailWhereUniqueInput uniqueId, DetailUpdateInput updateDto)
     {
@@ -149,13 +136,8 @@ public abstract class DetailsServiceBase : IDetailsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Details.Any(e => e.Id == detail.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

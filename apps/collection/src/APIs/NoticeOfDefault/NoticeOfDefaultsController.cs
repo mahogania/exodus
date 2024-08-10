@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class NoticeOfDefaultsController : NoticeOfDefaultsControllerBase
 {
     public NoticeOfDefaultsController(INoticeOfDefaultsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

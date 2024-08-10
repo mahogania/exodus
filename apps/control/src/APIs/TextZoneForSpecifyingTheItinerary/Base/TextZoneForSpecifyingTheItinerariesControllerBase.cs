@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class TextZoneForSpecifyingTheItinerariesControllerBase : ControllerBase
 {
     protected readonly ITextZoneForSpecifyingTheItinerariesService _service;
@@ -21,9 +20,9 @@ public abstract class TextZoneForSpecifyingTheItinerariesControllerBase : Contro
     }
 
     /// <summary>
-    /// Create one TEXT ZONE FOR SPECIFYING THE ITIRENARY
+    ///     Create one TEXT ZONE FOR SPECIFYING THE ITIRENARY
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<TextZoneForSpecifyingTheItinerary>
@@ -40,12 +39,12 @@ public abstract class TextZoneForSpecifyingTheItinerariesControllerBase : Contro
     }
 
     /// <summary>
-    /// Delete one TEXT ZONE FOR SPECIFYING THE ITIRENARY
+    ///     Delete one TEXT ZONE FOR SPECIFYING THE ITIRENARY
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteTextZoneForSpecifyingTheItinerary(
-        [FromRoute()] TextZoneForSpecifyingTheItineraryWhereUniqueInput uniqueId
+        [FromRoute] TextZoneForSpecifyingTheItineraryWhereUniqueInput uniqueId
     )
     {
         try
@@ -61,39 +60,39 @@ public abstract class TextZoneForSpecifyingTheItinerariesControllerBase : Contro
     }
 
     /// <summary>
-    /// Find many Text zone for specifying the itineraries
+    ///     Find many Text zone for specifying the itineraries
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<TextZoneForSpecifyingTheItinerary>>
     > TextZoneForSpecifyingTheItineraries(
-        [FromQuery()] TextZoneForSpecifyingTheItineraryFindManyArgs filter
+        [FromQuery] TextZoneForSpecifyingTheItineraryFindManyArgs filter
     )
     {
         return Ok(await _service.TextZoneForSpecifyingTheItineraries(filter));
     }
 
     /// <summary>
-    /// Meta data about TEXT ZONE FOR SPECIFYING THE ITIRENARY records
+    ///     Meta data about TEXT ZONE FOR SPECIFYING THE ITIRENARY records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> TextZoneForSpecifyingTheItinerariesMeta(
-        [FromQuery()] TextZoneForSpecifyingTheItineraryFindManyArgs filter
+        [FromQuery] TextZoneForSpecifyingTheItineraryFindManyArgs filter
     )
     {
         return Ok(await _service.TextZoneForSpecifyingTheItinerariesMeta(filter));
     }
 
     /// <summary>
-    /// Get one TEXT ZONE FOR SPECIFYING THE ITIRENARY
+    ///     Get one TEXT ZONE FOR SPECIFYING THE ITIRENARY
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<TextZoneForSpecifyingTheItinerary>
     > TextZoneForSpecifyingTheItinerary(
-        [FromRoute()] TextZoneForSpecifyingTheItineraryWhereUniqueInput uniqueId
+        [FromRoute] TextZoneForSpecifyingTheItineraryWhereUniqueInput uniqueId
     )
     {
         try
@@ -107,14 +106,13 @@ public abstract class TextZoneForSpecifyingTheItinerariesControllerBase : Contro
     }
 
     /// <summary>
-    /// Update one TEXT ZONE FOR SPECIFYING THE ITIRENARY
+    ///     Update one TEXT ZONE FOR SPECIFYING THE ITIRENARY
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateTextZoneForSpecifyingTheItinerary(
-        [FromRoute()] TextZoneForSpecifyingTheItineraryWhereUniqueInput uniqueId,
-        [FromQuery()]
-            TextZoneForSpecifyingTheItineraryUpdateInput textZoneForSpecifyingTheItineraryUpdateDto
+        [FromRoute] TextZoneForSpecifyingTheItineraryWhereUniqueInput uniqueId,
+        [FromQuery] TextZoneForSpecifyingTheItineraryUpdateInput textZoneForSpecifyingTheItineraryUpdateDto
     )
     {
         try

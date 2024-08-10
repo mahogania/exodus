@@ -43,7 +43,7 @@ public static class RemovalOrdersExtensions
             RemarksContent = model.RemarksContent,
             RemovalOrderNumber = model.RemovalOrderNumber,
             ServiceCode = model.ServiceCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -89,14 +89,8 @@ public static class RemovalOrdersExtensions
             ServiceCode = updateDto.ServiceCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            removalOrder.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            removalOrder.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) removalOrder.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) removalOrder.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return removalOrder;
     }

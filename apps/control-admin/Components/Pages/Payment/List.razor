@@ -1,7 +1,4 @@
 @page "/payment-notification"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
 @inject IStringLocalizer<Pages.PaymentNotification> Localizer
 
 <div class="container">
@@ -58,6 +55,7 @@
 </div>
 
 @code {
+
     public class PaymentHistory
     {
         public string PaymentNoticeNo { get; set; }
@@ -77,16 +75,17 @@
         public decimal Amount { get; set; }
     }
 
-    public List<PaymentHistory> PaymentHistoryData = new List<PaymentHistory>
+    public List<PaymentHistory> PaymentHistoryData = new()
     {
         new PaymentHistory { PaymentNoticeNo = "DZ-2022-G-000001-I", PaymentType = "G/General", TotalNotificationAmount = 53582840, Encashment = "N/NON", NotificationDate = new DateTime(2022, 3, 30), PaymentDueDate = new DateTime(2022, 4, 28), Extinction = "N/NON" }
         // Add more data as needed
     };
 
-    public List<PaymentAmountDetails> PaymentAmountDetailsData = new List<PaymentAmountDetails>
+    public List<PaymentAmountDetails> PaymentAmountDetailsData = new()
     {
         new PaymentAmountDetails { InstitutionName = "NATIONAL TREASURY", AccountType = "01/Treasury", BankAccountName = "NATIONAL TREASURY", Amount = 53330091 },
         new PaymentAmountDetails { InstitutionName = "PRIVATE INSTITUTION", AccountType = "04/Private Organizations", BankAccountName = "SHINHAN", Amount = 252749 }
         // Add more data as needed
     };
+
 }

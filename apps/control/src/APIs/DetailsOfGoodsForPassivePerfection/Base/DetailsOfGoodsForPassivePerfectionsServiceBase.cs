@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class DetailsOfGoodsForPassivePerfectionsServiceBase
     }
 
     /// <summary>
-    /// Create one DETAILS OF GOODS FOR PASSIVE PERFECTION
+    ///     Create one DETAILS OF GOODS FOR PASSIVE PERFECTION
     /// </summary>
     public async Task<DetailsOfGoodsForPassivePerfection> CreateDetailsOfGoodsForPassivePerfection(
         DetailsOfGoodsForPassivePerfectionCreateInput createDto
@@ -51,10 +50,7 @@ public abstract class DetailsOfGoodsForPassivePerfectionsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            detailsOfGoodsForPassivePerfection.Id = createDto.Id;
-        }
+        if (createDto.Id != null) detailsOfGoodsForPassivePerfection.Id = createDto.Id;
 
         _context.DetailsOfGoodsForPassivePerfections.Add(detailsOfGoodsForPassivePerfection);
         await _context.SaveChangesAsync();
@@ -63,16 +59,13 @@ public abstract class DetailsOfGoodsForPassivePerfectionsServiceBase
             detailsOfGoodsForPassivePerfection.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DETAILS OF GOODS FOR PASSIVE PERFECTION
+    ///     Delete one DETAILS OF GOODS FOR PASSIVE PERFECTION
     /// </summary>
     public async Task DeleteDetailsOfGoodsForPassivePerfection(
         DetailsOfGoodsForPassivePerfectionWhereUniqueInput uniqueId
@@ -80,17 +73,14 @@ public abstract class DetailsOfGoodsForPassivePerfectionsServiceBase
     {
         var detailsOfGoodsForPassivePerfection =
             await _context.DetailsOfGoodsForPassivePerfections.FindAsync(uniqueId.Id);
-        if (detailsOfGoodsForPassivePerfection == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailsOfGoodsForPassivePerfection == null) throw new NotFoundException();
 
         _context.DetailsOfGoodsForPassivePerfections.Remove(detailsOfGoodsForPassivePerfection);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many DETAILS OF GOODS FOR PASSIVE PERFECTIONS
+    ///     Find many DETAILS OF GOODS FOR PASSIVE PERFECTIONS
     /// </summary>
     public async Task<List<DetailsOfGoodsForPassivePerfection>> DetailsOfGoodsForPassivePerfections(
         DetailsOfGoodsForPassivePerfectionFindManyArgs findManyArgs
@@ -108,7 +98,7 @@ public abstract class DetailsOfGoodsForPassivePerfectionsServiceBase
     }
 
     /// <summary>
-    /// Meta data about DETAILS OF GOODS FOR PASSIVE PERFECTION records
+    ///     Meta data about DETAILS OF GOODS FOR PASSIVE PERFECTION records
     /// </summary>
     public async Task<MetadataDto> DetailsOfGoodsForPassivePerfectionsMeta(
         DetailsOfGoodsForPassivePerfectionFindManyArgs findManyArgs
@@ -122,13 +112,13 @@ public abstract class DetailsOfGoodsForPassivePerfectionsServiceBase
     }
 
     /// <summary>
-    /// Get one DETAILS OF GOODS FOR PASSIVE PERFECTION
+    ///     Get one DETAILS OF GOODS FOR PASSIVE PERFECTION
     /// </summary>
     public async Task<DetailsOfGoodsForPassivePerfection> DetailsOfGoodsForPassivePerfection(
         DetailsOfGoodsForPassivePerfectionWhereUniqueInput uniqueId
     )
     {
-        var detailsOfGoodsForPassivePerfections = await this.DetailsOfGoodsForPassivePerfections(
+        var detailsOfGoodsForPassivePerfections = await DetailsOfGoodsForPassivePerfections(
             new DetailsOfGoodsForPassivePerfectionFindManyArgs
             {
                 Where = new DetailsOfGoodsForPassivePerfectionWhereInput { Id = uniqueId.Id }
@@ -136,16 +126,13 @@ public abstract class DetailsOfGoodsForPassivePerfectionsServiceBase
         );
         var detailsOfGoodsForPassivePerfection =
             detailsOfGoodsForPassivePerfections.FirstOrDefault();
-        if (detailsOfGoodsForPassivePerfection == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailsOfGoodsForPassivePerfection == null) throw new NotFoundException();
 
         return detailsOfGoodsForPassivePerfection;
     }
 
     /// <summary>
-    /// Update one DETAILS OF GOODS FOR PASSIVE PERFECTION
+    ///     Update one DETAILS OF GOODS FOR PASSIVE PERFECTION
     /// </summary>
     public async Task UpdateDetailsOfGoodsForPassivePerfection(
         DetailsOfGoodsForPassivePerfectionWhereUniqueInput uniqueId,
@@ -167,13 +154,8 @@ public abstract class DetailsOfGoodsForPassivePerfectionsServiceBase
                     e.Id == detailsOfGoodsForPassivePerfection.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

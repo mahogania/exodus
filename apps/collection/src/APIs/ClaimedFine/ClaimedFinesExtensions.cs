@@ -40,7 +40,7 @@ public static class ClaimedFinesExtensions
             TaxpayerIdentificationNumber = model.TaxpayerIdentificationNumber,
             TinCategoryCode = model.TinCategoryCode,
             TinCategoryName = model.TinCategoryName,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -83,14 +83,8 @@ public static class ClaimedFinesExtensions
             TinCategoryName = updateDto.TinCategoryName
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            claimedFine.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            claimedFine.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) claimedFine.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) claimedFine.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return claimedFine;
     }

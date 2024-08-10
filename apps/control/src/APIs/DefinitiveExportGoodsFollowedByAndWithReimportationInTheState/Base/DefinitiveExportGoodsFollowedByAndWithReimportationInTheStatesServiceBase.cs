@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -22,11 +21,12 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
     }
 
     /// <summary>
-    /// Create one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
+    ///     Create one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
     /// </summary>
-    public async Task<DefinitiveExportGoodsFollowedByAndWithReimportationInTheState> CreateDefinitiveExportGoodsFollowedByAndWithReimportationInTheState(
-        DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateCreateInput createDto
-    )
+    public async Task<DefinitiveExportGoodsFollowedByAndWithReimportationInTheState>
+        CreateDefinitiveExportGoodsFollowedByAndWithReimportationInTheState(
+            DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateCreateInput createDto
+        )
     {
         var definitiveExportGoodsFollowedByAndWithReimportationInTheState =
             new DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateDbModel
@@ -56,10 +56,7 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
                 ValueInCurrencyOfTheGoods = createDto.ValueInCurrencyOfTheGoods
             };
 
-        if (createDto.Id != null)
-        {
-            definitiveExportGoodsFollowedByAndWithReimportationInTheState.Id = createDto.Id;
-        }
+        if (createDto.Id != null) definitiveExportGoodsFollowedByAndWithReimportationInTheState.Id = createDto.Id;
 
         _context.DefinitiveExportGoodsFollowedByAndWithReimportationInTheStates.Add(
             definitiveExportGoodsFollowedByAndWithReimportationInTheState
@@ -71,16 +68,13 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
                 definitiveExportGoodsFollowedByAndWithReimportationInTheState.Id
             );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
+    ///     Delete one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
     /// </summary>
     public async Task DeleteDefinitiveExportGoodsFollowedByAndWithReimportationInTheState(
         DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateWhereUniqueInput uniqueId
@@ -90,10 +84,7 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
             await _context.DefinitiveExportGoodsFollowedByAndWithReimportationInTheStates.FindAsync(
                 uniqueId.Id
             );
-        if (definitiveExportGoodsFollowedByAndWithReimportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (definitiveExportGoodsFollowedByAndWithReimportationInTheState == null) throw new NotFoundException();
 
         _context.DefinitiveExportGoodsFollowedByAndWithReimportationInTheStates.Remove(
             definitiveExportGoodsFollowedByAndWithReimportationInTheState
@@ -102,7 +93,7 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
     }
 
     /// <summary>
-    /// Find many DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATES
+    ///     Find many DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATES
     /// </summary>
     public async Task<
         List<DefinitiveExportGoodsFollowedByAndWithReimportationInTheState>
@@ -125,7 +116,7 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
     }
 
     /// <summary>
-    /// Meta data about DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE records
+    ///     Meta data about DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE records
     /// </summary>
     public async Task<MetadataDto> DefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesMeta(
         DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateFindManyArgs findManyArgs
@@ -141,14 +132,15 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
     }
 
     /// <summary>
-    /// Get one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
+    ///     Get one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
     /// </summary>
-    public async Task<DefinitiveExportGoodsFollowedByAndWithReimportationInTheState> DefinitiveExportGoodsFollowedByAndWithReimportationInTheState(
-        DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateWhereUniqueInput uniqueId
-    )
+    public async Task<DefinitiveExportGoodsFollowedByAndWithReimportationInTheState>
+        DefinitiveExportGoodsFollowedByAndWithReimportationInTheState(
+            DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateWhereUniqueInput uniqueId
+        )
     {
         var definitiveExportGoodsFollowedByAndWithReimportationInTheStates =
-            await this.DefinitiveExportGoodsFollowedByAndWithReimportationInTheStates(
+            await DefinitiveExportGoodsFollowedByAndWithReimportationInTheStates(
                 new DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateFindManyArgs
                 {
                     Where =
@@ -160,16 +152,13 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
             );
         var definitiveExportGoodsFollowedByAndWithReimportationInTheState =
             definitiveExportGoodsFollowedByAndWithReimportationInTheStates.FirstOrDefault();
-        if (definitiveExportGoodsFollowedByAndWithReimportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (definitiveExportGoodsFollowedByAndWithReimportationInTheState == null) throw new NotFoundException();
 
         return definitiveExportGoodsFollowedByAndWithReimportationInTheState;
     }
 
     /// <summary>
-    /// Update one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
+    ///     Update one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
     /// </summary>
     public async Task UpdateDefinitiveExportGoodsFollowedByAndWithReimportationInTheState(
         DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateWhereUniqueInput uniqueId,
@@ -194,13 +183,8 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
                     e.Id == definitiveExportGoodsFollowedByAndWithReimportationInTheState.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

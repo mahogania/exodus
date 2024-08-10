@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ReplenishmentInDutyFreesServiceBase : IReplenishmentInDuty
     }
 
     /// <summary>
-    /// Create one REPLENISHMENT IN DUTY-FREE
+    ///     Create one REPLENISHMENT IN DUTY-FREE
     /// </summary>
     public async Task<ReplenishmentInDutyFree> CreateReplenishmentInDutyFree(
         ReplenishmentInDutyFreeCreateInput createDto
@@ -50,10 +49,7 @@ public abstract class ReplenishmentInDutyFreesServiceBase : IReplenishmentInDuty
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            replenishmentInDutyFree.Id = createDto.Id;
-        }
+        if (createDto.Id != null) replenishmentInDutyFree.Id = createDto.Id;
 
         _context.ReplenishmentInDutyFrees.Add(replenishmentInDutyFree);
         await _context.SaveChangesAsync();
@@ -62,16 +58,13 @@ public abstract class ReplenishmentInDutyFreesServiceBase : IReplenishmentInDuty
             replenishmentInDutyFree.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one REPLENISHMENT IN DUTY-FREE
+    ///     Delete one REPLENISHMENT IN DUTY-FREE
     /// </summary>
     public async Task DeleteReplenishmentInDutyFree(
         ReplenishmentInDutyFreeWhereUniqueInput uniqueId
@@ -80,17 +73,14 @@ public abstract class ReplenishmentInDutyFreesServiceBase : IReplenishmentInDuty
         var replenishmentInDutyFree = await _context.ReplenishmentInDutyFrees.FindAsync(
             uniqueId.Id
         );
-        if (replenishmentInDutyFree == null)
-        {
-            throw new NotFoundException();
-        }
+        if (replenishmentInDutyFree == null) throw new NotFoundException();
 
         _context.ReplenishmentInDutyFrees.Remove(replenishmentInDutyFree);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many REPLENISHMENT IN DUTY-FREES
+    ///     Find many REPLENISHMENT IN DUTY-FREES
     /// </summary>
     public async Task<List<ReplenishmentInDutyFree>> ReplenishmentInDutyFrees(
         ReplenishmentInDutyFreeFindManyArgs findManyArgs
@@ -108,7 +98,7 @@ public abstract class ReplenishmentInDutyFreesServiceBase : IReplenishmentInDuty
     }
 
     /// <summary>
-    /// Meta data about REPLENISHMENT IN DUTY-FREE records
+    ///     Meta data about REPLENISHMENT IN DUTY-FREE records
     /// </summary>
     public async Task<MetadataDto> ReplenishmentInDutyFreesMeta(
         ReplenishmentInDutyFreeFindManyArgs findManyArgs
@@ -122,29 +112,26 @@ public abstract class ReplenishmentInDutyFreesServiceBase : IReplenishmentInDuty
     }
 
     /// <summary>
-    /// Get one REPLENISHMENT IN DUTY-FREE
+    ///     Get one REPLENISHMENT IN DUTY-FREE
     /// </summary>
     public async Task<ReplenishmentInDutyFree> ReplenishmentInDutyFree(
         ReplenishmentInDutyFreeWhereUniqueInput uniqueId
     )
     {
-        var replenishmentInDutyFrees = await this.ReplenishmentInDutyFrees(
+        var replenishmentInDutyFrees = await ReplenishmentInDutyFrees(
             new ReplenishmentInDutyFreeFindManyArgs
             {
                 Where = new ReplenishmentInDutyFreeWhereInput { Id = uniqueId.Id }
             }
         );
         var replenishmentInDutyFree = replenishmentInDutyFrees.FirstOrDefault();
-        if (replenishmentInDutyFree == null)
-        {
-            throw new NotFoundException();
-        }
+        if (replenishmentInDutyFree == null) throw new NotFoundException();
 
         return replenishmentInDutyFree;
     }
 
     /// <summary>
-    /// Update one REPLENISHMENT IN DUTY-FREE
+    ///     Update one REPLENISHMENT IN DUTY-FREE
     /// </summary>
     public async Task UpdateReplenishmentInDutyFree(
         ReplenishmentInDutyFreeWhereUniqueInput uniqueId,
@@ -162,13 +149,8 @@ public abstract class ReplenishmentInDutyFreesServiceBase : IReplenishmentInDuty
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.ReplenishmentInDutyFrees.Any(e => e.Id == replenishmentInDutyFree.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

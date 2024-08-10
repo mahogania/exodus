@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class CommonOriginCertificateRequestsServiceBase
     }
 
     /// <summary>
-    /// Create one COMMON ORIGIN CERTIFICATE REQUEST
+    ///     Create one COMMON ORIGIN CERTIFICATE REQUEST
     /// </summary>
     public async Task<CommonOriginCertificateRequest> CreateCommonOriginCertificateRequest(
         CommonOriginCertificateRequestCreateInput createDto
@@ -69,10 +68,7 @@ public abstract class CommonOriginCertificateRequestsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            commonOriginCertificateRequest.Id = createDto.Id;
-        }
+        if (createDto.Id != null) commonOriginCertificateRequest.Id = createDto.Id;
 
         _context.CommonOriginCertificateRequests.Add(commonOriginCertificateRequest);
         await _context.SaveChangesAsync();
@@ -81,16 +77,13 @@ public abstract class CommonOriginCertificateRequestsServiceBase
             commonOriginCertificateRequest.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one COMMON ORIGIN CERTIFICATE REQUEST
+    ///     Delete one COMMON ORIGIN CERTIFICATE REQUEST
     /// </summary>
     public async Task DeleteCommonOriginCertificateRequest(
         CommonOriginCertificateRequestWhereUniqueInput uniqueId
@@ -98,17 +91,14 @@ public abstract class CommonOriginCertificateRequestsServiceBase
     {
         var commonOriginCertificateRequest =
             await _context.CommonOriginCertificateRequests.FindAsync(uniqueId.Id);
-        if (commonOriginCertificateRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (commonOriginCertificateRequest == null) throw new NotFoundException();
 
         _context.CommonOriginCertificateRequests.Remove(commonOriginCertificateRequest);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many COMMON ORIGIN CERTIFICATE REQUESTS
+    ///     Find many COMMON ORIGIN CERTIFICATE REQUESTS
     /// </summary>
     public async Task<List<CommonOriginCertificateRequest>> CommonOriginCertificateRequests(
         CommonOriginCertificateRequestFindManyArgs findManyArgs
@@ -126,7 +116,7 @@ public abstract class CommonOriginCertificateRequestsServiceBase
     }
 
     /// <summary>
-    /// Meta data about COMMON ORIGIN CERTIFICATE REQUEST records
+    ///     Meta data about COMMON ORIGIN CERTIFICATE REQUEST records
     /// </summary>
     public async Task<MetadataDto> CommonOriginCertificateRequestsMeta(
         CommonOriginCertificateRequestFindManyArgs findManyArgs
@@ -140,29 +130,26 @@ public abstract class CommonOriginCertificateRequestsServiceBase
     }
 
     /// <summary>
-    /// Get one COMMON ORIGIN CERTIFICATE REQUEST
+    ///     Get one COMMON ORIGIN CERTIFICATE REQUEST
     /// </summary>
     public async Task<CommonOriginCertificateRequest> CommonOriginCertificateRequest(
         CommonOriginCertificateRequestWhereUniqueInput uniqueId
     )
     {
-        var commonOriginCertificateRequests = await this.CommonOriginCertificateRequests(
+        var commonOriginCertificateRequests = await CommonOriginCertificateRequests(
             new CommonOriginCertificateRequestFindManyArgs
             {
                 Where = new CommonOriginCertificateRequestWhereInput { Id = uniqueId.Id }
             }
         );
         var commonOriginCertificateRequest = commonOriginCertificateRequests.FirstOrDefault();
-        if (commonOriginCertificateRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (commonOriginCertificateRequest == null) throw new NotFoundException();
 
         return commonOriginCertificateRequest;
     }
 
     /// <summary>
-    /// Update one COMMON ORIGIN CERTIFICATE REQUEST
+    ///     Update one COMMON ORIGIN CERTIFICATE REQUEST
     /// </summary>
     public async Task UpdateCommonOriginCertificateRequest(
         CommonOriginCertificateRequestWhereUniqueInput uniqueId,
@@ -184,13 +171,8 @@ public abstract class CommonOriginCertificateRequestsServiceBase
                     e.Id == commonOriginCertificateRequest.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

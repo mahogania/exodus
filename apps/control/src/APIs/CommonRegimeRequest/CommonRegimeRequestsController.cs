@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class CommonRegimeRequestsController : CommonRegimeRequestsControllerBase
 {
     public CommonRegimeRequestsController(ICommonRegimeRequestsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

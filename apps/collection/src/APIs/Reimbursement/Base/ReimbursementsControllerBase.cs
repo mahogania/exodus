@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ReimbursementsControllerBase : ControllerBase
 {
     protected readonly IReimbursementsService _service;
@@ -19,9 +18,9 @@ public abstract class ReimbursementsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one REIMBURSEMENT
+    ///     Create one REIMBURSEMENT
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Reimbursement>> CreateReimbursement(
         ReimbursementCreateInput input
@@ -33,12 +32,12 @@ public abstract class ReimbursementsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one REIMBURSEMENT
+    ///     Delete one REIMBURSEMENT
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteReimbursement(
-        [FromRoute()] ReimbursementWhereUniqueInput uniqueId
+        [FromRoute] ReimbursementWhereUniqueInput uniqueId
     )
     {
         try
@@ -54,35 +53,35 @@ public abstract class ReimbursementsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many REIMBURSEMENTS
+    ///     Find many REIMBURSEMENTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Reimbursement>>> Reimbursements(
-        [FromQuery()] ReimbursementFindManyArgs filter
+        [FromQuery] ReimbursementFindManyArgs filter
     )
     {
         return Ok(await _service.Reimbursements(filter));
     }
 
     /// <summary>
-    /// Meta data about REIMBURSEMENT records
+    ///     Meta data about REIMBURSEMENT records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ReimbursementsMeta(
-        [FromQuery()] ReimbursementFindManyArgs filter
+        [FromQuery] ReimbursementFindManyArgs filter
     )
     {
         return Ok(await _service.ReimbursementsMeta(filter));
     }
 
     /// <summary>
-    /// Get one REIMBURSEMENT
+    ///     Get one REIMBURSEMENT
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Reimbursement>> Reimbursement(
-        [FromRoute()] ReimbursementWhereUniqueInput uniqueId
+        [FromRoute] ReimbursementWhereUniqueInput uniqueId
     )
     {
         try
@@ -96,13 +95,13 @@ public abstract class ReimbursementsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one REIMBURSEMENT
+    ///     Update one REIMBURSEMENT
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateReimbursement(
-        [FromRoute()] ReimbursementWhereUniqueInput uniqueId,
-        [FromQuery()] ReimbursementUpdateInput reimbursementUpdateDto
+        [FromRoute] ReimbursementWhereUniqueInput uniqueId,
+        [FromQuery] ReimbursementUpdateInput reimbursementUpdateDto
     )
     {
         try

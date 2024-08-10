@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CreditsControllerBase : ControllerBase
 {
     protected readonly ICreditsService _service;
@@ -19,9 +18,9 @@ public abstract class CreditsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one CREDIT
+    ///     Create one CREDIT
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Credit>> CreateCredit(CreditCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class CreditsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one CREDIT
+    ///     Delete one CREDIT
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteCredit([FromRoute()] CreditWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteCredit([FromRoute] CreditWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,32 +49,32 @@ public abstract class CreditsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many CREDITS
+    ///     Find many CREDITS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<List<Credit>>> Credits([FromQuery()] CreditFindManyArgs filter)
+    public async Task<ActionResult<List<Credit>>> Credits([FromQuery] CreditFindManyArgs filter)
     {
         return Ok(await _service.Credits(filter));
     }
 
     /// <summary>
-    /// Meta data about CREDIT records
+    ///     Meta data about CREDIT records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CreditsMeta(
-        [FromQuery()] CreditFindManyArgs filter
+        [FromQuery] CreditFindManyArgs filter
     )
     {
         return Ok(await _service.CreditsMeta(filter));
     }
 
     /// <summary>
-    /// Get one CREDIT
+    ///     Get one CREDIT
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Credit>> Credit([FromRoute()] CreditWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Credit>> Credit([FromRoute] CreditWhereUniqueInput uniqueId)
     {
         try
         {
@@ -88,13 +87,13 @@ public abstract class CreditsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one CREDIT
+    ///     Update one CREDIT
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCredit(
-        [FromRoute()] CreditWhereUniqueInput uniqueId,
-        [FromQuery()] CreditUpdateInput creditUpdateDto
+        [FromRoute] CreditWhereUniqueInput uniqueId,
+        [FromQuery] CreditUpdateInput creditUpdateDto
     )
     {
         try

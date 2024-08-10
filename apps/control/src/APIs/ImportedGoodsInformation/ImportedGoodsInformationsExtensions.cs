@@ -36,7 +36,7 @@ public static class ImportedGoodsInformationsExtensions
             SuppressionOn = model.SuppressionOn,
             TechnicalDesignationOfGoods = model.TechnicalDesignationOfGoods,
             UpdatedAt = model.UpdatedAt,
-            Value = model.Value,
+            Value = model.Value
         };
     }
 
@@ -77,14 +77,8 @@ public static class ImportedGoodsInformationsExtensions
             Value = updateDto.Value
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            importedGoodsInformation.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            importedGoodsInformation.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) importedGoodsInformation.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) importedGoodsInformation.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return importedGoodsInformation;
     }

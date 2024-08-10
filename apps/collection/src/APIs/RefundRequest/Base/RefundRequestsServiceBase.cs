@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class RefundRequestsServiceBase : IRefundRequestsService
     }
 
     /// <summary>
-    /// Create one REFUND REQUEST
+    ///     Create one REFUND REQUEST
     /// </summary>
     public async Task<RefundRequest> CreateRefundRequest(RefundRequestCreateInput createDto)
     {
@@ -50,41 +49,32 @@ public abstract class RefundRequestsServiceBase : IRefundRequestsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            refundRequest.Id = createDto.Id;
-        }
+        if (createDto.Id != null) refundRequest.Id = createDto.Id;
 
         _context.RefundRequests.Add(refundRequest);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<RefundRequestDbModel>(refundRequest.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one REFUND REQUEST
+    ///     Delete one REFUND REQUEST
     /// </summary>
     public async Task DeleteRefundRequest(RefundRequestWhereUniqueInput uniqueId)
     {
         var refundRequest = await _context.RefundRequests.FindAsync(uniqueId.Id);
-        if (refundRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (refundRequest == null) throw new NotFoundException();
 
         _context.RefundRequests.Remove(refundRequest);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many REFUND REQUESTS
+    ///     Find many REFUND REQUESTS
     /// </summary>
     public async Task<List<RefundRequest>> RefundRequests(RefundRequestFindManyArgs findManyArgs)
     {
@@ -98,7 +88,7 @@ public abstract class RefundRequestsServiceBase : IRefundRequestsService
     }
 
     /// <summary>
-    /// Meta data about REFUND REQUEST records
+    ///     Meta data about REFUND REQUEST records
     /// </summary>
     public async Task<MetadataDto> RefundRequestsMeta(RefundRequestFindManyArgs findManyArgs)
     {
@@ -108,27 +98,24 @@ public abstract class RefundRequestsServiceBase : IRefundRequestsService
     }
 
     /// <summary>
-    /// Get one REFUND REQUEST
+    ///     Get one REFUND REQUEST
     /// </summary>
     public async Task<RefundRequest> RefundRequest(RefundRequestWhereUniqueInput uniqueId)
     {
-        var refundRequests = await this.RefundRequests(
+        var refundRequests = await RefundRequests(
             new RefundRequestFindManyArgs
             {
                 Where = new RefundRequestWhereInput { Id = uniqueId.Id }
             }
         );
         var refundRequest = refundRequests.FirstOrDefault();
-        if (refundRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (refundRequest == null) throw new NotFoundException();
 
         return refundRequest;
     }
 
     /// <summary>
-    /// Update one REFUND REQUEST
+    ///     Update one REFUND REQUEST
     /// </summary>
     public async Task UpdateRefundRequest(
         RefundRequestWhereUniqueInput uniqueId,
@@ -146,13 +133,8 @@ public abstract class RefundRequestsServiceBase : IRefundRequestsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.RefundRequests.Any(e => e.Id == refundRequest.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

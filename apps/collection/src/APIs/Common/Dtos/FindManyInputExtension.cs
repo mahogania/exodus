@@ -7,19 +7,13 @@ public static class FindManyInputExtension
     public static IQueryable<M> ApplyWhere<M, W>(this IQueryable<M> queryable, W? where)
         where M : class
     {
-        if (where == null)
-        {
-            return queryable;
-        }
+        if (where == null) return queryable;
 
         var properties = typeof(W).GetProperties();
         foreach (var property in properties)
         {
             var value = property.GetValue(where, null);
-            if (value == null)
-            {
-                continue;
-            }
+            if (value == null) continue;
 
             queryable = queryable.Where($"{property.Name} == @0", value);
         }
@@ -30,10 +24,7 @@ public static class FindManyInputExtension
     public static IQueryable<M> ApplyTake<M>(this IQueryable<M> queryable, int? input)
         where M : class
     {
-        if (input.HasValue)
-        {
-            queryable = queryable.Take(input.Value);
-        }
+        if (input.HasValue) queryable = queryable.Take(input.Value);
 
         return queryable;
     }
@@ -41,10 +32,7 @@ public static class FindManyInputExtension
     public static IQueryable<M> ApplySkip<M>(this IQueryable<M> queryable, int? input)
         where M : class
     {
-        if (input.HasValue)
-        {
-            queryable = queryable.Skip(input.Value);
-        }
+        if (input.HasValue) queryable = queryable.Skip(input.Value);
 
         return queryable;
     }
@@ -55,10 +43,7 @@ public static class FindManyInputExtension
     )
         where M : class
     {
-        if (sortBy == null)
-        {
-            return query;
-        }
+        if (sortBy == null) return query;
 
         string[] orderByStatements = [];
         foreach (var sortByInput in sortBy)
@@ -69,10 +54,7 @@ public static class FindManyInputExtension
                 inputParts.Last() == "desc" ? SortDirection.Desc : SortDirection.Asc;
 
             var propertyInfo = typeof(M).GetProperty(fieldName);
-            if (propertyInfo == null)
-            {
-                continue;
-            }
+            if (propertyInfo == null) continue;
 
             switch (sortDirection)
             {
@@ -82,11 +64,9 @@ public static class FindManyInputExtension
                 case SortDirection.Desc:
                     orderByStatements = orderByStatements.Append($"{fieldName} desc").ToArray();
                     break;
-                default:
-                    break;
             }
         }
 
-        return query.OrderBy(String.Join(", ", orderByStatements));
+        return query.OrderBy(string.Join(", ", orderByStatements));
     }
 }

@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class VariousRequestsServiceBase : IVariousRequestsService
     }
 
     /// <summary>
-    /// Create one VARIOUS REQUEST
+    ///     Create one VARIOUS REQUEST
     /// </summary>
     public async Task<VariousRequest> CreateVariousRequest(VariousRequestCreateInput createDto)
     {
@@ -49,41 +48,32 @@ public abstract class VariousRequestsServiceBase : IVariousRequestsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            variousRequest.Id = createDto.Id;
-        }
+        if (createDto.Id != null) variousRequest.Id = createDto.Id;
 
         _context.VariousRequests.Add(variousRequest);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<VariousRequestDbModel>(variousRequest.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one VARIOUS REQUEST
+    ///     Delete one VARIOUS REQUEST
     /// </summary>
     public async Task DeleteVariousRequest(VariousRequestWhereUniqueInput uniqueId)
     {
         var variousRequest = await _context.VariousRequests.FindAsync(uniqueId.Id);
-        if (variousRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (variousRequest == null) throw new NotFoundException();
 
         _context.VariousRequests.Remove(variousRequest);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many VARIOUS REQUESTS
+    ///     Find many VARIOUS REQUESTS
     /// </summary>
     public async Task<List<VariousRequest>> VariousRequests(VariousRequestFindManyArgs findManyArgs)
     {
@@ -97,7 +87,7 @@ public abstract class VariousRequestsServiceBase : IVariousRequestsService
     }
 
     /// <summary>
-    /// Meta data about VARIOUS REQUEST records
+    ///     Meta data about VARIOUS REQUEST records
     /// </summary>
     public async Task<MetadataDto> VariousRequestsMeta(VariousRequestFindManyArgs findManyArgs)
     {
@@ -107,27 +97,24 @@ public abstract class VariousRequestsServiceBase : IVariousRequestsService
     }
 
     /// <summary>
-    /// Get one VARIOUS REQUEST
+    ///     Get one VARIOUS REQUEST
     /// </summary>
     public async Task<VariousRequest> VariousRequest(VariousRequestWhereUniqueInput uniqueId)
     {
-        var variousRequests = await this.VariousRequests(
+        var variousRequests = await VariousRequests(
             new VariousRequestFindManyArgs
             {
                 Where = new VariousRequestWhereInput { Id = uniqueId.Id }
             }
         );
         var variousRequest = variousRequests.FirstOrDefault();
-        if (variousRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (variousRequest == null) throw new NotFoundException();
 
         return variousRequest;
     }
 
     /// <summary>
-    /// Update one VARIOUS REQUEST
+    ///     Update one VARIOUS REQUEST
     /// </summary>
     public async Task UpdateVariousRequest(
         VariousRequestWhereUniqueInput uniqueId,
@@ -145,13 +132,8 @@ public abstract class VariousRequestsServiceBase : IVariousRequestsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.VariousRequests.Any(e => e.Id == variousRequest.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

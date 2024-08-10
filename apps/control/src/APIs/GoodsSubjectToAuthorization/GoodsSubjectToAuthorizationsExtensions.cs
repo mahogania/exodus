@@ -30,7 +30,7 @@ public static class GoodsSubjectToAuthorizationsExtensions
             SptNumber = model.SptNumber,
             TechnicalDesignationOfMaterials = model.TechnicalDesignationOfMaterials,
             UpdatedAt = model.UpdatedAt,
-            Value = model.Value,
+            Value = model.Value
         };
     }
 
@@ -63,14 +63,8 @@ public static class GoodsSubjectToAuthorizationsExtensions
             Value = updateDto.Value
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            goodsSubjectToAuthorization.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            goodsSubjectToAuthorization.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) goodsSubjectToAuthorization.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) goodsSubjectToAuthorization.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return goodsSubjectToAuthorization;
     }

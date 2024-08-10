@@ -1,8 +1,4 @@
 @page "/old-document-consultation"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.DropDowns
 @inject IStringLocalizer<Pages.OldDocumentConsultation> Localizer
 
 <div class="container">
@@ -10,13 +6,13 @@
 
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfDateRangePicker Placeholder="@Localizer["RegistrationDateRange"]" CssClass="e-outline"></SfDateRangePicker>
+            <SfDateRangePicker TValue="DateTime[]" Placeholder="@Localizer["RegistrationDateRange"]" CssClass="e-outline"></SfDateRangePicker>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfDropDownList Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string"></SfDropDownList>
+            <SfDropDownList TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string"></SfDropDownList>
         </div>
         <div class="col-md-3">
             <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
@@ -46,6 +42,7 @@
 </div>
 
 @code {
+
     public class OldDocument
     {
         public string ReferenceNo { get; set; }
@@ -58,16 +55,17 @@
         public string TransportTitleNo { get; set; }
     }
 
-    public List<string> DeclarationTypes = new List<string>
+    public List<string> DeclarationTypes = new()
     {
         "EX1/Exportation",
         "IM4/Import Declaration"
         // Add more types as needed
     };
 
-    public List<OldDocument> OldDocumentData = new List<OldDocument>
+    public List<OldDocument> OldDocumentData = new()
     {
         new OldDocument { ReferenceNo = "H0001-2022-DAU-000001-E", RegistrationDate = new DateTime(2022, 3, 30), RegionalDirection = "ALGER-M", EPC = "4100", DeclarationType = "IM4/Import Declaration", DocumentType = "G-General", InvoiceNo = "TRAININGVIMPP0001", TransportTitleNo = "TRAININGBLIMPP0001" }
         // Add more data as needed
     };
+
 }

@@ -1,7 +1,4 @@
 @page "/control-results-notification-history"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
 @inject IStringLocalizer<Pages.ControlResultsNotificationHistory> Localizer
 
 <div class="container">
@@ -103,6 +100,7 @@
 </div>
 
 @code {
+
     public class Value
     {
         public string Category { get; set; }
@@ -142,7 +140,7 @@
         public string SealCharge { get; set; }
     }
 
-    public List<Value> ValueData = new List<Value>
+    public List<Value> ValueData = new()
     {
         new Value { Category = "Invoice", DeclaredUSD = 8000000, LiquidatedUSD = 8000000, DeclaredDZD = 8986640, LiquidatedDZD = 8986640 },
         new Value { Category = "Insurance", DeclaredUSD = 1000000, LiquidatedUSD = 1000000, DeclaredDZD = 1233130, LiquidatedDZD = 1233130 },
@@ -150,7 +148,7 @@
         // Add more data as needed
     };
 
-    public List<Tax> TaxData = new List<Tax>
+    public List<Tax> TaxData = new()
     {
         new Tax { TaxCode = "ITF", TaxableValue = 101099700, TaxRate = 0.25m, TaxAmount = 252749 },
         new Tax { TaxCode = "IMD", TaxableValue = 101099700, TaxRate = 0.30m, TaxAmount = 30329190 },
@@ -158,15 +156,16 @@
         // Add more data as needed
     };
 
-    public List<PaymentHistory> PaymentHistoryData = new List<PaymentHistory>
+    public List<PaymentHistory> PaymentHistoryData = new()
     {
         new PaymentHistory { PaymentNoticeNo = "DZ-2022-G-000001-I", PaymentType = "G/General", TotalNotificationAmount = 53582840, Encashment = "N/NON", NotificationDate = new DateTime(2022, 3, 30), PaymentDueDate = new DateTime(2022, 4, 28), Extinction = "N/NON" }
         // Add more data as needed
     };
 
-    public List<Container> ContainerData = new List<Container>
+    public List<Container> ContainerData = new()
     {
         new Container { ContainerNo = "ROYL111111", ContainerCategory = "20GO", SealedState = 5, SealNo1 = "SEAL01", SealNo2 = "SEAL02", SealNo3 = "SEAL03", SealCharge = "TOP" }
         // Add more data as needed
     };
+
 }

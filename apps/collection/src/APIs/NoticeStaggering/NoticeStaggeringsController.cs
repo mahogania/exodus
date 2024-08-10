@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class NoticeStaggeringsController : NoticeStaggeringsControllerBase
 {
     public NoticeStaggeringsController(INoticeStaggeringsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

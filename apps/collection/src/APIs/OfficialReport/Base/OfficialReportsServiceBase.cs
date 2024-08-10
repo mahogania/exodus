@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class OfficialReportsServiceBase : IOfficialReportsService
     }
 
     /// <summary>
-    /// Create one OFFICIAL REPORT
+    ///     Create one OFFICIAL REPORT
     /// </summary>
     public async Task<OfficialReport> CreateOfficialReport(OfficialReportCreateInput createDto)
     {
@@ -54,41 +53,32 @@ public abstract class OfficialReportsServiceBase : IOfficialReportsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            officialReport.Id = createDto.Id;
-        }
+        if (createDto.Id != null) officialReport.Id = createDto.Id;
 
         _context.OfficialReports.Add(officialReport);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<OfficialReportDbModel>(officialReport.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one OFFICIAL REPORT
+    ///     Delete one OFFICIAL REPORT
     /// </summary>
     public async Task DeleteOfficialReport(OfficialReportWhereUniqueInput uniqueId)
     {
         var officialReport = await _context.OfficialReports.FindAsync(uniqueId.Id);
-        if (officialReport == null)
-        {
-            throw new NotFoundException();
-        }
+        if (officialReport == null) throw new NotFoundException();
 
         _context.OfficialReports.Remove(officialReport);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many OFFICIAL REPORTS
+    ///     Find many OFFICIAL REPORTS
     /// </summary>
     public async Task<List<OfficialReport>> OfficialReports(OfficialReportFindManyArgs findManyArgs)
     {
@@ -102,7 +92,7 @@ public abstract class OfficialReportsServiceBase : IOfficialReportsService
     }
 
     /// <summary>
-    /// Meta data about OFFICIAL REPORT records
+    ///     Meta data about OFFICIAL REPORT records
     /// </summary>
     public async Task<MetadataDto> OfficialReportsMeta(OfficialReportFindManyArgs findManyArgs)
     {
@@ -112,27 +102,24 @@ public abstract class OfficialReportsServiceBase : IOfficialReportsService
     }
 
     /// <summary>
-    /// Get one OFFICIAL REPORT
+    ///     Get one OFFICIAL REPORT
     /// </summary>
     public async Task<OfficialReport> OfficialReport(OfficialReportWhereUniqueInput uniqueId)
     {
-        var officialReports = await this.OfficialReports(
+        var officialReports = await OfficialReports(
             new OfficialReportFindManyArgs
             {
                 Where = new OfficialReportWhereInput { Id = uniqueId.Id }
             }
         );
         var officialReport = officialReports.FirstOrDefault();
-        if (officialReport == null)
-        {
-            throw new NotFoundException();
-        }
+        if (officialReport == null) throw new NotFoundException();
 
         return officialReport;
     }
 
     /// <summary>
-    /// Update one OFFICIAL REPORT
+    ///     Update one OFFICIAL REPORT
     /// </summary>
     public async Task UpdateOfficialReport(
         OfficialReportWhereUniqueInput uniqueId,
@@ -150,13 +137,8 @@ public abstract class OfficialReportsServiceBase : IOfficialReportsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.OfficialReports.Any(e => e.Id == officialReport.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

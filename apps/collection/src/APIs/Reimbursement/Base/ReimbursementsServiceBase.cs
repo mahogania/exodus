@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ReimbursementsServiceBase : IReimbursementsService
     }
 
     /// <summary>
-    /// Create one REIMBURSEMENT
+    ///     Create one REIMBURSEMENT
     /// </summary>
     public async Task<Reimbursement> CreateReimbursement(ReimbursementCreateInput createDto)
     {
@@ -44,41 +43,32 @@ public abstract class ReimbursementsServiceBase : IReimbursementsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            reimbursement.Id = createDto.Id;
-        }
+        if (createDto.Id != null) reimbursement.Id = createDto.Id;
 
         _context.Reimbursements.Add(reimbursement);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<ReimbursementDbModel>(reimbursement.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one REIMBURSEMENT
+    ///     Delete one REIMBURSEMENT
     /// </summary>
     public async Task DeleteReimbursement(ReimbursementWhereUniqueInput uniqueId)
     {
         var reimbursement = await _context.Reimbursements.FindAsync(uniqueId.Id);
-        if (reimbursement == null)
-        {
-            throw new NotFoundException();
-        }
+        if (reimbursement == null) throw new NotFoundException();
 
         _context.Reimbursements.Remove(reimbursement);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many REIMBURSEMENTS
+    ///     Find many REIMBURSEMENTS
     /// </summary>
     public async Task<List<Reimbursement>> Reimbursements(ReimbursementFindManyArgs findManyArgs)
     {
@@ -92,7 +82,7 @@ public abstract class ReimbursementsServiceBase : IReimbursementsService
     }
 
     /// <summary>
-    /// Meta data about REIMBURSEMENT records
+    ///     Meta data about REIMBURSEMENT records
     /// </summary>
     public async Task<MetadataDto> ReimbursementsMeta(ReimbursementFindManyArgs findManyArgs)
     {
@@ -102,27 +92,24 @@ public abstract class ReimbursementsServiceBase : IReimbursementsService
     }
 
     /// <summary>
-    /// Get one REIMBURSEMENT
+    ///     Get one REIMBURSEMENT
     /// </summary>
     public async Task<Reimbursement> Reimbursement(ReimbursementWhereUniqueInput uniqueId)
     {
-        var reimbursements = await this.Reimbursements(
+        var reimbursements = await Reimbursements(
             new ReimbursementFindManyArgs
             {
                 Where = new ReimbursementWhereInput { Id = uniqueId.Id }
             }
         );
         var reimbursement = reimbursements.FirstOrDefault();
-        if (reimbursement == null)
-        {
-            throw new NotFoundException();
-        }
+        if (reimbursement == null) throw new NotFoundException();
 
         return reimbursement;
     }
 
     /// <summary>
-    /// Update one REIMBURSEMENT
+    ///     Update one REIMBURSEMENT
     /// </summary>
     public async Task UpdateReimbursement(
         ReimbursementWhereUniqueInput uniqueId,
@@ -140,13 +127,8 @@ public abstract class ReimbursementsServiceBase : IReimbursementsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Reimbursements.Any(e => e.Id == reimbursement.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

@@ -24,7 +24,7 @@ public static class AppealsExtensions
             RegistrationDateAndTime = model.RegistrationDateAndTime,
             ResponseContent = model.ResponseContent,
             ServiceCode = model.ServiceCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -51,14 +51,8 @@ public static class AppealsExtensions
             ServiceCode = updateDto.ServiceCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            appeal.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            appeal.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) appeal.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) appeal.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return appeal;
     }

@@ -32,7 +32,7 @@ public static class ForeignOperatorRequestsExtensions
             RequestTypeCode = model.RequestTypeCode,
             RequestingPersonId = model.RequestingPersonId,
             UpdatedAt = model.UpdatedAt,
-            VerificationOpinionContent = model.VerificationOpinionContent,
+            VerificationOpinionContent = model.VerificationOpinionContent
         };
     }
 
@@ -67,14 +67,8 @@ public static class ForeignOperatorRequestsExtensions
             VerificationOpinionContent = updateDto.VerificationOpinionContent
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            foreignOperatorRequest.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            foreignOperatorRequest.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) foreignOperatorRequest.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) foreignOperatorRequest.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return foreignOperatorRequest;
     }

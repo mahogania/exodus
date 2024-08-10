@@ -5,5 +5,7 @@ namespace Collection.APIs;
 public class NoticeTypesService : NoticeTypesServiceBase
 {
     public NoticeTypesService(CollectionDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

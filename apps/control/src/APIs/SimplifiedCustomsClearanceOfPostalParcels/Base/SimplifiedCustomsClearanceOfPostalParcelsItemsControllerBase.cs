@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsControllerBase : ControllerBase
 {
     protected readonly ISimplifiedCustomsClearanceOfPostalParcelsItemsService _service;
@@ -21,9 +20,9 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsControllerBa
     }
 
     /// <summary>
-    /// Create one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
+    ///     Create one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<SimplifiedCustomsClearanceOfPostalParcels>
@@ -42,12 +41,12 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsControllerBa
     }
 
     /// <summary>
-    /// Delete one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
+    ///     Delete one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteSimplifiedCustomsClearanceOfPostalParcels(
-        [FromRoute()] SimplifiedCustomsClearanceOfPostalParcelsWhereUniqueInput uniqueId
+        [FromRoute] SimplifiedCustomsClearanceOfPostalParcelsWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsControllerBa
     }
 
     /// <summary>
-    /// Find many SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELSItems
+    ///     Find many SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELSItems
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<SimplifiedCustomsClearanceOfPostalParcels>>
     > SimplifiedCustomsClearanceOfPostalParcelsItems(
-        [FromQuery()] SimplifiedCustomsClearanceOfPostalParcelsFindManyArgs filter
+        [FromQuery] SimplifiedCustomsClearanceOfPostalParcelsFindManyArgs filter
     )
     {
         return Ok(await _service.SimplifiedCustomsClearanceOfPostalParcelsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS records
+    ///     Meta data about SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> SimplifiedCustomsClearanceOfPostalParcelsItemsMeta(
-        [FromQuery()] SimplifiedCustomsClearanceOfPostalParcelsFindManyArgs filter
+        [FromQuery] SimplifiedCustomsClearanceOfPostalParcelsFindManyArgs filter
     )
     {
         return Ok(await _service.SimplifiedCustomsClearanceOfPostalParcelsItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
+    ///     Get one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<SimplifiedCustomsClearanceOfPostalParcels>
     > SimplifiedCustomsClearanceOfPostalParcels(
-        [FromRoute()] SimplifiedCustomsClearanceOfPostalParcelsWhereUniqueInput uniqueId
+        [FromRoute] SimplifiedCustomsClearanceOfPostalParcelsWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,14 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsControllerBa
     }
 
     /// <summary>
-    /// Update one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
+    ///     Update one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateSimplifiedCustomsClearanceOfPostalParcels(
-        [FromRoute()] SimplifiedCustomsClearanceOfPostalParcelsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            SimplifiedCustomsClearanceOfPostalParcelsUpdateInput simplifiedCustomsClearanceOfPostalParcelsUpdateDto
+        [FromRoute] SimplifiedCustomsClearanceOfPostalParcelsWhereUniqueInput uniqueId,
+        [FromQuery]
+        SimplifiedCustomsClearanceOfPostalParcelsUpdateInput simplifiedCustomsClearanceOfPostalParcelsUpdateDto
     )
     {
         try

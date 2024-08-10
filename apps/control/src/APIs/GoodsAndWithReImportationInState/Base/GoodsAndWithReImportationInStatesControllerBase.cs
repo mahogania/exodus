@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class GoodsAndWithReImportationInStatesControllerBase : ControllerBase
 {
     protected readonly IGoodsAndWithReImportationInStatesService _service;
@@ -21,9 +20,9 @@ public abstract class GoodsAndWithReImportationInStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Create one GOODS AND WITH RE-IMPORTATION IN STATE
+    ///     Create one GOODS AND WITH RE-IMPORTATION IN STATE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<GoodsAndWithReImportationInState>
@@ -40,12 +39,12 @@ public abstract class GoodsAndWithReImportationInStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Delete one GOODS AND WITH RE-IMPORTATION IN STATE
+    ///     Delete one GOODS AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteGoodsAndWithReImportationInState(
-        [FromRoute()] GoodsAndWithReImportationInStateWhereUniqueInput uniqueId
+        [FromRoute] GoodsAndWithReImportationInStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -61,39 +60,39 @@ public abstract class GoodsAndWithReImportationInStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Find many GOODS AND WITH RE-IMPORTATION IN STATES
+    ///     Find many GOODS AND WITH RE-IMPORTATION IN STATES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<GoodsAndWithReImportationInState>>
     > GoodsAndWithReImportationInStates(
-        [FromQuery()] GoodsAndWithReImportationInStateFindManyArgs filter
+        [FromQuery] GoodsAndWithReImportationInStateFindManyArgs filter
     )
     {
         return Ok(await _service.GoodsAndWithReImportationInStates(filter));
     }
 
     /// <summary>
-    /// Meta data about GOODS AND WITH RE-IMPORTATION IN STATE records
+    ///     Meta data about GOODS AND WITH RE-IMPORTATION IN STATE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> GoodsAndWithReImportationInStatesMeta(
-        [FromQuery()] GoodsAndWithReImportationInStateFindManyArgs filter
+        [FromQuery] GoodsAndWithReImportationInStateFindManyArgs filter
     )
     {
         return Ok(await _service.GoodsAndWithReImportationInStatesMeta(filter));
     }
 
     /// <summary>
-    /// Get one GOODS AND WITH RE-IMPORTATION IN STATE
+    ///     Get one GOODS AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<GoodsAndWithReImportationInState>
     > GoodsAndWithReImportationInState(
-        [FromRoute()] GoodsAndWithReImportationInStateWhereUniqueInput uniqueId
+        [FromRoute] GoodsAndWithReImportationInStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -107,14 +106,13 @@ public abstract class GoodsAndWithReImportationInStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Update one GOODS AND WITH RE-IMPORTATION IN STATE
+    ///     Update one GOODS AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateGoodsAndWithReImportationInState(
-        [FromRoute()] GoodsAndWithReImportationInStateWhereUniqueInput uniqueId,
-        [FromQuery()]
-            GoodsAndWithReImportationInStateUpdateInput goodsAndWithReImportationInStateUpdateDto
+        [FromRoute] GoodsAndWithReImportationInStateWhereUniqueInput uniqueId,
+        [FromQuery] GoodsAndWithReImportationInStateUpdateInput goodsAndWithReImportationInStateUpdateDto
     )
     {
         try

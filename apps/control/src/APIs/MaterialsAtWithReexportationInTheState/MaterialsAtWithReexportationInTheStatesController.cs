@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class MaterialsAtWithReexportationInTheStatesController
     : MaterialsAtWithReexportationInTheStatesControllerBase
 {
     public MaterialsAtWithReexportationInTheStatesController(
         IMaterialsAtWithReexportationInTheStatesService service
     )
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

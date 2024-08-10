@@ -19,7 +19,7 @@ public static class ReceiptsExtensions
             Id = model.Id,
             NoticeNo = model.NoticeNo,
             NumberOfIssuances = model.NumberOfIssuances,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -41,14 +41,8 @@ public static class ReceiptsExtensions
             NumberOfIssuances = updateDto.NumberOfIssuances
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            receipt.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            receipt.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) receipt.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) receipt.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return receipt;
     }

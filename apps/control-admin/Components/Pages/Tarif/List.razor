@@ -1,51 +1,48 @@
 @page "/rtc-request"
+@using Microsoft.Extensions.Localization
 @rendermode InteractiveServer
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.DropDowns
-@using Syncfusion.Blazor.Calendars
-@using Syncfusion.Blazor.Navigations
+@inject IStringLocalizer<List> Localizer
 
-@* Add Syncfusion Blazor components *@
-<SfDateRangePicker TValue="DateTime?" Placeholder="@("Request Date" | @syncfusion_localization)" CssClass="e-field"></SfDateRangePicker>
-<SfDateRangePicker TValue="DateTime?" Placeholder="@("Validity Period" | @syncfusion_localization)" CssClass="e-field"></SfDateRangePicker>
+<SfDateRangePicker TValue="DateTime?" Placeholder="@Localizer["RequestDate"]" CssClass="e-field"></SfDateRangePicker>
+<SfDateRangePicker TValue="DateTime?" Placeholder="@Localizer["ValidityPeriod"]" CssClass="e-field"></SfDateRangePicker>
 
-<SfTextBox Placeholder="@("RTC No" | @syncfusion_localization)" CssClass="e-field"></SfTextBox>
-<SfTextBox Placeholder="@("OEA No" | @syncfusion_localization)" CssClass="e-field"></SfTextBox>
+<SfTextBox TValue="string" Placeholder="@Localizer["RTCNo"]" CssClass="e-field"></SfTextBox>
+<SfTextBox TValue="string" Placeholder="@Localizer["OEANo"]" CssClass="e-field"></SfTextBox>
 
-<SfTextBox Placeholder="@("Tariff Subheading" | @syncfusion_localization)" CssClass="e-field">
+<SfTextBox TValue="string" Placeholder="@Localizer["TariffSubheading"]" CssClass="e-field">
     <ChildContent>
-        <SfButton CssClass="e-search">🔍</SfButton>
+        <SfButton TValue="string" CssClass="e-search">🔍</SfButton>
     </ChildContent>
 </SfTextBox>
 
-<SfDropDownList TValue="string" Placeholder="@("Status" | @syncfusion_localization)" CssClass="e-field">
+<SfDropDownList TItem="string" TValue="string" Placeholder="@Localizer["Status"]" CssClass="e-field">
     <DropDownListItems>
-        <DropDownListItem Text="@("Received" | @syncfusion_localization)" Value="Receptionne"></DropDownListItem>
-        <DropDownListItem Text="@("In Progress" | @syncfusion_localization)" Value="EnCours"></DropDownListItem>
-        <DropDownListItem Text="@("Completed" | @syncfusion_localization)" Value="Termine"></DropDownListItem>
+        <DropDownListItem Text="@Localizer["Received"]" Value="Received"></DropDownListItem>
+        <DropDownListItem Text="@Localizer["InProgress"]" Value="InProgress"></DropDownListItem>
+        <DropDownListItem Text="@Localizer["Completed"]" Value="Completed"></DropDownListItem>
     </DropDownListItems>
 </SfDropDownList>
 
-<SfButton CssClass="e-primary">@("Search" | @syncfusion_localization)</SfButton>
-<SfButton CssClass="e-secondary">@("Reset" | @syncfusion_localization)</SfButton>
+<SfButton TValue="string" CssClass="e-primary">@Localizer["Search"]</SfButton>
+<SfButton TValue="string" CssClass="e-secondary">@Localizer["Reset"]</SfButton>
 
-<SfGrid DataSource="@GridData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 5 }">
+<SfGrid DataSource="@GridData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 5 }">
     <GridColumns>
-        <GridColumn Field="RtcNumber" HeaderText="@("RTC No" | @syncfusion_localization)" Width="150"></GridColumn>
-        <GridColumn Field="Demandeur" HeaderText="@("Requester" | @syncfusion_localization)" Width="150"></GridColumn>
-        <GridColumn Field="OeaNumber" HeaderText="@("OEA No" | @syncfusion_localization)" Width="150"></GridColumn>
-        <GridColumn Field="SousPositionTarifaire" HeaderText="@("Tariff Subheading" | @syncfusion_localization)" Width="150"></GridColumn>
-        <GridColumn Field="DateDebutValidite" HeaderText="@("Start Date of Validity" | @syncfusion_localization)" Width="150"></GridColumn>
-        <GridColumn Field="DateFinValidite" HeaderText="@("End Date of Validity" | @syncfusion_localization)" Width="150"></GridColumn>
-        <GridColumn Field="DateDemande" HeaderText="@("Request Date" | @syncfusion_localization)" Width="150"></GridColumn>
-        <GridColumn Field="Statut" HeaderText="@("Status" | @syncfusion_localization)" Width="150"></GridColumn>
+        <GridColumn Field="RtcNumber" HeaderText="@Localizer["RTCNo"]" Width="150"></GridColumn>
+        <GridColumn Field="Requester" HeaderText="@Localizer["Requester"]" Width="150"></GridColumn>
+        <GridColumn Field="OeaNumber" HeaderText="@Localizer["OEANo"]" Width="150"></GridColumn>
+        <GridColumn Field="TariffSubheading" HeaderText="@Localizer["TariffSubheading"]" Width="150"></GridColumn>
+        <GridColumn Field="StartDateOfValidity" HeaderText="@Localizer["StartDateOfValidity"]" Width="150"></GridColumn>
+        <GridColumn Field="EndDateOfValidity" HeaderText="@Localizer["EndDateOfValidity"]" Width="150"></GridColumn>
+        <GridColumn Field="RequestDate" HeaderText="@Localizer["RequestDate"]" Width="150"></GridColumn>
+        <GridColumn Field="Status" HeaderText="@Localizer["Status"]" Width="150"></GridColumn>
     </GridColumns>
 </SfGrid>
 
-<SfButton CssClass="e-success">@("Download as Excel" | @syncfusion_localization)</SfButton>
+<SfButton TValue="string" CssClass="e-success">@Localizer["DownloadAsExcel"]</SfButton>
 
 @code {
+
     public class RtcRequest
     {
         public string RtcNumber { get; set; }
@@ -58,7 +55,7 @@
         public string Status { get; set; }
     }
 
-    private List<RtcRequest> GridData = new List<RtcRequest>
+    private readonly List<RtcRequest> GridData = new()
     {
         new RtcRequest
         {
@@ -72,4 +69,5 @@
             Status = "Verification/Control in Progress"
         }
     };
+
 }

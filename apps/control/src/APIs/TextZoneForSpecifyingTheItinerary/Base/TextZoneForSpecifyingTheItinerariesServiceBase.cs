@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class TextZoneForSpecifyingTheItinerariesServiceBase
     }
 
     /// <summary>
-    /// Create one TEXT ZONE FOR SPECIFYING THE ITIRENARY
+    ///     Create one TEXT ZONE FOR SPECIFYING THE ITIRENARY
     /// </summary>
     public async Task<TextZoneForSpecifyingTheItinerary> CreateTextZoneForSpecifyingTheItinerary(
         TextZoneForSpecifyingTheItineraryCreateInput createDto
@@ -42,10 +41,7 @@ public abstract class TextZoneForSpecifyingTheItinerariesServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            textZoneForSpecifyingTheItinerary.Id = createDto.Id;
-        }
+        if (createDto.Id != null) textZoneForSpecifyingTheItinerary.Id = createDto.Id;
 
         _context.TextZoneForSpecifyingTheItineraries.Add(textZoneForSpecifyingTheItinerary);
         await _context.SaveChangesAsync();
@@ -54,16 +50,13 @@ public abstract class TextZoneForSpecifyingTheItinerariesServiceBase
             textZoneForSpecifyingTheItinerary.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one TEXT ZONE FOR SPECIFYING THE ITIRENARY
+    ///     Delete one TEXT ZONE FOR SPECIFYING THE ITIRENARY
     /// </summary>
     public async Task DeleteTextZoneForSpecifyingTheItinerary(
         TextZoneForSpecifyingTheItineraryWhereUniqueInput uniqueId
@@ -71,17 +64,14 @@ public abstract class TextZoneForSpecifyingTheItinerariesServiceBase
     {
         var textZoneForSpecifyingTheItinerary =
             await _context.TextZoneForSpecifyingTheItineraries.FindAsync(uniqueId.Id);
-        if (textZoneForSpecifyingTheItinerary == null)
-        {
-            throw new NotFoundException();
-        }
+        if (textZoneForSpecifyingTheItinerary == null) throw new NotFoundException();
 
         _context.TextZoneForSpecifyingTheItineraries.Remove(textZoneForSpecifyingTheItinerary);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many Text zone for specifying the itineraries
+    ///     Find many Text zone for specifying the itineraries
     /// </summary>
     public async Task<List<TextZoneForSpecifyingTheItinerary>> TextZoneForSpecifyingTheItineraries(
         TextZoneForSpecifyingTheItineraryFindManyArgs findManyArgs
@@ -99,7 +89,7 @@ public abstract class TextZoneForSpecifyingTheItinerariesServiceBase
     }
 
     /// <summary>
-    /// Meta data about TEXT ZONE FOR SPECIFYING THE ITIRENARY records
+    ///     Meta data about TEXT ZONE FOR SPECIFYING THE ITIRENARY records
     /// </summary>
     public async Task<MetadataDto> TextZoneForSpecifyingTheItinerariesMeta(
         TextZoneForSpecifyingTheItineraryFindManyArgs findManyArgs
@@ -113,13 +103,13 @@ public abstract class TextZoneForSpecifyingTheItinerariesServiceBase
     }
 
     /// <summary>
-    /// Get one TEXT ZONE FOR SPECIFYING THE ITIRENARY
+    ///     Get one TEXT ZONE FOR SPECIFYING THE ITIRENARY
     /// </summary>
     public async Task<TextZoneForSpecifyingTheItinerary> TextZoneForSpecifyingTheItinerary(
         TextZoneForSpecifyingTheItineraryWhereUniqueInput uniqueId
     )
     {
-        var textZoneForSpecifyingTheItineraries = await this.TextZoneForSpecifyingTheItineraries(
+        var textZoneForSpecifyingTheItineraries = await TextZoneForSpecifyingTheItineraries(
             new TextZoneForSpecifyingTheItineraryFindManyArgs
             {
                 Where = new TextZoneForSpecifyingTheItineraryWhereInput { Id = uniqueId.Id }
@@ -127,16 +117,13 @@ public abstract class TextZoneForSpecifyingTheItinerariesServiceBase
         );
         var textZoneForSpecifyingTheItinerary =
             textZoneForSpecifyingTheItineraries.FirstOrDefault();
-        if (textZoneForSpecifyingTheItinerary == null)
-        {
-            throw new NotFoundException();
-        }
+        if (textZoneForSpecifyingTheItinerary == null) throw new NotFoundException();
 
         return textZoneForSpecifyingTheItinerary;
     }
 
     /// <summary>
-    /// Update one TEXT ZONE FOR SPECIFYING THE ITIRENARY
+    ///     Update one TEXT ZONE FOR SPECIFYING THE ITIRENARY
     /// </summary>
     public async Task UpdateTextZoneForSpecifyingTheItinerary(
         TextZoneForSpecifyingTheItineraryWhereUniqueInput uniqueId,
@@ -158,13 +145,8 @@ public abstract class TextZoneForSpecifyingTheItinerariesServiceBase
                     e.Id == textZoneForSpecifyingTheItinerary.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

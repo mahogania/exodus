@@ -6,5 +6,7 @@ public class MacSuiteAtWithReexportationInTheStatesService
     : MacSuiteAtWithReexportationInTheStatesServiceBase
 {
     public MacSuiteAtWithReexportationInTheStatesService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DetailsControllerBase : ControllerBase
 {
     protected readonly IDetailsService _service;
@@ -19,9 +18,9 @@ public abstract class DetailsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one DETAIL
+    ///     Create one DETAIL
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Detail>> CreateDetail(DetailCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class DetailsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one DETAIL
+    ///     Delete one DETAIL
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteDetail([FromRoute()] DetailWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteDetail([FromRoute] DetailWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,32 +49,32 @@ public abstract class DetailsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many DETAILS
+    ///     Find many DETAILS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<List<Detail>>> Details([FromQuery()] DetailFindManyArgs filter)
+    public async Task<ActionResult<List<Detail>>> Details([FromQuery] DetailFindManyArgs filter)
     {
         return Ok(await _service.Details(filter));
     }
 
     /// <summary>
-    /// Meta data about DETAIL records
+    ///     Meta data about DETAIL records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DetailsMeta(
-        [FromQuery()] DetailFindManyArgs filter
+        [FromQuery] DetailFindManyArgs filter
     )
     {
         return Ok(await _service.DetailsMeta(filter));
     }
 
     /// <summary>
-    /// Get one DETAIL
+    ///     Get one DETAIL
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Detail>> Detail([FromRoute()] DetailWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Detail>> Detail([FromRoute] DetailWhereUniqueInput uniqueId)
     {
         try
         {
@@ -88,13 +87,13 @@ public abstract class DetailsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one DETAIL
+    ///     Update one DETAIL
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDetail(
-        [FromRoute()] DetailWhereUniqueInput uniqueId,
-        [FromQuery()] DetailUpdateInput detailUpdateDto
+        [FromRoute] DetailWhereUniqueInput uniqueId,
+        [FromQuery] DetailUpdateInput detailUpdateDto
     )
     {
         try

@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ReceptionsControllerBase : ControllerBase
 {
     protected readonly IReceptionsService _service;
@@ -19,9 +18,9 @@ public abstract class ReceptionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one RECEPTION
+    ///     Create one RECEPTION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Reception>> CreateReception(ReceptionCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class ReceptionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one RECEPTION
+    ///     Delete one RECEPTION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteReception(
-        [FromRoute()] ReceptionWhereUniqueInput uniqueId
+        [FromRoute] ReceptionWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class ReceptionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many RECEPTIONS
+    ///     Find many RECEPTIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Reception>>> Receptions(
-        [FromQuery()] ReceptionFindManyArgs filter
+        [FromQuery] ReceptionFindManyArgs filter
     )
     {
         return Ok(await _service.Receptions(filter));
     }
 
     /// <summary>
-    /// Meta data about RECEPTION records
+    ///     Meta data about RECEPTION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ReceptionsMeta(
-        [FromQuery()] ReceptionFindManyArgs filter
+        [FromQuery] ReceptionFindManyArgs filter
     )
     {
         return Ok(await _service.ReceptionsMeta(filter));
     }
 
     /// <summary>
-    /// Get one RECEPTION
+    ///     Get one RECEPTION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Reception>> Reception(
-        [FromRoute()] ReceptionWhereUniqueInput uniqueId
+        [FromRoute] ReceptionWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class ReceptionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one RECEPTION
+    ///     Update one RECEPTION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateReception(
-        [FromRoute()] ReceptionWhereUniqueInput uniqueId,
-        [FromQuery()] ReceptionUpdateInput receptionUpdateDto
+        [FromRoute] ReceptionWhereUniqueInput uniqueId,
+        [FromQuery] ReceptionUpdateInput receptionUpdateDto
     )
     {
         try

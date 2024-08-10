@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class NoticesControllerBase : ControllerBase
 {
     protected readonly INoticesService _service;
@@ -19,9 +18,9 @@ public abstract class NoticesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one NOTICE
+    ///     Create one NOTICE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Notice>> CreateNotice(NoticeCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class NoticesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one NOTICE
+    ///     Delete one NOTICE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteNotice([FromRoute()] NoticeWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteNotice([FromRoute] NoticeWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,32 +49,32 @@ public abstract class NoticesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many NOTICES
+    ///     Find many NOTICES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<List<Notice>>> Notices([FromQuery()] NoticeFindManyArgs filter)
+    public async Task<ActionResult<List<Notice>>> Notices([FromQuery] NoticeFindManyArgs filter)
     {
         return Ok(await _service.Notices(filter));
     }
 
     /// <summary>
-    /// Meta data about NOTICE records
+    ///     Meta data about NOTICE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> NoticesMeta(
-        [FromQuery()] NoticeFindManyArgs filter
+        [FromQuery] NoticeFindManyArgs filter
     )
     {
         return Ok(await _service.NoticesMeta(filter));
     }
 
     /// <summary>
-    /// Get one NOTICE
+    ///     Get one NOTICE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Notice>> Notice([FromRoute()] NoticeWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Notice>> Notice([FromRoute] NoticeWhereUniqueInput uniqueId)
     {
         try
         {
@@ -88,13 +87,13 @@ public abstract class NoticesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one NOTICE
+    ///     Update one NOTICE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateNotice(
-        [FromRoute()] NoticeWhereUniqueInput uniqueId,
-        [FromQuery()] NoticeUpdateInput noticeUpdateDto
+        [FromRoute] NoticeWhereUniqueInput uniqueId,
+        [FromQuery] NoticeUpdateInput noticeUpdateDto
     )
     {
         try

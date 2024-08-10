@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class FineCausesServiceBase : IFineCausesService
     }
 
     /// <summary>
-    /// Create one FINE CAUSE
+    ///     Create one FINE CAUSE
     /// </summary>
     public async Task<FineCause> CreateFineCause(FineCauseCreateInput createDto)
     {
@@ -42,41 +41,32 @@ public abstract class FineCausesServiceBase : IFineCausesService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            fineCause.Id = createDto.Id;
-        }
+        if (createDto.Id != null) fineCause.Id = createDto.Id;
 
         _context.FineCauses.Add(fineCause);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<FineCauseDbModel>(fineCause.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one FINE CAUSE
+    ///     Delete one FINE CAUSE
     /// </summary>
     public async Task DeleteFineCause(FineCauseWhereUniqueInput uniqueId)
     {
         var fineCause = await _context.FineCauses.FindAsync(uniqueId.Id);
-        if (fineCause == null)
-        {
-            throw new NotFoundException();
-        }
+        if (fineCause == null) throw new NotFoundException();
 
         _context.FineCauses.Remove(fineCause);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many FINE CAUSES
+    ///     Find many FINE CAUSES
     /// </summary>
     public async Task<List<FineCause>> FineCauses(FineCauseFindManyArgs findManyArgs)
     {
@@ -90,7 +80,7 @@ public abstract class FineCausesServiceBase : IFineCausesService
     }
 
     /// <summary>
-    /// Meta data about FINE CAUSE records
+    ///     Meta data about FINE CAUSE records
     /// </summary>
     public async Task<MetadataDto> FineCausesMeta(FineCauseFindManyArgs findManyArgs)
     {
@@ -100,24 +90,21 @@ public abstract class FineCausesServiceBase : IFineCausesService
     }
 
     /// <summary>
-    /// Get one FINE CAUSE
+    ///     Get one FINE CAUSE
     /// </summary>
     public async Task<FineCause> FineCause(FineCauseWhereUniqueInput uniqueId)
     {
-        var fineCauses = await this.FineCauses(
+        var fineCauses = await FineCauses(
             new FineCauseFindManyArgs { Where = new FineCauseWhereInput { Id = uniqueId.Id } }
         );
         var fineCause = fineCauses.FirstOrDefault();
-        if (fineCause == null)
-        {
-            throw new NotFoundException();
-        }
+        if (fineCause == null) throw new NotFoundException();
 
         return fineCause;
     }
 
     /// <summary>
-    /// Update one FINE CAUSE
+    ///     Update one FINE CAUSE
     /// </summary>
     public async Task UpdateFineCause(
         FineCauseWhereUniqueInput uniqueId,
@@ -135,13 +122,8 @@ public abstract class FineCausesServiceBase : IFineCausesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.FineCauses.Any(e => e.Id == fineCause.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

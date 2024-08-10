@@ -29,7 +29,7 @@ public static class CompensatoryProductsForPerfectionsExtensions
             SequenceNumber = model.SequenceNumber,
             SptNumber = model.SptNumber,
             TechnicalDesignationOfGoods = model.TechnicalDesignationOfGoods,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -59,14 +59,8 @@ public static class CompensatoryProductsForPerfectionsExtensions
             TechnicalDesignationOfGoods = updateDto.TechnicalDesignationOfGoods
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            compensatoryProductsForPerfection.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            compensatoryProductsForPerfection.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) compensatoryProductsForPerfection.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) compensatoryProductsForPerfection.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return compensatoryProductsForPerfection;
     }

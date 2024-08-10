@@ -23,10 +23,7 @@ builder.Services.AddCors(builder =>
 {
     builder.AddPolicy(
         "MyCorsPolicy",
-        policy =>
-        {
-            policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(["localhost"]).AllowCredentials();
-        }
+        policy => { policy.AllowAnyHeader().AllowAnyMethod().WithOrigins(["localhost"]).AllowCredentials(); }
     );
 });
 builder.Services.AddApiAuthentication();
@@ -42,10 +39,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseStaticFiles();
 
-    app.UseSwaggerUI(options =>
-    {
-        options.InjectStylesheet("/swagger-ui/swagger.css");
-    });
+    app.UseSwaggerUI(options => { options.InjectStylesheet("/swagger-ui/swagger.css"); });
 
     using (var scope = app.Services.CreateScope())
     {
@@ -68,4 +62,5 @@ using (var scope = app.Services.CreateScope())
     var services = scope.ServiceProvider;
     await SeedDevelopmentData.SeedDevUser(services, app.Configuration);
 }
+
 app.Run();

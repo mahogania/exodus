@@ -6,32 +6,32 @@ namespace Collection.APIs;
 public interface IAdjustmentsService
 {
     /// <summary>
-    /// Create one ADJUSTMENT
+    ///     Create one ADJUSTMENT
     /// </summary>
     public Task<Adjustment> CreateAdjustment(AdjustmentCreateInput adjustment);
 
     /// <summary>
-    /// Delete one ADJUSTMENT
+    ///     Delete one ADJUSTMENT
     /// </summary>
     public Task DeleteAdjustment(AdjustmentWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Find many ADJUSTMENTS
+    ///     Find many ADJUSTMENTS
     /// </summary>
     public Task<List<Adjustment>> Adjustments(AdjustmentFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Meta data about ADJUSTMENT records
+    ///     Meta data about ADJUSTMENT records
     /// </summary>
     public Task<MetadataDto> AdjustmentsMeta(AdjustmentFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Get one ADJUSTMENT
+    ///     Get one ADJUSTMENT
     /// </summary>
     public Task<Adjustment> Adjustment(AdjustmentWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Update one ADJUSTMENT
+    ///     Update one ADJUSTMENT
     /// </summary>
     public Task UpdateAdjustment(
         AdjustmentWhereUniqueInput uniqueId,

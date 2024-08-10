@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -22,11 +21,12 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsServ
     }
 
     /// <summary>
-    /// Create one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    public async Task<DeclarationOfValueOfTheDetailedDeclarationCustoms> CreateDeclarationOfValueOfTheDetailedDeclarationCustoms(
-        DeclarationOfValueOfTheDetailedDeclarationCustomsCreateInput createDto
-    )
+    public async Task<DeclarationOfValueOfTheDetailedDeclarationCustoms>
+        CreateDeclarationOfValueOfTheDetailedDeclarationCustoms(
+            DeclarationOfValueOfTheDetailedDeclarationCustomsCreateInput createDto
+        )
     {
         var declarationOfValueOfTheDetailedDeclarationCustoms =
             new DeclarationOfValueOfTheDetailedDeclarationCustomsDbModel
@@ -104,10 +104,7 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsServ
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            declarationOfValueOfTheDetailedDeclarationCustoms.Id = createDto.Id;
-        }
+        if (createDto.Id != null) declarationOfValueOfTheDetailedDeclarationCustoms.Id = createDto.Id;
 
         _context.DeclarationOfValueOfTheDetailedDeclarationCustomsItems.Add(
             declarationOfValueOfTheDetailedDeclarationCustoms
@@ -119,16 +116,13 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsServ
                 declarationOfValueOfTheDetailedDeclarationCustoms.Id
             );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task DeleteDeclarationOfValueOfTheDetailedDeclarationCustoms(
         DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
@@ -138,10 +132,7 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsServ
             await _context.DeclarationOfValueOfTheDetailedDeclarationCustomsItems.FindAsync(
                 uniqueId.Id
             );
-        if (declarationOfValueOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (declarationOfValueOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         _context.DeclarationOfValueOfTheDetailedDeclarationCustomsItems.Remove(
             declarationOfValueOfTheDetailedDeclarationCustoms
@@ -150,7 +141,7 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsServ
     }
 
     /// <summary>
-    /// Find many DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public async Task<
         List<DeclarationOfValueOfTheDetailedDeclarationCustoms>
@@ -171,7 +162,7 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsServ
     }
 
     /// <summary>
-    /// Meta data about DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public async Task<MetadataDto> DeclarationOfValueOfTheDetailedDeclarationCustomsItemsMeta(
         DeclarationOfValueOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
@@ -185,14 +176,15 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsServ
     }
 
     /// <summary>
-    /// Get one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    public async Task<DeclarationOfValueOfTheDetailedDeclarationCustoms> DeclarationOfValueOfTheDetailedDeclarationCustoms(
-        DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
-    )
+    public async Task<DeclarationOfValueOfTheDetailedDeclarationCustoms>
+        DeclarationOfValueOfTheDetailedDeclarationCustoms(
+            DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        )
     {
         var declarationOfValueOfTheDetailedDeclarationCustomsItems =
-            await this.DeclarationOfValueOfTheDetailedDeclarationCustomsItems(
+            await DeclarationOfValueOfTheDetailedDeclarationCustomsItems(
                 new DeclarationOfValueOfTheDetailedDeclarationCustomsFindManyArgs
                 {
                     Where = new DeclarationOfValueOfTheDetailedDeclarationCustomsWhereInput
@@ -203,16 +195,13 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsServ
             );
         var declarationOfValueOfTheDetailedDeclarationCustoms =
             declarationOfValueOfTheDetailedDeclarationCustomsItems.FirstOrDefault();
-        if (declarationOfValueOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (declarationOfValueOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         return declarationOfValueOfTheDetailedDeclarationCustoms;
     }
 
     /// <summary>
-    /// Update one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task UpdateDeclarationOfValueOfTheDetailedDeclarationCustoms(
         DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
@@ -235,13 +224,8 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsServ
                     e.Id == declarationOfValueOfTheDetailedDeclarationCustoms.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

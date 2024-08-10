@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ExportedOrToBeExportedGoodsInformationsControllerBase : ControllerBase
 {
     protected readonly IExportedOrToBeExportedGoodsInformationsService _service;
@@ -21,9 +20,9 @@ public abstract class ExportedOrToBeExportedGoodsInformationsControllerBase : Co
     }
 
     /// <summary>
-    /// Create one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
+    ///     Create one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ExportedOrToBeExportedGoodsInformation>
@@ -42,12 +41,12 @@ public abstract class ExportedOrToBeExportedGoodsInformationsControllerBase : Co
     }
 
     /// <summary>
-    /// Delete one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
+    ///     Delete one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteExportedOrToBeExportedGoodsInformation(
-        [FromRoute()] ExportedOrToBeExportedGoodsInformationWhereUniqueInput uniqueId
+        [FromRoute] ExportedOrToBeExportedGoodsInformationWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class ExportedOrToBeExportedGoodsInformationsControllerBase : Co
     }
 
     /// <summary>
-    /// Find many EXPORTED OR TO BE EXPORTED GOODS INFORMATIONS
+    ///     Find many EXPORTED OR TO BE EXPORTED GOODS INFORMATIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<ExportedOrToBeExportedGoodsInformation>>
     > ExportedOrToBeExportedGoodsInformations(
-        [FromQuery()] ExportedOrToBeExportedGoodsInformationFindManyArgs filter
+        [FromQuery] ExportedOrToBeExportedGoodsInformationFindManyArgs filter
     )
     {
         return Ok(await _service.ExportedOrToBeExportedGoodsInformations(filter));
     }
 
     /// <summary>
-    /// Meta data about EXPORTED OR TO BE EXPORTED GOODS INFORMATION records
+    ///     Meta data about EXPORTED OR TO BE EXPORTED GOODS INFORMATION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ExportedOrToBeExportedGoodsInformationsMeta(
-        [FromQuery()] ExportedOrToBeExportedGoodsInformationFindManyArgs filter
+        [FromQuery] ExportedOrToBeExportedGoodsInformationFindManyArgs filter
     )
     {
         return Ok(await _service.ExportedOrToBeExportedGoodsInformationsMeta(filter));
     }
 
     /// <summary>
-    /// Get one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
+    ///     Get one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ExportedOrToBeExportedGoodsInformation>
     > ExportedOrToBeExportedGoodsInformation(
-        [FromRoute()] ExportedOrToBeExportedGoodsInformationWhereUniqueInput uniqueId
+        [FromRoute] ExportedOrToBeExportedGoodsInformationWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,13 @@ public abstract class ExportedOrToBeExportedGoodsInformationsControllerBase : Co
     }
 
     /// <summary>
-    /// Update one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
+    ///     Update one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateExportedOrToBeExportedGoodsInformation(
-        [FromRoute()] ExportedOrToBeExportedGoodsInformationWhereUniqueInput uniqueId,
-        [FromQuery()]
-            ExportedOrToBeExportedGoodsInformationUpdateInput exportedOrToBeExportedGoodsInformationUpdateDto
+        [FromRoute] ExportedOrToBeExportedGoodsInformationWhereUniqueInput uniqueId,
+        [FromQuery] ExportedOrToBeExportedGoodsInformationUpdateInput exportedOrToBeExportedGoodsInformationUpdateDto
     )
     {
         try

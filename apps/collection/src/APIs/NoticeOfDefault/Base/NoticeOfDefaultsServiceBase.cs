@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class NoticeOfDefaultsServiceBase : INoticeOfDefaultsService
     }
 
     /// <summary>
-    /// Create one NOTICE OF DEFAULT
+    ///     Create one NOTICE OF DEFAULT
     /// </summary>
     public async Task<NoticeOfDefault> CreateNoticeOfDefault(NoticeOfDefaultCreateInput createDto)
     {
@@ -43,41 +42,32 @@ public abstract class NoticeOfDefaultsServiceBase : INoticeOfDefaultsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            noticeOfDefault.Id = createDto.Id;
-        }
+        if (createDto.Id != null) noticeOfDefault.Id = createDto.Id;
 
         _context.NoticeOfDefaults.Add(noticeOfDefault);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<NoticeOfDefaultDbModel>(noticeOfDefault.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one NOTICE OF DEFAULT
+    ///     Delete one NOTICE OF DEFAULT
     /// </summary>
     public async Task DeleteNoticeOfDefault(NoticeOfDefaultWhereUniqueInput uniqueId)
     {
         var noticeOfDefault = await _context.NoticeOfDefaults.FindAsync(uniqueId.Id);
-        if (noticeOfDefault == null)
-        {
-            throw new NotFoundException();
-        }
+        if (noticeOfDefault == null) throw new NotFoundException();
 
         _context.NoticeOfDefaults.Remove(noticeOfDefault);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many NOTICE OF DEFAULTS
+    ///     Find many NOTICE OF DEFAULTS
     /// </summary>
     public async Task<List<NoticeOfDefault>> NoticeOfDefaults(
         NoticeOfDefaultFindManyArgs findManyArgs
@@ -93,7 +83,7 @@ public abstract class NoticeOfDefaultsServiceBase : INoticeOfDefaultsService
     }
 
     /// <summary>
-    /// Meta data about NOTICE OF DEFAULT records
+    ///     Meta data about NOTICE OF DEFAULT records
     /// </summary>
     public async Task<MetadataDto> NoticeOfDefaultsMeta(NoticeOfDefaultFindManyArgs findManyArgs)
     {
@@ -103,27 +93,24 @@ public abstract class NoticeOfDefaultsServiceBase : INoticeOfDefaultsService
     }
 
     /// <summary>
-    /// Get one NOTICE OF DEFAULT
+    ///     Get one NOTICE OF DEFAULT
     /// </summary>
     public async Task<NoticeOfDefault> NoticeOfDefault(NoticeOfDefaultWhereUniqueInput uniqueId)
     {
-        var noticeOfDefaults = await this.NoticeOfDefaults(
+        var noticeOfDefaults = await NoticeOfDefaults(
             new NoticeOfDefaultFindManyArgs
             {
                 Where = new NoticeOfDefaultWhereInput { Id = uniqueId.Id }
             }
         );
         var noticeOfDefault = noticeOfDefaults.FirstOrDefault();
-        if (noticeOfDefault == null)
-        {
-            throw new NotFoundException();
-        }
+        if (noticeOfDefault == null) throw new NotFoundException();
 
         return noticeOfDefault;
     }
 
     /// <summary>
-    /// Update one NOTICE OF DEFAULT
+    ///     Update one NOTICE OF DEFAULT
     /// </summary>
     public async Task UpdateNoticeOfDefault(
         NoticeOfDefaultWhereUniqueInput uniqueId,
@@ -141,13 +128,8 @@ public abstract class NoticeOfDefaultsServiceBase : INoticeOfDefaultsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.NoticeOfDefaults.Any(e => e.Id == noticeOfDefault.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

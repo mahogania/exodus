@@ -6,42 +6,42 @@ namespace Control.APIs;
 public interface ICommonOriginCertificateRequestsService
 {
     /// <summary>
-    /// Create one COMMON ORIGIN CERTIFICATE REQUEST
+    ///     Create one COMMON ORIGIN CERTIFICATE REQUEST
     /// </summary>
     public Task<CommonOriginCertificateRequest> CreateCommonOriginCertificateRequest(
         CommonOriginCertificateRequestCreateInput commonorigincertificaterequest
     );
 
     /// <summary>
-    /// Delete one COMMON ORIGIN CERTIFICATE REQUEST
+    ///     Delete one COMMON ORIGIN CERTIFICATE REQUEST
     /// </summary>
     public Task DeleteCommonOriginCertificateRequest(
         CommonOriginCertificateRequestWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Find many COMMON ORIGIN CERTIFICATE REQUESTS
+    ///     Find many COMMON ORIGIN CERTIFICATE REQUESTS
     /// </summary>
     public Task<List<CommonOriginCertificateRequest>> CommonOriginCertificateRequests(
         CommonOriginCertificateRequestFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Meta data about COMMON ORIGIN CERTIFICATE REQUEST records
+    ///     Meta data about COMMON ORIGIN CERTIFICATE REQUEST records
     /// </summary>
     public Task<MetadataDto> CommonOriginCertificateRequestsMeta(
         CommonOriginCertificateRequestFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one COMMON ORIGIN CERTIFICATE REQUEST
+    ///     Get one COMMON ORIGIN CERTIFICATE REQUEST
     /// </summary>
     public Task<CommonOriginCertificateRequest> CommonOriginCertificateRequest(
         CommonOriginCertificateRequestWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one COMMON ORIGIN CERTIFICATE REQUEST
+    ///     Update one COMMON ORIGIN CERTIFICATE REQUEST
     /// </summary>
     public Task UpdateCommonOriginCertificateRequest(
         CommonOriginCertificateRequestWhereUniqueInput uniqueId,

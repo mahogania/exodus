@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class StateForPerfectionsControllerBase : ControllerBase
 {
     protected readonly IStateForPerfectionsService _service;
@@ -19,9 +18,9 @@ public abstract class StateForPerfectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one STATE FOR PERFECTION
+    ///     Create one STATE FOR PERFECTION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<StateForPerfection>> CreateStateForPerfection(
         StateForPerfectionCreateInput input
@@ -37,12 +36,12 @@ public abstract class StateForPerfectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one STATE FOR PERFECTION
+    ///     Delete one STATE FOR PERFECTION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteStateForPerfection(
-        [FromRoute()] StateForPerfectionWhereUniqueInput uniqueId
+        [FromRoute] StateForPerfectionWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class StateForPerfectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many STATE FOR PERFECTIONS
+    ///     Find many STATE FOR PERFECTIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<StateForPerfection>>> StateForPerfections(
-        [FromQuery()] StateForPerfectionFindManyArgs filter
+        [FromQuery] StateForPerfectionFindManyArgs filter
     )
     {
         return Ok(await _service.StateForPerfections(filter));
     }
 
     /// <summary>
-    /// Meta data about STATE FOR PERFECTION records
+    ///     Meta data about STATE FOR PERFECTION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> StateForPerfectionsMeta(
-        [FromQuery()] StateForPerfectionFindManyArgs filter
+        [FromQuery] StateForPerfectionFindManyArgs filter
     )
     {
         return Ok(await _service.StateForPerfectionsMeta(filter));
     }
 
     /// <summary>
-    /// Get one STATE FOR PERFECTION
+    ///     Get one STATE FOR PERFECTION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<StateForPerfection>> StateForPerfection(
-        [FromRoute()] StateForPerfectionWhereUniqueInput uniqueId
+        [FromRoute] StateForPerfectionWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class StateForPerfectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one STATE FOR PERFECTION
+    ///     Update one STATE FOR PERFECTION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateStateForPerfection(
-        [FromRoute()] StateForPerfectionWhereUniqueInput uniqueId,
-        [FromQuery()] StateForPerfectionUpdateInput stateForPerfectionUpdateDto
+        [FromRoute] StateForPerfectionWhereUniqueInput uniqueId,
+        [FromQuery] StateForPerfectionUpdateInput stateForPerfectionUpdateDto
     )
     {
         try

@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class CommonDetailedDeclarationCustomsValueAssessmentsController
     : CommonDetailedDeclarationCustomsValueAssessmentsControllerBase
 {
     public CommonDetailedDeclarationCustomsValueAssessmentsController(
         ICommonDetailedDeclarationCustomsValueAssessmentsService service
     )
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

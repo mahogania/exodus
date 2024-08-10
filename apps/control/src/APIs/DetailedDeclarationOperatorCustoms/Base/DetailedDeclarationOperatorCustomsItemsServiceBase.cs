@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class DetailedDeclarationOperatorCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Create one DETAILED DECLARATION OPERATOR (CUSTOMS)
+    ///     Create one DETAILED DECLARATION OPERATOR (CUSTOMS)
     /// </summary>
     public async Task<DetailedDeclarationOperatorCustoms> CreateDetailedDeclarationOperatorCustoms(
         DetailedDeclarationOperatorCustomsCreateInput createDto
@@ -50,10 +49,7 @@ public abstract class DetailedDeclarationOperatorCustomsItemsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            detailedDeclarationOperatorCustoms.Id = createDto.Id;
-        }
+        if (createDto.Id != null) detailedDeclarationOperatorCustoms.Id = createDto.Id;
 
         _context.DetailedDeclarationOperatorCustomsItems.Add(detailedDeclarationOperatorCustoms);
         await _context.SaveChangesAsync();
@@ -62,16 +58,13 @@ public abstract class DetailedDeclarationOperatorCustomsItemsServiceBase
             detailedDeclarationOperatorCustoms.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DETAILED DECLARATION OPERATOR (CUSTOMS)
+    ///     Delete one DETAILED DECLARATION OPERATOR (CUSTOMS)
     /// </summary>
     public async Task DeleteDetailedDeclarationOperatorCustoms(
         DetailedDeclarationOperatorCustomsWhereUniqueInput uniqueId
@@ -79,17 +72,14 @@ public abstract class DetailedDeclarationOperatorCustomsItemsServiceBase
     {
         var detailedDeclarationOperatorCustoms =
             await _context.DetailedDeclarationOperatorCustomsItems.FindAsync(uniqueId.Id);
-        if (detailedDeclarationOperatorCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailedDeclarationOperatorCustoms == null) throw new NotFoundException();
 
         _context.DetailedDeclarationOperatorCustomsItems.Remove(detailedDeclarationOperatorCustoms);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many DETAILED DECLARATION OPERATOR (CUSTOMS)s
+    ///     Find many DETAILED DECLARATION OPERATOR (CUSTOMS)s
     /// </summary>
     public async Task<
         List<DetailedDeclarationOperatorCustoms>
@@ -109,7 +99,7 @@ public abstract class DetailedDeclarationOperatorCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Meta data about DETAILED DECLARATION OPERATOR (CUSTOMS) records
+    ///     Meta data about DETAILED DECLARATION OPERATOR (CUSTOMS) records
     /// </summary>
     public async Task<MetadataDto> DetailedDeclarationOperatorCustomsItemsMeta(
         DetailedDeclarationOperatorCustomsFindManyArgs findManyArgs
@@ -123,14 +113,14 @@ public abstract class DetailedDeclarationOperatorCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Get one DETAILED DECLARATION OPERATOR (CUSTOMS)
+    ///     Get one DETAILED DECLARATION OPERATOR (CUSTOMS)
     /// </summary>
     public async Task<DetailedDeclarationOperatorCustoms> DetailedDeclarationOperatorCustoms(
         DetailedDeclarationOperatorCustomsWhereUniqueInput uniqueId
     )
     {
         var detailedDeclarationOperatorCustomsItems =
-            await this.DetailedDeclarationOperatorCustomsItems(
+            await DetailedDeclarationOperatorCustomsItems(
                 new DetailedDeclarationOperatorCustomsFindManyArgs
                 {
                     Where = new DetailedDeclarationOperatorCustomsWhereInput { Id = uniqueId.Id }
@@ -138,16 +128,13 @@ public abstract class DetailedDeclarationOperatorCustomsItemsServiceBase
             );
         var detailedDeclarationOperatorCustoms =
             detailedDeclarationOperatorCustomsItems.FirstOrDefault();
-        if (detailedDeclarationOperatorCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailedDeclarationOperatorCustoms == null) throw new NotFoundException();
 
         return detailedDeclarationOperatorCustoms;
     }
 
     /// <summary>
-    /// Update one DETAILED DECLARATION OPERATOR (CUSTOMS)
+    ///     Update one DETAILED DECLARATION OPERATOR (CUSTOMS)
     /// </summary>
     public async Task UpdateDetailedDeclarationOperatorCustoms(
         DetailedDeclarationOperatorCustomsWhereUniqueInput uniqueId,
@@ -169,13 +156,8 @@ public abstract class DetailedDeclarationOperatorCustomsItemsServiceBase
                     e.Id == detailedDeclarationOperatorCustoms.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

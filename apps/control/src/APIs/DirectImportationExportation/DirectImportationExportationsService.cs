@@ -5,5 +5,7 @@ namespace Control.APIs;
 public class DirectImportationExportationsService : DirectImportationExportationsServiceBase
 {
     public DirectImportationExportationsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

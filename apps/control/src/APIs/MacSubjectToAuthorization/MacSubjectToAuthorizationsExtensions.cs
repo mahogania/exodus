@@ -31,7 +31,7 @@ public static class MacSubjectToAuthorizationsExtensions
             RectificationFrequency = model.RectificationFrequency,
             RegimeRequestNumber = model.RegimeRequestNumber,
             SuppressionOn = model.SuppressionOn,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -65,14 +65,8 @@ public static class MacSubjectToAuthorizationsExtensions
             SuppressionOn = updateDto.SuppressionOn
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            macSubjectToAuthorization.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            macSubjectToAuthorization.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) macSubjectToAuthorization.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) macSubjectToAuthorization.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return macSubjectToAuthorization;
     }

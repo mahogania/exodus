@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class CollectionsServiceBase : ICollectionsService
     }
 
     /// <summary>
-    /// Create one COLLECTION
+    ///     Create one COLLECTION
     /// </summary>
     public async Task<Collection> CreateCollection(CollectionCreateInput createDto)
     {
@@ -49,41 +48,32 @@ public abstract class CollectionsServiceBase : ICollectionsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            collection.Id = createDto.Id;
-        }
+        if (createDto.Id != null) collection.Id = createDto.Id;
 
         _context.Collections.Add(collection);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<CollectionDbModel>(collection.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one COLLECTION
+    ///     Delete one COLLECTION
     /// </summary>
     public async Task DeleteCollection(CollectionWhereUniqueInput uniqueId)
     {
         var collection = await _context.Collections.FindAsync(uniqueId.Id);
-        if (collection == null)
-        {
-            throw new NotFoundException();
-        }
+        if (collection == null) throw new NotFoundException();
 
         _context.Collections.Remove(collection);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many COLLECTIONS
+    ///     Find many COLLECTIONS
     /// </summary>
     public async Task<List<Collection>> Collections(CollectionFindManyArgs findManyArgs)
     {
@@ -97,7 +87,7 @@ public abstract class CollectionsServiceBase : ICollectionsService
     }
 
     /// <summary>
-    /// Meta data about COLLECTION records
+    ///     Meta data about COLLECTION records
     /// </summary>
     public async Task<MetadataDto> CollectionsMeta(CollectionFindManyArgs findManyArgs)
     {
@@ -107,24 +97,21 @@ public abstract class CollectionsServiceBase : ICollectionsService
     }
 
     /// <summary>
-    /// Get one COLLECTION
+    ///     Get one COLLECTION
     /// </summary>
     public async Task<Collection> Collection(CollectionWhereUniqueInput uniqueId)
     {
-        var collections = await this.Collections(
+        var collections = await Collections(
             new CollectionFindManyArgs { Where = new CollectionWhereInput { Id = uniqueId.Id } }
         );
         var collection = collections.FirstOrDefault();
-        if (collection == null)
-        {
-            throw new NotFoundException();
-        }
+        if (collection == null) throw new NotFoundException();
 
         return collection;
     }
 
     /// <summary>
-    /// Update one COLLECTION
+    ///     Update one COLLECTION
     /// </summary>
     public async Task UpdateCollection(
         CollectionWhereUniqueInput uniqueId,
@@ -142,13 +129,8 @@ public abstract class CollectionsServiceBase : ICollectionsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Collections.Any(e => e.Id == collection.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

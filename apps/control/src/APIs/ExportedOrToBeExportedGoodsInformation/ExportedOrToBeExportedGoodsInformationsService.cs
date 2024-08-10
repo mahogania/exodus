@@ -6,5 +6,7 @@ public class ExportedOrToBeExportedGoodsInformationsService
     : ExportedOrToBeExportedGoodsInformationsServiceBase
 {
     public ExportedOrToBeExportedGoodsInformationsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

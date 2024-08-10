@@ -27,7 +27,7 @@ public static class ManagementsExtensions
             ReferenceNumberTypeCode = model.ReferenceNumberTypeCode,
             ServiceCode = model.ServiceCode,
             UpdatedAt = model.UpdatedAt,
-            WriterServiceCode = model.WriterServiceCode,
+            WriterServiceCode = model.WriterServiceCode
         };
     }
 
@@ -57,14 +57,8 @@ public static class ManagementsExtensions
             WriterServiceCode = updateDto.WriterServiceCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            management.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            management.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) management.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) management.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return management;
     }

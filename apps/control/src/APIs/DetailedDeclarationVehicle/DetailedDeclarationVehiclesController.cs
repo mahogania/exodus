@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class DetailedDeclarationVehiclesController : DetailedDeclarationVehiclesControllerBase
 {
     public DetailedDeclarationVehiclesController(IDetailedDeclarationVehiclesService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

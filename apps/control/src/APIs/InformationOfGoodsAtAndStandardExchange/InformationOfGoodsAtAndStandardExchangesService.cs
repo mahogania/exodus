@@ -6,5 +6,7 @@ public class InformationOfGoodsAtAndStandardExchangesService
     : InformationOfGoodsAtAndStandardExchangesServiceBase
 {
     public InformationOfGoodsAtAndStandardExchangesService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

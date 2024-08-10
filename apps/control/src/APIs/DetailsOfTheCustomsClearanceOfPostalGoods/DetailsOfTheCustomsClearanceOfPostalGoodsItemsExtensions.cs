@@ -35,7 +35,7 @@ public static class DetailsOfTheCustomsClearanceOfPostalGoodsItemsExtensions
             ShCode = model.ShCode,
             SuppressionOn = model.SuppressionOn,
             TotalWeightKg = model.TotalWeightKg,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -75,13 +75,9 @@ public static class DetailsOfTheCustomsClearanceOfPostalGoodsItemsExtensions
             };
 
         if (updateDto.CreatedAt != null)
-        {
             detailsOfTheCustomsClearanceOfPostalGoods.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             detailsOfTheCustomsClearanceOfPostalGoods.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return detailsOfTheCustomsClearanceOfPostalGoods;
     }

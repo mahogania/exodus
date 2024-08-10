@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class RequestForCancellationOfTheDetailedDeclarationCustomsItemsController
     : RequestForCancellationOfTheDetailedDeclarationCustomsItemsControllerBase
 {
     public RequestForCancellationOfTheDetailedDeclarationCustomsItemsController(
         IRequestForCancellationOfTheDetailedDeclarationCustomsItemsService service
     )
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

@@ -6,5 +6,7 @@ public class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsService
     : DeclarationOfValueOfTheDetailedDeclarationCustomsItemsServiceBase
 {
     public DeclarationOfValueOfTheDetailedDeclarationCustomsItemsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

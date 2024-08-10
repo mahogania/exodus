@@ -1,12 +1,11 @@
 @page "/rco-criteria"
-@using Syncfusion.Blazor.Grids
 @using Microsoft.Extensions.Localization
 
 @inject IStringLocalizer<RcoCriteria> Localizer
 
 <div class="container">
     <h2>@Localizer["ScreenCriteria"]</h2>
-    <SfGrid DataSource="@GridData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }">
+    <SfGrid RcoCriteria DataSource="@GridData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }">
         <GridColumns>
             <GridColumn Field="GroupName" HeaderText="@Localizer["GroupName"]" Width="200"></GridColumn>
             <GridColumn Field="ElementName" HeaderText="@Localizer["ElementName"]" Width="200"></GridColumn>
@@ -17,6 +16,7 @@
 </div>
 
 @code {
+
     public class RcoCriteria
     {
         public string GroupName { get; set; }
@@ -25,11 +25,12 @@
         public string Remarks { get; set; }
     }
 
-    private List<RcoCriteria> GridData = new List<RcoCriteria>
+    private readonly List<RcoCriteria> GridData = new()
     {
         new RcoCriteria { GroupName = "Group 1", ElementName = "Element 1", IsMandatory = true, Remarks = "Remark 1" },
         new RcoCriteria { GroupName = "Group 1", ElementName = "Element 2", IsMandatory = false, Remarks = "Remark 2" },
-        new RcoCriteria { GroupName = "Group 2", ElementName = "Element 1", IsMandatory = true, Remarks = "Remark 3" },
+        new RcoCriteria { GroupName = "Group 2", ElementName = "Element 1", IsMandatory = true, Remarks = "Remark 3" }
         // Add more data as needed
     };
+
 }

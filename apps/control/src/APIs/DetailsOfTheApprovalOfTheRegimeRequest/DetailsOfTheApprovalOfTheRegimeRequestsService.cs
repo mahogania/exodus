@@ -6,5 +6,7 @@ public class DetailsOfTheApprovalOfTheRegimeRequestsService
     : DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
 {
     public DetailsOfTheApprovalOfTheRegimeRequestsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

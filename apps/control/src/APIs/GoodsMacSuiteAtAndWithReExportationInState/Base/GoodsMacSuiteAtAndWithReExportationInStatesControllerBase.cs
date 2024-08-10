@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class GoodsMacSuiteAtAndWithReExportationInStatesControllerBase : ControllerBase
 {
     protected readonly IGoodsMacSuiteAtAndWithReExportationInStatesService _service;
@@ -21,9 +20,9 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesControllerBase 
     }
 
     /// <summary>
-    /// Create one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
+    ///     Create one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<GoodsMacSuiteAtAndWithReExportationInState>
@@ -42,12 +41,12 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesControllerBase 
     }
 
     /// <summary>
-    /// Delete one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
+    ///     Delete one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteGoodsMacSuiteAtAndWithReExportationInState(
-        [FromRoute()] GoodsMacSuiteAtAndWithReExportationInStateWhereUniqueInput uniqueId
+        [FromRoute] GoodsMacSuiteAtAndWithReExportationInStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesControllerBase 
     }
 
     /// <summary>
-    /// Find many GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATES
+    ///     Find many GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<GoodsMacSuiteAtAndWithReExportationInState>>
     > GoodsMacSuiteAtAndWithReExportationInStates(
-        [FromQuery()] GoodsMacSuiteAtAndWithReExportationInStateFindManyArgs filter
+        [FromQuery] GoodsMacSuiteAtAndWithReExportationInStateFindManyArgs filter
     )
     {
         return Ok(await _service.GoodsMacSuiteAtAndWithReExportationInStates(filter));
     }
 
     /// <summary>
-    /// Meta data about GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE records
+    ///     Meta data about GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> GoodsMacSuiteAtAndWithReExportationInStatesMeta(
-        [FromQuery()] GoodsMacSuiteAtAndWithReExportationInStateFindManyArgs filter
+        [FromQuery] GoodsMacSuiteAtAndWithReExportationInStateFindManyArgs filter
     )
     {
         return Ok(await _service.GoodsMacSuiteAtAndWithReExportationInStatesMeta(filter));
     }
 
     /// <summary>
-    /// Get one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
+    ///     Get one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<GoodsMacSuiteAtAndWithReExportationInState>
     > GoodsMacSuiteAtAndWithReExportationInState(
-        [FromRoute()] GoodsMacSuiteAtAndWithReExportationInStateWhereUniqueInput uniqueId
+        [FromRoute] GoodsMacSuiteAtAndWithReExportationInStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,14 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesControllerBase 
     }
 
     /// <summary>
-    /// Update one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
+    ///     Update one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateGoodsMacSuiteAtAndWithReExportationInState(
-        [FromRoute()] GoodsMacSuiteAtAndWithReExportationInStateWhereUniqueInput uniqueId,
-        [FromQuery()]
-            GoodsMacSuiteAtAndWithReExportationInStateUpdateInput goodsMacSuiteAtAndWithReExportationInStateUpdateDto
+        [FromRoute] GoodsMacSuiteAtAndWithReExportationInStateWhereUniqueInput uniqueId,
+        [FromQuery]
+        GoodsMacSuiteAtAndWithReExportationInStateUpdateInput goodsMacSuiteAtAndWithReExportationInStateUpdateDto
     )
     {
         try

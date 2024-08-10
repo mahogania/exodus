@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class CodesServiceBase : ICodesService
     }
 
     /// <summary>
-    /// Create one CODE
+    ///     Create one CODE
     /// </summary>
     public async Task<Code> CreateCode(CodeCreateInput createDto)
     {
@@ -43,41 +42,32 @@ public abstract class CodesServiceBase : ICodesService
             UsedOn = createDto.UsedOn
         };
 
-        if (createDto.Id != null)
-        {
-            code.Id = createDto.Id;
-        }
+        if (createDto.Id != null) code.Id = createDto.Id;
 
         _context.Codes.Add(code);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<CodeDbModel>(code.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CODE
+    ///     Delete one CODE
     /// </summary>
     public async Task DeleteCode(CodeWhereUniqueInput uniqueId)
     {
         var code = await _context.Codes.FindAsync(uniqueId.Id);
-        if (code == null)
-        {
-            throw new NotFoundException();
-        }
+        if (code == null) throw new NotFoundException();
 
         _context.Codes.Remove(code);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many CODES
+    ///     Find many CODES
     /// </summary>
     public async Task<List<Code>> Codes(CodeFindManyArgs findManyArgs)
     {
@@ -91,7 +81,7 @@ public abstract class CodesServiceBase : ICodesService
     }
 
     /// <summary>
-    /// Meta data about CODE records
+    ///     Meta data about CODE records
     /// </summary>
     public async Task<MetadataDto> CodesMeta(CodeFindManyArgs findManyArgs)
     {
@@ -101,24 +91,21 @@ public abstract class CodesServiceBase : ICodesService
     }
 
     /// <summary>
-    /// Get one CODE
+    ///     Get one CODE
     /// </summary>
     public async Task<Code> Code(CodeWhereUniqueInput uniqueId)
     {
-        var codes = await this.Codes(
+        var codes = await Codes(
             new CodeFindManyArgs { Where = new CodeWhereInput { Id = uniqueId.Id } }
         );
         var code = codes.FirstOrDefault();
-        if (code == null)
-        {
-            throw new NotFoundException();
-        }
+        if (code == null) throw new NotFoundException();
 
         return code;
     }
 
     /// <summary>
-    /// Update one CODE
+    ///     Update one CODE
     /// </summary>
     public async Task UpdateCode(CodeWhereUniqueInput uniqueId, CodeUpdateInput updateDto)
     {
@@ -133,13 +120,8 @@ public abstract class CodesServiceBase : ICodesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Codes.Any(e => e.Id == code.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

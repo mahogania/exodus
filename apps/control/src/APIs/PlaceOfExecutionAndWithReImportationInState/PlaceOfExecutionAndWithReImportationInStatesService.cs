@@ -6,5 +6,7 @@ public class PlaceOfExecutionAndWithReImportationInStatesService
     : PlaceOfExecutionAndWithReImportationInStatesServiceBase
 {
     public PlaceOfExecutionAndWithReImportationInStatesService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

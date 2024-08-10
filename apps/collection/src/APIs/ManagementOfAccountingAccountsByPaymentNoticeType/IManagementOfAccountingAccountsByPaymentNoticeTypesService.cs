@@ -6,21 +6,23 @@ namespace Collection.APIs;
 public interface IManagementOfAccountingAccountsByPaymentNoticeTypesService
 {
     /// <summary>
-    /// Create one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Create one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
-    public Task<ManagementOfAccountingAccountsByPaymentNoticeType> CreateManagementOfAccountingAccountsByPaymentNoticeType(
-        ManagementOfAccountingAccountsByPaymentNoticeTypeCreateInput managementofaccountingaccountsbypaymentnoticetype
-    );
+    public Task<ManagementOfAccountingAccountsByPaymentNoticeType>
+        CreateManagementOfAccountingAccountsByPaymentNoticeType(
+            ManagementOfAccountingAccountsByPaymentNoticeTypeCreateInput
+                managementofaccountingaccountsbypaymentnoticetype
+        );
 
     /// <summary>
-    /// Delete one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Delete one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
     public Task DeleteManagementOfAccountingAccountsByPaymentNoticeType(
         ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Find many MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPES
+    ///     Find many MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPES
     /// </summary>
     public Task<
         List<ManagementOfAccountingAccountsByPaymentNoticeType>
@@ -29,21 +31,21 @@ public interface IManagementOfAccountingAccountsByPaymentNoticeTypesService
     );
 
     /// <summary>
-    /// Meta data about MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE records
+    ///     Meta data about MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE records
     /// </summary>
     public Task<MetadataDto> ManagementOfAccountingAccountsByPaymentNoticeTypesMeta(
         ManagementOfAccountingAccountsByPaymentNoticeTypeFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Get one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
     public Task<ManagementOfAccountingAccountsByPaymentNoticeType> ManagementOfAccountingAccountsByPaymentNoticeType(
         ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Update one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
     public Task UpdateManagementOfAccountingAccountsByPaymentNoticeType(
         ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId,

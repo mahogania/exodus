@@ -29,7 +29,7 @@ public static class ExportedOrToBeExportedGoodsInformationsExtensions
             SuppressionOn = model.SuppressionOn,
             TechnicalDesignationOfTheGoods = model.TechnicalDesignationOfTheGoods,
             UpdatedAt = model.UpdatedAt,
-            Value = model.Value,
+            Value = model.Value
         };
     }
 
@@ -60,14 +60,8 @@ public static class ExportedOrToBeExportedGoodsInformationsExtensions
                 Value = updateDto.Value
             };
 
-        if (updateDto.CreatedAt != null)
-        {
-            exportedOrToBeExportedGoodsInformation.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            exportedOrToBeExportedGoodsInformation.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) exportedOrToBeExportedGoodsInformation.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) exportedOrToBeExportedGoodsInformation.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return exportedOrToBeExportedGoodsInformation;
     }

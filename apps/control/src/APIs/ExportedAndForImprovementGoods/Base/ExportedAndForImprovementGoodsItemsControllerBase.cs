@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ExportedAndForImprovementGoodsItemsControllerBase : ControllerBase
 {
     protected readonly IExportedAndForImprovementGoodsItemsService _service;
@@ -21,9 +20,9 @@ public abstract class ExportedAndForImprovementGoodsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Create one EXPORTED AND FOR IMPROVEMENT GOODS
+    ///     Create one EXPORTED AND FOR IMPROVEMENT GOODS
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ExportedAndForImprovementGoods>
@@ -41,12 +40,12 @@ public abstract class ExportedAndForImprovementGoodsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Delete one EXPORTED AND FOR IMPROVEMENT GOODS
+    ///     Delete one EXPORTED AND FOR IMPROVEMENT GOODS
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteExportedAndForImprovementGoods(
-        [FromRoute()] ExportedAndForImprovementGoodsWhereUniqueInput uniqueId
+        [FromRoute] ExportedAndForImprovementGoodsWhereUniqueInput uniqueId
     )
     {
         try
@@ -62,37 +61,37 @@ public abstract class ExportedAndForImprovementGoodsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Find many EXPORTED AND FOR IMPROVEMENT GOODSItems
+    ///     Find many EXPORTED AND FOR IMPROVEMENT GOODSItems
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<ExportedAndForImprovementGoods>>
     > ExportedAndForImprovementGoodsItems(
-        [FromQuery()] ExportedAndForImprovementGoodsFindManyArgs filter
+        [FromQuery] ExportedAndForImprovementGoodsFindManyArgs filter
     )
     {
         return Ok(await _service.ExportedAndForImprovementGoodsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about EXPORTED AND FOR IMPROVEMENT GOODS records
+    ///     Meta data about EXPORTED AND FOR IMPROVEMENT GOODS records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ExportedAndForImprovementGoodsItemsMeta(
-        [FromQuery()] ExportedAndForImprovementGoodsFindManyArgs filter
+        [FromQuery] ExportedAndForImprovementGoodsFindManyArgs filter
     )
     {
         return Ok(await _service.ExportedAndForImprovementGoodsItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one EXPORTED AND FOR IMPROVEMENT GOODS
+    ///     Get one EXPORTED AND FOR IMPROVEMENT GOODS
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ExportedAndForImprovementGoods>> ExportedAndForImprovementGoods(
-        [FromRoute()] ExportedAndForImprovementGoodsWhereUniqueInput uniqueId
+        [FromRoute] ExportedAndForImprovementGoodsWhereUniqueInput uniqueId
     )
     {
         try
@@ -106,14 +105,13 @@ public abstract class ExportedAndForImprovementGoodsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Update one EXPORTED AND FOR IMPROVEMENT GOODS
+    ///     Update one EXPORTED AND FOR IMPROVEMENT GOODS
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateExportedAndForImprovementGoods(
-        [FromRoute()] ExportedAndForImprovementGoodsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            ExportedAndForImprovementGoodsUpdateInput exportedAndForImprovementGoodsUpdateDto
+        [FromRoute] ExportedAndForImprovementGoodsWhereUniqueInput uniqueId,
+        [FromQuery] ExportedAndForImprovementGoodsUpdateInput exportedAndForImprovementGoodsUpdateDto
     )
     {
         try

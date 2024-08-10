@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class StateWithReImportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Create one STATE WITH RE-IMPORTATION IN THE STATE
+    ///     Create one STATE WITH RE-IMPORTATION IN THE STATE
     /// </summary>
     public async Task<StateWithReImportationInTheState> CreateStateWithReImportationInTheState(
         StateWithReImportationInTheStateCreateInput createDto
@@ -50,10 +49,7 @@ public abstract class StateWithReImportationInTheStatesServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            stateWithReImportationInTheState.Id = createDto.Id;
-        }
+        if (createDto.Id != null) stateWithReImportationInTheState.Id = createDto.Id;
 
         _context.StateWithReImportationInTheStates.Add(stateWithReImportationInTheState);
         await _context.SaveChangesAsync();
@@ -62,16 +58,13 @@ public abstract class StateWithReImportationInTheStatesServiceBase
             stateWithReImportationInTheState.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one STATE WITH RE-IMPORTATION IN THE STATE
+    ///     Delete one STATE WITH RE-IMPORTATION IN THE STATE
     /// </summary>
     public async Task DeleteStateWithReImportationInTheState(
         StateWithReImportationInTheStateWhereUniqueInput uniqueId
@@ -79,17 +72,14 @@ public abstract class StateWithReImportationInTheStatesServiceBase
     {
         var stateWithReImportationInTheState =
             await _context.StateWithReImportationInTheStates.FindAsync(uniqueId.Id);
-        if (stateWithReImportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (stateWithReImportationInTheState == null) throw new NotFoundException();
 
         _context.StateWithReImportationInTheStates.Remove(stateWithReImportationInTheState);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many STATE WITH RE-IMPORTATION IN THE STATES
+    ///     Find many STATE WITH RE-IMPORTATION IN THE STATES
     /// </summary>
     public async Task<List<StateWithReImportationInTheState>> StateWithReImportationInTheStates(
         StateWithReImportationInTheStateFindManyArgs findManyArgs
@@ -107,7 +97,7 @@ public abstract class StateWithReImportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Meta data about STATE WITH RE-IMPORTATION IN THE STATE records
+    ///     Meta data about STATE WITH RE-IMPORTATION IN THE STATE records
     /// </summary>
     public async Task<MetadataDto> StateWithReImportationInTheStatesMeta(
         StateWithReImportationInTheStateFindManyArgs findManyArgs
@@ -121,29 +111,26 @@ public abstract class StateWithReImportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Get one STATE WITH RE-IMPORTATION IN THE STATE
+    ///     Get one STATE WITH RE-IMPORTATION IN THE STATE
     /// </summary>
     public async Task<StateWithReImportationInTheState> StateWithReImportationInTheState(
         StateWithReImportationInTheStateWhereUniqueInput uniqueId
     )
     {
-        var stateWithReImportationInTheStates = await this.StateWithReImportationInTheStates(
+        var stateWithReImportationInTheStates = await StateWithReImportationInTheStates(
             new StateWithReImportationInTheStateFindManyArgs
             {
                 Where = new StateWithReImportationInTheStateWhereInput { Id = uniqueId.Id }
             }
         );
         var stateWithReImportationInTheState = stateWithReImportationInTheStates.FirstOrDefault();
-        if (stateWithReImportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (stateWithReImportationInTheState == null) throw new NotFoundException();
 
         return stateWithReImportationInTheState;
     }
 
     /// <summary>
-    /// Update one STATE WITH RE-IMPORTATION IN THE STATE
+    ///     Update one STATE WITH RE-IMPORTATION IN THE STATE
     /// </summary>
     public async Task UpdateStateWithReImportationInTheState(
         StateWithReImportationInTheStateWhereUniqueInput uniqueId,
@@ -165,13 +152,8 @@ public abstract class StateWithReImportationInTheStatesServiceBase
                     e.Id == stateWithReImportationInTheState.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

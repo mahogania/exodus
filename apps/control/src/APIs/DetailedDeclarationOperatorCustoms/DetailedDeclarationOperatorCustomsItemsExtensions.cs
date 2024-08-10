@@ -31,7 +31,7 @@ public static class DetailedDeclarationOperatorCustomsItemsExtensions
             TaxpayerSAddress = model.TaxpayerSAddress,
             TaxpayerSCompanyName = model.TaxpayerSCompanyName,
             TaxpayerSEmail = model.TaxpayerSEmail,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -63,14 +63,8 @@ public static class DetailedDeclarationOperatorCustomsItemsExtensions
             TaxpayerSEmail = updateDto.TaxpayerSEmail
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            detailedDeclarationOperatorCustoms.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            detailedDeclarationOperatorCustoms.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) detailedDeclarationOperatorCustoms.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) detailedDeclarationOperatorCustoms.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return detailedDeclarationOperatorCustoms;
     }

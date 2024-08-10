@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class AtAndStandardExchangesControllerBase : ControllerBase
 {
     protected readonly IAtAndStandardExchangesService _service;
@@ -19,9 +18,9 @@ public abstract class AtAndStandardExchangesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one AT? AND STANDARD EXCHANGE
+    ///     Create one AT? AND STANDARD EXCHANGE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<AtAndStandardExchange>> CreateAtAndStandardExchange(
         AtAndStandardExchangeCreateInput input
@@ -37,12 +36,12 @@ public abstract class AtAndStandardExchangesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one AT? AND STANDARD EXCHANGE
+    ///     Delete one AT? AND STANDARD EXCHANGE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteAtAndStandardExchange(
-        [FromRoute()] AtAndStandardExchangeWhereUniqueInput uniqueId
+        [FromRoute] AtAndStandardExchangeWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class AtAndStandardExchangesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many AT? AND STANDARD EXCHANGES
+    ///     Find many AT? AND STANDARD EXCHANGES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<AtAndStandardExchange>>> AtAndStandardExchanges(
-        [FromQuery()] AtAndStandardExchangeFindManyArgs filter
+        [FromQuery] AtAndStandardExchangeFindManyArgs filter
     )
     {
         return Ok(await _service.AtAndStandardExchanges(filter));
     }
 
     /// <summary>
-    /// Meta data about AT? AND STANDARD EXCHANGE records
+    ///     Meta data about AT? AND STANDARD EXCHANGE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> AtAndStandardExchangesMeta(
-        [FromQuery()] AtAndStandardExchangeFindManyArgs filter
+        [FromQuery] AtAndStandardExchangeFindManyArgs filter
     )
     {
         return Ok(await _service.AtAndStandardExchangesMeta(filter));
     }
 
     /// <summary>
-    /// Get one AT? AND STANDARD EXCHANGE
+    ///     Get one AT? AND STANDARD EXCHANGE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<AtAndStandardExchange>> AtAndStandardExchange(
-        [FromRoute()] AtAndStandardExchangeWhereUniqueInput uniqueId
+        [FromRoute] AtAndStandardExchangeWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class AtAndStandardExchangesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one AT? AND STANDARD EXCHANGE
+    ///     Update one AT? AND STANDARD EXCHANGE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateAtAndStandardExchange(
-        [FromRoute()] AtAndStandardExchangeWhereUniqueInput uniqueId,
-        [FromQuery()] AtAndStandardExchangeUpdateInput atAndStandardExchangeUpdateDto
+        [FromRoute] AtAndStandardExchangeWhereUniqueInput uniqueId,
+        [FromQuery] AtAndStandardExchangeUpdateInput atAndStandardExchangeUpdateDto
     )
     {
         try

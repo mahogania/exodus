@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class TemporaryAdmissionOfVehiclesControllerBase : ControllerBase
 {
     protected readonly ITemporaryAdmissionOfVehiclesService _service;
@@ -19,9 +18,9 @@ public abstract class TemporaryAdmissionOfVehiclesControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Create one TEMPORARY ADMISSION OF VEHICLE
+    ///     Create one TEMPORARY ADMISSION OF VEHICLE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<TemporaryAdmissionOfVehicle>> CreateTemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleCreateInput input
@@ -37,12 +36,12 @@ public abstract class TemporaryAdmissionOfVehiclesControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Delete one TEMPORARY ADMISSION OF VEHICLE
+    ///     Delete one TEMPORARY ADMISSION OF VEHICLE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteTemporaryAdmissionOfVehicle(
-        [FromRoute()] TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId
+        [FromRoute] TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class TemporaryAdmissionOfVehiclesControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Find many TEMPORARY ADMISSION OF VEHICLES
+    ///     Find many TEMPORARY ADMISSION OF VEHICLES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<TemporaryAdmissionOfVehicle>>> TemporaryAdmissionOfVehicles(
-        [FromQuery()] TemporaryAdmissionOfVehicleFindManyArgs filter
+        [FromQuery] TemporaryAdmissionOfVehicleFindManyArgs filter
     )
     {
         return Ok(await _service.TemporaryAdmissionOfVehicles(filter));
     }
 
     /// <summary>
-    /// Meta data about TEMPORARY ADMISSION OF VEHICLE records
+    ///     Meta data about TEMPORARY ADMISSION OF VEHICLE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> TemporaryAdmissionOfVehiclesMeta(
-        [FromQuery()] TemporaryAdmissionOfVehicleFindManyArgs filter
+        [FromQuery] TemporaryAdmissionOfVehicleFindManyArgs filter
     )
     {
         return Ok(await _service.TemporaryAdmissionOfVehiclesMeta(filter));
     }
 
     /// <summary>
-    /// Get one TEMPORARY ADMISSION OF VEHICLE
+    ///     Get one TEMPORARY ADMISSION OF VEHICLE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<TemporaryAdmissionOfVehicle>> TemporaryAdmissionOfVehicle(
-        [FromRoute()] TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId
+        [FromRoute] TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class TemporaryAdmissionOfVehiclesControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Update one TEMPORARY ADMISSION OF VEHICLE
+    ///     Update one TEMPORARY ADMISSION OF VEHICLE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateTemporaryAdmissionOfVehicle(
-        [FromRoute()] TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId,
-        [FromQuery()] TemporaryAdmissionOfVehicleUpdateInput temporaryAdmissionOfVehicleUpdateDto
+        [FromRoute] TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId,
+        [FromQuery] TemporaryAdmissionOfVehicleUpdateInput temporaryAdmissionOfVehicleUpdateDto
     )
     {
         try

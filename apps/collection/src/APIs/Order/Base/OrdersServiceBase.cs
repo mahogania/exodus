@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class OrdersServiceBase : IOrdersService
     }
 
     /// <summary>
-    /// Create one ORDER
+    ///     Create one ORDER
     /// </summary>
     public async Task<Order> CreateOrder(OrderCreateInput createDto)
     {
@@ -59,41 +58,32 @@ public abstract class OrdersServiceBase : IOrdersService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            order.Id = createDto.Id;
-        }
+        if (createDto.Id != null) order.Id = createDto.Id;
 
         _context.Orders.Add(order);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<OrderDbModel>(order.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one ORDER
+    ///     Delete one ORDER
     /// </summary>
     public async Task DeleteOrder(OrderWhereUniqueInput uniqueId)
     {
         var order = await _context.Orders.FindAsync(uniqueId.Id);
-        if (order == null)
-        {
-            throw new NotFoundException();
-        }
+        if (order == null) throw new NotFoundException();
 
         _context.Orders.Remove(order);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many ORDERS
+    ///     Find many ORDERS
     /// </summary>
     public async Task<List<Order>> Orders(OrderFindManyArgs findManyArgs)
     {
@@ -107,7 +97,7 @@ public abstract class OrdersServiceBase : IOrdersService
     }
 
     /// <summary>
-    /// Meta data about ORDER records
+    ///     Meta data about ORDER records
     /// </summary>
     public async Task<MetadataDto> OrdersMeta(OrderFindManyArgs findManyArgs)
     {
@@ -117,24 +107,21 @@ public abstract class OrdersServiceBase : IOrdersService
     }
 
     /// <summary>
-    /// Get one ORDER
+    ///     Get one ORDER
     /// </summary>
     public async Task<Order> Order(OrderWhereUniqueInput uniqueId)
     {
-        var orders = await this.Orders(
+        var orders = await Orders(
             new OrderFindManyArgs { Where = new OrderWhereInput { Id = uniqueId.Id } }
         );
         var order = orders.FirstOrDefault();
-        if (order == null)
-        {
-            throw new NotFoundException();
-        }
+        if (order == null) throw new NotFoundException();
 
         return order;
     }
 
     /// <summary>
-    /// Update one ORDER
+    ///     Update one ORDER
     /// </summary>
     public async Task UpdateOrder(OrderWhereUniqueInput uniqueId, OrderUpdateInput updateDto)
     {
@@ -149,13 +136,8 @@ public abstract class OrdersServiceBase : IOrdersService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Orders.Any(e => e.Id == order.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

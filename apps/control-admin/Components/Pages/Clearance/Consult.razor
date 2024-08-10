@@ -1,7 +1,4 @@
 @page "/clearance-details"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
 @inject IStringLocalizer<Pages.ClearanceDetails> Localizer
 
 <div class="container">
@@ -101,6 +98,7 @@
 </div>
 
 @code {
+
     public class ArticleDetail
     {
         public string ArticleNo { get; set; }
@@ -128,16 +126,17 @@
         public string Status { get; set; }
     }
 
-    public List<ArticleDetail> ArticleDetailsData = new List<ArticleDetail>
+    public List<ArticleDetail> ArticleDetailsData = new()
     {
         new ArticleDetail { ArticleNo = "001", TariffSubPosition = "010121000000", TariffLabel = "Horses: Pure-bred breeding animals", OriginCountry = "KOREA", APC = "000", Quantity = 100, ClearedQuantity = 100, RemainingQuantity = 0 },
         new ArticleDetail { ArticleNo = "002", TariffSubPosition = "010420100000", TariffLabel = "Purebred breeding animals", OriginCountry = "KOREA", APC = "620", Quantity = 200, ClearedQuantity = 200, RemainingQuantity = 0 }
         // Add more data as needed
     };
 
-    public List<ExecutionDeclaration> ExecutionDeclarationData = new List<ExecutionDeclaration>
+    public List<ExecutionDeclaration> ExecutionDeclarationData = new()
     {
         new ExecutionDeclaration { DeclarationNo = "ALGER-2022-C000003", DeclarationRegistrationDate = new DateTime(2022, 2, 20), DeclarationType = "EX3 - Réexportation", EPC = "3151", Importer = "Importateur", Exporter = "Exportateur", ArticleNo = "001", TariffSubPosition = "010121000000", Quantity = 100, BasePrice = 1000, Status = "Validation" }
         // Add more data as needed
     };
+
 }

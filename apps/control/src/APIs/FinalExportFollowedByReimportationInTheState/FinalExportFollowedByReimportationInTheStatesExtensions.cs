@@ -33,7 +33,7 @@ public static class FinalExportFollowedByReimportationInTheStatesExtensions
             RectificationFrequency = model.RectificationFrequency,
             RegimeRequestNumber = model.RegimeRequestNumber,
             SuppressionOn = model.SuppressionOn,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -69,13 +69,9 @@ public static class FinalExportFollowedByReimportationInTheStatesExtensions
             };
 
         if (updateDto.CreatedAt != null)
-        {
             finalExportFollowedByReimportationInTheState.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             finalExportFollowedByReimportationInTheState.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return finalExportFollowedByReimportationInTheState;
     }

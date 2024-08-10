@@ -43,7 +43,7 @@ public static class AuctionReportsExtensions
             SaleReportNumber = model.SaleReportNumber,
             ServiceCode = model.ServiceCode,
             TotalAmount = model.TotalAmount,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -89,14 +89,8 @@ public static class AuctionReportsExtensions
             TotalAmount = updateDto.TotalAmount
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            auctionReport.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            auctionReport.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) auctionReport.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) auctionReport.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return auctionReport;
     }

@@ -25,7 +25,7 @@ public static class RequestForCancellationOfTheDetailedDeclarationCustomsItemsEx
             ProcessingStatusCode = model.ProcessingStatusCode,
             ReferenceNumber = model.ReferenceNumber,
             SuppressionOn = model.SuppressionOn,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -53,17 +53,13 @@ public static class RequestForCancellationOfTheDetailedDeclarationCustomsItemsEx
             };
 
         if (updateDto.CreatedAt != null)
-        {
             requestForCancellationOfTheDetailedDeclarationCustoms.CreatedAt = updateDto
                 .CreatedAt
                 .Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             requestForCancellationOfTheDetailedDeclarationCustoms.UpdatedAt = updateDto
                 .UpdatedAt
                 .Value;
-        }
 
         return requestForCancellationOfTheDetailedDeclarationCustoms;
     }

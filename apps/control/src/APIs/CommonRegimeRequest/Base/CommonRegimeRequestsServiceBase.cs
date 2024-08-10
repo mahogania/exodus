@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
     }
 
     /// <summary>
-    /// Create one COMMON REGIME REQUEST
+    ///     Create one COMMON REGIME REQUEST
     /// </summary>
     public async Task<CommonRegimeRequest> CreateCommonRegimeRequest(
         CommonRegimeRequestCreateInput createDto
@@ -52,41 +51,32 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            commonRegimeRequest.Id = createDto.Id;
-        }
+        if (createDto.Id != null) commonRegimeRequest.Id = createDto.Id;
 
         _context.CommonRegimeRequests.Add(commonRegimeRequest);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<CommonRegimeRequestDbModel>(commonRegimeRequest.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one COMMON REGIME REQUEST
+    ///     Delete one COMMON REGIME REQUEST
     /// </summary>
     public async Task DeleteCommonRegimeRequest(CommonRegimeRequestWhereUniqueInput uniqueId)
     {
         var commonRegimeRequest = await _context.CommonRegimeRequests.FindAsync(uniqueId.Id);
-        if (commonRegimeRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (commonRegimeRequest == null) throw new NotFoundException();
 
         _context.CommonRegimeRequests.Remove(commonRegimeRequest);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many COMMON REGIME REQUESTS
+    ///     Find many COMMON REGIME REQUESTS
     /// </summary>
     public async Task<List<CommonRegimeRequest>> CommonRegimeRequests(
         CommonRegimeRequestFindManyArgs findManyArgs
@@ -102,7 +92,7 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
     }
 
     /// <summary>
-    /// Meta data about COMMON REGIME REQUEST records
+    ///     Meta data about COMMON REGIME REQUEST records
     /// </summary>
     public async Task<MetadataDto> CommonRegimeRequestsMeta(
         CommonRegimeRequestFindManyArgs findManyArgs
@@ -114,29 +104,26 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
     }
 
     /// <summary>
-    /// Get one COMMON REGIME REQUEST
+    ///     Get one COMMON REGIME REQUEST
     /// </summary>
     public async Task<CommonRegimeRequest> CommonRegimeRequest(
         CommonRegimeRequestWhereUniqueInput uniqueId
     )
     {
-        var commonRegimeRequests = await this.CommonRegimeRequests(
+        var commonRegimeRequests = await CommonRegimeRequests(
             new CommonRegimeRequestFindManyArgs
             {
                 Where = new CommonRegimeRequestWhereInput { Id = uniqueId.Id }
             }
         );
         var commonRegimeRequest = commonRegimeRequests.FirstOrDefault();
-        if (commonRegimeRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (commonRegimeRequest == null) throw new NotFoundException();
 
         return commonRegimeRequest;
     }
 
     /// <summary>
-    /// Update one COMMON REGIME REQUEST
+    ///     Update one COMMON REGIME REQUEST
     /// </summary>
     public async Task UpdateCommonRegimeRequest(
         CommonRegimeRequestWhereUniqueInput uniqueId,
@@ -154,13 +141,8 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.CommonRegimeRequests.Any(e => e.Id == commonRegimeRequest.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

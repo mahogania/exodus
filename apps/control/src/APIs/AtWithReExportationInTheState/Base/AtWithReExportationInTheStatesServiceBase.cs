@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class AtWithReExportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Create one AT WITH RE-EXPORTATION IN THE STATE
+    ///     Create one AT WITH RE-EXPORTATION IN THE STATE
     /// </summary>
     public async Task<AtWithReExportationInTheState> CreateAtWithReExportationInTheState(
         AtWithReExportationInTheStateCreateInput createDto
@@ -32,10 +31,7 @@ public abstract class AtWithReExportationInTheStatesServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            atWithReExportationInTheState.Id = createDto.Id;
-        }
+        if (createDto.Id != null) atWithReExportationInTheState.Id = createDto.Id;
 
         _context.AtWithReExportationInTheStates.Add(atWithReExportationInTheState);
         await _context.SaveChangesAsync();
@@ -44,16 +40,13 @@ public abstract class AtWithReExportationInTheStatesServiceBase
             atWithReExportationInTheState.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one AT WITH RE-EXPORTATION IN THE STATE
+    ///     Delete one AT WITH RE-EXPORTATION IN THE STATE
     /// </summary>
     public async Task DeleteAtWithReExportationInTheState(
         AtWithReExportationInTheStateWhereUniqueInput uniqueId
@@ -62,17 +55,14 @@ public abstract class AtWithReExportationInTheStatesServiceBase
         var atWithReExportationInTheState = await _context.AtWithReExportationInTheStates.FindAsync(
             uniqueId.Id
         );
-        if (atWithReExportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (atWithReExportationInTheState == null) throw new NotFoundException();
 
         _context.AtWithReExportationInTheStates.Remove(atWithReExportationInTheState);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many AT WITH RE-EXPORTATION IN THE STATES
+    ///     Find many AT WITH RE-EXPORTATION IN THE STATES
     /// </summary>
     public async Task<List<AtWithReExportationInTheState>> AtWithReExportationInTheStates(
         AtWithReExportationInTheStateFindManyArgs findManyArgs
@@ -90,7 +80,7 @@ public abstract class AtWithReExportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Meta data about AT WITH RE-EXPORTATION IN THE STATE records
+    ///     Meta data about AT WITH RE-EXPORTATION IN THE STATE records
     /// </summary>
     public async Task<MetadataDto> AtWithReExportationInTheStatesMeta(
         AtWithReExportationInTheStateFindManyArgs findManyArgs
@@ -104,29 +94,26 @@ public abstract class AtWithReExportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Get one AT WITH RE-EXPORTATION IN THE STATE
+    ///     Get one AT WITH RE-EXPORTATION IN THE STATE
     /// </summary>
     public async Task<AtWithReExportationInTheState> AtWithReExportationInTheState(
         AtWithReExportationInTheStateWhereUniqueInput uniqueId
     )
     {
-        var atWithReExportationInTheStates = await this.AtWithReExportationInTheStates(
+        var atWithReExportationInTheStates = await AtWithReExportationInTheStates(
             new AtWithReExportationInTheStateFindManyArgs
             {
                 Where = new AtWithReExportationInTheStateWhereInput { Id = uniqueId.Id }
             }
         );
         var atWithReExportationInTheState = atWithReExportationInTheStates.FirstOrDefault();
-        if (atWithReExportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (atWithReExportationInTheState == null) throw new NotFoundException();
 
         return atWithReExportationInTheState;
     }
 
     /// <summary>
-    /// Update one AT WITH RE-EXPORTATION IN THE STATE
+    ///     Update one AT WITH RE-EXPORTATION IN THE STATE
     /// </summary>
     public async Task UpdateAtWithReExportationInTheState(
         AtWithReExportationInTheStateWhereUniqueInput uniqueId,
@@ -148,13 +135,8 @@ public abstract class AtWithReExportationInTheStatesServiceBase
                     e.Id == atWithReExportationInTheState.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

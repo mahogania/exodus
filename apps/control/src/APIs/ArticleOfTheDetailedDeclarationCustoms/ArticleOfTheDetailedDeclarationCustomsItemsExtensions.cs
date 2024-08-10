@@ -60,7 +60,7 @@ public static class ArticleOfTheDetailedDeclarationCustomsItemsExtensions
             UpdatedAt = model.UpdatedAt,
             ValueAssessmentMethodCode = model.ValueAssessmentMethodCode,
             VehicleOn = model.VehicleOn,
-            WarrantyExemptionAuthorizationNumber = model.WarrantyExemptionAuthorizationNumber,
+            WarrantyExemptionAuthorizationNumber = model.WarrantyExemptionAuthorizationNumber
         };
     }
 
@@ -124,14 +124,8 @@ public static class ArticleOfTheDetailedDeclarationCustomsItemsExtensions
                     updateDto.WarrantyExemptionAuthorizationNumber
             };
 
-        if (updateDto.CreatedAt != null)
-        {
-            articleOfTheDetailedDeclarationCustoms.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            articleOfTheDetailedDeclarationCustoms.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) articleOfTheDetailedDeclarationCustoms.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) articleOfTheDetailedDeclarationCustoms.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return articleOfTheDetailedDeclarationCustoms;
     }

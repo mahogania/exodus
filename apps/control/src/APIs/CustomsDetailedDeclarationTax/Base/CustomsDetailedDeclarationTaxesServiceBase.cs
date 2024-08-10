@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class CustomsDetailedDeclarationTaxesServiceBase
     }
 
     /// <summary>
-    /// Create one CUSTOMS DETAILED DECLARATION TAX
+    ///     Create one CUSTOMS DETAILED DECLARATION TAX
     /// </summary>
     public async Task<CustomsDetailedDeclarationTax> CreateCustomsDetailedDeclarationTax(
         CustomsDetailedDeclarationTaxCreateInput createDto
@@ -57,10 +56,7 @@ public abstract class CustomsDetailedDeclarationTaxesServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            customsDetailedDeclarationTax.Id = createDto.Id;
-        }
+        if (createDto.Id != null) customsDetailedDeclarationTax.Id = createDto.Id;
 
         _context.CustomsDetailedDeclarationTaxes.Add(customsDetailedDeclarationTax);
         await _context.SaveChangesAsync();
@@ -69,16 +65,13 @@ public abstract class CustomsDetailedDeclarationTaxesServiceBase
             customsDetailedDeclarationTax.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CUSTOMS DETAILED DECLARATION TAX
+    ///     Delete one CUSTOMS DETAILED DECLARATION TAX
     /// </summary>
     public async Task DeleteCustomsDetailedDeclarationTax(
         CustomsDetailedDeclarationTaxWhereUniqueInput uniqueId
@@ -86,17 +79,14 @@ public abstract class CustomsDetailedDeclarationTaxesServiceBase
     {
         var customsDetailedDeclarationTax =
             await _context.CustomsDetailedDeclarationTaxes.FindAsync(uniqueId.Id);
-        if (customsDetailedDeclarationTax == null)
-        {
-            throw new NotFoundException();
-        }
+        if (customsDetailedDeclarationTax == null) throw new NotFoundException();
 
         _context.CustomsDetailedDeclarationTaxes.Remove(customsDetailedDeclarationTax);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many CUSTOMS DETAILED DECLARATION TAXES
+    ///     Find many CUSTOMS DETAILED DECLARATION TAXES
     /// </summary>
     public async Task<List<CustomsDetailedDeclarationTax>> CustomsDetailedDeclarationTaxes(
         CustomsDetailedDeclarationTaxFindManyArgs findManyArgs
@@ -114,7 +104,7 @@ public abstract class CustomsDetailedDeclarationTaxesServiceBase
     }
 
     /// <summary>
-    /// Meta data about CUSTOMS DETAILED DECLARATION TAX records
+    ///     Meta data about CUSTOMS DETAILED DECLARATION TAX records
     /// </summary>
     public async Task<MetadataDto> CustomsDetailedDeclarationTaxesMeta(
         CustomsDetailedDeclarationTaxFindManyArgs findManyArgs
@@ -128,29 +118,26 @@ public abstract class CustomsDetailedDeclarationTaxesServiceBase
     }
 
     /// <summary>
-    /// Get one CUSTOMS DETAILED DECLARATION TAX
+    ///     Get one CUSTOMS DETAILED DECLARATION TAX
     /// </summary>
     public async Task<CustomsDetailedDeclarationTax> CustomsDetailedDeclarationTax(
         CustomsDetailedDeclarationTaxWhereUniqueInput uniqueId
     )
     {
-        var customsDetailedDeclarationTaxes = await this.CustomsDetailedDeclarationTaxes(
+        var customsDetailedDeclarationTaxes = await CustomsDetailedDeclarationTaxes(
             new CustomsDetailedDeclarationTaxFindManyArgs
             {
                 Where = new CustomsDetailedDeclarationTaxWhereInput { Id = uniqueId.Id }
             }
         );
         var customsDetailedDeclarationTax = customsDetailedDeclarationTaxes.FirstOrDefault();
-        if (customsDetailedDeclarationTax == null)
-        {
-            throw new NotFoundException();
-        }
+        if (customsDetailedDeclarationTax == null) throw new NotFoundException();
 
         return customsDetailedDeclarationTax;
     }
 
     /// <summary>
-    /// Update one CUSTOMS DETAILED DECLARATION TAX
+    ///     Update one CUSTOMS DETAILED DECLARATION TAX
     /// </summary>
     public async Task UpdateCustomsDetailedDeclarationTax(
         CustomsDetailedDeclarationTaxWhereUniqueInput uniqueId,
@@ -172,13 +159,8 @@ public abstract class CustomsDetailedDeclarationTaxesServiceBase
                     e.Id == customsDetailedDeclarationTax.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItemsControllerBase
     : ControllerBase
 {
@@ -22,9 +21,9 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
     }
 
     /// <summary>
-    /// Create one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<RequestForCancellationOfTheDetailedDeclarationCustoms>
@@ -43,12 +42,12 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
     }
 
     /// <summary>
-    /// Delete one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteRequestForCancellationOfTheDetailedDeclarationCustoms(
-        [FromRoute()] RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -64,14 +63,14 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
     }
 
     /// <summary>
-    /// Find many REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<RequestForCancellationOfTheDetailedDeclarationCustoms>>
     > RequestForCancellationOfTheDetailedDeclarationCustomsItems(
-        [FromQuery()] RequestForCancellationOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] RequestForCancellationOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(
@@ -80,13 +79,13 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
     }
 
     /// <summary>
-    /// Meta data about REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > RequestForCancellationOfTheDetailedDeclarationCustomsItemsMeta(
-        [FromQuery()] RequestForCancellationOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] RequestForCancellationOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(
@@ -95,14 +94,14 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
     }
 
     /// <summary>
-    /// Get one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<RequestForCancellationOfTheDetailedDeclarationCustoms>
     > RequestForCancellationOfTheDetailedDeclarationCustoms(
-        [FromRoute()] RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -116,15 +115,14 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
     }
 
     /// <summary>
-    /// Update one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateRequestForCancellationOfTheDetailedDeclarationCustoms(
-        [FromRoute()]
-            RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            RequestForCancellationOfTheDetailedDeclarationCustomsUpdateInput requestForCancellationOfTheDetailedDeclarationCustomsUpdateDto
+        [FromRoute] RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
+        [FromQuery] RequestForCancellationOfTheDetailedDeclarationCustomsUpdateInput
+            requestForCancellationOfTheDetailedDeclarationCustomsUpdateDto
     )
     {
         try

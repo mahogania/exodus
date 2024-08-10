@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class FinalExportFollowedByReimportationInTheStatesController
     : FinalExportFollowedByReimportationInTheStatesControllerBase
 {
     public FinalExportFollowedByReimportationInTheStatesController(
         IFinalExportFollowedByReimportationInTheStatesService service
     )
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

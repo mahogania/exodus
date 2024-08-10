@@ -107,7 +107,7 @@ public static class CommonDetailedDeclarationsExtensions
             UnloadingLocationCode = model.UnloadingLocationCode,
             UpdatedAt = model.UpdatedAt,
             ValueDeclarationOn = model.ValueDeclarationOn,
-            VehiclePickupOn = model.VehiclePickupOn,
+            VehiclePickupOn = model.VehiclePickupOn
         };
     }
 
@@ -218,14 +218,8 @@ public static class CommonDetailedDeclarationsExtensions
             VehiclePickupOn = updateDto.VehiclePickupOn
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            commonDetailedDeclaration.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            commonDetailedDeclaration.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) commonDetailedDeclaration.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) commonDetailedDeclaration.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return commonDetailedDeclaration;
     }

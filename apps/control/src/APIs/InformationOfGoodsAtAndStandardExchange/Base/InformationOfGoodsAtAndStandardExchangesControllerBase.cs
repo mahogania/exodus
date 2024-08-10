@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class InformationOfGoodsAtAndStandardExchangesControllerBase : ControllerBase
 {
     protected readonly IInformationOfGoodsAtAndStandardExchangesService _service;
@@ -21,9 +20,9 @@ public abstract class InformationOfGoodsAtAndStandardExchangesControllerBase : C
     }
 
     /// <summary>
-    /// Create one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
+    ///     Create one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<InformationOfGoodsAtAndStandardExchange>
@@ -42,12 +41,12 @@ public abstract class InformationOfGoodsAtAndStandardExchangesControllerBase : C
     }
 
     /// <summary>
-    /// Delete one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
+    ///     Delete one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteInformationOfGoodsAtAndStandardExchange(
-        [FromRoute()] InformationOfGoodsAtAndStandardExchangeWhereUniqueInput uniqueId
+        [FromRoute] InformationOfGoodsAtAndStandardExchangeWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class InformationOfGoodsAtAndStandardExchangesControllerBase : C
     }
 
     /// <summary>
-    /// Find many INFORMATION OF GOODS AT AND STANDARD EXCHANGES
+    ///     Find many INFORMATION OF GOODS AT AND STANDARD EXCHANGES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<InformationOfGoodsAtAndStandardExchange>>
     > InformationOfGoodsAtAndStandardExchanges(
-        [FromQuery()] InformationOfGoodsAtAndStandardExchangeFindManyArgs filter
+        [FromQuery] InformationOfGoodsAtAndStandardExchangeFindManyArgs filter
     )
     {
         return Ok(await _service.InformationOfGoodsAtAndStandardExchanges(filter));
     }
 
     /// <summary>
-    /// Meta data about INFORMATION OF GOODS AT AND STANDARD EXCHANGE records
+    ///     Meta data about INFORMATION OF GOODS AT AND STANDARD EXCHANGE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> InformationOfGoodsAtAndStandardExchangesMeta(
-        [FromQuery()] InformationOfGoodsAtAndStandardExchangeFindManyArgs filter
+        [FromQuery] InformationOfGoodsAtAndStandardExchangeFindManyArgs filter
     )
     {
         return Ok(await _service.InformationOfGoodsAtAndStandardExchangesMeta(filter));
     }
 
     /// <summary>
-    /// Get one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
+    ///     Get one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<InformationOfGoodsAtAndStandardExchange>
     > InformationOfGoodsAtAndStandardExchange(
-        [FromRoute()] InformationOfGoodsAtAndStandardExchangeWhereUniqueInput uniqueId
+        [FromRoute] InformationOfGoodsAtAndStandardExchangeWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,13 @@ public abstract class InformationOfGoodsAtAndStandardExchangesControllerBase : C
     }
 
     /// <summary>
-    /// Update one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
+    ///     Update one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateInformationOfGoodsAtAndStandardExchange(
-        [FromRoute()] InformationOfGoodsAtAndStandardExchangeWhereUniqueInput uniqueId,
-        [FromQuery()]
-            InformationOfGoodsAtAndStandardExchangeUpdateInput informationOfGoodsAtAndStandardExchangeUpdateDto
+        [FromRoute] InformationOfGoodsAtAndStandardExchangeWhereUniqueInput uniqueId,
+        [FromQuery] InformationOfGoodsAtAndStandardExchangeUpdateInput informationOfGoodsAtAndStandardExchangeUpdateDto
     )
     {
         try

@@ -27,7 +27,7 @@ public static class ManagementOfAccountingAccountsByPaymentNoticeTypesExtensions
             NoticeTypeCode = model.NoticeTypeCode,
             PartialOrParticularDistribution = model.PartialOrParticularDistribution,
             ReasonCodeByPaymentNoticeType = model.ReasonCodeByPaymentNoticeType,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -57,13 +57,9 @@ public static class ManagementOfAccountingAccountsByPaymentNoticeTypesExtensions
             };
 
         if (updateDto.CreatedAt != null)
-        {
             managementOfAccountingAccountsByPaymentNoticeType.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             managementOfAccountingAccountsByPaymentNoticeType.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return managementOfAccountingAccountsByPaymentNoticeType;
     }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class CompensatoryProductsForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Create one COMPENSATORY PRODUCTS FOR PERFECTION
+    ///     Create one COMPENSATORY PRODUCTS FOR PERFECTION
     /// </summary>
     public async Task<CompensatoryProductsForPerfection> CreateCompensatoryProductsForPerfection(
         CompensatoryProductsForPerfectionCreateInput createDto
@@ -48,10 +47,7 @@ public abstract class CompensatoryProductsForPerfectionsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            compensatoryProductsForPerfection.Id = createDto.Id;
-        }
+        if (createDto.Id != null) compensatoryProductsForPerfection.Id = createDto.Id;
 
         _context.CompensatoryProductsForPerfections.Add(compensatoryProductsForPerfection);
         await _context.SaveChangesAsync();
@@ -60,16 +56,13 @@ public abstract class CompensatoryProductsForPerfectionsServiceBase
             compensatoryProductsForPerfection.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one COMPENSATORY PRODUCTS FOR PERFECTION
+    ///     Delete one COMPENSATORY PRODUCTS FOR PERFECTION
     /// </summary>
     public async Task DeleteCompensatoryProductsForPerfection(
         CompensatoryProductsForPerfectionWhereUniqueInput uniqueId
@@ -77,17 +70,14 @@ public abstract class CompensatoryProductsForPerfectionsServiceBase
     {
         var compensatoryProductsForPerfection =
             await _context.CompensatoryProductsForPerfections.FindAsync(uniqueId.Id);
-        if (compensatoryProductsForPerfection == null)
-        {
-            throw new NotFoundException();
-        }
+        if (compensatoryProductsForPerfection == null) throw new NotFoundException();
 
         _context.CompensatoryProductsForPerfections.Remove(compensatoryProductsForPerfection);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many COMPENSATORY PRODUCTS FOR PERFECTIONS
+    ///     Find many COMPENSATORY PRODUCTS FOR PERFECTIONS
     /// </summary>
     public async Task<List<CompensatoryProductsForPerfection>> CompensatoryProductsForPerfections(
         CompensatoryProductsForPerfectionFindManyArgs findManyArgs
@@ -105,7 +95,7 @@ public abstract class CompensatoryProductsForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Meta data about COMPENSATORY PRODUCTS FOR PERFECTION records
+    ///     Meta data about COMPENSATORY PRODUCTS FOR PERFECTION records
     /// </summary>
     public async Task<MetadataDto> CompensatoryProductsForPerfectionsMeta(
         CompensatoryProductsForPerfectionFindManyArgs findManyArgs
@@ -119,29 +109,26 @@ public abstract class CompensatoryProductsForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Get one COMPENSATORY PRODUCTS FOR PERFECTION
+    ///     Get one COMPENSATORY PRODUCTS FOR PERFECTION
     /// </summary>
     public async Task<CompensatoryProductsForPerfection> CompensatoryProductsForPerfection(
         CompensatoryProductsForPerfectionWhereUniqueInput uniqueId
     )
     {
-        var compensatoryProductsForPerfections = await this.CompensatoryProductsForPerfections(
+        var compensatoryProductsForPerfections = await CompensatoryProductsForPerfections(
             new CompensatoryProductsForPerfectionFindManyArgs
             {
                 Where = new CompensatoryProductsForPerfectionWhereInput { Id = uniqueId.Id }
             }
         );
         var compensatoryProductsForPerfection = compensatoryProductsForPerfections.FirstOrDefault();
-        if (compensatoryProductsForPerfection == null)
-        {
-            throw new NotFoundException();
-        }
+        if (compensatoryProductsForPerfection == null) throw new NotFoundException();
 
         return compensatoryProductsForPerfection;
     }
 
     /// <summary>
-    /// Update one COMPENSATORY PRODUCTS FOR PERFECTION
+    ///     Update one COMPENSATORY PRODUCTS FOR PERFECTION
     /// </summary>
     public async Task UpdateCompensatoryProductsForPerfection(
         CompensatoryProductsForPerfectionWhereUniqueInput uniqueId,
@@ -163,13 +150,8 @@ public abstract class CompensatoryProductsForPerfectionsServiceBase
                     e.Id == compensatoryProductsForPerfection.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

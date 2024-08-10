@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsServiceBase
     }
 
     /// <summary>
-    /// Create one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Create one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     public async Task<StateOfGoodsForPassivePerfectionCommon> CreateStateOfGoodsForPassivePerfectionCommon(
         StateOfGoodsForPassivePerfectionCommonCreateInput createDto
@@ -55,10 +54,7 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsServiceBase
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            stateOfGoodsForPassivePerfectionCommon.Id = createDto.Id;
-        }
+        if (createDto.Id != null) stateOfGoodsForPassivePerfectionCommon.Id = createDto.Id;
 
         _context.StateOfGoodsForPassivePerfectionCommons.Add(
             stateOfGoodsForPassivePerfectionCommon
@@ -69,16 +65,13 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsServiceBase
             stateOfGoodsForPassivePerfectionCommon.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Delete one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     public async Task DeleteStateOfGoodsForPassivePerfectionCommon(
         StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId
@@ -86,10 +79,7 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsServiceBase
     {
         var stateOfGoodsForPassivePerfectionCommon =
             await _context.StateOfGoodsForPassivePerfectionCommons.FindAsync(uniqueId.Id);
-        if (stateOfGoodsForPassivePerfectionCommon == null)
-        {
-            throw new NotFoundException();
-        }
+        if (stateOfGoodsForPassivePerfectionCommon == null) throw new NotFoundException();
 
         _context.StateOfGoodsForPassivePerfectionCommons.Remove(
             stateOfGoodsForPassivePerfectionCommon
@@ -98,7 +88,7 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsServiceBase
     }
 
     /// <summary>
-    /// Find many STATE OF GOODS FOR PASSIVE PERFECTION COMMONS
+    ///     Find many STATE OF GOODS FOR PASSIVE PERFECTION COMMONS
     /// </summary>
     public async Task<
         List<StateOfGoodsForPassivePerfectionCommon>
@@ -118,7 +108,7 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsServiceBase
     }
 
     /// <summary>
-    /// Meta data about STATE OF GOODS FOR PASSIVE PERFECTION COMMON records
+    ///     Meta data about STATE OF GOODS FOR PASSIVE PERFECTION COMMON records
     /// </summary>
     public async Task<MetadataDto> StateOfGoodsForPassivePerfectionCommonsMeta(
         StateOfGoodsForPassivePerfectionCommonFindManyArgs findManyArgs
@@ -132,14 +122,14 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsServiceBase
     }
 
     /// <summary>
-    /// Get one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Get one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     public async Task<StateOfGoodsForPassivePerfectionCommon> StateOfGoodsForPassivePerfectionCommon(
         StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId
     )
     {
         var stateOfGoodsForPassivePerfectionCommons =
-            await this.StateOfGoodsForPassivePerfectionCommons(
+            await StateOfGoodsForPassivePerfectionCommons(
                 new StateOfGoodsForPassivePerfectionCommonFindManyArgs
                 {
                     Where = new StateOfGoodsForPassivePerfectionCommonWhereInput
@@ -150,16 +140,13 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsServiceBase
             );
         var stateOfGoodsForPassivePerfectionCommon =
             stateOfGoodsForPassivePerfectionCommons.FirstOrDefault();
-        if (stateOfGoodsForPassivePerfectionCommon == null)
-        {
-            throw new NotFoundException();
-        }
+        if (stateOfGoodsForPassivePerfectionCommon == null) throw new NotFoundException();
 
         return stateOfGoodsForPassivePerfectionCommon;
     }
 
     /// <summary>
-    /// Update one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Update one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     public async Task UpdateStateOfGoodsForPassivePerfectionCommon(
         StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId,
@@ -181,13 +168,8 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsServiceBase
                     e.Id == stateOfGoodsForPassivePerfectionCommon.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

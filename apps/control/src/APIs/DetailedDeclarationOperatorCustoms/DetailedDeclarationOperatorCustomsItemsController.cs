@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class DetailedDeclarationOperatorCustomsItemsController
     : DetailedDeclarationOperatorCustomsItemsControllerBase
 {
     public DetailedDeclarationOperatorCustomsItemsController(
         IDetailedDeclarationOperatorCustomsItemsService service
     )
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

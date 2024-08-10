@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class OthersItemsControllerBase : ControllerBase
 {
     protected readonly IOthersItemsService _service;
@@ -19,9 +18,9 @@ public abstract class OthersItemsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one OTHERS
+    ///     Create one OTHERS
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Others>> CreateOthers(OthersCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class OthersItemsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one OTHERS
+    ///     Delete one OTHERS
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteOthers([FromRoute()] OthersWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteOthers([FromRoute] OthersWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,34 +49,34 @@ public abstract class OthersItemsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many OTHERSItems
+    ///     Find many OTHERSItems
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Others>>> OthersItems(
-        [FromQuery()] OthersFindManyArgs filter
+        [FromQuery] OthersFindManyArgs filter
     )
     {
         return Ok(await _service.OthersItems(filter));
     }
 
     /// <summary>
-    /// Meta data about OTHERS records
+    ///     Meta data about OTHERS records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> OthersItemsMeta(
-        [FromQuery()] OthersFindManyArgs filter
+        [FromQuery] OthersFindManyArgs filter
     )
     {
         return Ok(await _service.OthersItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one OTHERS
+    ///     Get one OTHERS
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Others>> Others([FromRoute()] OthersWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Others>> Others([FromRoute] OthersWhereUniqueInput uniqueId)
     {
         try
         {
@@ -90,13 +89,13 @@ public abstract class OthersItemsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one OTHERS
+    ///     Update one OTHERS
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateOthers(
-        [FromRoute()] OthersWhereUniqueInput uniqueId,
-        [FromQuery()] OthersUpdateInput othersUpdateDto
+        [FromRoute] OthersWhereUniqueInput uniqueId,
+        [FromQuery] OthersUpdateInput othersUpdateDto
     )
     {
         try

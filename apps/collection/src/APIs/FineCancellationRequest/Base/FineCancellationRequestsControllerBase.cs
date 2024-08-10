@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class FineCancellationRequestsControllerBase : ControllerBase
 {
     protected readonly IFineCancellationRequestsService _service;
@@ -19,9 +18,9 @@ public abstract class FineCancellationRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one FINE CANCELLATION REQUEST
+    ///     Create one FINE CANCELLATION REQUEST
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<FineCancellationRequest>> CreateFineCancellationRequest(
         FineCancellationRequestCreateInput input
@@ -37,12 +36,12 @@ public abstract class FineCancellationRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one FINE CANCELLATION REQUEST
+    ///     Delete one FINE CANCELLATION REQUEST
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteFineCancellationRequest(
-        [FromRoute()] FineCancellationRequestWhereUniqueInput uniqueId
+        [FromRoute] FineCancellationRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class FineCancellationRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many FINE CANCELLATION REQUESTS
+    ///     Find many FINE CANCELLATION REQUESTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<FineCancellationRequest>>> FineCancellationRequests(
-        [FromQuery()] FineCancellationRequestFindManyArgs filter
+        [FromQuery] FineCancellationRequestFindManyArgs filter
     )
     {
         return Ok(await _service.FineCancellationRequests(filter));
     }
 
     /// <summary>
-    /// Meta data about FINE CANCELLATION REQUEST records
+    ///     Meta data about FINE CANCELLATION REQUEST records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> FineCancellationRequestsMeta(
-        [FromQuery()] FineCancellationRequestFindManyArgs filter
+        [FromQuery] FineCancellationRequestFindManyArgs filter
     )
     {
         return Ok(await _service.FineCancellationRequestsMeta(filter));
     }
 
     /// <summary>
-    /// Get one FINE CANCELLATION REQUEST
+    ///     Get one FINE CANCELLATION REQUEST
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<FineCancellationRequest>> FineCancellationRequest(
-        [FromRoute()] FineCancellationRequestWhereUniqueInput uniqueId
+        [FromRoute] FineCancellationRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class FineCancellationRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one FINE CANCELLATION REQUEST
+    ///     Update one FINE CANCELLATION REQUEST
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateFineCancellationRequest(
-        [FromRoute()] FineCancellationRequestWhereUniqueInput uniqueId,
-        [FromQuery()] FineCancellationRequestUpdateInput fineCancellationRequestUpdateDto
+        [FromRoute] FineCancellationRequestWhereUniqueInput uniqueId,
+        [FromQuery] FineCancellationRequestUpdateInput fineCancellationRequestUpdateDto
     )
     {
         try

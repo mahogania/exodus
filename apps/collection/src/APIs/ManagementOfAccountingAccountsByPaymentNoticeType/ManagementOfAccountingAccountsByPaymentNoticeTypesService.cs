@@ -6,5 +6,7 @@ public class ManagementOfAccountingAccountsByPaymentNoticeTypesService
     : ManagementOfAccountingAccountsByPaymentNoticeTypesServiceBase
 {
     public ManagementOfAccountingAccountsByPaymentNoticeTypesService(CollectionDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

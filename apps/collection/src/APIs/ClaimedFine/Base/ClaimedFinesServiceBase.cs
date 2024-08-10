@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ClaimedFinesServiceBase : IClaimedFinesService
     }
 
     /// <summary>
-    /// Create one CLAIMED FINE
+    ///     Create one CLAIMED FINE
     /// </summary>
     public async Task<ClaimedFine> CreateClaimedFine(ClaimedFineCreateInput createDto)
     {
@@ -58,41 +57,32 @@ public abstract class ClaimedFinesServiceBase : IClaimedFinesService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            claimedFine.Id = createDto.Id;
-        }
+        if (createDto.Id != null) claimedFine.Id = createDto.Id;
 
         _context.ClaimedFines.Add(claimedFine);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<ClaimedFineDbModel>(claimedFine.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CLAIMED FINE
+    ///     Delete one CLAIMED FINE
     /// </summary>
     public async Task DeleteClaimedFine(ClaimedFineWhereUniqueInput uniqueId)
     {
         var claimedFine = await _context.ClaimedFines.FindAsync(uniqueId.Id);
-        if (claimedFine == null)
-        {
-            throw new NotFoundException();
-        }
+        if (claimedFine == null) throw new NotFoundException();
 
         _context.ClaimedFines.Remove(claimedFine);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many CLAIMED FINES
+    ///     Find many CLAIMED FINES
     /// </summary>
     public async Task<List<ClaimedFine>> ClaimedFines(ClaimedFineFindManyArgs findManyArgs)
     {
@@ -106,7 +96,7 @@ public abstract class ClaimedFinesServiceBase : IClaimedFinesService
     }
 
     /// <summary>
-    /// Meta data about CLAIMED FINE records
+    ///     Meta data about CLAIMED FINE records
     /// </summary>
     public async Task<MetadataDto> ClaimedFinesMeta(ClaimedFineFindManyArgs findManyArgs)
     {
@@ -116,24 +106,21 @@ public abstract class ClaimedFinesServiceBase : IClaimedFinesService
     }
 
     /// <summary>
-    /// Get one CLAIMED FINE
+    ///     Get one CLAIMED FINE
     /// </summary>
     public async Task<ClaimedFine> ClaimedFine(ClaimedFineWhereUniqueInput uniqueId)
     {
-        var claimedFines = await this.ClaimedFines(
+        var claimedFines = await ClaimedFines(
             new ClaimedFineFindManyArgs { Where = new ClaimedFineWhereInput { Id = uniqueId.Id } }
         );
         var claimedFine = claimedFines.FirstOrDefault();
-        if (claimedFine == null)
-        {
-            throw new NotFoundException();
-        }
+        if (claimedFine == null) throw new NotFoundException();
 
         return claimedFine;
     }
 
     /// <summary>
-    /// Update one CLAIMED FINE
+    ///     Update one CLAIMED FINE
     /// </summary>
     public async Task UpdateClaimedFine(
         ClaimedFineWhereUniqueInput uniqueId,
@@ -151,13 +138,8 @@ public abstract class ClaimedFinesServiceBase : IClaimedFinesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.ClaimedFines.Any(e => e.Id == claimedFine.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

@@ -54,7 +54,7 @@ public static class ExpressCustomsClearanceDetailsItemsExtensions
             Standards = model.Standards,
             SuppressionOn = model.SuppressionOn,
             UpdatedAt = model.UpdatedAt,
-            Weight = model.Weight,
+            Weight = model.Weight
         };
     }
 
@@ -109,14 +109,8 @@ public static class ExpressCustomsClearanceDetailsItemsExtensions
             Weight = updateDto.Weight
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            expressCustomsClearanceDetails.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            expressCustomsClearanceDetails.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) expressCustomsClearanceDetails.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) expressCustomsClearanceDetails.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return expressCustomsClearanceDetails;
     }

@@ -32,7 +32,7 @@ public static class DetailsOfGoodsForPassivePerfectionsExtensions
             SuppressionOn = model.SuppressionOn,
             TechnicalName = model.TechnicalName,
             TransactionValueCurrencyCode = model.TransactionValueCurrencyCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -65,14 +65,8 @@ public static class DetailsOfGoodsForPassivePerfectionsExtensions
             TransactionValueCurrencyCode = updateDto.TransactionValueCurrencyCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            detailsOfGoodsForPassivePerfection.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            detailsOfGoodsForPassivePerfection.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) detailsOfGoodsForPassivePerfection.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) detailsOfGoodsForPassivePerfection.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return detailsOfGoodsForPassivePerfection;
     }

@@ -30,7 +30,7 @@ public static class GoodsAndWithReImportationInStatesExtensions
             SuppressionOn = model.SuppressionOn,
             TechnicalDesignationOfGoods = model.TechnicalDesignationOfGoods,
             UpdatedAt = model.UpdatedAt,
-            Value = model.Value,
+            Value = model.Value
         };
     }
 
@@ -61,14 +61,8 @@ public static class GoodsAndWithReImportationInStatesExtensions
             Value = updateDto.Value
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            goodsAndWithReImportationInState.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            goodsAndWithReImportationInState.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) goodsAndWithReImportationInState.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) goodsAndWithReImportationInState.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return goodsAndWithReImportationInState;
     }

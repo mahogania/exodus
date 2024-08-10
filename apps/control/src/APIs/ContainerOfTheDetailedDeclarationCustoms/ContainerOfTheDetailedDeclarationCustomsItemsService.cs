@@ -6,5 +6,7 @@ public class ContainerOfTheDetailedDeclarationCustomsItemsService
     : ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
 {
     public ContainerOfTheDetailedDeclarationCustomsItemsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

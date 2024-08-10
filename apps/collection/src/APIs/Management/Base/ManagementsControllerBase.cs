@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ManagementsControllerBase : ControllerBase
 {
     protected readonly IManagementsService _service;
@@ -19,9 +18,9 @@ public abstract class ManagementsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one MANAGEMENT
+    ///     Create one MANAGEMENT
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Management>> CreateManagement(ManagementCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class ManagementsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one MANAGEMENT
+    ///     Delete one MANAGEMENT
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteManagement(
-        [FromRoute()] ManagementWhereUniqueInput uniqueId
+        [FromRoute] ManagementWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class ManagementsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many MANAGEMENTS
+    ///     Find many MANAGEMENTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Management>>> Managements(
-        [FromQuery()] ManagementFindManyArgs filter
+        [FromQuery] ManagementFindManyArgs filter
     )
     {
         return Ok(await _service.Managements(filter));
     }
 
     /// <summary>
-    /// Meta data about MANAGEMENT records
+    ///     Meta data about MANAGEMENT records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ManagementsMeta(
-        [FromQuery()] ManagementFindManyArgs filter
+        [FromQuery] ManagementFindManyArgs filter
     )
     {
         return Ok(await _service.ManagementsMeta(filter));
     }
 
     /// <summary>
-    /// Get one MANAGEMENT
+    ///     Get one MANAGEMENT
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Management>> Management(
-        [FromRoute()] ManagementWhereUniqueInput uniqueId
+        [FromRoute] ManagementWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class ManagementsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one MANAGEMENT
+    ///     Update one MANAGEMENT
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateManagement(
-        [FromRoute()] ManagementWhereUniqueInput uniqueId,
-        [FromQuery()] ManagementUpdateInput managementUpdateDto
+        [FromRoute] ManagementWhereUniqueInput uniqueId,
+        [FromQuery] ManagementUpdateInput managementUpdateDto
     )
     {
         try

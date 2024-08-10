@@ -24,7 +24,7 @@ public static class FineRequestsExtensions
             MaximumAmount = model.MaximumAmount,
             MinimumAmount = model.MinimumAmount,
             OperationTypeCode = model.OperationTypeCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -51,14 +51,8 @@ public static class FineRequestsExtensions
             OperationTypeCode = updateDto.OperationTypeCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            fineRequest.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            fineRequest.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) fineRequest.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) fineRequest.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return fineRequest;
     }

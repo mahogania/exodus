@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class NoticeTypesController : NoticeTypesControllerBase
 {
     public NoticeTypesController(INoticeTypesService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

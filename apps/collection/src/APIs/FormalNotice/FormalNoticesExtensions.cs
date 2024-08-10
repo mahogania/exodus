@@ -25,7 +25,7 @@ public static class FormalNoticesExtensions
             NumberOfFormalNotices = model.NumberOfFormalNotices,
             NumberOfLatePayments = model.NumberOfLatePayments,
             PaymentDeadline = model.PaymentDeadline,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -53,14 +53,8 @@ public static class FormalNoticesExtensions
             PaymentDeadline = updateDto.PaymentDeadline
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            formalNotice.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            formalNotice.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) formalNotice.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) formalNotice.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return formalNotice;
     }

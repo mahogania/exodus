@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class AdjustmentsController : AdjustmentsControllerBase
 {
     public AdjustmentsController(IAdjustmentsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

@@ -6,5 +6,7 @@ public class CompensatoryProductsForPerfectionsService
     : CompensatoryProductsForPerfectionsServiceBase
 {
     public CompensatoryProductsForPerfectionsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

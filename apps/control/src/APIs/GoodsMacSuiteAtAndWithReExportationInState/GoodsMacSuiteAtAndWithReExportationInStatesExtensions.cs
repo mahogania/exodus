@@ -32,7 +32,7 @@ public static class GoodsMacSuiteAtAndWithReExportationInStatesExtensions
             SuppressionOn = model.SuppressionOn,
             TechnicalDesignationOfMaterials = model.TechnicalDesignationOfMaterials,
             UpdatedAt = model.UpdatedAt,
-            Value = model.Value,
+            Value = model.Value
         };
     }
 
@@ -68,13 +68,9 @@ public static class GoodsMacSuiteAtAndWithReExportationInStatesExtensions
             };
 
         if (updateDto.CreatedAt != null)
-        {
             goodsMacSuiteAtAndWithReExportationInState.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             goodsMacSuiteAtAndWithReExportationInState.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return goodsMacSuiteAtAndWithReExportationInState;
     }

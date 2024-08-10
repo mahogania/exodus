@@ -28,7 +28,7 @@ public static class CommonExpressClearancesExtensions
             ShipName = model.ShipName,
             TransmissionTypeCode = model.TransmissionTypeCode,
             TreatmentStatusCode = model.TreatmentStatusCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -59,14 +59,8 @@ public static class CommonExpressClearancesExtensions
             TreatmentStatusCode = updateDto.TreatmentStatusCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            commonExpressClearance.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            commonExpressClearance.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) commonExpressClearance.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) commonExpressClearance.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return commonExpressClearance;
     }

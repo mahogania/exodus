@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Create one TEMPORARY ADMISSION FOR PERFECTION
+    ///     Create one TEMPORARY ADMISSION FOR PERFECTION
     /// </summary>
     public async Task<TemporaryAdmissionForPerfection> CreateTemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionCreateInput createDto
@@ -89,10 +88,7 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            temporaryAdmissionForPerfection.Id = createDto.Id;
-        }
+        if (createDto.Id != null) temporaryAdmissionForPerfection.Id = createDto.Id;
 
         _context.TemporaryAdmissionForPerfections.Add(temporaryAdmissionForPerfection);
         await _context.SaveChangesAsync();
@@ -101,16 +97,13 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
             temporaryAdmissionForPerfection.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one TEMPORARY ADMISSION FOR PERFECTION
+    ///     Delete one TEMPORARY ADMISSION FOR PERFECTION
     /// </summary>
     public async Task DeleteTemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId
@@ -118,17 +111,14 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
     {
         var temporaryAdmissionForPerfection =
             await _context.TemporaryAdmissionForPerfections.FindAsync(uniqueId.Id);
-        if (temporaryAdmissionForPerfection == null)
-        {
-            throw new NotFoundException();
-        }
+        if (temporaryAdmissionForPerfection == null) throw new NotFoundException();
 
         _context.TemporaryAdmissionForPerfections.Remove(temporaryAdmissionForPerfection);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many TEMPORARY ADMISSION FOR PERFECTIONS
+    ///     Find many TEMPORARY ADMISSION FOR PERFECTIONS
     /// </summary>
     public async Task<List<TemporaryAdmissionForPerfection>> TemporaryAdmissionForPerfections(
         TemporaryAdmissionForPerfectionFindManyArgs findManyArgs
@@ -146,7 +136,7 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Meta data about TEMPORARY ADMISSION FOR PERFECTION records
+    ///     Meta data about TEMPORARY ADMISSION FOR PERFECTION records
     /// </summary>
     public async Task<MetadataDto> TemporaryAdmissionForPerfectionsMeta(
         TemporaryAdmissionForPerfectionFindManyArgs findManyArgs
@@ -160,29 +150,26 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Get one TEMPORARY ADMISSION FOR PERFECTION
+    ///     Get one TEMPORARY ADMISSION FOR PERFECTION
     /// </summary>
     public async Task<TemporaryAdmissionForPerfection> TemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId
     )
     {
-        var temporaryAdmissionForPerfections = await this.TemporaryAdmissionForPerfections(
+        var temporaryAdmissionForPerfections = await TemporaryAdmissionForPerfections(
             new TemporaryAdmissionForPerfectionFindManyArgs
             {
                 Where = new TemporaryAdmissionForPerfectionWhereInput { Id = uniqueId.Id }
             }
         );
         var temporaryAdmissionForPerfection = temporaryAdmissionForPerfections.FirstOrDefault();
-        if (temporaryAdmissionForPerfection == null)
-        {
-            throw new NotFoundException();
-        }
+        if (temporaryAdmissionForPerfection == null) throw new NotFoundException();
 
         return temporaryAdmissionForPerfection;
     }
 
     /// <summary>
-    /// Update one TEMPORARY ADMISSION FOR PERFECTION
+    ///     Update one TEMPORARY ADMISSION FOR PERFECTION
     /// </summary>
     public async Task UpdateTemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId,
@@ -204,13 +191,8 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
                     e.Id == temporaryAdmissionForPerfection.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

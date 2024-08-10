@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DemandForRcoClresControllerBase : ControllerBase
 {
     protected readonly IDemandForRcoClresService _service;
@@ -19,9 +18,9 @@ public abstract class DemandForRcoClresControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one Demand for RCO | CLRE
+    ///     Create one Demand for RCO | CLRE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<DemandForRcoClre>> CreateDemandForRcoClre(
         DemandForRcoClreCreateInput input
@@ -37,12 +36,12 @@ public abstract class DemandForRcoClresControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one Demand for RCO | CLRE
+    ///     Delete one Demand for RCO | CLRE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDemandForRcoClre(
-        [FromRoute()] DemandForRcoClreWhereUniqueInput uniqueId
+        [FromRoute] DemandForRcoClreWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class DemandForRcoClresControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many Demand for RCO | CLRES
+    ///     Find many Demand for RCO | CLRES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<DemandForRcoClre>>> DemandForRcoClres(
-        [FromQuery()] DemandForRcoClreFindManyArgs filter
+        [FromQuery] DemandForRcoClreFindManyArgs filter
     )
     {
         return Ok(await _service.DemandForRcoClres(filter));
     }
 
     /// <summary>
-    /// Meta data about Demand for RCO | CLRE records
+    ///     Meta data about Demand for RCO | CLRE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DemandForRcoClresMeta(
-        [FromQuery()] DemandForRcoClreFindManyArgs filter
+        [FromQuery] DemandForRcoClreFindManyArgs filter
     )
     {
         return Ok(await _service.DemandForRcoClresMeta(filter));
     }
 
     /// <summary>
-    /// Get one Demand for RCO | CLRE
+    ///     Get one Demand for RCO | CLRE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<DemandForRcoClre>> DemandForRcoClre(
-        [FromRoute()] DemandForRcoClreWhereUniqueInput uniqueId
+        [FromRoute] DemandForRcoClreWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class DemandForRcoClresControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one Demand for RCO | CLRE
+    ///     Update one Demand for RCO | CLRE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDemandForRcoClre(
-        [FromRoute()] DemandForRcoClreWhereUniqueInput uniqueId,
-        [FromQuery()] DemandForRcoClreUpdateInput demandForRcoClreUpdateDto
+        [FromRoute] DemandForRcoClreWhereUniqueInput uniqueId,
+        [FromQuery] DemandForRcoClreUpdateInput demandForRcoClreUpdateDto
     )
     {
         try

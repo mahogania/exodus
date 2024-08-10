@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class InformationForDeterminingOriginsController
     : InformationForDeterminingOriginsControllerBase
 {
     public InformationForDeterminingOriginsController(
         IInformationForDeterminingOriginsService service
     )
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

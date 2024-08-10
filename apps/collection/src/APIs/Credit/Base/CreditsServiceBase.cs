@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class CreditsServiceBase : ICreditsService
     }
 
     /// <summary>
-    /// Create one CREDIT
+    ///     Create one CREDIT
     /// </summary>
     public async Task<Credit> CreateCredit(CreditCreateInput createDto)
     {
@@ -66,41 +65,32 @@ public abstract class CreditsServiceBase : ICreditsService
             ValidityStartDate = createDto.ValidityStartDate
         };
 
-        if (createDto.Id != null)
-        {
-            credit.Id = createDto.Id;
-        }
+        if (createDto.Id != null) credit.Id = createDto.Id;
 
         _context.Credits.Add(credit);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<CreditDbModel>(credit.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CREDIT
+    ///     Delete one CREDIT
     /// </summary>
     public async Task DeleteCredit(CreditWhereUniqueInput uniqueId)
     {
         var credit = await _context.Credits.FindAsync(uniqueId.Id);
-        if (credit == null)
-        {
-            throw new NotFoundException();
-        }
+        if (credit == null) throw new NotFoundException();
 
         _context.Credits.Remove(credit);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many CREDITS
+    ///     Find many CREDITS
     /// </summary>
     public async Task<List<Credit>> Credits(CreditFindManyArgs findManyArgs)
     {
@@ -114,7 +104,7 @@ public abstract class CreditsServiceBase : ICreditsService
     }
 
     /// <summary>
-    /// Meta data about CREDIT records
+    ///     Meta data about CREDIT records
     /// </summary>
     public async Task<MetadataDto> CreditsMeta(CreditFindManyArgs findManyArgs)
     {
@@ -124,24 +114,21 @@ public abstract class CreditsServiceBase : ICreditsService
     }
 
     /// <summary>
-    /// Get one CREDIT
+    ///     Get one CREDIT
     /// </summary>
     public async Task<Credit> Credit(CreditWhereUniqueInput uniqueId)
     {
-        var credits = await this.Credits(
+        var credits = await Credits(
             new CreditFindManyArgs { Where = new CreditWhereInput { Id = uniqueId.Id } }
         );
         var credit = credits.FirstOrDefault();
-        if (credit == null)
-        {
-            throw new NotFoundException();
-        }
+        if (credit == null) throw new NotFoundException();
 
         return credit;
     }
 
     /// <summary>
-    /// Update one CREDIT
+    ///     Update one CREDIT
     /// </summary>
     public async Task UpdateCredit(CreditWhereUniqueInput uniqueId, CreditUpdateInput updateDto)
     {
@@ -156,13 +143,8 @@ public abstract class CreditsServiceBase : ICreditsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Credits.Any(e => e.Id == credit.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

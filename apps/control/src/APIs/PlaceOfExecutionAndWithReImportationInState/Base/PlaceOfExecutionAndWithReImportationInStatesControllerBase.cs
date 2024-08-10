@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class PlaceOfExecutionAndWithReImportationInStatesControllerBase : ControllerBase
 {
     protected readonly IPlaceOfExecutionAndWithReImportationInStatesService _service;
@@ -21,9 +20,9 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesControllerBase
     }
 
     /// <summary>
-    /// Create one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
+    ///     Create one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<PlaceOfExecutionAndWithReImportationInState>
@@ -42,12 +41,12 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesControllerBase
     }
 
     /// <summary>
-    /// Delete one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
+    ///     Delete one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeletePlaceOfExecutionAndWithReImportationInState(
-        [FromRoute()] PlaceOfExecutionAndWithReImportationInStateWhereUniqueInput uniqueId
+        [FromRoute] PlaceOfExecutionAndWithReImportationInStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesControllerBase
     }
 
     /// <summary>
-    /// Find many PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATES
+    ///     Find many PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<PlaceOfExecutionAndWithReImportationInState>>
     > PlaceOfExecutionAndWithReImportationInStates(
-        [FromQuery()] PlaceOfExecutionAndWithReImportationInStateFindManyArgs filter
+        [FromQuery] PlaceOfExecutionAndWithReImportationInStateFindManyArgs filter
     )
     {
         return Ok(await _service.PlaceOfExecutionAndWithReImportationInStates(filter));
     }
 
     /// <summary>
-    /// Meta data about PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE records
+    ///     Meta data about PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> PlaceOfExecutionAndWithReImportationInStatesMeta(
-        [FromQuery()] PlaceOfExecutionAndWithReImportationInStateFindManyArgs filter
+        [FromQuery] PlaceOfExecutionAndWithReImportationInStateFindManyArgs filter
     )
     {
         return Ok(await _service.PlaceOfExecutionAndWithReImportationInStatesMeta(filter));
     }
 
     /// <summary>
-    /// Get one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
+    ///     Get one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<PlaceOfExecutionAndWithReImportationInState>
     > PlaceOfExecutionAndWithReImportationInState(
-        [FromRoute()] PlaceOfExecutionAndWithReImportationInStateWhereUniqueInput uniqueId
+        [FromRoute] PlaceOfExecutionAndWithReImportationInStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,14 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesControllerBase
     }
 
     /// <summary>
-    /// Update one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
+    ///     Update one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdatePlaceOfExecutionAndWithReImportationInState(
-        [FromRoute()] PlaceOfExecutionAndWithReImportationInStateWhereUniqueInput uniqueId,
-        [FromQuery()]
-            PlaceOfExecutionAndWithReImportationInStateUpdateInput placeOfExecutionAndWithReImportationInStateUpdateDto
+        [FromRoute] PlaceOfExecutionAndWithReImportationInStateWhereUniqueInput uniqueId,
+        [FromQuery]
+        PlaceOfExecutionAndWithReImportationInStateUpdateInput placeOfExecutionAndWithReImportationInStateUpdateDto
     )
     {
         try

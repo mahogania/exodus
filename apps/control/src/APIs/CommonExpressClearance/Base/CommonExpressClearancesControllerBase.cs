@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CommonExpressClearancesControllerBase : ControllerBase
 {
     protected readonly ICommonExpressClearancesService _service;
@@ -19,9 +18,9 @@ public abstract class CommonExpressClearancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one COMMON EXPRESS CLEARANCE
+    ///     Create one COMMON EXPRESS CLEARANCE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<CommonExpressClearance>> CreateCommonExpressClearance(
         CommonExpressClearanceCreateInput input
@@ -37,12 +36,12 @@ public abstract class CommonExpressClearancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one COMMON EXPRESS CLEARANCE
+    ///     Delete one COMMON EXPRESS CLEARANCE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCommonExpressClearance(
-        [FromRoute()] CommonExpressClearanceWhereUniqueInput uniqueId
+        [FromRoute] CommonExpressClearanceWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class CommonExpressClearancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many COMMON EXPRESS CLEARANCES
+    ///     Find many COMMON EXPRESS CLEARANCES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<CommonExpressClearance>>> CommonExpressClearances(
-        [FromQuery()] CommonExpressClearanceFindManyArgs filter
+        [FromQuery] CommonExpressClearanceFindManyArgs filter
     )
     {
         return Ok(await _service.CommonExpressClearances(filter));
     }
 
     /// <summary>
-    /// Meta data about COMMON EXPRESS CLEARANCE records
+    ///     Meta data about COMMON EXPRESS CLEARANCE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CommonExpressClearancesMeta(
-        [FromQuery()] CommonExpressClearanceFindManyArgs filter
+        [FromQuery] CommonExpressClearanceFindManyArgs filter
     )
     {
         return Ok(await _service.CommonExpressClearancesMeta(filter));
     }
 
     /// <summary>
-    /// Get one COMMON EXPRESS CLEARANCE
+    ///     Get one COMMON EXPRESS CLEARANCE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<CommonExpressClearance>> CommonExpressClearance(
-        [FromRoute()] CommonExpressClearanceWhereUniqueInput uniqueId
+        [FromRoute] CommonExpressClearanceWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class CommonExpressClearancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one COMMON EXPRESS CLEARANCE
+    ///     Update one COMMON EXPRESS CLEARANCE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCommonExpressClearance(
-        [FromRoute()] CommonExpressClearanceWhereUniqueInput uniqueId,
-        [FromQuery()] CommonExpressClearanceUpdateInput commonExpressClearanceUpdateDto
+        [FromRoute] CommonExpressClearanceWhereUniqueInput uniqueId,
+        [FromQuery] CommonExpressClearanceUpdateInput commonExpressClearanceUpdateDto
     )
     {
         try

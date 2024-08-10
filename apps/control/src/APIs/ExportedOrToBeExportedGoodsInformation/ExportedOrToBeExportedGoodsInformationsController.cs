@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class ExportedOrToBeExportedGoodsInformationsController
     : ExportedOrToBeExportedGoodsInformationsControllerBase
 {
     public ExportedOrToBeExportedGoodsInformationsController(
         IExportedOrToBeExportedGoodsInformationsService service
     )
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

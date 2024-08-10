@@ -1,13 +1,11 @@
 @page "/to-do-list"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
-@inject IStringLocalizer<Pages.ToDoList> Localizer
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["ToDoListTitle"]</h3>
 
-    <SfGrid DataSource="@ToDoData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@ToDoData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="Number" HeaderText="@Localizer["Number"]" Width="50"></GridColumn>
             <GridColumn Field="ToDo" HeaderText="@Localizer["ToDo"]" Width="200"></GridColumn>
@@ -27,17 +25,19 @@
 </div>
 
 @code {
+
     public class ToDo
     {
         public int Number { get; set; }
-        public string ToDo { get; set; }
+        public string Description { get; set; }
         public DateTime ProcessingDateTime { get; set; }
         public string NotificationDetails { get; set; }
     }
 
-    public List<ToDo> ToDoData = new List<ToDo>
+    public List<ToDo> ToDoData = new()
     {
-        new ToDo { Number = 1, ToDo = "L'avis de paiement en instance de paiement existe pour cette déclaration. Veuillez le régler.", ProcessingDateTime = new DateTime(2022, 3, 30, 10, 28, 42), NotificationDetails = "" }
+        new ToDo { Number = 1, Description = "L'avis de paiement en instance de paiement existe pour cette déclaration. Veuillez le régler.", ProcessingDateTime = new DateTime(2022, 3, 30, 10, 28, 42), NotificationDetails = "" }
         // Add more data as needed
     };
+
 }

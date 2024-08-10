@@ -5,5 +5,7 @@ namespace Control.APIs;
 public class InformationForDeterminingOriginsService : InformationForDeterminingOriginsServiceBase
 {
     public InformationForDeterminingOriginsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

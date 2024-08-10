@@ -1,8 +1,4 @@
 @page "/temporary-stored-documents"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.DropDowns
 @inject IStringLocalizer<Pages.TemporaryStoredDocuments> Localizer
 
 <div class="container">
@@ -10,17 +6,17 @@
 
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfDateRangePicker Placeholder="@Localizer["RegistrationDateRange"]" CssClass="e-outline"></SfDateRangePicker>
+            <SfDateRangePicker TValue="DateTime[]" Placeholder="@Localizer["RegistrationDateRange"]" CssClass="e-outline"></SfDateRangePicker>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfDropDownList Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string"></SfDropDownList>
+            <SfDropDownList TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string"></SfDropDownList>
         </div>
         <div class="col-md-3">
-            <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
-            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Search"]</SfButton>
         </div>
     </div>
 
@@ -40,13 +36,14 @@
 
     <div class="row mt-3">
         <div class="col-md-12 text-right">
-            <SfButton CssClass="e-primary">@Localizer["Confirm"]</SfButton>
-            <SfButton CssClass="e-primary">@Localizer["Close"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Confirm"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Close"]</SfButton>
         </div>
     </div>
 </div>
 
 @code {
+
     public class TemporaryStoredDocument
     {
         public string ReferenceNo { get; set; }
@@ -60,16 +57,17 @@
         public string TransportTitleNo { get; set; }
     }
 
-    public List<string> DeclarationTypes = new List<string>
+    public List<string> DeclarationTypes = new()
     {
         "EX1/Exportation",
         "IM4/Import Declaration"
         // Add more types as needed
     };
 
-    public List<TemporaryStoredDocument> TemporaryStoredDocumentData = new List<TemporaryStoredDocument>
+    public List<TemporaryStoredDocument> TemporaryStoredDocumentData = new()
     {
         new TemporaryStoredDocument { ReferenceNo = "H0001-2022-DAU-000001-E", RegistrationDate = new DateTime(2022, 3, 30), RegionalDirection = "ALGER-M", EPC = "4100", DeclarationType = "IM4/Import Declaration", ClearanceTiming = "PMD - Post-Manifest Declaration", DocumentType = "G-General", InvoiceNo = "TRAININGVIMPP0001", TransportTitleNo = "TRAININGBLIMPP0001" }
         // Add more data as needed
     };
+
 }

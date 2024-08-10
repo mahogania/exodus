@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class ImportedMaterialWastesController : ImportedMaterialWastesControllerBase
 {
     public ImportedMaterialWastesController(IImportedMaterialWastesService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

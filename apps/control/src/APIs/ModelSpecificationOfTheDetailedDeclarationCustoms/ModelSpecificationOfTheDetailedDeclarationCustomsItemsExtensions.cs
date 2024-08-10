@@ -13,7 +13,7 @@ public static class ModelSpecificationOfTheDetailedDeclarationCustomsItemsExtens
         {
             CreatedAt = model.CreatedAt,
             Id = model.Id,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -26,13 +26,9 @@ public static class ModelSpecificationOfTheDetailedDeclarationCustomsItemsExtens
             new ModelSpecificationOfTheDetailedDeclarationCustomsDbModel { Id = uniqueId.Id };
 
         if (updateDto.CreatedAt != null)
-        {
             modelSpecificationOfTheDetailedDeclarationCustoms.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             modelSpecificationOfTheDetailedDeclarationCustoms.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return modelSpecificationOfTheDetailedDeclarationCustoms;
     }

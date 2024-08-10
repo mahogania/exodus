@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CollectionsControllerBase : ControllerBase
 {
     protected readonly ICollectionsService _service;
@@ -19,9 +18,9 @@ public abstract class CollectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one COLLECTION
+    ///     Create one COLLECTION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Collection>> CreateCollection(CollectionCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class CollectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one COLLECTION
+    ///     Delete one COLLECTION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCollection(
-        [FromRoute()] CollectionWhereUniqueInput uniqueId
+        [FromRoute] CollectionWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class CollectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many COLLECTIONS
+    ///     Find many COLLECTIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Collection>>> Collections(
-        [FromQuery()] CollectionFindManyArgs filter
+        [FromQuery] CollectionFindManyArgs filter
     )
     {
         return Ok(await _service.Collections(filter));
     }
 
     /// <summary>
-    /// Meta data about COLLECTION records
+    ///     Meta data about COLLECTION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CollectionsMeta(
-        [FromQuery()] CollectionFindManyArgs filter
+        [FromQuery] CollectionFindManyArgs filter
     )
     {
         return Ok(await _service.CollectionsMeta(filter));
     }
 
     /// <summary>
-    /// Get one COLLECTION
+    ///     Get one COLLECTION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Collection>> Collection(
-        [FromRoute()] CollectionWhereUniqueInput uniqueId
+        [FromRoute] CollectionWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class CollectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one COLLECTION
+    ///     Update one COLLECTION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCollection(
-        [FromRoute()] CollectionWhereUniqueInput uniqueId,
-        [FromQuery()] CollectionUpdateInput collectionUpdateDto
+        [FromRoute] CollectionWhereUniqueInput uniqueId,
+        [FromQuery] CollectionUpdateInput collectionUpdateDto
     )
     {
         try

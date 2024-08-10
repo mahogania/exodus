@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class FinesControllerBase : ControllerBase
 {
     protected readonly IFinesService _service;
@@ -19,9 +18,9 @@ public abstract class FinesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one FINE
+    ///     Create one FINE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Fine>> CreateFine(FineCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class FinesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one FINE
+    ///     Delete one FINE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteFine([FromRoute()] FineWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteFine([FromRoute] FineWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,30 +49,30 @@ public abstract class FinesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many FINES
+    ///     Find many FINES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<List<Fine>>> Fines([FromQuery()] FineFindManyArgs filter)
+    public async Task<ActionResult<List<Fine>>> Fines([FromQuery] FineFindManyArgs filter)
     {
         return Ok(await _service.Fines(filter));
     }
 
     /// <summary>
-    /// Meta data about FINE records
+    ///     Meta data about FINE records
     /// </summary>
     [HttpPost("meta")]
-    public async Task<ActionResult<MetadataDto>> FinesMeta([FromQuery()] FineFindManyArgs filter)
+    public async Task<ActionResult<MetadataDto>> FinesMeta([FromQuery] FineFindManyArgs filter)
     {
         return Ok(await _service.FinesMeta(filter));
     }
 
     /// <summary>
-    /// Get one FINE
+    ///     Get one FINE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Fine>> Fine([FromRoute()] FineWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Fine>> Fine([FromRoute] FineWhereUniqueInput uniqueId)
     {
         try
         {
@@ -86,13 +85,13 @@ public abstract class FinesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one FINE
+    ///     Update one FINE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateFine(
-        [FromRoute()] FineWhereUniqueInput uniqueId,
-        [FromQuery()] FineUpdateInput fineUpdateDto
+        [FromRoute] FineWhereUniqueInput uniqueId,
+        [FromQuery] FineUpdateInput fineUpdateDto
     )
     {
         try

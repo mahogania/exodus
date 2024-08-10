@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ReimportedGoodsForPerfectingsControllerBase : ControllerBase
 {
     protected readonly IReimportedGoodsForPerfectingsService _service;
@@ -21,9 +20,9 @@ public abstract class ReimportedGoodsForPerfectingsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Create one REIMPORTED GOODS FOR PERFECTING
+    ///     Create one REIMPORTED GOODS FOR PERFECTING
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ReimportedGoodsForPerfecting>
@@ -39,12 +38,12 @@ public abstract class ReimportedGoodsForPerfectingsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Delete one REIMPORTED GOODS FOR PERFECTING
+    ///     Delete one REIMPORTED GOODS FOR PERFECTING
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteReimportedGoodsForPerfecting(
-        [FromRoute()] ReimportedGoodsForPerfectingWhereUniqueInput uniqueId
+        [FromRoute] ReimportedGoodsForPerfectingWhereUniqueInput uniqueId
     )
     {
         try
@@ -60,35 +59,35 @@ public abstract class ReimportedGoodsForPerfectingsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Find many REIMPORTED GOODS FOR PERFECTINGS
+    ///     Find many REIMPORTED GOODS FOR PERFECTINGS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<ReimportedGoodsForPerfecting>>
-    > ReimportedGoodsForPerfectings([FromQuery()] ReimportedGoodsForPerfectingFindManyArgs filter)
+    > ReimportedGoodsForPerfectings([FromQuery] ReimportedGoodsForPerfectingFindManyArgs filter)
     {
         return Ok(await _service.ReimportedGoodsForPerfectings(filter));
     }
 
     /// <summary>
-    /// Meta data about REIMPORTED GOODS FOR PERFECTING records
+    ///     Meta data about REIMPORTED GOODS FOR PERFECTING records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ReimportedGoodsForPerfectingsMeta(
-        [FromQuery()] ReimportedGoodsForPerfectingFindManyArgs filter
+        [FromQuery] ReimportedGoodsForPerfectingFindManyArgs filter
     )
     {
         return Ok(await _service.ReimportedGoodsForPerfectingsMeta(filter));
     }
 
     /// <summary>
-    /// Get one REIMPORTED GOODS FOR PERFECTING
+    ///     Get one REIMPORTED GOODS FOR PERFECTING
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ReimportedGoodsForPerfecting>> ReimportedGoodsForPerfecting(
-        [FromRoute()] ReimportedGoodsForPerfectingWhereUniqueInput uniqueId
+        [FromRoute] ReimportedGoodsForPerfectingWhereUniqueInput uniqueId
     )
     {
         try
@@ -102,13 +101,13 @@ public abstract class ReimportedGoodsForPerfectingsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Update one REIMPORTED GOODS FOR PERFECTING
+    ///     Update one REIMPORTED GOODS FOR PERFECTING
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateReimportedGoodsForPerfecting(
-        [FromRoute()] ReimportedGoodsForPerfectingWhereUniqueInput uniqueId,
-        [FromQuery()] ReimportedGoodsForPerfectingUpdateInput reimportedGoodsForPerfectingUpdateDto
+        [FromRoute] ReimportedGoodsForPerfectingWhereUniqueInput uniqueId,
+        [FromQuery] ReimportedGoodsForPerfectingUpdateInput reimportedGoodsForPerfectingUpdateDto
     )
     {
         try

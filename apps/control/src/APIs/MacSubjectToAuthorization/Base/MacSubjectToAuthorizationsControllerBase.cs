@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class MacSubjectToAuthorizationsControllerBase : ControllerBase
 {
     protected readonly IMacSubjectToAuthorizationsService _service;
@@ -19,9 +18,9 @@ public abstract class MacSubjectToAuthorizationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one MAC SUBJECT TO AUTHORIZATION
+    ///     Create one MAC SUBJECT TO AUTHORIZATION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<MacSubjectToAuthorization>> CreateMacSubjectToAuthorization(
         MacSubjectToAuthorizationCreateInput input
@@ -37,12 +36,12 @@ public abstract class MacSubjectToAuthorizationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one MAC SUBJECT TO AUTHORIZATION
+    ///     Delete one MAC SUBJECT TO AUTHORIZATION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteMacSubjectToAuthorization(
-        [FromRoute()] MacSubjectToAuthorizationWhereUniqueInput uniqueId
+        [FromRoute] MacSubjectToAuthorizationWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class MacSubjectToAuthorizationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many MAC SUBJECT TO AUTHORIZATIONS
+    ///     Find many MAC SUBJECT TO AUTHORIZATIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<MacSubjectToAuthorization>>> MacSubjectToAuthorizations(
-        [FromQuery()] MacSubjectToAuthorizationFindManyArgs filter
+        [FromQuery] MacSubjectToAuthorizationFindManyArgs filter
     )
     {
         return Ok(await _service.MacSubjectToAuthorizations(filter));
     }
 
     /// <summary>
-    /// Meta data about MAC SUBJECT TO AUTHORIZATION records
+    ///     Meta data about MAC SUBJECT TO AUTHORIZATION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> MacSubjectToAuthorizationsMeta(
-        [FromQuery()] MacSubjectToAuthorizationFindManyArgs filter
+        [FromQuery] MacSubjectToAuthorizationFindManyArgs filter
     )
     {
         return Ok(await _service.MacSubjectToAuthorizationsMeta(filter));
     }
 
     /// <summary>
-    /// Get one MAC SUBJECT TO AUTHORIZATION
+    ///     Get one MAC SUBJECT TO AUTHORIZATION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<MacSubjectToAuthorization>> MacSubjectToAuthorization(
-        [FromRoute()] MacSubjectToAuthorizationWhereUniqueInput uniqueId
+        [FromRoute] MacSubjectToAuthorizationWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class MacSubjectToAuthorizationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one MAC SUBJECT TO AUTHORIZATION
+    ///     Update one MAC SUBJECT TO AUTHORIZATION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateMacSubjectToAuthorization(
-        [FromRoute()] MacSubjectToAuthorizationWhereUniqueInput uniqueId,
-        [FromQuery()] MacSubjectToAuthorizationUpdateInput macSubjectToAuthorizationUpdateDto
+        [FromRoute] MacSubjectToAuthorizationWhereUniqueInput uniqueId,
+        [FromQuery] MacSubjectToAuthorizationUpdateInput macSubjectToAuthorizationUpdateDto
     )
     {
         try

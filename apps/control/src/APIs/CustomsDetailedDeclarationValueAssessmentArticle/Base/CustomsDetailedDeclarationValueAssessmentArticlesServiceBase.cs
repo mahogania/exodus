@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,11 +19,12 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesServiceBa
     }
 
     /// <summary>
-    /// Create one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
+    ///     Create one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
     /// </summary>
-    public async Task<CustomsDetailedDeclarationValueAssessmentArticle> CreateCustomsDetailedDeclarationValueAssessmentArticle(
-        CustomsDetailedDeclarationValueAssessmentArticleCreateInput createDto
-    )
+    public async Task<CustomsDetailedDeclarationValueAssessmentArticle>
+        CreateCustomsDetailedDeclarationValueAssessmentArticle(
+            CustomsDetailedDeclarationValueAssessmentArticleCreateInput createDto
+        )
     {
         var customsDetailedDeclarationValueAssessmentArticle =
             new CustomsDetailedDeclarationValueAssessmentArticleDbModel
@@ -88,10 +88,7 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesServiceBa
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            customsDetailedDeclarationValueAssessmentArticle.Id = createDto.Id;
-        }
+        if (createDto.Id != null) customsDetailedDeclarationValueAssessmentArticle.Id = createDto.Id;
 
         _context.CustomsDetailedDeclarationValueAssessmentArticles.Add(
             customsDetailedDeclarationValueAssessmentArticle
@@ -103,16 +100,13 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesServiceBa
                 customsDetailedDeclarationValueAssessmentArticle.Id
             );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
+    ///     Delete one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
     /// </summary>
     public async Task DeleteCustomsDetailedDeclarationValueAssessmentArticle(
         CustomsDetailedDeclarationValueAssessmentArticleWhereUniqueInput uniqueId
@@ -120,10 +114,7 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesServiceBa
     {
         var customsDetailedDeclarationValueAssessmentArticle =
             await _context.CustomsDetailedDeclarationValueAssessmentArticles.FindAsync(uniqueId.Id);
-        if (customsDetailedDeclarationValueAssessmentArticle == null)
-        {
-            throw new NotFoundException();
-        }
+        if (customsDetailedDeclarationValueAssessmentArticle == null) throw new NotFoundException();
 
         _context.CustomsDetailedDeclarationValueAssessmentArticles.Remove(
             customsDetailedDeclarationValueAssessmentArticle
@@ -132,7 +123,7 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesServiceBa
     }
 
     /// <summary>
-    /// Find many CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLES
+    ///     Find many CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLES
     /// </summary>
     public async Task<
         List<CustomsDetailedDeclarationValueAssessmentArticle>
@@ -153,7 +144,7 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesServiceBa
     }
 
     /// <summary>
-    /// Meta data about CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE records
+    ///     Meta data about CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE records
     /// </summary>
     public async Task<MetadataDto> CustomsDetailedDeclarationValueAssessmentArticlesMeta(
         CustomsDetailedDeclarationValueAssessmentArticleFindManyArgs findManyArgs
@@ -167,14 +158,15 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesServiceBa
     }
 
     /// <summary>
-    /// Get one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
+    ///     Get one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
     /// </summary>
-    public async Task<CustomsDetailedDeclarationValueAssessmentArticle> CustomsDetailedDeclarationValueAssessmentArticle(
-        CustomsDetailedDeclarationValueAssessmentArticleWhereUniqueInput uniqueId
-    )
+    public async Task<CustomsDetailedDeclarationValueAssessmentArticle>
+        CustomsDetailedDeclarationValueAssessmentArticle(
+            CustomsDetailedDeclarationValueAssessmentArticleWhereUniqueInput uniqueId
+        )
     {
         var customsDetailedDeclarationValueAssessmentArticles =
-            await this.CustomsDetailedDeclarationValueAssessmentArticles(
+            await CustomsDetailedDeclarationValueAssessmentArticles(
                 new CustomsDetailedDeclarationValueAssessmentArticleFindManyArgs
                 {
                     Where = new CustomsDetailedDeclarationValueAssessmentArticleWhereInput
@@ -185,16 +177,13 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesServiceBa
             );
         var customsDetailedDeclarationValueAssessmentArticle =
             customsDetailedDeclarationValueAssessmentArticles.FirstOrDefault();
-        if (customsDetailedDeclarationValueAssessmentArticle == null)
-        {
-            throw new NotFoundException();
-        }
+        if (customsDetailedDeclarationValueAssessmentArticle == null) throw new NotFoundException();
 
         return customsDetailedDeclarationValueAssessmentArticle;
     }
 
     /// <summary>
-    /// Update one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
+    ///     Update one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
     /// </summary>
     public async Task UpdateCustomsDetailedDeclarationValueAssessmentArticle(
         CustomsDetailedDeclarationValueAssessmentArticleWhereUniqueInput uniqueId,
@@ -217,13 +206,8 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesServiceBa
                     e.Id == customsDetailedDeclarationValueAssessmentArticle.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DetailedDeclarationOperatorCustomsItemsControllerBase : ControllerBase
 {
     protected readonly IDetailedDeclarationOperatorCustomsItemsService _service;
@@ -21,9 +20,9 @@ public abstract class DetailedDeclarationOperatorCustomsItemsControllerBase : Co
     }
 
     /// <summary>
-    /// Create one DETAILED DECLARATION OPERATOR (CUSTOMS)
+    ///     Create one DETAILED DECLARATION OPERATOR (CUSTOMS)
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailedDeclarationOperatorCustoms>
@@ -40,12 +39,12 @@ public abstract class DetailedDeclarationOperatorCustomsItemsControllerBase : Co
     }
 
     /// <summary>
-    /// Delete one DETAILED DECLARATION OPERATOR (CUSTOMS)
+    ///     Delete one DETAILED DECLARATION OPERATOR (CUSTOMS)
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDetailedDeclarationOperatorCustoms(
-        [FromRoute()] DetailedDeclarationOperatorCustomsWhereUniqueInput uniqueId
+        [FromRoute] DetailedDeclarationOperatorCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -61,39 +60,39 @@ public abstract class DetailedDeclarationOperatorCustomsItemsControllerBase : Co
     }
 
     /// <summary>
-    /// Find many DETAILED DECLARATION OPERATOR (CUSTOMS)s
+    ///     Find many DETAILED DECLARATION OPERATOR (CUSTOMS)s
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<DetailedDeclarationOperatorCustoms>>
     > DetailedDeclarationOperatorCustomsItems(
-        [FromQuery()] DetailedDeclarationOperatorCustomsFindManyArgs filter
+        [FromQuery] DetailedDeclarationOperatorCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.DetailedDeclarationOperatorCustomsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about DETAILED DECLARATION OPERATOR (CUSTOMS) records
+    ///     Meta data about DETAILED DECLARATION OPERATOR (CUSTOMS) records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DetailedDeclarationOperatorCustomsItemsMeta(
-        [FromQuery()] DetailedDeclarationOperatorCustomsFindManyArgs filter
+        [FromQuery] DetailedDeclarationOperatorCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.DetailedDeclarationOperatorCustomsItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one DETAILED DECLARATION OPERATOR (CUSTOMS)
+    ///     Get one DETAILED DECLARATION OPERATOR (CUSTOMS)
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailedDeclarationOperatorCustoms>
     > DetailedDeclarationOperatorCustoms(
-        [FromRoute()] DetailedDeclarationOperatorCustomsWhereUniqueInput uniqueId
+        [FromRoute] DetailedDeclarationOperatorCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -107,14 +106,13 @@ public abstract class DetailedDeclarationOperatorCustomsItemsControllerBase : Co
     }
 
     /// <summary>
-    /// Update one DETAILED DECLARATION OPERATOR (CUSTOMS)
+    ///     Update one DETAILED DECLARATION OPERATOR (CUSTOMS)
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDetailedDeclarationOperatorCustoms(
-        [FromRoute()] DetailedDeclarationOperatorCustomsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            DetailedDeclarationOperatorCustomsUpdateInput detailedDeclarationOperatorCustomsUpdateDto
+        [FromRoute] DetailedDeclarationOperatorCustomsWhereUniqueInput uniqueId,
+        [FromQuery] DetailedDeclarationOperatorCustomsUpdateInput detailedDeclarationOperatorCustomsUpdateDto
     )
     {
         try

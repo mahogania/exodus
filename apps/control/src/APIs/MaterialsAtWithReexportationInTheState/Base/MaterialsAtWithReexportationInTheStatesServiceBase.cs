@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class MaterialsAtWithReexportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Create one MATERIALS AT WITH REEXPORTATION IN THE STATE
+    ///     Create one MATERIALS AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     public async Task<MaterialsAtWithReexportationInTheState> CreateMaterialsAtWithReexportationInTheState(
         MaterialsAtWithReexportationInTheStateCreateInput createDto
@@ -53,10 +52,7 @@ public abstract class MaterialsAtWithReexportationInTheStatesServiceBase
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            materialsAtWithReexportationInTheState.Id = createDto.Id;
-        }
+        if (createDto.Id != null) materialsAtWithReexportationInTheState.Id = createDto.Id;
 
         _context.MaterialsAtWithReexportationInTheStates.Add(
             materialsAtWithReexportationInTheState
@@ -67,16 +63,13 @@ public abstract class MaterialsAtWithReexportationInTheStatesServiceBase
             materialsAtWithReexportationInTheState.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one MATERIALS AT WITH REEXPORTATION IN THE STATE
+    ///     Delete one MATERIALS AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     public async Task DeleteMaterialsAtWithReexportationInTheState(
         MaterialsAtWithReexportationInTheStateWhereUniqueInput uniqueId
@@ -84,10 +77,7 @@ public abstract class MaterialsAtWithReexportationInTheStatesServiceBase
     {
         var materialsAtWithReexportationInTheState =
             await _context.MaterialsAtWithReexportationInTheStates.FindAsync(uniqueId.Id);
-        if (materialsAtWithReexportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (materialsAtWithReexportationInTheState == null) throw new NotFoundException();
 
         _context.MaterialsAtWithReexportationInTheStates.Remove(
             materialsAtWithReexportationInTheState
@@ -96,7 +86,7 @@ public abstract class MaterialsAtWithReexportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Find many MATERIALS AT WITH REEXPORTATION IN THE STATES
+    ///     Find many MATERIALS AT WITH REEXPORTATION IN THE STATES
     /// </summary>
     public async Task<
         List<MaterialsAtWithReexportationInTheState>
@@ -116,7 +106,7 @@ public abstract class MaterialsAtWithReexportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Meta data about MATERIALS AT WITH REEXPORTATION IN THE STATE records
+    ///     Meta data about MATERIALS AT WITH REEXPORTATION IN THE STATE records
     /// </summary>
     public async Task<MetadataDto> MaterialsAtWithReexportationInTheStatesMeta(
         MaterialsAtWithReexportationInTheStateFindManyArgs findManyArgs
@@ -130,14 +120,14 @@ public abstract class MaterialsAtWithReexportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Get one MATERIALS AT WITH REEXPORTATION IN THE STATE
+    ///     Get one MATERIALS AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     public async Task<MaterialsAtWithReexportationInTheState> MaterialsAtWithReexportationInTheState(
         MaterialsAtWithReexportationInTheStateWhereUniqueInput uniqueId
     )
     {
         var materialsAtWithReexportationInTheStates =
-            await this.MaterialsAtWithReexportationInTheStates(
+            await MaterialsAtWithReexportationInTheStates(
                 new MaterialsAtWithReexportationInTheStateFindManyArgs
                 {
                     Where = new MaterialsAtWithReexportationInTheStateWhereInput
@@ -148,16 +138,13 @@ public abstract class MaterialsAtWithReexportationInTheStatesServiceBase
             );
         var materialsAtWithReexportationInTheState =
             materialsAtWithReexportationInTheStates.FirstOrDefault();
-        if (materialsAtWithReexportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (materialsAtWithReexportationInTheState == null) throw new NotFoundException();
 
         return materialsAtWithReexportationInTheState;
     }
 
     /// <summary>
-    /// Update one MATERIALS AT WITH REEXPORTATION IN THE STATE
+    ///     Update one MATERIALS AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     public async Task UpdateMaterialsAtWithReexportationInTheState(
         MaterialsAtWithReexportationInTheStateWhereUniqueInput uniqueId,
@@ -179,13 +166,8 @@ public abstract class MaterialsAtWithReexportationInTheStatesServiceBase
                     e.Id == materialsAtWithReexportationInTheState.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

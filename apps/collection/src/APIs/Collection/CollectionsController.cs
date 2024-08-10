@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class CollectionsController : CollectionsControllerBase
 {
     public CollectionsController(ICollectionsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

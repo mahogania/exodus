@@ -1,5 +1,4 @@
 using Collection.Infrastructure;
-using Collection.Infrastructure.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
@@ -27,7 +26,7 @@ public class SeedDevelopmentData
             Email = usernameValue,
             UserName = usernameValue,
             NormalizedUserName = usernameValue.ToUpperInvariant(),
-            NormalizedEmail = usernameValue.ToUpperInvariant(),
+            NormalizedEmail = usernameValue.ToUpperInvariant()
         };
 
         var password = new PasswordHasher<IdentityUser>();
@@ -37,10 +36,7 @@ public class SeedDevelopmentData
         await userStore.CreateAsync(user);
         var _roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
 
-        foreach (var role in amplicationRoles)
-        {
-            await userStore.AddToRoleAsync(user, _roleManager.NormalizeKey(role));
-        }
+        foreach (var role in amplicationRoles) await userStore.AddToRoleAsync(user, _roleManager.NormalizeKey(role));
 
         await context.SaveChangesAsync();
     }

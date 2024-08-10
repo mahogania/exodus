@@ -1,8 +1,9 @@
 using Collection.APIs.Common;
-using Collection.Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
-public class FineRequestFindManyArgs : FindManyInput<FineRequest, FineRequestWhereInput> { }
+public class FineRequestFindManyArgs : FindManyInput<FineRequest, FineRequestWhereInput>
+{
+}

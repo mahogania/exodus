@@ -6,21 +6,23 @@ namespace Control.APIs;
 public interface IDeclarationOfValueOfTheDetailedDeclarationCustomsItemsService
 {
     /// <summary>
-    /// Create one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    public Task<DeclarationOfValueOfTheDetailedDeclarationCustoms> CreateDeclarationOfValueOfTheDetailedDeclarationCustoms(
-        DeclarationOfValueOfTheDetailedDeclarationCustomsCreateInput declarationofvalueofthedetaileddeclarationcustoms
-    );
+    public Task<DeclarationOfValueOfTheDetailedDeclarationCustoms>
+        CreateDeclarationOfValueOfTheDetailedDeclarationCustoms(
+            DeclarationOfValueOfTheDetailedDeclarationCustomsCreateInput
+                declarationofvalueofthedetaileddeclarationcustoms
+        );
 
     /// <summary>
-    /// Delete one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task DeleteDeclarationOfValueOfTheDetailedDeclarationCustoms(
         DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Find many DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public Task<
         List<DeclarationOfValueOfTheDetailedDeclarationCustoms>
@@ -29,21 +31,21 @@ public interface IDeclarationOfValueOfTheDetailedDeclarationCustomsItemsService
     );
 
     /// <summary>
-    /// Meta data about DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public Task<MetadataDto> DeclarationOfValueOfTheDetailedDeclarationCustomsItemsMeta(
         DeclarationOfValueOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task<DeclarationOfValueOfTheDetailedDeclarationCustoms> DeclarationOfValueOfTheDetailedDeclarationCustoms(
         DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task UpdateDeclarationOfValueOfTheDetailedDeclarationCustoms(
         DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,

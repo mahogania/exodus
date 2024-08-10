@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class DepositsServiceBase : IDepositsService
     }
 
     /// <summary>
-    /// Create one DEPOSIT
+    ///     Create one DEPOSIT
     /// </summary>
     public async Task<Deposit> CreateDeposit(DepositCreateInput createDto)
     {
@@ -41,41 +40,32 @@ public abstract class DepositsServiceBase : IDepositsService
             UsageMoment = createDto.UsageMoment
         };
 
-        if (createDto.Id != null)
-        {
-            deposit.Id = createDto.Id;
-        }
+        if (createDto.Id != null) deposit.Id = createDto.Id;
 
         _context.Deposits.Add(deposit);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<DepositDbModel>(deposit.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DEPOSIT
+    ///     Delete one DEPOSIT
     /// </summary>
     public async Task DeleteDeposit(DepositWhereUniqueInput uniqueId)
     {
         var deposit = await _context.Deposits.FindAsync(uniqueId.Id);
-        if (deposit == null)
-        {
-            throw new NotFoundException();
-        }
+        if (deposit == null) throw new NotFoundException();
 
         _context.Deposits.Remove(deposit);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many DEPOSITS
+    ///     Find many DEPOSITS
     /// </summary>
     public async Task<List<Deposit>> Deposits(DepositFindManyArgs findManyArgs)
     {
@@ -89,7 +79,7 @@ public abstract class DepositsServiceBase : IDepositsService
     }
 
     /// <summary>
-    /// Meta data about DEPOSIT records
+    ///     Meta data about DEPOSIT records
     /// </summary>
     public async Task<MetadataDto> DepositsMeta(DepositFindManyArgs findManyArgs)
     {
@@ -99,24 +89,21 @@ public abstract class DepositsServiceBase : IDepositsService
     }
 
     /// <summary>
-    /// Get one DEPOSIT
+    ///     Get one DEPOSIT
     /// </summary>
     public async Task<Deposit> Deposit(DepositWhereUniqueInput uniqueId)
     {
-        var deposits = await this.Deposits(
+        var deposits = await Deposits(
             new DepositFindManyArgs { Where = new DepositWhereInput { Id = uniqueId.Id } }
         );
         var deposit = deposits.FirstOrDefault();
-        if (deposit == null)
-        {
-            throw new NotFoundException();
-        }
+        if (deposit == null) throw new NotFoundException();
 
         return deposit;
     }
 
     /// <summary>
-    /// Update one DEPOSIT
+    ///     Update one DEPOSIT
     /// </summary>
     public async Task UpdateDeposit(DepositWhereUniqueInput uniqueId, DepositUpdateInput updateDto)
     {
@@ -131,13 +118,8 @@ public abstract class DepositsServiceBase : IDepositsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Deposits.Any(e => e.Id == deposit.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

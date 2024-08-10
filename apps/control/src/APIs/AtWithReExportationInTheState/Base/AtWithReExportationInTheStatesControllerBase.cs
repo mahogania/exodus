@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class AtWithReExportationInTheStatesControllerBase : ControllerBase
 {
     protected readonly IAtWithReExportationInTheStatesService _service;
@@ -21,9 +20,9 @@ public abstract class AtWithReExportationInTheStatesControllerBase : ControllerB
     }
 
     /// <summary>
-    /// Create one AT WITH RE-EXPORTATION IN THE STATE
+    ///     Create one AT WITH RE-EXPORTATION IN THE STATE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<AtWithReExportationInTheState>
@@ -41,12 +40,12 @@ public abstract class AtWithReExportationInTheStatesControllerBase : ControllerB
     }
 
     /// <summary>
-    /// Delete one AT WITH RE-EXPORTATION IN THE STATE
+    ///     Delete one AT WITH RE-EXPORTATION IN THE STATE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteAtWithReExportationInTheState(
-        [FromRoute()] AtWithReExportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] AtWithReExportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -62,35 +61,35 @@ public abstract class AtWithReExportationInTheStatesControllerBase : ControllerB
     }
 
     /// <summary>
-    /// Find many AT WITH RE-EXPORTATION IN THE STATES
+    ///     Find many AT WITH RE-EXPORTATION IN THE STATES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<AtWithReExportationInTheState>>
-    > AtWithReExportationInTheStates([FromQuery()] AtWithReExportationInTheStateFindManyArgs filter)
+    > AtWithReExportationInTheStates([FromQuery] AtWithReExportationInTheStateFindManyArgs filter)
     {
         return Ok(await _service.AtWithReExportationInTheStates(filter));
     }
 
     /// <summary>
-    /// Meta data about AT WITH RE-EXPORTATION IN THE STATE records
+    ///     Meta data about AT WITH RE-EXPORTATION IN THE STATE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> AtWithReExportationInTheStatesMeta(
-        [FromQuery()] AtWithReExportationInTheStateFindManyArgs filter
+        [FromQuery] AtWithReExportationInTheStateFindManyArgs filter
     )
     {
         return Ok(await _service.AtWithReExportationInTheStatesMeta(filter));
     }
 
     /// <summary>
-    /// Get one AT WITH RE-EXPORTATION IN THE STATE
+    ///     Get one AT WITH RE-EXPORTATION IN THE STATE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<AtWithReExportationInTheState>> AtWithReExportationInTheState(
-        [FromRoute()] AtWithReExportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] AtWithReExportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -104,14 +103,13 @@ public abstract class AtWithReExportationInTheStatesControllerBase : ControllerB
     }
 
     /// <summary>
-    /// Update one AT WITH RE-EXPORTATION IN THE STATE
+    ///     Update one AT WITH RE-EXPORTATION IN THE STATE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateAtWithReExportationInTheState(
-        [FromRoute()] AtWithReExportationInTheStateWhereUniqueInput uniqueId,
-        [FromQuery()]
-            AtWithReExportationInTheStateUpdateInput atWithReExportationInTheStateUpdateDto
+        [FromRoute] AtWithReExportationInTheStateWhereUniqueInput uniqueId,
+        [FromQuery] AtWithReExportationInTheStateUpdateInput atWithReExportationInTheStateUpdateDto
     )
     {
         try

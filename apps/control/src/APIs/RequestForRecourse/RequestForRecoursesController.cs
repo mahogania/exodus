@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class RequestForRecoursesController : RequestForRecoursesControllerBase
 {
     public RequestForRecoursesController(IRequestForRecoursesService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

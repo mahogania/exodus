@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class DemandForRcoClresServiceBase : IDemandForRcoClresService
     }
 
     /// <summary>
-    /// Create one Demand for RCO | CLRE
+    ///     Create one Demand for RCO | CLRE
     /// </summary>
     public async Task<DemandForRcoClre> CreateDemandForRcoClre(
         DemandForRcoClreCreateInput createDto
@@ -88,41 +87,32 @@ public abstract class DemandForRcoClresServiceBase : IDemandForRcoClresService
             ZipcodeHolder = createDto.ZipcodeHolder
         };
 
-        if (createDto.Id != null)
-        {
-            demandForRcoClre.Id = createDto.Id;
-        }
+        if (createDto.Id != null) demandForRcoClre.Id = createDto.Id;
 
         _context.DemandForRcoClres.Add(demandForRcoClre);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<DemandForRcoClreDbModel>(demandForRcoClre.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one Demand for RCO | CLRE
+    ///     Delete one Demand for RCO | CLRE
     /// </summary>
     public async Task DeleteDemandForRcoClre(DemandForRcoClreWhereUniqueInput uniqueId)
     {
         var demandForRcoClre = await _context.DemandForRcoClres.FindAsync(uniqueId.Id);
-        if (demandForRcoClre == null)
-        {
-            throw new NotFoundException();
-        }
+        if (demandForRcoClre == null) throw new NotFoundException();
 
         _context.DemandForRcoClres.Remove(demandForRcoClre);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many Demand for RCO | CLRES
+    ///     Find many Demand for RCO | CLRES
     /// </summary>
     public async Task<List<DemandForRcoClre>> DemandForRcoClres(
         DemandForRcoClreFindManyArgs findManyArgs
@@ -138,7 +128,7 @@ public abstract class DemandForRcoClresServiceBase : IDemandForRcoClresService
     }
 
     /// <summary>
-    /// Meta data about Demand for RCO | CLRE records
+    ///     Meta data about Demand for RCO | CLRE records
     /// </summary>
     public async Task<MetadataDto> DemandForRcoClresMeta(DemandForRcoClreFindManyArgs findManyArgs)
     {
@@ -148,27 +138,24 @@ public abstract class DemandForRcoClresServiceBase : IDemandForRcoClresService
     }
 
     /// <summary>
-    /// Get one Demand for RCO | CLRE
+    ///     Get one Demand for RCO | CLRE
     /// </summary>
     public async Task<DemandForRcoClre> DemandForRcoClre(DemandForRcoClreWhereUniqueInput uniqueId)
     {
-        var demandForRcoClres = await this.DemandForRcoClres(
+        var demandForRcoClres = await DemandForRcoClres(
             new DemandForRcoClreFindManyArgs
             {
                 Where = new DemandForRcoClreWhereInput { Id = uniqueId.Id }
             }
         );
         var demandForRcoClre = demandForRcoClres.FirstOrDefault();
-        if (demandForRcoClre == null)
-        {
-            throw new NotFoundException();
-        }
+        if (demandForRcoClre == null) throw new NotFoundException();
 
         return demandForRcoClre;
     }
 
     /// <summary>
-    /// Update one Demand for RCO | CLRE
+    ///     Update one Demand for RCO | CLRE
     /// </summary>
     public async Task UpdateDemandForRcoClre(
         DemandForRcoClreWhereUniqueInput uniqueId,
@@ -186,13 +173,8 @@ public abstract class DemandForRcoClresServiceBase : IDemandForRcoClresService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.DemandForRcoClres.Any(e => e.Id == demandForRcoClre.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

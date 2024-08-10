@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CertificatesControllerBase : ControllerBase
 {
     protected readonly ICertificatesService _service;
@@ -19,9 +18,9 @@ public abstract class CertificatesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one CERTIFICATE
+    ///     Create one CERTIFICATE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Certificate>> CreateCertificate(CertificateCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class CertificatesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one CERTIFICATE
+    ///     Delete one CERTIFICATE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCertificate(
-        [FromRoute()] CertificateWhereUniqueInput uniqueId
+        [FromRoute] CertificateWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class CertificatesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many CERTIFICATES
+    ///     Find many CERTIFICATES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Certificate>>> Certificates(
-        [FromQuery()] CertificateFindManyArgs filter
+        [FromQuery] CertificateFindManyArgs filter
     )
     {
         return Ok(await _service.Certificates(filter));
     }
 
     /// <summary>
-    /// Meta data about CERTIFICATE records
+    ///     Meta data about CERTIFICATE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CertificatesMeta(
-        [FromQuery()] CertificateFindManyArgs filter
+        [FromQuery] CertificateFindManyArgs filter
     )
     {
         return Ok(await _service.CertificatesMeta(filter));
     }
 
     /// <summary>
-    /// Get one CERTIFICATE
+    ///     Get one CERTIFICATE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Certificate>> Certificate(
-        [FromRoute()] CertificateWhereUniqueInput uniqueId
+        [FromRoute] CertificateWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class CertificatesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one CERTIFICATE
+    ///     Update one CERTIFICATE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCertificate(
-        [FromRoute()] CertificateWhereUniqueInput uniqueId,
-        [FromQuery()] CertificateUpdateInput certificateUpdateDto
+        [FromRoute] CertificateWhereUniqueInput uniqueId,
+        [FromQuery] CertificateUpdateInput certificateUpdateDto
     )
     {
         try

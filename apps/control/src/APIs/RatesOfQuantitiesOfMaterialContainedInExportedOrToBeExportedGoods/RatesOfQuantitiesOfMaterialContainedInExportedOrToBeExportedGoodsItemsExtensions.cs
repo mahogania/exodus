@@ -27,7 +27,7 @@ public static class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExported
             RegimeRequestNumber = model.RegimeRequestNumber,
             SequenceNumber = model.SequenceNumber,
             SuppressionOn = model.SuppressionOn,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -59,17 +59,13 @@ public static class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExported
             };
 
         if (updateDto.CreatedAt != null)
-        {
             ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods.CreatedAt = updateDto
                 .CreatedAt
                 .Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods.UpdatedAt = updateDto
                 .UpdatedAt
                 .Value;
-        }
 
         return ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods;
     }

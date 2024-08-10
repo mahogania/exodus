@@ -6,42 +6,42 @@ namespace Control.APIs;
 public interface IDetailsOfAtGoodsForActivePerfectingsService
 {
     /// <summary>
-    /// Create one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Create one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     public Task<DetailsOfAtGoodsForActivePerfecting> CreateDetailsOfAtGoodsForActivePerfecting(
         DetailsOfAtGoodsForActivePerfectingCreateInput detailsofatgoodsforactiveperfecting
     );
 
     /// <summary>
-    /// Delete one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Delete one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     public Task DeleteDetailsOfAtGoodsForActivePerfecting(
         DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Find many DETAILS OF AT GOODS FOR ACTIVE PERFECTINGS
+    ///     Find many DETAILS OF AT GOODS FOR ACTIVE PERFECTINGS
     /// </summary>
     public Task<List<DetailsOfAtGoodsForActivePerfecting>> DetailsOfAtGoodsForActivePerfectings(
         DetailsOfAtGoodsForActivePerfectingFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Meta data about DETAILS OF AT GOODS FOR ACTIVE PERFECTING records
+    ///     Meta data about DETAILS OF AT GOODS FOR ACTIVE PERFECTING records
     /// </summary>
     public Task<MetadataDto> DetailsOfAtGoodsForActivePerfectingsMeta(
         DetailsOfAtGoodsForActivePerfectingFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Get one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     public Task<DetailsOfAtGoodsForActivePerfecting> DetailsOfAtGoodsForActivePerfecting(
         DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Update one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     public Task UpdateDetailsOfAtGoodsForActivePerfecting(
         DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId,

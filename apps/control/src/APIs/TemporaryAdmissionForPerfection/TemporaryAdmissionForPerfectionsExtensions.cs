@@ -69,7 +69,7 @@ public static class TemporaryAdmissionForPerfectionsExtensions
             RequestedStartDate = model.RequestedStartDate,
             StartDateOfRegimeAuthorization = model.StartDateOfRegimeAuthorization,
             TransferWithMaintenanceOfRegime = model.TransferWithMaintenanceOfRegime,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -140,14 +140,8 @@ public static class TemporaryAdmissionForPerfectionsExtensions
             TransferWithMaintenanceOfRegime = updateDto.TransferWithMaintenanceOfRegime
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            temporaryAdmissionForPerfection.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            temporaryAdmissionForPerfection.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) temporaryAdmissionForPerfection.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) temporaryAdmissionForPerfection.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return temporaryAdmissionForPerfection;
     }

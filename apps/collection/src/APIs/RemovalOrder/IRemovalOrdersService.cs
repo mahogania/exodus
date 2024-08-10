@@ -6,32 +6,32 @@ namespace Collection.APIs;
 public interface IRemovalOrdersService
 {
     /// <summary>
-    /// Create one REMOVAL ORDER
+    ///     Create one REMOVAL ORDER
     /// </summary>
     public Task<RemovalOrder> CreateRemovalOrder(RemovalOrderCreateInput removalorder);
 
     /// <summary>
-    /// Delete one REMOVAL ORDER
+    ///     Delete one REMOVAL ORDER
     /// </summary>
     public Task DeleteRemovalOrder(RemovalOrderWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Find many REMOVAL ORDERS
+    ///     Find many REMOVAL ORDERS
     /// </summary>
     public Task<List<RemovalOrder>> RemovalOrders(RemovalOrderFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Meta data about REMOVAL ORDER records
+    ///     Meta data about REMOVAL ORDER records
     /// </summary>
     public Task<MetadataDto> RemovalOrdersMeta(RemovalOrderFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Get one REMOVAL ORDER
+    ///     Get one REMOVAL ORDER
     /// </summary>
     public Task<RemovalOrder> RemovalOrder(RemovalOrderWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Update one REMOVAL ORDER
+    ///     Update one REMOVAL ORDER
     /// </summary>
     public Task UpdateRemovalOrder(
         RemovalOrderWhereUniqueInput uniqueId,

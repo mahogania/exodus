@@ -11,7 +11,7 @@ public static class RequestForRecoursesExtensions
         {
             CreatedAt = model.CreatedAt,
             Id = model.Id,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -22,14 +22,8 @@ public static class RequestForRecoursesExtensions
     {
         var requestForRecourse = new RequestForRecourseDbModel { Id = uniqueId.Id };
 
-        if (updateDto.CreatedAt != null)
-        {
-            requestForRecourse.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            requestForRecourse.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) requestForRecourse.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) requestForRecourse.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return requestForRecourse;
     }

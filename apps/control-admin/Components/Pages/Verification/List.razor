@@ -1,7 +1,4 @@
 @page "/verification-list"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
 @inject IStringLocalizer<Pages.VerificationList> Localizer
 
 <div class="container">
@@ -9,10 +6,10 @@
 
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfDateRangePicker Placeholder="@Localizer["DDEDate"]" CssClass="e-outline"></SfDateRangePicker>
+            <SfDateRangePicker TValue="DateTime[]" Placeholder="@Localizer["DDEDate"]" CssClass="e-outline"></SfDateRangePicker>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
         </div>
         <div class="col-md-3 mt-2">
             <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
@@ -42,6 +39,7 @@
 </div>
 
 @code {
+
     public class VerificationStatus
     {
         public string ReferenceNo { get; set; }
@@ -55,9 +53,10 @@
         public string Status { get; set; }
     }
 
-    public List<VerificationStatus> VerificationStatusData = new List<VerificationStatus>
+    public List<VerificationStatus> VerificationStatusData = new()
     {
         new VerificationStatus { ReferenceNo = "H0001-2022-DAU-000001-E", DDEDate = new DateTime(2022, 2, 10), DeclarationType = "IM4 - Déclaration de l'importation", ClearanceTiming = "PMD", DeclarantNo = "H0001", Responsible = "IMPORTER COMPANY NAME", NumberOfArticles = 1, Detected = "O/N", Status = "Vérif/Contrôle en cours" }
         // Add more data as needed
     };
+
 }

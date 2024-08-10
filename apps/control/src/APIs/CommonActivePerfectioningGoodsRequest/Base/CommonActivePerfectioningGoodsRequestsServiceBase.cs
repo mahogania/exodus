@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class CommonActivePerfectioningGoodsRequestsServiceBase
     }
 
     /// <summary>
-    /// Create one COMMON ACTIVE PERFECTIONING GOODS REQUEST
+    ///     Create one COMMON ACTIVE PERFECTIONING GOODS REQUEST
     /// </summary>
     public async Task<CommonActivePerfectioningGoodsRequest> CreateCommonActivePerfectioningGoodsRequest(
         CommonActivePerfectioningGoodsRequestCreateInput createDto
@@ -32,10 +31,7 @@ public abstract class CommonActivePerfectioningGoodsRequestsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            commonActivePerfectioningGoodsRequest.Id = createDto.Id;
-        }
+        if (createDto.Id != null) commonActivePerfectioningGoodsRequest.Id = createDto.Id;
 
         _context.CommonActivePerfectioningGoodsRequests.Add(commonActivePerfectioningGoodsRequest);
         await _context.SaveChangesAsync();
@@ -44,16 +40,13 @@ public abstract class CommonActivePerfectioningGoodsRequestsServiceBase
             commonActivePerfectioningGoodsRequest.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one COMMON ACTIVE PERFECTIONING GOODS REQUEST
+    ///     Delete one COMMON ACTIVE PERFECTIONING GOODS REQUEST
     /// </summary>
     public async Task DeleteCommonActivePerfectioningGoodsRequest(
         CommonActivePerfectioningGoodsRequestWhereUniqueInput uniqueId
@@ -61,10 +54,7 @@ public abstract class CommonActivePerfectioningGoodsRequestsServiceBase
     {
         var commonActivePerfectioningGoodsRequest =
             await _context.CommonActivePerfectioningGoodsRequests.FindAsync(uniqueId.Id);
-        if (commonActivePerfectioningGoodsRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (commonActivePerfectioningGoodsRequest == null) throw new NotFoundException();
 
         _context.CommonActivePerfectioningGoodsRequests.Remove(
             commonActivePerfectioningGoodsRequest
@@ -73,7 +63,7 @@ public abstract class CommonActivePerfectioningGoodsRequestsServiceBase
     }
 
     /// <summary>
-    /// Find many COMMON ACTIVE PERFECTIONING GOODS REQUESTS
+    ///     Find many COMMON ACTIVE PERFECTIONING GOODS REQUESTS
     /// </summary>
     public async Task<
         List<CommonActivePerfectioningGoodsRequest>
@@ -93,7 +83,7 @@ public abstract class CommonActivePerfectioningGoodsRequestsServiceBase
     }
 
     /// <summary>
-    /// Meta data about COMMON ACTIVE PERFECTIONING GOODS REQUEST records
+    ///     Meta data about COMMON ACTIVE PERFECTIONING GOODS REQUEST records
     /// </summary>
     public async Task<MetadataDto> CommonActivePerfectioningGoodsRequestsMeta(
         CommonActivePerfectioningGoodsRequestFindManyArgs findManyArgs
@@ -107,14 +97,14 @@ public abstract class CommonActivePerfectioningGoodsRequestsServiceBase
     }
 
     /// <summary>
-    /// Get one COMMON ACTIVE PERFECTIONING GOODS REQUEST
+    ///     Get one COMMON ACTIVE PERFECTIONING GOODS REQUEST
     /// </summary>
     public async Task<CommonActivePerfectioningGoodsRequest> CommonActivePerfectioningGoodsRequest(
         CommonActivePerfectioningGoodsRequestWhereUniqueInput uniqueId
     )
     {
         var commonActivePerfectioningGoodsRequests =
-            await this.CommonActivePerfectioningGoodsRequests(
+            await CommonActivePerfectioningGoodsRequests(
                 new CommonActivePerfectioningGoodsRequestFindManyArgs
                 {
                     Where = new CommonActivePerfectioningGoodsRequestWhereInput { Id = uniqueId.Id }
@@ -122,16 +112,13 @@ public abstract class CommonActivePerfectioningGoodsRequestsServiceBase
             );
         var commonActivePerfectioningGoodsRequest =
             commonActivePerfectioningGoodsRequests.FirstOrDefault();
-        if (commonActivePerfectioningGoodsRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (commonActivePerfectioningGoodsRequest == null) throw new NotFoundException();
 
         return commonActivePerfectioningGoodsRequest;
     }
 
     /// <summary>
-    /// Update one COMMON ACTIVE PERFECTIONING GOODS REQUEST
+    ///     Update one COMMON ACTIVE PERFECTIONING GOODS REQUEST
     /// </summary>
     public async Task UpdateCommonActivePerfectioningGoodsRequest(
         CommonActivePerfectioningGoodsRequestWhereUniqueInput uniqueId,
@@ -153,13 +140,8 @@ public abstract class CommonActivePerfectioningGoodsRequestsServiceBase
                     e.Id == commonActivePerfectioningGoodsRequest.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

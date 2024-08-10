@@ -5,5 +5,7 @@ namespace Collection.APIs;
 public class AdjustmentsService : AdjustmentsServiceBase
 {
     public AdjustmentsService(CollectionDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

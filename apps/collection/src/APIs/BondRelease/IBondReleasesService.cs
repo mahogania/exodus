@@ -6,32 +6,32 @@ namespace Collection.APIs;
 public interface IBondReleasesService
 {
     /// <summary>
-    /// Create one BOND RELEASE
+    ///     Create one BOND RELEASE
     /// </summary>
     public Task<BondRelease> CreateBondRelease(BondReleaseCreateInput bondrelease);
 
     /// <summary>
-    /// Delete one BOND RELEASE
+    ///     Delete one BOND RELEASE
     /// </summary>
     public Task DeleteBondRelease(BondReleaseWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Find many BOND RELEASES
+    ///     Find many BOND RELEASES
     /// </summary>
     public Task<List<BondRelease>> BondReleases(BondReleaseFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Meta data about BOND RELEASE records
+    ///     Meta data about BOND RELEASE records
     /// </summary>
     public Task<MetadataDto> BondReleasesMeta(BondReleaseFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Get one BOND RELEASE
+    ///     Get one BOND RELEASE
     /// </summary>
     public Task<BondRelease> BondRelease(BondReleaseWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Update one BOND RELEASE
+    ///     Update one BOND RELEASE
     /// </summary>
     public Task UpdateBondRelease(
         BondReleaseWhereUniqueInput uniqueId,

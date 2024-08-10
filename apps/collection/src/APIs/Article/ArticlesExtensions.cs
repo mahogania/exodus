@@ -18,7 +18,7 @@ public static class ArticlesExtensions
             FirstRegistrantId = model.FirstRegistrantId,
             FirstRegistrationDateAndTime = model.FirstRegistrationDateAndTime,
             Id = model.Id,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -39,14 +39,8 @@ public static class ArticlesExtensions
             FirstRegistrationDateAndTime = updateDto.FirstRegistrationDateAndTime
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            article.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            article.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) article.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) article.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return article;
     }

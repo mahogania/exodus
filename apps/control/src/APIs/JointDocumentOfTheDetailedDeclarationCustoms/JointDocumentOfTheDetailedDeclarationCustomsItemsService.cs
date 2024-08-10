@@ -6,5 +6,7 @@ public class JointDocumentOfTheDetailedDeclarationCustomsItemsService
     : JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBase
 {
     public JointDocumentOfTheDetailedDeclarationCustomsItemsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

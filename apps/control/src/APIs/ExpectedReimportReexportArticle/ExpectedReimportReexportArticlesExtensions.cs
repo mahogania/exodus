@@ -31,7 +31,7 @@ public static class ExpectedReimportReexportArticlesExtensions
             SpecificGoodsClassificationCode = model.SpecificGoodsClassificationCode,
             SuppressionOn = model.SuppressionOn,
             TransactionArticleName = model.TransactionArticleName,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -63,14 +63,8 @@ public static class ExpectedReimportReexportArticlesExtensions
             TransactionArticleName = updateDto.TransactionArticleName
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            expectedReimportReexportArticle.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            expectedReimportReexportArticle.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) expectedReimportReexportArticle.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) expectedReimportReexportArticle.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return expectedReimportReexportArticle;
     }

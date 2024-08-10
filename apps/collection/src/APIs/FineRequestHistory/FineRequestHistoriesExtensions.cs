@@ -25,7 +25,7 @@ public static class FineRequestHistoriesExtensions
             InfractionCode = model.InfractionCode,
             OperationTypeCode = model.OperationTypeCode,
             RequestOrderNumber = model.RequestOrderNumber,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -53,14 +53,8 @@ public static class FineRequestHistoriesExtensions
             RequestOrderNumber = updateDto.RequestOrderNumber
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            fineRequestHistory.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            fineRequestHistory.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) fineRequestHistory.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) fineRequestHistory.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return fineRequestHistory;
     }

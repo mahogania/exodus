@@ -1,29 +1,27 @@
-@page "/extension-request"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.DropDowns
-@inject IStringLocalizer<Pages.ExtensionRequest> Localizer
+@page "/extension-requests"
+@using Microsoft.Extensions.Localization
+@using Syncfusion.Blazor.Diagram
+@inject IStringLocalizer<Pages.ExtensionRequests> Localizer
 
 <div class="container">
-    <h3>@Localizer["ExtensionRequestTitle"]</h3>
+    <h3>@Localizer["ExtensionRequestsTitle"]</h3>
 
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfDateRangePicker Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
+            <SfDateRangePicker TValue="DateTime[]" Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["DDENo"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["DDENo"]" CssClass="e-outline"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfDropDownList Placeholder="@Localizer["Status"]" CssClass="e-outline" DataSource="@StatusOptions" TItem="string"></SfDropDownList>
+            <SfDropDownList TValue="string" Placeholder="@Localizer["Status"]" CssClass="e-outline" DataSource="@StatusOptions" TItem="string"></SfDropDownList>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
         </div>
         <div class="col-md-3 mt-2">
-            <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
-            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Search"]</SfButton>
         </div>
     </div>
 
@@ -42,12 +40,13 @@
 
     <div class="row mt-3">
         <div class="col-md-12 text-right">
-            <SfButton CssClass="e-primary">@Localizer["DownloadExcel"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["DownloadExcel"]</SfButton>
         </div>
     </div>
 </div>
 
 @code {
+
     public class ExtensionRequest
     {
         public string DDENo { get; set; }
@@ -60,7 +59,7 @@
         public string Status { get; set; }
     }
 
-    public List<string> StatusOptions = new List<string>
+    public List<string> StatusOptions = new()
     {
         "Réceptionner",
         "Autoriser",
@@ -68,9 +67,10 @@
         // Add more statuses as needed
     };
 
-    public List<ExtensionRequest> ExtensionRequestData = new List<ExtensionRequest>
+    public List<ExtensionRequest> ExtensionRequestData = new()
     {
         new ExtensionRequest { DDENo = "2022-F-000001", ReferenceNo = "H0001-2022-DAU-000001-E", DeclarationRegistrationDate = new DateTime(2022, 3, 30), Exporter = "Exportateur", ValidationDate = new DateTime(2022, 4, 10), LoadingDueDate = new DateTime(2022, 4, 28), NewDueDate = new DateTime(2022, 5, 10), Status = "Autoriser" }
         // Add more data as needed
     };
+
 }

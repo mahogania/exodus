@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class BondReleasesControllerBase : ControllerBase
 {
     protected readonly IBondReleasesService _service;
@@ -19,9 +18,9 @@ public abstract class BondReleasesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one BOND RELEASE
+    ///     Create one BOND RELEASE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<BondRelease>> CreateBondRelease(BondReleaseCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class BondReleasesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one BOND RELEASE
+    ///     Delete one BOND RELEASE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteBondRelease(
-        [FromRoute()] BondReleaseWhereUniqueInput uniqueId
+        [FromRoute] BondReleaseWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class BondReleasesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many BOND RELEASES
+    ///     Find many BOND RELEASES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<BondRelease>>> BondReleases(
-        [FromQuery()] BondReleaseFindManyArgs filter
+        [FromQuery] BondReleaseFindManyArgs filter
     )
     {
         return Ok(await _service.BondReleases(filter));
     }
 
     /// <summary>
-    /// Meta data about BOND RELEASE records
+    ///     Meta data about BOND RELEASE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> BondReleasesMeta(
-        [FromQuery()] BondReleaseFindManyArgs filter
+        [FromQuery] BondReleaseFindManyArgs filter
     )
     {
         return Ok(await _service.BondReleasesMeta(filter));
     }
 
     /// <summary>
-    /// Get one BOND RELEASE
+    ///     Get one BOND RELEASE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<BondRelease>> BondRelease(
-        [FromRoute()] BondReleaseWhereUniqueInput uniqueId
+        [FromRoute] BondReleaseWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class BondReleasesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one BOND RELEASE
+    ///     Update one BOND RELEASE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateBondRelease(
-        [FromRoute()] BondReleaseWhereUniqueInput uniqueId,
-        [FromQuery()] BondReleaseUpdateInput bondReleaseUpdateDto
+        [FromRoute] BondReleaseWhereUniqueInput uniqueId,
+        [FromQuery] BondReleaseUpdateInput bondReleaseUpdateDto
     )
     {
         try

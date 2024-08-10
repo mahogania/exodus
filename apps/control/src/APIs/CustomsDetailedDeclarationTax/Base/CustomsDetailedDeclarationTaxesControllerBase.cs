@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CustomsDetailedDeclarationTaxesControllerBase : ControllerBase
 {
     protected readonly ICustomsDetailedDeclarationTaxesService _service;
@@ -21,9 +20,9 @@ public abstract class CustomsDetailedDeclarationTaxesControllerBase : Controller
     }
 
     /// <summary>
-    /// Create one CUSTOMS DETAILED DECLARATION TAX
+    ///     Create one CUSTOMS DETAILED DECLARATION TAX
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CustomsDetailedDeclarationTax>
@@ -41,12 +40,12 @@ public abstract class CustomsDetailedDeclarationTaxesControllerBase : Controller
     }
 
     /// <summary>
-    /// Delete one CUSTOMS DETAILED DECLARATION TAX
+    ///     Delete one CUSTOMS DETAILED DECLARATION TAX
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCustomsDetailedDeclarationTax(
-        [FromRoute()] CustomsDetailedDeclarationTaxWhereUniqueInput uniqueId
+        [FromRoute] CustomsDetailedDeclarationTaxWhereUniqueInput uniqueId
     )
     {
         try
@@ -62,37 +61,37 @@ public abstract class CustomsDetailedDeclarationTaxesControllerBase : Controller
     }
 
     /// <summary>
-    /// Find many CUSTOMS DETAILED DECLARATION TAXES
+    ///     Find many CUSTOMS DETAILED DECLARATION TAXES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<CustomsDetailedDeclarationTax>>
     > CustomsDetailedDeclarationTaxes(
-        [FromQuery()] CustomsDetailedDeclarationTaxFindManyArgs filter
+        [FromQuery] CustomsDetailedDeclarationTaxFindManyArgs filter
     )
     {
         return Ok(await _service.CustomsDetailedDeclarationTaxes(filter));
     }
 
     /// <summary>
-    /// Meta data about CUSTOMS DETAILED DECLARATION TAX records
+    ///     Meta data about CUSTOMS DETAILED DECLARATION TAX records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CustomsDetailedDeclarationTaxesMeta(
-        [FromQuery()] CustomsDetailedDeclarationTaxFindManyArgs filter
+        [FromQuery] CustomsDetailedDeclarationTaxFindManyArgs filter
     )
     {
         return Ok(await _service.CustomsDetailedDeclarationTaxesMeta(filter));
     }
 
     /// <summary>
-    /// Get one CUSTOMS DETAILED DECLARATION TAX
+    ///     Get one CUSTOMS DETAILED DECLARATION TAX
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<CustomsDetailedDeclarationTax>> CustomsDetailedDeclarationTax(
-        [FromRoute()] CustomsDetailedDeclarationTaxWhereUniqueInput uniqueId
+        [FromRoute] CustomsDetailedDeclarationTaxWhereUniqueInput uniqueId
     )
     {
         try
@@ -106,14 +105,13 @@ public abstract class CustomsDetailedDeclarationTaxesControllerBase : Controller
     }
 
     /// <summary>
-    /// Update one CUSTOMS DETAILED DECLARATION TAX
+    ///     Update one CUSTOMS DETAILED DECLARATION TAX
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCustomsDetailedDeclarationTax(
-        [FromRoute()] CustomsDetailedDeclarationTaxWhereUniqueInput uniqueId,
-        [FromQuery()]
-            CustomsDetailedDeclarationTaxUpdateInput customsDetailedDeclarationTaxUpdateDto
+        [FromRoute] CustomsDetailedDeclarationTaxWhereUniqueInput uniqueId,
+        [FromQuery] CustomsDetailedDeclarationTaxUpdateInput customsDetailedDeclarationTaxUpdateDto
     )
     {
         try

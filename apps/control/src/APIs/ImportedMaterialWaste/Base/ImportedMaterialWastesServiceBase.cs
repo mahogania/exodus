@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ImportedMaterialWastesServiceBase : IImportedMaterialWaste
     }
 
     /// <summary>
-    /// Create one IMPORTED MATERIAL WASTE
+    ///     Create one IMPORTED MATERIAL WASTE
     /// </summary>
     public async Task<ImportedMaterialWaste> CreateImportedMaterialWaste(
         ImportedMaterialWasteCreateInput createDto
@@ -43,10 +42,7 @@ public abstract class ImportedMaterialWastesServiceBase : IImportedMaterialWaste
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            importedMaterialWaste.Id = createDto.Id;
-        }
+        if (createDto.Id != null) importedMaterialWaste.Id = createDto.Id;
 
         _context.ImportedMaterialWastes.Add(importedMaterialWaste);
         await _context.SaveChangesAsync();
@@ -55,31 +51,25 @@ public abstract class ImportedMaterialWastesServiceBase : IImportedMaterialWaste
             importedMaterialWaste.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one IMPORTED MATERIAL WASTE
+    ///     Delete one IMPORTED MATERIAL WASTE
     /// </summary>
     public async Task DeleteImportedMaterialWaste(ImportedMaterialWasteWhereUniqueInput uniqueId)
     {
         var importedMaterialWaste = await _context.ImportedMaterialWastes.FindAsync(uniqueId.Id);
-        if (importedMaterialWaste == null)
-        {
-            throw new NotFoundException();
-        }
+        if (importedMaterialWaste == null) throw new NotFoundException();
 
         _context.ImportedMaterialWastes.Remove(importedMaterialWaste);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many IMPORTED MATERIAL WASTES
+    ///     Find many IMPORTED MATERIAL WASTES
     /// </summary>
     public async Task<List<ImportedMaterialWaste>> ImportedMaterialWastes(
         ImportedMaterialWasteFindManyArgs findManyArgs
@@ -97,7 +87,7 @@ public abstract class ImportedMaterialWastesServiceBase : IImportedMaterialWaste
     }
 
     /// <summary>
-    /// Meta data about IMPORTED MATERIAL WASTE records
+    ///     Meta data about IMPORTED MATERIAL WASTE records
     /// </summary>
     public async Task<MetadataDto> ImportedMaterialWastesMeta(
         ImportedMaterialWasteFindManyArgs findManyArgs
@@ -111,29 +101,26 @@ public abstract class ImportedMaterialWastesServiceBase : IImportedMaterialWaste
     }
 
     /// <summary>
-    /// Get one IMPORTED MATERIAL WASTE
+    ///     Get one IMPORTED MATERIAL WASTE
     /// </summary>
     public async Task<ImportedMaterialWaste> ImportedMaterialWaste(
         ImportedMaterialWasteWhereUniqueInput uniqueId
     )
     {
-        var importedMaterialWastes = await this.ImportedMaterialWastes(
+        var importedMaterialWastes = await ImportedMaterialWastes(
             new ImportedMaterialWasteFindManyArgs
             {
                 Where = new ImportedMaterialWasteWhereInput { Id = uniqueId.Id }
             }
         );
         var importedMaterialWaste = importedMaterialWastes.FirstOrDefault();
-        if (importedMaterialWaste == null)
-        {
-            throw new NotFoundException();
-        }
+        if (importedMaterialWaste == null) throw new NotFoundException();
 
         return importedMaterialWaste;
     }
 
     /// <summary>
-    /// Update one IMPORTED MATERIAL WASTE
+    ///     Update one IMPORTED MATERIAL WASTE
     /// </summary>
     public async Task UpdateImportedMaterialWaste(
         ImportedMaterialWasteWhereUniqueInput uniqueId,
@@ -151,13 +138,8 @@ public abstract class ImportedMaterialWastesServiceBase : IImportedMaterialWaste
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.ImportedMaterialWastes.Any(e => e.Id == importedMaterialWaste.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

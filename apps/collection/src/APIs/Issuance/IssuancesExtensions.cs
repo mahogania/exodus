@@ -22,7 +22,7 @@ public static class IssuancesExtensions
             OfficeCode = model.OfficeCode,
             PublicationDate = model.PublicationDate,
             ServiceCode = model.ServiceCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -47,14 +47,8 @@ public static class IssuancesExtensions
             ServiceCode = updateDto.ServiceCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            issuance.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            issuance.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) issuance.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) issuance.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return issuance;
     }

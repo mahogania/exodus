@@ -6,5 +6,7 @@ public class CommonDetailedDeclarationCustomsValueAssessmentsService
     : CommonDetailedDeclarationCustomsValueAssessmentsServiceBase
 {
     public CommonDetailedDeclarationCustomsValueAssessmentsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesControllerBase
     : ControllerBase
 {
@@ -22,9 +21,9 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
     }
 
     /// <summary>
-    /// Create one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
+    ///     Create one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DefinitiveExportGoodsFollowedByAndWithReimportationInTheState>
@@ -45,13 +44,12 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
     }
 
     /// <summary>
-    /// Delete one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
+    ///     Delete one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDefinitiveExportGoodsFollowedByAndWithReimportationInTheState(
-        [FromRoute()]
-            DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -69,15 +67,14 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
     }
 
     /// <summary>
-    /// Find many DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATES
+    ///     Find many DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<DefinitiveExportGoodsFollowedByAndWithReimportationInTheState>>
     > DefinitiveExportGoodsFollowedByAndWithReimportationInTheStates(
-        [FromQuery()]
-            DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateFindManyArgs filter
+        [FromQuery] DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateFindManyArgs filter
     )
     {
         return Ok(
@@ -86,14 +83,13 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
     }
 
     /// <summary>
-    /// Meta data about DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE records
+    ///     Meta data about DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > DefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesMeta(
-        [FromQuery()]
-            DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateFindManyArgs filter
+        [FromQuery] DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateFindManyArgs filter
     )
     {
         return Ok(
@@ -104,15 +100,14 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
     }
 
     /// <summary>
-    /// Get one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
+    ///     Get one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DefinitiveExportGoodsFollowedByAndWithReimportationInTheState>
     > DefinitiveExportGoodsFollowedByAndWithReimportationInTheState(
-        [FromRoute()]
-            DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -128,15 +123,14 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
     }
 
     /// <summary>
-    /// Update one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
+    ///     Update one DEFINITIVE EXPORT GOODS FOLLOWED BY AND WITH REIMPORTATION IN THE STATE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDefinitiveExportGoodsFollowedByAndWithReimportationInTheState(
-        [FromRoute()]
-            DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateWhereUniqueInput uniqueId,
-        [FromQuery()]
-            DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateUpdateInput definitiveExportGoodsFollowedByAndWithReimportationInTheStateUpdateDto
+        [FromRoute] DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateWhereUniqueInput uniqueId,
+        [FromQuery] DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateUpdateInput
+            definitiveExportGoodsFollowedByAndWithReimportationInTheStateUpdateDto
     )
     {
         try

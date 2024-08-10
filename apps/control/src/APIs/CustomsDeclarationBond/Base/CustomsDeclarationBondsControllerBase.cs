@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CustomsDeclarationBondsControllerBase : ControllerBase
 {
     protected readonly ICustomsDeclarationBondsService _service;
@@ -19,9 +18,9 @@ public abstract class CustomsDeclarationBondsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one CUSTOMS DECLARATION BOND
+    ///     Create one CUSTOMS DECLARATION BOND
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<CustomsDeclarationBond>> CreateCustomsDeclarationBond(
         CustomsDeclarationBondCreateInput input
@@ -37,12 +36,12 @@ public abstract class CustomsDeclarationBondsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one CUSTOMS DECLARATION BOND
+    ///     Delete one CUSTOMS DECLARATION BOND
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCustomsDeclarationBond(
-        [FromRoute()] CustomsDeclarationBondWhereUniqueInput uniqueId
+        [FromRoute] CustomsDeclarationBondWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class CustomsDeclarationBondsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many CUSTOMS DECLARATION BONDS
+    ///     Find many CUSTOMS DECLARATION BONDS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<CustomsDeclarationBond>>> CustomsDeclarationBonds(
-        [FromQuery()] CustomsDeclarationBondFindManyArgs filter
+        [FromQuery] CustomsDeclarationBondFindManyArgs filter
     )
     {
         return Ok(await _service.CustomsDeclarationBonds(filter));
     }
 
     /// <summary>
-    /// Meta data about CUSTOMS DECLARATION BOND records
+    ///     Meta data about CUSTOMS DECLARATION BOND records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CustomsDeclarationBondsMeta(
-        [FromQuery()] CustomsDeclarationBondFindManyArgs filter
+        [FromQuery] CustomsDeclarationBondFindManyArgs filter
     )
     {
         return Ok(await _service.CustomsDeclarationBondsMeta(filter));
     }
 
     /// <summary>
-    /// Get one CUSTOMS DECLARATION BOND
+    ///     Get one CUSTOMS DECLARATION BOND
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<CustomsDeclarationBond>> CustomsDeclarationBond(
-        [FromRoute()] CustomsDeclarationBondWhereUniqueInput uniqueId
+        [FromRoute] CustomsDeclarationBondWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class CustomsDeclarationBondsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one CUSTOMS DECLARATION BOND
+    ///     Update one CUSTOMS DECLARATION BOND
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCustomsDeclarationBond(
-        [FromRoute()] CustomsDeclarationBondWhereUniqueInput uniqueId,
-        [FromQuery()] CustomsDeclarationBondUpdateInput customsDeclarationBondUpdateDto
+        [FromRoute] CustomsDeclarationBondWhereUniqueInput uniqueId,
+        [FromQuery] CustomsDeclarationBondUpdateInput customsDeclarationBondUpdateDto
     )
     {
         try

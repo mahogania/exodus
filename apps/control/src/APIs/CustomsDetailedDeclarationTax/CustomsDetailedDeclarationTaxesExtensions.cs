@@ -37,7 +37,7 @@ public static class CustomsDetailedDeclarationTaxesExtensions
             TaxCode = model.TaxCode,
             TaxableBaseAmount = model.TaxableBaseAmount,
             TaxationRate = model.TaxationRate,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -76,14 +76,8 @@ public static class CustomsDetailedDeclarationTaxesExtensions
             TaxationRate = updateDto.TaxationRate
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            customsDetailedDeclarationTax.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            customsDetailedDeclarationTax.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) customsDetailedDeclarationTax.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) customsDetailedDeclarationTax.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return customsDetailedDeclarationTax;
     }

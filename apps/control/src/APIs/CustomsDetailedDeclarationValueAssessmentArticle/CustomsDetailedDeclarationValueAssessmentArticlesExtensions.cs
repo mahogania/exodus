@@ -53,7 +53,7 @@ public static class CustomsDetailedDeclarationValueAssessmentArticlesExtensions
             ReferenceNumber = model.ReferenceNumber,
             SuppressionOn = model.SuppressionOn,
             UnitAmountOfTheFairValueOfTheArticle = model.UnitAmountOfTheFairValueOfTheArticle,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -124,13 +124,9 @@ public static class CustomsDetailedDeclarationValueAssessmentArticlesExtensions
             };
 
         if (updateDto.CreatedAt != null)
-        {
             customsDetailedDeclarationValueAssessmentArticle.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             customsDetailedDeclarationValueAssessmentArticle.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return customsDetailedDeclarationValueAssessmentArticle;
     }

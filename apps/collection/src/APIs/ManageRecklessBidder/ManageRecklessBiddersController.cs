@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class ManageRecklessBiddersController : ManageRecklessBiddersControllerBase
 {
     public ManageRecklessBiddersController(IManageRecklessBiddersService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

@@ -22,7 +22,7 @@ public static class TemporaryAdmissionOfVehiclesExtensions
             RegimeRequestNumber = model.RegimeRequestNumber,
             RequestedDelayEndDate = model.RequestedDelayEndDate,
             RequestedDelayStartDate = model.RequestedDelayStartDate,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -47,14 +47,8 @@ public static class TemporaryAdmissionOfVehiclesExtensions
             RequestedDelayStartDate = updateDto.RequestedDelayStartDate
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            temporaryAdmissionOfVehicle.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            temporaryAdmissionOfVehicle.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) temporaryAdmissionOfVehicle.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) temporaryAdmissionOfVehicle.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return temporaryAdmissionOfVehicle;
     }

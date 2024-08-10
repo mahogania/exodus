@@ -6,5 +6,7 @@ public class DetailOfRequestForCertificateOfOriginsService
     : DetailOfRequestForCertificateOfOriginsServiceBase
 {
     public DetailOfRequestForCertificateOfOriginsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ReplenishmentInDutyFreesControllerBase : ControllerBase
 {
     protected readonly IReplenishmentInDutyFreesService _service;
@@ -19,9 +18,9 @@ public abstract class ReplenishmentInDutyFreesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one REPLENISHMENT IN DUTY-FREE
+    ///     Create one REPLENISHMENT IN DUTY-FREE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ReplenishmentInDutyFree>> CreateReplenishmentInDutyFree(
         ReplenishmentInDutyFreeCreateInput input
@@ -37,12 +36,12 @@ public abstract class ReplenishmentInDutyFreesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one REPLENISHMENT IN DUTY-FREE
+    ///     Delete one REPLENISHMENT IN DUTY-FREE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteReplenishmentInDutyFree(
-        [FromRoute()] ReplenishmentInDutyFreeWhereUniqueInput uniqueId
+        [FromRoute] ReplenishmentInDutyFreeWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class ReplenishmentInDutyFreesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many REPLENISHMENT IN DUTY-FREES
+    ///     Find many REPLENISHMENT IN DUTY-FREES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<ReplenishmentInDutyFree>>> ReplenishmentInDutyFrees(
-        [FromQuery()] ReplenishmentInDutyFreeFindManyArgs filter
+        [FromQuery] ReplenishmentInDutyFreeFindManyArgs filter
     )
     {
         return Ok(await _service.ReplenishmentInDutyFrees(filter));
     }
 
     /// <summary>
-    /// Meta data about REPLENISHMENT IN DUTY-FREE records
+    ///     Meta data about REPLENISHMENT IN DUTY-FREE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ReplenishmentInDutyFreesMeta(
-        [FromQuery()] ReplenishmentInDutyFreeFindManyArgs filter
+        [FromQuery] ReplenishmentInDutyFreeFindManyArgs filter
     )
     {
         return Ok(await _service.ReplenishmentInDutyFreesMeta(filter));
     }
 
     /// <summary>
-    /// Get one REPLENISHMENT IN DUTY-FREE
+    ///     Get one REPLENISHMENT IN DUTY-FREE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ReplenishmentInDutyFree>> ReplenishmentInDutyFree(
-        [FromRoute()] ReplenishmentInDutyFreeWhereUniqueInput uniqueId
+        [FromRoute] ReplenishmentInDutyFreeWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class ReplenishmentInDutyFreesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one REPLENISHMENT IN DUTY-FREE
+    ///     Update one REPLENISHMENT IN DUTY-FREE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateReplenishmentInDutyFree(
-        [FromRoute()] ReplenishmentInDutyFreeWhereUniqueInput uniqueId,
-        [FromQuery()] ReplenishmentInDutyFreeUpdateInput replenishmentInDutyFreeUpdateDto
+        [FromRoute] ReplenishmentInDutyFreeWhereUniqueInput uniqueId,
+        [FromQuery] ReplenishmentInDutyFreeUpdateInput replenishmentInDutyFreeUpdateDto
     )
     {
         try

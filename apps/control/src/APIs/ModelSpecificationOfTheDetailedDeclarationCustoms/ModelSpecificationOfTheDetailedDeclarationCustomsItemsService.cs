@@ -6,5 +6,7 @@ public class ModelSpecificationOfTheDetailedDeclarationCustomsItemsService
     : ModelSpecificationOfTheDetailedDeclarationCustomsItemsServiceBase
 {
     public ModelSpecificationOfTheDetailedDeclarationCustomsItemsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

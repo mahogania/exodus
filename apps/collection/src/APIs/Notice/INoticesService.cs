@@ -6,32 +6,32 @@ namespace Collection.APIs;
 public interface INoticesService
 {
     /// <summary>
-    /// Create one NOTICE
+    ///     Create one NOTICE
     /// </summary>
     public Task<Notice> CreateNotice(NoticeCreateInput notice);
 
     /// <summary>
-    /// Delete one NOTICE
+    ///     Delete one NOTICE
     /// </summary>
     public Task DeleteNotice(NoticeWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Find many NOTICES
+    ///     Find many NOTICES
     /// </summary>
     public Task<List<Notice>> Notices(NoticeFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Meta data about NOTICE records
+    ///     Meta data about NOTICE records
     /// </summary>
     public Task<MetadataDto> NoticesMeta(NoticeFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Get one NOTICE
+    ///     Get one NOTICE
     /// </summary>
     public Task<Notice> Notice(NoticeWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Update one NOTICE
+    ///     Update one NOTICE
     /// </summary>
     public Task UpdateNotice(NoticeWhereUniqueInput uniqueId, NoticeUpdateInput updateDto);
 }

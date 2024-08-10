@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ReceiptsServiceBase : IReceiptsService
     }
 
     /// <summary>
-    /// Create one RECEIPT
+    ///     Create one RECEIPT
     /// </summary>
     public async Task<Receipt> CreateReceipt(ReceiptCreateInput createDto)
     {
@@ -37,41 +36,32 @@ public abstract class ReceiptsServiceBase : IReceiptsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            receipt.Id = createDto.Id;
-        }
+        if (createDto.Id != null) receipt.Id = createDto.Id;
 
         _context.Receipts.Add(receipt);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<ReceiptDbModel>(receipt.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one RECEIPT
+    ///     Delete one RECEIPT
     /// </summary>
     public async Task DeleteReceipt(ReceiptWhereUniqueInput uniqueId)
     {
         var receipt = await _context.Receipts.FindAsync(uniqueId.Id);
-        if (receipt == null)
-        {
-            throw new NotFoundException();
-        }
+        if (receipt == null) throw new NotFoundException();
 
         _context.Receipts.Remove(receipt);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many RECEIPTS
+    ///     Find many RECEIPTS
     /// </summary>
     public async Task<List<Receipt>> Receipts(ReceiptFindManyArgs findManyArgs)
     {
@@ -85,7 +75,7 @@ public abstract class ReceiptsServiceBase : IReceiptsService
     }
 
     /// <summary>
-    /// Meta data about RECEIPT records
+    ///     Meta data about RECEIPT records
     /// </summary>
     public async Task<MetadataDto> ReceiptsMeta(ReceiptFindManyArgs findManyArgs)
     {
@@ -95,24 +85,21 @@ public abstract class ReceiptsServiceBase : IReceiptsService
     }
 
     /// <summary>
-    /// Get one RECEIPT
+    ///     Get one RECEIPT
     /// </summary>
     public async Task<Receipt> Receipt(ReceiptWhereUniqueInput uniqueId)
     {
-        var receipts = await this.Receipts(
+        var receipts = await Receipts(
             new ReceiptFindManyArgs { Where = new ReceiptWhereInput { Id = uniqueId.Id } }
         );
         var receipt = receipts.FirstOrDefault();
-        if (receipt == null)
-        {
-            throw new NotFoundException();
-        }
+        if (receipt == null) throw new NotFoundException();
 
         return receipt;
     }
 
     /// <summary>
-    /// Update one RECEIPT
+    ///     Update one RECEIPT
     /// </summary>
     public async Task UpdateReceipt(ReceiptWhereUniqueInput uniqueId, ReceiptUpdateInput updateDto)
     {
@@ -127,13 +114,8 @@ public abstract class ReceiptsServiceBase : IReceiptsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Receipts.Any(e => e.Id == receipt.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

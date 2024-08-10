@@ -6,5 +6,7 @@ public class MaterialsAtWithReexportationInTheStatesService
     : MaterialsAtWithReexportationInTheStatesServiceBase
 {
     public MaterialsAtWithReexportationInTheStatesService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

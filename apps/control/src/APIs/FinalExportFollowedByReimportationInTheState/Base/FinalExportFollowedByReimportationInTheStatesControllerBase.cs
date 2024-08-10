@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class FinalExportFollowedByReimportationInTheStatesControllerBase : ControllerBase
 {
     protected readonly IFinalExportFollowedByReimportationInTheStatesService _service;
@@ -21,9 +20,9 @@ public abstract class FinalExportFollowedByReimportationInTheStatesControllerBas
     }
 
     /// <summary>
-    /// Create one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
+    ///     Create one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<FinalExportFollowedByReimportationInTheState>
@@ -42,12 +41,12 @@ public abstract class FinalExportFollowedByReimportationInTheStatesControllerBas
     }
 
     /// <summary>
-    /// Delete one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
+    ///     Delete one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteFinalExportFollowedByReimportationInTheState(
-        [FromRoute()] FinalExportFollowedByReimportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] FinalExportFollowedByReimportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class FinalExportFollowedByReimportationInTheStatesControllerBas
     }
 
     /// <summary>
-    /// Find many FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATES
+    ///     Find many FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<FinalExportFollowedByReimportationInTheState>>
     > FinalExportFollowedByReimportationInTheStates(
-        [FromQuery()] FinalExportFollowedByReimportationInTheStateFindManyArgs filter
+        [FromQuery] FinalExportFollowedByReimportationInTheStateFindManyArgs filter
     )
     {
         return Ok(await _service.FinalExportFollowedByReimportationInTheStates(filter));
     }
 
     /// <summary>
-    /// Meta data about FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE records
+    ///     Meta data about FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> FinalExportFollowedByReimportationInTheStatesMeta(
-        [FromQuery()] FinalExportFollowedByReimportationInTheStateFindManyArgs filter
+        [FromQuery] FinalExportFollowedByReimportationInTheStateFindManyArgs filter
     )
     {
         return Ok(await _service.FinalExportFollowedByReimportationInTheStatesMeta(filter));
     }
 
     /// <summary>
-    /// Get one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
+    ///     Get one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<FinalExportFollowedByReimportationInTheState>
     > FinalExportFollowedByReimportationInTheState(
-        [FromRoute()] FinalExportFollowedByReimportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] FinalExportFollowedByReimportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,14 @@ public abstract class FinalExportFollowedByReimportationInTheStatesControllerBas
     }
 
     /// <summary>
-    /// Update one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
+    ///     Update one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateFinalExportFollowedByReimportationInTheState(
-        [FromRoute()] FinalExportFollowedByReimportationInTheStateWhereUniqueInput uniqueId,
-        [FromQuery()]
-            FinalExportFollowedByReimportationInTheStateUpdateInput finalExportFollowedByReimportationInTheStateUpdateDto
+        [FromRoute] FinalExportFollowedByReimportationInTheStateWhereUniqueInput uniqueId,
+        [FromQuery]
+        FinalExportFollowedByReimportationInTheStateUpdateInput finalExportFollowedByReimportationInTheStateUpdateDto
     )
     {
         try

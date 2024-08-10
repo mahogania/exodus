@@ -5,7 +5,7 @@ namespace Control;
 public static class ServiceCollectionExtensions
 {
     /// <summary>
-    /// Add services to the container.
+    ///     Add services to the container.
     /// </summary>
     public static void RegisterServices(this IServiceCollection services)
     {

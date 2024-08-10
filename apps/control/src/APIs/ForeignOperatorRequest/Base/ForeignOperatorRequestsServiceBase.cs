@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
     }
 
     /// <summary>
-    /// Create one FOREIGN OPERATOR REQUEST
+    ///     Create one FOREIGN OPERATOR REQUEST
     /// </summary>
     public async Task<ForeignOperatorRequest> CreateForeignOperatorRequest(
         ForeignOperatorRequestCreateInput createDto
@@ -52,10 +51,7 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
             VerificationOpinionContent = createDto.VerificationOpinionContent
         };
 
-        if (createDto.Id != null)
-        {
-            foreignOperatorRequest.Id = createDto.Id;
-        }
+        if (createDto.Id != null) foreignOperatorRequest.Id = createDto.Id;
 
         _context.ForeignOperatorRequests.Add(foreignOperatorRequest);
         await _context.SaveChangesAsync();
@@ -64,31 +60,25 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
             foreignOperatorRequest.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one FOREIGN OPERATOR REQUEST
+    ///     Delete one FOREIGN OPERATOR REQUEST
     /// </summary>
     public async Task DeleteForeignOperatorRequest(ForeignOperatorRequestWhereUniqueInput uniqueId)
     {
         var foreignOperatorRequest = await _context.ForeignOperatorRequests.FindAsync(uniqueId.Id);
-        if (foreignOperatorRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (foreignOperatorRequest == null) throw new NotFoundException();
 
         _context.ForeignOperatorRequests.Remove(foreignOperatorRequest);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many FOREIGN OPERATOR REQUESTS
+    ///     Find many FOREIGN OPERATOR REQUESTS
     /// </summary>
     public async Task<List<ForeignOperatorRequest>> ForeignOperatorRequests(
         ForeignOperatorRequestFindManyArgs findManyArgs
@@ -106,7 +96,7 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
     }
 
     /// <summary>
-    /// Meta data about FOREIGN OPERATOR REQUEST records
+    ///     Meta data about FOREIGN OPERATOR REQUEST records
     /// </summary>
     public async Task<MetadataDto> ForeignOperatorRequestsMeta(
         ForeignOperatorRequestFindManyArgs findManyArgs
@@ -120,29 +110,26 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
     }
 
     /// <summary>
-    /// Get one FOREIGN OPERATOR REQUEST
+    ///     Get one FOREIGN OPERATOR REQUEST
     /// </summary>
     public async Task<ForeignOperatorRequest> ForeignOperatorRequest(
         ForeignOperatorRequestWhereUniqueInput uniqueId
     )
     {
-        var foreignOperatorRequests = await this.ForeignOperatorRequests(
+        var foreignOperatorRequests = await ForeignOperatorRequests(
             new ForeignOperatorRequestFindManyArgs
             {
                 Where = new ForeignOperatorRequestWhereInput { Id = uniqueId.Id }
             }
         );
         var foreignOperatorRequest = foreignOperatorRequests.FirstOrDefault();
-        if (foreignOperatorRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (foreignOperatorRequest == null) throw new NotFoundException();
 
         return foreignOperatorRequest;
     }
 
     /// <summary>
-    /// Update one FOREIGN OPERATOR REQUEST
+    ///     Update one FOREIGN OPERATOR REQUEST
     /// </summary>
     public async Task UpdateForeignOperatorRequest(
         ForeignOperatorRequestWhereUniqueInput uniqueId,
@@ -160,13 +147,8 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.ForeignOperatorRequests.Any(e => e.Id == foreignOperatorRequest.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

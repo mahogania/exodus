@@ -34,7 +34,7 @@ public static class ReceptionsExtensions
             ProcessingStatusContent = model.ProcessingStatusContent,
             ThreeDigitCountryCode = model.ThreeDigitCountryCode,
             TotalNoticeAmount = model.TotalNoticeAmount,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -71,14 +71,8 @@ public static class ReceptionsExtensions
             TotalNoticeAmount = updateDto.TotalNoticeAmount
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            reception.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            reception.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) reception.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) reception.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return reception;
     }

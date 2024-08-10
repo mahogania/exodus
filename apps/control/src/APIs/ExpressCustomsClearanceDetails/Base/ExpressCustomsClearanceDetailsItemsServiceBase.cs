@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
     }
 
     /// <summary>
-    /// Create one EXPRESS CUSTOMS CLEARANCE DETAILS
+    ///     Create one EXPRESS CUSTOMS CLEARANCE DETAILS
     /// </summary>
     public async Task<ExpressCustomsClearanceDetails> CreateExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsCreateInput createDto
@@ -73,10 +72,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
             Weight = createDto.Weight
         };
 
-        if (createDto.Id != null)
-        {
-            expressCustomsClearanceDetails.Id = createDto.Id;
-        }
+        if (createDto.Id != null) expressCustomsClearanceDetails.Id = createDto.Id;
 
         _context.ExpressCustomsClearanceDetailsItems.Add(expressCustomsClearanceDetails);
         await _context.SaveChangesAsync();
@@ -85,16 +81,13 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
             expressCustomsClearanceDetails.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one EXPRESS CUSTOMS CLEARANCE DETAILS
+    ///     Delete one EXPRESS CUSTOMS CLEARANCE DETAILS
     /// </summary>
     public async Task DeleteExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
@@ -102,17 +95,14 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
     {
         var expressCustomsClearanceDetails =
             await _context.ExpressCustomsClearanceDetailsItems.FindAsync(uniqueId.Id);
-        if (expressCustomsClearanceDetails == null)
-        {
-            throw new NotFoundException();
-        }
+        if (expressCustomsClearanceDetails == null) throw new NotFoundException();
 
         _context.ExpressCustomsClearanceDetailsItems.Remove(expressCustomsClearanceDetails);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many EXPRESS CUSTOMS CLEARANCE DETAILSItems
+    ///     Find many EXPRESS CUSTOMS CLEARANCE DETAILSItems
     /// </summary>
     public async Task<List<ExpressCustomsClearanceDetails>> ExpressCustomsClearanceDetailsItems(
         ExpressCustomsClearanceDetailsFindManyArgs findManyArgs
@@ -130,7 +120,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
     }
 
     /// <summary>
-    /// Meta data about EXPRESS CUSTOMS CLEARANCE DETAILS records
+    ///     Meta data about EXPRESS CUSTOMS CLEARANCE DETAILS records
     /// </summary>
     public async Task<MetadataDto> ExpressCustomsClearanceDetailsItemsMeta(
         ExpressCustomsClearanceDetailsFindManyArgs findManyArgs
@@ -144,29 +134,26 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
     }
 
     /// <summary>
-    /// Get one EXPRESS CUSTOMS CLEARANCE DETAILS
+    ///     Get one EXPRESS CUSTOMS CLEARANCE DETAILS
     /// </summary>
     public async Task<ExpressCustomsClearanceDetails> ExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
     )
     {
-        var expressCustomsClearanceDetailsItems = await this.ExpressCustomsClearanceDetailsItems(
+        var expressCustomsClearanceDetailsItems = await ExpressCustomsClearanceDetailsItems(
             new ExpressCustomsClearanceDetailsFindManyArgs
             {
                 Where = new ExpressCustomsClearanceDetailsWhereInput { Id = uniqueId.Id }
             }
         );
         var expressCustomsClearanceDetails = expressCustomsClearanceDetailsItems.FirstOrDefault();
-        if (expressCustomsClearanceDetails == null)
-        {
-            throw new NotFoundException();
-        }
+        if (expressCustomsClearanceDetails == null) throw new NotFoundException();
 
         return expressCustomsClearanceDetails;
     }
 
     /// <summary>
-    /// Update one EXPRESS CUSTOMS CLEARANCE DETAILS
+    ///     Update one EXPRESS CUSTOMS CLEARANCE DETAILS
     /// </summary>
     public async Task UpdateExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId,
@@ -188,13 +175,8 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
                     e.Id == expressCustomsClearanceDetails.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

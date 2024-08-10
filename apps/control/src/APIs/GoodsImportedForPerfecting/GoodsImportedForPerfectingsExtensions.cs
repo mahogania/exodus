@@ -39,7 +39,7 @@ public static class GoodsImportedForPerfectingsExtensions
             TechnicalDesignationOfGoodsToCompensate = model.TechnicalDesignationOfGoodsToCompensate,
             UnknownField = model.UnknownField,
             UpdatedAt = model.UpdatedAt,
-            ValueInCurrency = model.ValueInCurrency,
+            ValueInCurrency = model.ValueInCurrency
         };
     }
 
@@ -82,14 +82,8 @@ public static class GoodsImportedForPerfectingsExtensions
             ValueInCurrency = updateDto.ValueInCurrency
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            goodsImportedForPerfecting.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            goodsImportedForPerfecting.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) goodsImportedForPerfecting.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) goodsImportedForPerfecting.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return goodsImportedForPerfecting;
     }

@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class CausesServiceBase : ICausesService
     }
 
     /// <summary>
-    /// Create one CAUSE
+    ///     Create one CAUSE
     /// </summary>
     public async Task<Cause> CreateCause(CauseCreateInput createDto)
     {
@@ -40,41 +39,32 @@ public abstract class CausesServiceBase : ICausesService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            cause.Id = createDto.Id;
-        }
+        if (createDto.Id != null) cause.Id = createDto.Id;
 
         _context.Causes.Add(cause);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<CauseDbModel>(cause.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CAUSE
+    ///     Delete one CAUSE
     /// </summary>
     public async Task DeleteCause(CauseWhereUniqueInput uniqueId)
     {
         var cause = await _context.Causes.FindAsync(uniqueId.Id);
-        if (cause == null)
-        {
-            throw new NotFoundException();
-        }
+        if (cause == null) throw new NotFoundException();
 
         _context.Causes.Remove(cause);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many CAUSES
+    ///     Find many CAUSES
     /// </summary>
     public async Task<List<Cause>> Causes(CauseFindManyArgs findManyArgs)
     {
@@ -88,7 +78,7 @@ public abstract class CausesServiceBase : ICausesService
     }
 
     /// <summary>
-    /// Meta data about CAUSE records
+    ///     Meta data about CAUSE records
     /// </summary>
     public async Task<MetadataDto> CausesMeta(CauseFindManyArgs findManyArgs)
     {
@@ -98,24 +88,21 @@ public abstract class CausesServiceBase : ICausesService
     }
 
     /// <summary>
-    /// Get one CAUSE
+    ///     Get one CAUSE
     /// </summary>
     public async Task<Cause> Cause(CauseWhereUniqueInput uniqueId)
     {
-        var causes = await this.Causes(
+        var causes = await Causes(
             new CauseFindManyArgs { Where = new CauseWhereInput { Id = uniqueId.Id } }
         );
         var cause = causes.FirstOrDefault();
-        if (cause == null)
-        {
-            throw new NotFoundException();
-        }
+        if (cause == null) throw new NotFoundException();
 
         return cause;
     }
 
     /// <summary>
-    /// Update one CAUSE
+    ///     Update one CAUSE
     /// </summary>
     public async Task UpdateCause(CauseWhereUniqueInput uniqueId, CauseUpdateInput updateDto)
     {
@@ -130,13 +117,8 @@ public abstract class CausesServiceBase : ICausesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Causes.Any(e => e.Id == cause.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

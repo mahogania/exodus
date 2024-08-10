@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Create one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task<ArticleOfTheDetailedDeclarationCustoms> CreateArticleOfTheDetailedDeclarationCustoms(
         ArticleOfTheDetailedDeclarationCustomsCreateInput createDto
@@ -82,10 +81,7 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsServiceBase
                     createDto.WarrantyExemptionAuthorizationNumber
             };
 
-        if (createDto.Id != null)
-        {
-            articleOfTheDetailedDeclarationCustoms.Id = createDto.Id;
-        }
+        if (createDto.Id != null) articleOfTheDetailedDeclarationCustoms.Id = createDto.Id;
 
         _context.ArticleOfTheDetailedDeclarationCustomsItems.Add(
             articleOfTheDetailedDeclarationCustoms
@@ -96,16 +92,13 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsServiceBase
             articleOfTheDetailedDeclarationCustoms.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task DeleteArticleOfTheDetailedDeclarationCustoms(
         ArticleOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
@@ -113,10 +106,7 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsServiceBase
     {
         var articleOfTheDetailedDeclarationCustoms =
             await _context.ArticleOfTheDetailedDeclarationCustomsItems.FindAsync(uniqueId.Id);
-        if (articleOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (articleOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         _context.ArticleOfTheDetailedDeclarationCustomsItems.Remove(
             articleOfTheDetailedDeclarationCustoms
@@ -125,7 +115,7 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Find many ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public async Task<
         List<ArticleOfTheDetailedDeclarationCustoms>
@@ -145,7 +135,7 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Meta data about ARTICLE OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about ARTICLE OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public async Task<MetadataDto> ArticleOfTheDetailedDeclarationCustomsItemsMeta(
         ArticleOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
@@ -159,14 +149,14 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Get one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task<ArticleOfTheDetailedDeclarationCustoms> ArticleOfTheDetailedDeclarationCustoms(
         ArticleOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         var articleOfTheDetailedDeclarationCustomsItems =
-            await this.ArticleOfTheDetailedDeclarationCustomsItems(
+            await ArticleOfTheDetailedDeclarationCustomsItems(
                 new ArticleOfTheDetailedDeclarationCustomsFindManyArgs
                 {
                     Where = new ArticleOfTheDetailedDeclarationCustomsWhereInput
@@ -177,16 +167,13 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsServiceBase
             );
         var articleOfTheDetailedDeclarationCustoms =
             articleOfTheDetailedDeclarationCustomsItems.FirstOrDefault();
-        if (articleOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (articleOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         return articleOfTheDetailedDeclarationCustoms;
     }
 
     /// <summary>
-    /// Update one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task UpdateArticleOfTheDetailedDeclarationCustoms(
         ArticleOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
@@ -208,13 +195,8 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsServiceBase
                     e.Id == articleOfTheDetailedDeclarationCustoms.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

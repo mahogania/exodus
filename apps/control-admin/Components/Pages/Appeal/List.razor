@@ -1,8 +1,6 @@
 @page "/external-appeals"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.DropDowns
+@using Microsoft.Extensions.Localization
+@using Syncfusion.Blazor.Diagram
 @inject IStringLocalizer<Pages.ExternalAppeals> Localizer
 
 <div class="container">
@@ -10,16 +8,16 @@
 
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["AppealNo"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["AppealNo"]" CssClass="e-outline" TValue="string"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfDateRangePicker Placeholder="@Localizer["RequestDate"]" CssClass="e-outline"></SfDateRangePicker>
+            <SfDateRangePicker Placeholder="@Localizer["RequestDate"]" CssClass="e-outline" TValue="DateTime?"></SfDateRangePicker>
         </div>
         <div class="col-md-3">
-            <SfDropDownList Placeholder="@Localizer["AppealType"]" CssClass="e-outline" DataSource="@AppealTypes" TItem="string"></SfDropDownList>
+            <SfDropDownList Placeholder="@Localizer["AppealType"]" CssClass="e-outline" DataSource="@AppealTypes" TItem="string" TValue="string"></SfDropDownList>
         </div>
         <div class="col-md-3">
-            <SfDropDownList Placeholder="@Localizer["RelatedWorkNo"]" CssClass="e-outline" DataSource="@RelatedWorkNos" TItem="string"></SfDropDownList>
+            <SfDropDownList Placeholder="@Localizer["RelatedWorkNo"]" CssClass="e-outline" DataSource="@RelatedWorkNos" TItem="string" TValue="string"></SfDropDownList>
         </div>
         <div class="col-md-3 mt-2">
             <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
@@ -48,6 +46,7 @@
 </div>
 
 @code {
+
     public class ExternalAppeal
     {
         public string AppealNo { get; set; }
@@ -60,7 +59,7 @@
         public DateTime StatusDate { get; set; }
     }
 
-    public List<string> AppealTypes = new List<string>
+    public List<string> AppealTypes = new()
     {
         "CNR",
         "CRR",
@@ -68,7 +67,7 @@
         // Add more types as needed
     };
 
-    public List<string> RelatedWorkNos = new List<string>
+    public List<string> RelatedWorkNos = new()
     {
         "2022-RCO-000001",
         "2022-RTC-000002",
@@ -76,10 +75,11 @@
         // Add more related work numbers as needed
     };
 
-    public List<ExternalAppeal> ExternalAppealsData = new List<ExternalAppeal>
+    public List<ExternalAppeal> ExternalAppealsData = new()
     {
         new ExternalAppeal { AppealNo = "ALGER-2022-C000001-1", AppealType = "CNR", RelatedWork = "RCO", RelatedWorkNo = "2022-RCO-000001", RequestDate = new DateTime(2022, 2, 10), RequesterName = "RCO", Status = "Receive", StatusDate = new DateTime(2022, 2, 10) },
         new ExternalAppeal { AppealNo = "ALGER-2022-C000002-1", AppealType = "CRR", RelatedWork = "RTC", RelatedWorkNo = "2022-RTC-000002", RequestDate = new DateTime(2022, 3, 10), RequesterName = "RTC", Status = "Approval", StatusDate = new DateTime(2022, 3, 10) }
         // Add more data as needed
     };
+
 }

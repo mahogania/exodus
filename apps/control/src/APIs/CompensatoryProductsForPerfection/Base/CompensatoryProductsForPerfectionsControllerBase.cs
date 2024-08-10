@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CompensatoryProductsForPerfectionsControllerBase : ControllerBase
 {
     protected readonly ICompensatoryProductsForPerfectionsService _service;
@@ -21,9 +20,9 @@ public abstract class CompensatoryProductsForPerfectionsControllerBase : Control
     }
 
     /// <summary>
-    /// Create one COMPENSATORY PRODUCTS FOR PERFECTION
+    ///     Create one COMPENSATORY PRODUCTS FOR PERFECTION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CompensatoryProductsForPerfection>
@@ -40,12 +39,12 @@ public abstract class CompensatoryProductsForPerfectionsControllerBase : Control
     }
 
     /// <summary>
-    /// Delete one COMPENSATORY PRODUCTS FOR PERFECTION
+    ///     Delete one COMPENSATORY PRODUCTS FOR PERFECTION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCompensatoryProductsForPerfection(
-        [FromRoute()] CompensatoryProductsForPerfectionWhereUniqueInput uniqueId
+        [FromRoute] CompensatoryProductsForPerfectionWhereUniqueInput uniqueId
     )
     {
         try
@@ -61,39 +60,39 @@ public abstract class CompensatoryProductsForPerfectionsControllerBase : Control
     }
 
     /// <summary>
-    /// Find many COMPENSATORY PRODUCTS FOR PERFECTIONS
+    ///     Find many COMPENSATORY PRODUCTS FOR PERFECTIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<CompensatoryProductsForPerfection>>
     > CompensatoryProductsForPerfections(
-        [FromQuery()] CompensatoryProductsForPerfectionFindManyArgs filter
+        [FromQuery] CompensatoryProductsForPerfectionFindManyArgs filter
     )
     {
         return Ok(await _service.CompensatoryProductsForPerfections(filter));
     }
 
     /// <summary>
-    /// Meta data about COMPENSATORY PRODUCTS FOR PERFECTION records
+    ///     Meta data about COMPENSATORY PRODUCTS FOR PERFECTION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CompensatoryProductsForPerfectionsMeta(
-        [FromQuery()] CompensatoryProductsForPerfectionFindManyArgs filter
+        [FromQuery] CompensatoryProductsForPerfectionFindManyArgs filter
     )
     {
         return Ok(await _service.CompensatoryProductsForPerfectionsMeta(filter));
     }
 
     /// <summary>
-    /// Get one COMPENSATORY PRODUCTS FOR PERFECTION
+    ///     Get one COMPENSATORY PRODUCTS FOR PERFECTION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CompensatoryProductsForPerfection>
     > CompensatoryProductsForPerfection(
-        [FromRoute()] CompensatoryProductsForPerfectionWhereUniqueInput uniqueId
+        [FromRoute] CompensatoryProductsForPerfectionWhereUniqueInput uniqueId
     )
     {
         try
@@ -107,14 +106,13 @@ public abstract class CompensatoryProductsForPerfectionsControllerBase : Control
     }
 
     /// <summary>
-    /// Update one COMPENSATORY PRODUCTS FOR PERFECTION
+    ///     Update one COMPENSATORY PRODUCTS FOR PERFECTION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCompensatoryProductsForPerfection(
-        [FromRoute()] CompensatoryProductsForPerfectionWhereUniqueInput uniqueId,
-        [FromQuery()]
-            CompensatoryProductsForPerfectionUpdateInput compensatoryProductsForPerfectionUpdateDto
+        [FromRoute] CompensatoryProductsForPerfectionWhereUniqueInput uniqueId,
+        [FromQuery] CompensatoryProductsForPerfectionUpdateInput compensatoryProductsForPerfectionUpdateDto
     )
     {
         try

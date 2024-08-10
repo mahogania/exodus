@@ -34,7 +34,7 @@ public static class AccountingsExtensions
             StockAccountingManagementNumber = model.StockAccountingManagementNumber,
             Storage = model.Storage,
             UpdatedAt = model.UpdatedAt,
-            Weight = model.Weight,
+            Weight = model.Weight
         };
     }
 
@@ -71,14 +71,8 @@ public static class AccountingsExtensions
             Weight = updateDto.Weight
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            accounting.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            accounting.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) accounting.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) accounting.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return accounting;
     }

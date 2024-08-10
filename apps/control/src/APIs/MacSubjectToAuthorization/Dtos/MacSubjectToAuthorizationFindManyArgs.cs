@@ -1,9 +1,10 @@
 using Control.APIs.Common;
-using Control.Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
 public class MacSubjectToAuthorizationFindManyArgs
-    : FindManyInput<MacSubjectToAuthorization, MacSubjectToAuthorizationWhereInput> { }
+    : FindManyInput<MacSubjectToAuthorization, MacSubjectToAuthorizationWhereInput>
+{
+}

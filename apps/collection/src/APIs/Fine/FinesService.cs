@@ -5,5 +5,7 @@ namespace Collection.APIs;
 public class FinesService : FinesServiceBase
 {
     public FinesService(CollectionDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

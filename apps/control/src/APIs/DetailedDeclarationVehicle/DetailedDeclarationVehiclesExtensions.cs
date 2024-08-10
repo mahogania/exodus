@@ -45,7 +45,7 @@ public static class DetailedDeclarationVehiclesExtensions
             VehicleModelCode = model.VehicleModelCode,
             VehicleType = model.VehicleType,
             VehicleTypeCode = model.VehicleTypeCode,
-            YearOfManufacture = model.YearOfManufacture,
+            YearOfManufacture = model.YearOfManufacture
         };
     }
 
@@ -93,14 +93,8 @@ public static class DetailedDeclarationVehiclesExtensions
             YearOfManufacture = updateDto.YearOfManufacture
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            detailedDeclarationVehicle.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            detailedDeclarationVehicle.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) detailedDeclarationVehicle.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) detailedDeclarationVehicle.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return detailedDeclarationVehicle;
     }

@@ -8,5 +8,7 @@ public class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsIt
     public RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItemsService(
         ControlDbContext context
     )
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

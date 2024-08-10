@@ -26,7 +26,7 @@ public static class NoticeCancellationsExtensions
             RegistrationDate = model.RegistrationDate,
             RequestOrderNo = model.RequestOrderNo,
             ServiceCode = model.ServiceCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -55,14 +55,8 @@ public static class NoticeCancellationsExtensions
             ServiceCode = updateDto.ServiceCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            noticeCancellation.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            noticeCancellation.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) noticeCancellation.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) noticeCancellation.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return noticeCancellation;
     }

@@ -37,7 +37,7 @@ public static class MacSuiteAtWithReexportationInTheStatesExtensions
             RectificationFrequency = model.RectificationFrequency,
             RegimeRequestNumber = model.RegimeRequestNumber,
             SuppressionOn = model.SuppressionOn,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -75,14 +75,8 @@ public static class MacSuiteAtWithReexportationInTheStatesExtensions
             SuppressionOn = updateDto.SuppressionOn
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            macSuiteAtWithReexportationInTheState.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            macSuiteAtWithReexportationInTheState.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) macSuiteAtWithReexportationInTheState.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) macSuiteAtWithReexportationInTheState.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return macSuiteAtWithReexportationInTheState;
     }

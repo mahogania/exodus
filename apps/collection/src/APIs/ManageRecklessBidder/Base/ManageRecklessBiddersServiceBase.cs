@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ManageRecklessBiddersServiceBase : IManageRecklessBiddersS
     }
 
     /// <summary>
-    /// Create one MANAGE RECKLESS BIDDER
+    ///     Create one MANAGE RECKLESS BIDDER
     /// </summary>
     public async Task<ManageRecklessBidder> CreateManageRecklessBidder(
         ManageRecklessBidderCreateInput createDto
@@ -46,41 +45,32 @@ public abstract class ManageRecklessBiddersServiceBase : IManageRecklessBiddersS
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            manageRecklessBidder.Id = createDto.Id;
-        }
+        if (createDto.Id != null) manageRecklessBidder.Id = createDto.Id;
 
         _context.ManageRecklessBidders.Add(manageRecklessBidder);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<ManageRecklessBidderDbModel>(manageRecklessBidder.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one MANAGE RECKLESS BIDDER
+    ///     Delete one MANAGE RECKLESS BIDDER
     /// </summary>
     public async Task DeleteManageRecklessBidder(ManageRecklessBidderWhereUniqueInput uniqueId)
     {
         var manageRecklessBidder = await _context.ManageRecklessBidders.FindAsync(uniqueId.Id);
-        if (manageRecklessBidder == null)
-        {
-            throw new NotFoundException();
-        }
+        if (manageRecklessBidder == null) throw new NotFoundException();
 
         _context.ManageRecklessBidders.Remove(manageRecklessBidder);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many MANAGE RECKLESS BIDDERS
+    ///     Find many MANAGE RECKLESS BIDDERS
     /// </summary>
     public async Task<List<ManageRecklessBidder>> ManageRecklessBidders(
         ManageRecklessBidderFindManyArgs findManyArgs
@@ -98,7 +88,7 @@ public abstract class ManageRecklessBiddersServiceBase : IManageRecklessBiddersS
     }
 
     /// <summary>
-    /// Meta data about MANAGE RECKLESS BIDDER records
+    ///     Meta data about MANAGE RECKLESS BIDDER records
     /// </summary>
     public async Task<MetadataDto> ManageRecklessBiddersMeta(
         ManageRecklessBidderFindManyArgs findManyArgs
@@ -112,29 +102,26 @@ public abstract class ManageRecklessBiddersServiceBase : IManageRecklessBiddersS
     }
 
     /// <summary>
-    /// Get one MANAGE RECKLESS BIDDER
+    ///     Get one MANAGE RECKLESS BIDDER
     /// </summary>
     public async Task<ManageRecklessBidder> ManageRecklessBidder(
         ManageRecklessBidderWhereUniqueInput uniqueId
     )
     {
-        var manageRecklessBidders = await this.ManageRecklessBidders(
+        var manageRecklessBidders = await ManageRecklessBidders(
             new ManageRecklessBidderFindManyArgs
             {
                 Where = new ManageRecklessBidderWhereInput { Id = uniqueId.Id }
             }
         );
         var manageRecklessBidder = manageRecklessBidders.FirstOrDefault();
-        if (manageRecklessBidder == null)
-        {
-            throw new NotFoundException();
-        }
+        if (manageRecklessBidder == null) throw new NotFoundException();
 
         return manageRecklessBidder;
     }
 
     /// <summary>
-    /// Update one MANAGE RECKLESS BIDDER
+    ///     Update one MANAGE RECKLESS BIDDER
     /// </summary>
     public async Task UpdateManageRecklessBidder(
         ManageRecklessBidderWhereUniqueInput uniqueId,
@@ -152,13 +139,8 @@ public abstract class ManageRecklessBiddersServiceBase : IManageRecklessBiddersS
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.ManageRecklessBidders.Any(e => e.Id == manageRecklessBidder.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

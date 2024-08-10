@@ -23,7 +23,7 @@ public static class DepositsExtensions
             ReferenceNumberTypeCode = model.ReferenceNumberTypeCode,
             RequestNo = model.RequestNo,
             UpdatedAt = model.UpdatedAt,
-            UsageMoment = model.UsageMoment,
+            UsageMoment = model.UsageMoment
         };
     }
 
@@ -49,14 +49,8 @@ public static class DepositsExtensions
             UsageMoment = updateDto.UsageMoment
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            deposit.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            deposit.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) deposit.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) deposit.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return deposit;
     }

@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class NoticeStaggeringsControllerBase : ControllerBase
 {
     protected readonly INoticeStaggeringsService _service;
@@ -19,9 +18,9 @@ public abstract class NoticeStaggeringsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one NOTICE STAGGERING
+    ///     Create one NOTICE STAGGERING
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<NoticeStaggering>> CreateNoticeStaggering(
         NoticeStaggeringCreateInput input
@@ -37,12 +36,12 @@ public abstract class NoticeStaggeringsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one NOTICE STAGGERING
+    ///     Delete one NOTICE STAGGERING
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteNoticeStaggering(
-        [FromRoute()] NoticeStaggeringWhereUniqueInput uniqueId
+        [FromRoute] NoticeStaggeringWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class NoticeStaggeringsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many NOTICE STAGGERINGS
+    ///     Find many NOTICE STAGGERINGS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<NoticeStaggering>>> NoticeStaggerings(
-        [FromQuery()] NoticeStaggeringFindManyArgs filter
+        [FromQuery] NoticeStaggeringFindManyArgs filter
     )
     {
         return Ok(await _service.NoticeStaggerings(filter));
     }
 
     /// <summary>
-    /// Meta data about NOTICE STAGGERING records
+    ///     Meta data about NOTICE STAGGERING records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> NoticeStaggeringsMeta(
-        [FromQuery()] NoticeStaggeringFindManyArgs filter
+        [FromQuery] NoticeStaggeringFindManyArgs filter
     )
     {
         return Ok(await _service.NoticeStaggeringsMeta(filter));
     }
 
     /// <summary>
-    /// Get one NOTICE STAGGERING
+    ///     Get one NOTICE STAGGERING
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<NoticeStaggering>> NoticeStaggering(
-        [FromRoute()] NoticeStaggeringWhereUniqueInput uniqueId
+        [FromRoute] NoticeStaggeringWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class NoticeStaggeringsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one NOTICE STAGGERING
+    ///     Update one NOTICE STAGGERING
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateNoticeStaggering(
-        [FromRoute()] NoticeStaggeringWhereUniqueInput uniqueId,
-        [FromQuery()] NoticeStaggeringUpdateInput noticeStaggeringUpdateDto
+        [FromRoute] NoticeStaggeringWhereUniqueInput uniqueId,
+        [FromQuery] NoticeStaggeringUpdateInput noticeStaggeringUpdateDto
     )
     {
         try

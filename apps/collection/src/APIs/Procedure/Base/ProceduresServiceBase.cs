@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ProceduresServiceBase : IProceduresService
     }
 
     /// <summary>
-    /// Create one PROCEDURE
+    ///     Create one PROCEDURE
     /// </summary>
     public async Task<Procedure> CreateProcedure(ProcedureCreateInput createDto)
     {
@@ -48,41 +47,32 @@ public abstract class ProceduresServiceBase : IProceduresService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            procedure.Id = createDto.Id;
-        }
+        if (createDto.Id != null) procedure.Id = createDto.Id;
 
         _context.Procedures.Add(procedure);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<ProcedureDbModel>(procedure.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one PROCEDURE
+    ///     Delete one PROCEDURE
     /// </summary>
     public async Task DeleteProcedure(ProcedureWhereUniqueInput uniqueId)
     {
         var procedure = await _context.Procedures.FindAsync(uniqueId.Id);
-        if (procedure == null)
-        {
-            throw new NotFoundException();
-        }
+        if (procedure == null) throw new NotFoundException();
 
         _context.Procedures.Remove(procedure);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many PROCEDURES
+    ///     Find many PROCEDURES
     /// </summary>
     public async Task<List<Procedure>> Procedures(ProcedureFindManyArgs findManyArgs)
     {
@@ -96,7 +86,7 @@ public abstract class ProceduresServiceBase : IProceduresService
     }
 
     /// <summary>
-    /// Meta data about PROCEDURE records
+    ///     Meta data about PROCEDURE records
     /// </summary>
     public async Task<MetadataDto> ProceduresMeta(ProcedureFindManyArgs findManyArgs)
     {
@@ -106,24 +96,21 @@ public abstract class ProceduresServiceBase : IProceduresService
     }
 
     /// <summary>
-    /// Get one PROCEDURE
+    ///     Get one PROCEDURE
     /// </summary>
     public async Task<Procedure> Procedure(ProcedureWhereUniqueInput uniqueId)
     {
-        var procedures = await this.Procedures(
+        var procedures = await Procedures(
             new ProcedureFindManyArgs { Where = new ProcedureWhereInput { Id = uniqueId.Id } }
         );
         var procedure = procedures.FirstOrDefault();
-        if (procedure == null)
-        {
-            throw new NotFoundException();
-        }
+        if (procedure == null) throw new NotFoundException();
 
         return procedure;
     }
 
     /// <summary>
-    /// Update one PROCEDURE
+    ///     Update one PROCEDURE
     /// </summary>
     public async Task UpdateProcedure(
         ProcedureWhereUniqueInput uniqueId,
@@ -141,13 +128,8 @@ public abstract class ProceduresServiceBase : IProceduresService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Procedures.Any(e => e.Id == procedure.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

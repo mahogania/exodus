@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -22,11 +21,12 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
     }
 
     /// <summary>
-    /// Create one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    public async Task<RequestForCancellationOfTheDetailedDeclarationCustoms> CreateRequestForCancellationOfTheDetailedDeclarationCustoms(
-        RequestForCancellationOfTheDetailedDeclarationCustomsCreateInput createDto
-    )
+    public async Task<RequestForCancellationOfTheDetailedDeclarationCustoms>
+        CreateRequestForCancellationOfTheDetailedDeclarationCustoms(
+            RequestForCancellationOfTheDetailedDeclarationCustomsCreateInput createDto
+        )
     {
         var requestForCancellationOfTheDetailedDeclarationCustoms =
             new RequestForCancellationOfTheDetailedDeclarationCustomsDbModel
@@ -47,10 +47,7 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            requestForCancellationOfTheDetailedDeclarationCustoms.Id = createDto.Id;
-        }
+        if (createDto.Id != null) requestForCancellationOfTheDetailedDeclarationCustoms.Id = createDto.Id;
 
         _context.RequestForCancellationOfTheDetailedDeclarationCustomsItems.Add(
             requestForCancellationOfTheDetailedDeclarationCustoms
@@ -62,16 +59,13 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
                 requestForCancellationOfTheDetailedDeclarationCustoms.Id
             );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task DeleteRequestForCancellationOfTheDetailedDeclarationCustoms(
         RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
@@ -81,10 +75,7 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
             await _context.RequestForCancellationOfTheDetailedDeclarationCustomsItems.FindAsync(
                 uniqueId.Id
             );
-        if (requestForCancellationOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (requestForCancellationOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         _context.RequestForCancellationOfTheDetailedDeclarationCustomsItems.Remove(
             requestForCancellationOfTheDetailedDeclarationCustoms
@@ -93,7 +84,7 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
     }
 
     /// <summary>
-    /// Find many REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public async Task<
         List<RequestForCancellationOfTheDetailedDeclarationCustoms>
@@ -116,7 +107,7 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
     }
 
     /// <summary>
-    /// Meta data about REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public async Task<MetadataDto> RequestForCancellationOfTheDetailedDeclarationCustomsItemsMeta(
         RequestForCancellationOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
@@ -132,14 +123,15 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
     }
 
     /// <summary>
-    /// Get one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    public async Task<RequestForCancellationOfTheDetailedDeclarationCustoms> RequestForCancellationOfTheDetailedDeclarationCustoms(
-        RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
-    )
+    public async Task<RequestForCancellationOfTheDetailedDeclarationCustoms>
+        RequestForCancellationOfTheDetailedDeclarationCustoms(
+            RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        )
     {
         var requestForCancellationOfTheDetailedDeclarationCustomsItems =
-            await this.RequestForCancellationOfTheDetailedDeclarationCustomsItems(
+            await RequestForCancellationOfTheDetailedDeclarationCustomsItems(
                 new RequestForCancellationOfTheDetailedDeclarationCustomsFindManyArgs
                 {
                     Where = new RequestForCancellationOfTheDetailedDeclarationCustomsWhereInput
@@ -150,16 +142,13 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
             );
         var requestForCancellationOfTheDetailedDeclarationCustoms =
             requestForCancellationOfTheDetailedDeclarationCustomsItems.FirstOrDefault();
-        if (requestForCancellationOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (requestForCancellationOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         return requestForCancellationOfTheDetailedDeclarationCustoms;
     }
 
     /// <summary>
-    /// Update one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task UpdateRequestForCancellationOfTheDetailedDeclarationCustoms(
         RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
@@ -182,13 +171,8 @@ public abstract class RequestForCancellationOfTheDetailedDeclarationCustomsItems
                     e.Id == requestForCancellationOfTheDetailedDeclarationCustoms.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

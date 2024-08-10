@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class DirectImportationExportationsServiceBase
     }
 
     /// <summary>
-    /// Create one DIRECT IMPORTATION/EXPORTATION
+    ///     Create one DIRECT IMPORTATION/EXPORTATION
     /// </summary>
     public async Task<DirectImportationExportation> CreateDirectImportationExportation(
         DirectImportationExportationCreateInput createDto
@@ -53,10 +52,7 @@ public abstract class DirectImportationExportationsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            directImportationExportation.Id = createDto.Id;
-        }
+        if (createDto.Id != null) directImportationExportation.Id = createDto.Id;
 
         _context.DirectImportationExportations.Add(directImportationExportation);
         await _context.SaveChangesAsync();
@@ -65,16 +61,13 @@ public abstract class DirectImportationExportationsServiceBase
             directImportationExportation.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DIRECT IMPORTATION/EXPORTATION
+    ///     Delete one DIRECT IMPORTATION/EXPORTATION
     /// </summary>
     public async Task DeleteDirectImportationExportation(
         DirectImportationExportationWhereUniqueInput uniqueId
@@ -83,17 +76,14 @@ public abstract class DirectImportationExportationsServiceBase
         var directImportationExportation = await _context.DirectImportationExportations.FindAsync(
             uniqueId.Id
         );
-        if (directImportationExportation == null)
-        {
-            throw new NotFoundException();
-        }
+        if (directImportationExportation == null) throw new NotFoundException();
 
         _context.DirectImportationExportations.Remove(directImportationExportation);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many DIRECT IMPORTATION/EXPORTATIONS
+    ///     Find many DIRECT IMPORTATION/EXPORTATIONS
     /// </summary>
     public async Task<List<DirectImportationExportation>> DirectImportationExportations(
         DirectImportationExportationFindManyArgs findManyArgs
@@ -111,7 +101,7 @@ public abstract class DirectImportationExportationsServiceBase
     }
 
     /// <summary>
-    /// Meta data about DIRECT IMPORTATION/EXPORTATION records
+    ///     Meta data about DIRECT IMPORTATION/EXPORTATION records
     /// </summary>
     public async Task<MetadataDto> DirectImportationExportationsMeta(
         DirectImportationExportationFindManyArgs findManyArgs
@@ -125,29 +115,26 @@ public abstract class DirectImportationExportationsServiceBase
     }
 
     /// <summary>
-    /// Get one DIRECT IMPORTATION/EXPORTATION
+    ///     Get one DIRECT IMPORTATION/EXPORTATION
     /// </summary>
     public async Task<DirectImportationExportation> DirectImportationExportation(
         DirectImportationExportationWhereUniqueInput uniqueId
     )
     {
-        var directImportationExportations = await this.DirectImportationExportations(
+        var directImportationExportations = await DirectImportationExportations(
             new DirectImportationExportationFindManyArgs
             {
                 Where = new DirectImportationExportationWhereInput { Id = uniqueId.Id }
             }
         );
         var directImportationExportation = directImportationExportations.FirstOrDefault();
-        if (directImportationExportation == null)
-        {
-            throw new NotFoundException();
-        }
+        if (directImportationExportation == null) throw new NotFoundException();
 
         return directImportationExportation;
     }
 
     /// <summary>
-    /// Update one DIRECT IMPORTATION/EXPORTATION
+    ///     Update one DIRECT IMPORTATION/EXPORTATION
     /// </summary>
     public async Task UpdateDirectImportationExportation(
         DirectImportationExportationWhereUniqueInput uniqueId,
@@ -169,13 +156,8 @@ public abstract class DirectImportationExportationsServiceBase
                     e.Id == directImportationExportation.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

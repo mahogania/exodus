@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class FineRequestHistoriesServiceBase : IFineRequestHistoriesSer
     }
 
     /// <summary>
-    /// Create one FINE REQUEST HISTORY
+    ///     Create one FINE REQUEST HISTORY
     /// </summary>
     public async Task<FineRequestHistory> CreateFineRequestHistory(
         FineRequestHistoryCreateInput createDto
@@ -45,41 +44,32 @@ public abstract class FineRequestHistoriesServiceBase : IFineRequestHistoriesSer
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            fineRequestHistory.Id = createDto.Id;
-        }
+        if (createDto.Id != null) fineRequestHistory.Id = createDto.Id;
 
         _context.FineRequestHistories.Add(fineRequestHistory);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<FineRequestHistoryDbModel>(fineRequestHistory.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one FINE REQUEST HISTORY
+    ///     Delete one FINE REQUEST HISTORY
     /// </summary>
     public async Task DeleteFineRequestHistory(FineRequestHistoryWhereUniqueInput uniqueId)
     {
         var fineRequestHistory = await _context.FineRequestHistories.FindAsync(uniqueId.Id);
-        if (fineRequestHistory == null)
-        {
-            throw new NotFoundException();
-        }
+        if (fineRequestHistory == null) throw new NotFoundException();
 
         _context.FineRequestHistories.Remove(fineRequestHistory);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many FINE REQUEST HISTORIES
+    ///     Find many FINE REQUEST HISTORIES
     /// </summary>
     public async Task<List<FineRequestHistory>> FineRequestHistories(
         FineRequestHistoryFindManyArgs findManyArgs
@@ -95,7 +85,7 @@ public abstract class FineRequestHistoriesServiceBase : IFineRequestHistoriesSer
     }
 
     /// <summary>
-    /// Meta data about FINE REQUEST HISTORY records
+    ///     Meta data about FINE REQUEST HISTORY records
     /// </summary>
     public async Task<MetadataDto> FineRequestHistoriesMeta(
         FineRequestHistoryFindManyArgs findManyArgs
@@ -107,29 +97,26 @@ public abstract class FineRequestHistoriesServiceBase : IFineRequestHistoriesSer
     }
 
     /// <summary>
-    /// Get one FINE REQUEST HISTORY
+    ///     Get one FINE REQUEST HISTORY
     /// </summary>
     public async Task<FineRequestHistory> FineRequestHistory(
         FineRequestHistoryWhereUniqueInput uniqueId
     )
     {
-        var fineRequestHistories = await this.FineRequestHistories(
+        var fineRequestHistories = await FineRequestHistories(
             new FineRequestHistoryFindManyArgs
             {
                 Where = new FineRequestHistoryWhereInput { Id = uniqueId.Id }
             }
         );
         var fineRequestHistory = fineRequestHistories.FirstOrDefault();
-        if (fineRequestHistory == null)
-        {
-            throw new NotFoundException();
-        }
+        if (fineRequestHistory == null) throw new NotFoundException();
 
         return fineRequestHistory;
     }
 
     /// <summary>
-    /// Update one FINE REQUEST HISTORY
+    ///     Update one FINE REQUEST HISTORY
     /// </summary>
     public async Task UpdateFineRequestHistory(
         FineRequestHistoryWhereUniqueInput uniqueId,
@@ -147,13 +134,8 @@ public abstract class FineRequestHistoriesServiceBase : IFineRequestHistoriesSer
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.FineRequestHistories.Any(e => e.Id == fineRequestHistory.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

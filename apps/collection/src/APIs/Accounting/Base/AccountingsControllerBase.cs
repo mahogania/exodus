@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class AccountingsControllerBase : ControllerBase
 {
     protected readonly IAccountingsService _service;
@@ -19,9 +18,9 @@ public abstract class AccountingsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one ACCOUNTING
+    ///     Create one ACCOUNTING
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Accounting>> CreateAccounting(AccountingCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class AccountingsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one ACCOUNTING
+    ///     Delete one ACCOUNTING
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteAccounting(
-        [FromRoute()] AccountingWhereUniqueInput uniqueId
+        [FromRoute] AccountingWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class AccountingsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many ACCOUNTINGS
+    ///     Find many ACCOUNTINGS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Accounting>>> Accountings(
-        [FromQuery()] AccountingFindManyArgs filter
+        [FromQuery] AccountingFindManyArgs filter
     )
     {
         return Ok(await _service.Accountings(filter));
     }
 
     /// <summary>
-    /// Meta data about ACCOUNTING records
+    ///     Meta data about ACCOUNTING records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> AccountingsMeta(
-        [FromQuery()] AccountingFindManyArgs filter
+        [FromQuery] AccountingFindManyArgs filter
     )
     {
         return Ok(await _service.AccountingsMeta(filter));
     }
 
     /// <summary>
-    /// Get one ACCOUNTING
+    ///     Get one ACCOUNTING
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Accounting>> Accounting(
-        [FromRoute()] AccountingWhereUniqueInput uniqueId
+        [FromRoute] AccountingWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class AccountingsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one ACCOUNTING
+    ///     Update one ACCOUNTING
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateAccounting(
-        [FromRoute()] AccountingWhereUniqueInput uniqueId,
-        [FromQuery()] AccountingUpdateInput accountingUpdateDto
+        [FromRoute] AccountingWhereUniqueInput uniqueId,
+        [FromQuery] AccountingUpdateInput accountingUpdateDto
     )
     {
         try

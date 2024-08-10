@@ -33,7 +33,7 @@ public static class InformationOfGoodsAtAndStandardExchangesExtensions
             SuppressionOn = model.SuppressionOn,
             TechnicalDesignationOfMaterials = model.TechnicalDesignationOfMaterials,
             UpdatedAt = model.UpdatedAt,
-            Value = model.Value,
+            Value = model.Value
         };
     }
 
@@ -69,14 +69,8 @@ public static class InformationOfGoodsAtAndStandardExchangesExtensions
                 Value = updateDto.Value
             };
 
-        if (updateDto.CreatedAt != null)
-        {
-            informationOfGoodsAtAndStandardExchange.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            informationOfGoodsAtAndStandardExchange.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) informationOfGoodsAtAndStandardExchange.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) informationOfGoodsAtAndStandardExchange.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return informationOfGoodsAtAndStandardExchange;
     }

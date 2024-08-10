@@ -30,7 +30,7 @@ public static class ProceduresExtensions
             StateOfCashYOrN = model.StateOfCashYOrN,
             StateOfExpenseCertificatesStoppedYOrN = model.StateOfExpenseCertificatesStoppedYOrN,
             StateOfReceiptsStoppedYOrN = model.StateOfReceiptsStoppedYOrN,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -63,14 +63,8 @@ public static class ProceduresExtensions
             StateOfReceiptsStoppedYOrN = updateDto.StateOfReceiptsStoppedYOrN
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            procedure.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            procedure.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) procedure.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) procedure.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return procedure;
     }

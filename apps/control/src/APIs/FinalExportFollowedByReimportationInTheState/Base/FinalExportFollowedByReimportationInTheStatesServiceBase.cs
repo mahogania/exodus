@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class FinalExportFollowedByReimportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Create one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
+    ///     Create one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
     /// </summary>
     public async Task<FinalExportFollowedByReimportationInTheState> CreateFinalExportFollowedByReimportationInTheState(
         FinalExportFollowedByReimportationInTheStateCreateInput createDto
@@ -53,10 +52,7 @@ public abstract class FinalExportFollowedByReimportationInTheStatesServiceBase
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            finalExportFollowedByReimportationInTheState.Id = createDto.Id;
-        }
+        if (createDto.Id != null) finalExportFollowedByReimportationInTheState.Id = createDto.Id;
 
         _context.FinalExportFollowedByReimportationInTheStates.Add(
             finalExportFollowedByReimportationInTheState
@@ -67,16 +63,13 @@ public abstract class FinalExportFollowedByReimportationInTheStatesServiceBase
             finalExportFollowedByReimportationInTheState.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
+    ///     Delete one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
     /// </summary>
     public async Task DeleteFinalExportFollowedByReimportationInTheState(
         FinalExportFollowedByReimportationInTheStateWhereUniqueInput uniqueId
@@ -84,10 +77,7 @@ public abstract class FinalExportFollowedByReimportationInTheStatesServiceBase
     {
         var finalExportFollowedByReimportationInTheState =
             await _context.FinalExportFollowedByReimportationInTheStates.FindAsync(uniqueId.Id);
-        if (finalExportFollowedByReimportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (finalExportFollowedByReimportationInTheState == null) throw new NotFoundException();
 
         _context.FinalExportFollowedByReimportationInTheStates.Remove(
             finalExportFollowedByReimportationInTheState
@@ -96,7 +86,7 @@ public abstract class FinalExportFollowedByReimportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Find many FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATES
+    ///     Find many FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATES
     /// </summary>
     public async Task<
         List<FinalExportFollowedByReimportationInTheState>
@@ -117,7 +107,7 @@ public abstract class FinalExportFollowedByReimportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Meta data about FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE records
+    ///     Meta data about FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE records
     /// </summary>
     public async Task<MetadataDto> FinalExportFollowedByReimportationInTheStatesMeta(
         FinalExportFollowedByReimportationInTheStateFindManyArgs findManyArgs
@@ -131,14 +121,14 @@ public abstract class FinalExportFollowedByReimportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Get one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
+    ///     Get one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
     /// </summary>
     public async Task<FinalExportFollowedByReimportationInTheState> FinalExportFollowedByReimportationInTheState(
         FinalExportFollowedByReimportationInTheStateWhereUniqueInput uniqueId
     )
     {
         var finalExportFollowedByReimportationInTheStates =
-            await this.FinalExportFollowedByReimportationInTheStates(
+            await FinalExportFollowedByReimportationInTheStates(
                 new FinalExportFollowedByReimportationInTheStateFindManyArgs
                 {
                     Where = new FinalExportFollowedByReimportationInTheStateWhereInput
@@ -149,16 +139,13 @@ public abstract class FinalExportFollowedByReimportationInTheStatesServiceBase
             );
         var finalExportFollowedByReimportationInTheState =
             finalExportFollowedByReimportationInTheStates.FirstOrDefault();
-        if (finalExportFollowedByReimportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (finalExportFollowedByReimportationInTheState == null) throw new NotFoundException();
 
         return finalExportFollowedByReimportationInTheState;
     }
 
     /// <summary>
-    /// Update one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
+    ///     Update one FINAL EXPORT FOLLOWED BY REIMPORTATION IN THE STATE
     /// </summary>
     public async Task UpdateFinalExportFollowedByReimportationInTheState(
         FinalExportFollowedByReimportationInTheStateWhereUniqueInput uniqueId,
@@ -180,13 +167,8 @@ public abstract class FinalExportFollowedByReimportationInTheStatesServiceBase
                     e.Id == finalExportFollowedByReimportationInTheState.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

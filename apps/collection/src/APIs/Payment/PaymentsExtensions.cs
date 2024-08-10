@@ -39,7 +39,7 @@ public static class PaymentsExtensions
             PaymentTypeCode = model.PaymentTypeCode,
             ServiceCode = model.ServiceCode,
             TaxpayerIdentificationNo = model.TaxpayerIdentificationNo,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -81,14 +81,8 @@ public static class PaymentsExtensions
             TaxpayerIdentificationNo = updateDto.TaxpayerIdentificationNo
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            payment.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            payment.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) payment.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) payment.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return payment;
     }

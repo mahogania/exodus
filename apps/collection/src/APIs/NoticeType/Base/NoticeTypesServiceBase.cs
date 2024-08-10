@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class NoticeTypesServiceBase : INoticeTypesService
     }
 
     /// <summary>
-    /// Create one NOTICE TYPE
+    ///     Create one NOTICE TYPE
     /// </summary>
     public async Task<NoticeType> CreateNoticeType(NoticeTypeCreateInput createDto)
     {
@@ -40,41 +39,32 @@ public abstract class NoticeTypesServiceBase : INoticeTypesService
             UsedOn = createDto.UsedOn
         };
 
-        if (createDto.Id != null)
-        {
-            noticeType.Id = createDto.Id;
-        }
+        if (createDto.Id != null) noticeType.Id = createDto.Id;
 
         _context.NoticeTypes.Add(noticeType);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<NoticeTypeDbModel>(noticeType.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one NOTICE TYPE
+    ///     Delete one NOTICE TYPE
     /// </summary>
     public async Task DeleteNoticeType(NoticeTypeWhereUniqueInput uniqueId)
     {
         var noticeType = await _context.NoticeTypes.FindAsync(uniqueId.Id);
-        if (noticeType == null)
-        {
-            throw new NotFoundException();
-        }
+        if (noticeType == null) throw new NotFoundException();
 
         _context.NoticeTypes.Remove(noticeType);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many NOTICE TYPES
+    ///     Find many NOTICE TYPES
     /// </summary>
     public async Task<List<NoticeType>> NoticeTypes(NoticeTypeFindManyArgs findManyArgs)
     {
@@ -88,7 +78,7 @@ public abstract class NoticeTypesServiceBase : INoticeTypesService
     }
 
     /// <summary>
-    /// Meta data about NOTICE TYPE records
+    ///     Meta data about NOTICE TYPE records
     /// </summary>
     public async Task<MetadataDto> NoticeTypesMeta(NoticeTypeFindManyArgs findManyArgs)
     {
@@ -98,24 +88,21 @@ public abstract class NoticeTypesServiceBase : INoticeTypesService
     }
 
     /// <summary>
-    /// Get one NOTICE TYPE
+    ///     Get one NOTICE TYPE
     /// </summary>
     public async Task<NoticeType> NoticeType(NoticeTypeWhereUniqueInput uniqueId)
     {
-        var noticeTypes = await this.NoticeTypes(
+        var noticeTypes = await NoticeTypes(
             new NoticeTypeFindManyArgs { Where = new NoticeTypeWhereInput { Id = uniqueId.Id } }
         );
         var noticeType = noticeTypes.FirstOrDefault();
-        if (noticeType == null)
-        {
-            throw new NotFoundException();
-        }
+        if (noticeType == null) throw new NotFoundException();
 
         return noticeType;
     }
 
     /// <summary>
-    /// Update one NOTICE TYPE
+    ///     Update one NOTICE TYPE
     /// </summary>
     public async Task UpdateNoticeType(
         NoticeTypeWhereUniqueInput uniqueId,
@@ -133,13 +120,8 @@ public abstract class NoticeTypesServiceBase : INoticeTypesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.NoticeTypes.Any(e => e.Id == noticeType.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

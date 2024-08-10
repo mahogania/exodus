@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class RequestForCommonCarnetsControllerBase : ControllerBase
 {
     protected readonly IRequestForCommonCarnetsService _service;
@@ -19,9 +18,9 @@ public abstract class RequestForCommonCarnetsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one REQUEST FOR COMMON CARNET
+    ///     Create one REQUEST FOR COMMON CARNET
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<RequestForCommonCarnet>> CreateRequestForCommonCarnet(
         RequestForCommonCarnetCreateInput input
@@ -37,12 +36,12 @@ public abstract class RequestForCommonCarnetsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one REQUEST FOR COMMON CARNET
+    ///     Delete one REQUEST FOR COMMON CARNET
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteRequestForCommonCarnet(
-        [FromRoute()] RequestForCommonCarnetWhereUniqueInput uniqueId
+        [FromRoute] RequestForCommonCarnetWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class RequestForCommonCarnetsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many REQUEST FOR COMMON CARNETS
+    ///     Find many REQUEST FOR COMMON CARNETS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<RequestForCommonCarnet>>> RequestForCommonCarnets(
-        [FromQuery()] RequestForCommonCarnetFindManyArgs filter
+        [FromQuery] RequestForCommonCarnetFindManyArgs filter
     )
     {
         return Ok(await _service.RequestForCommonCarnets(filter));
     }
 
     /// <summary>
-    /// Meta data about REQUEST FOR COMMON CARNET records
+    ///     Meta data about REQUEST FOR COMMON CARNET records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> RequestForCommonCarnetsMeta(
-        [FromQuery()] RequestForCommonCarnetFindManyArgs filter
+        [FromQuery] RequestForCommonCarnetFindManyArgs filter
     )
     {
         return Ok(await _service.RequestForCommonCarnetsMeta(filter));
     }
 
     /// <summary>
-    /// Get one REQUEST FOR COMMON CARNET
+    ///     Get one REQUEST FOR COMMON CARNET
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<RequestForCommonCarnet>> RequestForCommonCarnet(
-        [FromRoute()] RequestForCommonCarnetWhereUniqueInput uniqueId
+        [FromRoute] RequestForCommonCarnetWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class RequestForCommonCarnetsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one REQUEST FOR COMMON CARNET
+    ///     Update one REQUEST FOR COMMON CARNET
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateRequestForCommonCarnet(
-        [FromRoute()] RequestForCommonCarnetWhereUniqueInput uniqueId,
-        [FromQuery()] RequestForCommonCarnetUpdateInput requestForCommonCarnetUpdateDto
+        [FromRoute] RequestForCommonCarnetWhereUniqueInput uniqueId,
+        [FromQuery] RequestForCommonCarnetUpdateInput requestForCommonCarnetUpdateDto
     )
     {
         try

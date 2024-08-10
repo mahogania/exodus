@@ -22,7 +22,7 @@ public static class NoticeTypesExtensions
             NumberOfDueDays = model.NumberOfDueDays,
             NumberOfTimesUsed = model.NumberOfTimesUsed,
             UpdatedAt = model.UpdatedAt,
-            UsedOn = model.UsedOn,
+            UsedOn = model.UsedOn
         };
     }
 
@@ -47,14 +47,8 @@ public static class NoticeTypesExtensions
             UsedOn = updateDto.UsedOn
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            noticeType.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            noticeType.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) noticeType.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) noticeType.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return noticeType;
     }

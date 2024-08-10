@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class ExportedOrToBeExportedGoodsInformationsServiceBase
     }
 
     /// <summary>
-    /// Create one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
+    ///     Create one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
     /// </summary>
     public async Task<ExportedOrToBeExportedGoodsInformation> CreateExportedOrToBeExportedGoodsInformation(
         ExportedOrToBeExportedGoodsInformationCreateInput createDto
@@ -49,10 +48,7 @@ public abstract class ExportedOrToBeExportedGoodsInformationsServiceBase
                 Value = createDto.Value
             };
 
-        if (createDto.Id != null)
-        {
-            exportedOrToBeExportedGoodsInformation.Id = createDto.Id;
-        }
+        if (createDto.Id != null) exportedOrToBeExportedGoodsInformation.Id = createDto.Id;
 
         _context.ExportedOrToBeExportedGoodsInformations.Add(
             exportedOrToBeExportedGoodsInformation
@@ -63,16 +59,13 @@ public abstract class ExportedOrToBeExportedGoodsInformationsServiceBase
             exportedOrToBeExportedGoodsInformation.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
+    ///     Delete one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
     /// </summary>
     public async Task DeleteExportedOrToBeExportedGoodsInformation(
         ExportedOrToBeExportedGoodsInformationWhereUniqueInput uniqueId
@@ -80,10 +73,7 @@ public abstract class ExportedOrToBeExportedGoodsInformationsServiceBase
     {
         var exportedOrToBeExportedGoodsInformation =
             await _context.ExportedOrToBeExportedGoodsInformations.FindAsync(uniqueId.Id);
-        if (exportedOrToBeExportedGoodsInformation == null)
-        {
-            throw new NotFoundException();
-        }
+        if (exportedOrToBeExportedGoodsInformation == null) throw new NotFoundException();
 
         _context.ExportedOrToBeExportedGoodsInformations.Remove(
             exportedOrToBeExportedGoodsInformation
@@ -92,7 +82,7 @@ public abstract class ExportedOrToBeExportedGoodsInformationsServiceBase
     }
 
     /// <summary>
-    /// Find many EXPORTED OR TO BE EXPORTED GOODS INFORMATIONS
+    ///     Find many EXPORTED OR TO BE EXPORTED GOODS INFORMATIONS
     /// </summary>
     public async Task<
         List<ExportedOrToBeExportedGoodsInformation>
@@ -112,7 +102,7 @@ public abstract class ExportedOrToBeExportedGoodsInformationsServiceBase
     }
 
     /// <summary>
-    /// Meta data about EXPORTED OR TO BE EXPORTED GOODS INFORMATION records
+    ///     Meta data about EXPORTED OR TO BE EXPORTED GOODS INFORMATION records
     /// </summary>
     public async Task<MetadataDto> ExportedOrToBeExportedGoodsInformationsMeta(
         ExportedOrToBeExportedGoodsInformationFindManyArgs findManyArgs
@@ -126,14 +116,14 @@ public abstract class ExportedOrToBeExportedGoodsInformationsServiceBase
     }
 
     /// <summary>
-    /// Get one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
+    ///     Get one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
     /// </summary>
     public async Task<ExportedOrToBeExportedGoodsInformation> ExportedOrToBeExportedGoodsInformation(
         ExportedOrToBeExportedGoodsInformationWhereUniqueInput uniqueId
     )
     {
         var exportedOrToBeExportedGoodsInformations =
-            await this.ExportedOrToBeExportedGoodsInformations(
+            await ExportedOrToBeExportedGoodsInformations(
                 new ExportedOrToBeExportedGoodsInformationFindManyArgs
                 {
                     Where = new ExportedOrToBeExportedGoodsInformationWhereInput
@@ -144,16 +134,13 @@ public abstract class ExportedOrToBeExportedGoodsInformationsServiceBase
             );
         var exportedOrToBeExportedGoodsInformation =
             exportedOrToBeExportedGoodsInformations.FirstOrDefault();
-        if (exportedOrToBeExportedGoodsInformation == null)
-        {
-            throw new NotFoundException();
-        }
+        if (exportedOrToBeExportedGoodsInformation == null) throw new NotFoundException();
 
         return exportedOrToBeExportedGoodsInformation;
     }
 
     /// <summary>
-    /// Update one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
+    ///     Update one EXPORTED OR TO BE EXPORTED GOODS INFORMATION
     /// </summary>
     public async Task UpdateExportedOrToBeExportedGoodsInformation(
         ExportedOrToBeExportedGoodsInformationWhereUniqueInput uniqueId,
@@ -175,13 +162,8 @@ public abstract class ExportedOrToBeExportedGoodsInformationsServiceBase
                     e.Id == exportedOrToBeExportedGoodsInformation.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

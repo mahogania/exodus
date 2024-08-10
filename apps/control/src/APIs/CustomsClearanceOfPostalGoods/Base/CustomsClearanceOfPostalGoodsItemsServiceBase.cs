@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class CustomsClearanceOfPostalGoodsItemsServiceBase
     }
 
     /// <summary>
-    /// Create one CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Create one CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
     public async Task<CustomsClearanceOfPostalGoods> CreateCustomsClearanceOfPostalGoods(
         CustomsClearanceOfPostalGoodsCreateInput createDto
@@ -92,10 +91,7 @@ public abstract class CustomsClearanceOfPostalGoodsItemsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            customsClearanceOfPostalGoods.Id = createDto.Id;
-        }
+        if (createDto.Id != null) customsClearanceOfPostalGoods.Id = createDto.Id;
 
         _context.CustomsClearanceOfPostalGoodsItems.Add(customsClearanceOfPostalGoods);
         await _context.SaveChangesAsync();
@@ -104,16 +100,13 @@ public abstract class CustomsClearanceOfPostalGoodsItemsServiceBase
             customsClearanceOfPostalGoods.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Delete one CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
     public async Task DeleteCustomsClearanceOfPostalGoods(
         CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
@@ -121,17 +114,14 @@ public abstract class CustomsClearanceOfPostalGoodsItemsServiceBase
     {
         var customsClearanceOfPostalGoods =
             await _context.CustomsClearanceOfPostalGoodsItems.FindAsync(uniqueId.Id);
-        if (customsClearanceOfPostalGoods == null)
-        {
-            throw new NotFoundException();
-        }
+        if (customsClearanceOfPostalGoods == null) throw new NotFoundException();
 
         _context.CustomsClearanceOfPostalGoodsItems.Remove(customsClearanceOfPostalGoods);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many CUSTOMS CLEARANCE OF POSTAL GOODSItems
+    ///     Find many CUSTOMS CLEARANCE OF POSTAL GOODSItems
     /// </summary>
     public async Task<List<CustomsClearanceOfPostalGoods>> CustomsClearanceOfPostalGoodsItems(
         CustomsClearanceOfPostalGoodsFindManyArgs findManyArgs
@@ -149,7 +139,7 @@ public abstract class CustomsClearanceOfPostalGoodsItemsServiceBase
     }
 
     /// <summary>
-    /// Meta data about CUSTOMS CLEARANCE OF POSTAL GOODS records
+    ///     Meta data about CUSTOMS CLEARANCE OF POSTAL GOODS records
     /// </summary>
     public async Task<MetadataDto> CustomsClearanceOfPostalGoodsItemsMeta(
         CustomsClearanceOfPostalGoodsFindManyArgs findManyArgs
@@ -163,29 +153,26 @@ public abstract class CustomsClearanceOfPostalGoodsItemsServiceBase
     }
 
     /// <summary>
-    /// Get one CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Get one CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
     public async Task<CustomsClearanceOfPostalGoods> CustomsClearanceOfPostalGoods(
         CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
     )
     {
-        var customsClearanceOfPostalGoodsItems = await this.CustomsClearanceOfPostalGoodsItems(
+        var customsClearanceOfPostalGoodsItems = await CustomsClearanceOfPostalGoodsItems(
             new CustomsClearanceOfPostalGoodsFindManyArgs
             {
                 Where = new CustomsClearanceOfPostalGoodsWhereInput { Id = uniqueId.Id }
             }
         );
         var customsClearanceOfPostalGoods = customsClearanceOfPostalGoodsItems.FirstOrDefault();
-        if (customsClearanceOfPostalGoods == null)
-        {
-            throw new NotFoundException();
-        }
+        if (customsClearanceOfPostalGoods == null) throw new NotFoundException();
 
         return customsClearanceOfPostalGoods;
     }
 
     /// <summary>
-    /// Update one CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Update one CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
     public async Task UpdateCustomsClearanceOfPostalGoods(
         CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId,
@@ -207,13 +194,8 @@ public abstract class CustomsClearanceOfPostalGoodsItemsServiceBase
                     e.Id == customsClearanceOfPostalGoods.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

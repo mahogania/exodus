@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CommonActivePerfectioningGoodsRequestsControllerBase : ControllerBase
 {
     protected readonly ICommonActivePerfectioningGoodsRequestsService _service;
@@ -21,9 +20,9 @@ public abstract class CommonActivePerfectioningGoodsRequestsControllerBase : Con
     }
 
     /// <summary>
-    /// Create one COMMON ACTIVE PERFECTIONING GOODS REQUEST
+    ///     Create one COMMON ACTIVE PERFECTIONING GOODS REQUEST
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CommonActivePerfectioningGoodsRequest>
@@ -42,12 +41,12 @@ public abstract class CommonActivePerfectioningGoodsRequestsControllerBase : Con
     }
 
     /// <summary>
-    /// Delete one COMMON ACTIVE PERFECTIONING GOODS REQUEST
+    ///     Delete one COMMON ACTIVE PERFECTIONING GOODS REQUEST
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCommonActivePerfectioningGoodsRequest(
-        [FromRoute()] CommonActivePerfectioningGoodsRequestWhereUniqueInput uniqueId
+        [FromRoute] CommonActivePerfectioningGoodsRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class CommonActivePerfectioningGoodsRequestsControllerBase : Con
     }
 
     /// <summary>
-    /// Find many COMMON ACTIVE PERFECTIONING GOODS REQUESTS
+    ///     Find many COMMON ACTIVE PERFECTIONING GOODS REQUESTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<CommonActivePerfectioningGoodsRequest>>
     > CommonActivePerfectioningGoodsRequests(
-        [FromQuery()] CommonActivePerfectioningGoodsRequestFindManyArgs filter
+        [FromQuery] CommonActivePerfectioningGoodsRequestFindManyArgs filter
     )
     {
         return Ok(await _service.CommonActivePerfectioningGoodsRequests(filter));
     }
 
     /// <summary>
-    /// Meta data about COMMON ACTIVE PERFECTIONING GOODS REQUEST records
+    ///     Meta data about COMMON ACTIVE PERFECTIONING GOODS REQUEST records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CommonActivePerfectioningGoodsRequestsMeta(
-        [FromQuery()] CommonActivePerfectioningGoodsRequestFindManyArgs filter
+        [FromQuery] CommonActivePerfectioningGoodsRequestFindManyArgs filter
     )
     {
         return Ok(await _service.CommonActivePerfectioningGoodsRequestsMeta(filter));
     }
 
     /// <summary>
-    /// Get one COMMON ACTIVE PERFECTIONING GOODS REQUEST
+    ///     Get one COMMON ACTIVE PERFECTIONING GOODS REQUEST
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CommonActivePerfectioningGoodsRequest>
     > CommonActivePerfectioningGoodsRequest(
-        [FromRoute()] CommonActivePerfectioningGoodsRequestWhereUniqueInput uniqueId
+        [FromRoute] CommonActivePerfectioningGoodsRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,13 @@ public abstract class CommonActivePerfectioningGoodsRequestsControllerBase : Con
     }
 
     /// <summary>
-    /// Update one COMMON ACTIVE PERFECTIONING GOODS REQUEST
+    ///     Update one COMMON ACTIVE PERFECTIONING GOODS REQUEST
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCommonActivePerfectioningGoodsRequest(
-        [FromRoute()] CommonActivePerfectioningGoodsRequestWhereUniqueInput uniqueId,
-        [FromQuery()]
-            CommonActivePerfectioningGoodsRequestUpdateInput commonActivePerfectioningGoodsRequestUpdateDto
+        [FromRoute] CommonActivePerfectioningGoodsRequestWhereUniqueInput uniqueId,
+        [FromQuery] CommonActivePerfectioningGoodsRequestUpdateInput commonActivePerfectioningGoodsRequestUpdateDto
     )
     {
         try

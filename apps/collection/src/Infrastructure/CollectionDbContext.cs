@@ -8,7 +8,9 @@ namespace Collection.Infrastructure;
 public class CollectionDbContext : IdentityDbContext<IdentityUser>
 {
     public CollectionDbContext(DbContextOptions<CollectionDbContext> options)
-        : base(options) { }
+        : base(options)
+    {
+    }
 
     public DbSet<DetailDbModel> Details { get; set; }
 
@@ -46,7 +48,8 @@ public class CollectionDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<ReceptionDbModel> Receptions { get; set; }
 
-    public DbSet<ManagementOfAccountingAccountsByPaymentNoticeTypeDbModel> ManagementOfAccountingAccountsByPaymentNoticeTypes { get; set; }
+    public DbSet<ManagementOfAccountingAccountsByPaymentNoticeTypeDbModel>
+        ManagementOfAccountingAccountsByPaymentNoticeTypes { get; set; }
 
     public DbSet<CreditDbModel> Credits { get; set; }
 

@@ -32,7 +32,7 @@ public static class DelaysExtensions
             TotalNoticeAmount = model.TotalNoticeAmount,
             TotalPreviousNoticeAmount = model.TotalPreviousNoticeAmount,
             UnadjustedLatePaymentInterestAmount = model.UnadjustedLatePaymentInterestAmount,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -67,14 +67,8 @@ public static class DelaysExtensions
             UnadjustedLatePaymentInterestAmount = updateDto.UnadjustedLatePaymentInterestAmount
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            delay.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            delay.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) delay.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) delay.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return delay;
     }

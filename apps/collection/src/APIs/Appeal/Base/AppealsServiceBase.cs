@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class AppealsServiceBase : IAppealsService
     }
 
     /// <summary>
-    /// Create one APPEAL
+    ///     Create one APPEAL
     /// </summary>
     public async Task<Appeal> CreateAppeal(AppealCreateInput createDto)
     {
@@ -42,41 +41,32 @@ public abstract class AppealsServiceBase : IAppealsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            appeal.Id = createDto.Id;
-        }
+        if (createDto.Id != null) appeal.Id = createDto.Id;
 
         _context.Appeals.Add(appeal);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<AppealDbModel>(appeal.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one APPEAL
+    ///     Delete one APPEAL
     /// </summary>
     public async Task DeleteAppeal(AppealWhereUniqueInput uniqueId)
     {
         var appeal = await _context.Appeals.FindAsync(uniqueId.Id);
-        if (appeal == null)
-        {
-            throw new NotFoundException();
-        }
+        if (appeal == null) throw new NotFoundException();
 
         _context.Appeals.Remove(appeal);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many APPEALS
+    ///     Find many APPEALS
     /// </summary>
     public async Task<List<Appeal>> Appeals(AppealFindManyArgs findManyArgs)
     {
@@ -90,7 +80,7 @@ public abstract class AppealsServiceBase : IAppealsService
     }
 
     /// <summary>
-    /// Meta data about APPEAL records
+    ///     Meta data about APPEAL records
     /// </summary>
     public async Task<MetadataDto> AppealsMeta(AppealFindManyArgs findManyArgs)
     {
@@ -100,24 +90,21 @@ public abstract class AppealsServiceBase : IAppealsService
     }
 
     /// <summary>
-    /// Get one APPEAL
+    ///     Get one APPEAL
     /// </summary>
     public async Task<Appeal> Appeal(AppealWhereUniqueInput uniqueId)
     {
-        var appeals = await this.Appeals(
+        var appeals = await Appeals(
             new AppealFindManyArgs { Where = new AppealWhereInput { Id = uniqueId.Id } }
         );
         var appeal = appeals.FirstOrDefault();
-        if (appeal == null)
-        {
-            throw new NotFoundException();
-        }
+        if (appeal == null) throw new NotFoundException();
 
         return appeal;
     }
 
     /// <summary>
-    /// Update one APPEAL
+    ///     Update one APPEAL
     /// </summary>
     public async Task UpdateAppeal(AppealWhereUniqueInput uniqueId, AppealUpdateInput updateDto)
     {
@@ -132,13 +119,8 @@ public abstract class AppealsServiceBase : IAppealsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Appeals.Any(e => e.Id == appeal.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

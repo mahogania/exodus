@@ -25,7 +25,7 @@ public static class FineCancellationRequestsExtensions
             RequestDate = model.RequestDate,
             RequestingPersonId = model.RequestingPersonId,
             ServiceCode = model.ServiceCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -53,14 +53,8 @@ public static class FineCancellationRequestsExtensions
             ServiceCode = updateDto.ServiceCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            fineCancellationRequest.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            fineCancellationRequest.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) fineCancellationRequest.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) fineCancellationRequest.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return fineCancellationRequest;
     }

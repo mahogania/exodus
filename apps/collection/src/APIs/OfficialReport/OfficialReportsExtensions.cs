@@ -35,7 +35,7 @@ public static class OfficialReportsExtensions
             ReferenceNumberTypeName = model.ReferenceNumberTypeName,
             RegistrationDate = model.RegistrationDate,
             ServiceCode = model.ServiceCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -74,14 +74,8 @@ public static class OfficialReportsExtensions
             ServiceCode = updateDto.ServiceCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            officialReport.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            officialReport.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) officialReport.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) officialReport.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return officialReport;
     }

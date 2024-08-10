@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CommonDetailedDeclarationCustomsValueAssessmentsControllerBase
     : ControllerBase
 {
@@ -22,9 +21,9 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsController
     }
 
     /// <summary>
-    /// Create one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
+    ///     Create one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CommonDetailedDeclarationCustomsValueAssessment>
@@ -43,12 +42,12 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsController
     }
 
     /// <summary>
-    /// Delete one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
+    ///     Delete one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCommonDetailedDeclarationCustomsValueAssessment(
-        [FromRoute()] CommonDetailedDeclarationCustomsValueAssessmentWhereUniqueInput uniqueId
+        [FromRoute] CommonDetailedDeclarationCustomsValueAssessmentWhereUniqueInput uniqueId
     )
     {
         try
@@ -64,41 +63,41 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsController
     }
 
     /// <summary>
-    /// Find many COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENTS
+    ///     Find many COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<CommonDetailedDeclarationCustomsValueAssessment>>
     > CommonDetailedDeclarationCustomsValueAssessments(
-        [FromQuery()] CommonDetailedDeclarationCustomsValueAssessmentFindManyArgs filter
+        [FromQuery] CommonDetailedDeclarationCustomsValueAssessmentFindManyArgs filter
     )
     {
         return Ok(await _service.CommonDetailedDeclarationCustomsValueAssessments(filter));
     }
 
     /// <summary>
-    /// Meta data about COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT records
+    ///     Meta data about COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > CommonDetailedDeclarationCustomsValueAssessmentsMeta(
-        [FromQuery()] CommonDetailedDeclarationCustomsValueAssessmentFindManyArgs filter
+        [FromQuery] CommonDetailedDeclarationCustomsValueAssessmentFindManyArgs filter
     )
     {
         return Ok(await _service.CommonDetailedDeclarationCustomsValueAssessmentsMeta(filter));
     }
 
     /// <summary>
-    /// Get one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
+    ///     Get one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CommonDetailedDeclarationCustomsValueAssessment>
     > CommonDetailedDeclarationCustomsValueAssessment(
-        [FromRoute()] CommonDetailedDeclarationCustomsValueAssessmentWhereUniqueInput uniqueId
+        [FromRoute] CommonDetailedDeclarationCustomsValueAssessmentWhereUniqueInput uniqueId
     )
     {
         try
@@ -112,14 +111,14 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsController
     }
 
     /// <summary>
-    /// Update one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
+    ///     Update one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCommonDetailedDeclarationCustomsValueAssessment(
-        [FromRoute()] CommonDetailedDeclarationCustomsValueAssessmentWhereUniqueInput uniqueId,
-        [FromQuery()]
-            CommonDetailedDeclarationCustomsValueAssessmentUpdateInput commonDetailedDeclarationCustomsValueAssessmentUpdateDto
+        [FromRoute] CommonDetailedDeclarationCustomsValueAssessmentWhereUniqueInput uniqueId,
+        [FromQuery] CommonDetailedDeclarationCustomsValueAssessmentUpdateInput
+            commonDetailedDeclarationCustomsValueAssessmentUpdateDto
     )
     {
         try

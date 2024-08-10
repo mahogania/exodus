@@ -6,5 +6,7 @@ public class ExportedAndForImprovementGoodsItemsService
     : ExportedAndForImprovementGoodsItemsServiceBase
 {
     public ExportedAndForImprovementGoodsItemsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

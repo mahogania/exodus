@@ -33,7 +33,7 @@ public static class MaterialsAtWithReexportationInTheStatesExtensions
             SuppressionOn = model.SuppressionOn,
             TechnicalDesignationOfTheMaterials = model.TechnicalDesignationOfTheMaterials,
             UnknownField = model.UnknownField,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -68,14 +68,8 @@ public static class MaterialsAtWithReexportationInTheStatesExtensions
                 UnknownField = updateDto.UnknownField
             };
 
-        if (updateDto.CreatedAt != null)
-        {
-            materialsAtWithReexportationInTheState.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            materialsAtWithReexportationInTheState.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) materialsAtWithReexportationInTheState.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) materialsAtWithReexportationInTheState.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return materialsAtWithReexportationInTheState;
     }

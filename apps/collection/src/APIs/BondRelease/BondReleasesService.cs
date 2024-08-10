@@ -5,5 +5,7 @@ namespace Collection.APIs;
 public class BondReleasesService : BondReleasesServiceBase
 {
     public BondReleasesService(CollectionDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class InfosGoodsToBeReprovisionedsServiceBase : IInfosGoodsToBeR
     }
 
     /// <summary>
-    /// Create one INFOS GOODS TO BE REPROVISIONED
+    ///     Create one INFOS GOODS TO BE REPROVISIONED
     /// </summary>
     public async Task<InfosGoodsToBeReprovisioned> CreateInfosGoodsToBeReprovisioned(
         InfosGoodsToBeReprovisionedCreateInput createDto
@@ -51,10 +50,7 @@ public abstract class InfosGoodsToBeReprovisionedsServiceBase : IInfosGoodsToBeR
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            infosGoodsToBeReprovisioned.Id = createDto.Id;
-        }
+        if (createDto.Id != null) infosGoodsToBeReprovisioned.Id = createDto.Id;
 
         _context.InfosGoodsToBeReprovisioneds.Add(infosGoodsToBeReprovisioned);
         await _context.SaveChangesAsync();
@@ -63,16 +59,13 @@ public abstract class InfosGoodsToBeReprovisionedsServiceBase : IInfosGoodsToBeR
             infosGoodsToBeReprovisioned.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one INFOS GOODS TO BE REPROVISIONED
+    ///     Delete one INFOS GOODS TO BE REPROVISIONED
     /// </summary>
     public async Task DeleteInfosGoodsToBeReprovisioned(
         InfosGoodsToBeReprovisionedWhereUniqueInput uniqueId
@@ -81,17 +74,14 @@ public abstract class InfosGoodsToBeReprovisionedsServiceBase : IInfosGoodsToBeR
         var infosGoodsToBeReprovisioned = await _context.InfosGoodsToBeReprovisioneds.FindAsync(
             uniqueId.Id
         );
-        if (infosGoodsToBeReprovisioned == null)
-        {
-            throw new NotFoundException();
-        }
+        if (infosGoodsToBeReprovisioned == null) throw new NotFoundException();
 
         _context.InfosGoodsToBeReprovisioneds.Remove(infosGoodsToBeReprovisioned);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many INFOS GOODS TO BE REPROVISIONEDS
+    ///     Find many INFOS GOODS TO BE REPROVISIONEDS
     /// </summary>
     public async Task<List<InfosGoodsToBeReprovisioned>> InfosGoodsToBeReprovisioneds(
         InfosGoodsToBeReprovisionedFindManyArgs findManyArgs
@@ -109,7 +99,7 @@ public abstract class InfosGoodsToBeReprovisionedsServiceBase : IInfosGoodsToBeR
     }
 
     /// <summary>
-    /// Meta data about INFOS GOODS TO BE REPROVISIONED records
+    ///     Meta data about INFOS GOODS TO BE REPROVISIONED records
     /// </summary>
     public async Task<MetadataDto> InfosGoodsToBeReprovisionedsMeta(
         InfosGoodsToBeReprovisionedFindManyArgs findManyArgs
@@ -123,29 +113,26 @@ public abstract class InfosGoodsToBeReprovisionedsServiceBase : IInfosGoodsToBeR
     }
 
     /// <summary>
-    /// Get one INFOS GOODS TO BE REPROVISIONED
+    ///     Get one INFOS GOODS TO BE REPROVISIONED
     /// </summary>
     public async Task<InfosGoodsToBeReprovisioned> InfosGoodsToBeReprovisioned(
         InfosGoodsToBeReprovisionedWhereUniqueInput uniqueId
     )
     {
-        var infosGoodsToBeReprovisioneds = await this.InfosGoodsToBeReprovisioneds(
+        var infosGoodsToBeReprovisioneds = await InfosGoodsToBeReprovisioneds(
             new InfosGoodsToBeReprovisionedFindManyArgs
             {
                 Where = new InfosGoodsToBeReprovisionedWhereInput { Id = uniqueId.Id }
             }
         );
         var infosGoodsToBeReprovisioned = infosGoodsToBeReprovisioneds.FirstOrDefault();
-        if (infosGoodsToBeReprovisioned == null)
-        {
-            throw new NotFoundException();
-        }
+        if (infosGoodsToBeReprovisioned == null) throw new NotFoundException();
 
         return infosGoodsToBeReprovisioned;
     }
 
     /// <summary>
-    /// Update one INFOS GOODS TO BE REPROVISIONED
+    ///     Update one INFOS GOODS TO BE REPROVISIONED
     /// </summary>
     public async Task UpdateInfosGoodsToBeReprovisioned(
         InfosGoodsToBeReprovisionedWhereUniqueInput uniqueId,
@@ -167,13 +154,8 @@ public abstract class InfosGoodsToBeReprovisionedsServiceBase : IInfosGoodsToBeR
                     e.Id == infosGoodsToBeReprovisioned.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

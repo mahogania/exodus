@@ -22,7 +22,7 @@ public static class CausesExtensions
             NoticeNo = model.NoticeNo,
             OtherChargeableFeesCode = model.OtherChargeableFeesCode,
             OtherChargeableFeesTaxCode = model.OtherChargeableFeesTaxCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -47,14 +47,8 @@ public static class CausesExtensions
             OtherChargeableFeesTaxCode = updateDto.OtherChargeableFeesTaxCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            cause.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            cause.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) cause.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) cause.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return cause;
     }

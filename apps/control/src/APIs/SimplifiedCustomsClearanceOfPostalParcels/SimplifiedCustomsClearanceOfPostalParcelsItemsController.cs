@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class SimplifiedCustomsClearanceOfPostalParcelsItemsController
     : SimplifiedCustomsClearanceOfPostalParcelsItemsControllerBase
 {
     public SimplifiedCustomsClearanceOfPostalParcelsItemsController(
         ISimplifiedCustomsClearanceOfPostalParcelsItemsService service
     )
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

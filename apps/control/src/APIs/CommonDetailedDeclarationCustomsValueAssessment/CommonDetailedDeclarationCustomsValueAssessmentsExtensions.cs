@@ -13,7 +13,7 @@ public static class CommonDetailedDeclarationCustomsValueAssessmentsExtensions
         {
             CreatedAt = model.CreatedAt,
             Id = model.Id,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -26,13 +26,9 @@ public static class CommonDetailedDeclarationCustomsValueAssessmentsExtensions
             new CommonDetailedDeclarationCustomsValueAssessmentDbModel { Id = uniqueId.Id };
 
         if (updateDto.CreatedAt != null)
-        {
             commonDetailedDeclarationCustomsValueAssessment.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             commonDetailedDeclarationCustomsValueAssessment.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return commonDetailedDeclarationCustomsValueAssessment;
     }

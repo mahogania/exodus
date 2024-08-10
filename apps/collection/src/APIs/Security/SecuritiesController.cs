@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class SecuritiesController : SecuritiesControllerBase
 {
     public SecuritiesController(ISecuritiesService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

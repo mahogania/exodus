@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ClaimedFinesControllerBase : ControllerBase
 {
     protected readonly IClaimedFinesService _service;
@@ -19,9 +18,9 @@ public abstract class ClaimedFinesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one CLAIMED FINE
+    ///     Create one CLAIMED FINE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ClaimedFine>> CreateClaimedFine(ClaimedFineCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class ClaimedFinesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one CLAIMED FINE
+    ///     Delete one CLAIMED FINE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteClaimedFine(
-        [FromRoute()] ClaimedFineWhereUniqueInput uniqueId
+        [FromRoute] ClaimedFineWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class ClaimedFinesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many CLAIMED FINES
+    ///     Find many CLAIMED FINES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<ClaimedFine>>> ClaimedFines(
-        [FromQuery()] ClaimedFineFindManyArgs filter
+        [FromQuery] ClaimedFineFindManyArgs filter
     )
     {
         return Ok(await _service.ClaimedFines(filter));
     }
 
     /// <summary>
-    /// Meta data about CLAIMED FINE records
+    ///     Meta data about CLAIMED FINE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ClaimedFinesMeta(
-        [FromQuery()] ClaimedFineFindManyArgs filter
+        [FromQuery] ClaimedFineFindManyArgs filter
     )
     {
         return Ok(await _service.ClaimedFinesMeta(filter));
     }
 
     /// <summary>
-    /// Get one CLAIMED FINE
+    ///     Get one CLAIMED FINE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ClaimedFine>> ClaimedFine(
-        [FromRoute()] ClaimedFineWhereUniqueInput uniqueId
+        [FromRoute] ClaimedFineWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class ClaimedFinesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one CLAIMED FINE
+    ///     Update one CLAIMED FINE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateClaimedFine(
-        [FromRoute()] ClaimedFineWhereUniqueInput uniqueId,
-        [FromQuery()] ClaimedFineUpdateInput claimedFineUpdateDto
+        [FromRoute] ClaimedFineWhereUniqueInput uniqueId,
+        [FromQuery] ClaimedFineUpdateInput claimedFineUpdateDto
     )
     {
         try

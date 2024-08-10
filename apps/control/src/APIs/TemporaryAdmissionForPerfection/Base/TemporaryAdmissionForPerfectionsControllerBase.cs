@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class TemporaryAdmissionForPerfectionsControllerBase : ControllerBase
 {
     protected readonly ITemporaryAdmissionForPerfectionsService _service;
@@ -21,9 +20,9 @@ public abstract class TemporaryAdmissionForPerfectionsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Create one TEMPORARY ADMISSION FOR PERFECTION
+    ///     Create one TEMPORARY ADMISSION FOR PERFECTION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<TemporaryAdmissionForPerfection>
@@ -41,12 +40,12 @@ public abstract class TemporaryAdmissionForPerfectionsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Delete one TEMPORARY ADMISSION FOR PERFECTION
+    ///     Delete one TEMPORARY ADMISSION FOR PERFECTION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteTemporaryAdmissionForPerfection(
-        [FromRoute()] TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId
+        [FromRoute] TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId
     )
     {
         try
@@ -62,39 +61,39 @@ public abstract class TemporaryAdmissionForPerfectionsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Find many TEMPORARY ADMISSION FOR PERFECTIONS
+    ///     Find many TEMPORARY ADMISSION FOR PERFECTIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<TemporaryAdmissionForPerfection>>
     > TemporaryAdmissionForPerfections(
-        [FromQuery()] TemporaryAdmissionForPerfectionFindManyArgs filter
+        [FromQuery] TemporaryAdmissionForPerfectionFindManyArgs filter
     )
     {
         return Ok(await _service.TemporaryAdmissionForPerfections(filter));
     }
 
     /// <summary>
-    /// Meta data about TEMPORARY ADMISSION FOR PERFECTION records
+    ///     Meta data about TEMPORARY ADMISSION FOR PERFECTION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> TemporaryAdmissionForPerfectionsMeta(
-        [FromQuery()] TemporaryAdmissionForPerfectionFindManyArgs filter
+        [FromQuery] TemporaryAdmissionForPerfectionFindManyArgs filter
     )
     {
         return Ok(await _service.TemporaryAdmissionForPerfectionsMeta(filter));
     }
 
     /// <summary>
-    /// Get one TEMPORARY ADMISSION FOR PERFECTION
+    ///     Get one TEMPORARY ADMISSION FOR PERFECTION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<TemporaryAdmissionForPerfection>
     > TemporaryAdmissionForPerfection(
-        [FromRoute()] TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId
+        [FromRoute] TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId
     )
     {
         try
@@ -108,14 +107,13 @@ public abstract class TemporaryAdmissionForPerfectionsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Update one TEMPORARY ADMISSION FOR PERFECTION
+    ///     Update one TEMPORARY ADMISSION FOR PERFECTION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateTemporaryAdmissionForPerfection(
-        [FromRoute()] TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId,
-        [FromQuery()]
-            TemporaryAdmissionForPerfectionUpdateInput temporaryAdmissionForPerfectionUpdateDto
+        [FromRoute] TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId,
+        [FromQuery] TemporaryAdmissionForPerfectionUpdateInput temporaryAdmissionForPerfectionUpdateDto
     )
     {
         try

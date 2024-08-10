@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class AccountingsServiceBase : IAccountingsService
     }
 
     /// <summary>
-    /// Create one ACCOUNTING
+    ///     Create one ACCOUNTING
     /// </summary>
     public async Task<Accounting> CreateAccounting(AccountingCreateInput createDto)
     {
@@ -52,41 +51,32 @@ public abstract class AccountingsServiceBase : IAccountingsService
             Weight = createDto.Weight
         };
 
-        if (createDto.Id != null)
-        {
-            accounting.Id = createDto.Id;
-        }
+        if (createDto.Id != null) accounting.Id = createDto.Id;
 
         _context.Accountings.Add(accounting);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<AccountingDbModel>(accounting.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one ACCOUNTING
+    ///     Delete one ACCOUNTING
     /// </summary>
     public async Task DeleteAccounting(AccountingWhereUniqueInput uniqueId)
     {
         var accounting = await _context.Accountings.FindAsync(uniqueId.Id);
-        if (accounting == null)
-        {
-            throw new NotFoundException();
-        }
+        if (accounting == null) throw new NotFoundException();
 
         _context.Accountings.Remove(accounting);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many ACCOUNTINGS
+    ///     Find many ACCOUNTINGS
     /// </summary>
     public async Task<List<Accounting>> Accountings(AccountingFindManyArgs findManyArgs)
     {
@@ -100,7 +90,7 @@ public abstract class AccountingsServiceBase : IAccountingsService
     }
 
     /// <summary>
-    /// Meta data about ACCOUNTING records
+    ///     Meta data about ACCOUNTING records
     /// </summary>
     public async Task<MetadataDto> AccountingsMeta(AccountingFindManyArgs findManyArgs)
     {
@@ -110,24 +100,21 @@ public abstract class AccountingsServiceBase : IAccountingsService
     }
 
     /// <summary>
-    /// Get one ACCOUNTING
+    ///     Get one ACCOUNTING
     /// </summary>
     public async Task<Accounting> Accounting(AccountingWhereUniqueInput uniqueId)
     {
-        var accountings = await this.Accountings(
+        var accountings = await Accountings(
             new AccountingFindManyArgs { Where = new AccountingWhereInput { Id = uniqueId.Id } }
         );
         var accounting = accountings.FirstOrDefault();
-        if (accounting == null)
-        {
-            throw new NotFoundException();
-        }
+        if (accounting == null) throw new NotFoundException();
 
         return accounting;
     }
 
     /// <summary>
-    /// Update one ACCOUNTING
+    ///     Update one ACCOUNTING
     /// </summary>
     public async Task UpdateAccounting(
         AccountingWhereUniqueInput uniqueId,
@@ -145,13 +132,8 @@ public abstract class AccountingsServiceBase : IAccountingsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Accountings.Any(e => e.Id == accounting.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

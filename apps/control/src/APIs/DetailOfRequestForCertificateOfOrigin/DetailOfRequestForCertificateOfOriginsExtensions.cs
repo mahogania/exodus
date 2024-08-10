@@ -34,7 +34,7 @@ public static class DetailOfRequestForCertificateOfOriginsExtensions
             TypeOfPackagingCode = model.TypeOfPackagingCode,
             UpdatedAt = model.UpdatedAt,
             Weight = model.Weight,
-            WeightUnit = model.WeightUnit,
+            WeightUnit = model.WeightUnit
         };
     }
 
@@ -69,14 +69,8 @@ public static class DetailOfRequestForCertificateOfOriginsExtensions
             WeightUnit = updateDto.WeightUnit
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            detailOfRequestForCertificateOfOrigin.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            detailOfRequestForCertificateOfOrigin.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) detailOfRequestForCertificateOfOrigin.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) detailOfRequestForCertificateOfOrigin.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return detailOfRequestForCertificateOfOrigin;
     }

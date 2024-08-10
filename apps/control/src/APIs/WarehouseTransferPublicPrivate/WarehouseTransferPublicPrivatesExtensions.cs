@@ -45,7 +45,7 @@ public static class WarehouseTransferPublicPrivatesExtensions
             SuppressionOn = model.SuppressionOn,
             TradeRegisterNumberOfTheImporter = model.TradeRegisterNumberOfTheImporter,
             TypeOfTheSubCustomsZone = model.TypeOfTheSubCustomsZone,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -91,14 +91,8 @@ public static class WarehouseTransferPublicPrivatesExtensions
             TypeOfTheSubCustomsZone = updateDto.TypeOfTheSubCustomsZone
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            warehouseTransferPublicPrivate.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            warehouseTransferPublicPrivate.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) warehouseTransferPublicPrivate.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) warehouseTransferPublicPrivate.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return warehouseTransferPublicPrivate;
     }

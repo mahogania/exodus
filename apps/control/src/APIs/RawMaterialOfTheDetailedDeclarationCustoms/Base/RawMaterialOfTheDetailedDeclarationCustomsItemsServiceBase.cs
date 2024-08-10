@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Create one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task<RawMaterialOfTheDetailedDeclarationCustoms> CreateRawMaterialOfTheDetailedDeclarationCustoms(
         RawMaterialOfTheDetailedDeclarationCustomsCreateInput createDto
@@ -51,10 +50,7 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            rawMaterialOfTheDetailedDeclarationCustoms.Id = createDto.Id;
-        }
+        if (createDto.Id != null) rawMaterialOfTheDetailedDeclarationCustoms.Id = createDto.Id;
 
         _context.RawMaterialOfTheDetailedDeclarationCustomsItems.Add(
             rawMaterialOfTheDetailedDeclarationCustoms
@@ -65,16 +61,13 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
             rawMaterialOfTheDetailedDeclarationCustoms.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task DeleteRawMaterialOfTheDetailedDeclarationCustoms(
         RawMaterialOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
@@ -82,10 +75,7 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
     {
         var rawMaterialOfTheDetailedDeclarationCustoms =
             await _context.RawMaterialOfTheDetailedDeclarationCustomsItems.FindAsync(uniqueId.Id);
-        if (rawMaterialOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (rawMaterialOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         _context.RawMaterialOfTheDetailedDeclarationCustomsItems.Remove(
             rawMaterialOfTheDetailedDeclarationCustoms
@@ -94,7 +84,7 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Find many RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public async Task<
         List<RawMaterialOfTheDetailedDeclarationCustoms>
@@ -115,7 +105,7 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Meta data about RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public async Task<MetadataDto> RawMaterialOfTheDetailedDeclarationCustomsItemsMeta(
         RawMaterialOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
@@ -129,14 +119,14 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Get one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task<RawMaterialOfTheDetailedDeclarationCustoms> RawMaterialOfTheDetailedDeclarationCustoms(
         RawMaterialOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         var rawMaterialOfTheDetailedDeclarationCustomsItems =
-            await this.RawMaterialOfTheDetailedDeclarationCustomsItems(
+            await RawMaterialOfTheDetailedDeclarationCustomsItems(
                 new RawMaterialOfTheDetailedDeclarationCustomsFindManyArgs
                 {
                     Where = new RawMaterialOfTheDetailedDeclarationCustomsWhereInput
@@ -147,16 +137,13 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
             );
         var rawMaterialOfTheDetailedDeclarationCustoms =
             rawMaterialOfTheDetailedDeclarationCustomsItems.FirstOrDefault();
-        if (rawMaterialOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (rawMaterialOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         return rawMaterialOfTheDetailedDeclarationCustoms;
     }
 
     /// <summary>
-    /// Update one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task UpdateRawMaterialOfTheDetailedDeclarationCustoms(
         RawMaterialOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
@@ -178,13 +165,8 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
                     e.Id == rawMaterialOfTheDetailedDeclarationCustoms.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

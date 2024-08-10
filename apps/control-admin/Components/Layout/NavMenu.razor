@@ -1,29 +1,13 @@
-﻿<div class="top-row ps-3 navbar navbar-dark">
-    <div class="container-fluid">
-        <a class="navbar-brand" href="">control-admin</a>
-    </div>
-</div>
+﻿<SfToolbar>
+    <SfToolbarItems>
+        <SfToolbarItem Template="@(context =>  < div class ='navbar-brand' > control - admin </div >)"></SfToolbarItem>
+    </SfToolbarItems>
+</SfToolbar>
 
-<input type="checkbox" title="Navigation menu" class="navbar-toggler"/>
-
-<div class="nav-scrollable" onclick="document.querySelector('.navbar-toggler').click()">
-    <nav class="flex-column">
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
-                <span class="bi bi-house-door-fill-nav-menu" aria-hidden="true"></span> Home
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="counter">
-                <span class="bi bi-plus-square-fill-nav-menu" aria-hidden="true"></span> Counter
-            </NavLink>
-        </div>
-
-        <div class="nav-item px-3">
-            <NavLink class="nav-link" href="weather">
-                <span class="bi bi-list-nested-nav-menu" aria-hidden="true"></span> Weather
-            </NavLink>
-        </div>
-    </nav>
-</div>
+<SfSidebar Type="Push" Width="250px" Target=".main-content">
+    <SfListView>
+        <ListViewFieldSettings Text="Home" Id="home" IconCss="bi bi-house-door-fill-nav-menu" Url="/"></ListViewFieldSettings>
+        <ListViewFieldSettings Text="Notifications" Id="notifications" IconCss="bi bi-bell-fill-nav-menu" Url="/notifications"></ListViewFieldSettings>
+        <ListViewFieldSettings Text="Payments" Id="payments" IconCss="bi bi-currency-dollar-nav-menu" Url="/payments"></ListViewFieldSettings>
+    </SfListView>
+</SfSidebar>

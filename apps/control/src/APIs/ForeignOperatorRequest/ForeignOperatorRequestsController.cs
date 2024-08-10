@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class ForeignOperatorRequestsController : ForeignOperatorRequestsControllerBase
 {
     public ForeignOperatorRequestsController(IForeignOperatorRequestsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

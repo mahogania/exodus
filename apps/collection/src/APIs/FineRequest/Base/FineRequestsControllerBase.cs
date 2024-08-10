@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class FineRequestsControllerBase : ControllerBase
 {
     protected readonly IFineRequestsService _service;
@@ -19,9 +18,9 @@ public abstract class FineRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one FINE REQUEST
+    ///     Create one FINE REQUEST
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<FineRequest>> CreateFineRequest(FineRequestCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class FineRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one FINE REQUEST
+    ///     Delete one FINE REQUEST
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteFineRequest(
-        [FromRoute()] FineRequestWhereUniqueInput uniqueId
+        [FromRoute] FineRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class FineRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many FINE REQUESTS
+    ///     Find many FINE REQUESTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<FineRequest>>> FineRequests(
-        [FromQuery()] FineRequestFindManyArgs filter
+        [FromQuery] FineRequestFindManyArgs filter
     )
     {
         return Ok(await _service.FineRequests(filter));
     }
 
     /// <summary>
-    /// Meta data about FINE REQUEST records
+    ///     Meta data about FINE REQUEST records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> FineRequestsMeta(
-        [FromQuery()] FineRequestFindManyArgs filter
+        [FromQuery] FineRequestFindManyArgs filter
     )
     {
         return Ok(await _service.FineRequestsMeta(filter));
     }
 
     /// <summary>
-    /// Get one FINE REQUEST
+    ///     Get one FINE REQUEST
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<FineRequest>> FineRequest(
-        [FromRoute()] FineRequestWhereUniqueInput uniqueId
+        [FromRoute] FineRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class FineRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one FINE REQUEST
+    ///     Update one FINE REQUEST
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateFineRequest(
-        [FromRoute()] FineRequestWhereUniqueInput uniqueId,
-        [FromQuery()] FineRequestUpdateInput fineRequestUpdateDto
+        [FromRoute] FineRequestWhereUniqueInput uniqueId,
+        [FromQuery] FineRequestUpdateInput fineRequestUpdateDto
     )
     {
         try

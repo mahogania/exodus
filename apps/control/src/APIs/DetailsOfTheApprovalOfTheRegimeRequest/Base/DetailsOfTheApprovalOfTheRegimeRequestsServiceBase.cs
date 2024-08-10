@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
     }
 
     /// <summary>
-    /// Create one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
+    ///     Create one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
     /// </summary>
     public async Task<DetailsOfTheApprovalOfTheRegimeRequest> CreateDetailsOfTheApprovalOfTheRegimeRequest(
         DetailsOfTheApprovalOfTheRegimeRequestCreateInput createDto
@@ -48,10 +47,7 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
                 VehiclePower = createDto.VehiclePower
             };
 
-        if (createDto.Id != null)
-        {
-            detailsOfTheApprovalOfTheRegimeRequest.Id = createDto.Id;
-        }
+        if (createDto.Id != null) detailsOfTheApprovalOfTheRegimeRequest.Id = createDto.Id;
 
         _context.DetailsOfTheApprovalOfTheRegimeRequests.Add(
             detailsOfTheApprovalOfTheRegimeRequest
@@ -62,16 +58,13 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
             detailsOfTheApprovalOfTheRegimeRequest.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
+    ///     Delete one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
     /// </summary>
     public async Task DeleteDetailsOfTheApprovalOfTheRegimeRequest(
         DetailsOfTheApprovalOfTheRegimeRequestWhereUniqueInput uniqueId
@@ -79,10 +72,7 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
     {
         var detailsOfTheApprovalOfTheRegimeRequest =
             await _context.DetailsOfTheApprovalOfTheRegimeRequests.FindAsync(uniqueId.Id);
-        if (detailsOfTheApprovalOfTheRegimeRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailsOfTheApprovalOfTheRegimeRequest == null) throw new NotFoundException();
 
         _context.DetailsOfTheApprovalOfTheRegimeRequests.Remove(
             detailsOfTheApprovalOfTheRegimeRequest
@@ -91,7 +81,7 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
     }
 
     /// <summary>
-    /// Find many details of the approval of the regime requests
+    ///     Find many details of the approval of the regime requests
     /// </summary>
     public async Task<
         List<DetailsOfTheApprovalOfTheRegimeRequest>
@@ -111,7 +101,7 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
     }
 
     /// <summary>
-    /// Meta data about DETAIL OF THE APPROVAL OF THE REGIME REQUEST records
+    ///     Meta data about DETAIL OF THE APPROVAL OF THE REGIME REQUEST records
     /// </summary>
     public async Task<MetadataDto> DetailsOfTheApprovalOfTheRegimeRequestsMeta(
         DetailsOfTheApprovalOfTheRegimeRequestFindManyArgs findManyArgs
@@ -125,14 +115,14 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
     }
 
     /// <summary>
-    /// Get one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
+    ///     Get one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
     /// </summary>
     public async Task<DetailsOfTheApprovalOfTheRegimeRequest> DetailsOfTheApprovalOfTheRegimeRequest(
         DetailsOfTheApprovalOfTheRegimeRequestWhereUniqueInput uniqueId
     )
     {
         var detailsOfTheApprovalOfTheRegimeRequests =
-            await this.DetailsOfTheApprovalOfTheRegimeRequests(
+            await DetailsOfTheApprovalOfTheRegimeRequests(
                 new DetailsOfTheApprovalOfTheRegimeRequestFindManyArgs
                 {
                     Where = new DetailsOfTheApprovalOfTheRegimeRequestWhereInput
@@ -143,16 +133,13 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
             );
         var detailsOfTheApprovalOfTheRegimeRequest =
             detailsOfTheApprovalOfTheRegimeRequests.FirstOrDefault();
-        if (detailsOfTheApprovalOfTheRegimeRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailsOfTheApprovalOfTheRegimeRequest == null) throw new NotFoundException();
 
         return detailsOfTheApprovalOfTheRegimeRequest;
     }
 
     /// <summary>
-    /// Update one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
+    ///     Update one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
     /// </summary>
     public async Task UpdateDetailsOfTheApprovalOfTheRegimeRequest(
         DetailsOfTheApprovalOfTheRegimeRequestWhereUniqueInput uniqueId,
@@ -174,13 +161,8 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsServiceBase
                     e.Id == detailsOfTheApprovalOfTheRegimeRequest.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

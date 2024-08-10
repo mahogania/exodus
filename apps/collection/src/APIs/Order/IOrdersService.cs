@@ -6,32 +6,32 @@ namespace Collection.APIs;
 public interface IOrdersService
 {
     /// <summary>
-    /// Create one ORDER
+    ///     Create one ORDER
     /// </summary>
     public Task<Order> CreateOrder(OrderCreateInput order);
 
     /// <summary>
-    /// Delete one ORDER
+    ///     Delete one ORDER
     /// </summary>
     public Task DeleteOrder(OrderWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Find many ORDERS
+    ///     Find many ORDERS
     /// </summary>
     public Task<List<Order>> Orders(OrderFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Meta data about ORDER records
+    ///     Meta data about ORDER records
     /// </summary>
     public Task<MetadataDto> OrdersMeta(OrderFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Get one ORDER
+    ///     Get one ORDER
     /// </summary>
     public Task<Order> Order(OrderWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Update one ORDER
+    ///     Update one ORDER
     /// </summary>
     public Task UpdateOrder(OrderWhereUniqueInput uniqueId, OrderUpdateInput updateDto);
 }

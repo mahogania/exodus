@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Create one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task<ContainerOfTheDetailedDeclarationCustoms> CreateContainerOfTheDetailedDeclarationCustoms(
         ContainerOfTheDetailedDeclarationCustomsCreateInput createDto
@@ -52,10 +51,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            containerOfTheDetailedDeclarationCustoms.Id = createDto.Id;
-        }
+        if (createDto.Id != null) containerOfTheDetailedDeclarationCustoms.Id = createDto.Id;
 
         _context.ContainerOfTheDetailedDeclarationCustomsItems.Add(
             containerOfTheDetailedDeclarationCustoms
@@ -66,16 +62,13 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
             containerOfTheDetailedDeclarationCustoms.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task DeleteContainerOfTheDetailedDeclarationCustoms(
         ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
@@ -83,10 +76,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     {
         var containerOfTheDetailedDeclarationCustoms =
             await _context.ContainerOfTheDetailedDeclarationCustomsItems.FindAsync(uniqueId.Id);
-        if (containerOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (containerOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         _context.ContainerOfTheDetailedDeclarationCustomsItems.Remove(
             containerOfTheDetailedDeclarationCustoms
@@ -95,7 +85,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Find many CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public async Task<
         List<ContainerOfTheDetailedDeclarationCustoms>
@@ -116,7 +106,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Meta data about CONTAINER OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about CONTAINER OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public async Task<MetadataDto> ContainerOfTheDetailedDeclarationCustomsItemsMeta(
         ContainerOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
@@ -130,14 +120,14 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Get one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task<ContainerOfTheDetailedDeclarationCustoms> ContainerOfTheDetailedDeclarationCustoms(
         ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         var containerOfTheDetailedDeclarationCustomsItems =
-            await this.ContainerOfTheDetailedDeclarationCustomsItems(
+            await ContainerOfTheDetailedDeclarationCustomsItems(
                 new ContainerOfTheDetailedDeclarationCustomsFindManyArgs
                 {
                     Where = new ContainerOfTheDetailedDeclarationCustomsWhereInput
@@ -148,16 +138,13 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
             );
         var containerOfTheDetailedDeclarationCustoms =
             containerOfTheDetailedDeclarationCustomsItems.FirstOrDefault();
-        if (containerOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (containerOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         return containerOfTheDetailedDeclarationCustoms;
     }
 
     /// <summary>
-    /// Update one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task UpdateContainerOfTheDetailedDeclarationCustoms(
         ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
@@ -179,13 +166,8 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
                     e.Id == containerOfTheDetailedDeclarationCustoms.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

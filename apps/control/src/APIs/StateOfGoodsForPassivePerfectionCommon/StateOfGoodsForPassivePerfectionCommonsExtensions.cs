@@ -35,7 +35,7 @@ public static class StateOfGoodsForPassivePerfectionCommonsExtensions
             StartDateOfGrantedDeadline = model.StartDateOfGrantedDeadline,
             TotalAmount = model.TotalAmount,
             TransactionValueCurrencyCode = model.TransactionValueCurrencyCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -72,14 +72,8 @@ public static class StateOfGoodsForPassivePerfectionCommonsExtensions
                 TransactionValueCurrencyCode = updateDto.TransactionValueCurrencyCode
             };
 
-        if (updateDto.CreatedAt != null)
-        {
-            stateOfGoodsForPassivePerfectionCommon.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            stateOfGoodsForPassivePerfectionCommon.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) stateOfGoodsForPassivePerfectionCommon.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) stateOfGoodsForPassivePerfectionCommon.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return stateOfGoodsForPassivePerfectionCommon;
     }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsControllerBase
     : ControllerBase
 {
@@ -22,9 +21,9 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsCont
     }
 
     /// <summary>
-    /// Create one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DeclarationOfValueOfTheDetailedDeclarationCustoms>
@@ -43,12 +42,12 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsCont
     }
 
     /// <summary>
-    /// Delete one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDeclarationOfValueOfTheDetailedDeclarationCustoms(
-        [FromRoute()] DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -64,27 +63,27 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsCont
     }
 
     /// <summary>
-    /// Find many DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<DeclarationOfValueOfTheDetailedDeclarationCustoms>>
     > DeclarationOfValueOfTheDetailedDeclarationCustomsItems(
-        [FromQuery()] DeclarationOfValueOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] DeclarationOfValueOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.DeclarationOfValueOfTheDetailedDeclarationCustomsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > DeclarationOfValueOfTheDetailedDeclarationCustomsItemsMeta(
-        [FromQuery()] DeclarationOfValueOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] DeclarationOfValueOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(
@@ -93,14 +92,14 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsCont
     }
 
     /// <summary>
-    /// Get one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DeclarationOfValueOfTheDetailedDeclarationCustoms>
     > DeclarationOfValueOfTheDetailedDeclarationCustoms(
-        [FromRoute()] DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -114,14 +113,14 @@ public abstract class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsCont
     }
 
     /// <summary>
-    /// Update one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one DECLARATION OF VALUE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDeclarationOfValueOfTheDetailedDeclarationCustoms(
-        [FromRoute()] DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            DeclarationOfValueOfTheDetailedDeclarationCustomsUpdateInput declarationOfValueOfTheDetailedDeclarationCustomsUpdateDto
+        [FromRoute] DeclarationOfValueOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
+        [FromQuery] DeclarationOfValueOfTheDetailedDeclarationCustomsUpdateInput
+            declarationOfValueOfTheDetailedDeclarationCustomsUpdateDto
     )
     {
         try

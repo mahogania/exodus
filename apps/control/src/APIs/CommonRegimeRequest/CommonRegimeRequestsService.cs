@@ -5,5 +5,7 @@ namespace Control.APIs;
 public class CommonRegimeRequestsService : CommonRegimeRequestsServiceBase
 {
     public CommonRegimeRequestsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

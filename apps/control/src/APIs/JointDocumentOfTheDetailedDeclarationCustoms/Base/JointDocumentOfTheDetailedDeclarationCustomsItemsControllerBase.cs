@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsControllerBase
     : ControllerBase
 {
@@ -22,9 +21,9 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsControlle
     }
 
     /// <summary>
-    /// Create one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<JointDocumentOfTheDetailedDeclarationCustoms>
@@ -43,12 +42,12 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsControlle
     }
 
     /// <summary>
-    /// Delete one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteJointDocumentOfTheDetailedDeclarationCustoms(
-        [FromRoute()] JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -64,41 +63,41 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsControlle
     }
 
     /// <summary>
-    /// Find many JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<JointDocumentOfTheDetailedDeclarationCustoms>>
     > JointDocumentOfTheDetailedDeclarationCustomsItems(
-        [FromQuery()] JointDocumentOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] JointDocumentOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.JointDocumentOfTheDetailedDeclarationCustomsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > JointDocumentOfTheDetailedDeclarationCustomsItemsMeta(
-        [FromQuery()] JointDocumentOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] JointDocumentOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.JointDocumentOfTheDetailedDeclarationCustomsItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<JointDocumentOfTheDetailedDeclarationCustoms>
     > JointDocumentOfTheDetailedDeclarationCustoms(
-        [FromRoute()] JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -112,14 +111,14 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsControlle
     }
 
     /// <summary>
-    /// Update one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateJointDocumentOfTheDetailedDeclarationCustoms(
-        [FromRoute()] JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            JointDocumentOfTheDetailedDeclarationCustomsUpdateInput jointDocumentOfTheDetailedDeclarationCustomsUpdateDto
+        [FromRoute] JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
+        [FromQuery]
+        JointDocumentOfTheDetailedDeclarationCustomsUpdateInput jointDocumentOfTheDetailedDeclarationCustomsUpdateDto
     )
     {
         try

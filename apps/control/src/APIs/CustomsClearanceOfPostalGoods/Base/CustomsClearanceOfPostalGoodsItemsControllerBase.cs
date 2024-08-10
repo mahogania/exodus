@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CustomsClearanceOfPostalGoodsItemsControllerBase : ControllerBase
 {
     protected readonly ICustomsClearanceOfPostalGoodsItemsService _service;
@@ -21,9 +20,9 @@ public abstract class CustomsClearanceOfPostalGoodsItemsControllerBase : Control
     }
 
     /// <summary>
-    /// Create one CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Create one CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CustomsClearanceOfPostalGoods>
@@ -41,12 +40,12 @@ public abstract class CustomsClearanceOfPostalGoodsItemsControllerBase : Control
     }
 
     /// <summary>
-    /// Delete one CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Delete one CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCustomsClearanceOfPostalGoods(
-        [FromRoute()] CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
+        [FromRoute] CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
     )
     {
         try
@@ -62,37 +61,37 @@ public abstract class CustomsClearanceOfPostalGoodsItemsControllerBase : Control
     }
 
     /// <summary>
-    /// Find many CUSTOMS CLEARANCE OF POSTAL GOODSItems
+    ///     Find many CUSTOMS CLEARANCE OF POSTAL GOODSItems
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<CustomsClearanceOfPostalGoods>>
     > CustomsClearanceOfPostalGoodsItems(
-        [FromQuery()] CustomsClearanceOfPostalGoodsFindManyArgs filter
+        [FromQuery] CustomsClearanceOfPostalGoodsFindManyArgs filter
     )
     {
         return Ok(await _service.CustomsClearanceOfPostalGoodsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about CUSTOMS CLEARANCE OF POSTAL GOODS records
+    ///     Meta data about CUSTOMS CLEARANCE OF POSTAL GOODS records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CustomsClearanceOfPostalGoodsItemsMeta(
-        [FromQuery()] CustomsClearanceOfPostalGoodsFindManyArgs filter
+        [FromQuery] CustomsClearanceOfPostalGoodsFindManyArgs filter
     )
     {
         return Ok(await _service.CustomsClearanceOfPostalGoodsItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Get one CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<CustomsClearanceOfPostalGoods>> CustomsClearanceOfPostalGoods(
-        [FromRoute()] CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
+        [FromRoute] CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
     )
     {
         try
@@ -106,14 +105,13 @@ public abstract class CustomsClearanceOfPostalGoodsItemsControllerBase : Control
     }
 
     /// <summary>
-    /// Update one CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Update one CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCustomsClearanceOfPostalGoods(
-        [FromRoute()] CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            CustomsClearanceOfPostalGoodsUpdateInput customsClearanceOfPostalGoodsUpdateDto
+        [FromRoute] CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId,
+        [FromQuery] CustomsClearanceOfPostalGoodsUpdateInput customsClearanceOfPostalGoodsUpdateDto
     )
     {
         try

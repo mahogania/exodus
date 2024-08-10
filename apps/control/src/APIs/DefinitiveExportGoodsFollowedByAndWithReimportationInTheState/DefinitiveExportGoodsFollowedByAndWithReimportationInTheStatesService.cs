@@ -8,5 +8,7 @@ public class DefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesServi
     public DefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesService(
         ControlDbContext context
     )
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

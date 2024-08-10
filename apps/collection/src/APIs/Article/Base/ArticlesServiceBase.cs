@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ArticlesServiceBase : IArticlesService
     }
 
     /// <summary>
-    /// Create one ARTICLE
+    ///     Create one ARTICLE
     /// </summary>
     public async Task<Article> CreateArticle(ArticleCreateInput createDto)
     {
@@ -36,41 +35,32 @@ public abstract class ArticlesServiceBase : IArticlesService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            article.Id = createDto.Id;
-        }
+        if (createDto.Id != null) article.Id = createDto.Id;
 
         _context.Articles.Add(article);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<ArticleDbModel>(article.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one ARTICLE
+    ///     Delete one ARTICLE
     /// </summary>
     public async Task DeleteArticle(ArticleWhereUniqueInput uniqueId)
     {
         var article = await _context.Articles.FindAsync(uniqueId.Id);
-        if (article == null)
-        {
-            throw new NotFoundException();
-        }
+        if (article == null) throw new NotFoundException();
 
         _context.Articles.Remove(article);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many ARTICLES
+    ///     Find many ARTICLES
     /// </summary>
     public async Task<List<Article>> Articles(ArticleFindManyArgs findManyArgs)
     {
@@ -84,7 +74,7 @@ public abstract class ArticlesServiceBase : IArticlesService
     }
 
     /// <summary>
-    /// Meta data about ARTICLE records
+    ///     Meta data about ARTICLE records
     /// </summary>
     public async Task<MetadataDto> ArticlesMeta(ArticleFindManyArgs findManyArgs)
     {
@@ -94,24 +84,21 @@ public abstract class ArticlesServiceBase : IArticlesService
     }
 
     /// <summary>
-    /// Get one ARTICLE
+    ///     Get one ARTICLE
     /// </summary>
     public async Task<Article> Article(ArticleWhereUniqueInput uniqueId)
     {
-        var articles = await this.Articles(
+        var articles = await Articles(
             new ArticleFindManyArgs { Where = new ArticleWhereInput { Id = uniqueId.Id } }
         );
         var article = articles.FirstOrDefault();
-        if (article == null)
-        {
-            throw new NotFoundException();
-        }
+        if (article == null) throw new NotFoundException();
 
         return article;
     }
 
     /// <summary>
-    /// Update one ARTICLE
+    ///     Update one ARTICLE
     /// </summary>
     public async Task UpdateArticle(ArticleWhereUniqueInput uniqueId, ArticleUpdateInput updateDto)
     {
@@ -126,13 +113,8 @@ public abstract class ArticlesServiceBase : IArticlesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Articles.Any(e => e.Id == article.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

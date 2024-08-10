@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class RequestForTirCarnetOfTheArticlesServiceBase
     }
 
     /// <summary>
-    /// Create one REQUEST FOR TIR CARNET OF THE ARTICLE
+    ///     Create one REQUEST FOR TIR CARNET OF THE ARTICLE
     /// </summary>
     public async Task<RequestForTirCarnetOfTheArticle> CreateRequestForTirCarnetOfTheArticle(
         RequestForTirCarnetOfTheArticleCreateInput createDto
@@ -43,10 +42,7 @@ public abstract class RequestForTirCarnetOfTheArticlesServiceBase
             Weight = createDto.Weight
         };
 
-        if (createDto.Id != null)
-        {
-            requestForTirCarnetOfTheArticle.Id = createDto.Id;
-        }
+        if (createDto.Id != null) requestForTirCarnetOfTheArticle.Id = createDto.Id;
 
         _context.RequestForTirCarnetOfTheArticles.Add(requestForTirCarnetOfTheArticle);
         await _context.SaveChangesAsync();
@@ -55,16 +51,13 @@ public abstract class RequestForTirCarnetOfTheArticlesServiceBase
             requestForTirCarnetOfTheArticle.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one REQUEST FOR TIR CARNET OF THE ARTICLE
+    ///     Delete one REQUEST FOR TIR CARNET OF THE ARTICLE
     /// </summary>
     public async Task DeleteRequestForTirCarnetOfTheArticle(
         RequestForTirCarnetOfTheArticleWhereUniqueInput uniqueId
@@ -72,17 +65,14 @@ public abstract class RequestForTirCarnetOfTheArticlesServiceBase
     {
         var requestForTirCarnetOfTheArticle =
             await _context.RequestForTirCarnetOfTheArticles.FindAsync(uniqueId.Id);
-        if (requestForTirCarnetOfTheArticle == null)
-        {
-            throw new NotFoundException();
-        }
+        if (requestForTirCarnetOfTheArticle == null) throw new NotFoundException();
 
         _context.RequestForTirCarnetOfTheArticles.Remove(requestForTirCarnetOfTheArticle);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many REQUEST FOR TIR CARNET OF THE ARTICLES
+    ///     Find many REQUEST FOR TIR CARNET OF THE ARTICLES
     /// </summary>
     public async Task<List<RequestForTirCarnetOfTheArticle>> RequestForTirCarnetOfTheArticles(
         RequestForTirCarnetOfTheArticleFindManyArgs findManyArgs
@@ -100,7 +90,7 @@ public abstract class RequestForTirCarnetOfTheArticlesServiceBase
     }
 
     /// <summary>
-    /// Meta data about REQUEST FOR TIR CARNET OF THE ARTICLE records
+    ///     Meta data about REQUEST FOR TIR CARNET OF THE ARTICLE records
     /// </summary>
     public async Task<MetadataDto> RequestForTirCarnetOfTheArticlesMeta(
         RequestForTirCarnetOfTheArticleFindManyArgs findManyArgs
@@ -114,29 +104,26 @@ public abstract class RequestForTirCarnetOfTheArticlesServiceBase
     }
 
     /// <summary>
-    /// Get one REQUEST FOR TIR CARNET OF THE ARTICLE
+    ///     Get one REQUEST FOR TIR CARNET OF THE ARTICLE
     /// </summary>
     public async Task<RequestForTirCarnetOfTheArticle> RequestForTirCarnetOfTheArticle(
         RequestForTirCarnetOfTheArticleWhereUniqueInput uniqueId
     )
     {
-        var requestForTirCarnetOfTheArticles = await this.RequestForTirCarnetOfTheArticles(
+        var requestForTirCarnetOfTheArticles = await RequestForTirCarnetOfTheArticles(
             new RequestForTirCarnetOfTheArticleFindManyArgs
             {
                 Where = new RequestForTirCarnetOfTheArticleWhereInput { Id = uniqueId.Id }
             }
         );
         var requestForTirCarnetOfTheArticle = requestForTirCarnetOfTheArticles.FirstOrDefault();
-        if (requestForTirCarnetOfTheArticle == null)
-        {
-            throw new NotFoundException();
-        }
+        if (requestForTirCarnetOfTheArticle == null) throw new NotFoundException();
 
         return requestForTirCarnetOfTheArticle;
     }
 
     /// <summary>
-    /// Update one REQUEST FOR TIR CARNET OF THE ARTICLE
+    ///     Update one REQUEST FOR TIR CARNET OF THE ARTICLE
     /// </summary>
     public async Task UpdateRequestForTirCarnetOfTheArticle(
         RequestForTirCarnetOfTheArticleWhereUniqueInput uniqueId,
@@ -158,13 +145,8 @@ public abstract class RequestForTirCarnetOfTheArticlesServiceBase
                     e.Id == requestForTirCarnetOfTheArticle.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

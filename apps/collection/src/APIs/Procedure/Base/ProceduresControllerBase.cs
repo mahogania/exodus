@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ProceduresControllerBase : ControllerBase
 {
     protected readonly IProceduresService _service;
@@ -19,9 +18,9 @@ public abstract class ProceduresControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one PROCEDURE
+    ///     Create one PROCEDURE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Procedure>> CreateProcedure(ProcedureCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class ProceduresControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one PROCEDURE
+    ///     Delete one PROCEDURE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteProcedure(
-        [FromRoute()] ProcedureWhereUniqueInput uniqueId
+        [FromRoute] ProcedureWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class ProceduresControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many PROCEDURES
+    ///     Find many PROCEDURES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Procedure>>> Procedures(
-        [FromQuery()] ProcedureFindManyArgs filter
+        [FromQuery] ProcedureFindManyArgs filter
     )
     {
         return Ok(await _service.Procedures(filter));
     }
 
     /// <summary>
-    /// Meta data about PROCEDURE records
+    ///     Meta data about PROCEDURE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ProceduresMeta(
-        [FromQuery()] ProcedureFindManyArgs filter
+        [FromQuery] ProcedureFindManyArgs filter
     )
     {
         return Ok(await _service.ProceduresMeta(filter));
     }
 
     /// <summary>
-    /// Get one PROCEDURE
+    ///     Get one PROCEDURE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Procedure>> Procedure(
-        [FromRoute()] ProcedureWhereUniqueInput uniqueId
+        [FromRoute] ProcedureWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class ProceduresControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one PROCEDURE
+    ///     Update one PROCEDURE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateProcedure(
-        [FromRoute()] ProcedureWhereUniqueInput uniqueId,
-        [FromQuery()] ProcedureUpdateInput procedureUpdateDto
+        [FromRoute] ProcedureWhereUniqueInput uniqueId,
+        [FromQuery] ProcedureUpdateInput procedureUpdateDto
     )
     {
         try

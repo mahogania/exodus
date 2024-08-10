@@ -28,7 +28,7 @@ public static class DetailsOfTheApprovalOfTheRegimeRequestsExtensions
             SuppressionOn = model.SuppressionOn,
             UpdatedAt = model.UpdatedAt,
             VehicleModelName = model.VehicleModelName,
-            VehiclePower = model.VehiclePower,
+            VehiclePower = model.VehiclePower
         };
     }
 
@@ -58,14 +58,8 @@ public static class DetailsOfTheApprovalOfTheRegimeRequestsExtensions
                 VehiclePower = updateDto.VehiclePower
             };
 
-        if (updateDto.CreatedAt != null)
-        {
-            detailsOfTheApprovalOfTheRegimeRequest.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            detailsOfTheApprovalOfTheRegimeRequest.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) detailsOfTheApprovalOfTheRegimeRequest.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) detailsOfTheApprovalOfTheRegimeRequest.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return detailsOfTheApprovalOfTheRegimeRequest;
     }

@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class OthersItemsServiceBase : IOthersItemsService
     }
 
     /// <summary>
-    /// Create one OTHERS
+    ///     Create one OTHERS
     /// </summary>
     public async Task<Others> CreateOthers(OthersCreateInput createDto)
     {
@@ -47,41 +46,32 @@ public abstract class OthersItemsServiceBase : IOthersItemsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            others.Id = createDto.Id;
-        }
+        if (createDto.Id != null) others.Id = createDto.Id;
 
         _context.OthersItems.Add(others);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<OthersDbModel>(others.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one OTHERS
+    ///     Delete one OTHERS
     /// </summary>
     public async Task DeleteOthers(OthersWhereUniqueInput uniqueId)
     {
         var others = await _context.OthersItems.FindAsync(uniqueId.Id);
-        if (others == null)
-        {
-            throw new NotFoundException();
-        }
+        if (others == null) throw new NotFoundException();
 
         _context.OthersItems.Remove(others);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many OTHERSItems
+    ///     Find many OTHERSItems
     /// </summary>
     public async Task<List<Others>> OthersItems(OthersFindManyArgs findManyArgs)
     {
@@ -95,7 +85,7 @@ public abstract class OthersItemsServiceBase : IOthersItemsService
     }
 
     /// <summary>
-    /// Meta data about OTHERS records
+    ///     Meta data about OTHERS records
     /// </summary>
     public async Task<MetadataDto> OthersItemsMeta(OthersFindManyArgs findManyArgs)
     {
@@ -105,24 +95,21 @@ public abstract class OthersItemsServiceBase : IOthersItemsService
     }
 
     /// <summary>
-    /// Get one OTHERS
+    ///     Get one OTHERS
     /// </summary>
     public async Task<Others> Others(OthersWhereUniqueInput uniqueId)
     {
-        var othersItems = await this.OthersItems(
+        var othersItems = await OthersItems(
             new OthersFindManyArgs { Where = new OthersWhereInput { Id = uniqueId.Id } }
         );
         var others = othersItems.FirstOrDefault();
-        if (others == null)
-        {
-            throw new NotFoundException();
-        }
+        if (others == null) throw new NotFoundException();
 
         return others;
     }
 
     /// <summary>
-    /// Update one OTHERS
+    ///     Update one OTHERS
     /// </summary>
     public async Task UpdateOthers(OthersWhereUniqueInput uniqueId, OthersUpdateInput updateDto)
     {
@@ -137,13 +124,8 @@ public abstract class OthersItemsServiceBase : IOthersItemsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.OthersItems.Any(e => e.Id == others.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

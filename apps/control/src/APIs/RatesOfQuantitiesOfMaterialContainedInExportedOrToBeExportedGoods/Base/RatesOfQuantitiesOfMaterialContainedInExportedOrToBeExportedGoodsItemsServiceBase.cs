@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -22,11 +21,12 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
     }
 
     /// <summary>
-    /// Create one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
+    ///     Create one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
     /// </summary>
-    public async Task<RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods> CreateRatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods(
-        RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsCreateInput createDto
-    )
+    public async Task<RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods>
+        CreateRatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods(
+            RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsCreateInput createDto
+        )
     {
         var ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods =
             new RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsDbModel
@@ -51,10 +51,7 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods.Id = createDto.Id;
-        }
+        if (createDto.Id != null) ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods.Id = createDto.Id;
 
         _context.RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItems.Add(
             ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods
@@ -66,16 +63,13 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
                 ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods.Id
             );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
+    ///     Delete one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
     /// </summary>
     public async Task DeleteRatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods(
         RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsWhereUniqueInput uniqueId
@@ -85,10 +79,7 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
             await _context.RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItems.FindAsync(
                 uniqueId.Id
             );
-        if (ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods == null)
-        {
-            throw new NotFoundException();
-        }
+        if (ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods == null) throw new NotFoundException();
 
         _context.RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItems.Remove(
             ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods
@@ -97,7 +88,7 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
     }
 
     /// <summary>
-    /// Find many RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODSItems
+    ///     Find many RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODSItems
     /// </summary>
     public async Task<
         List<RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods>
@@ -120,7 +111,7 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
     }
 
     /// <summary>
-    /// Meta data about RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS records
+    ///     Meta data about RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS records
     /// </summary>
     public async Task<MetadataDto> RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItemsMeta(
         RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsFindManyArgs findManyArgs
@@ -136,14 +127,15 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
     }
 
     /// <summary>
-    /// Get one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
+    ///     Get one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
     /// </summary>
-    public async Task<RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods> RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods(
-        RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsWhereUniqueInput uniqueId
-    )
+    public async Task<RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods>
+        RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods(
+            RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsWhereUniqueInput uniqueId
+        )
     {
         var ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItems =
-            await this.RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItems(
+            await RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItems(
                 new RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsFindManyArgs
                 {
                     Where =
@@ -155,16 +147,13 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
             );
         var ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods =
             ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItems.FirstOrDefault();
-        if (ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods == null)
-        {
-            throw new NotFoundException();
-        }
+        if (ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods == null) throw new NotFoundException();
 
         return ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods;
     }
 
     /// <summary>
-    /// Update one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
+    ///     Update one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
     /// </summary>
     public async Task UpdateRatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods(
         RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsWhereUniqueInput uniqueId,
@@ -190,13 +179,8 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
                         e.Id == ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

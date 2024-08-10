@@ -41,7 +41,7 @@ public static class OrdersExtensions
             RegisteringPersonId = model.RegisteringPersonId,
             ServiceCode = model.ServiceCode,
             TaxpayerIdentificationNo = model.TaxpayerIdentificationNo,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -85,14 +85,8 @@ public static class OrdersExtensions
             TaxpayerIdentificationNo = updateDto.TaxpayerIdentificationNo
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            order.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            order.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) order.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) order.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return order;
     }

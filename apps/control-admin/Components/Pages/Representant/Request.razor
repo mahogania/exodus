@@ -1,31 +1,26 @@
 @page "/regime-request"
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.DropDowns
-@using Syncfusion.Blazor.Calendars
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.Grids
 @inject IStringLocalizer<Pages.RegimeRequest> Localizer
 
 <div class="container">
     <h3>@Localizer["RegimeRequestTitle"]</h3>
     <div class="row">
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["RegimeAuthorizationNo"]" CssClass="e-outline" Value="RDE-2022-000001"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["RegimeAuthorizationNo"]" CssClass="e-outline" Value="RDE-2022-000001"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["EPC"]" CssClass="e-outline" Value="S10"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["EPC"]" CssClass="e-outline" Value="S10"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfDropDownList Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@declarationTypes" Value="Temporary Admission"></SfDropDownList>
+            <SfDropDownList TItem="string" TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@declarationTypes" Value="Temporary Admission"></SfDropDownList>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["APC"]" CssClass="e-outline" Value="S12"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["APC"]" CssClass="e-outline" Value="S12"></SfTextBox>
         </div>
     </div>
     <div class="row mt-3">
         <div class="col-md-12">
-            <SfTextBox Placeholder="@Localizer["RegimeRequestTitle"]" CssClass="e-outline"></SfTextBox>
-            <SfTextBox Placeholder="@Localizer["RegimeRequestContent"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["RegimeRequestTitle"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["RegimeRequestContent"]" CssClass="e-outline" Multiline="true"></SfTextBox>
         </div>
     </div>
     <div class="row mt-3">
@@ -41,15 +36,15 @@
                 <ChildContent>
                     <div class="row">
                         <div class="col-md-6">
-                            <SfTextBox Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["Applicant"]" CssClass="e-outline" Value="0000001234"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["Address"]" CssClass="e-outline"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["PhoneNo"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Applicant"]" CssClass="e-outline" Value="0000001234"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Address"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["PhoneNo"]" CssClass="e-outline"></SfTextBox>
                         </div>
                         <div class="col-md-6">
-                            <SfTextBox Placeholder="@Localizer["Email"]" CssClass="e-outline"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["RequestContent"]" CssClass="e-outline" Multiline="true"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["ResponseContent"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Email"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["RequestContent"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["ResponseContent"]" CssClass="e-outline" Multiline="true"></SfTextBox>
                         </div>
                     </div>
                 </ChildContent>
@@ -58,17 +53,17 @@
                 <ChildContent>
                     <div class="row">
                         <div class="col-md-6">
-                            <SfTextBox Placeholder="@Localizer["SocialReason"]" CssClass="e-outline"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["AddressInAlgeria"]" CssClass="e-outline"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["AddressAbroad"]" CssClass="e-outline"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["ContractReference"]" CssClass="e-outline"></SfTextBox>
-                            <SfDatePicker Placeholder="@Localizer["StartDate"]" CssClass="e-outline"></SfDatePicker>
-                            <SfDatePicker Placeholder="@Localizer["EndDate"]" CssClass="e-outline"></SfDatePicker>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["SocialReason"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["AddressInAlgeria"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["AddressAbroad"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["ContractReference"]" CssClass="e-outline"></SfTextBox>
+                            <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["StartDate"]" CssClass="e-outline"></SfDatePicker>
+                            <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["EndDate"]" CssClass="e-outline"></SfDatePicker>
                         </div>
                         <div class="col-md-6">
-                            <SfTextBox Placeholder="@Localizer["ExecutionPlace"]" CssClass="e-outline"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["CompanyStaff"]" CssClass="e-outline"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["Quantity"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["ExecutionPlace"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["CompanyStaff"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Quantity"]" CssClass="e-outline"></SfTextBox>
                         </div>
                     </div>
                 </ChildContent>
@@ -77,16 +72,16 @@
                 <ChildContent>
                     <div class="row">
                         <div class="col-md-6">
-                            <SfTextBox Placeholder="@Localizer["Reference"]" CssClass="e-outline"></SfTextBox>
-                            <SfDatePicker Placeholder="@Localizer["StartDate"]" CssClass="e-outline"></SfDatePicker>
-                            <SfTextBox Placeholder="@Localizer["Object"]" CssClass="e-outline"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["ExecutionPlace"]" CssClass="e-outline"></SfTextBox>
-                            <SfDatePicker Placeholder="@Localizer["ImportExportDeadline"]" CssClass="e-outline"></SfDatePicker>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Reference"]" CssClass="e-outline"></SfTextBox>
+                            <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["StartDate"]" CssClass="e-outline"></SfDatePicker>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Object"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["ExecutionPlace"]" CssClass="e-outline"></SfTextBox>
+                            <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["ImportExportDeadline"]" CssClass="e-outline"></SfDatePicker>
                         </div>
                         <div class="col-md-6">
-                            <SfTextBox Placeholder="@Localizer["MaterialStateCode"]" CssClass="e-outline"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["SuspensionPeriod"]" CssClass="e-outline"></SfTextBox>
-                            <SfTextBox Placeholder="@Localizer["Treatment"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["MaterialStateCode"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["SuspensionPeriod"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Treatment"]" CssClass="e-outline"></SfTextBox>
                         </div>
                     </div>
                 </ChildContent>
@@ -114,6 +109,7 @@
 </div>
 
 @code {
+
     public class RegimeRequest
     {
         public string TariffPosition { get; set; }
@@ -124,11 +120,11 @@
         public decimal Value { get; set; }
     }
 
-    public List<RegimeRequest> RegimeData = new List<RegimeRequest>
+    public List<RegimeRequest> RegimeData = new()
     {
         new RegimeRequest { TariffPosition = "8528.72.92.4", CommercialName = "SMART TV", TechnicalName = "LED TV", Quantity = 100, CountryOfOrigin = "China", Value = 50000 }
         // Add more data as needed
     };
 
-    public List<string> declarationTypes = new List<string> { "Temporary Admission", "Export/Import" };
+    public List<string> declarationTypes = new() { "Temporary Admission", "Export/Import" };
 }

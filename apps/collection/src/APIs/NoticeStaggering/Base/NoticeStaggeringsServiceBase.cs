@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class NoticeStaggeringsServiceBase : INoticeStaggeringsService
     }
 
     /// <summary>
-    /// Create one NOTICE STAGGERING
+    ///     Create one NOTICE STAGGERING
     /// </summary>
     public async Task<NoticeStaggering> CreateNoticeStaggering(
         NoticeStaggeringCreateInput createDto
@@ -47,41 +46,32 @@ public abstract class NoticeStaggeringsServiceBase : INoticeStaggeringsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            noticeStaggering.Id = createDto.Id;
-        }
+        if (createDto.Id != null) noticeStaggering.Id = createDto.Id;
 
         _context.NoticeStaggerings.Add(noticeStaggering);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<NoticeStaggeringDbModel>(noticeStaggering.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one NOTICE STAGGERING
+    ///     Delete one NOTICE STAGGERING
     /// </summary>
     public async Task DeleteNoticeStaggering(NoticeStaggeringWhereUniqueInput uniqueId)
     {
         var noticeStaggering = await _context.NoticeStaggerings.FindAsync(uniqueId.Id);
-        if (noticeStaggering == null)
-        {
-            throw new NotFoundException();
-        }
+        if (noticeStaggering == null) throw new NotFoundException();
 
         _context.NoticeStaggerings.Remove(noticeStaggering);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many NOTICE STAGGERINGS
+    ///     Find many NOTICE STAGGERINGS
     /// </summary>
     public async Task<List<NoticeStaggering>> NoticeStaggerings(
         NoticeStaggeringFindManyArgs findManyArgs
@@ -97,7 +87,7 @@ public abstract class NoticeStaggeringsServiceBase : INoticeStaggeringsService
     }
 
     /// <summary>
-    /// Meta data about NOTICE STAGGERING records
+    ///     Meta data about NOTICE STAGGERING records
     /// </summary>
     public async Task<MetadataDto> NoticeStaggeringsMeta(NoticeStaggeringFindManyArgs findManyArgs)
     {
@@ -107,27 +97,24 @@ public abstract class NoticeStaggeringsServiceBase : INoticeStaggeringsService
     }
 
     /// <summary>
-    /// Get one NOTICE STAGGERING
+    ///     Get one NOTICE STAGGERING
     /// </summary>
     public async Task<NoticeStaggering> NoticeStaggering(NoticeStaggeringWhereUniqueInput uniqueId)
     {
-        var noticeStaggerings = await this.NoticeStaggerings(
+        var noticeStaggerings = await NoticeStaggerings(
             new NoticeStaggeringFindManyArgs
             {
                 Where = new NoticeStaggeringWhereInput { Id = uniqueId.Id }
             }
         );
         var noticeStaggering = noticeStaggerings.FirstOrDefault();
-        if (noticeStaggering == null)
-        {
-            throw new NotFoundException();
-        }
+        if (noticeStaggering == null) throw new NotFoundException();
 
         return noticeStaggering;
     }
 
     /// <summary>
-    /// Update one NOTICE STAGGERING
+    ///     Update one NOTICE STAGGERING
     /// </summary>
     public async Task UpdateNoticeStaggering(
         NoticeStaggeringWhereUniqueInput uniqueId,
@@ -145,13 +132,8 @@ public abstract class NoticeStaggeringsServiceBase : INoticeStaggeringsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.NoticeStaggerings.Any(e => e.Id == noticeStaggering.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

@@ -73,7 +73,7 @@ public static class CustomsClearanceOfPostalGoodsItemsExtensions
             TransportDate = model.TransportDate,
             TreatmentCode = model.TreatmentCode,
             TreatmentStatusCode = model.TreatmentStatusCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -147,14 +147,8 @@ public static class CustomsClearanceOfPostalGoodsItemsExtensions
             TreatmentStatusCode = updateDto.TreatmentStatusCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            customsClearanceOfPostalGoods.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            customsClearanceOfPostalGoods.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) customsClearanceOfPostalGoods.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) customsClearanceOfPostalGoods.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return customsClearanceOfPostalGoods;
     }

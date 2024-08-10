@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class ReimportedGoodsForPerfectingsServiceBase
     }
 
     /// <summary>
-    /// Create one REIMPORTED GOODS FOR PERFECTING
+    ///     Create one REIMPORTED GOODS FOR PERFECTING
     /// </summary>
     public async Task<ReimportedGoodsForPerfecting> CreateReimportedGoodsForPerfecting(
         ReimportedGoodsForPerfectingCreateInput createDto
@@ -52,10 +51,7 @@ public abstract class ReimportedGoodsForPerfectingsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            reimportedGoodsForPerfecting.Id = createDto.Id;
-        }
+        if (createDto.Id != null) reimportedGoodsForPerfecting.Id = createDto.Id;
 
         _context.ReimportedGoodsForPerfectings.Add(reimportedGoodsForPerfecting);
         await _context.SaveChangesAsync();
@@ -64,16 +60,13 @@ public abstract class ReimportedGoodsForPerfectingsServiceBase
             reimportedGoodsForPerfecting.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one REIMPORTED GOODS FOR PERFECTING
+    ///     Delete one REIMPORTED GOODS FOR PERFECTING
     /// </summary>
     public async Task DeleteReimportedGoodsForPerfecting(
         ReimportedGoodsForPerfectingWhereUniqueInput uniqueId
@@ -82,17 +75,14 @@ public abstract class ReimportedGoodsForPerfectingsServiceBase
         var reimportedGoodsForPerfecting = await _context.ReimportedGoodsForPerfectings.FindAsync(
             uniqueId.Id
         );
-        if (reimportedGoodsForPerfecting == null)
-        {
-            throw new NotFoundException();
-        }
+        if (reimportedGoodsForPerfecting == null) throw new NotFoundException();
 
         _context.ReimportedGoodsForPerfectings.Remove(reimportedGoodsForPerfecting);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many REIMPORTED GOODS FOR PERFECTINGS
+    ///     Find many REIMPORTED GOODS FOR PERFECTINGS
     /// </summary>
     public async Task<List<ReimportedGoodsForPerfecting>> ReimportedGoodsForPerfectings(
         ReimportedGoodsForPerfectingFindManyArgs findManyArgs
@@ -110,7 +100,7 @@ public abstract class ReimportedGoodsForPerfectingsServiceBase
     }
 
     /// <summary>
-    /// Meta data about REIMPORTED GOODS FOR PERFECTING records
+    ///     Meta data about REIMPORTED GOODS FOR PERFECTING records
     /// </summary>
     public async Task<MetadataDto> ReimportedGoodsForPerfectingsMeta(
         ReimportedGoodsForPerfectingFindManyArgs findManyArgs
@@ -124,29 +114,26 @@ public abstract class ReimportedGoodsForPerfectingsServiceBase
     }
 
     /// <summary>
-    /// Get one REIMPORTED GOODS FOR PERFECTING
+    ///     Get one REIMPORTED GOODS FOR PERFECTING
     /// </summary>
     public async Task<ReimportedGoodsForPerfecting> ReimportedGoodsForPerfecting(
         ReimportedGoodsForPerfectingWhereUniqueInput uniqueId
     )
     {
-        var reimportedGoodsForPerfectings = await this.ReimportedGoodsForPerfectings(
+        var reimportedGoodsForPerfectings = await ReimportedGoodsForPerfectings(
             new ReimportedGoodsForPerfectingFindManyArgs
             {
                 Where = new ReimportedGoodsForPerfectingWhereInput { Id = uniqueId.Id }
             }
         );
         var reimportedGoodsForPerfecting = reimportedGoodsForPerfectings.FirstOrDefault();
-        if (reimportedGoodsForPerfecting == null)
-        {
-            throw new NotFoundException();
-        }
+        if (reimportedGoodsForPerfecting == null) throw new NotFoundException();
 
         return reimportedGoodsForPerfecting;
     }
 
     /// <summary>
-    /// Update one REIMPORTED GOODS FOR PERFECTING
+    ///     Update one REIMPORTED GOODS FOR PERFECTING
     /// </summary>
     public async Task UpdateReimportedGoodsForPerfecting(
         ReimportedGoodsForPerfectingWhereUniqueInput uniqueId,
@@ -168,13 +155,8 @@ public abstract class ReimportedGoodsForPerfectingsServiceBase
                     e.Id == reimportedGoodsForPerfecting.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

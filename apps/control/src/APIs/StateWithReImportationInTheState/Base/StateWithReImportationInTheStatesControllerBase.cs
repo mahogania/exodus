@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class StateWithReImportationInTheStatesControllerBase : ControllerBase
 {
     protected readonly IStateWithReImportationInTheStatesService _service;
@@ -21,9 +20,9 @@ public abstract class StateWithReImportationInTheStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Create one STATE WITH RE-IMPORTATION IN THE STATE
+    ///     Create one STATE WITH RE-IMPORTATION IN THE STATE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<StateWithReImportationInTheState>
@@ -40,12 +39,12 @@ public abstract class StateWithReImportationInTheStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Delete one STATE WITH RE-IMPORTATION IN THE STATE
+    ///     Delete one STATE WITH RE-IMPORTATION IN THE STATE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteStateWithReImportationInTheState(
-        [FromRoute()] StateWithReImportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] StateWithReImportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -61,39 +60,39 @@ public abstract class StateWithReImportationInTheStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Find many STATE WITH RE-IMPORTATION IN THE STATES
+    ///     Find many STATE WITH RE-IMPORTATION IN THE STATES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<StateWithReImportationInTheState>>
     > StateWithReImportationInTheStates(
-        [FromQuery()] StateWithReImportationInTheStateFindManyArgs filter
+        [FromQuery] StateWithReImportationInTheStateFindManyArgs filter
     )
     {
         return Ok(await _service.StateWithReImportationInTheStates(filter));
     }
 
     /// <summary>
-    /// Meta data about STATE WITH RE-IMPORTATION IN THE STATE records
+    ///     Meta data about STATE WITH RE-IMPORTATION IN THE STATE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> StateWithReImportationInTheStatesMeta(
-        [FromQuery()] StateWithReImportationInTheStateFindManyArgs filter
+        [FromQuery] StateWithReImportationInTheStateFindManyArgs filter
     )
     {
         return Ok(await _service.StateWithReImportationInTheStatesMeta(filter));
     }
 
     /// <summary>
-    /// Get one STATE WITH RE-IMPORTATION IN THE STATE
+    ///     Get one STATE WITH RE-IMPORTATION IN THE STATE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<StateWithReImportationInTheState>
     > StateWithReImportationInTheState(
-        [FromRoute()] StateWithReImportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] StateWithReImportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -107,14 +106,13 @@ public abstract class StateWithReImportationInTheStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Update one STATE WITH RE-IMPORTATION IN THE STATE
+    ///     Update one STATE WITH RE-IMPORTATION IN THE STATE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateStateWithReImportationInTheState(
-        [FromRoute()] StateWithReImportationInTheStateWhereUniqueInput uniqueId,
-        [FromQuery()]
-            StateWithReImportationInTheStateUpdateInput stateWithReImportationInTheStateUpdateDto
+        [FromRoute] StateWithReImportationInTheStateWhereUniqueInput uniqueId,
+        [FromQuery] StateWithReImportationInTheStateUpdateInput stateWithReImportationInTheStateUpdateDto
     )
     {
         try

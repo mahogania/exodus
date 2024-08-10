@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Create one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
+    ///     Create one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     public async Task<PlaceOfExecutionAndWithReImportationInState> CreatePlaceOfExecutionAndWithReImportationInState(
         PlaceOfExecutionAndWithReImportationInStateCreateInput createDto
@@ -42,10 +41,7 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesServiceBase
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            placeOfExecutionAndWithReImportationInState.Id = createDto.Id;
-        }
+        if (createDto.Id != null) placeOfExecutionAndWithReImportationInState.Id = createDto.Id;
 
         _context.PlaceOfExecutionAndWithReImportationInStates.Add(
             placeOfExecutionAndWithReImportationInState
@@ -56,16 +52,13 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesServiceBase
             placeOfExecutionAndWithReImportationInState.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
+    ///     Delete one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     public async Task DeletePlaceOfExecutionAndWithReImportationInState(
         PlaceOfExecutionAndWithReImportationInStateWhereUniqueInput uniqueId
@@ -73,10 +66,7 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesServiceBase
     {
         var placeOfExecutionAndWithReImportationInState =
             await _context.PlaceOfExecutionAndWithReImportationInStates.FindAsync(uniqueId.Id);
-        if (placeOfExecutionAndWithReImportationInState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (placeOfExecutionAndWithReImportationInState == null) throw new NotFoundException();
 
         _context.PlaceOfExecutionAndWithReImportationInStates.Remove(
             placeOfExecutionAndWithReImportationInState
@@ -85,7 +75,7 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Find many PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATES
+    ///     Find many PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATES
     /// </summary>
     public async Task<
         List<PlaceOfExecutionAndWithReImportationInState>
@@ -106,7 +96,7 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Meta data about PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE records
+    ///     Meta data about PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE records
     /// </summary>
     public async Task<MetadataDto> PlaceOfExecutionAndWithReImportationInStatesMeta(
         PlaceOfExecutionAndWithReImportationInStateFindManyArgs findManyArgs
@@ -120,14 +110,14 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Get one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
+    ///     Get one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     public async Task<PlaceOfExecutionAndWithReImportationInState> PlaceOfExecutionAndWithReImportationInState(
         PlaceOfExecutionAndWithReImportationInStateWhereUniqueInput uniqueId
     )
     {
         var placeOfExecutionAndWithReImportationInStates =
-            await this.PlaceOfExecutionAndWithReImportationInStates(
+            await PlaceOfExecutionAndWithReImportationInStates(
                 new PlaceOfExecutionAndWithReImportationInStateFindManyArgs
                 {
                     Where = new PlaceOfExecutionAndWithReImportationInStateWhereInput
@@ -138,16 +128,13 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesServiceBase
             );
         var placeOfExecutionAndWithReImportationInState =
             placeOfExecutionAndWithReImportationInStates.FirstOrDefault();
-        if (placeOfExecutionAndWithReImportationInState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (placeOfExecutionAndWithReImportationInState == null) throw new NotFoundException();
 
         return placeOfExecutionAndWithReImportationInState;
     }
 
     /// <summary>
-    /// Update one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
+    ///     Update one PLACE OF EXECUTION AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     public async Task UpdatePlaceOfExecutionAndWithReImportationInState(
         PlaceOfExecutionAndWithReImportationInStateWhereUniqueInput uniqueId,
@@ -169,13 +156,8 @@ public abstract class PlaceOfExecutionAndWithReImportationInStatesServiceBase
                     e.Id == placeOfExecutionAndWithReImportationInState.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

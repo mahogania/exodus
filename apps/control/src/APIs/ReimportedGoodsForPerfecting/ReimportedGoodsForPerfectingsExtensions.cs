@@ -31,7 +31,7 @@ public static class ReimportedGoodsForPerfectingsExtensions
             SequenceNumber = model.SequenceNumber,
             SptNumber = model.SptNumber,
             TechnicalDesignationOfGoods = model.TechnicalDesignationOfGoods,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -65,14 +65,8 @@ public static class ReimportedGoodsForPerfectingsExtensions
             TechnicalDesignationOfGoods = updateDto.TechnicalDesignationOfGoods
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            reimportedGoodsForPerfecting.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            reimportedGoodsForPerfecting.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) reimportedGoodsForPerfecting.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) reimportedGoodsForPerfecting.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return reimportedGoodsForPerfecting;
     }

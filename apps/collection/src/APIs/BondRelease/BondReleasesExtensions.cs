@@ -24,7 +24,7 @@ public static class BondReleasesExtensions
             ReferenceNumberTypeCode = model.ReferenceNumberTypeCode,
             ReferenceNumberUsed = model.ReferenceNumberUsed,
             RequestNo = model.RequestNo,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -51,14 +51,8 @@ public static class BondReleasesExtensions
             RequestNo = updateDto.RequestNo
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            bondRelease.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            bondRelease.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) bondRelease.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) bondRelease.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return bondRelease;
     }

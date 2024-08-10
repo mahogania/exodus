@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class SecuritiesServiceBase : ISecuritiesService
     }
 
     /// <summary>
-    /// Create one SECURITY
+    ///     Create one SECURITY
     /// </summary>
     public async Task<Security> CreateSecurity(SecurityCreateInput createDto)
     {
@@ -65,41 +64,32 @@ public abstract class SecuritiesServiceBase : ISecuritiesService
             ValidityStartDate = createDto.ValidityStartDate
         };
 
-        if (createDto.Id != null)
-        {
-            security.Id = createDto.Id;
-        }
+        if (createDto.Id != null) security.Id = createDto.Id;
 
         _context.Securities.Add(security);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<SecurityDbModel>(security.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one SECURITY
+    ///     Delete one SECURITY
     /// </summary>
     public async Task DeleteSecurity(SecurityWhereUniqueInput uniqueId)
     {
         var security = await _context.Securities.FindAsync(uniqueId.Id);
-        if (security == null)
-        {
-            throw new NotFoundException();
-        }
+        if (security == null) throw new NotFoundException();
 
         _context.Securities.Remove(security);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many SECURITIES
+    ///     Find many SECURITIES
     /// </summary>
     public async Task<List<Security>> Securities(SecurityFindManyArgs findManyArgs)
     {
@@ -113,7 +103,7 @@ public abstract class SecuritiesServiceBase : ISecuritiesService
     }
 
     /// <summary>
-    /// Meta data about SECURITY records
+    ///     Meta data about SECURITY records
     /// </summary>
     public async Task<MetadataDto> SecuritiesMeta(SecurityFindManyArgs findManyArgs)
     {
@@ -123,24 +113,21 @@ public abstract class SecuritiesServiceBase : ISecuritiesService
     }
 
     /// <summary>
-    /// Get one SECURITY
+    ///     Get one SECURITY
     /// </summary>
     public async Task<Security> Security(SecurityWhereUniqueInput uniqueId)
     {
-        var securities = await this.Securities(
+        var securities = await Securities(
             new SecurityFindManyArgs { Where = new SecurityWhereInput { Id = uniqueId.Id } }
         );
         var security = securities.FirstOrDefault();
-        if (security == null)
-        {
-            throw new NotFoundException();
-        }
+        if (security == null) throw new NotFoundException();
 
         return security;
     }
 
     /// <summary>
-    /// Update one SECURITY
+    ///     Update one SECURITY
     /// </summary>
     public async Task UpdateSecurity(
         SecurityWhereUniqueInput uniqueId,
@@ -158,13 +145,8 @@ public abstract class SecuritiesServiceBase : ISecuritiesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Securities.Any(e => e.Id == security.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

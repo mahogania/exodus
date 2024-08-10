@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsControllerBase
     : ControllerBase
 {
@@ -22,9 +21,9 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsCont
     }
 
     /// <summary>
-    /// Create one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ModelSpecificationOfTheDetailedDeclarationCustoms>
@@ -43,12 +42,12 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsCont
     }
 
     /// <summary>
-    /// Delete one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteModelSpecificationOfTheDetailedDeclarationCustoms(
-        [FromRoute()] ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -64,27 +63,27 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsCont
     }
 
     /// <summary>
-    /// Find many MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<ModelSpecificationOfTheDetailedDeclarationCustoms>>
     > ModelSpecificationOfTheDetailedDeclarationCustomsItems(
-        [FromQuery()] ModelSpecificationOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] ModelSpecificationOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.ModelSpecificationOfTheDetailedDeclarationCustomsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > ModelSpecificationOfTheDetailedDeclarationCustomsItemsMeta(
-        [FromQuery()] ModelSpecificationOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] ModelSpecificationOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(
@@ -93,14 +92,14 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsCont
     }
 
     /// <summary>
-    /// Get one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ModelSpecificationOfTheDetailedDeclarationCustoms>
     > ModelSpecificationOfTheDetailedDeclarationCustoms(
-        [FromRoute()] ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -114,14 +113,14 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsCont
     }
 
     /// <summary>
-    /// Update one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateModelSpecificationOfTheDetailedDeclarationCustoms(
-        [FromRoute()] ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            ModelSpecificationOfTheDetailedDeclarationCustomsUpdateInput modelSpecificationOfTheDetailedDeclarationCustomsUpdateDto
+        [FromRoute] ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
+        [FromQuery] ModelSpecificationOfTheDetailedDeclarationCustomsUpdateInput
+            modelSpecificationOfTheDetailedDeclarationCustomsUpdateDto
     )
     {
         try

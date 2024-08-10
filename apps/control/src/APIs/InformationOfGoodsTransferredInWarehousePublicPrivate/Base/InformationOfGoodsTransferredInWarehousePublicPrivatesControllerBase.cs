@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesControllerBase
     : ControllerBase
 {
@@ -22,9 +21,9 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesCont
     }
 
     /// <summary>
-    /// Create one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
+    ///     Create one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<InformationOfGoodsTransferredInWarehousePublicPrivate>
@@ -43,12 +42,12 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesCont
     }
 
     /// <summary>
-    /// Delete one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
+    ///     Delete one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteInformationOfGoodsTransferredInWarehousePublicPrivate(
-        [FromRoute()] InformationOfGoodsTransferredInWarehousePublicPrivateWhereUniqueInput uniqueId
+        [FromRoute] InformationOfGoodsTransferredInWarehousePublicPrivateWhereUniqueInput uniqueId
     )
     {
         try
@@ -64,27 +63,27 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesCont
     }
 
     /// <summary>
-    /// Find many INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)s
+    ///     Find many INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)s
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<InformationOfGoodsTransferredInWarehousePublicPrivate>>
     > InformationOfGoodsTransferredInWarehousePublicPrivates(
-        [FromQuery()] InformationOfGoodsTransferredInWarehousePublicPrivateFindManyArgs filter
+        [FromQuery] InformationOfGoodsTransferredInWarehousePublicPrivateFindManyArgs filter
     )
     {
         return Ok(await _service.InformationOfGoodsTransferredInWarehousePublicPrivates(filter));
     }
 
     /// <summary>
-    /// Meta data about INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE) records
+    ///     Meta data about INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE) records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > InformationOfGoodsTransferredInWarehousePublicPrivatesMeta(
-        [FromQuery()] InformationOfGoodsTransferredInWarehousePublicPrivateFindManyArgs filter
+        [FromQuery] InformationOfGoodsTransferredInWarehousePublicPrivateFindManyArgs filter
     )
     {
         return Ok(
@@ -93,14 +92,14 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesCont
     }
 
     /// <summary>
-    /// Get one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
+    ///     Get one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<InformationOfGoodsTransferredInWarehousePublicPrivate>
     > InformationOfGoodsTransferredInWarehousePublicPrivate(
-        [FromRoute()] InformationOfGoodsTransferredInWarehousePublicPrivateWhereUniqueInput uniqueId
+        [FromRoute] InformationOfGoodsTransferredInWarehousePublicPrivateWhereUniqueInput uniqueId
     )
     {
         try
@@ -114,15 +113,14 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesCont
     }
 
     /// <summary>
-    /// Update one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
+    ///     Update one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateInformationOfGoodsTransferredInWarehousePublicPrivate(
-        [FromRoute()]
-            InformationOfGoodsTransferredInWarehousePublicPrivateWhereUniqueInput uniqueId,
-        [FromQuery()]
-            InformationOfGoodsTransferredInWarehousePublicPrivateUpdateInput informationOfGoodsTransferredInWarehousePublicPrivateUpdateDto
+        [FromRoute] InformationOfGoodsTransferredInWarehousePublicPrivateWhereUniqueInput uniqueId,
+        [FromQuery] InformationOfGoodsTransferredInWarehousePublicPrivateUpdateInput
+            informationOfGoodsTransferredInWarehousePublicPrivateUpdateDto
     )
     {
         try

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class WarehouseTransferPublicPrivatesServiceBase
     }
 
     /// <summary>
-    /// Create one WAREHOUSE TRANSFER (PUBLIC, PRIVATE)
+    ///     Create one WAREHOUSE TRANSFER (PUBLIC, PRIVATE)
     /// </summary>
     public async Task<WarehouseTransferPublicPrivate> CreateWarehouseTransferPublicPrivate(
         WarehouseTransferPublicPrivateCreateInput createDto
@@ -64,10 +63,7 @@ public abstract class WarehouseTransferPublicPrivatesServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            warehouseTransferPublicPrivate.Id = createDto.Id;
-        }
+        if (createDto.Id != null) warehouseTransferPublicPrivate.Id = createDto.Id;
 
         _context.WarehouseTransferPublicPrivates.Add(warehouseTransferPublicPrivate);
         await _context.SaveChangesAsync();
@@ -76,16 +72,13 @@ public abstract class WarehouseTransferPublicPrivatesServiceBase
             warehouseTransferPublicPrivate.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one WAREHOUSE TRANSFER (PUBLIC, PRIVATE)
+    ///     Delete one WAREHOUSE TRANSFER (PUBLIC, PRIVATE)
     /// </summary>
     public async Task DeleteWarehouseTransferPublicPrivate(
         WarehouseTransferPublicPrivateWhereUniqueInput uniqueId
@@ -93,17 +86,14 @@ public abstract class WarehouseTransferPublicPrivatesServiceBase
     {
         var warehouseTransferPublicPrivate =
             await _context.WarehouseTransferPublicPrivates.FindAsync(uniqueId.Id);
-        if (warehouseTransferPublicPrivate == null)
-        {
-            throw new NotFoundException();
-        }
+        if (warehouseTransferPublicPrivate == null) throw new NotFoundException();
 
         _context.WarehouseTransferPublicPrivates.Remove(warehouseTransferPublicPrivate);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many WAREHOUSE TRANSFER (PUBLIC, PRIVATE)s
+    ///     Find many WAREHOUSE TRANSFER (PUBLIC, PRIVATE)s
     /// </summary>
     public async Task<List<WarehouseTransferPublicPrivate>> WarehouseTransferPublicPrivates(
         WarehouseTransferPublicPrivateFindManyArgs findManyArgs
@@ -121,7 +111,7 @@ public abstract class WarehouseTransferPublicPrivatesServiceBase
     }
 
     /// <summary>
-    /// Meta data about WAREHOUSE TRANSFER (PUBLIC, PRIVATE) records
+    ///     Meta data about WAREHOUSE TRANSFER (PUBLIC, PRIVATE) records
     /// </summary>
     public async Task<MetadataDto> WarehouseTransferPublicPrivatesMeta(
         WarehouseTransferPublicPrivateFindManyArgs findManyArgs
@@ -135,29 +125,26 @@ public abstract class WarehouseTransferPublicPrivatesServiceBase
     }
 
     /// <summary>
-    /// Get one WAREHOUSE TRANSFER (PUBLIC, PRIVATE)
+    ///     Get one WAREHOUSE TRANSFER (PUBLIC, PRIVATE)
     /// </summary>
     public async Task<WarehouseTransferPublicPrivate> WarehouseTransferPublicPrivate(
         WarehouseTransferPublicPrivateWhereUniqueInput uniqueId
     )
     {
-        var warehouseTransferPublicPrivates = await this.WarehouseTransferPublicPrivates(
+        var warehouseTransferPublicPrivates = await WarehouseTransferPublicPrivates(
             new WarehouseTransferPublicPrivateFindManyArgs
             {
                 Where = new WarehouseTransferPublicPrivateWhereInput { Id = uniqueId.Id }
             }
         );
         var warehouseTransferPublicPrivate = warehouseTransferPublicPrivates.FirstOrDefault();
-        if (warehouseTransferPublicPrivate == null)
-        {
-            throw new NotFoundException();
-        }
+        if (warehouseTransferPublicPrivate == null) throw new NotFoundException();
 
         return warehouseTransferPublicPrivate;
     }
 
     /// <summary>
-    /// Update one WAREHOUSE TRANSFER (PUBLIC, PRIVATE)
+    ///     Update one WAREHOUSE TRANSFER (PUBLIC, PRIVATE)
     /// </summary>
     public async Task UpdateWarehouseTransferPublicPrivate(
         WarehouseTransferPublicPrivateWhereUniqueInput uniqueId,
@@ -179,13 +166,8 @@ public abstract class WarehouseTransferPublicPrivatesServiceBase
                     e.Id == warehouseTransferPublicPrivate.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

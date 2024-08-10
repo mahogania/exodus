@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class DetailOfRequestForCertificateOfOriginsServiceBase
     }
 
     /// <summary>
-    /// Create one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
+    ///     Create one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
     /// </summary>
     public async Task<DetailOfRequestForCertificateOfOrigin> CreateDetailOfRequestForCertificateOfOrigin(
         DetailOfRequestForCertificateOfOriginCreateInput createDto
@@ -53,10 +52,7 @@ public abstract class DetailOfRequestForCertificateOfOriginsServiceBase
             WeightUnit = createDto.WeightUnit
         };
 
-        if (createDto.Id != null)
-        {
-            detailOfRequestForCertificateOfOrigin.Id = createDto.Id;
-        }
+        if (createDto.Id != null) detailOfRequestForCertificateOfOrigin.Id = createDto.Id;
 
         _context.DetailOfRequestForCertificateOfOrigins.Add(detailOfRequestForCertificateOfOrigin);
         await _context.SaveChangesAsync();
@@ -65,16 +61,13 @@ public abstract class DetailOfRequestForCertificateOfOriginsServiceBase
             detailOfRequestForCertificateOfOrigin.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
+    ///     Delete one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
     /// </summary>
     public async Task DeleteDetailOfRequestForCertificateOfOrigin(
         DetailOfRequestForCertificateOfOriginWhereUniqueInput uniqueId
@@ -82,10 +75,7 @@ public abstract class DetailOfRequestForCertificateOfOriginsServiceBase
     {
         var detailOfRequestForCertificateOfOrigin =
             await _context.DetailOfRequestForCertificateOfOrigins.FindAsync(uniqueId.Id);
-        if (detailOfRequestForCertificateOfOrigin == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailOfRequestForCertificateOfOrigin == null) throw new NotFoundException();
 
         _context.DetailOfRequestForCertificateOfOrigins.Remove(
             detailOfRequestForCertificateOfOrigin
@@ -94,7 +84,7 @@ public abstract class DetailOfRequestForCertificateOfOriginsServiceBase
     }
 
     /// <summary>
-    /// Find many DETAIL OF REQUEST FOR CERTIFICATE OF ORIGINS
+    ///     Find many DETAIL OF REQUEST FOR CERTIFICATE OF ORIGINS
     /// </summary>
     public async Task<
         List<DetailOfRequestForCertificateOfOrigin>
@@ -114,7 +104,7 @@ public abstract class DetailOfRequestForCertificateOfOriginsServiceBase
     }
 
     /// <summary>
-    /// Meta data about DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN records
+    ///     Meta data about DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN records
     /// </summary>
     public async Task<MetadataDto> DetailOfRequestForCertificateOfOriginsMeta(
         DetailOfRequestForCertificateOfOriginFindManyArgs findManyArgs
@@ -128,14 +118,14 @@ public abstract class DetailOfRequestForCertificateOfOriginsServiceBase
     }
 
     /// <summary>
-    /// Get one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
+    ///     Get one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
     /// </summary>
     public async Task<DetailOfRequestForCertificateOfOrigin> DetailOfRequestForCertificateOfOrigin(
         DetailOfRequestForCertificateOfOriginWhereUniqueInput uniqueId
     )
     {
         var detailOfRequestForCertificateOfOrigins =
-            await this.DetailOfRequestForCertificateOfOrigins(
+            await DetailOfRequestForCertificateOfOrigins(
                 new DetailOfRequestForCertificateOfOriginFindManyArgs
                 {
                     Where = new DetailOfRequestForCertificateOfOriginWhereInput { Id = uniqueId.Id }
@@ -143,16 +133,13 @@ public abstract class DetailOfRequestForCertificateOfOriginsServiceBase
             );
         var detailOfRequestForCertificateOfOrigin =
             detailOfRequestForCertificateOfOrigins.FirstOrDefault();
-        if (detailOfRequestForCertificateOfOrigin == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailOfRequestForCertificateOfOrigin == null) throw new NotFoundException();
 
         return detailOfRequestForCertificateOfOrigin;
     }
 
     /// <summary>
-    /// Update one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
+    ///     Update one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
     /// </summary>
     public async Task UpdateDetailOfRequestForCertificateOfOrigin(
         DetailOfRequestForCertificateOfOriginWhereUniqueInput uniqueId,
@@ -174,13 +161,8 @@ public abstract class DetailOfRequestForCertificateOfOriginsServiceBase
                     e.Id == detailOfRequestForCertificateOfOrigin.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

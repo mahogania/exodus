@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class NoticeTypesControllerBase : ControllerBase
 {
     protected readonly INoticeTypesService _service;
@@ -19,9 +18,9 @@ public abstract class NoticeTypesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one NOTICE TYPE
+    ///     Create one NOTICE TYPE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<NoticeType>> CreateNoticeType(NoticeTypeCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class NoticeTypesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one NOTICE TYPE
+    ///     Delete one NOTICE TYPE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteNoticeType(
-        [FromRoute()] NoticeTypeWhereUniqueInput uniqueId
+        [FromRoute] NoticeTypeWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class NoticeTypesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many NOTICE TYPES
+    ///     Find many NOTICE TYPES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<NoticeType>>> NoticeTypes(
-        [FromQuery()] NoticeTypeFindManyArgs filter
+        [FromQuery] NoticeTypeFindManyArgs filter
     )
     {
         return Ok(await _service.NoticeTypes(filter));
     }
 
     /// <summary>
-    /// Meta data about NOTICE TYPE records
+    ///     Meta data about NOTICE TYPE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> NoticeTypesMeta(
-        [FromQuery()] NoticeTypeFindManyArgs filter
+        [FromQuery] NoticeTypeFindManyArgs filter
     )
     {
         return Ok(await _service.NoticeTypesMeta(filter));
     }
 
     /// <summary>
-    /// Get one NOTICE TYPE
+    ///     Get one NOTICE TYPE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<NoticeType>> NoticeType(
-        [FromRoute()] NoticeTypeWhereUniqueInput uniqueId
+        [FromRoute] NoticeTypeWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class NoticeTypesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one NOTICE TYPE
+    ///     Update one NOTICE TYPE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateNoticeType(
-        [FromRoute()] NoticeTypeWhereUniqueInput uniqueId,
-        [FromQuery()] NoticeTypeUpdateInput noticeTypeUpdateDto
+        [FromRoute] NoticeTypeWhereUniqueInput uniqueId,
+        [FromQuery] NoticeTypeUpdateInput noticeTypeUpdateDto
     )
     {
         try

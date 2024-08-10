@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
     }
 
     /// <summary>
-    /// Create one COMMON DETAILED DECLARATION
+    ///     Create one COMMON DETAILED DECLARATION
     /// </summary>
     public async Task<CommonDetailedDeclaration> CreateCommonDetailedDeclaration(
         CommonDetailedDeclarationCreateInput createDto
@@ -128,10 +127,7 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
             VehiclePickupOn = createDto.VehiclePickupOn
         };
 
-        if (createDto.Id != null)
-        {
-            commonDetailedDeclaration.Id = createDto.Id;
-        }
+        if (createDto.Id != null) commonDetailedDeclaration.Id = createDto.Id;
 
         _context.CommonDetailedDeclarations.Add(commonDetailedDeclaration);
         await _context.SaveChangesAsync();
@@ -140,16 +136,13 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
             commonDetailedDeclaration.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one COMMON DETAILED DECLARATION
+    ///     Delete one COMMON DETAILED DECLARATION
     /// </summary>
     public async Task DeleteCommonDetailedDeclaration(
         CommonDetailedDeclarationWhereUniqueInput uniqueId
@@ -158,17 +151,14 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
         var commonDetailedDeclaration = await _context.CommonDetailedDeclarations.FindAsync(
             uniqueId.Id
         );
-        if (commonDetailedDeclaration == null)
-        {
-            throw new NotFoundException();
-        }
+        if (commonDetailedDeclaration == null) throw new NotFoundException();
 
         _context.CommonDetailedDeclarations.Remove(commonDetailedDeclaration);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many COMMON DETAILED DECLARATIONS
+    ///     Find many COMMON DETAILED DECLARATIONS
     /// </summary>
     public async Task<List<CommonDetailedDeclaration>> CommonDetailedDeclarations(
         CommonDetailedDeclarationFindManyArgs findManyArgs
@@ -186,7 +176,7 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
     }
 
     /// <summary>
-    /// Meta data about COMMON DETAILED DECLARATION records
+    ///     Meta data about COMMON DETAILED DECLARATION records
     /// </summary>
     public async Task<MetadataDto> CommonDetailedDeclarationsMeta(
         CommonDetailedDeclarationFindManyArgs findManyArgs
@@ -200,29 +190,26 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
     }
 
     /// <summary>
-    /// Get one COMMON DETAILED DECLARATION
+    ///     Get one COMMON DETAILED DECLARATION
     /// </summary>
     public async Task<CommonDetailedDeclaration> CommonDetailedDeclaration(
         CommonDetailedDeclarationWhereUniqueInput uniqueId
     )
     {
-        var commonDetailedDeclarations = await this.CommonDetailedDeclarations(
+        var commonDetailedDeclarations = await CommonDetailedDeclarations(
             new CommonDetailedDeclarationFindManyArgs
             {
                 Where = new CommonDetailedDeclarationWhereInput { Id = uniqueId.Id }
             }
         );
         var commonDetailedDeclaration = commonDetailedDeclarations.FirstOrDefault();
-        if (commonDetailedDeclaration == null)
-        {
-            throw new NotFoundException();
-        }
+        if (commonDetailedDeclaration == null) throw new NotFoundException();
 
         return commonDetailedDeclaration;
     }
 
     /// <summary>
-    /// Update one COMMON DETAILED DECLARATION
+    ///     Update one COMMON DETAILED DECLARATION
     /// </summary>
     public async Task UpdateCommonDetailedDeclaration(
         CommonDetailedDeclarationWhereUniqueInput uniqueId,
@@ -240,13 +227,8 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.CommonDetailedDeclarations.Any(e => e.Id == commonDetailedDeclaration.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

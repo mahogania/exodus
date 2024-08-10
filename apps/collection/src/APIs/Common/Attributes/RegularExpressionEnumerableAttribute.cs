@@ -6,7 +6,9 @@ namespace Collection.APIs.Common.Attributes;
 public class RegularExpressionEnumerable : RegularExpressionAttribute
 {
     public RegularExpressionEnumerable(string pattern)
-        : base(pattern) { }
+        : base(pattern)
+    {
+    }
 
     public override bool IsValid(object? value)
     {
@@ -16,13 +18,11 @@ public class RegularExpressionEnumerable : RegularExpressionAttribute
         if (value is not IEnumerable<string>)
             return false;
 
-        IEnumerable<string> values = value as IEnumerable<string> ?? [];
+        var values = value as IEnumerable<string> ?? [];
 
         foreach (var val in values)
-        {
             if (!Regex.IsMatch(val, Pattern))
                 return false;
-        }
 
         return true;
     }

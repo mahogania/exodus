@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DepositsControllerBase : ControllerBase
 {
     protected readonly IDepositsService _service;
@@ -19,9 +18,9 @@ public abstract class DepositsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one DEPOSIT
+    ///     Create one DEPOSIT
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Deposit>> CreateDeposit(DepositCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class DepositsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one DEPOSIT
+    ///     Delete one DEPOSIT
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteDeposit([FromRoute()] DepositWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteDeposit([FromRoute] DepositWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,34 +49,34 @@ public abstract class DepositsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many DEPOSITS
+    ///     Find many DEPOSITS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Deposit>>> Deposits(
-        [FromQuery()] DepositFindManyArgs filter
+        [FromQuery] DepositFindManyArgs filter
     )
     {
         return Ok(await _service.Deposits(filter));
     }
 
     /// <summary>
-    /// Meta data about DEPOSIT records
+    ///     Meta data about DEPOSIT records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DepositsMeta(
-        [FromQuery()] DepositFindManyArgs filter
+        [FromQuery] DepositFindManyArgs filter
     )
     {
         return Ok(await _service.DepositsMeta(filter));
     }
 
     /// <summary>
-    /// Get one DEPOSIT
+    ///     Get one DEPOSIT
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Deposit>> Deposit([FromRoute()] DepositWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Deposit>> Deposit([FromRoute] DepositWhereUniqueInput uniqueId)
     {
         try
         {
@@ -90,13 +89,13 @@ public abstract class DepositsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one DEPOSIT
+    ///     Update one DEPOSIT
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDeposit(
-        [FromRoute()] DepositWhereUniqueInput uniqueId,
-        [FromQuery()] DepositUpdateInput depositUpdateDto
+        [FromRoute] DepositWhereUniqueInput uniqueId,
+        [FromQuery] DepositUpdateInput depositUpdateDto
     )
     {
         try

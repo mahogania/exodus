@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DetailsOfTheApprovalOfTheRegimeRequestsControllerBase : ControllerBase
 {
     protected readonly IDetailsOfTheApprovalOfTheRegimeRequestsService _service;
@@ -21,9 +20,9 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsControllerBase : Co
     }
 
     /// <summary>
-    /// Create one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
+    ///     Create one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailsOfTheApprovalOfTheRegimeRequest>
@@ -42,12 +41,12 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsControllerBase : Co
     }
 
     /// <summary>
-    /// Delete one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
+    ///     Delete one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDetailsOfTheApprovalOfTheRegimeRequest(
-        [FromRoute()] DetailsOfTheApprovalOfTheRegimeRequestWhereUniqueInput uniqueId
+        [FromRoute] DetailsOfTheApprovalOfTheRegimeRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsControllerBase : Co
     }
 
     /// <summary>
-    /// Find many details of the approval of the regime requests
+    ///     Find many details of the approval of the regime requests
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<DetailsOfTheApprovalOfTheRegimeRequest>>
     > DetailsOfTheApprovalOfTheRegimeRequests(
-        [FromQuery()] DetailsOfTheApprovalOfTheRegimeRequestFindManyArgs filter
+        [FromQuery] DetailsOfTheApprovalOfTheRegimeRequestFindManyArgs filter
     )
     {
         return Ok(await _service.DetailsOfTheApprovalOfTheRegimeRequests(filter));
     }
 
     /// <summary>
-    /// Meta data about DETAIL OF THE APPROVAL OF THE REGIME REQUEST records
+    ///     Meta data about DETAIL OF THE APPROVAL OF THE REGIME REQUEST records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DetailsOfTheApprovalOfTheRegimeRequestsMeta(
-        [FromQuery()] DetailsOfTheApprovalOfTheRegimeRequestFindManyArgs filter
+        [FromQuery] DetailsOfTheApprovalOfTheRegimeRequestFindManyArgs filter
     )
     {
         return Ok(await _service.DetailsOfTheApprovalOfTheRegimeRequestsMeta(filter));
     }
 
     /// <summary>
-    /// Get one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
+    ///     Get one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailsOfTheApprovalOfTheRegimeRequest>
     > DetailsOfTheApprovalOfTheRegimeRequest(
-        [FromRoute()] DetailsOfTheApprovalOfTheRegimeRequestWhereUniqueInput uniqueId
+        [FromRoute] DetailsOfTheApprovalOfTheRegimeRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,13 @@ public abstract class DetailsOfTheApprovalOfTheRegimeRequestsControllerBase : Co
     }
 
     /// <summary>
-    /// Update one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
+    ///     Update one DETAIL OF THE APPROVAL OF THE REGIME REQUEST
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDetailsOfTheApprovalOfTheRegimeRequest(
-        [FromRoute()] DetailsOfTheApprovalOfTheRegimeRequestWhereUniqueInput uniqueId,
-        [FromQuery()]
-            DetailsOfTheApprovalOfTheRegimeRequestUpdateInput detailsOfTheApprovalOfTheRegimeRequestUpdateDto
+        [FromRoute] DetailsOfTheApprovalOfTheRegimeRequestWhereUniqueInput uniqueId,
+        [FromQuery] DetailsOfTheApprovalOfTheRegimeRequestUpdateInput detailsOfTheApprovalOfTheRegimeRequestUpdateDto
     )
     {
         try

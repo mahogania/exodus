@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class CustomsDeclarationBondsServiceBase : ICustomsDeclarationBo
     }
 
     /// <summary>
-    /// Create one CUSTOMS DECLARATION BOND
+    ///     Create one CUSTOMS DECLARATION BOND
     /// </summary>
     public async Task<CustomsDeclarationBond> CreateCustomsDeclarationBond(
         CustomsDeclarationBondCreateInput createDto
@@ -40,10 +39,7 @@ public abstract class CustomsDeclarationBondsServiceBase : ICustomsDeclarationBo
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            customsDeclarationBond.Id = createDto.Id;
-        }
+        if (createDto.Id != null) customsDeclarationBond.Id = createDto.Id;
 
         _context.CustomsDeclarationBonds.Add(customsDeclarationBond);
         await _context.SaveChangesAsync();
@@ -52,31 +48,25 @@ public abstract class CustomsDeclarationBondsServiceBase : ICustomsDeclarationBo
             customsDeclarationBond.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CUSTOMS DECLARATION BOND
+    ///     Delete one CUSTOMS DECLARATION BOND
     /// </summary>
     public async Task DeleteCustomsDeclarationBond(CustomsDeclarationBondWhereUniqueInput uniqueId)
     {
         var customsDeclarationBond = await _context.CustomsDeclarationBonds.FindAsync(uniqueId.Id);
-        if (customsDeclarationBond == null)
-        {
-            throw new NotFoundException();
-        }
+        if (customsDeclarationBond == null) throw new NotFoundException();
 
         _context.CustomsDeclarationBonds.Remove(customsDeclarationBond);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many CUSTOMS DECLARATION BONDS
+    ///     Find many CUSTOMS DECLARATION BONDS
     /// </summary>
     public async Task<List<CustomsDeclarationBond>> CustomsDeclarationBonds(
         CustomsDeclarationBondFindManyArgs findManyArgs
@@ -94,7 +84,7 @@ public abstract class CustomsDeclarationBondsServiceBase : ICustomsDeclarationBo
     }
 
     /// <summary>
-    /// Meta data about CUSTOMS DECLARATION BOND records
+    ///     Meta data about CUSTOMS DECLARATION BOND records
     /// </summary>
     public async Task<MetadataDto> CustomsDeclarationBondsMeta(
         CustomsDeclarationBondFindManyArgs findManyArgs
@@ -108,29 +98,26 @@ public abstract class CustomsDeclarationBondsServiceBase : ICustomsDeclarationBo
     }
 
     /// <summary>
-    /// Get one CUSTOMS DECLARATION BOND
+    ///     Get one CUSTOMS DECLARATION BOND
     /// </summary>
     public async Task<CustomsDeclarationBond> CustomsDeclarationBond(
         CustomsDeclarationBondWhereUniqueInput uniqueId
     )
     {
-        var customsDeclarationBonds = await this.CustomsDeclarationBonds(
+        var customsDeclarationBonds = await CustomsDeclarationBonds(
             new CustomsDeclarationBondFindManyArgs
             {
                 Where = new CustomsDeclarationBondWhereInput { Id = uniqueId.Id }
             }
         );
         var customsDeclarationBond = customsDeclarationBonds.FirstOrDefault();
-        if (customsDeclarationBond == null)
-        {
-            throw new NotFoundException();
-        }
+        if (customsDeclarationBond == null) throw new NotFoundException();
 
         return customsDeclarationBond;
     }
 
     /// <summary>
-    /// Update one CUSTOMS DECLARATION BOND
+    ///     Update one CUSTOMS DECLARATION BOND
     /// </summary>
     public async Task UpdateCustomsDeclarationBond(
         CustomsDeclarationBondWhereUniqueInput uniqueId,
@@ -148,13 +135,8 @@ public abstract class CustomsDeclarationBondsServiceBase : ICustomsDeclarationBo
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.CustomsDeclarationBonds.Any(e => e.Id == customsDeclarationBond.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

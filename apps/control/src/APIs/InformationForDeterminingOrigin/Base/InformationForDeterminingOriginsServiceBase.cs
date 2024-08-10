@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class InformationForDeterminingOriginsServiceBase
     }
 
     /// <summary>
-    /// Create one INFORMATION FOR DETERMINING ORIGIN
+    ///     Create one INFORMATION FOR DETERMINING ORIGIN
     /// </summary>
     public async Task<InformationForDeterminingOrigin> CreateInformationForDeterminingOrigin(
         InformationForDeterminingOriginCreateInput createDto
@@ -45,10 +44,7 @@ public abstract class InformationForDeterminingOriginsServiceBase
             Weight = createDto.Weight
         };
 
-        if (createDto.Id != null)
-        {
-            informationForDeterminingOrigin.Id = createDto.Id;
-        }
+        if (createDto.Id != null) informationForDeterminingOrigin.Id = createDto.Id;
 
         _context.InformationForDeterminingOrigins.Add(informationForDeterminingOrigin);
         await _context.SaveChangesAsync();
@@ -57,16 +53,13 @@ public abstract class InformationForDeterminingOriginsServiceBase
             informationForDeterminingOrigin.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one INFORMATION FOR DETERMINING ORIGIN
+    ///     Delete one INFORMATION FOR DETERMINING ORIGIN
     /// </summary>
     public async Task DeleteInformationForDeterminingOrigin(
         InformationForDeterminingOriginWhereUniqueInput uniqueId
@@ -74,17 +67,14 @@ public abstract class InformationForDeterminingOriginsServiceBase
     {
         var informationForDeterminingOrigin =
             await _context.InformationForDeterminingOrigins.FindAsync(uniqueId.Id);
-        if (informationForDeterminingOrigin == null)
-        {
-            throw new NotFoundException();
-        }
+        if (informationForDeterminingOrigin == null) throw new NotFoundException();
 
         _context.InformationForDeterminingOrigins.Remove(informationForDeterminingOrigin);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many INFORMATION FOR DETERMINING ORIGIN | CLRES
+    ///     Find many INFORMATION FOR DETERMINING ORIGIN | CLRES
     /// </summary>
     public async Task<List<InformationForDeterminingOrigin>> InformationForDeterminingOrigins(
         InformationForDeterminingOriginFindManyArgs findManyArgs
@@ -102,7 +92,7 @@ public abstract class InformationForDeterminingOriginsServiceBase
     }
 
     /// <summary>
-    /// Meta data about INFORMATION FOR DETERMINING ORIGIN records
+    ///     Meta data about INFORMATION FOR DETERMINING ORIGIN records
     /// </summary>
     public async Task<MetadataDto> InformationForDeterminingOriginsMeta(
         InformationForDeterminingOriginFindManyArgs findManyArgs
@@ -116,29 +106,26 @@ public abstract class InformationForDeterminingOriginsServiceBase
     }
 
     /// <summary>
-    /// Get one INFORMATION FOR DETERMINING ORIGIN
+    ///     Get one INFORMATION FOR DETERMINING ORIGIN
     /// </summary>
     public async Task<InformationForDeterminingOrigin> InformationForDeterminingOrigin(
         InformationForDeterminingOriginWhereUniqueInput uniqueId
     )
     {
-        var informationForDeterminingOrigins = await this.InformationForDeterminingOrigins(
+        var informationForDeterminingOrigins = await InformationForDeterminingOrigins(
             new InformationForDeterminingOriginFindManyArgs
             {
                 Where = new InformationForDeterminingOriginWhereInput { Id = uniqueId.Id }
             }
         );
         var informationForDeterminingOrigin = informationForDeterminingOrigins.FirstOrDefault();
-        if (informationForDeterminingOrigin == null)
-        {
-            throw new NotFoundException();
-        }
+        if (informationForDeterminingOrigin == null) throw new NotFoundException();
 
         return informationForDeterminingOrigin;
     }
 
     /// <summary>
-    /// Update one INFORMATION FOR DETERMINING ORIGIN
+    ///     Update one INFORMATION FOR DETERMINING ORIGIN
     /// </summary>
     public async Task UpdateInformationForDeterminingOrigin(
         InformationForDeterminingOriginWhereUniqueInput uniqueId,
@@ -160,13 +147,8 @@ public abstract class InformationForDeterminingOriginsServiceBase
                     e.Id == informationForDeterminingOrigin.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

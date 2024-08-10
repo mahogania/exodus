@@ -29,7 +29,7 @@ public static class InformationOfGoodsTransferredInWarehousePublicPrivatesExtens
             SuppressionOn = model.SuppressionOn,
             TechnicalDesignationOfGoods = model.TechnicalDesignationOfGoods,
             UpdatedAt = model.UpdatedAt,
-            Value = model.Value,
+            Value = model.Value
         };
     }
 
@@ -62,17 +62,13 @@ public static class InformationOfGoodsTransferredInWarehousePublicPrivatesExtens
             };
 
         if (updateDto.CreatedAt != null)
-        {
             informationOfGoodsTransferredInWarehousePublicPrivate.CreatedAt = updateDto
                 .CreatedAt
                 .Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             informationOfGoodsTransferredInWarehousePublicPrivate.UpdatedAt = updateDto
                 .UpdatedAt
                 .Value;
-        }
 
         return informationOfGoodsTransferredInWarehousePublicPrivate;
     }

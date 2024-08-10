@@ -31,7 +31,7 @@ public static class InfosGoodsToBeReprovisionedsExtensions
             SuppressionOn = model.SuppressionOn,
             TechnicalCharacteristics = model.TechnicalCharacteristics,
             TechnicalDesignationOfGoods = model.TechnicalDesignationOfGoods,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -65,14 +65,8 @@ public static class InfosGoodsToBeReprovisionedsExtensions
             TechnicalDesignationOfGoods = updateDto.TechnicalDesignationOfGoods
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            infosGoodsToBeReprovisioned.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            infosGoodsToBeReprovisioned.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) infosGoodsToBeReprovisioned.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) infosGoodsToBeReprovisioned.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return infosGoodsToBeReprovisioned;
     }

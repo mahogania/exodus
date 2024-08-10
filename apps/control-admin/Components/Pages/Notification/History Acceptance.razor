@@ -1,7 +1,4 @@
 @page "/acceptance-notification-history"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
 @inject IStringLocalizer<Pages.AcceptanceNotificationHistory> Localizer
 
 <div class="container">
@@ -64,6 +61,7 @@
 </div>
 
 @code {
+
     public class Tax
     {
         public string TaxCode { get; set; }
@@ -83,7 +81,7 @@
         public string Extinction { get; set; }
     }
 
-    public List<Tax> TaxData = new List<Tax>
+    public List<Tax> TaxData = new()
     {
         new Tax { TaxCode = "ITF", TaxableValue = 101099700, TaxRate = 0.25m, TaxAmount = 252749 },
         new Tax { TaxCode = "IMD", TaxableValue = 101099700, TaxRate = 0.30m, TaxAmount = 30329190 },
@@ -91,9 +89,10 @@
         // Add more data as needed
     };
 
-    public List<PaymentHistory> PaymentHistoryData = new List<PaymentHistory>
+    public List<PaymentHistory> PaymentHistoryData = new()
     {
         new PaymentHistory { PaymentNoticeNo = "DZ-2022-G-000001-I", PaymentType = "G/General", TotalNotificationAmount = 53582840, Encashment = "N/NON", NotificationDate = new DateTime(2022, 3, 30), PaymentDueDate = new DateTime(2022, 4, 28), Extinction = "N/NON" }
         // Add more data as needed
     };
+
 }

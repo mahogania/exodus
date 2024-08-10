@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -22,11 +21,12 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesServiceB
     }
 
     /// <summary>
-    /// Create one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Create one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
-    public async Task<ManagementOfAccountingAccountsByPaymentNoticeType> CreateManagementOfAccountingAccountsByPaymentNoticeType(
-        ManagementOfAccountingAccountsByPaymentNoticeTypeCreateInput createDto
-    )
+    public async Task<ManagementOfAccountingAccountsByPaymentNoticeType>
+        CreateManagementOfAccountingAccountsByPaymentNoticeType(
+            ManagementOfAccountingAccountsByPaymentNoticeTypeCreateInput createDto
+        )
     {
         var managementOfAccountingAccountsByPaymentNoticeType =
             new ManagementOfAccountingAccountsByPaymentNoticeTypeDbModel
@@ -49,10 +49,7 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesServiceB
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            managementOfAccountingAccountsByPaymentNoticeType.Id = createDto.Id;
-        }
+        if (createDto.Id != null) managementOfAccountingAccountsByPaymentNoticeType.Id = createDto.Id;
 
         _context.ManagementOfAccountingAccountsByPaymentNoticeTypes.Add(
             managementOfAccountingAccountsByPaymentNoticeType
@@ -64,16 +61,13 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesServiceB
                 managementOfAccountingAccountsByPaymentNoticeType.Id
             );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Delete one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
     public async Task DeleteManagementOfAccountingAccountsByPaymentNoticeType(
         ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId
@@ -83,10 +77,7 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesServiceB
             await _context.ManagementOfAccountingAccountsByPaymentNoticeTypes.FindAsync(
                 uniqueId.Id
             );
-        if (managementOfAccountingAccountsByPaymentNoticeType == null)
-        {
-            throw new NotFoundException();
-        }
+        if (managementOfAccountingAccountsByPaymentNoticeType == null) throw new NotFoundException();
 
         _context.ManagementOfAccountingAccountsByPaymentNoticeTypes.Remove(
             managementOfAccountingAccountsByPaymentNoticeType
@@ -95,7 +86,7 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesServiceB
     }
 
     /// <summary>
-    /// Find many MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPES
+    ///     Find many MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPES
     /// </summary>
     public async Task<
         List<ManagementOfAccountingAccountsByPaymentNoticeType>
@@ -116,7 +107,7 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesServiceB
     }
 
     /// <summary>
-    /// Meta data about MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE records
+    ///     Meta data about MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE records
     /// </summary>
     public async Task<MetadataDto> ManagementOfAccountingAccountsByPaymentNoticeTypesMeta(
         ManagementOfAccountingAccountsByPaymentNoticeTypeFindManyArgs findManyArgs
@@ -130,14 +121,15 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesServiceB
     }
 
     /// <summary>
-    /// Get one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Get one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
-    public async Task<ManagementOfAccountingAccountsByPaymentNoticeType> ManagementOfAccountingAccountsByPaymentNoticeType(
-        ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId
-    )
+    public async Task<ManagementOfAccountingAccountsByPaymentNoticeType>
+        ManagementOfAccountingAccountsByPaymentNoticeType(
+            ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId
+        )
     {
         var managementOfAccountingAccountsByPaymentNoticeTypes =
-            await this.ManagementOfAccountingAccountsByPaymentNoticeTypes(
+            await ManagementOfAccountingAccountsByPaymentNoticeTypes(
                 new ManagementOfAccountingAccountsByPaymentNoticeTypeFindManyArgs
                 {
                     Where = new ManagementOfAccountingAccountsByPaymentNoticeTypeWhereInput
@@ -148,16 +140,13 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesServiceB
             );
         var managementOfAccountingAccountsByPaymentNoticeType =
             managementOfAccountingAccountsByPaymentNoticeTypes.FirstOrDefault();
-        if (managementOfAccountingAccountsByPaymentNoticeType == null)
-        {
-            throw new NotFoundException();
-        }
+        if (managementOfAccountingAccountsByPaymentNoticeType == null) throw new NotFoundException();
 
         return managementOfAccountingAccountsByPaymentNoticeType;
     }
 
     /// <summary>
-    /// Update one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Update one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
     public async Task UpdateManagementOfAccountingAccountsByPaymentNoticeType(
         ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId,
@@ -180,13 +169,8 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesServiceB
                     e.Id == managementOfAccountingAccountsByPaymentNoticeType.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class ExportedAndForImprovementGoodsItemsServiceBase
     }
 
     /// <summary>
-    /// Create one EXPORTED AND FOR IMPROVEMENT GOODS
+    ///     Create one EXPORTED AND FOR IMPROVEMENT GOODS
     /// </summary>
     public async Task<ExportedAndForImprovementGoods> CreateExportedAndForImprovementGoods(
         ExportedAndForImprovementGoodsCreateInput createDto
@@ -47,10 +46,7 @@ public abstract class ExportedAndForImprovementGoodsItemsServiceBase
             Value = createDto.Value
         };
 
-        if (createDto.Id != null)
-        {
-            exportedAndForImprovementGoods.Id = createDto.Id;
-        }
+        if (createDto.Id != null) exportedAndForImprovementGoods.Id = createDto.Id;
 
         _context.ExportedAndForImprovementGoodsItems.Add(exportedAndForImprovementGoods);
         await _context.SaveChangesAsync();
@@ -59,16 +55,13 @@ public abstract class ExportedAndForImprovementGoodsItemsServiceBase
             exportedAndForImprovementGoods.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one EXPORTED AND FOR IMPROVEMENT GOODS
+    ///     Delete one EXPORTED AND FOR IMPROVEMENT GOODS
     /// </summary>
     public async Task DeleteExportedAndForImprovementGoods(
         ExportedAndForImprovementGoodsWhereUniqueInput uniqueId
@@ -76,17 +69,14 @@ public abstract class ExportedAndForImprovementGoodsItemsServiceBase
     {
         var exportedAndForImprovementGoods =
             await _context.ExportedAndForImprovementGoodsItems.FindAsync(uniqueId.Id);
-        if (exportedAndForImprovementGoods == null)
-        {
-            throw new NotFoundException();
-        }
+        if (exportedAndForImprovementGoods == null) throw new NotFoundException();
 
         _context.ExportedAndForImprovementGoodsItems.Remove(exportedAndForImprovementGoods);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many EXPORTED AND FOR IMPROVEMENT GOODSItems
+    ///     Find many EXPORTED AND FOR IMPROVEMENT GOODSItems
     /// </summary>
     public async Task<List<ExportedAndForImprovementGoods>> ExportedAndForImprovementGoodsItems(
         ExportedAndForImprovementGoodsFindManyArgs findManyArgs
@@ -104,7 +94,7 @@ public abstract class ExportedAndForImprovementGoodsItemsServiceBase
     }
 
     /// <summary>
-    /// Meta data about EXPORTED AND FOR IMPROVEMENT GOODS records
+    ///     Meta data about EXPORTED AND FOR IMPROVEMENT GOODS records
     /// </summary>
     public async Task<MetadataDto> ExportedAndForImprovementGoodsItemsMeta(
         ExportedAndForImprovementGoodsFindManyArgs findManyArgs
@@ -118,29 +108,26 @@ public abstract class ExportedAndForImprovementGoodsItemsServiceBase
     }
 
     /// <summary>
-    /// Get one EXPORTED AND FOR IMPROVEMENT GOODS
+    ///     Get one EXPORTED AND FOR IMPROVEMENT GOODS
     /// </summary>
     public async Task<ExportedAndForImprovementGoods> ExportedAndForImprovementGoods(
         ExportedAndForImprovementGoodsWhereUniqueInput uniqueId
     )
     {
-        var exportedAndForImprovementGoodsItems = await this.ExportedAndForImprovementGoodsItems(
+        var exportedAndForImprovementGoodsItems = await ExportedAndForImprovementGoodsItems(
             new ExportedAndForImprovementGoodsFindManyArgs
             {
                 Where = new ExportedAndForImprovementGoodsWhereInput { Id = uniqueId.Id }
             }
         );
         var exportedAndForImprovementGoods = exportedAndForImprovementGoodsItems.FirstOrDefault();
-        if (exportedAndForImprovementGoods == null)
-        {
-            throw new NotFoundException();
-        }
+        if (exportedAndForImprovementGoods == null) throw new NotFoundException();
 
         return exportedAndForImprovementGoods;
     }
 
     /// <summary>
-    /// Update one EXPORTED AND FOR IMPROVEMENT GOODS
+    ///     Update one EXPORTED AND FOR IMPROVEMENT GOODS
     /// </summary>
     public async Task UpdateExportedAndForImprovementGoods(
         ExportedAndForImprovementGoodsWhereUniqueInput uniqueId,
@@ -162,13 +149,8 @@ public abstract class ExportedAndForImprovementGoodsItemsServiceBase
                     e.Id == exportedAndForImprovementGoods.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

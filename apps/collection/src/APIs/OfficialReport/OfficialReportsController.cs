@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class OfficialReportsController : OfficialReportsControllerBase
 {
     public OfficialReportsController(IOfficialReportsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

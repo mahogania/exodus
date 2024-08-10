@@ -6,5 +6,7 @@ public class DetailsOfGoodsForPassivePerfectionsService
     : DetailsOfGoodsForPassivePerfectionsServiceBase
 {
     public DetailsOfGoodsForPassivePerfectionsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

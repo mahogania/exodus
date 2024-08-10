@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class FineRequestsServiceBase : IFineRequestsService
     }
 
     /// <summary>
-    /// Create one FINE REQUEST
+    ///     Create one FINE REQUEST
     /// </summary>
     public async Task<FineRequest> CreateFineRequest(FineRequestCreateInput createDto)
     {
@@ -42,41 +41,32 @@ public abstract class FineRequestsServiceBase : IFineRequestsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            fineRequest.Id = createDto.Id;
-        }
+        if (createDto.Id != null) fineRequest.Id = createDto.Id;
 
         _context.FineRequests.Add(fineRequest);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<FineRequestDbModel>(fineRequest.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one FINE REQUEST
+    ///     Delete one FINE REQUEST
     /// </summary>
     public async Task DeleteFineRequest(FineRequestWhereUniqueInput uniqueId)
     {
         var fineRequest = await _context.FineRequests.FindAsync(uniqueId.Id);
-        if (fineRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (fineRequest == null) throw new NotFoundException();
 
         _context.FineRequests.Remove(fineRequest);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many FINE REQUESTS
+    ///     Find many FINE REQUESTS
     /// </summary>
     public async Task<List<FineRequest>> FineRequests(FineRequestFindManyArgs findManyArgs)
     {
@@ -90,7 +80,7 @@ public abstract class FineRequestsServiceBase : IFineRequestsService
     }
 
     /// <summary>
-    /// Meta data about FINE REQUEST records
+    ///     Meta data about FINE REQUEST records
     /// </summary>
     public async Task<MetadataDto> FineRequestsMeta(FineRequestFindManyArgs findManyArgs)
     {
@@ -100,24 +90,21 @@ public abstract class FineRequestsServiceBase : IFineRequestsService
     }
 
     /// <summary>
-    /// Get one FINE REQUEST
+    ///     Get one FINE REQUEST
     /// </summary>
     public async Task<FineRequest> FineRequest(FineRequestWhereUniqueInput uniqueId)
     {
-        var fineRequests = await this.FineRequests(
+        var fineRequests = await FineRequests(
             new FineRequestFindManyArgs { Where = new FineRequestWhereInput { Id = uniqueId.Id } }
         );
         var fineRequest = fineRequests.FirstOrDefault();
-        if (fineRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (fineRequest == null) throw new NotFoundException();
 
         return fineRequest;
     }
 
     /// <summary>
-    /// Update one FINE REQUEST
+    ///     Update one FINE REQUEST
     /// </summary>
     public async Task UpdateFineRequest(
         FineRequestWhereUniqueInput uniqueId,
@@ -135,13 +122,8 @@ public abstract class FineRequestsServiceBase : IFineRequestsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.FineRequests.Any(e => e.Id == fineRequest.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

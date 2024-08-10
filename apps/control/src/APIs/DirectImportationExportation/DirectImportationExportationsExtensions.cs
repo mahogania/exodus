@@ -32,7 +32,7 @@ public static class DirectImportationExportationsExtensions
             RightsAndTaxes = model.RightsAndTaxes,
             StartDateOfImportationExportation = model.StartDateOfImportationExportation,
             StartDateOfTheClearancePeriod = model.StartDateOfTheClearancePeriod,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -67,14 +67,8 @@ public static class DirectImportationExportationsExtensions
             StartDateOfTheClearancePeriod = updateDto.StartDateOfTheClearancePeriod
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            directImportationExportation.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            directImportationExportation.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) directImportationExportation.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) directImportationExportation.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return directImportationExportation;
     }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItemsControllerBase
     : ControllerBase
 {
@@ -22,9 +21,9 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
     }
 
     /// <summary>
-    /// Create one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
+    ///     Create one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods>
@@ -45,13 +44,12 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
     }
 
     /// <summary>
-    /// Delete one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
+    ///     Delete one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteRatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods(
-        [FromRoute()]
-            RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsWhereUniqueInput uniqueId
+        [FromRoute] RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsWhereUniqueInput uniqueId
     )
     {
         try
@@ -69,15 +67,14 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
     }
 
     /// <summary>
-    /// Find many RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODSItems
+    ///     Find many RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODSItems
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods>>
     > RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItems(
-        [FromQuery()]
-            RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsFindManyArgs filter
+        [FromQuery] RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsFindManyArgs filter
     )
     {
         return Ok(
@@ -88,14 +85,13 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
     }
 
     /// <summary>
-    /// Meta data about RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS records
+    ///     Meta data about RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItemsMeta(
-        [FromQuery()]
-            RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsFindManyArgs filter
+        [FromQuery] RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsFindManyArgs filter
     )
     {
         return Ok(
@@ -106,15 +102,14 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
     }
 
     /// <summary>
-    /// Get one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
+    ///     Get one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods>
     > RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods(
-        [FromRoute()]
-            RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsWhereUniqueInput uniqueId
+        [FromRoute] RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsWhereUniqueInput uniqueId
     )
     {
         try
@@ -130,15 +125,14 @@ public abstract class RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExport
     }
 
     /// <summary>
-    /// Update one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
+    ///     Update one RATES OF QUANTITIES OF MATERIAL CONTAINED IN EXPORTED OR TO BE EXPORTED GOODS
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateRatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoods(
-        [FromRoute()]
-            RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsUpdateInput ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsUpdateDto
+        [FromRoute] RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsWhereUniqueInput uniqueId,
+        [FromQuery] RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsUpdateInput
+            ratesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsUpdateDto
     )
     {
         try

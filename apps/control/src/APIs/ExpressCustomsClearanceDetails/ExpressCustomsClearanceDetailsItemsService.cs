@@ -6,5 +6,7 @@ public class ExpressCustomsClearanceDetailsItemsService
     : ExpressCustomsClearanceDetailsItemsServiceBase
 {
     public ExpressCustomsClearanceDetailsItemsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsServiceBase
     }
 
     /// <summary>
-    /// Create one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Create one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     public async Task<DetailsOfAtGoodsForActivePerfecting> CreateDetailsOfAtGoodsForActivePerfecting(
         DetailsOfAtGoodsForActivePerfectingCreateInput createDto
@@ -50,10 +49,7 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            detailsOfAtGoodsForActivePerfecting.Id = createDto.Id;
-        }
+        if (createDto.Id != null) detailsOfAtGoodsForActivePerfecting.Id = createDto.Id;
 
         _context.DetailsOfAtGoodsForActivePerfectings.Add(detailsOfAtGoodsForActivePerfecting);
         await _context.SaveChangesAsync();
@@ -62,16 +58,13 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsServiceBase
             detailsOfAtGoodsForActivePerfecting.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Delete one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     public async Task DeleteDetailsOfAtGoodsForActivePerfecting(
         DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId
@@ -79,17 +72,14 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsServiceBase
     {
         var detailsOfAtGoodsForActivePerfecting =
             await _context.DetailsOfAtGoodsForActivePerfectings.FindAsync(uniqueId.Id);
-        if (detailsOfAtGoodsForActivePerfecting == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailsOfAtGoodsForActivePerfecting == null) throw new NotFoundException();
 
         _context.DetailsOfAtGoodsForActivePerfectings.Remove(detailsOfAtGoodsForActivePerfecting);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many DETAILS OF AT GOODS FOR ACTIVE PERFECTINGS
+    ///     Find many DETAILS OF AT GOODS FOR ACTIVE PERFECTINGS
     /// </summary>
     public async Task<
         List<DetailsOfAtGoodsForActivePerfecting>
@@ -109,7 +99,7 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsServiceBase
     }
 
     /// <summary>
-    /// Meta data about DETAILS OF AT GOODS FOR ACTIVE PERFECTING records
+    ///     Meta data about DETAILS OF AT GOODS FOR ACTIVE PERFECTING records
     /// </summary>
     public async Task<MetadataDto> DetailsOfAtGoodsForActivePerfectingsMeta(
         DetailsOfAtGoodsForActivePerfectingFindManyArgs findManyArgs
@@ -123,13 +113,13 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsServiceBase
     }
 
     /// <summary>
-    /// Get one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Get one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     public async Task<DetailsOfAtGoodsForActivePerfecting> DetailsOfAtGoodsForActivePerfecting(
         DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId
     )
     {
-        var detailsOfAtGoodsForActivePerfectings = await this.DetailsOfAtGoodsForActivePerfectings(
+        var detailsOfAtGoodsForActivePerfectings = await DetailsOfAtGoodsForActivePerfectings(
             new DetailsOfAtGoodsForActivePerfectingFindManyArgs
             {
                 Where = new DetailsOfAtGoodsForActivePerfectingWhereInput { Id = uniqueId.Id }
@@ -137,16 +127,13 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsServiceBase
         );
         var detailsOfAtGoodsForActivePerfecting =
             detailsOfAtGoodsForActivePerfectings.FirstOrDefault();
-        if (detailsOfAtGoodsForActivePerfecting == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailsOfAtGoodsForActivePerfecting == null) throw new NotFoundException();
 
         return detailsOfAtGoodsForActivePerfecting;
     }
 
     /// <summary>
-    /// Update one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Update one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     public async Task UpdateDetailsOfAtGoodsForActivePerfecting(
         DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId,
@@ -168,13 +155,8 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsServiceBase
                     e.Id == detailsOfAtGoodsForActivePerfecting.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

@@ -22,7 +22,7 @@ public static class PlaceOfExecutionAndWithReImportationInStatesExtensions
             RegimeRequestNumber = model.RegimeRequestNumber,
             SequenceNumber = model.SequenceNumber,
             SuppressionOn = model.SuppressionOn,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -47,13 +47,9 @@ public static class PlaceOfExecutionAndWithReImportationInStatesExtensions
             };
 
         if (updateDto.CreatedAt != null)
-        {
             placeOfExecutionAndWithReImportationInState.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             placeOfExecutionAndWithReImportationInState.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return placeOfExecutionAndWithReImportationInState;
     }

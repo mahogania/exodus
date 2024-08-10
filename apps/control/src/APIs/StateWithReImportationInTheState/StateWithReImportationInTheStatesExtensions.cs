@@ -30,7 +30,7 @@ public static class StateWithReImportationInTheStatesExtensions
             SuppressionOn = model.SuppressionOn,
             UnknownFieldOne = model.UnknownFieldOne,
             UnknownFieldTwo = model.UnknownFieldTwo,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -62,14 +62,8 @@ public static class StateWithReImportationInTheStatesExtensions
             UnknownFieldTwo = updateDto.UnknownFieldTwo
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            stateWithReImportationInTheState.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            stateWithReImportationInTheState.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) stateWithReImportationInTheState.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) stateWithReImportationInTheState.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return stateWithReImportationInTheState;
     }

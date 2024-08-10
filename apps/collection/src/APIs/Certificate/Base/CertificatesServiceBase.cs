@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class CertificatesServiceBase : ICertificatesService
     }
 
     /// <summary>
-    /// Create one CERTIFICATE
+    ///     Create one CERTIFICATE
     /// </summary>
     public async Task<Certificate> CreateCertificate(CertificateCreateInput createDto)
     {
@@ -54,41 +53,32 @@ public abstract class CertificatesServiceBase : ICertificatesService
             VehicleType = createDto.VehicleType
         };
 
-        if (createDto.Id != null)
-        {
-            certificate.Id = createDto.Id;
-        }
+        if (createDto.Id != null) certificate.Id = createDto.Id;
 
         _context.Certificates.Add(certificate);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<CertificateDbModel>(certificate.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CERTIFICATE
+    ///     Delete one CERTIFICATE
     /// </summary>
     public async Task DeleteCertificate(CertificateWhereUniqueInput uniqueId)
     {
         var certificate = await _context.Certificates.FindAsync(uniqueId.Id);
-        if (certificate == null)
-        {
-            throw new NotFoundException();
-        }
+        if (certificate == null) throw new NotFoundException();
 
         _context.Certificates.Remove(certificate);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many CERTIFICATES
+    ///     Find many CERTIFICATES
     /// </summary>
     public async Task<List<Certificate>> Certificates(CertificateFindManyArgs findManyArgs)
     {
@@ -102,7 +92,7 @@ public abstract class CertificatesServiceBase : ICertificatesService
     }
 
     /// <summary>
-    /// Meta data about CERTIFICATE records
+    ///     Meta data about CERTIFICATE records
     /// </summary>
     public async Task<MetadataDto> CertificatesMeta(CertificateFindManyArgs findManyArgs)
     {
@@ -112,24 +102,21 @@ public abstract class CertificatesServiceBase : ICertificatesService
     }
 
     /// <summary>
-    /// Get one CERTIFICATE
+    ///     Get one CERTIFICATE
     /// </summary>
     public async Task<Certificate> Certificate(CertificateWhereUniqueInput uniqueId)
     {
-        var certificates = await this.Certificates(
+        var certificates = await Certificates(
             new CertificateFindManyArgs { Where = new CertificateWhereInput { Id = uniqueId.Id } }
         );
         var certificate = certificates.FirstOrDefault();
-        if (certificate == null)
-        {
-            throw new NotFoundException();
-        }
+        if (certificate == null) throw new NotFoundException();
 
         return certificate;
     }
 
     /// <summary>
-    /// Update one CERTIFICATE
+    ///     Update one CERTIFICATE
     /// </summary>
     public async Task UpdateCertificate(
         CertificateWhereUniqueInput uniqueId,
@@ -147,13 +134,8 @@ public abstract class CertificatesServiceBase : ICertificatesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Certificates.Any(e => e.Id == certificate.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

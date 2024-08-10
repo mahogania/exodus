@@ -1,8 +1,6 @@
 @page "/q-a-list"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.DropDowns
+@using Microsoft.Extensions.Localization
+@using Syncfusion.Blazor.Diagram
 @inject IStringLocalizer<Pages.DeclarationStatus> Localizer
 
 <div class="container">
@@ -10,20 +8,20 @@
 
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfDateRangePicker Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
+            <SfDateRangePicker TValue="DateTime?" Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
         </div>
         <div class="col-md-3">
-            <SfDateRangePicker Placeholder="@Localizer["DeclarationRegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
+            <SfDateRangePicker TValue="DateTime?" Placeholder="@Localizer["DeclarationRegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
         </div>
         <div class="col-md-3">
-            <SfDropDownList Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string" Value="EX1/Exportation"></SfDropDownList>
+            <SfDropDownList TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string" Value="EX1 / Exportation"></SfDropDownList>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
         </div>
         <div class="col-md-3 mt-2">
-            <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
-            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Search"]</SfButton>
         </div>
     </div>
 
@@ -39,6 +37,7 @@
 </div>
 
 @code {
+
     public class DeclarationStatus
     {
         public int No { get; set; }
@@ -48,16 +47,17 @@
         public string RegisteredBy { get; set; }
     }
 
-    public List<string> DeclarationTypes = new List<string>
+    public List<string> DeclarationTypes = new()
     {
         "EX1/Exportation",
         "IM4/Import Declaration"
         // Add more types as needed
     };
 
-    public List<DeclarationStatus> DeclarationStatusData = new List<DeclarationStatus>
+    public List<DeclarationStatus> DeclarationStatusData = new()
     {
         new DeclarationStatus { No = 1, ReferenceNo = "H0001-2022-DAU-000001-E", RegistrationDate = new DateTime(2022, 4, 10), DeclarationRegistrationDate = new DateTime(2022, 3, 30), RegisteredBy = "Douanier" }
         // Add more data as needed
     };
+
 }

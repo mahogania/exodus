@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class CommonOriginCertificateRequestsController
     : CommonOriginCertificateRequestsControllerBase
 {
     public CommonOriginCertificateRequestsController(
         ICommonOriginCertificateRequestsService service
     )
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

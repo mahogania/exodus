@@ -6,21 +6,23 @@ namespace Control.APIs;
 public interface IModelSpecificationOfTheDetailedDeclarationCustomsItemsService
 {
     /// <summary>
-    /// Create one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    public Task<ModelSpecificationOfTheDetailedDeclarationCustoms> CreateModelSpecificationOfTheDetailedDeclarationCustoms(
-        ModelSpecificationOfTheDetailedDeclarationCustomsCreateInput modelspecificationofthedetaileddeclarationcustoms
-    );
+    public Task<ModelSpecificationOfTheDetailedDeclarationCustoms>
+        CreateModelSpecificationOfTheDetailedDeclarationCustoms(
+            ModelSpecificationOfTheDetailedDeclarationCustomsCreateInput
+                modelspecificationofthedetaileddeclarationcustoms
+        );
 
     /// <summary>
-    /// Delete one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task DeleteModelSpecificationOfTheDetailedDeclarationCustoms(
         ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Find many MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public Task<
         List<ModelSpecificationOfTheDetailedDeclarationCustoms>
@@ -29,21 +31,21 @@ public interface IModelSpecificationOfTheDetailedDeclarationCustomsItemsService
     );
 
     /// <summary>
-    /// Meta data about MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public Task<MetadataDto> ModelSpecificationOfTheDetailedDeclarationCustomsItemsMeta(
         ModelSpecificationOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task<ModelSpecificationOfTheDetailedDeclarationCustoms> ModelSpecificationOfTheDetailedDeclarationCustoms(
         ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task UpdateModelSpecificationOfTheDetailedDeclarationCustoms(
         ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,

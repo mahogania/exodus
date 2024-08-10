@@ -25,7 +25,7 @@ public static class CodesExtensions
             InfractionCodeLabel = model.InfractionCodeLabel,
             OperationTypeCode = model.OperationTypeCode,
             UpdatedAt = model.UpdatedAt,
-            UsedOn = model.UsedOn,
+            UsedOn = model.UsedOn
         };
     }
 
@@ -50,14 +50,8 @@ public static class CodesExtensions
             UsedOn = updateDto.UsedOn
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            code.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            code.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) code.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) code.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return code;
     }

@@ -6,5 +6,7 @@ public class CommonActivePerfectioningGoodsRequestsService
     : CommonActivePerfectioningGoodsRequestsServiceBase
 {
     public CommonActivePerfectioningGoodsRequestsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

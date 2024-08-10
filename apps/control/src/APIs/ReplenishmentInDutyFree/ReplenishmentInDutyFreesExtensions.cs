@@ -30,7 +30,7 @@ public static class ReplenishmentInDutyFreesExtensions
             RequestedEndDate = model.RequestedEndDate,
             RequestedStartDate = model.RequestedStartDate,
             SuppressionOn = model.SuppressionOn,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -63,14 +63,8 @@ public static class ReplenishmentInDutyFreesExtensions
             SuppressionOn = updateDto.SuppressionOn
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            replenishmentInDutyFree.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            replenishmentInDutyFree.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) replenishmentInDutyFree.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) replenishmentInDutyFree.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return replenishmentInDutyFree;
     }

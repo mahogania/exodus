@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class DistributionsServiceBase : IDistributionsService
     }
 
     /// <summary>
-    /// Create one DISTRIBUTION
+    ///     Create one DISTRIBUTION
     /// </summary>
     public async Task<Distribution> CreateDistribution(DistributionCreateInput createDto)
     {
@@ -46,41 +45,32 @@ public abstract class DistributionsServiceBase : IDistributionsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            distribution.Id = createDto.Id;
-        }
+        if (createDto.Id != null) distribution.Id = createDto.Id;
 
         _context.Distributions.Add(distribution);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<DistributionDbModel>(distribution.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DISTRIBUTION
+    ///     Delete one DISTRIBUTION
     /// </summary>
     public async Task DeleteDistribution(DistributionWhereUniqueInput uniqueId)
     {
         var distribution = await _context.Distributions.FindAsync(uniqueId.Id);
-        if (distribution == null)
-        {
-            throw new NotFoundException();
-        }
+        if (distribution == null) throw new NotFoundException();
 
         _context.Distributions.Remove(distribution);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many DISTRIBUTIONS
+    ///     Find many DISTRIBUTIONS
     /// </summary>
     public async Task<List<Distribution>> Distributions(DistributionFindManyArgs findManyArgs)
     {
@@ -94,7 +84,7 @@ public abstract class DistributionsServiceBase : IDistributionsService
     }
 
     /// <summary>
-    /// Meta data about DISTRIBUTION records
+    ///     Meta data about DISTRIBUTION records
     /// </summary>
     public async Task<MetadataDto> DistributionsMeta(DistributionFindManyArgs findManyArgs)
     {
@@ -104,24 +94,21 @@ public abstract class DistributionsServiceBase : IDistributionsService
     }
 
     /// <summary>
-    /// Get one DISTRIBUTION
+    ///     Get one DISTRIBUTION
     /// </summary>
     public async Task<Distribution> Distribution(DistributionWhereUniqueInput uniqueId)
     {
-        var distributions = await this.Distributions(
+        var distributions = await Distributions(
             new DistributionFindManyArgs { Where = new DistributionWhereInput { Id = uniqueId.Id } }
         );
         var distribution = distributions.FirstOrDefault();
-        if (distribution == null)
-        {
-            throw new NotFoundException();
-        }
+        if (distribution == null) throw new NotFoundException();
 
         return distribution;
     }
 
     /// <summary>
-    /// Update one DISTRIBUTION
+    ///     Update one DISTRIBUTION
     /// </summary>
     public async Task UpdateDistribution(
         DistributionWhereUniqueInput uniqueId,
@@ -139,13 +126,8 @@ public abstract class DistributionsServiceBase : IDistributionsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Distributions.Any(e => e.Id == distribution.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

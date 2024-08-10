@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class AdjustmentsServiceBase : IAdjustmentsService
     }
 
     /// <summary>
-    /// Create one ADJUSTMENT
+    ///     Create one ADJUSTMENT
     /// </summary>
     public async Task<Adjustment> CreateAdjustment(AdjustmentCreateInput createDto)
     {
@@ -49,41 +48,32 @@ public abstract class AdjustmentsServiceBase : IAdjustmentsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            adjustment.Id = createDto.Id;
-        }
+        if (createDto.Id != null) adjustment.Id = createDto.Id;
 
         _context.Adjustments.Add(adjustment);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<AdjustmentDbModel>(adjustment.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one ADJUSTMENT
+    ///     Delete one ADJUSTMENT
     /// </summary>
     public async Task DeleteAdjustment(AdjustmentWhereUniqueInput uniqueId)
     {
         var adjustment = await _context.Adjustments.FindAsync(uniqueId.Id);
-        if (adjustment == null)
-        {
-            throw new NotFoundException();
-        }
+        if (adjustment == null) throw new NotFoundException();
 
         _context.Adjustments.Remove(adjustment);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many ADJUSTMENTS
+    ///     Find many ADJUSTMENTS
     /// </summary>
     public async Task<List<Adjustment>> Adjustments(AdjustmentFindManyArgs findManyArgs)
     {
@@ -97,7 +87,7 @@ public abstract class AdjustmentsServiceBase : IAdjustmentsService
     }
 
     /// <summary>
-    /// Meta data about ADJUSTMENT records
+    ///     Meta data about ADJUSTMENT records
     /// </summary>
     public async Task<MetadataDto> AdjustmentsMeta(AdjustmentFindManyArgs findManyArgs)
     {
@@ -107,24 +97,21 @@ public abstract class AdjustmentsServiceBase : IAdjustmentsService
     }
 
     /// <summary>
-    /// Get one ADJUSTMENT
+    ///     Get one ADJUSTMENT
     /// </summary>
     public async Task<Adjustment> Adjustment(AdjustmentWhereUniqueInput uniqueId)
     {
-        var adjustments = await this.Adjustments(
+        var adjustments = await Adjustments(
             new AdjustmentFindManyArgs { Where = new AdjustmentWhereInput { Id = uniqueId.Id } }
         );
         var adjustment = adjustments.FirstOrDefault();
-        if (adjustment == null)
-        {
-            throw new NotFoundException();
-        }
+        if (adjustment == null) throw new NotFoundException();
 
         return adjustment;
     }
 
     /// <summary>
-    /// Update one ADJUSTMENT
+    ///     Update one ADJUSTMENT
     /// </summary>
     public async Task UpdateAdjustment(
         AdjustmentWhereUniqueInput uniqueId,
@@ -142,13 +129,8 @@ public abstract class AdjustmentsServiceBase : IAdjustmentsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Adjustments.Any(e => e.Id == adjustment.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

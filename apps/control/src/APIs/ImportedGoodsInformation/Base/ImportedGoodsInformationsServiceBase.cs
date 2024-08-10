@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
     }
 
     /// <summary>
-    /// Create one IMPORTED GOODS INFORMATION
+    ///     Create one IMPORTED GOODS INFORMATION
     /// </summary>
     public async Task<ImportedGoodsInformation> CreateImportedGoodsInformation(
         ImportedGoodsInformationCreateInput createDto
@@ -58,10 +57,7 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
             Value = createDto.Value
         };
 
-        if (createDto.Id != null)
-        {
-            importedGoodsInformation.Id = createDto.Id;
-        }
+        if (createDto.Id != null) importedGoodsInformation.Id = createDto.Id;
 
         _context.ImportedGoodsInformations.Add(importedGoodsInformation);
         await _context.SaveChangesAsync();
@@ -70,16 +66,13 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
             importedGoodsInformation.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one IMPORTED GOODS INFORMATION
+    ///     Delete one IMPORTED GOODS INFORMATION
     /// </summary>
     public async Task DeleteImportedGoodsInformation(
         ImportedGoodsInformationWhereUniqueInput uniqueId
@@ -88,17 +81,14 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
         var importedGoodsInformation = await _context.ImportedGoodsInformations.FindAsync(
             uniqueId.Id
         );
-        if (importedGoodsInformation == null)
-        {
-            throw new NotFoundException();
-        }
+        if (importedGoodsInformation == null) throw new NotFoundException();
 
         _context.ImportedGoodsInformations.Remove(importedGoodsInformation);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many IMPORTED GOODS INFORMATIONS
+    ///     Find many IMPORTED GOODS INFORMATIONS
     /// </summary>
     public async Task<List<ImportedGoodsInformation>> ImportedGoodsInformations(
         ImportedGoodsInformationFindManyArgs findManyArgs
@@ -116,7 +106,7 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
     }
 
     /// <summary>
-    /// Meta data about IMPORTED GOODS INFORMATION records
+    ///     Meta data about IMPORTED GOODS INFORMATION records
     /// </summary>
     public async Task<MetadataDto> ImportedGoodsInformationsMeta(
         ImportedGoodsInformationFindManyArgs findManyArgs
@@ -130,29 +120,26 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
     }
 
     /// <summary>
-    /// Get one IMPORTED GOODS INFORMATION
+    ///     Get one IMPORTED GOODS INFORMATION
     /// </summary>
     public async Task<ImportedGoodsInformation> ImportedGoodsInformation(
         ImportedGoodsInformationWhereUniqueInput uniqueId
     )
     {
-        var importedGoodsInformations = await this.ImportedGoodsInformations(
+        var importedGoodsInformations = await ImportedGoodsInformations(
             new ImportedGoodsInformationFindManyArgs
             {
                 Where = new ImportedGoodsInformationWhereInput { Id = uniqueId.Id }
             }
         );
         var importedGoodsInformation = importedGoodsInformations.FirstOrDefault();
-        if (importedGoodsInformation == null)
-        {
-            throw new NotFoundException();
-        }
+        if (importedGoodsInformation == null) throw new NotFoundException();
 
         return importedGoodsInformation;
     }
 
     /// <summary>
-    /// Update one IMPORTED GOODS INFORMATION
+    ///     Update one IMPORTED GOODS INFORMATION
     /// </summary>
     public async Task UpdateImportedGoodsInformation(
         ImportedGoodsInformationWhereUniqueInput uniqueId,
@@ -170,13 +157,8 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.ImportedGoodsInformations.Any(e => e.Id == importedGoodsInformation.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

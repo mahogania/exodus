@@ -55,7 +55,7 @@ public static class NoticesExtensions
             UnadjustedLateInterestAmount = model.UnadjustedLateInterestAmount,
             UpdatedAt = model.UpdatedAt,
             UseOfRemovalCreditOn = model.UseOfRemovalCreditOn,
-            VehicleOn = model.VehicleOn,
+            VehicleOn = model.VehicleOn
         };
     }
 
@@ -113,14 +113,8 @@ public static class NoticesExtensions
             VehicleOn = updateDto.VehicleOn
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            notice.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            notice.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) notice.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) notice.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return notice;
     }

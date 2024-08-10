@@ -6,5 +6,7 @@ public class RawMaterialOfTheDetailedDeclarationCustomsItemsService
     : RawMaterialOfTheDetailedDeclarationCustomsItemsServiceBase
 {
     public RawMaterialOfTheDetailedDeclarationCustomsItemsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

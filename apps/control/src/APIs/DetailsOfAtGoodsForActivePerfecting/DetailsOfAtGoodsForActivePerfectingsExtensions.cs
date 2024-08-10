@@ -31,7 +31,7 @@ public static class DetailsOfAtGoodsForActivePerfectingsExtensions
             StorageLocation = model.StorageLocation,
             StorageLocationUnitCode = model.StorageLocationUnitCode,
             TransactionValueCurrencyCode = model.TransactionValueCurrencyCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -63,14 +63,8 @@ public static class DetailsOfAtGoodsForActivePerfectingsExtensions
             TransactionValueCurrencyCode = updateDto.TransactionValueCurrencyCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            detailsOfAtGoodsForActivePerfecting.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            detailsOfAtGoodsForActivePerfecting.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) detailsOfAtGoodsForActivePerfecting.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) detailsOfAtGoodsForActivePerfecting.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return detailsOfAtGoodsForActivePerfecting;
     }

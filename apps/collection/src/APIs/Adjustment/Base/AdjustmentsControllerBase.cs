@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class AdjustmentsControllerBase : ControllerBase
 {
     protected readonly IAdjustmentsService _service;
@@ -19,9 +18,9 @@ public abstract class AdjustmentsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one ADJUSTMENT
+    ///     Create one ADJUSTMENT
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Adjustment>> CreateAdjustment(AdjustmentCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class AdjustmentsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one ADJUSTMENT
+    ///     Delete one ADJUSTMENT
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteAdjustment(
-        [FromRoute()] AdjustmentWhereUniqueInput uniqueId
+        [FromRoute] AdjustmentWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class AdjustmentsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many ADJUSTMENTS
+    ///     Find many ADJUSTMENTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Adjustment>>> Adjustments(
-        [FromQuery()] AdjustmentFindManyArgs filter
+        [FromQuery] AdjustmentFindManyArgs filter
     )
     {
         return Ok(await _service.Adjustments(filter));
     }
 
     /// <summary>
-    /// Meta data about ADJUSTMENT records
+    ///     Meta data about ADJUSTMENT records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> AdjustmentsMeta(
-        [FromQuery()] AdjustmentFindManyArgs filter
+        [FromQuery] AdjustmentFindManyArgs filter
     )
     {
         return Ok(await _service.AdjustmentsMeta(filter));
     }
 
     /// <summary>
-    /// Get one ADJUSTMENT
+    ///     Get one ADJUSTMENT
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Adjustment>> Adjustment(
-        [FromRoute()] AdjustmentWhereUniqueInput uniqueId
+        [FromRoute] AdjustmentWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class AdjustmentsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one ADJUSTMENT
+    ///     Update one ADJUSTMENT
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateAdjustment(
-        [FromRoute()] AdjustmentWhereUniqueInput uniqueId,
-        [FromQuery()] AdjustmentUpdateInput adjustmentUpdateDto
+        [FromRoute] AdjustmentWhereUniqueInput uniqueId,
+        [FromQuery] AdjustmentUpdateInput adjustmentUpdateDto
     )
     {
         try

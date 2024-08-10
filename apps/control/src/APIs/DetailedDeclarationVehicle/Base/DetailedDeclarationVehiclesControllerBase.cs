@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DetailedDeclarationVehiclesControllerBase : ControllerBase
 {
     protected readonly IDetailedDeclarationVehiclesService _service;
@@ -19,9 +18,9 @@ public abstract class DetailedDeclarationVehiclesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one DETAILED DECLARATION VEHICLE
+    ///     Create one DETAILED DECLARATION VEHICLE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<DetailedDeclarationVehicle>> CreateDetailedDeclarationVehicle(
         DetailedDeclarationVehicleCreateInput input
@@ -37,12 +36,12 @@ public abstract class DetailedDeclarationVehiclesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one DETAILED DECLARATION VEHICLE
+    ///     Delete one DETAILED DECLARATION VEHICLE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDetailedDeclarationVehicle(
-        [FromRoute()] DetailedDeclarationVehicleWhereUniqueInput uniqueId
+        [FromRoute] DetailedDeclarationVehicleWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class DetailedDeclarationVehiclesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many DETAILED DECLARATION VEHICLES
+    ///     Find many DETAILED DECLARATION VEHICLES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<DetailedDeclarationVehicle>>> DetailedDeclarationVehicles(
-        [FromQuery()] DetailedDeclarationVehicleFindManyArgs filter
+        [FromQuery] DetailedDeclarationVehicleFindManyArgs filter
     )
     {
         return Ok(await _service.DetailedDeclarationVehicles(filter));
     }
 
     /// <summary>
-    /// Meta data about DETAILED DECLARATION VEHICLE records
+    ///     Meta data about DETAILED DECLARATION VEHICLE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DetailedDeclarationVehiclesMeta(
-        [FromQuery()] DetailedDeclarationVehicleFindManyArgs filter
+        [FromQuery] DetailedDeclarationVehicleFindManyArgs filter
     )
     {
         return Ok(await _service.DetailedDeclarationVehiclesMeta(filter));
     }
 
     /// <summary>
-    /// Get one DETAILED DECLARATION VEHICLE
+    ///     Get one DETAILED DECLARATION VEHICLE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<DetailedDeclarationVehicle>> DetailedDeclarationVehicle(
-        [FromRoute()] DetailedDeclarationVehicleWhereUniqueInput uniqueId
+        [FromRoute] DetailedDeclarationVehicleWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class DetailedDeclarationVehiclesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one DETAILED DECLARATION VEHICLE
+    ///     Update one DETAILED DECLARATION VEHICLE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDetailedDeclarationVehicle(
-        [FromRoute()] DetailedDeclarationVehicleWhereUniqueInput uniqueId,
-        [FromQuery()] DetailedDeclarationVehicleUpdateInput detailedDeclarationVehicleUpdateDto
+        [FromRoute] DetailedDeclarationVehicleWhereUniqueInput uniqueId,
+        [FromQuery] DetailedDeclarationVehicleUpdateInput detailedDeclarationVehicleUpdateDto
     )
     {
         try

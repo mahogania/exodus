@@ -26,7 +26,7 @@ public static class InformationForDeterminingOriginsExtensions
             RectificationFrequency = model.RectificationFrequency,
             ShCode = model.ShCode,
             UpdatedAt = model.UpdatedAt,
-            Weight = model.Weight,
+            Weight = model.Weight
         };
     }
 
@@ -53,14 +53,8 @@ public static class InformationForDeterminingOriginsExtensions
             Weight = updateDto.Weight
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            informationForDeterminingOrigin.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            informationForDeterminingOrigin.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) informationForDeterminingOrigin.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) informationForDeterminingOrigin.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return informationForDeterminingOrigin;
     }

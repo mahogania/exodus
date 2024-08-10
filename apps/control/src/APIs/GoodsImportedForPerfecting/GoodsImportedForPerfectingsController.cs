@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class GoodsImportedForPerfectingsController : GoodsImportedForPerfectingsControllerBase
 {
     public GoodsImportedForPerfectingsController(IGoodsImportedForPerfectingsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

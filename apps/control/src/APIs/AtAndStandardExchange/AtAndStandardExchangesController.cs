@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class AtAndStandardExchangesController : AtAndStandardExchangesControllerBase
 {
     public AtAndStandardExchangesController(IAtAndStandardExchangesService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

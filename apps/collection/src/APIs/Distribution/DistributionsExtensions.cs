@@ -28,7 +28,7 @@ public static class DistributionsExtensions
             ProcessingOn = model.ProcessingOn,
             ServiceCode = model.ServiceCode,
             TaxCode = model.TaxCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -59,14 +59,8 @@ public static class DistributionsExtensions
             TaxCode = updateDto.TaxCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            distribution.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            distribution.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) distribution.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) distribution.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return distribution;
     }

@@ -1,7 +1,4 @@
 @page "/clearance-request-details"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
 @inject IStringLocalizer<Pages.ClearanceRequestDetails> Localizer
 
 <div class="container">
@@ -85,11 +82,13 @@
 </div>
 
 @code {
-    public List<string> StatusOptions = new List<string>
+
+    public List<string> StatusOptions = new()
     {
         "Réceptionner",
         "Autoriser",
         "Rejeter"
         // Add more statuses as needed
     };
+
 }

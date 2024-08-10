@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBase : ControllerBase
 {
     protected readonly IContainerOfTheDetailedDeclarationCustomsItemsService _service;
@@ -21,9 +20,9 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBas
     }
 
     /// <summary>
-    /// Create one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ContainerOfTheDetailedDeclarationCustoms>
@@ -42,12 +41,12 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBas
     }
 
     /// <summary>
-    /// Delete one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteContainerOfTheDetailedDeclarationCustoms(
-        [FromRoute()] ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBas
     }
 
     /// <summary>
-    /// Find many CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<ContainerOfTheDetailedDeclarationCustoms>>
     > ContainerOfTheDetailedDeclarationCustomsItems(
-        [FromQuery()] ContainerOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] ContainerOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.ContainerOfTheDetailedDeclarationCustomsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about CONTAINER OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about CONTAINER OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ContainerOfTheDetailedDeclarationCustomsItemsMeta(
-        [FromQuery()] ContainerOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] ContainerOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.ContainerOfTheDetailedDeclarationCustomsItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ContainerOfTheDetailedDeclarationCustoms>
     > ContainerOfTheDetailedDeclarationCustoms(
-        [FromRoute()] ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,14 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBas
     }
 
     /// <summary>
-    /// Update one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateContainerOfTheDetailedDeclarationCustoms(
-        [FromRoute()] ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            ContainerOfTheDetailedDeclarationCustomsUpdateInput containerOfTheDetailedDeclarationCustomsUpdateDto
+        [FromRoute] ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
+        [FromQuery]
+        ContainerOfTheDetailedDeclarationCustomsUpdateInput containerOfTheDetailedDeclarationCustomsUpdateDto
     )
     {
         try

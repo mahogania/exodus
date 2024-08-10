@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class DelaysController : DelaysControllerBase
 {
     public DelaysController(IDelaysService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

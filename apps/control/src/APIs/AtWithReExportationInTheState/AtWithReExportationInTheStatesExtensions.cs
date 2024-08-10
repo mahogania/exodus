@@ -13,7 +13,7 @@ public static class AtWithReExportationInTheStatesExtensions
         {
             CreatedAt = model.CreatedAt,
             Id = model.Id,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -27,14 +27,8 @@ public static class AtWithReExportationInTheStatesExtensions
             Id = uniqueId.Id
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            atWithReExportationInTheState.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            atWithReExportationInTheState.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) atWithReExportationInTheState.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) atWithReExportationInTheState.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return atWithReExportationInTheState;
     }

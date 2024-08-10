@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class VariousRequestsController : VariousRequestsControllerBase
 {
     public VariousRequestsController(IVariousRequestsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

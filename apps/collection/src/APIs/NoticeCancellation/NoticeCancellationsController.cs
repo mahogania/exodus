@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class NoticeCancellationsController : NoticeCancellationsControllerBase
 {
     public NoticeCancellationsController(INoticeCancellationsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

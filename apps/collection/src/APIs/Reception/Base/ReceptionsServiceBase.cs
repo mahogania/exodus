@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ReceptionsServiceBase : IReceptionsService
     }
 
     /// <summary>
-    /// Create one RECEPTION
+    ///     Create one RECEPTION
     /// </summary>
     public async Task<Reception> CreateReception(ReceptionCreateInput createDto)
     {
@@ -52,41 +51,32 @@ public abstract class ReceptionsServiceBase : IReceptionsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            reception.Id = createDto.Id;
-        }
+        if (createDto.Id != null) reception.Id = createDto.Id;
 
         _context.Receptions.Add(reception);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<ReceptionDbModel>(reception.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one RECEPTION
+    ///     Delete one RECEPTION
     /// </summary>
     public async Task DeleteReception(ReceptionWhereUniqueInput uniqueId)
     {
         var reception = await _context.Receptions.FindAsync(uniqueId.Id);
-        if (reception == null)
-        {
-            throw new NotFoundException();
-        }
+        if (reception == null) throw new NotFoundException();
 
         _context.Receptions.Remove(reception);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many RECEPTIONS
+    ///     Find many RECEPTIONS
     /// </summary>
     public async Task<List<Reception>> Receptions(ReceptionFindManyArgs findManyArgs)
     {
@@ -100,7 +90,7 @@ public abstract class ReceptionsServiceBase : IReceptionsService
     }
 
     /// <summary>
-    /// Meta data about RECEPTION records
+    ///     Meta data about RECEPTION records
     /// </summary>
     public async Task<MetadataDto> ReceptionsMeta(ReceptionFindManyArgs findManyArgs)
     {
@@ -110,24 +100,21 @@ public abstract class ReceptionsServiceBase : IReceptionsService
     }
 
     /// <summary>
-    /// Get one RECEPTION
+    ///     Get one RECEPTION
     /// </summary>
     public async Task<Reception> Reception(ReceptionWhereUniqueInput uniqueId)
     {
-        var receptions = await this.Receptions(
+        var receptions = await Receptions(
             new ReceptionFindManyArgs { Where = new ReceptionWhereInput { Id = uniqueId.Id } }
         );
         var reception = receptions.FirstOrDefault();
-        if (reception == null)
-        {
-            throw new NotFoundException();
-        }
+        if (reception == null) throw new NotFoundException();
 
         return reception;
     }
 
     /// <summary>
-    /// Update one RECEPTION
+    ///     Update one RECEPTION
     /// </summary>
     public async Task UpdateReception(
         ReceptionWhereUniqueInput uniqueId,
@@ -145,13 +132,8 @@ public abstract class ReceptionsServiceBase : IReceptionsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Receptions.Any(e => e.Id == reception.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

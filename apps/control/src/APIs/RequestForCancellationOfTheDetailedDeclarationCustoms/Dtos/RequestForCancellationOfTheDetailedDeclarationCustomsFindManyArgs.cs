@@ -1,5 +1,4 @@
 using Control.APIs.Common;
-using Control.Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs.Dtos;
@@ -9,4 +8,6 @@ public class RequestForCancellationOfTheDetailedDeclarationCustomsFindManyArgs
     : FindManyInput<
         RequestForCancellationOfTheDetailedDeclarationCustoms,
         RequestForCancellationOfTheDetailedDeclarationCustomsWhereInput
-    > { }
+    >
+{
+}

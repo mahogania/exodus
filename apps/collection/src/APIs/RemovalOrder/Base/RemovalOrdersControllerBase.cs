@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class RemovalOrdersControllerBase : ControllerBase
 {
     protected readonly IRemovalOrdersService _service;
@@ -19,9 +18,9 @@ public abstract class RemovalOrdersControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one REMOVAL ORDER
+    ///     Create one REMOVAL ORDER
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<RemovalOrder>> CreateRemovalOrder(RemovalOrderCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class RemovalOrdersControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one REMOVAL ORDER
+    ///     Delete one REMOVAL ORDER
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteRemovalOrder(
-        [FromRoute()] RemovalOrderWhereUniqueInput uniqueId
+        [FromRoute] RemovalOrderWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class RemovalOrdersControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many REMOVAL ORDERS
+    ///     Find many REMOVAL ORDERS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<RemovalOrder>>> RemovalOrders(
-        [FromQuery()] RemovalOrderFindManyArgs filter
+        [FromQuery] RemovalOrderFindManyArgs filter
     )
     {
         return Ok(await _service.RemovalOrders(filter));
     }
 
     /// <summary>
-    /// Meta data about REMOVAL ORDER records
+    ///     Meta data about REMOVAL ORDER records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> RemovalOrdersMeta(
-        [FromQuery()] RemovalOrderFindManyArgs filter
+        [FromQuery] RemovalOrderFindManyArgs filter
     )
     {
         return Ok(await _service.RemovalOrdersMeta(filter));
     }
 
     /// <summary>
-    /// Get one REMOVAL ORDER
+    ///     Get one REMOVAL ORDER
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<RemovalOrder>> RemovalOrder(
-        [FromRoute()] RemovalOrderWhereUniqueInput uniqueId
+        [FromRoute] RemovalOrderWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class RemovalOrdersControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one REMOVAL ORDER
+    ///     Update one REMOVAL ORDER
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateRemovalOrder(
-        [FromRoute()] RemovalOrderWhereUniqueInput uniqueId,
-        [FromQuery()] RemovalOrderUpdateInput removalOrderUpdateDto
+        [FromRoute] RemovalOrderWhereUniqueInput uniqueId,
+        [FromQuery] RemovalOrderUpdateInput removalOrderUpdateDto
     )
     {
         try

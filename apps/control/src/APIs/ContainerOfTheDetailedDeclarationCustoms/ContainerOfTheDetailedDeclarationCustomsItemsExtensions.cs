@@ -32,7 +32,7 @@ public static class ContainerOfTheDetailedDeclarationCustomsItemsExtensions
             Sealer_3 = model.Sealer_3,
             SealingPersonCode = model.SealingPersonCode,
             SuppressionOn = model.SuppressionOn,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -66,14 +66,8 @@ public static class ContainerOfTheDetailedDeclarationCustomsItemsExtensions
                 SuppressionOn = updateDto.SuppressionOn
             };
 
-        if (updateDto.CreatedAt != null)
-        {
-            containerOfTheDetailedDeclarationCustoms.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            containerOfTheDetailedDeclarationCustoms.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) containerOfTheDetailedDeclarationCustoms.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) containerOfTheDetailedDeclarationCustoms.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return containerOfTheDetailedDeclarationCustoms;
     }

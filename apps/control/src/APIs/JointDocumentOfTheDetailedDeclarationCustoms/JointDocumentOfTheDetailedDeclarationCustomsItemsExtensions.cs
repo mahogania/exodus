@@ -13,7 +13,7 @@ public static class JointDocumentOfTheDetailedDeclarationCustomsItemsExtensions
         {
             CreatedAt = model.CreatedAt,
             Id = model.Id,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -26,13 +26,9 @@ public static class JointDocumentOfTheDetailedDeclarationCustomsItemsExtensions
             new JointDocumentOfTheDetailedDeclarationCustomsDbModel { Id = uniqueId.Id };
 
         if (updateDto.CreatedAt != null)
-        {
             jointDocumentOfTheDetailedDeclarationCustoms.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             jointDocumentOfTheDetailedDeclarationCustoms.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return jointDocumentOfTheDetailedDeclarationCustoms;
     }

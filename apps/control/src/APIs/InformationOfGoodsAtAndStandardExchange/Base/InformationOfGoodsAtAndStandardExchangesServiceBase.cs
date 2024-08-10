@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class InformationOfGoodsAtAndStandardExchangesServiceBase
     }
 
     /// <summary>
-    /// Create one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
+    ///     Create one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
     /// </summary>
     public async Task<InformationOfGoodsAtAndStandardExchange> CreateInformationOfGoodsAtAndStandardExchange(
         InformationOfGoodsAtAndStandardExchangeCreateInput createDto
@@ -54,10 +53,7 @@ public abstract class InformationOfGoodsAtAndStandardExchangesServiceBase
                 Value = createDto.Value
             };
 
-        if (createDto.Id != null)
-        {
-            informationOfGoodsAtAndStandardExchange.Id = createDto.Id;
-        }
+        if (createDto.Id != null) informationOfGoodsAtAndStandardExchange.Id = createDto.Id;
 
         _context.InformationOfGoodsAtAndStandardExchanges.Add(
             informationOfGoodsAtAndStandardExchange
@@ -68,16 +64,13 @@ public abstract class InformationOfGoodsAtAndStandardExchangesServiceBase
             informationOfGoodsAtAndStandardExchange.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
+    ///     Delete one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
     /// </summary>
     public async Task DeleteInformationOfGoodsAtAndStandardExchange(
         InformationOfGoodsAtAndStandardExchangeWhereUniqueInput uniqueId
@@ -85,10 +78,7 @@ public abstract class InformationOfGoodsAtAndStandardExchangesServiceBase
     {
         var informationOfGoodsAtAndStandardExchange =
             await _context.InformationOfGoodsAtAndStandardExchanges.FindAsync(uniqueId.Id);
-        if (informationOfGoodsAtAndStandardExchange == null)
-        {
-            throw new NotFoundException();
-        }
+        if (informationOfGoodsAtAndStandardExchange == null) throw new NotFoundException();
 
         _context.InformationOfGoodsAtAndStandardExchanges.Remove(
             informationOfGoodsAtAndStandardExchange
@@ -97,7 +87,7 @@ public abstract class InformationOfGoodsAtAndStandardExchangesServiceBase
     }
 
     /// <summary>
-    /// Find many INFORMATION OF GOODS AT AND STANDARD EXCHANGES
+    ///     Find many INFORMATION OF GOODS AT AND STANDARD EXCHANGES
     /// </summary>
     public async Task<
         List<InformationOfGoodsAtAndStandardExchange>
@@ -118,7 +108,7 @@ public abstract class InformationOfGoodsAtAndStandardExchangesServiceBase
     }
 
     /// <summary>
-    /// Meta data about INFORMATION OF GOODS AT AND STANDARD EXCHANGE records
+    ///     Meta data about INFORMATION OF GOODS AT AND STANDARD EXCHANGE records
     /// </summary>
     public async Task<MetadataDto> InformationOfGoodsAtAndStandardExchangesMeta(
         InformationOfGoodsAtAndStandardExchangeFindManyArgs findManyArgs
@@ -132,14 +122,14 @@ public abstract class InformationOfGoodsAtAndStandardExchangesServiceBase
     }
 
     /// <summary>
-    /// Get one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
+    ///     Get one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
     /// </summary>
     public async Task<InformationOfGoodsAtAndStandardExchange> InformationOfGoodsAtAndStandardExchange(
         InformationOfGoodsAtAndStandardExchangeWhereUniqueInput uniqueId
     )
     {
         var informationOfGoodsAtAndStandardExchanges =
-            await this.InformationOfGoodsAtAndStandardExchanges(
+            await InformationOfGoodsAtAndStandardExchanges(
                 new InformationOfGoodsAtAndStandardExchangeFindManyArgs
                 {
                     Where = new InformationOfGoodsAtAndStandardExchangeWhereInput
@@ -150,16 +140,13 @@ public abstract class InformationOfGoodsAtAndStandardExchangesServiceBase
             );
         var informationOfGoodsAtAndStandardExchange =
             informationOfGoodsAtAndStandardExchanges.FirstOrDefault();
-        if (informationOfGoodsAtAndStandardExchange == null)
-        {
-            throw new NotFoundException();
-        }
+        if (informationOfGoodsAtAndStandardExchange == null) throw new NotFoundException();
 
         return informationOfGoodsAtAndStandardExchange;
     }
 
     /// <summary>
-    /// Update one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
+    ///     Update one INFORMATION OF GOODS AT AND STANDARD EXCHANGE
     /// </summary>
     public async Task UpdateInformationOfGoodsAtAndStandardExchange(
         InformationOfGoodsAtAndStandardExchangeWhereUniqueInput uniqueId,
@@ -181,13 +168,8 @@ public abstract class InformationOfGoodsAtAndStandardExchangesServiceBase
                     e.Id == informationOfGoodsAtAndStandardExchange.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

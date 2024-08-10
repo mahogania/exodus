@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class GoodsAndWithReImportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Create one GOODS AND WITH RE-IMPORTATION IN STATE
+    ///     Create one GOODS AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     public async Task<GoodsAndWithReImportationInState> CreateGoodsAndWithReImportationInState(
         GoodsAndWithReImportationInStateCreateInput createDto
@@ -49,10 +48,7 @@ public abstract class GoodsAndWithReImportationInStatesServiceBase
             Value = createDto.Value
         };
 
-        if (createDto.Id != null)
-        {
-            goodsAndWithReImportationInState.Id = createDto.Id;
-        }
+        if (createDto.Id != null) goodsAndWithReImportationInState.Id = createDto.Id;
 
         _context.GoodsAndWithReImportationInStates.Add(goodsAndWithReImportationInState);
         await _context.SaveChangesAsync();
@@ -61,16 +57,13 @@ public abstract class GoodsAndWithReImportationInStatesServiceBase
             goodsAndWithReImportationInState.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one GOODS AND WITH RE-IMPORTATION IN STATE
+    ///     Delete one GOODS AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     public async Task DeleteGoodsAndWithReImportationInState(
         GoodsAndWithReImportationInStateWhereUniqueInput uniqueId
@@ -78,17 +71,14 @@ public abstract class GoodsAndWithReImportationInStatesServiceBase
     {
         var goodsAndWithReImportationInState =
             await _context.GoodsAndWithReImportationInStates.FindAsync(uniqueId.Id);
-        if (goodsAndWithReImportationInState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (goodsAndWithReImportationInState == null) throw new NotFoundException();
 
         _context.GoodsAndWithReImportationInStates.Remove(goodsAndWithReImportationInState);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many GOODS AND WITH RE-IMPORTATION IN STATES
+    ///     Find many GOODS AND WITH RE-IMPORTATION IN STATES
     /// </summary>
     public async Task<List<GoodsAndWithReImportationInState>> GoodsAndWithReImportationInStates(
         GoodsAndWithReImportationInStateFindManyArgs findManyArgs
@@ -106,7 +96,7 @@ public abstract class GoodsAndWithReImportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Meta data about GOODS AND WITH RE-IMPORTATION IN STATE records
+    ///     Meta data about GOODS AND WITH RE-IMPORTATION IN STATE records
     /// </summary>
     public async Task<MetadataDto> GoodsAndWithReImportationInStatesMeta(
         GoodsAndWithReImportationInStateFindManyArgs findManyArgs
@@ -120,29 +110,26 @@ public abstract class GoodsAndWithReImportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Get one GOODS AND WITH RE-IMPORTATION IN STATE
+    ///     Get one GOODS AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     public async Task<GoodsAndWithReImportationInState> GoodsAndWithReImportationInState(
         GoodsAndWithReImportationInStateWhereUniqueInput uniqueId
     )
     {
-        var goodsAndWithReImportationInStates = await this.GoodsAndWithReImportationInStates(
+        var goodsAndWithReImportationInStates = await GoodsAndWithReImportationInStates(
             new GoodsAndWithReImportationInStateFindManyArgs
             {
                 Where = new GoodsAndWithReImportationInStateWhereInput { Id = uniqueId.Id }
             }
         );
         var goodsAndWithReImportationInState = goodsAndWithReImportationInStates.FirstOrDefault();
-        if (goodsAndWithReImportationInState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (goodsAndWithReImportationInState == null) throw new NotFoundException();
 
         return goodsAndWithReImportationInState;
     }
 
     /// <summary>
-    /// Update one GOODS AND WITH RE-IMPORTATION IN STATE
+    ///     Update one GOODS AND WITH RE-IMPORTATION IN STATE
     /// </summary>
     public async Task UpdateGoodsAndWithReImportationInState(
         GoodsAndWithReImportationInStateWhereUniqueInput uniqueId,
@@ -164,13 +151,8 @@ public abstract class GoodsAndWithReImportationInStatesServiceBase
                     e.Id == goodsAndWithReImportationInState.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

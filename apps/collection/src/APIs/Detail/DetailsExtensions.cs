@@ -41,7 +41,7 @@ public static class DetailsExtensions
             VehicleModelName = model.VehicleModelName,
             VehicleOn = model.VehicleOn,
             VehiclePower = model.VehiclePower,
-            VehicleType = model.VehicleType,
+            VehicleType = model.VehicleType
         };
     }
 
@@ -85,14 +85,8 @@ public static class DetailsExtensions
             VehicleType = updateDto.VehicleType
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            detail.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            detail.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) detail.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) detail.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return detail;
     }

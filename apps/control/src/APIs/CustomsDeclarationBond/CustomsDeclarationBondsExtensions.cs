@@ -20,7 +20,7 @@ public static class CustomsDeclarationBondsExtensions
             ReferenceNumber = model.ReferenceNumber,
             SuppressionOn = model.SuppressionOn,
             TypeOfBondCode = model.TypeOfBondCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -43,14 +43,8 @@ public static class CustomsDeclarationBondsExtensions
             TypeOfBondCode = updateDto.TypeOfBondCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            customsDeclarationBond.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            customsDeclarationBond.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) customsDeclarationBond.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) customsDeclarationBond.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return customsDeclarationBond;
     }

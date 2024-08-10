@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class IssuancesControllerBase : ControllerBase
 {
     protected readonly IIssuancesService _service;
@@ -19,9 +18,9 @@ public abstract class IssuancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one ISSUANCE
+    ///     Create one ISSUANCE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Issuance>> CreateIssuance(IssuanceCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class IssuancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one ISSUANCE
+    ///     Delete one ISSUANCE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteIssuance([FromRoute()] IssuanceWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteIssuance([FromRoute] IssuanceWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,35 +49,35 @@ public abstract class IssuancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many ISSUANCES
+    ///     Find many ISSUANCES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Issuance>>> Issuances(
-        [FromQuery()] IssuanceFindManyArgs filter
+        [FromQuery] IssuanceFindManyArgs filter
     )
     {
         return Ok(await _service.Issuances(filter));
     }
 
     /// <summary>
-    /// Meta data about ISSUANCE records
+    ///     Meta data about ISSUANCE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> IssuancesMeta(
-        [FromQuery()] IssuanceFindManyArgs filter
+        [FromQuery] IssuanceFindManyArgs filter
     )
     {
         return Ok(await _service.IssuancesMeta(filter));
     }
 
     /// <summary>
-    /// Get one ISSUANCE
+    ///     Get one ISSUANCE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Issuance>> Issuance(
-        [FromRoute()] IssuanceWhereUniqueInput uniqueId
+        [FromRoute] IssuanceWhereUniqueInput uniqueId
     )
     {
         try
@@ -92,13 +91,13 @@ public abstract class IssuancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one ISSUANCE
+    ///     Update one ISSUANCE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateIssuance(
-        [FromRoute()] IssuanceWhereUniqueInput uniqueId,
-        [FromQuery()] IssuanceUpdateInput issuanceUpdateDto
+        [FromRoute] IssuanceWhereUniqueInput uniqueId,
+        [FromQuery] IssuanceUpdateInput issuanceUpdateDto
     )
     {
         try

@@ -31,7 +31,7 @@ public static class RawMaterialOfTheDetailedDeclarationCustomsItemsExtensions
             RectificationFrequency = model.RectificationFrequency,
             ReferenceNumber = model.ReferenceNumber,
             SuppressionOn = model.SuppressionOn,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -65,13 +65,9 @@ public static class RawMaterialOfTheDetailedDeclarationCustomsItemsExtensions
             };
 
         if (updateDto.CreatedAt != null)
-        {
             rawMaterialOfTheDetailedDeclarationCustoms.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             rawMaterialOfTheDetailedDeclarationCustoms.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return rawMaterialOfTheDetailedDeclarationCustoms;
     }

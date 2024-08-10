@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DistributionsControllerBase : ControllerBase
 {
     protected readonly IDistributionsService _service;
@@ -19,9 +18,9 @@ public abstract class DistributionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one DISTRIBUTION
+    ///     Create one DISTRIBUTION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Distribution>> CreateDistribution(DistributionCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class DistributionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one DISTRIBUTION
+    ///     Delete one DISTRIBUTION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDistribution(
-        [FromRoute()] DistributionWhereUniqueInput uniqueId
+        [FromRoute] DistributionWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class DistributionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many DISTRIBUTIONS
+    ///     Find many DISTRIBUTIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Distribution>>> Distributions(
-        [FromQuery()] DistributionFindManyArgs filter
+        [FromQuery] DistributionFindManyArgs filter
     )
     {
         return Ok(await _service.Distributions(filter));
     }
 
     /// <summary>
-    /// Meta data about DISTRIBUTION records
+    ///     Meta data about DISTRIBUTION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DistributionsMeta(
-        [FromQuery()] DistributionFindManyArgs filter
+        [FromQuery] DistributionFindManyArgs filter
     )
     {
         return Ok(await _service.DistributionsMeta(filter));
     }
 
     /// <summary>
-    /// Get one DISTRIBUTION
+    ///     Get one DISTRIBUTION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Distribution>> Distribution(
-        [FromRoute()] DistributionWhereUniqueInput uniqueId
+        [FromRoute] DistributionWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class DistributionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one DISTRIBUTION
+    ///     Update one DISTRIBUTION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDistribution(
-        [FromRoute()] DistributionWhereUniqueInput uniqueId,
-        [FromQuery()] DistributionUpdateInput distributionUpdateDto
+        [FromRoute] DistributionWhereUniqueInput uniqueId,
+        [FromQuery] DistributionUpdateInput distributionUpdateDto
     )
     {
         try

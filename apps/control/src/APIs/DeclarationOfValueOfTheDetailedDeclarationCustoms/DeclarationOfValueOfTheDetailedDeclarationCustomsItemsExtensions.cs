@@ -78,7 +78,7 @@ public static class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsExtens
             SpecifyTheNatureOfTheRestrictions = model.SpecifyTheNatureOfTheRestrictions,
             SuppressionOn = model.SuppressionOn,
             TotalDeductedAmountOfAdditionalCosts = model.TotalDeductedAmountOfAdditionalCosts,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -163,13 +163,9 @@ public static class DeclarationOfValueOfTheDetailedDeclarationCustomsItemsExtens
             };
 
         if (updateDto.CreatedAt != null)
-        {
             declarationOfValueOfTheDetailedDeclarationCustoms.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             declarationOfValueOfTheDetailedDeclarationCustoms.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return declarationOfValueOfTheDetailedDeclarationCustoms;
     }

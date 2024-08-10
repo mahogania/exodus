@@ -32,7 +32,7 @@ public static class RefundRequestsExtensions
             RequestDate = model.RequestDate,
             ServiceCode = model.ServiceCode,
             TaxpayerIdentificationNumber = model.TaxpayerIdentificationNumber,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -67,14 +67,8 @@ public static class RefundRequestsExtensions
             TaxpayerIdentificationNumber = updateDto.TaxpayerIdentificationNumber
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            refundRequest.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            refundRequest.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) refundRequest.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) refundRequest.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return refundRequest;
     }

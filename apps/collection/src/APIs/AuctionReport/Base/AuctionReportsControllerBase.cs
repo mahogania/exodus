@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class AuctionReportsControllerBase : ControllerBase
 {
     protected readonly IAuctionReportsService _service;
@@ -19,9 +18,9 @@ public abstract class AuctionReportsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one AUCTION REPORT
+    ///     Create one AUCTION REPORT
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<AuctionReport>> CreateAuctionReport(
         AuctionReportCreateInput input
@@ -33,12 +32,12 @@ public abstract class AuctionReportsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one AUCTION REPORT
+    ///     Delete one AUCTION REPORT
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteAuctionReport(
-        [FromRoute()] AuctionReportWhereUniqueInput uniqueId
+        [FromRoute] AuctionReportWhereUniqueInput uniqueId
     )
     {
         try
@@ -54,35 +53,35 @@ public abstract class AuctionReportsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many AUCTION REPORTS
+    ///     Find many AUCTION REPORTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<AuctionReport>>> AuctionReports(
-        [FromQuery()] AuctionReportFindManyArgs filter
+        [FromQuery] AuctionReportFindManyArgs filter
     )
     {
         return Ok(await _service.AuctionReports(filter));
     }
 
     /// <summary>
-    /// Meta data about AUCTION REPORT records
+    ///     Meta data about AUCTION REPORT records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> AuctionReportsMeta(
-        [FromQuery()] AuctionReportFindManyArgs filter
+        [FromQuery] AuctionReportFindManyArgs filter
     )
     {
         return Ok(await _service.AuctionReportsMeta(filter));
     }
 
     /// <summary>
-    /// Get one AUCTION REPORT
+    ///     Get one AUCTION REPORT
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<AuctionReport>> AuctionReport(
-        [FromRoute()] AuctionReportWhereUniqueInput uniqueId
+        [FromRoute] AuctionReportWhereUniqueInput uniqueId
     )
     {
         try
@@ -96,13 +95,13 @@ public abstract class AuctionReportsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one AUCTION REPORT
+    ///     Update one AUCTION REPORT
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateAuctionReport(
-        [FromRoute()] AuctionReportWhereUniqueInput uniqueId,
-        [FromQuery()] AuctionReportUpdateInput auctionReportUpdateDto
+        [FromRoute] AuctionReportWhereUniqueInput uniqueId,
+        [FromQuery] AuctionReportUpdateInput auctionReportUpdateDto
     )
     {
         try

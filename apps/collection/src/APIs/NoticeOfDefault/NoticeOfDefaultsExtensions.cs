@@ -25,7 +25,7 @@ public static class NoticeOfDefaultsExtensions
             NumberOfDefaultNotices = model.NumberOfDefaultNotices,
             NumberOfLatePayments = model.NumberOfLatePayments,
             PaymentDeadline = model.PaymentDeadline,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -53,14 +53,8 @@ public static class NoticeOfDefaultsExtensions
             PaymentDeadline = updateDto.PaymentDeadline
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            noticeOfDefault.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            noticeOfDefault.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) noticeOfDefault.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) noticeOfDefault.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return noticeOfDefault;
     }

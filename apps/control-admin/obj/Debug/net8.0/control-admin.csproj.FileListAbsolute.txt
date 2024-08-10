@@ -28,3 +28,5 @@
 /Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/obj/Debug/net8.0/control-admin.pdb
 /Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/obj/Debug/net8.0/control-admin.genruntimeconfig.cache
 /Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/obj/Debug/net8.0/ref/control-admin.dll
+/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/obj/Debug/net8.0/control-admin.csproj.AssemblyReference.cache
+/Users/sidahmedarroui/Future/startup/exodus/apps/control-admin/obj/Debug/net8.0/control-admin.csproj.GenerateResource.cache

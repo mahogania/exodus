@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class CautionsServiceBase : ICautionsService
     }
 
     /// <summary>
-    /// Create one CAUTION
+    ///     Create one CAUTION
     /// </summary>
     public async Task<Caution> CreateCaution(CautionCreateInput createDto)
     {
@@ -71,41 +70,32 @@ public abstract class CautionsServiceBase : ICautionsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            caution.Id = createDto.Id;
-        }
+        if (createDto.Id != null) caution.Id = createDto.Id;
 
         _context.Cautions.Add(caution);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<CautionDbModel>(caution.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one CAUTION
+    ///     Delete one CAUTION
     /// </summary>
     public async Task DeleteCaution(CautionWhereUniqueInput uniqueId)
     {
         var caution = await _context.Cautions.FindAsync(uniqueId.Id);
-        if (caution == null)
-        {
-            throw new NotFoundException();
-        }
+        if (caution == null) throw new NotFoundException();
 
         _context.Cautions.Remove(caution);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many CAUTIONS
+    ///     Find many CAUTIONS
     /// </summary>
     public async Task<List<Caution>> Cautions(CautionFindManyArgs findManyArgs)
     {
@@ -119,7 +109,7 @@ public abstract class CautionsServiceBase : ICautionsService
     }
 
     /// <summary>
-    /// Meta data about CAUTION records
+    ///     Meta data about CAUTION records
     /// </summary>
     public async Task<MetadataDto> CautionsMeta(CautionFindManyArgs findManyArgs)
     {
@@ -129,24 +119,21 @@ public abstract class CautionsServiceBase : ICautionsService
     }
 
     /// <summary>
-    /// Get one CAUTION
+    ///     Get one CAUTION
     /// </summary>
     public async Task<Caution> Caution(CautionWhereUniqueInput uniqueId)
     {
-        var cautions = await this.Cautions(
+        var cautions = await Cautions(
             new CautionFindManyArgs { Where = new CautionWhereInput { Id = uniqueId.Id } }
         );
         var caution = cautions.FirstOrDefault();
-        if (caution == null)
-        {
-            throw new NotFoundException();
-        }
+        if (caution == null) throw new NotFoundException();
 
         return caution;
     }
 
     /// <summary>
-    /// Update one CAUTION
+    ///     Update one CAUTION
     /// </summary>
     public async Task UpdateCaution(CautionWhereUniqueInput uniqueId, CautionUpdateInput updateDto)
     {
@@ -161,13 +148,8 @@ public abstract class CautionsServiceBase : ICautionsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Cautions.Any(e => e.Id == caution.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

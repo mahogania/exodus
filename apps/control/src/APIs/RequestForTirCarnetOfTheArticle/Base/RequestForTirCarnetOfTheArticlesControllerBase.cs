@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class RequestForTirCarnetOfTheArticlesControllerBase : ControllerBase
 {
     protected readonly IRequestForTirCarnetOfTheArticlesService _service;
@@ -21,9 +20,9 @@ public abstract class RequestForTirCarnetOfTheArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Create one REQUEST FOR TIR CARNET OF THE ARTICLE
+    ///     Create one REQUEST FOR TIR CARNET OF THE ARTICLE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<RequestForTirCarnetOfTheArticle>
@@ -41,12 +40,12 @@ public abstract class RequestForTirCarnetOfTheArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Delete one REQUEST FOR TIR CARNET OF THE ARTICLE
+    ///     Delete one REQUEST FOR TIR CARNET OF THE ARTICLE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteRequestForTirCarnetOfTheArticle(
-        [FromRoute()] RequestForTirCarnetOfTheArticleWhereUniqueInput uniqueId
+        [FromRoute] RequestForTirCarnetOfTheArticleWhereUniqueInput uniqueId
     )
     {
         try
@@ -62,39 +61,39 @@ public abstract class RequestForTirCarnetOfTheArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Find many REQUEST FOR TIR CARNET OF THE ARTICLES
+    ///     Find many REQUEST FOR TIR CARNET OF THE ARTICLES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<RequestForTirCarnetOfTheArticle>>
     > RequestForTirCarnetOfTheArticles(
-        [FromQuery()] RequestForTirCarnetOfTheArticleFindManyArgs filter
+        [FromQuery] RequestForTirCarnetOfTheArticleFindManyArgs filter
     )
     {
         return Ok(await _service.RequestForTirCarnetOfTheArticles(filter));
     }
 
     /// <summary>
-    /// Meta data about REQUEST FOR TIR CARNET OF THE ARTICLE records
+    ///     Meta data about REQUEST FOR TIR CARNET OF THE ARTICLE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> RequestForTirCarnetOfTheArticlesMeta(
-        [FromQuery()] RequestForTirCarnetOfTheArticleFindManyArgs filter
+        [FromQuery] RequestForTirCarnetOfTheArticleFindManyArgs filter
     )
     {
         return Ok(await _service.RequestForTirCarnetOfTheArticlesMeta(filter));
     }
 
     /// <summary>
-    /// Get one REQUEST FOR TIR CARNET OF THE ARTICLE
+    ///     Get one REQUEST FOR TIR CARNET OF THE ARTICLE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<RequestForTirCarnetOfTheArticle>
     > RequestForTirCarnetOfTheArticle(
-        [FromRoute()] RequestForTirCarnetOfTheArticleWhereUniqueInput uniqueId
+        [FromRoute] RequestForTirCarnetOfTheArticleWhereUniqueInput uniqueId
     )
     {
         try
@@ -108,14 +107,13 @@ public abstract class RequestForTirCarnetOfTheArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Update one REQUEST FOR TIR CARNET OF THE ARTICLE
+    ///     Update one REQUEST FOR TIR CARNET OF THE ARTICLE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateRequestForTirCarnetOfTheArticle(
-        [FromRoute()] RequestForTirCarnetOfTheArticleWhereUniqueInput uniqueId,
-        [FromQuery()]
-            RequestForTirCarnetOfTheArticleUpdateInput requestForTirCarnetOfTheArticleUpdateDto
+        [FromRoute] RequestForTirCarnetOfTheArticleWhereUniqueInput uniqueId,
+        [FromQuery] RequestForTirCarnetOfTheArticleUpdateInput requestForTirCarnetOfTheArticleUpdateDto
     )
     {
         try

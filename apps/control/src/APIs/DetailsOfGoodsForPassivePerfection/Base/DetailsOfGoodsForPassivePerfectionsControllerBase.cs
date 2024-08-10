@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DetailsOfGoodsForPassivePerfectionsControllerBase : ControllerBase
 {
     protected readonly IDetailsOfGoodsForPassivePerfectionsService _service;
@@ -21,9 +20,9 @@ public abstract class DetailsOfGoodsForPassivePerfectionsControllerBase : Contro
     }
 
     /// <summary>
-    /// Create one DETAILS OF GOODS FOR PASSIVE PERFECTION
+    ///     Create one DETAILS OF GOODS FOR PASSIVE PERFECTION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailsOfGoodsForPassivePerfection>
@@ -40,12 +39,12 @@ public abstract class DetailsOfGoodsForPassivePerfectionsControllerBase : Contro
     }
 
     /// <summary>
-    /// Delete one DETAILS OF GOODS FOR PASSIVE PERFECTION
+    ///     Delete one DETAILS OF GOODS FOR PASSIVE PERFECTION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDetailsOfGoodsForPassivePerfection(
-        [FromRoute()] DetailsOfGoodsForPassivePerfectionWhereUniqueInput uniqueId
+        [FromRoute] DetailsOfGoodsForPassivePerfectionWhereUniqueInput uniqueId
     )
     {
         try
@@ -61,39 +60,39 @@ public abstract class DetailsOfGoodsForPassivePerfectionsControllerBase : Contro
     }
 
     /// <summary>
-    /// Find many DETAILS OF GOODS FOR PASSIVE PERFECTIONS
+    ///     Find many DETAILS OF GOODS FOR PASSIVE PERFECTIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<DetailsOfGoodsForPassivePerfection>>
     > DetailsOfGoodsForPassivePerfections(
-        [FromQuery()] DetailsOfGoodsForPassivePerfectionFindManyArgs filter
+        [FromQuery] DetailsOfGoodsForPassivePerfectionFindManyArgs filter
     )
     {
         return Ok(await _service.DetailsOfGoodsForPassivePerfections(filter));
     }
 
     /// <summary>
-    /// Meta data about DETAILS OF GOODS FOR PASSIVE PERFECTION records
+    ///     Meta data about DETAILS OF GOODS FOR PASSIVE PERFECTION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DetailsOfGoodsForPassivePerfectionsMeta(
-        [FromQuery()] DetailsOfGoodsForPassivePerfectionFindManyArgs filter
+        [FromQuery] DetailsOfGoodsForPassivePerfectionFindManyArgs filter
     )
     {
         return Ok(await _service.DetailsOfGoodsForPassivePerfectionsMeta(filter));
     }
 
     /// <summary>
-    /// Get one DETAILS OF GOODS FOR PASSIVE PERFECTION
+    ///     Get one DETAILS OF GOODS FOR PASSIVE PERFECTION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailsOfGoodsForPassivePerfection>
     > DetailsOfGoodsForPassivePerfection(
-        [FromRoute()] DetailsOfGoodsForPassivePerfectionWhereUniqueInput uniqueId
+        [FromRoute] DetailsOfGoodsForPassivePerfectionWhereUniqueInput uniqueId
     )
     {
         try
@@ -107,14 +106,13 @@ public abstract class DetailsOfGoodsForPassivePerfectionsControllerBase : Contro
     }
 
     /// <summary>
-    /// Update one DETAILS OF GOODS FOR PASSIVE PERFECTION
+    ///     Update one DETAILS OF GOODS FOR PASSIVE PERFECTION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDetailsOfGoodsForPassivePerfection(
-        [FromRoute()] DetailsOfGoodsForPassivePerfectionWhereUniqueInput uniqueId,
-        [FromQuery()]
-            DetailsOfGoodsForPassivePerfectionUpdateInput detailsOfGoodsForPassivePerfectionUpdateDto
+        [FromRoute] DetailsOfGoodsForPassivePerfectionWhereUniqueInput uniqueId,
+        [FromQuery] DetailsOfGoodsForPassivePerfectionUpdateInput detailsOfGoodsForPassivePerfectionUpdateDto
     )
     {
         try

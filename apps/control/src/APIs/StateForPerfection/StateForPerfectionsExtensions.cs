@@ -40,7 +40,7 @@ public static class StateForPerfectionsExtensions
             TotalAmountForeseenForTransformationRepair =
                 model.TotalAmountForeseenForTransformationRepair,
             TypeOfActivePerfectionSolicited = model.TypeOfActivePerfectionSolicited,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -83,14 +83,8 @@ public static class StateForPerfectionsExtensions
             TypeOfActivePerfectionSolicited = updateDto.TypeOfActivePerfectionSolicited
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            stateForPerfection.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            stateForPerfection.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) stateForPerfection.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) stateForPerfection.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return stateForPerfection;
     }

@@ -2,12 +2,14 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class InformationOfGoodsTransferredInWarehousePublicPrivatesController
     : InformationOfGoodsTransferredInWarehousePublicPrivatesControllerBase
 {
     public InformationOfGoodsTransferredInWarehousePublicPrivatesController(
         IInformationOfGoodsTransferredInWarehousePublicPrivatesService service
     )
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

@@ -49,7 +49,7 @@ public static class CommonOriginCertificateRequestsExtensions
             RequestDate = model.RequestDate,
             SuppressionOn = model.SuppressionOn,
             TinOfTheDestination = model.TinOfTheDestination,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -100,14 +100,8 @@ public static class CommonOriginCertificateRequestsExtensions
             TinOfTheDestination = updateDto.TinOfTheDestination
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            commonOriginCertificateRequest.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            commonOriginCertificateRequest.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) commonOriginCertificateRequest.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) commonOriginCertificateRequest.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return commonOriginCertificateRequest;
     }

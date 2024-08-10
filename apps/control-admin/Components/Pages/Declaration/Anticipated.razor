@@ -1,9 +1,6 @@
 @page "/anticipated-declaration"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.Navigations
-@inject IStringLocalizer<Pages.TransportInformation> Localizer
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["TransportInformationTitle"]</h3>
@@ -173,11 +170,11 @@
 </div>
 
 @code {
+
     public class TransportInformation
     {
         public string ReferenceNo { get; set; }
         public string DeclarationNo { get; set; }
-        public string DeclarationType { get; set; }
         public DateTime RegistrationDate { get; set; }
         public string EPC { get; set; }
         public string RegimeAuthorizationNo { get; set; }
@@ -213,4 +210,5 @@
         public string TransportTitleNo { get; set; }
         public string TransportIdentificationNo { get; set; }
     }
+
 }

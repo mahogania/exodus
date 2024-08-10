@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class MacSubjectToAuthorizationsServiceBase : IMacSubjectToAutho
     }
 
     /// <summary>
-    /// Create one MAC SUBJECT TO AUTHORIZATION
+    ///     Create one MAC SUBJECT TO AUTHORIZATION
     /// </summary>
     public async Task<MacSubjectToAuthorization> CreateMacSubjectToAuthorization(
         MacSubjectToAuthorizationCreateInput createDto
@@ -51,10 +50,7 @@ public abstract class MacSubjectToAuthorizationsServiceBase : IMacSubjectToAutho
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            macSubjectToAuthorization.Id = createDto.Id;
-        }
+        if (createDto.Id != null) macSubjectToAuthorization.Id = createDto.Id;
 
         _context.MacSubjectToAuthorizations.Add(macSubjectToAuthorization);
         await _context.SaveChangesAsync();
@@ -63,16 +59,13 @@ public abstract class MacSubjectToAuthorizationsServiceBase : IMacSubjectToAutho
             macSubjectToAuthorization.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one MAC SUBJECT TO AUTHORIZATION
+    ///     Delete one MAC SUBJECT TO AUTHORIZATION
     /// </summary>
     public async Task DeleteMacSubjectToAuthorization(
         MacSubjectToAuthorizationWhereUniqueInput uniqueId
@@ -81,17 +74,14 @@ public abstract class MacSubjectToAuthorizationsServiceBase : IMacSubjectToAutho
         var macSubjectToAuthorization = await _context.MacSubjectToAuthorizations.FindAsync(
             uniqueId.Id
         );
-        if (macSubjectToAuthorization == null)
-        {
-            throw new NotFoundException();
-        }
+        if (macSubjectToAuthorization == null) throw new NotFoundException();
 
         _context.MacSubjectToAuthorizations.Remove(macSubjectToAuthorization);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many MAC SUBJECT TO AUTHORIZATIONS
+    ///     Find many MAC SUBJECT TO AUTHORIZATIONS
     /// </summary>
     public async Task<List<MacSubjectToAuthorization>> MacSubjectToAuthorizations(
         MacSubjectToAuthorizationFindManyArgs findManyArgs
@@ -109,7 +99,7 @@ public abstract class MacSubjectToAuthorizationsServiceBase : IMacSubjectToAutho
     }
 
     /// <summary>
-    /// Meta data about MAC SUBJECT TO AUTHORIZATION records
+    ///     Meta data about MAC SUBJECT TO AUTHORIZATION records
     /// </summary>
     public async Task<MetadataDto> MacSubjectToAuthorizationsMeta(
         MacSubjectToAuthorizationFindManyArgs findManyArgs
@@ -123,29 +113,26 @@ public abstract class MacSubjectToAuthorizationsServiceBase : IMacSubjectToAutho
     }
 
     /// <summary>
-    /// Get one MAC SUBJECT TO AUTHORIZATION
+    ///     Get one MAC SUBJECT TO AUTHORIZATION
     /// </summary>
     public async Task<MacSubjectToAuthorization> MacSubjectToAuthorization(
         MacSubjectToAuthorizationWhereUniqueInput uniqueId
     )
     {
-        var macSubjectToAuthorizations = await this.MacSubjectToAuthorizations(
+        var macSubjectToAuthorizations = await MacSubjectToAuthorizations(
             new MacSubjectToAuthorizationFindManyArgs
             {
                 Where = new MacSubjectToAuthorizationWhereInput { Id = uniqueId.Id }
             }
         );
         var macSubjectToAuthorization = macSubjectToAuthorizations.FirstOrDefault();
-        if (macSubjectToAuthorization == null)
-        {
-            throw new NotFoundException();
-        }
+        if (macSubjectToAuthorization == null) throw new NotFoundException();
 
         return macSubjectToAuthorization;
     }
 
     /// <summary>
-    /// Update one MAC SUBJECT TO AUTHORIZATION
+    ///     Update one MAC SUBJECT TO AUTHORIZATION
     /// </summary>
     public async Task UpdateMacSubjectToAuthorization(
         MacSubjectToAuthorizationWhereUniqueInput uniqueId,
@@ -163,13 +150,8 @@ public abstract class MacSubjectToAuthorizationsServiceBase : IMacSubjectToAutho
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.MacSubjectToAuthorizations.Any(e => e.Id == macSubjectToAuthorization.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

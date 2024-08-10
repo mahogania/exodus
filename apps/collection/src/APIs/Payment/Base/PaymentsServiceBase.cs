@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class PaymentsServiceBase : IPaymentsService
     }
 
     /// <summary>
-    /// Create one PAYMENT
+    ///     Create one PAYMENT
     /// </summary>
     public async Task<Payment> CreatePayment(PaymentCreateInput createDto)
     {
@@ -57,41 +56,32 @@ public abstract class PaymentsServiceBase : IPaymentsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            payment.Id = createDto.Id;
-        }
+        if (createDto.Id != null) payment.Id = createDto.Id;
 
         _context.Payments.Add(payment);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<PaymentDbModel>(payment.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one PAYMENT
+    ///     Delete one PAYMENT
     /// </summary>
     public async Task DeletePayment(PaymentWhereUniqueInput uniqueId)
     {
         var payment = await _context.Payments.FindAsync(uniqueId.Id);
-        if (payment == null)
-        {
-            throw new NotFoundException();
-        }
+        if (payment == null) throw new NotFoundException();
 
         _context.Payments.Remove(payment);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many PAYMENTS
+    ///     Find many PAYMENTS
     /// </summary>
     public async Task<List<Payment>> Payments(PaymentFindManyArgs findManyArgs)
     {
@@ -105,7 +95,7 @@ public abstract class PaymentsServiceBase : IPaymentsService
     }
 
     /// <summary>
-    /// Meta data about PAYMENT records
+    ///     Meta data about PAYMENT records
     /// </summary>
     public async Task<MetadataDto> PaymentsMeta(PaymentFindManyArgs findManyArgs)
     {
@@ -115,24 +105,21 @@ public abstract class PaymentsServiceBase : IPaymentsService
     }
 
     /// <summary>
-    /// Get one PAYMENT
+    ///     Get one PAYMENT
     /// </summary>
     public async Task<Payment> Payment(PaymentWhereUniqueInput uniqueId)
     {
-        var payments = await this.Payments(
+        var payments = await Payments(
             new PaymentFindManyArgs { Where = new PaymentWhereInput { Id = uniqueId.Id } }
         );
         var payment = payments.FirstOrDefault();
-        if (payment == null)
-        {
-            throw new NotFoundException();
-        }
+        if (payment == null) throw new NotFoundException();
 
         return payment;
     }
 
     /// <summary>
-    /// Update one PAYMENT
+    ///     Update one PAYMENT
     /// </summary>
     public async Task UpdatePayment(PaymentWhereUniqueInput uniqueId, PaymentUpdateInput updateDto)
     {
@@ -147,13 +134,8 @@ public abstract class PaymentsServiceBase : IPaymentsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Payments.Any(e => e.Id == payment.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

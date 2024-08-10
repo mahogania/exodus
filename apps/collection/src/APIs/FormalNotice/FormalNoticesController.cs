@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs;
 
-[ApiController()]
+[ApiController]
 public class FormalNoticesController : FormalNoticesControllerBase
 {
     public FormalNoticesController(IFormalNoticesService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

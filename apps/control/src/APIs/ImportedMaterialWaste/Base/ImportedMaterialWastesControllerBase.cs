@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ImportedMaterialWastesControllerBase : ControllerBase
 {
     protected readonly IImportedMaterialWastesService _service;
@@ -19,9 +18,9 @@ public abstract class ImportedMaterialWastesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one IMPORTED MATERIAL WASTE
+    ///     Create one IMPORTED MATERIAL WASTE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ImportedMaterialWaste>> CreateImportedMaterialWaste(
         ImportedMaterialWasteCreateInput input
@@ -37,12 +36,12 @@ public abstract class ImportedMaterialWastesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one IMPORTED MATERIAL WASTE
+    ///     Delete one IMPORTED MATERIAL WASTE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteImportedMaterialWaste(
-        [FromRoute()] ImportedMaterialWasteWhereUniqueInput uniqueId
+        [FromRoute] ImportedMaterialWasteWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class ImportedMaterialWastesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many IMPORTED MATERIAL WASTES
+    ///     Find many IMPORTED MATERIAL WASTES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<ImportedMaterialWaste>>> ImportedMaterialWastes(
-        [FromQuery()] ImportedMaterialWasteFindManyArgs filter
+        [FromQuery] ImportedMaterialWasteFindManyArgs filter
     )
     {
         return Ok(await _service.ImportedMaterialWastes(filter));
     }
 
     /// <summary>
-    /// Meta data about IMPORTED MATERIAL WASTE records
+    ///     Meta data about IMPORTED MATERIAL WASTE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ImportedMaterialWastesMeta(
-        [FromQuery()] ImportedMaterialWasteFindManyArgs filter
+        [FromQuery] ImportedMaterialWasteFindManyArgs filter
     )
     {
         return Ok(await _service.ImportedMaterialWastesMeta(filter));
     }
 
     /// <summary>
-    /// Get one IMPORTED MATERIAL WASTE
+    ///     Get one IMPORTED MATERIAL WASTE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ImportedMaterialWaste>> ImportedMaterialWaste(
-        [FromRoute()] ImportedMaterialWasteWhereUniqueInput uniqueId
+        [FromRoute] ImportedMaterialWasteWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class ImportedMaterialWastesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one IMPORTED MATERIAL WASTE
+    ///     Update one IMPORTED MATERIAL WASTE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateImportedMaterialWaste(
-        [FromRoute()] ImportedMaterialWasteWhereUniqueInput uniqueId,
-        [FromQuery()] ImportedMaterialWasteUpdateInput importedMaterialWasteUpdateDto
+        [FromRoute] ImportedMaterialWasteWhereUniqueInput uniqueId,
+        [FromQuery] ImportedMaterialWasteUpdateInput importedMaterialWasteUpdateDto
     )
     {
         try

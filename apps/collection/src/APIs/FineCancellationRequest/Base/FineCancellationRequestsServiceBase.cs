@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class FineCancellationRequestsServiceBase : IFineCancellationReq
     }
 
     /// <summary>
-    /// Create one FINE CANCELLATION REQUEST
+    ///     Create one FINE CANCELLATION REQUEST
     /// </summary>
     public async Task<FineCancellationRequest> CreateFineCancellationRequest(
         FineCancellationRequestCreateInput createDto
@@ -45,10 +44,7 @@ public abstract class FineCancellationRequestsServiceBase : IFineCancellationReq
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            fineCancellationRequest.Id = createDto.Id;
-        }
+        if (createDto.Id != null) fineCancellationRequest.Id = createDto.Id;
 
         _context.FineCancellationRequests.Add(fineCancellationRequest);
         await _context.SaveChangesAsync();
@@ -57,16 +53,13 @@ public abstract class FineCancellationRequestsServiceBase : IFineCancellationReq
             fineCancellationRequest.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one FINE CANCELLATION REQUEST
+    ///     Delete one FINE CANCELLATION REQUEST
     /// </summary>
     public async Task DeleteFineCancellationRequest(
         FineCancellationRequestWhereUniqueInput uniqueId
@@ -75,17 +68,14 @@ public abstract class FineCancellationRequestsServiceBase : IFineCancellationReq
         var fineCancellationRequest = await _context.FineCancellationRequests.FindAsync(
             uniqueId.Id
         );
-        if (fineCancellationRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (fineCancellationRequest == null) throw new NotFoundException();
 
         _context.FineCancellationRequests.Remove(fineCancellationRequest);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many FINE CANCELLATION REQUESTS
+    ///     Find many FINE CANCELLATION REQUESTS
     /// </summary>
     public async Task<List<FineCancellationRequest>> FineCancellationRequests(
         FineCancellationRequestFindManyArgs findManyArgs
@@ -103,7 +93,7 @@ public abstract class FineCancellationRequestsServiceBase : IFineCancellationReq
     }
 
     /// <summary>
-    /// Meta data about FINE CANCELLATION REQUEST records
+    ///     Meta data about FINE CANCELLATION REQUEST records
     /// </summary>
     public async Task<MetadataDto> FineCancellationRequestsMeta(
         FineCancellationRequestFindManyArgs findManyArgs
@@ -117,29 +107,26 @@ public abstract class FineCancellationRequestsServiceBase : IFineCancellationReq
     }
 
     /// <summary>
-    /// Get one FINE CANCELLATION REQUEST
+    ///     Get one FINE CANCELLATION REQUEST
     /// </summary>
     public async Task<FineCancellationRequest> FineCancellationRequest(
         FineCancellationRequestWhereUniqueInput uniqueId
     )
     {
-        var fineCancellationRequests = await this.FineCancellationRequests(
+        var fineCancellationRequests = await FineCancellationRequests(
             new FineCancellationRequestFindManyArgs
             {
                 Where = new FineCancellationRequestWhereInput { Id = uniqueId.Id }
             }
         );
         var fineCancellationRequest = fineCancellationRequests.FirstOrDefault();
-        if (fineCancellationRequest == null)
-        {
-            throw new NotFoundException();
-        }
+        if (fineCancellationRequest == null) throw new NotFoundException();
 
         return fineCancellationRequest;
     }
 
     /// <summary>
-    /// Update one FINE CANCELLATION REQUEST
+    ///     Update one FINE CANCELLATION REQUEST
     /// </summary>
     public async Task UpdateFineCancellationRequest(
         FineCancellationRequestWhereUniqueInput uniqueId,
@@ -157,13 +144,8 @@ public abstract class FineCancellationRequestsServiceBase : IFineCancellationReq
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.FineCancellationRequests.Any(e => e.Id == fineCancellationRequest.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

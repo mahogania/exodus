@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class BondReleasesServiceBase : IBondReleasesService
     }
 
     /// <summary>
-    /// Create one BOND RELEASE
+    ///     Create one BOND RELEASE
     /// </summary>
     public async Task<BondRelease> CreateBondRelease(BondReleaseCreateInput createDto)
     {
@@ -42,41 +41,32 @@ public abstract class BondReleasesServiceBase : IBondReleasesService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            bondRelease.Id = createDto.Id;
-        }
+        if (createDto.Id != null) bondRelease.Id = createDto.Id;
 
         _context.BondReleases.Add(bondRelease);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<BondReleaseDbModel>(bondRelease.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one BOND RELEASE
+    ///     Delete one BOND RELEASE
     /// </summary>
     public async Task DeleteBondRelease(BondReleaseWhereUniqueInput uniqueId)
     {
         var bondRelease = await _context.BondReleases.FindAsync(uniqueId.Id);
-        if (bondRelease == null)
-        {
-            throw new NotFoundException();
-        }
+        if (bondRelease == null) throw new NotFoundException();
 
         _context.BondReleases.Remove(bondRelease);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many BOND RELEASES
+    ///     Find many BOND RELEASES
     /// </summary>
     public async Task<List<BondRelease>> BondReleases(BondReleaseFindManyArgs findManyArgs)
     {
@@ -90,7 +80,7 @@ public abstract class BondReleasesServiceBase : IBondReleasesService
     }
 
     /// <summary>
-    /// Meta data about BOND RELEASE records
+    ///     Meta data about BOND RELEASE records
     /// </summary>
     public async Task<MetadataDto> BondReleasesMeta(BondReleaseFindManyArgs findManyArgs)
     {
@@ -100,24 +90,21 @@ public abstract class BondReleasesServiceBase : IBondReleasesService
     }
 
     /// <summary>
-    /// Get one BOND RELEASE
+    ///     Get one BOND RELEASE
     /// </summary>
     public async Task<BondRelease> BondRelease(BondReleaseWhereUniqueInput uniqueId)
     {
-        var bondReleases = await this.BondReleases(
+        var bondReleases = await BondReleases(
             new BondReleaseFindManyArgs { Where = new BondReleaseWhereInput { Id = uniqueId.Id } }
         );
         var bondRelease = bondReleases.FirstOrDefault();
-        if (bondRelease == null)
-        {
-            throw new NotFoundException();
-        }
+        if (bondRelease == null) throw new NotFoundException();
 
         return bondRelease;
     }
 
     /// <summary>
-    /// Update one BOND RELEASE
+    ///     Update one BOND RELEASE
     /// </summary>
     public async Task UpdateBondRelease(
         BondReleaseWhereUniqueInput uniqueId,
@@ -135,13 +122,8 @@ public abstract class BondReleasesServiceBase : IBondReleasesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.BondReleases.Any(e => e.Id == bondRelease.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

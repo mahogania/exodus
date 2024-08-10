@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class StateForPerfectionsServiceBase : IStateForPerfectionsServi
     }
 
     /// <summary>
-    /// Create one STATE FOR PERFECTION
+    ///     Create one STATE FOR PERFECTION
     /// </summary>
     public async Task<StateForPerfection> CreateStateForPerfection(
         StateForPerfectionCreateInput createDto
@@ -60,41 +59,32 @@ public abstract class StateForPerfectionsServiceBase : IStateForPerfectionsServi
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            stateForPerfection.Id = createDto.Id;
-        }
+        if (createDto.Id != null) stateForPerfection.Id = createDto.Id;
 
         _context.StateForPerfections.Add(stateForPerfection);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<StateForPerfectionDbModel>(stateForPerfection.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one STATE FOR PERFECTION
+    ///     Delete one STATE FOR PERFECTION
     /// </summary>
     public async Task DeleteStateForPerfection(StateForPerfectionWhereUniqueInput uniqueId)
     {
         var stateForPerfection = await _context.StateForPerfections.FindAsync(uniqueId.Id);
-        if (stateForPerfection == null)
-        {
-            throw new NotFoundException();
-        }
+        if (stateForPerfection == null) throw new NotFoundException();
 
         _context.StateForPerfections.Remove(stateForPerfection);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many STATE FOR PERFECTIONS
+    ///     Find many STATE FOR PERFECTIONS
     /// </summary>
     public async Task<List<StateForPerfection>> StateForPerfections(
         StateForPerfectionFindManyArgs findManyArgs
@@ -110,7 +100,7 @@ public abstract class StateForPerfectionsServiceBase : IStateForPerfectionsServi
     }
 
     /// <summary>
-    /// Meta data about STATE FOR PERFECTION records
+    ///     Meta data about STATE FOR PERFECTION records
     /// </summary>
     public async Task<MetadataDto> StateForPerfectionsMeta(
         StateForPerfectionFindManyArgs findManyArgs
@@ -122,29 +112,26 @@ public abstract class StateForPerfectionsServiceBase : IStateForPerfectionsServi
     }
 
     /// <summary>
-    /// Get one STATE FOR PERFECTION
+    ///     Get one STATE FOR PERFECTION
     /// </summary>
     public async Task<StateForPerfection> StateForPerfection(
         StateForPerfectionWhereUniqueInput uniqueId
     )
     {
-        var stateForPerfections = await this.StateForPerfections(
+        var stateForPerfections = await StateForPerfections(
             new StateForPerfectionFindManyArgs
             {
                 Where = new StateForPerfectionWhereInput { Id = uniqueId.Id }
             }
         );
         var stateForPerfection = stateForPerfections.FirstOrDefault();
-        if (stateForPerfection == null)
-        {
-            throw new NotFoundException();
-        }
+        if (stateForPerfection == null) throw new NotFoundException();
 
         return stateForPerfection;
     }
 
     /// <summary>
-    /// Update one STATE FOR PERFECTION
+    ///     Update one STATE FOR PERFECTION
     /// </summary>
     public async Task UpdateStateForPerfection(
         StateForPerfectionWhereUniqueInput uniqueId,
@@ -162,13 +149,8 @@ public abstract class StateForPerfectionsServiceBase : IStateForPerfectionsServi
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.StateForPerfections.Any(e => e.Id == stateForPerfection.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class NoticeCancellationsControllerBase : ControllerBase
 {
     protected readonly INoticeCancellationsService _service;
@@ -19,9 +18,9 @@ public abstract class NoticeCancellationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one NOTICE CANCELLATION
+    ///     Create one NOTICE CANCELLATION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<NoticeCancellation>> CreateNoticeCancellation(
         NoticeCancellationCreateInput input
@@ -37,12 +36,12 @@ public abstract class NoticeCancellationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one NOTICE CANCELLATION
+    ///     Delete one NOTICE CANCELLATION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteNoticeCancellation(
-        [FromRoute()] NoticeCancellationWhereUniqueInput uniqueId
+        [FromRoute] NoticeCancellationWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class NoticeCancellationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many NOTICE CANCELLATIONS
+    ///     Find many NOTICE CANCELLATIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<NoticeCancellation>>> NoticeCancellations(
-        [FromQuery()] NoticeCancellationFindManyArgs filter
+        [FromQuery] NoticeCancellationFindManyArgs filter
     )
     {
         return Ok(await _service.NoticeCancellations(filter));
     }
 
     /// <summary>
-    /// Meta data about NOTICE CANCELLATION records
+    ///     Meta data about NOTICE CANCELLATION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> NoticeCancellationsMeta(
-        [FromQuery()] NoticeCancellationFindManyArgs filter
+        [FromQuery] NoticeCancellationFindManyArgs filter
     )
     {
         return Ok(await _service.NoticeCancellationsMeta(filter));
     }
 
     /// <summary>
-    /// Get one NOTICE CANCELLATION
+    ///     Get one NOTICE CANCELLATION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<NoticeCancellation>> NoticeCancellation(
-        [FromRoute()] NoticeCancellationWhereUniqueInput uniqueId
+        [FromRoute] NoticeCancellationWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class NoticeCancellationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one NOTICE CANCELLATION
+    ///     Update one NOTICE CANCELLATION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateNoticeCancellation(
-        [FromRoute()] NoticeCancellationWhereUniqueInput uniqueId,
-        [FromQuery()] NoticeCancellationUpdateInput noticeCancellationUpdateDto
+        [FromRoute] NoticeCancellationWhereUniqueInput uniqueId,
+        [FromQuery] NoticeCancellationUpdateInput noticeCancellationUpdateDto
     )
     {
         try

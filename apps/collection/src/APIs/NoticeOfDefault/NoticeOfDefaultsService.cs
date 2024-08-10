@@ -5,5 +5,7 @@ namespace Collection.APIs;
 public class NoticeOfDefaultsService : NoticeOfDefaultsServiceBase
 {
     public NoticeOfDefaultsService(CollectionDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

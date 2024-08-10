@@ -27,7 +27,7 @@ public static class NoticeStaggeringsExtensions
             StaggeredNoticesGroupingReasonContent = model.StaggeredNoticesGroupingReasonContent,
             StaggeringDate = model.StaggeringDate,
             StaggeringReasonContent = model.StaggeringReasonContent,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -57,14 +57,8 @@ public static class NoticeStaggeringsExtensions
             StaggeringReasonContent = updateDto.StaggeringReasonContent
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            noticeStaggering.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            noticeStaggering.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) noticeStaggering.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) noticeStaggering.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return noticeStaggering;
     }

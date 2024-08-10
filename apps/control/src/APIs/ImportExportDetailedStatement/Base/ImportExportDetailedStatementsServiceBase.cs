@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class ImportExportDetailedStatementsServiceBase
     }
 
     /// <summary>
-    /// Create one IMPORT/EXPORT DETAILED STATEMENT
+    ///     Create one IMPORT/EXPORT DETAILED STATEMENT
     /// </summary>
     public async Task<ImportExportDetailedStatement> CreateImportExportDetailedStatement(
         ImportExportDetailedStatementCreateInput createDto
@@ -49,10 +48,7 @@ public abstract class ImportExportDetailedStatementsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            importExportDetailedStatement.Id = createDto.Id;
-        }
+        if (createDto.Id != null) importExportDetailedStatement.Id = createDto.Id;
 
         _context.ImportExportDetailedStatements.Add(importExportDetailedStatement);
         await _context.SaveChangesAsync();
@@ -61,16 +57,13 @@ public abstract class ImportExportDetailedStatementsServiceBase
             importExportDetailedStatement.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one IMPORT/EXPORT DETAILED STATEMENT
+    ///     Delete one IMPORT/EXPORT DETAILED STATEMENT
     /// </summary>
     public async Task DeleteImportExportDetailedStatement(
         ImportExportDetailedStatementWhereUniqueInput uniqueId
@@ -79,17 +72,14 @@ public abstract class ImportExportDetailedStatementsServiceBase
         var importExportDetailedStatement = await _context.ImportExportDetailedStatements.FindAsync(
             uniqueId.Id
         );
-        if (importExportDetailedStatement == null)
-        {
-            throw new NotFoundException();
-        }
+        if (importExportDetailedStatement == null) throw new NotFoundException();
 
         _context.ImportExportDetailedStatements.Remove(importExportDetailedStatement);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many IMPORT/EXPORT DETAILED STATEMENTS
+    ///     Find many IMPORT/EXPORT DETAILED STATEMENTS
     /// </summary>
     public async Task<List<ImportExportDetailedStatement>> ImportExportDetailedStatements(
         ImportExportDetailedStatementFindManyArgs findManyArgs
@@ -107,7 +97,7 @@ public abstract class ImportExportDetailedStatementsServiceBase
     }
 
     /// <summary>
-    /// Meta data about IMPORT/EXPORT DETAILED STATEMENT records
+    ///     Meta data about IMPORT/EXPORT DETAILED STATEMENT records
     /// </summary>
     public async Task<MetadataDto> ImportExportDetailedStatementsMeta(
         ImportExportDetailedStatementFindManyArgs findManyArgs
@@ -121,29 +111,26 @@ public abstract class ImportExportDetailedStatementsServiceBase
     }
 
     /// <summary>
-    /// Get one IMPORT/EXPORT DETAILED STATEMENT
+    ///     Get one IMPORT/EXPORT DETAILED STATEMENT
     /// </summary>
     public async Task<ImportExportDetailedStatement> ImportExportDetailedStatement(
         ImportExportDetailedStatementWhereUniqueInput uniqueId
     )
     {
-        var importExportDetailedStatements = await this.ImportExportDetailedStatements(
+        var importExportDetailedStatements = await ImportExportDetailedStatements(
             new ImportExportDetailedStatementFindManyArgs
             {
                 Where = new ImportExportDetailedStatementWhereInput { Id = uniqueId.Id }
             }
         );
         var importExportDetailedStatement = importExportDetailedStatements.FirstOrDefault();
-        if (importExportDetailedStatement == null)
-        {
-            throw new NotFoundException();
-        }
+        if (importExportDetailedStatement == null) throw new NotFoundException();
 
         return importExportDetailedStatement;
     }
 
     /// <summary>
-    /// Update one IMPORT/EXPORT DETAILED STATEMENT
+    ///     Update one IMPORT/EXPORT DETAILED STATEMENT
     /// </summary>
     public async Task UpdateImportExportDetailedStatement(
         ImportExportDetailedStatementWhereUniqueInput uniqueId,
@@ -165,13 +152,8 @@ public abstract class ImportExportDetailedStatementsServiceBase
                     e.Id == importExportDetailedStatement.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

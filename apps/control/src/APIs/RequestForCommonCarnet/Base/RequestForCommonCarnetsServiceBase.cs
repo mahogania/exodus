@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class RequestForCommonCarnetsServiceBase : IRequestForCommonCarn
     }
 
     /// <summary>
-    /// Create one REQUEST FOR COMMON CARNET
+    ///     Create one REQUEST FOR COMMON CARNET
     /// </summary>
     public async Task<RequestForCommonCarnet> CreateRequestForCommonCarnet(
         RequestForCommonCarnetCreateInput createDto
@@ -80,10 +79,7 @@ public abstract class RequestForCommonCarnetsServiceBase : IRequestForCommonCarn
             VehicleCertificationNoAndDate = createDto.VehicleCertificationNoAndDate
         };
 
-        if (createDto.Id != null)
-        {
-            requestForCommonCarnet.Id = createDto.Id;
-        }
+        if (createDto.Id != null) requestForCommonCarnet.Id = createDto.Id;
 
         _context.RequestForCommonCarnets.Add(requestForCommonCarnet);
         await _context.SaveChangesAsync();
@@ -92,31 +88,25 @@ public abstract class RequestForCommonCarnetsServiceBase : IRequestForCommonCarn
             requestForCommonCarnet.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one REQUEST FOR COMMON CARNET
+    ///     Delete one REQUEST FOR COMMON CARNET
     /// </summary>
     public async Task DeleteRequestForCommonCarnet(RequestForCommonCarnetWhereUniqueInput uniqueId)
     {
         var requestForCommonCarnet = await _context.RequestForCommonCarnets.FindAsync(uniqueId.Id);
-        if (requestForCommonCarnet == null)
-        {
-            throw new NotFoundException();
-        }
+        if (requestForCommonCarnet == null) throw new NotFoundException();
 
         _context.RequestForCommonCarnets.Remove(requestForCommonCarnet);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many REQUEST FOR COMMON CARNETS
+    ///     Find many REQUEST FOR COMMON CARNETS
     /// </summary>
     public async Task<List<RequestForCommonCarnet>> RequestForCommonCarnets(
         RequestForCommonCarnetFindManyArgs findManyArgs
@@ -134,7 +124,7 @@ public abstract class RequestForCommonCarnetsServiceBase : IRequestForCommonCarn
     }
 
     /// <summary>
-    /// Meta data about REQUEST FOR COMMON CARNET records
+    ///     Meta data about REQUEST FOR COMMON CARNET records
     /// </summary>
     public async Task<MetadataDto> RequestForCommonCarnetsMeta(
         RequestForCommonCarnetFindManyArgs findManyArgs
@@ -148,29 +138,26 @@ public abstract class RequestForCommonCarnetsServiceBase : IRequestForCommonCarn
     }
 
     /// <summary>
-    /// Get one REQUEST FOR COMMON CARNET
+    ///     Get one REQUEST FOR COMMON CARNET
     /// </summary>
     public async Task<RequestForCommonCarnet> RequestForCommonCarnet(
         RequestForCommonCarnetWhereUniqueInput uniqueId
     )
     {
-        var requestForCommonCarnets = await this.RequestForCommonCarnets(
+        var requestForCommonCarnets = await RequestForCommonCarnets(
             new RequestForCommonCarnetFindManyArgs
             {
                 Where = new RequestForCommonCarnetWhereInput { Id = uniqueId.Id }
             }
         );
         var requestForCommonCarnet = requestForCommonCarnets.FirstOrDefault();
-        if (requestForCommonCarnet == null)
-        {
-            throw new NotFoundException();
-        }
+        if (requestForCommonCarnet == null) throw new NotFoundException();
 
         return requestForCommonCarnet;
     }
 
     /// <summary>
-    /// Update one REQUEST FOR COMMON CARNET
+    ///     Update one REQUEST FOR COMMON CARNET
     /// </summary>
     public async Task UpdateRequestForCommonCarnet(
         RequestForCommonCarnetWhereUniqueInput uniqueId,
@@ -188,13 +175,8 @@ public abstract class RequestForCommonCarnetsServiceBase : IRequestForCommonCarn
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.RequestForCommonCarnets.Any(e => e.Id == requestForCommonCarnet.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

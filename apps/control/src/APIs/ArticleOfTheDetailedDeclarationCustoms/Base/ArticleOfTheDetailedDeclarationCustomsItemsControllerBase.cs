@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ArticleOfTheDetailedDeclarationCustomsItemsControllerBase : ControllerBase
 {
     protected readonly IArticleOfTheDetailedDeclarationCustomsItemsService _service;
@@ -21,9 +20,9 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsControllerBase 
     }
 
     /// <summary>
-    /// Create one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ArticleOfTheDetailedDeclarationCustoms>
@@ -42,12 +41,12 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsControllerBase 
     }
 
     /// <summary>
-    /// Delete one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteArticleOfTheDetailedDeclarationCustoms(
-        [FromRoute()] ArticleOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] ArticleOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsControllerBase 
     }
 
     /// <summary>
-    /// Find many ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<ArticleOfTheDetailedDeclarationCustoms>>
     > ArticleOfTheDetailedDeclarationCustomsItems(
-        [FromQuery()] ArticleOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] ArticleOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.ArticleOfTheDetailedDeclarationCustomsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about ARTICLE OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about ARTICLE OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ArticleOfTheDetailedDeclarationCustomsItemsMeta(
-        [FromQuery()] ArticleOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] ArticleOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.ArticleOfTheDetailedDeclarationCustomsItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ArticleOfTheDetailedDeclarationCustoms>
     > ArticleOfTheDetailedDeclarationCustoms(
-        [FromRoute()] ArticleOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] ArticleOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,13 @@ public abstract class ArticleOfTheDetailedDeclarationCustomsItemsControllerBase 
     }
 
     /// <summary>
-    /// Update one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one ARTICLE OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateArticleOfTheDetailedDeclarationCustoms(
-        [FromRoute()] ArticleOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            ArticleOfTheDetailedDeclarationCustomsUpdateInput articleOfTheDetailedDeclarationCustomsUpdateDto
+        [FromRoute] ArticleOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
+        [FromQuery] ArticleOfTheDetailedDeclarationCustomsUpdateInput articleOfTheDetailedDeclarationCustomsUpdateDto
     )
     {
         try

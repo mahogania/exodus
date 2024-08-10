@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DetailsOfAtGoodsForActivePerfectingsControllerBase : ControllerBase
 {
     protected readonly IDetailsOfAtGoodsForActivePerfectingsService _service;
@@ -21,9 +20,9 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsControllerBase : Contr
     }
 
     /// <summary>
-    /// Create one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Create one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailsOfAtGoodsForActivePerfecting>
@@ -42,12 +41,12 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsControllerBase : Contr
     }
 
     /// <summary>
-    /// Delete one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Delete one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDetailsOfAtGoodsForActivePerfecting(
-        [FromRoute()] DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId
+        [FromRoute] DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsControllerBase : Contr
     }
 
     /// <summary>
-    /// Find many DETAILS OF AT GOODS FOR ACTIVE PERFECTINGS
+    ///     Find many DETAILS OF AT GOODS FOR ACTIVE PERFECTINGS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<DetailsOfAtGoodsForActivePerfecting>>
     > DetailsOfAtGoodsForActivePerfectings(
-        [FromQuery()] DetailsOfAtGoodsForActivePerfectingFindManyArgs filter
+        [FromQuery] DetailsOfAtGoodsForActivePerfectingFindManyArgs filter
     )
     {
         return Ok(await _service.DetailsOfAtGoodsForActivePerfectings(filter));
     }
 
     /// <summary>
-    /// Meta data about DETAILS OF AT GOODS FOR ACTIVE PERFECTING records
+    ///     Meta data about DETAILS OF AT GOODS FOR ACTIVE PERFECTING records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DetailsOfAtGoodsForActivePerfectingsMeta(
-        [FromQuery()] DetailsOfAtGoodsForActivePerfectingFindManyArgs filter
+        [FromQuery] DetailsOfAtGoodsForActivePerfectingFindManyArgs filter
     )
     {
         return Ok(await _service.DetailsOfAtGoodsForActivePerfectingsMeta(filter));
     }
 
     /// <summary>
-    /// Get one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Get one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailsOfAtGoodsForActivePerfecting>
     > DetailsOfAtGoodsForActivePerfecting(
-        [FromRoute()] DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId
+        [FromRoute] DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,13 @@ public abstract class DetailsOfAtGoodsForActivePerfectingsControllerBase : Contr
     }
 
     /// <summary>
-    /// Update one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
+    ///     Update one DETAILS OF AT GOODS FOR ACTIVE PERFECTING
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDetailsOfAtGoodsForActivePerfecting(
-        [FromRoute()] DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId,
-        [FromQuery()]
-            DetailsOfAtGoodsForActivePerfectingUpdateInput detailsOfAtGoodsForActivePerfectingUpdateDto
+        [FromRoute] DetailsOfAtGoodsForActivePerfectingWhereUniqueInput uniqueId,
+        [FromQuery] DetailsOfAtGoodsForActivePerfectingUpdateInput detailsOfAtGoodsForActivePerfectingUpdateDto
     )
     {
         try

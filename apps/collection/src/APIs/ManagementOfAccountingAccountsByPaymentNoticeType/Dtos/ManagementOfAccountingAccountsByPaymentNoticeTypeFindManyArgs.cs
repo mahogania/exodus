@@ -1,5 +1,4 @@
 using Collection.APIs.Common;
-using Collection.Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs.Dtos;
@@ -9,4 +8,6 @@ public class ManagementOfAccountingAccountsByPaymentNoticeTypeFindManyArgs
     : FindManyInput<
         ManagementOfAccountingAccountsByPaymentNoticeType,
         ManagementOfAccountingAccountsByPaymentNoticeTypeWhereInput
-    > { }
+    >
+{
+}

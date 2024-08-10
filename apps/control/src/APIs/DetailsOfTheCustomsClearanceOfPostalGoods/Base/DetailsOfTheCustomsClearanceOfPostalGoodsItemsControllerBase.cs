@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DetailsOfTheCustomsClearanceOfPostalGoodsItemsControllerBase : ControllerBase
 {
     protected readonly IDetailsOfTheCustomsClearanceOfPostalGoodsItemsService _service;
@@ -21,9 +20,9 @@ public abstract class DetailsOfTheCustomsClearanceOfPostalGoodsItemsControllerBa
     }
 
     /// <summary>
-    /// Create one DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Create one DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailsOfTheCustomsClearanceOfPostalGoods>
@@ -42,12 +41,12 @@ public abstract class DetailsOfTheCustomsClearanceOfPostalGoodsItemsControllerBa
     }
 
     /// <summary>
-    /// Delete one DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Delete one DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDetailsOfTheCustomsClearanceOfPostalGoods(
-        [FromRoute()] DetailsOfTheCustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
+        [FromRoute] DetailsOfTheCustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class DetailsOfTheCustomsClearanceOfPostalGoodsItemsControllerBa
     }
 
     /// <summary>
-    /// Find many DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODSItems
+    ///     Find many DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODSItems
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<DetailsOfTheCustomsClearanceOfPostalGoods>>
     > DetailsOfTheCustomsClearanceOfPostalGoodsItems(
-        [FromQuery()] DetailsOfTheCustomsClearanceOfPostalGoodsFindManyArgs filter
+        [FromQuery] DetailsOfTheCustomsClearanceOfPostalGoodsFindManyArgs filter
     )
     {
         return Ok(await _service.DetailsOfTheCustomsClearanceOfPostalGoodsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODS records
+    ///     Meta data about DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODS records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DetailsOfTheCustomsClearanceOfPostalGoodsItemsMeta(
-        [FromQuery()] DetailsOfTheCustomsClearanceOfPostalGoodsFindManyArgs filter
+        [FromQuery] DetailsOfTheCustomsClearanceOfPostalGoodsFindManyArgs filter
     )
     {
         return Ok(await _service.DetailsOfTheCustomsClearanceOfPostalGoodsItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Get one DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailsOfTheCustomsClearanceOfPostalGoods>
     > DetailsOfTheCustomsClearanceOfPostalGoods(
-        [FromRoute()] DetailsOfTheCustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
+        [FromRoute] DetailsOfTheCustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,14 @@ public abstract class DetailsOfTheCustomsClearanceOfPostalGoodsItemsControllerBa
     }
 
     /// <summary>
-    /// Update one DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODS
+    ///     Update one DETAILS OF THE CUSTOMS CLEARANCE OF POSTAL GOODS
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDetailsOfTheCustomsClearanceOfPostalGoods(
-        [FromRoute()] DetailsOfTheCustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            DetailsOfTheCustomsClearanceOfPostalGoodsUpdateInput detailsOfTheCustomsClearanceOfPostalGoodsUpdateDto
+        [FromRoute] DetailsOfTheCustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId,
+        [FromQuery]
+        DetailsOfTheCustomsClearanceOfPostalGoodsUpdateInput detailsOfTheCustomsClearanceOfPostalGoodsUpdateDto
     )
     {
         try

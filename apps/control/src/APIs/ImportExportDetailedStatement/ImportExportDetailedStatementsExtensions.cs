@@ -30,7 +30,7 @@ public static class ImportExportDetailedStatementsExtensions
             ShCode = model.ShCode,
             SuppressionOn = model.SuppressionOn,
             TechniqueName = model.TechniqueName,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -61,14 +61,8 @@ public static class ImportExportDetailedStatementsExtensions
             TechniqueName = updateDto.TechniqueName
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            importExportDetailedStatement.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            importExportDetailedStatement.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) importExportDetailedStatement.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) importExportDetailedStatement.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return importExportDetailedStatement;
     }

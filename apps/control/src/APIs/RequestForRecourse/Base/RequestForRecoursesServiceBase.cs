@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class RequestForRecoursesServiceBase : IRequestForRecoursesServi
     }
 
     /// <summary>
-    /// Create one REQUEST FOR RECOURSE
+    ///     Create one REQUEST FOR RECOURSE
     /// </summary>
     public async Task<RequestForRecourse> CreateRequestForRecourse(
         RequestForRecourseCreateInput createDto
@@ -31,41 +30,32 @@ public abstract class RequestForRecoursesServiceBase : IRequestForRecoursesServi
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            requestForRecourse.Id = createDto.Id;
-        }
+        if (createDto.Id != null) requestForRecourse.Id = createDto.Id;
 
         _context.RequestForRecourses.Add(requestForRecourse);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<RequestForRecourseDbModel>(requestForRecourse.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one REQUEST FOR RECOURSE
+    ///     Delete one REQUEST FOR RECOURSE
     /// </summary>
     public async Task DeleteRequestForRecourse(RequestForRecourseWhereUniqueInput uniqueId)
     {
         var requestForRecourse = await _context.RequestForRecourses.FindAsync(uniqueId.Id);
-        if (requestForRecourse == null)
-        {
-            throw new NotFoundException();
-        }
+        if (requestForRecourse == null) throw new NotFoundException();
 
         _context.RequestForRecourses.Remove(requestForRecourse);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many REQUEST FOR RECOURSES
+    ///     Find many REQUEST FOR RECOURSES
     /// </summary>
     public async Task<List<RequestForRecourse>> RequestForRecourses(
         RequestForRecourseFindManyArgs findManyArgs
@@ -81,7 +71,7 @@ public abstract class RequestForRecoursesServiceBase : IRequestForRecoursesServi
     }
 
     /// <summary>
-    /// Meta data about REQUEST FOR RECOURSE records
+    ///     Meta data about REQUEST FOR RECOURSE records
     /// </summary>
     public async Task<MetadataDto> RequestForRecoursesMeta(
         RequestForRecourseFindManyArgs findManyArgs
@@ -93,29 +83,26 @@ public abstract class RequestForRecoursesServiceBase : IRequestForRecoursesServi
     }
 
     /// <summary>
-    /// Get one REQUEST FOR RECOURSE
+    ///     Get one REQUEST FOR RECOURSE
     /// </summary>
     public async Task<RequestForRecourse> RequestForRecourse(
         RequestForRecourseWhereUniqueInput uniqueId
     )
     {
-        var requestForRecourses = await this.RequestForRecourses(
+        var requestForRecourses = await RequestForRecourses(
             new RequestForRecourseFindManyArgs
             {
                 Where = new RequestForRecourseWhereInput { Id = uniqueId.Id }
             }
         );
         var requestForRecourse = requestForRecourses.FirstOrDefault();
-        if (requestForRecourse == null)
-        {
-            throw new NotFoundException();
-        }
+        if (requestForRecourse == null) throw new NotFoundException();
 
         return requestForRecourse;
     }
 
     /// <summary>
-    /// Update one REQUEST FOR RECOURSE
+    ///     Update one REQUEST FOR RECOURSE
     /// </summary>
     public async Task UpdateRequestForRecourse(
         RequestForRecourseWhereUniqueInput uniqueId,
@@ -133,13 +120,8 @@ public abstract class RequestForRecoursesServiceBase : IRequestForRecoursesServi
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.RequestForRecourses.Any(e => e.Id == requestForRecourse.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

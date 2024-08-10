@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class RemovalOrdersServiceBase : IRemovalOrdersService
     }
 
     /// <summary>
-    /// Create one REMOVAL ORDER
+    ///     Create one REMOVAL ORDER
     /// </summary>
     public async Task<RemovalOrder> CreateRemovalOrder(RemovalOrderCreateInput createDto)
     {
@@ -61,41 +60,32 @@ public abstract class RemovalOrdersServiceBase : IRemovalOrdersService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            removalOrder.Id = createDto.Id;
-        }
+        if (createDto.Id != null) removalOrder.Id = createDto.Id;
 
         _context.RemovalOrders.Add(removalOrder);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<RemovalOrderDbModel>(removalOrder.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one REMOVAL ORDER
+    ///     Delete one REMOVAL ORDER
     /// </summary>
     public async Task DeleteRemovalOrder(RemovalOrderWhereUniqueInput uniqueId)
     {
         var removalOrder = await _context.RemovalOrders.FindAsync(uniqueId.Id);
-        if (removalOrder == null)
-        {
-            throw new NotFoundException();
-        }
+        if (removalOrder == null) throw new NotFoundException();
 
         _context.RemovalOrders.Remove(removalOrder);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many REMOVAL ORDERS
+    ///     Find many REMOVAL ORDERS
     /// </summary>
     public async Task<List<RemovalOrder>> RemovalOrders(RemovalOrderFindManyArgs findManyArgs)
     {
@@ -109,7 +99,7 @@ public abstract class RemovalOrdersServiceBase : IRemovalOrdersService
     }
 
     /// <summary>
-    /// Meta data about REMOVAL ORDER records
+    ///     Meta data about REMOVAL ORDER records
     /// </summary>
     public async Task<MetadataDto> RemovalOrdersMeta(RemovalOrderFindManyArgs findManyArgs)
     {
@@ -119,24 +109,21 @@ public abstract class RemovalOrdersServiceBase : IRemovalOrdersService
     }
 
     /// <summary>
-    /// Get one REMOVAL ORDER
+    ///     Get one REMOVAL ORDER
     /// </summary>
     public async Task<RemovalOrder> RemovalOrder(RemovalOrderWhereUniqueInput uniqueId)
     {
-        var removalOrders = await this.RemovalOrders(
+        var removalOrders = await RemovalOrders(
             new RemovalOrderFindManyArgs { Where = new RemovalOrderWhereInput { Id = uniqueId.Id } }
         );
         var removalOrder = removalOrders.FirstOrDefault();
-        if (removalOrder == null)
-        {
-            throw new NotFoundException();
-        }
+        if (removalOrder == null) throw new NotFoundException();
 
         return removalOrder;
     }
 
     /// <summary>
-    /// Update one REMOVAL ORDER
+    ///     Update one REMOVAL ORDER
     /// </summary>
     public async Task UpdateRemovalOrder(
         RemovalOrderWhereUniqueInput uniqueId,
@@ -154,13 +141,8 @@ public abstract class RemovalOrdersServiceBase : IRemovalOrdersService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.RemovalOrders.Any(e => e.Id == removalOrder.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

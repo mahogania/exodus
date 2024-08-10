@@ -31,7 +31,7 @@ public static class VariousRequestsExtensions
             RequestNo = model.RequestNo,
             RequestTypeCode = model.RequestTypeCode,
             ServiceCode = model.ServiceCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -65,14 +65,8 @@ public static class VariousRequestsExtensions
             ServiceCode = updateDto.ServiceCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            variousRequest.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            variousRequest.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) variousRequest.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) variousRequest.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return variousRequest;
     }

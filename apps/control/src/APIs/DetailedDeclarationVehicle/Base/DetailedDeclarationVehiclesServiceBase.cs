@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class DetailedDeclarationVehiclesServiceBase : IDetailedDeclarat
     }
 
     /// <summary>
-    /// Create one DETAILED DECLARATION VEHICLE
+    ///     Create one DETAILED DECLARATION VEHICLE
     /// </summary>
     public async Task<DetailedDeclarationVehicle> CreateDetailedDeclarationVehicle(
         DetailedDeclarationVehicleCreateInput createDto
@@ -65,10 +64,7 @@ public abstract class DetailedDeclarationVehiclesServiceBase : IDetailedDeclarat
             YearOfManufacture = createDto.YearOfManufacture
         };
 
-        if (createDto.Id != null)
-        {
-            detailedDeclarationVehicle.Id = createDto.Id;
-        }
+        if (createDto.Id != null) detailedDeclarationVehicle.Id = createDto.Id;
 
         _context.DetailedDeclarationVehicles.Add(detailedDeclarationVehicle);
         await _context.SaveChangesAsync();
@@ -77,16 +73,13 @@ public abstract class DetailedDeclarationVehiclesServiceBase : IDetailedDeclarat
             detailedDeclarationVehicle.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DETAILED DECLARATION VEHICLE
+    ///     Delete one DETAILED DECLARATION VEHICLE
     /// </summary>
     public async Task DeleteDetailedDeclarationVehicle(
         DetailedDeclarationVehicleWhereUniqueInput uniqueId
@@ -95,17 +88,14 @@ public abstract class DetailedDeclarationVehiclesServiceBase : IDetailedDeclarat
         var detailedDeclarationVehicle = await _context.DetailedDeclarationVehicles.FindAsync(
             uniqueId.Id
         );
-        if (detailedDeclarationVehicle == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailedDeclarationVehicle == null) throw new NotFoundException();
 
         _context.DetailedDeclarationVehicles.Remove(detailedDeclarationVehicle);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many DETAILED DECLARATION VEHICLES
+    ///     Find many DETAILED DECLARATION VEHICLES
     /// </summary>
     public async Task<List<DetailedDeclarationVehicle>> DetailedDeclarationVehicles(
         DetailedDeclarationVehicleFindManyArgs findManyArgs
@@ -123,7 +113,7 @@ public abstract class DetailedDeclarationVehiclesServiceBase : IDetailedDeclarat
     }
 
     /// <summary>
-    /// Meta data about DETAILED DECLARATION VEHICLE records
+    ///     Meta data about DETAILED DECLARATION VEHICLE records
     /// </summary>
     public async Task<MetadataDto> DetailedDeclarationVehiclesMeta(
         DetailedDeclarationVehicleFindManyArgs findManyArgs
@@ -137,29 +127,26 @@ public abstract class DetailedDeclarationVehiclesServiceBase : IDetailedDeclarat
     }
 
     /// <summary>
-    /// Get one DETAILED DECLARATION VEHICLE
+    ///     Get one DETAILED DECLARATION VEHICLE
     /// </summary>
     public async Task<DetailedDeclarationVehicle> DetailedDeclarationVehicle(
         DetailedDeclarationVehicleWhereUniqueInput uniqueId
     )
     {
-        var detailedDeclarationVehicles = await this.DetailedDeclarationVehicles(
+        var detailedDeclarationVehicles = await DetailedDeclarationVehicles(
             new DetailedDeclarationVehicleFindManyArgs
             {
                 Where = new DetailedDeclarationVehicleWhereInput { Id = uniqueId.Id }
             }
         );
         var detailedDeclarationVehicle = detailedDeclarationVehicles.FirstOrDefault();
-        if (detailedDeclarationVehicle == null)
-        {
-            throw new NotFoundException();
-        }
+        if (detailedDeclarationVehicle == null) throw new NotFoundException();
 
         return detailedDeclarationVehicle;
     }
 
     /// <summary>
-    /// Update one DETAILED DECLARATION VEHICLE
+    ///     Update one DETAILED DECLARATION VEHICLE
     /// </summary>
     public async Task UpdateDetailedDeclarationVehicle(
         DetailedDeclarationVehicleWhereUniqueInput uniqueId,
@@ -181,13 +168,8 @@ public abstract class DetailedDeclarationVehiclesServiceBase : IDetailedDeclarat
                     e.Id == detailedDeclarationVehicle.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

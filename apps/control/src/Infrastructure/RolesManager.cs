@@ -18,19 +18,14 @@ public class RolesManager
 
         var _roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
         if (_roleManager != null)
-        {
             foreach (var roleName in amplicationRoles)
             {
-                if (string.IsNullOrWhiteSpace(roleName))
-                {
-                    continue;
-                }
-                IdentityRole? role = await _roleManager.FindByNameAsync(roleName);
+                if (string.IsNullOrWhiteSpace(roleName)) continue;
+                var role = await _roleManager.FindByNameAsync(roleName);
                 if (role == null)
                 {
                     var results = await _roleManager.CreateAsync(new IdentityRole(roleName));
                 }
             }
-        }
     }
 }

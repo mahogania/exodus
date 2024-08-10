@@ -29,7 +29,7 @@ public static class OthersItemsExtensions
             RegistrationReasonContent = model.RegistrationReasonContent,
             ServiceCode = model.ServiceCode,
             TaxpayerIdentificationNo = model.TaxpayerIdentificationNo,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -61,14 +61,8 @@ public static class OthersItemsExtensions
             TaxpayerIdentificationNo = updateDto.TaxpayerIdentificationNo
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            others.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            others.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) others.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) others.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return others;
     }

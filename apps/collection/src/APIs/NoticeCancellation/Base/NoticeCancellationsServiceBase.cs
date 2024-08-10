@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class NoticeCancellationsServiceBase : INoticeCancellationsServi
     }
 
     /// <summary>
-    /// Create one NOTICE CANCELLATION
+    ///     Create one NOTICE CANCELLATION
     /// </summary>
     public async Task<NoticeCancellation> CreateNoticeCancellation(
         NoticeCancellationCreateInput createDto
@@ -46,41 +45,32 @@ public abstract class NoticeCancellationsServiceBase : INoticeCancellationsServi
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            noticeCancellation.Id = createDto.Id;
-        }
+        if (createDto.Id != null) noticeCancellation.Id = createDto.Id;
 
         _context.NoticeCancellations.Add(noticeCancellation);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<NoticeCancellationDbModel>(noticeCancellation.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one NOTICE CANCELLATION
+    ///     Delete one NOTICE CANCELLATION
     /// </summary>
     public async Task DeleteNoticeCancellation(NoticeCancellationWhereUniqueInput uniqueId)
     {
         var noticeCancellation = await _context.NoticeCancellations.FindAsync(uniqueId.Id);
-        if (noticeCancellation == null)
-        {
-            throw new NotFoundException();
-        }
+        if (noticeCancellation == null) throw new NotFoundException();
 
         _context.NoticeCancellations.Remove(noticeCancellation);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many NOTICE CANCELLATIONS
+    ///     Find many NOTICE CANCELLATIONS
     /// </summary>
     public async Task<List<NoticeCancellation>> NoticeCancellations(
         NoticeCancellationFindManyArgs findManyArgs
@@ -96,7 +86,7 @@ public abstract class NoticeCancellationsServiceBase : INoticeCancellationsServi
     }
 
     /// <summary>
-    /// Meta data about NOTICE CANCELLATION records
+    ///     Meta data about NOTICE CANCELLATION records
     /// </summary>
     public async Task<MetadataDto> NoticeCancellationsMeta(
         NoticeCancellationFindManyArgs findManyArgs
@@ -108,29 +98,26 @@ public abstract class NoticeCancellationsServiceBase : INoticeCancellationsServi
     }
 
     /// <summary>
-    /// Get one NOTICE CANCELLATION
+    ///     Get one NOTICE CANCELLATION
     /// </summary>
     public async Task<NoticeCancellation> NoticeCancellation(
         NoticeCancellationWhereUniqueInput uniqueId
     )
     {
-        var noticeCancellations = await this.NoticeCancellations(
+        var noticeCancellations = await NoticeCancellations(
             new NoticeCancellationFindManyArgs
             {
                 Where = new NoticeCancellationWhereInput { Id = uniqueId.Id }
             }
         );
         var noticeCancellation = noticeCancellations.FirstOrDefault();
-        if (noticeCancellation == null)
-        {
-            throw new NotFoundException();
-        }
+        if (noticeCancellation == null) throw new NotFoundException();
 
         return noticeCancellation;
     }
 
     /// <summary>
-    /// Update one NOTICE CANCELLATION
+    ///     Update one NOTICE CANCELLATION
     /// </summary>
     public async Task UpdateNoticeCancellation(
         NoticeCancellationWhereUniqueInput uniqueId,
@@ -148,13 +135,8 @@ public abstract class NoticeCancellationsServiceBase : INoticeCancellationsServi
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.NoticeCancellations.Any(e => e.Id == noticeCancellation.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

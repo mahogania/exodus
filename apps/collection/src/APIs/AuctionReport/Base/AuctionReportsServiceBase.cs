@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class AuctionReportsServiceBase : IAuctionReportsService
     }
 
     /// <summary>
-    /// Create one AUCTION REPORT
+    ///     Create one AUCTION REPORT
     /// </summary>
     public async Task<AuctionReport> CreateAuctionReport(AuctionReportCreateInput createDto)
     {
@@ -61,41 +60,32 @@ public abstract class AuctionReportsServiceBase : IAuctionReportsService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            auctionReport.Id = createDto.Id;
-        }
+        if (createDto.Id != null) auctionReport.Id = createDto.Id;
 
         _context.AuctionReports.Add(auctionReport);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<AuctionReportDbModel>(auctionReport.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one AUCTION REPORT
+    ///     Delete one AUCTION REPORT
     /// </summary>
     public async Task DeleteAuctionReport(AuctionReportWhereUniqueInput uniqueId)
     {
         var auctionReport = await _context.AuctionReports.FindAsync(uniqueId.Id);
-        if (auctionReport == null)
-        {
-            throw new NotFoundException();
-        }
+        if (auctionReport == null) throw new NotFoundException();
 
         _context.AuctionReports.Remove(auctionReport);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many AUCTION REPORTS
+    ///     Find many AUCTION REPORTS
     /// </summary>
     public async Task<List<AuctionReport>> AuctionReports(AuctionReportFindManyArgs findManyArgs)
     {
@@ -109,7 +99,7 @@ public abstract class AuctionReportsServiceBase : IAuctionReportsService
     }
 
     /// <summary>
-    /// Meta data about AUCTION REPORT records
+    ///     Meta data about AUCTION REPORT records
     /// </summary>
     public async Task<MetadataDto> AuctionReportsMeta(AuctionReportFindManyArgs findManyArgs)
     {
@@ -119,27 +109,24 @@ public abstract class AuctionReportsServiceBase : IAuctionReportsService
     }
 
     /// <summary>
-    /// Get one AUCTION REPORT
+    ///     Get one AUCTION REPORT
     /// </summary>
     public async Task<AuctionReport> AuctionReport(AuctionReportWhereUniqueInput uniqueId)
     {
-        var auctionReports = await this.AuctionReports(
+        var auctionReports = await AuctionReports(
             new AuctionReportFindManyArgs
             {
                 Where = new AuctionReportWhereInput { Id = uniqueId.Id }
             }
         );
         var auctionReport = auctionReports.FirstOrDefault();
-        if (auctionReport == null)
-        {
-            throw new NotFoundException();
-        }
+        if (auctionReport == null) throw new NotFoundException();
 
         return auctionReport;
     }
 
     /// <summary>
-    /// Update one AUCTION REPORT
+    ///     Update one AUCTION REPORT
     /// </summary>
     public async Task UpdateAuctionReport(
         AuctionReportWhereUniqueInput uniqueId,
@@ -157,13 +144,8 @@ public abstract class AuctionReportsServiceBase : IAuctionReportsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.AuctionReports.Any(e => e.Id == auctionReport.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

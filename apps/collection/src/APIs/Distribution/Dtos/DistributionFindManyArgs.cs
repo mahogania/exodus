@@ -1,8 +1,9 @@
 using Collection.APIs.Common;
-using Collection.Infrastructure.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Collection.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
-public class DistributionFindManyArgs : FindManyInput<Distribution, DistributionWhereInput> { }
+public class DistributionFindManyArgs : FindManyInput<Distribution, DistributionWhereInput>
+{
+}

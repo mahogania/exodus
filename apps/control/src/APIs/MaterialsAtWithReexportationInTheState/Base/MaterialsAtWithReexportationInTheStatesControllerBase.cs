@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class MaterialsAtWithReexportationInTheStatesControllerBase : ControllerBase
 {
     protected readonly IMaterialsAtWithReexportationInTheStatesService _service;
@@ -21,9 +20,9 @@ public abstract class MaterialsAtWithReexportationInTheStatesControllerBase : Co
     }
 
     /// <summary>
-    /// Create one MATERIALS AT WITH REEXPORTATION IN THE STATE
+    ///     Create one MATERIALS AT WITH REEXPORTATION IN THE STATE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<MaterialsAtWithReexportationInTheState>
@@ -42,12 +41,12 @@ public abstract class MaterialsAtWithReexportationInTheStatesControllerBase : Co
     }
 
     /// <summary>
-    /// Delete one MATERIALS AT WITH REEXPORTATION IN THE STATE
+    ///     Delete one MATERIALS AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteMaterialsAtWithReexportationInTheState(
-        [FromRoute()] MaterialsAtWithReexportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] MaterialsAtWithReexportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class MaterialsAtWithReexportationInTheStatesControllerBase : Co
     }
 
     /// <summary>
-    /// Find many MATERIALS AT WITH REEXPORTATION IN THE STATES
+    ///     Find many MATERIALS AT WITH REEXPORTATION IN THE STATES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<MaterialsAtWithReexportationInTheState>>
     > MaterialsAtWithReexportationInTheStates(
-        [FromQuery()] MaterialsAtWithReexportationInTheStateFindManyArgs filter
+        [FromQuery] MaterialsAtWithReexportationInTheStateFindManyArgs filter
     )
     {
         return Ok(await _service.MaterialsAtWithReexportationInTheStates(filter));
     }
 
     /// <summary>
-    /// Meta data about MATERIALS AT WITH REEXPORTATION IN THE STATE records
+    ///     Meta data about MATERIALS AT WITH REEXPORTATION IN THE STATE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> MaterialsAtWithReexportationInTheStatesMeta(
-        [FromQuery()] MaterialsAtWithReexportationInTheStateFindManyArgs filter
+        [FromQuery] MaterialsAtWithReexportationInTheStateFindManyArgs filter
     )
     {
         return Ok(await _service.MaterialsAtWithReexportationInTheStatesMeta(filter));
     }
 
     /// <summary>
-    /// Get one MATERIALS AT WITH REEXPORTATION IN THE STATE
+    ///     Get one MATERIALS AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<MaterialsAtWithReexportationInTheState>
     > MaterialsAtWithReexportationInTheState(
-        [FromRoute()] MaterialsAtWithReexportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] MaterialsAtWithReexportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,13 @@ public abstract class MaterialsAtWithReexportationInTheStatesControllerBase : Co
     }
 
     /// <summary>
-    /// Update one MATERIALS AT WITH REEXPORTATION IN THE STATE
+    ///     Update one MATERIALS AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateMaterialsAtWithReexportationInTheState(
-        [FromRoute()] MaterialsAtWithReexportationInTheStateWhereUniqueInput uniqueId,
-        [FromQuery()]
-            MaterialsAtWithReexportationInTheStateUpdateInput materialsAtWithReexportationInTheStateUpdateDto
+        [FromRoute] MaterialsAtWithReexportationInTheStateWhereUniqueInput uniqueId,
+        [FromQuery] MaterialsAtWithReexportationInTheStateUpdateInput materialsAtWithReexportationInTheStateUpdateDto
     )
     {
         try

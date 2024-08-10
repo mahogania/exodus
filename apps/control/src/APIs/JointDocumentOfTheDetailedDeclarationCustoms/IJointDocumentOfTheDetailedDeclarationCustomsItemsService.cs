@@ -6,21 +6,21 @@ namespace Control.APIs;
 public interface IJointDocumentOfTheDetailedDeclarationCustomsItemsService
 {
     /// <summary>
-    /// Create one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task<JointDocumentOfTheDetailedDeclarationCustoms> CreateJointDocumentOfTheDetailedDeclarationCustoms(
         JointDocumentOfTheDetailedDeclarationCustomsCreateInput jointdocumentofthedetaileddeclarationcustoms
     );
 
     /// <summary>
-    /// Delete one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task DeleteJointDocumentOfTheDetailedDeclarationCustoms(
         JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Find many JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public Task<
         List<JointDocumentOfTheDetailedDeclarationCustoms>
@@ -29,21 +29,21 @@ public interface IJointDocumentOfTheDetailedDeclarationCustomsItemsService
     );
 
     /// <summary>
-    /// Meta data about JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public Task<MetadataDto> JointDocumentOfTheDetailedDeclarationCustomsItemsMeta(
         JointDocumentOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task<JointDocumentOfTheDetailedDeclarationCustoms> JointDocumentOfTheDetailedDeclarationCustoms(
         JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task UpdateJointDocumentOfTheDetailedDeclarationCustoms(
         JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,

@@ -13,7 +13,7 @@ public static class CommonActivePerfectioningGoodsRequestsExtensions
         {
             CreatedAt = model.CreatedAt,
             Id = model.Id,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -27,14 +27,8 @@ public static class CommonActivePerfectioningGoodsRequestsExtensions
             Id = uniqueId.Id
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            commonActivePerfectioningGoodsRequest.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            commonActivePerfectioningGoodsRequest.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) commonActivePerfectioningGoodsRequest.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) commonActivePerfectioningGoodsRequest.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return commonActivePerfectioningGoodsRequest;
     }

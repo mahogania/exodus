@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesControllerBase
     : ControllerBase
 {
@@ -22,9 +21,9 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesControll
     }
 
     /// <summary>
-    /// Create one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Create one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ManagementOfAccountingAccountsByPaymentNoticeType>
@@ -43,12 +42,12 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesControll
     }
 
     /// <summary>
-    /// Delete one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Delete one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteManagementOfAccountingAccountsByPaymentNoticeType(
-        [FromRoute()] ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId
+        [FromRoute] ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId
     )
     {
         try
@@ -64,41 +63,41 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesControll
     }
 
     /// <summary>
-    /// Find many MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPES
+    ///     Find many MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<ManagementOfAccountingAccountsByPaymentNoticeType>>
     > ManagementOfAccountingAccountsByPaymentNoticeTypes(
-        [FromQuery()] ManagementOfAccountingAccountsByPaymentNoticeTypeFindManyArgs filter
+        [FromQuery] ManagementOfAccountingAccountsByPaymentNoticeTypeFindManyArgs filter
     )
     {
         return Ok(await _service.ManagementOfAccountingAccountsByPaymentNoticeTypes(filter));
     }
 
     /// <summary>
-    /// Meta data about MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE records
+    ///     Meta data about MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > ManagementOfAccountingAccountsByPaymentNoticeTypesMeta(
-        [FromQuery()] ManagementOfAccountingAccountsByPaymentNoticeTypeFindManyArgs filter
+        [FromQuery] ManagementOfAccountingAccountsByPaymentNoticeTypeFindManyArgs filter
     )
     {
         return Ok(await _service.ManagementOfAccountingAccountsByPaymentNoticeTypesMeta(filter));
     }
 
     /// <summary>
-    /// Get one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Get one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ManagementOfAccountingAccountsByPaymentNoticeType>
     > ManagementOfAccountingAccountsByPaymentNoticeType(
-        [FromRoute()] ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId
+        [FromRoute] ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId
     )
     {
         try
@@ -112,14 +111,14 @@ public abstract class ManagementOfAccountingAccountsByPaymentNoticeTypesControll
     }
 
     /// <summary>
-    /// Update one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
+    ///     Update one MANAGEMENT OF ACCOUNTING ACCOUNTS BY PAYMENT NOTICE TYPE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateManagementOfAccountingAccountsByPaymentNoticeType(
-        [FromRoute()] ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId,
-        [FromQuery()]
-            ManagementOfAccountingAccountsByPaymentNoticeTypeUpdateInput managementOfAccountingAccountsByPaymentNoticeTypeUpdateDto
+        [FromRoute] ManagementOfAccountingAccountsByPaymentNoticeTypeWhereUniqueInput uniqueId,
+        [FromQuery] ManagementOfAccountingAccountsByPaymentNoticeTypeUpdateInput
+            managementOfAccountingAccountsByPaymentNoticeTypeUpdateDto
     )
     {
         try

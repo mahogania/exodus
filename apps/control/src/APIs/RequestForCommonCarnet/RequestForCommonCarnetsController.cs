@@ -2,9 +2,11 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Control.APIs;
 
-[ApiController()]
+[ApiController]
 public class RequestForCommonCarnetsController : RequestForCommonCarnetsControllerBase
 {
     public RequestForCommonCarnetsController(IRequestForCommonCarnetsService service)
-        : base(service) { }
+        : base(service)
+    {
+    }
 }

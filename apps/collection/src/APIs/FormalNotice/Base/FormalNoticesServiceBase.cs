@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class FormalNoticesServiceBase : IFormalNoticesService
     }
 
     /// <summary>
-    /// Create one FORMAL NOTICE
+    ///     Create one FORMAL NOTICE
     /// </summary>
     public async Task<FormalNotice> CreateFormalNotice(FormalNoticeCreateInput createDto)
     {
@@ -43,41 +42,32 @@ public abstract class FormalNoticesServiceBase : IFormalNoticesService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            formalNotice.Id = createDto.Id;
-        }
+        if (createDto.Id != null) formalNotice.Id = createDto.Id;
 
         _context.FormalNotices.Add(formalNotice);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<FormalNoticeDbModel>(formalNotice.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one FORMAL NOTICE
+    ///     Delete one FORMAL NOTICE
     /// </summary>
     public async Task DeleteFormalNotice(FormalNoticeWhereUniqueInput uniqueId)
     {
         var formalNotice = await _context.FormalNotices.FindAsync(uniqueId.Id);
-        if (formalNotice == null)
-        {
-            throw new NotFoundException();
-        }
+        if (formalNotice == null) throw new NotFoundException();
 
         _context.FormalNotices.Remove(formalNotice);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many FORMAL NOTICES
+    ///     Find many FORMAL NOTICES
     /// </summary>
     public async Task<List<FormalNotice>> FormalNotices(FormalNoticeFindManyArgs findManyArgs)
     {
@@ -91,7 +81,7 @@ public abstract class FormalNoticesServiceBase : IFormalNoticesService
     }
 
     /// <summary>
-    /// Meta data about FORMAL NOTICE records
+    ///     Meta data about FORMAL NOTICE records
     /// </summary>
     public async Task<MetadataDto> FormalNoticesMeta(FormalNoticeFindManyArgs findManyArgs)
     {
@@ -101,24 +91,21 @@ public abstract class FormalNoticesServiceBase : IFormalNoticesService
     }
 
     /// <summary>
-    /// Get one FORMAL NOTICE
+    ///     Get one FORMAL NOTICE
     /// </summary>
     public async Task<FormalNotice> FormalNotice(FormalNoticeWhereUniqueInput uniqueId)
     {
-        var formalNotices = await this.FormalNotices(
+        var formalNotices = await FormalNotices(
             new FormalNoticeFindManyArgs { Where = new FormalNoticeWhereInput { Id = uniqueId.Id } }
         );
         var formalNotice = formalNotices.FirstOrDefault();
-        if (formalNotice == null)
-        {
-            throw new NotFoundException();
-        }
+        if (formalNotice == null) throw new NotFoundException();
 
         return formalNotice;
     }
 
     /// <summary>
-    /// Update one FORMAL NOTICE
+    ///     Update one FORMAL NOTICE
     /// </summary>
     public async Task UpdateFormalNotice(
         FormalNoticeWhereUniqueInput uniqueId,
@@ -136,13 +123,8 @@ public abstract class FormalNoticesServiceBase : IFormalNoticesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.FormalNotices.Any(e => e.Id == formalNotice.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

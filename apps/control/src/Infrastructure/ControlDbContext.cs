@@ -8,7 +8,9 @@ namespace Control.Infrastructure;
 public class ControlDbContext : IdentityDbContext<IdentityUser>
 {
     public ControlDbContext(DbContextOptions<ControlDbContext> options)
-        : base(options) { }
+        : base(options)
+    {
+    }
 
     public DbSet<DirectImportationExportationDbModel> DirectImportationExportations { get; set; }
 
@@ -26,7 +28,11 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<TemporaryAdmissionForPerfectionDbModel> TemporaryAdmissionForPerfections { get; set; }
 
-    public DbSet<ArticleOfTheDetailedDeclarationCustomsDbModel> ArticleOfTheDetailedDeclarationCustomsItems { get; set; }
+    public DbSet<ArticleOfTheDetailedDeclarationCustomsDbModel> ArticleOfTheDetailedDeclarationCustomsItems
+    {
+        get;
+        set;
+    }
 
     public DbSet<ForeignOperatorRequestDbModel> ForeignOperatorRequests { get; set; }
 
@@ -44,13 +50,23 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<GoodsSubjectToAuthorizationDbModel> GoodsSubjectToAuthorizations { get; set; }
 
-    public DbSet<SimplifiedCustomsClearanceOfPostalParcelsDbModel> SimplifiedCustomsClearanceOfPostalParcelsItems { get; set; }
+    public DbSet<SimplifiedCustomsClearanceOfPostalParcelsDbModel> SimplifiedCustomsClearanceOfPostalParcelsItems
+    {
+        get;
+        set;
+    }
 
-    public DbSet<DeclarationOfValueOfTheDetailedDeclarationCustomsDbModel> DeclarationOfValueOfTheDetailedDeclarationCustomsItems { get; set; }
+    public DbSet<DeclarationOfValueOfTheDetailedDeclarationCustomsDbModel>
+        DeclarationOfValueOfTheDetailedDeclarationCustomsItems { get; set; }
 
-    public DbSet<DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateDbModel> DefinitiveExportGoodsFollowedByAndWithReimportationInTheStates { get; set; }
+    public DbSet<DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateDbModel>
+        DefinitiveExportGoodsFollowedByAndWithReimportationInTheStates { get; set; }
 
-    public DbSet<PlaceOfExecutionAtWithReexportationInTheStateDbModel> PlaceOfExecutionAtWithReexportationInTheStates { get; set; }
+    public DbSet<PlaceOfExecutionAtWithReexportationInTheStateDbModel> PlaceOfExecutionAtWithReexportationInTheStates
+    {
+        get;
+        set;
+    }
 
     public DbSet<CustomsDeclarationBondDbModel> CustomsDeclarationBonds { get; set; }
 
@@ -70,13 +86,19 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<InformationOfGoodsAtAndStandardExchangeDbModel> InformationOfGoodsAtAndStandardExchanges { get; set; }
 
-    public DbSet<InformationOfGoodsTransferredInWarehousePublicPrivateDbModel> InformationOfGoodsTransferredInWarehousePublicPrivates { get; set; }
+    public DbSet<InformationOfGoodsTransferredInWarehousePublicPrivateDbModel>
+        InformationOfGoodsTransferredInWarehousePublicPrivates { get; set; }
 
-    public DbSet<ContainerOfTheDetailedDeclarationCustomsDbModel> ContainerOfTheDetailedDeclarationCustomsItems { get; set; }
+    public DbSet<ContainerOfTheDetailedDeclarationCustomsDbModel> ContainerOfTheDetailedDeclarationCustomsItems
+    {
+        get;
+        set;
+    }
 
     public DbSet<ImportedGoodsInformationDbModel> ImportedGoodsInformations { get; set; }
 
-    public DbSet<RequestForCancellationOfTheDetailedDeclarationCustomsDbModel> RequestForCancellationOfTheDetailedDeclarationCustomsItems { get; set; }
+    public DbSet<RequestForCancellationOfTheDetailedDeclarationCustomsDbModel>
+        RequestForCancellationOfTheDetailedDeclarationCustomsItems { get; set; }
 
     public DbSet<DemandForRcoClreDbModel> DemandForRcoClres { get; set; }
 
@@ -84,7 +106,11 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<DetailOfRequestForCertificateOfOriginDbModel> DetailOfRequestForCertificateOfOrigins { get; set; }
 
-    public DbSet<RawMaterialOfTheDetailedDeclarationCustomsDbModel> RawMaterialOfTheDetailedDeclarationCustomsItems { get; set; }
+    public DbSet<RawMaterialOfTheDetailedDeclarationCustomsDbModel> RawMaterialOfTheDetailedDeclarationCustomsItems
+    {
+        get;
+        set;
+    }
 
     public DbSet<ImportedMaterialWasteDbModel> ImportedMaterialWastes { get; set; }
 
@@ -98,39 +124,59 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<MacSubjectToAuthorizationDbModel> MacSubjectToAuthorizations { get; set; }
 
-    public DbSet<ModelSpecificationOfTheDetailedDeclarationCustomsDbModel> ModelSpecificationOfTheDetailedDeclarationCustomsItems { get; set; }
+    public DbSet<ModelSpecificationOfTheDetailedDeclarationCustomsDbModel>
+        ModelSpecificationOfTheDetailedDeclarationCustomsItems { get; set; }
 
     public DbSet<CommonActivePerfectioningGoodsRequestDbModel> CommonActivePerfectioningGoodsRequests { get; set; }
 
-    public DbSet<JointDocumentOfTheDetailedDeclarationCustomsDbModel> JointDocumentOfTheDetailedDeclarationCustomsItems { get; set; }
+    public DbSet<JointDocumentOfTheDetailedDeclarationCustomsDbModel> JointDocumentOfTheDetailedDeclarationCustomsItems
+    {
+        get;
+        set;
+    }
 
     public DbSet<AtWithReExportationInTheStateDbModel> AtWithReExportationInTheStates { get; set; }
 
-    public DbSet<CommonDetailedDeclarationCustomsValueAssessmentDbModel> CommonDetailedDeclarationCustomsValueAssessments { get; set; }
+    public DbSet<CommonDetailedDeclarationCustomsValueAssessmentDbModel>
+        CommonDetailedDeclarationCustomsValueAssessments { get; set; }
 
     public DbSet<RequestForRecourseDbModel> RequestForRecourses { get; set; }
 
     public DbSet<GoodsAndWithReImportationInStateDbModel> GoodsAndWithReImportationInStates { get; set; }
 
-    public DbSet<PlaceOfExecutionAndWithReImportationInStateDbModel> PlaceOfExecutionAndWithReImportationInStates { get; set; }
+    public DbSet<PlaceOfExecutionAndWithReImportationInStateDbModel> PlaceOfExecutionAndWithReImportationInStates
+    {
+        get;
+        set;
+    }
 
-    public DbSet<GoodsMacSuiteAtAndWithReExportationInStateDbModel> GoodsMacSuiteAtAndWithReExportationInStates { get; set; }
+    public DbSet<GoodsMacSuiteAtAndWithReExportationInStateDbModel> GoodsMacSuiteAtAndWithReExportationInStates
+    {
+        get;
+        set;
+    }
 
     public DbSet<ImportExportDetailedStatementDbModel> ImportExportDetailedStatements { get; set; }
 
-    public DbSet<RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsDbModel> RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItems { get; set; }
+    public DbSet<RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsDbModel>
+        RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsItems { get; set; }
 
     public DbSet<DetailedDeclarationVehicleDbModel> DetailedDeclarationVehicles { get; set; }
 
     public DbSet<ReplenishmentInDutyFreeDbModel> ReplenishmentInDutyFrees { get; set; }
 
-    public DbSet<CustomsDetailedDeclarationValueAssessmentArticleDbModel> CustomsDetailedDeclarationValueAssessmentArticles { get; set; }
+    public DbSet<CustomsDetailedDeclarationValueAssessmentArticleDbModel>
+        CustomsDetailedDeclarationValueAssessmentArticles { get; set; }
 
     public DbSet<DetailsOfTheApprovalOfTheRegimeRequestDbModel> DetailsOfTheApprovalOfTheRegimeRequests { get; set; }
 
     public DbSet<ExportedOrToBeExportedGoodsInformationDbModel> ExportedOrToBeExportedGoodsInformations { get; set; }
 
-    public DbSet<DetailsOfTheCustomsClearanceOfPostalGoodsDbModel> DetailsOfTheCustomsClearanceOfPostalGoodsItems { get; set; }
+    public DbSet<DetailsOfTheCustomsClearanceOfPostalGoodsDbModel> DetailsOfTheCustomsClearanceOfPostalGoodsItems
+    {
+        get;
+        set;
+    }
 
     public DbSet<RequestForTirCarnetOfTheArticleDbModel> RequestForTirCarnetOfTheArticles { get; set; }
 
@@ -138,7 +184,11 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<ExportedAndForImprovementGoodsDbModel> ExportedAndForImprovementGoodsItems { get; set; }
 
-    public DbSet<FinalExportFollowedByReimportationInTheStateDbModel> FinalExportFollowedByReimportationInTheStates { get; set; }
+    public DbSet<FinalExportFollowedByReimportationInTheStateDbModel> FinalExportFollowedByReimportationInTheStates
+    {
+        get;
+        set;
+    }
 
     public DbSet<CommonOriginCertificateRequestDbModel> CommonOriginCertificateRequests { get; set; }
 }

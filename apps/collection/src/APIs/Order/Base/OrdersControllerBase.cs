@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class OrdersControllerBase : ControllerBase
 {
     protected readonly IOrdersService _service;
@@ -19,9 +18,9 @@ public abstract class OrdersControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one ORDER
+    ///     Create one ORDER
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Order>> CreateOrder(OrderCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class OrdersControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one ORDER
+    ///     Delete one ORDER
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteOrder([FromRoute()] OrderWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteOrder([FromRoute] OrderWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,30 +49,30 @@ public abstract class OrdersControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many ORDERS
+    ///     Find many ORDERS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<List<Order>>> Orders([FromQuery()] OrderFindManyArgs filter)
+    public async Task<ActionResult<List<Order>>> Orders([FromQuery] OrderFindManyArgs filter)
     {
         return Ok(await _service.Orders(filter));
     }
 
     /// <summary>
-    /// Meta data about ORDER records
+    ///     Meta data about ORDER records
     /// </summary>
     [HttpPost("meta")]
-    public async Task<ActionResult<MetadataDto>> OrdersMeta([FromQuery()] OrderFindManyArgs filter)
+    public async Task<ActionResult<MetadataDto>> OrdersMeta([FromQuery] OrderFindManyArgs filter)
     {
         return Ok(await _service.OrdersMeta(filter));
     }
 
     /// <summary>
-    /// Get one ORDER
+    ///     Get one ORDER
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Order>> Order([FromRoute()] OrderWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Order>> Order([FromRoute] OrderWhereUniqueInput uniqueId)
     {
         try
         {
@@ -86,13 +85,13 @@ public abstract class OrdersControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one ORDER
+    ///     Update one ORDER
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateOrder(
-        [FromRoute()] OrderWhereUniqueInput uniqueId,
-        [FromQuery()] OrderUpdateInput orderUpdateDto
+        [FromRoute] OrderWhereUniqueInput uniqueId,
+        [FromQuery] OrderUpdateInput orderUpdateDto
     )
     {
         try

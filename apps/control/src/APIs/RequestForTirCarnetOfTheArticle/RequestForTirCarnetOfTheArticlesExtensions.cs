@@ -24,7 +24,7 @@ public static class RequestForTirCarnetOfTheArticlesExtensions
             SuppressionOn = model.SuppressionOn,
             TirRegistrationNumber = model.TirRegistrationNumber,
             UpdatedAt = model.UpdatedAt,
-            Weight = model.Weight,
+            Weight = model.Weight
         };
     }
 
@@ -49,14 +49,8 @@ public static class RequestForTirCarnetOfTheArticlesExtensions
             Weight = updateDto.Weight
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            requestForTirCarnetOfTheArticle.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            requestForTirCarnetOfTheArticle.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) requestForTirCarnetOfTheArticle.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) requestForTirCarnetOfTheArticle.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return requestForTirCarnetOfTheArticle;
     }

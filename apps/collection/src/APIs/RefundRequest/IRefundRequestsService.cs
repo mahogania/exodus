@@ -6,32 +6,32 @@ namespace Collection.APIs;
 public interface IRefundRequestsService
 {
     /// <summary>
-    /// Create one REFUND REQUEST
+    ///     Create one REFUND REQUEST
     /// </summary>
     public Task<RefundRequest> CreateRefundRequest(RefundRequestCreateInput refundrequest);
 
     /// <summary>
-    /// Delete one REFUND REQUEST
+    ///     Delete one REFUND REQUEST
     /// </summary>
     public Task DeleteRefundRequest(RefundRequestWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Find many REFUND REQUESTS
+    ///     Find many REFUND REQUESTS
     /// </summary>
     public Task<List<RefundRequest>> RefundRequests(RefundRequestFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Meta data about REFUND REQUEST records
+    ///     Meta data about REFUND REQUEST records
     /// </summary>
     public Task<MetadataDto> RefundRequestsMeta(RefundRequestFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Get one REFUND REQUEST
+    ///     Get one REFUND REQUEST
     /// </summary>
     public Task<RefundRequest> RefundRequest(RefundRequestWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Update one REFUND REQUEST
+    ///     Update one REFUND REQUEST
     /// </summary>
     public Task UpdateRefundRequest(
         RefundRequestWhereUniqueInput uniqueId,

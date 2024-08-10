@@ -28,7 +28,7 @@ public static class AtAndStandardExchangesExtensions
             SuppressionOn = model.SuppressionOn,
             UpdatedAt = model.UpdatedAt,
             WarrantyEndDate = model.WarrantyEndDate,
-            WarrantyFrame = model.WarrantyFrame,
+            WarrantyFrame = model.WarrantyFrame
         };
     }
 
@@ -59,14 +59,8 @@ public static class AtAndStandardExchangesExtensions
             WarrantyFrame = updateDto.WarrantyFrame
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            atAndStandardExchange.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            atAndStandardExchange.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) atAndStandardExchange.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) atAndStandardExchange.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return atAndStandardExchange;
     }

@@ -8,5 +8,7 @@ public class RequestForCancellationOfTheDetailedDeclarationCustomsItemsService
     public RequestForCancellationOfTheDetailedDeclarationCustomsItemsService(
         ControlDbContext context
     )
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

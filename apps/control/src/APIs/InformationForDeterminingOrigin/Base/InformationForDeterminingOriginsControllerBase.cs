@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class InformationForDeterminingOriginsControllerBase : ControllerBase
 {
     protected readonly IInformationForDeterminingOriginsService _service;
@@ -21,9 +20,9 @@ public abstract class InformationForDeterminingOriginsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Create one INFORMATION FOR DETERMINING ORIGIN
+    ///     Create one INFORMATION FOR DETERMINING ORIGIN
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<InformationForDeterminingOrigin>
@@ -41,12 +40,12 @@ public abstract class InformationForDeterminingOriginsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Delete one INFORMATION FOR DETERMINING ORIGIN
+    ///     Delete one INFORMATION FOR DETERMINING ORIGIN
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteInformationForDeterminingOrigin(
-        [FromRoute()] InformationForDeterminingOriginWhereUniqueInput uniqueId
+        [FromRoute] InformationForDeterminingOriginWhereUniqueInput uniqueId
     )
     {
         try
@@ -62,39 +61,39 @@ public abstract class InformationForDeterminingOriginsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Find many INFORMATION FOR DETERMINING ORIGIN | CLRES
+    ///     Find many INFORMATION FOR DETERMINING ORIGIN | CLRES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<InformationForDeterminingOrigin>>
     > InformationForDeterminingOrigins(
-        [FromQuery()] InformationForDeterminingOriginFindManyArgs filter
+        [FromQuery] InformationForDeterminingOriginFindManyArgs filter
     )
     {
         return Ok(await _service.InformationForDeterminingOrigins(filter));
     }
 
     /// <summary>
-    /// Meta data about INFORMATION FOR DETERMINING ORIGIN records
+    ///     Meta data about INFORMATION FOR DETERMINING ORIGIN records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> InformationForDeterminingOriginsMeta(
-        [FromQuery()] InformationForDeterminingOriginFindManyArgs filter
+        [FromQuery] InformationForDeterminingOriginFindManyArgs filter
     )
     {
         return Ok(await _service.InformationForDeterminingOriginsMeta(filter));
     }
 
     /// <summary>
-    /// Get one INFORMATION FOR DETERMINING ORIGIN
+    ///     Get one INFORMATION FOR DETERMINING ORIGIN
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<InformationForDeterminingOrigin>
     > InformationForDeterminingOrigin(
-        [FromRoute()] InformationForDeterminingOriginWhereUniqueInput uniqueId
+        [FromRoute] InformationForDeterminingOriginWhereUniqueInput uniqueId
     )
     {
         try
@@ -108,14 +107,13 @@ public abstract class InformationForDeterminingOriginsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Update one INFORMATION FOR DETERMINING ORIGIN
+    ///     Update one INFORMATION FOR DETERMINING ORIGIN
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateInformationForDeterminingOrigin(
-        [FromRoute()] InformationForDeterminingOriginWhereUniqueInput uniqueId,
-        [FromQuery()]
-            InformationForDeterminingOriginUpdateInput informationForDeterminingOriginUpdateDto
+        [FromRoute] InformationForDeterminingOriginWhereUniqueInput uniqueId,
+        [FromQuery] InformationForDeterminingOriginUpdateInput informationForDeterminingOriginUpdateDto
     )
     {
         try

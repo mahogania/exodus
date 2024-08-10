@@ -32,7 +32,7 @@ public static class CommonRegimeRequestsExtensions
             RegimeRequestTitle = model.RegimeRequestTitle,
             RegimeValidationDate = model.RegimeValidationDate,
             RequestDate = model.RequestDate,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -67,14 +67,8 @@ public static class CommonRegimeRequestsExtensions
             RequestDate = updateDto.RequestDate
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            commonRegimeRequest.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            commonRegimeRequest.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) commonRegimeRequest.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) commonRegimeRequest.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return commonRegimeRequest;
     }

@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class DelaysServiceBase : IDelaysService
     }
 
     /// <summary>
-    /// Create one DELAY
+    ///     Create one DELAY
     /// </summary>
     public async Task<Delay> CreateDelay(DelayCreateInput createDto)
     {
@@ -50,41 +49,32 @@ public abstract class DelaysServiceBase : IDelaysService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            delay.Id = createDto.Id;
-        }
+        if (createDto.Id != null) delay.Id = createDto.Id;
 
         _context.Delays.Add(delay);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<DelayDbModel>(delay.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one DELAY
+    ///     Delete one DELAY
     /// </summary>
     public async Task DeleteDelay(DelayWhereUniqueInput uniqueId)
     {
         var delay = await _context.Delays.FindAsync(uniqueId.Id);
-        if (delay == null)
-        {
-            throw new NotFoundException();
-        }
+        if (delay == null) throw new NotFoundException();
 
         _context.Delays.Remove(delay);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many DELAYS
+    ///     Find many DELAYS
     /// </summary>
     public async Task<List<Delay>> Delays(DelayFindManyArgs findManyArgs)
     {
@@ -98,7 +88,7 @@ public abstract class DelaysServiceBase : IDelaysService
     }
 
     /// <summary>
-    /// Meta data about DELAY records
+    ///     Meta data about DELAY records
     /// </summary>
     public async Task<MetadataDto> DelaysMeta(DelayFindManyArgs findManyArgs)
     {
@@ -108,24 +98,21 @@ public abstract class DelaysServiceBase : IDelaysService
     }
 
     /// <summary>
-    /// Get one DELAY
+    ///     Get one DELAY
     /// </summary>
     public async Task<Delay> Delay(DelayWhereUniqueInput uniqueId)
     {
-        var delays = await this.Delays(
+        var delays = await Delays(
             new DelayFindManyArgs { Where = new DelayWhereInput { Id = uniqueId.Id } }
         );
         var delay = delays.FirstOrDefault();
-        if (delay == null)
-        {
-            throw new NotFoundException();
-        }
+        if (delay == null) throw new NotFoundException();
 
         return delay;
     }
 
     /// <summary>
-    /// Update one DELAY
+    ///     Update one DELAY
     /// </summary>
     public async Task UpdateDelay(DelayWhereUniqueInput uniqueId, DelayUpdateInput updateDto)
     {
@@ -140,13 +127,8 @@ public abstract class DelaysServiceBase : IDelaysService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Delays.Any(e => e.Id == delay.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

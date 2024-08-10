@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBa
     }
 
     /// <summary>
-    /// Create one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task<JointDocumentOfTheDetailedDeclarationCustoms> CreateJointDocumentOfTheDetailedDeclarationCustoms(
         JointDocumentOfTheDetailedDeclarationCustomsCreateInput createDto
@@ -33,10 +32,7 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBa
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            jointDocumentOfTheDetailedDeclarationCustoms.Id = createDto.Id;
-        }
+        if (createDto.Id != null) jointDocumentOfTheDetailedDeclarationCustoms.Id = createDto.Id;
 
         _context.JointDocumentOfTheDetailedDeclarationCustomsItems.Add(
             jointDocumentOfTheDetailedDeclarationCustoms
@@ -47,16 +43,13 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBa
             jointDocumentOfTheDetailedDeclarationCustoms.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task DeleteJointDocumentOfTheDetailedDeclarationCustoms(
         JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
@@ -64,10 +57,7 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBa
     {
         var jointDocumentOfTheDetailedDeclarationCustoms =
             await _context.JointDocumentOfTheDetailedDeclarationCustomsItems.FindAsync(uniqueId.Id);
-        if (jointDocumentOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (jointDocumentOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         _context.JointDocumentOfTheDetailedDeclarationCustomsItems.Remove(
             jointDocumentOfTheDetailedDeclarationCustoms
@@ -76,7 +66,7 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBa
     }
 
     /// <summary>
-    /// Find many JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public async Task<
         List<JointDocumentOfTheDetailedDeclarationCustoms>
@@ -97,7 +87,7 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBa
     }
 
     /// <summary>
-    /// Meta data about JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public async Task<MetadataDto> JointDocumentOfTheDetailedDeclarationCustomsItemsMeta(
         JointDocumentOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
@@ -111,14 +101,14 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBa
     }
 
     /// <summary>
-    /// Get one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task<JointDocumentOfTheDetailedDeclarationCustoms> JointDocumentOfTheDetailedDeclarationCustoms(
         JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         var jointDocumentOfTheDetailedDeclarationCustomsItems =
-            await this.JointDocumentOfTheDetailedDeclarationCustomsItems(
+            await JointDocumentOfTheDetailedDeclarationCustomsItems(
                 new JointDocumentOfTheDetailedDeclarationCustomsFindManyArgs
                 {
                     Where = new JointDocumentOfTheDetailedDeclarationCustomsWhereInput
@@ -129,16 +119,13 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBa
             );
         var jointDocumentOfTheDetailedDeclarationCustoms =
             jointDocumentOfTheDetailedDeclarationCustomsItems.FirstOrDefault();
-        if (jointDocumentOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (jointDocumentOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         return jointDocumentOfTheDetailedDeclarationCustoms;
     }
 
     /// <summary>
-    /// Update one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one JOINT DOCUMENT OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task UpdateJointDocumentOfTheDetailedDeclarationCustoms(
         JointDocumentOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
@@ -160,13 +147,8 @@ public abstract class JointDocumentOfTheDetailedDeclarationCustomsItemsServiceBa
                     e.Id == jointDocumentOfTheDetailedDeclarationCustoms.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class VariousRequestsControllerBase : ControllerBase
 {
     protected readonly IVariousRequestsService _service;
@@ -19,9 +18,9 @@ public abstract class VariousRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one VARIOUS REQUEST
+    ///     Create one VARIOUS REQUEST
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<VariousRequest>> CreateVariousRequest(
         VariousRequestCreateInput input
@@ -37,12 +36,12 @@ public abstract class VariousRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one VARIOUS REQUEST
+    ///     Delete one VARIOUS REQUEST
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteVariousRequest(
-        [FromRoute()] VariousRequestWhereUniqueInput uniqueId
+        [FromRoute] VariousRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class VariousRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many VARIOUS REQUESTS
+    ///     Find many VARIOUS REQUESTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<VariousRequest>>> VariousRequests(
-        [FromQuery()] VariousRequestFindManyArgs filter
+        [FromQuery] VariousRequestFindManyArgs filter
     )
     {
         return Ok(await _service.VariousRequests(filter));
     }
 
     /// <summary>
-    /// Meta data about VARIOUS REQUEST records
+    ///     Meta data about VARIOUS REQUEST records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> VariousRequestsMeta(
-        [FromQuery()] VariousRequestFindManyArgs filter
+        [FromQuery] VariousRequestFindManyArgs filter
     )
     {
         return Ok(await _service.VariousRequestsMeta(filter));
     }
 
     /// <summary>
-    /// Get one VARIOUS REQUEST
+    ///     Get one VARIOUS REQUEST
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<VariousRequest>> VariousRequest(
-        [FromRoute()] VariousRequestWhereUniqueInput uniqueId
+        [FromRoute] VariousRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class VariousRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one VARIOUS REQUEST
+    ///     Update one VARIOUS REQUEST
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateVariousRequest(
-        [FromRoute()] VariousRequestWhereUniqueInput uniqueId,
-        [FromQuery()] VariousRequestUpdateInput variousRequestUpdateDto
+        [FromRoute] VariousRequestWhereUniqueInput uniqueId,
+        [FromQuery] VariousRequestUpdateInput variousRequestUpdateDto
     )
     {
         try

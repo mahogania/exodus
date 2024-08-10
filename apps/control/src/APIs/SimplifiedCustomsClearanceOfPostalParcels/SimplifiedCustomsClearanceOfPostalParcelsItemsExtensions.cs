@@ -61,7 +61,7 @@ public static class SimplifiedCustomsClearanceOfPostalParcelsItemsExtensions
             SuppressionOn = model.SuppressionOn,
             UpdatedAt = model.UpdatedAt,
             ValueOfPostalParcels = model.ValueOfPostalParcels,
-            Weight = model.Weight,
+            Weight = model.Weight
         };
     }
 
@@ -126,13 +126,9 @@ public static class SimplifiedCustomsClearanceOfPostalParcelsItemsExtensions
             };
 
         if (updateDto.CreatedAt != null)
-        {
             simplifiedCustomsClearanceOfPostalParcels.CreatedAt = updateDto.CreatedAt.Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             simplifiedCustomsClearanceOfPostalParcels.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
 
         return simplifiedCustomsClearanceOfPostalParcels;
     }

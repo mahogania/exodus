@@ -1,7 +1,4 @@
 @page "/question-response"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
 @inject IStringLocalizer<Pages.QuestionResponse> Localizer
 
 <div class="container">
@@ -9,47 +6,47 @@
 
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Search"]</SfButton>
         </div>
     </div>
 
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline" Value="ALGER-2022-C000001"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline" Value="ALGER-2022-C000001"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER - Bureaux de Douane d'Alger"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER - Bureaux de Douane d'Alger"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["ClearanceTiming"]" CssClass="e-outline" Value="PAD - Pre-Arrival Declaration"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["ClearanceTiming"]" CssClass="e-outline" Value="PAD - Pre-Arrival Declaration"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["InvoiceNo"]" CssClass="e-outline" Value="TRAININGVIMPP0001"></SfTextBox>
-        </div>
-    </div>
-    <div class="row mb-3">
-        <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["Status"]" CssClass="e-outline" Value="Validation"></SfTextBox>
-        </div>
-        <div class="col-md-3">
-            <SfDatePicker Placeholder="@Localizer["DeclarationRegistrationDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 3, 30))"></SfDatePicker>
-        </div>
-        <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" Value="IM4/Import Declaration"></SfTextBox>
-        </div>
-        <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["OperationType"]" CssClass="e-outline" Value="REVENTE EN L'ETAT"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["InvoiceNo"]" CssClass="e-outline" Value="TRAININGVIMPP0001"></SfTextBox>
         </div>
     </div>
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["InvoiceTotalAmount"]" CssClass="e-outline" Value="88,000,000 USD"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["Status"]" CssClass="e-outline" Value="Validation"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["TotalBaseValue"]" CssClass="e-outline" Value="101,099,700"></SfTextBox>
+            <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["DeclarationRegistrationDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 3, 30))"></SfDatePicker>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" Value="IM4/Import Declaration"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["OperationType"]" CssClass="e-outline" Value="REVENTE EN L'ETAT"></SfTextBox>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["InvoiceTotalAmount"]" CssClass="e-outline" Value="88,000,000 USD"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["TotalBaseValue"]" CssClass="e-outline" Value="101,099,700"></SfTextBox>
         </div>
     </div>
 
@@ -64,18 +61,19 @@
 
     <div class="row mt-3">
         <div class="col-md-12">
-            <SfTextArea Placeholder="@Localizer["AskQuestions"]" CssClass="e-outline"></SfTextArea>
+            <SfTextArea TValue="string" Placeholder="@Localizer["AskQuestions"]" CssClass="e-outline"></SfTextArea>
         </div>
     </div>
 
     <div class="row mt-3">
         <div class="col-md-12 text-right">
-            <SfButton CssClass="e-primary">@Localizer["Send"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Send"]</SfButton>
         </div>
     </div>
 </div>
 
 @code {
+
     public class QuestionResponse
     {
         public string RegisteredBy { get; set; }
@@ -84,10 +82,11 @@
         public string Modify { get; set; }
     }
 
-    public List<QuestionResponse> QuestionResponseData = new List<QuestionResponse>
+    public List<QuestionResponse> QuestionResponseData = new()
     {
         new QuestionResponse { RegisteredBy = "Déclarant", Details = "Poser les questions", DateTime = new DateTime(2022, 4, 10, 21, 27, 26), Modify = "Modifier" },
         new QuestionResponse { RegisteredBy = "Douanier", Details = "Répondre", DateTime = new DateTime(2022, 4, 10, 21, 28, 21), Modify = "Modifier" }
         // Add more data as needed
     };
+
 }

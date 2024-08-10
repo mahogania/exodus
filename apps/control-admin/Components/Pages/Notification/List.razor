@@ -1,6 +1,4 @@
 @page "/declaration-notifications"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Buttons
 @inject IStringLocalizer<Pages.DeclarationNotifications> Localizer
 
 <div class="container">
@@ -26,6 +24,7 @@
 </div>
 
 @code {
+
     public class Notification
     {
         public int Number { get; set; }
@@ -37,7 +36,7 @@
         public string NotificationDetails { get; set; }
     }
 
-    public List<Notification> NotificationData = new List<Notification>
+    public List<Notification> NotificationData = new()
     {
         new Notification { Number = 4, Type = "Validation Notification", ModificationVersion = "Validation", Status = "Validation", SendDateTime = new DateTime(2022, 3, 30, 10, 23, 56), ProcessingDateTime = new DateTime(2022, 3, 31, 11, 55, 32), NotificationDetails = "Details of the notification" },
         new Notification { Number = 3, Type = "Control Results Notification", ModificationVersion = "Evaluated", Status = "Evaluated", SendDateTime = new DateTime(2022, 3, 30, 10, 23, 56), ProcessingDateTime = new DateTime(2022, 3, 30, 10, 30, 11), NotificationDetails = "Details of the notification" },
@@ -46,11 +45,12 @@
         // Add more data as needed
     };
 
-    private RenderFragment<Notification> DetailsTemplate = (context) => __builder =>
+    private readonly RenderFragment<Notification> DetailsTemplate = context => __builder =>
     {
         __builder.OpenElement(0, "a");
         __builder.AddAttribute(1, "href", "#");
         __builder.AddContent(2, context.NotificationDetails);
         __builder.CloseElement();
     };
+
 }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DetailOfRequestForCertificateOfOriginsControllerBase : ControllerBase
 {
     protected readonly IDetailOfRequestForCertificateOfOriginsService _service;
@@ -21,9 +20,9 @@ public abstract class DetailOfRequestForCertificateOfOriginsControllerBase : Con
     }
 
     /// <summary>
-    /// Create one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
+    ///     Create one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailOfRequestForCertificateOfOrigin>
@@ -42,12 +41,12 @@ public abstract class DetailOfRequestForCertificateOfOriginsControllerBase : Con
     }
 
     /// <summary>
-    /// Delete one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
+    ///     Delete one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteDetailOfRequestForCertificateOfOrigin(
-        [FromRoute()] DetailOfRequestForCertificateOfOriginWhereUniqueInput uniqueId
+        [FromRoute] DetailOfRequestForCertificateOfOriginWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class DetailOfRequestForCertificateOfOriginsControllerBase : Con
     }
 
     /// <summary>
-    /// Find many DETAIL OF REQUEST FOR CERTIFICATE OF ORIGINS
+    ///     Find many DETAIL OF REQUEST FOR CERTIFICATE OF ORIGINS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<DetailOfRequestForCertificateOfOrigin>>
     > DetailOfRequestForCertificateOfOrigins(
-        [FromQuery()] DetailOfRequestForCertificateOfOriginFindManyArgs filter
+        [FromQuery] DetailOfRequestForCertificateOfOriginFindManyArgs filter
     )
     {
         return Ok(await _service.DetailOfRequestForCertificateOfOrigins(filter));
     }
 
     /// <summary>
-    /// Meta data about DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN records
+    ///     Meta data about DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DetailOfRequestForCertificateOfOriginsMeta(
-        [FromQuery()] DetailOfRequestForCertificateOfOriginFindManyArgs filter
+        [FromQuery] DetailOfRequestForCertificateOfOriginFindManyArgs filter
     )
     {
         return Ok(await _service.DetailOfRequestForCertificateOfOriginsMeta(filter));
     }
 
     /// <summary>
-    /// Get one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
+    ///     Get one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<DetailOfRequestForCertificateOfOrigin>
     > DetailOfRequestForCertificateOfOrigin(
-        [FromRoute()] DetailOfRequestForCertificateOfOriginWhereUniqueInput uniqueId
+        [FromRoute] DetailOfRequestForCertificateOfOriginWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,13 @@ public abstract class DetailOfRequestForCertificateOfOriginsControllerBase : Con
     }
 
     /// <summary>
-    /// Update one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
+    ///     Update one DETAIL OF REQUEST FOR CERTIFICATE OF ORIGIN
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDetailOfRequestForCertificateOfOrigin(
-        [FromRoute()] DetailOfRequestForCertificateOfOriginWhereUniqueInput uniqueId,
-        [FromQuery()]
-            DetailOfRequestForCertificateOfOriginUpdateInput detailOfRequestForCertificateOfOriginUpdateDto
+        [FromRoute] DetailOfRequestForCertificateOfOriginWhereUniqueInput uniqueId,
+        [FromQuery] DetailOfRequestForCertificateOfOriginUpdateInput detailOfRequestForCertificateOfOriginUpdateDto
     )
     {
         try

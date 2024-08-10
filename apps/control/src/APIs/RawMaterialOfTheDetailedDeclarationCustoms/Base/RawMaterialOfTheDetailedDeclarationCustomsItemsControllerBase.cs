@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsControllerBase : ControllerBase
 {
     protected readonly IRawMaterialOfTheDetailedDeclarationCustomsItemsService _service;
@@ -21,9 +20,9 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsControllerB
     }
 
     /// <summary>
-    /// Create one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<RawMaterialOfTheDetailedDeclarationCustoms>
@@ -42,12 +41,12 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsControllerB
     }
 
     /// <summary>
-    /// Delete one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteRawMaterialOfTheDetailedDeclarationCustoms(
-        [FromRoute()] RawMaterialOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] RawMaterialOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,41 +62,41 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsControllerB
     }
 
     /// <summary>
-    /// Find many RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<RawMaterialOfTheDetailedDeclarationCustoms>>
     > RawMaterialOfTheDetailedDeclarationCustomsItems(
-        [FromQuery()] RawMaterialOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] RawMaterialOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.RawMaterialOfTheDetailedDeclarationCustomsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > RawMaterialOfTheDetailedDeclarationCustomsItemsMeta(
-        [FromQuery()] RawMaterialOfTheDetailedDeclarationCustomsFindManyArgs filter
+        [FromQuery] RawMaterialOfTheDetailedDeclarationCustomsFindManyArgs filter
     )
     {
         return Ok(await _service.RawMaterialOfTheDetailedDeclarationCustomsItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<RawMaterialOfTheDetailedDeclarationCustoms>
     > RawMaterialOfTheDetailedDeclarationCustoms(
-        [FromRoute()] RawMaterialOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        [FromRoute] RawMaterialOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     )
     {
         try
@@ -111,14 +110,14 @@ public abstract class RawMaterialOfTheDetailedDeclarationCustomsItemsControllerB
     }
 
     /// <summary>
-    /// Update one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one RAW MATERIAL OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateRawMaterialOfTheDetailedDeclarationCustoms(
-        [FromRoute()] RawMaterialOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            RawMaterialOfTheDetailedDeclarationCustomsUpdateInput rawMaterialOfTheDetailedDeclarationCustomsUpdateDto
+        [FromRoute] RawMaterialOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
+        [FromQuery]
+        RawMaterialOfTheDetailedDeclarationCustomsUpdateInput rawMaterialOfTheDetailedDeclarationCustomsUpdateDto
     )
     {
         try

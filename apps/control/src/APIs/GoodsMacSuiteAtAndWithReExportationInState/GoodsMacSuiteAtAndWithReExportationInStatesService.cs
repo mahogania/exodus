@@ -6,5 +6,7 @@ public class GoodsMacSuiteAtAndWithReExportationInStatesService
     : GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
 {
     public GoodsMacSuiteAtAndWithReExportationInStatesService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

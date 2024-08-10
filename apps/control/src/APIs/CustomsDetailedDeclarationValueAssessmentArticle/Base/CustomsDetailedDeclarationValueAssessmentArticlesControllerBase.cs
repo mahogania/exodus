@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CustomsDetailedDeclarationValueAssessmentArticlesControllerBase
     : ControllerBase
 {
@@ -22,9 +21,9 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesControlle
     }
 
     /// <summary>
-    /// Create one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
+    ///     Create one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CustomsDetailedDeclarationValueAssessmentArticle>
@@ -43,12 +42,12 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesControlle
     }
 
     /// <summary>
-    /// Delete one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
+    ///     Delete one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCustomsDetailedDeclarationValueAssessmentArticle(
-        [FromRoute()] CustomsDetailedDeclarationValueAssessmentArticleWhereUniqueInput uniqueId
+        [FromRoute] CustomsDetailedDeclarationValueAssessmentArticleWhereUniqueInput uniqueId
     )
     {
         try
@@ -64,41 +63,41 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesControlle
     }
 
     /// <summary>
-    /// Find many CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLES
+    ///     Find many CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<CustomsDetailedDeclarationValueAssessmentArticle>>
     > CustomsDetailedDeclarationValueAssessmentArticles(
-        [FromQuery()] CustomsDetailedDeclarationValueAssessmentArticleFindManyArgs filter
+        [FromQuery] CustomsDetailedDeclarationValueAssessmentArticleFindManyArgs filter
     )
     {
         return Ok(await _service.CustomsDetailedDeclarationValueAssessmentArticles(filter));
     }
 
     /// <summary>
-    /// Meta data about CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE records
+    ///     Meta data about CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<
         ActionResult<MetadataDto>
     > CustomsDetailedDeclarationValueAssessmentArticlesMeta(
-        [FromQuery()] CustomsDetailedDeclarationValueAssessmentArticleFindManyArgs filter
+        [FromQuery] CustomsDetailedDeclarationValueAssessmentArticleFindManyArgs filter
     )
     {
         return Ok(await _service.CustomsDetailedDeclarationValueAssessmentArticlesMeta(filter));
     }
 
     /// <summary>
-    /// Get one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
+    ///     Get one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CustomsDetailedDeclarationValueAssessmentArticle>
     > CustomsDetailedDeclarationValueAssessmentArticle(
-        [FromRoute()] CustomsDetailedDeclarationValueAssessmentArticleWhereUniqueInput uniqueId
+        [FromRoute] CustomsDetailedDeclarationValueAssessmentArticleWhereUniqueInput uniqueId
     )
     {
         try
@@ -112,14 +111,14 @@ public abstract class CustomsDetailedDeclarationValueAssessmentArticlesControlle
     }
 
     /// <summary>
-    /// Update one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
+    ///     Update one CUSTOMS DETAILED DECLARATION VALUE ASSESSMENT ARTICLE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCustomsDetailedDeclarationValueAssessmentArticle(
-        [FromRoute()] CustomsDetailedDeclarationValueAssessmentArticleWhereUniqueInput uniqueId,
-        [FromQuery()]
-            CustomsDetailedDeclarationValueAssessmentArticleUpdateInput customsDetailedDeclarationValueAssessmentArticleUpdateDto
+        [FromRoute] CustomsDetailedDeclarationValueAssessmentArticleWhereUniqueInput uniqueId,
+        [FromQuery] CustomsDetailedDeclarationValueAssessmentArticleUpdateInput
+            customsDetailedDeclarationValueAssessmentArticleUpdateDto
     )
     {
         try

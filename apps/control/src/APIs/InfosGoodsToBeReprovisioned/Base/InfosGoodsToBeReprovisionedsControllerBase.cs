@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class InfosGoodsToBeReprovisionedsControllerBase : ControllerBase
 {
     protected readonly IInfosGoodsToBeReprovisionedsService _service;
@@ -19,9 +18,9 @@ public abstract class InfosGoodsToBeReprovisionedsControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Create one INFOS GOODS TO BE REPROVISIONED
+    ///     Create one INFOS GOODS TO BE REPROVISIONED
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<InfosGoodsToBeReprovisioned>> CreateInfosGoodsToBeReprovisioned(
         InfosGoodsToBeReprovisionedCreateInput input
@@ -37,12 +36,12 @@ public abstract class InfosGoodsToBeReprovisionedsControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Delete one INFOS GOODS TO BE REPROVISIONED
+    ///     Delete one INFOS GOODS TO BE REPROVISIONED
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteInfosGoodsToBeReprovisioned(
-        [FromRoute()] InfosGoodsToBeReprovisionedWhereUniqueInput uniqueId
+        [FromRoute] InfosGoodsToBeReprovisionedWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class InfosGoodsToBeReprovisionedsControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Find many INFOS GOODS TO BE REPROVISIONEDS
+    ///     Find many INFOS GOODS TO BE REPROVISIONEDS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<InfosGoodsToBeReprovisioned>>> InfosGoodsToBeReprovisioneds(
-        [FromQuery()] InfosGoodsToBeReprovisionedFindManyArgs filter
+        [FromQuery] InfosGoodsToBeReprovisionedFindManyArgs filter
     )
     {
         return Ok(await _service.InfosGoodsToBeReprovisioneds(filter));
     }
 
     /// <summary>
-    /// Meta data about INFOS GOODS TO BE REPROVISIONED records
+    ///     Meta data about INFOS GOODS TO BE REPROVISIONED records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> InfosGoodsToBeReprovisionedsMeta(
-        [FromQuery()] InfosGoodsToBeReprovisionedFindManyArgs filter
+        [FromQuery] InfosGoodsToBeReprovisionedFindManyArgs filter
     )
     {
         return Ok(await _service.InfosGoodsToBeReprovisionedsMeta(filter));
     }
 
     /// <summary>
-    /// Get one INFOS GOODS TO BE REPROVISIONED
+    ///     Get one INFOS GOODS TO BE REPROVISIONED
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<InfosGoodsToBeReprovisioned>> InfosGoodsToBeReprovisioned(
-        [FromRoute()] InfosGoodsToBeReprovisionedWhereUniqueInput uniqueId
+        [FromRoute] InfosGoodsToBeReprovisionedWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class InfosGoodsToBeReprovisionedsControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Update one INFOS GOODS TO BE REPROVISIONED
+    ///     Update one INFOS GOODS TO BE REPROVISIONED
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateInfosGoodsToBeReprovisioned(
-        [FromRoute()] InfosGoodsToBeReprovisionedWhereUniqueInput uniqueId,
-        [FromQuery()] InfosGoodsToBeReprovisionedUpdateInput infosGoodsToBeReprovisionedUpdateDto
+        [FromRoute] InfosGoodsToBeReprovisionedWhereUniqueInput uniqueId,
+        [FromQuery] InfosGoodsToBeReprovisionedUpdateInput infosGoodsToBeReprovisionedUpdateDto
     )
     {
         try

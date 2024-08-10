@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,11 +19,12 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsServiceBas
     }
 
     /// <summary>
-    /// Create one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
+    ///     Create one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
     /// </summary>
-    public async Task<CommonDetailedDeclarationCustomsValueAssessment> CreateCommonDetailedDeclarationCustomsValueAssessment(
-        CommonDetailedDeclarationCustomsValueAssessmentCreateInput createDto
-    )
+    public async Task<CommonDetailedDeclarationCustomsValueAssessment>
+        CreateCommonDetailedDeclarationCustomsValueAssessment(
+            CommonDetailedDeclarationCustomsValueAssessmentCreateInput createDto
+        )
     {
         var commonDetailedDeclarationCustomsValueAssessment =
             new CommonDetailedDeclarationCustomsValueAssessmentDbModel
@@ -33,10 +33,7 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsServiceBas
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            commonDetailedDeclarationCustomsValueAssessment.Id = createDto.Id;
-        }
+        if (createDto.Id != null) commonDetailedDeclarationCustomsValueAssessment.Id = createDto.Id;
 
         _context.CommonDetailedDeclarationCustomsValueAssessments.Add(
             commonDetailedDeclarationCustomsValueAssessment
@@ -48,16 +45,13 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsServiceBas
                 commonDetailedDeclarationCustomsValueAssessment.Id
             );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
+    ///     Delete one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
     /// </summary>
     public async Task DeleteCommonDetailedDeclarationCustomsValueAssessment(
         CommonDetailedDeclarationCustomsValueAssessmentWhereUniqueInput uniqueId
@@ -65,10 +59,7 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsServiceBas
     {
         var commonDetailedDeclarationCustomsValueAssessment =
             await _context.CommonDetailedDeclarationCustomsValueAssessments.FindAsync(uniqueId.Id);
-        if (commonDetailedDeclarationCustomsValueAssessment == null)
-        {
-            throw new NotFoundException();
-        }
+        if (commonDetailedDeclarationCustomsValueAssessment == null) throw new NotFoundException();
 
         _context.CommonDetailedDeclarationCustomsValueAssessments.Remove(
             commonDetailedDeclarationCustomsValueAssessment
@@ -77,7 +68,7 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsServiceBas
     }
 
     /// <summary>
-    /// Find many COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENTS
+    ///     Find many COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENTS
     /// </summary>
     public async Task<
         List<CommonDetailedDeclarationCustomsValueAssessment>
@@ -98,7 +89,7 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsServiceBas
     }
 
     /// <summary>
-    /// Meta data about COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT records
+    ///     Meta data about COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT records
     /// </summary>
     public async Task<MetadataDto> CommonDetailedDeclarationCustomsValueAssessmentsMeta(
         CommonDetailedDeclarationCustomsValueAssessmentFindManyArgs findManyArgs
@@ -112,14 +103,14 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsServiceBas
     }
 
     /// <summary>
-    /// Get one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
+    ///     Get one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
     /// </summary>
     public async Task<CommonDetailedDeclarationCustomsValueAssessment> CommonDetailedDeclarationCustomsValueAssessment(
         CommonDetailedDeclarationCustomsValueAssessmentWhereUniqueInput uniqueId
     )
     {
         var commonDetailedDeclarationCustomsValueAssessments =
-            await this.CommonDetailedDeclarationCustomsValueAssessments(
+            await CommonDetailedDeclarationCustomsValueAssessments(
                 new CommonDetailedDeclarationCustomsValueAssessmentFindManyArgs
                 {
                     Where = new CommonDetailedDeclarationCustomsValueAssessmentWhereInput
@@ -130,16 +121,13 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsServiceBas
             );
         var commonDetailedDeclarationCustomsValueAssessment =
             commonDetailedDeclarationCustomsValueAssessments.FirstOrDefault();
-        if (commonDetailedDeclarationCustomsValueAssessment == null)
-        {
-            throw new NotFoundException();
-        }
+        if (commonDetailedDeclarationCustomsValueAssessment == null) throw new NotFoundException();
 
         return commonDetailedDeclarationCustomsValueAssessment;
     }
 
     /// <summary>
-    /// Update one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
+    ///     Update one COMMON DETAILED DECLARATION (CUSTOMS) VALUE ASSESSMENT
     /// </summary>
     public async Task UpdateCommonDetailedDeclarationCustomsValueAssessment(
         CommonDetailedDeclarationCustomsValueAssessmentWhereUniqueInput uniqueId,
@@ -162,13 +150,8 @@ public abstract class CommonDetailedDeclarationCustomsValueAssessmentsServiceBas
                     e.Id == commonDetailedDeclarationCustomsValueAssessment.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

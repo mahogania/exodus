@@ -34,7 +34,7 @@ public static class DefinitiveExportGoodsFollowedByAndWithReimportationInTheStat
             UnknownField = model.UnknownField,
             UpdatedAt = model.UpdatedAt,
             Value = model.Value,
-            ValueInCurrencyOfTheGoods = model.ValueInCurrencyOfTheGoods,
+            ValueInCurrencyOfTheGoods = model.ValueInCurrencyOfTheGoods
         };
     }
 
@@ -71,17 +71,13 @@ public static class DefinitiveExportGoodsFollowedByAndWithReimportationInTheStat
             };
 
         if (updateDto.CreatedAt != null)
-        {
             definitiveExportGoodsFollowedByAndWithReimportationInTheState.CreatedAt = updateDto
                 .CreatedAt
                 .Value;
-        }
         if (updateDto.UpdatedAt != null)
-        {
             definitiveExportGoodsFollowedByAndWithReimportationInTheState.UpdatedAt = updateDto
                 .UpdatedAt
                 .Value;
-        }
 
         return definitiveExportGoodsFollowedByAndWithReimportationInTheState;
     }

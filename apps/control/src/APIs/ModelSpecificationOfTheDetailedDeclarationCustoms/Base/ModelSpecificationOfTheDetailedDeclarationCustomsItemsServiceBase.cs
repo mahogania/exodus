@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -22,11 +21,12 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsServ
     }
 
     /// <summary>
-    /// Create one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    public async Task<ModelSpecificationOfTheDetailedDeclarationCustoms> CreateModelSpecificationOfTheDetailedDeclarationCustoms(
-        ModelSpecificationOfTheDetailedDeclarationCustomsCreateInput createDto
-    )
+    public async Task<ModelSpecificationOfTheDetailedDeclarationCustoms>
+        CreateModelSpecificationOfTheDetailedDeclarationCustoms(
+            ModelSpecificationOfTheDetailedDeclarationCustomsCreateInput createDto
+        )
     {
         var modelSpecificationOfTheDetailedDeclarationCustoms =
             new ModelSpecificationOfTheDetailedDeclarationCustomsDbModel
@@ -35,10 +35,7 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsServ
                 UpdatedAt = createDto.UpdatedAt
             };
 
-        if (createDto.Id != null)
-        {
-            modelSpecificationOfTheDetailedDeclarationCustoms.Id = createDto.Id;
-        }
+        if (createDto.Id != null) modelSpecificationOfTheDetailedDeclarationCustoms.Id = createDto.Id;
 
         _context.ModelSpecificationOfTheDetailedDeclarationCustomsItems.Add(
             modelSpecificationOfTheDetailedDeclarationCustoms
@@ -50,16 +47,13 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsServ
                 modelSpecificationOfTheDetailedDeclarationCustoms.Id
             );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task DeleteModelSpecificationOfTheDetailedDeclarationCustoms(
         ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
@@ -69,10 +63,7 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsServ
             await _context.ModelSpecificationOfTheDetailedDeclarationCustomsItems.FindAsync(
                 uniqueId.Id
             );
-        if (modelSpecificationOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (modelSpecificationOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         _context.ModelSpecificationOfTheDetailedDeclarationCustomsItems.Remove(
             modelSpecificationOfTheDetailedDeclarationCustoms
@@ -81,7 +72,7 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsServ
     }
 
     /// <summary>
-    /// Find many MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public async Task<
         List<ModelSpecificationOfTheDetailedDeclarationCustoms>
@@ -102,7 +93,7 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsServ
     }
 
     /// <summary>
-    /// Meta data about MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public async Task<MetadataDto> ModelSpecificationOfTheDetailedDeclarationCustomsItemsMeta(
         ModelSpecificationOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
@@ -116,14 +107,15 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsServ
     }
 
     /// <summary>
-    /// Get one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    public async Task<ModelSpecificationOfTheDetailedDeclarationCustoms> ModelSpecificationOfTheDetailedDeclarationCustoms(
-        ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
-    )
+    public async Task<ModelSpecificationOfTheDetailedDeclarationCustoms>
+        ModelSpecificationOfTheDetailedDeclarationCustoms(
+            ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        )
     {
         var modelSpecificationOfTheDetailedDeclarationCustomsItems =
-            await this.ModelSpecificationOfTheDetailedDeclarationCustomsItems(
+            await ModelSpecificationOfTheDetailedDeclarationCustomsItems(
                 new ModelSpecificationOfTheDetailedDeclarationCustomsFindManyArgs
                 {
                     Where = new ModelSpecificationOfTheDetailedDeclarationCustomsWhereInput
@@ -134,16 +126,13 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsServ
             );
         var modelSpecificationOfTheDetailedDeclarationCustoms =
             modelSpecificationOfTheDetailedDeclarationCustomsItems.FirstOrDefault();
-        if (modelSpecificationOfTheDetailedDeclarationCustoms == null)
-        {
-            throw new NotFoundException();
-        }
+        if (modelSpecificationOfTheDetailedDeclarationCustoms == null) throw new NotFoundException();
 
         return modelSpecificationOfTheDetailedDeclarationCustoms;
     }
 
     /// <summary>
-    /// Update one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one MODEL/SPECIFICATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public async Task UpdateModelSpecificationOfTheDetailedDeclarationCustoms(
         ModelSpecificationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
@@ -166,13 +155,8 @@ public abstract class ModelSpecificationOfTheDetailedDeclarationCustomsItemsServ
                     e.Id == modelSpecificationOfTheDetailedDeclarationCustoms.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

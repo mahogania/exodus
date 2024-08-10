@@ -60,7 +60,7 @@ public static class RequestForCommonCarnetsExtensions
             TotalNumberOfGoods = model.TotalNumberOfGoods,
             UpdatedAt = model.UpdatedAt,
             ValidUntil = model.ValidUntil,
-            VehicleCertificationNoAndDate = model.VehicleCertificationNoAndDate,
+            VehicleCertificationNoAndDate = model.VehicleCertificationNoAndDate
         };
     }
 
@@ -123,14 +123,8 @@ public static class RequestForCommonCarnetsExtensions
             VehicleCertificationNoAndDate = updateDto.VehicleCertificationNoAndDate
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            requestForCommonCarnet.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            requestForCommonCarnet.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) requestForCommonCarnet.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) requestForCommonCarnet.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return requestForCommonCarnet;
     }

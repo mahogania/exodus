@@ -24,7 +24,7 @@ public static class FineCausesExtensions
             MinimumAmount = model.MinimumAmount,
             NoticeNumber = model.NoticeNumber,
             OperationTypeCode = model.OperationTypeCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -51,14 +51,8 @@ public static class FineCausesExtensions
             OperationTypeCode = updateDto.OperationTypeCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            fineCause.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            fineCause.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) fineCause.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) fineCause.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return fineCause;
     }

@@ -31,7 +31,7 @@ public static class AdjustmentsExtensions
             ServiceCode = model.ServiceCode,
             TotalNoticeAmount = model.TotalNoticeAmount,
             UnadjustedLatePaymentInterestAmount = model.UnadjustedLatePaymentInterestAmount,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -65,14 +65,8 @@ public static class AdjustmentsExtensions
             UnadjustedLatePaymentInterestAmount = updateDto.UnadjustedLatePaymentInterestAmount
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            adjustment.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            adjustment.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) adjustment.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) adjustment.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return adjustment;
     }

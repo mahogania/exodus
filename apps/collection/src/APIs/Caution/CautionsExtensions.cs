@@ -52,7 +52,7 @@ public static class CautionsExtensions
             ServiceCode = model.ServiceCode,
             SuspensionReason = model.SuspensionReason,
             TaxIdentificationNumber = model.TaxIdentificationNumber,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -108,14 +108,8 @@ public static class CautionsExtensions
             TaxIdentificationNumber = updateDto.TaxIdentificationNumber
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            caution.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            caution.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) caution.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) caution.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return caution;
     }

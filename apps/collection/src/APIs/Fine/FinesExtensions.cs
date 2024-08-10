@@ -41,7 +41,7 @@ public static class FinesExtensions
             RegistrationDate = model.RegistrationDate,
             ServiceCode = model.ServiceCode,
             TaxpayerIdentificationNo = model.TaxpayerIdentificationNo,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -82,14 +82,8 @@ public static class FinesExtensions
             TaxpayerIdentificationNo = updateDto.TaxpayerIdentificationNo
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            fine.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            fine.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) fine.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) fine.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return fine;
     }

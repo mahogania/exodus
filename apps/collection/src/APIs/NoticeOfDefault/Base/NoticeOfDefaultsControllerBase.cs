@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class NoticeOfDefaultsControllerBase : ControllerBase
 {
     protected readonly INoticeOfDefaultsService _service;
@@ -19,9 +18,9 @@ public abstract class NoticeOfDefaultsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one NOTICE OF DEFAULT
+    ///     Create one NOTICE OF DEFAULT
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<NoticeOfDefault>> CreateNoticeOfDefault(
         NoticeOfDefaultCreateInput input
@@ -37,12 +36,12 @@ public abstract class NoticeOfDefaultsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one NOTICE OF DEFAULT
+    ///     Delete one NOTICE OF DEFAULT
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteNoticeOfDefault(
-        [FromRoute()] NoticeOfDefaultWhereUniqueInput uniqueId
+        [FromRoute] NoticeOfDefaultWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class NoticeOfDefaultsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many NOTICE OF DEFAULTS
+    ///     Find many NOTICE OF DEFAULTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<NoticeOfDefault>>> NoticeOfDefaults(
-        [FromQuery()] NoticeOfDefaultFindManyArgs filter
+        [FromQuery] NoticeOfDefaultFindManyArgs filter
     )
     {
         return Ok(await _service.NoticeOfDefaults(filter));
     }
 
     /// <summary>
-    /// Meta data about NOTICE OF DEFAULT records
+    ///     Meta data about NOTICE OF DEFAULT records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> NoticeOfDefaultsMeta(
-        [FromQuery()] NoticeOfDefaultFindManyArgs filter
+        [FromQuery] NoticeOfDefaultFindManyArgs filter
     )
     {
         return Ok(await _service.NoticeOfDefaultsMeta(filter));
     }
 
     /// <summary>
-    /// Get one NOTICE OF DEFAULT
+    ///     Get one NOTICE OF DEFAULT
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<NoticeOfDefault>> NoticeOfDefault(
-        [FromRoute()] NoticeOfDefaultWhereUniqueInput uniqueId
+        [FromRoute] NoticeOfDefaultWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class NoticeOfDefaultsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one NOTICE OF DEFAULT
+    ///     Update one NOTICE OF DEFAULT
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateNoticeOfDefault(
-        [FromRoute()] NoticeOfDefaultWhereUniqueInput uniqueId,
-        [FromQuery()] NoticeOfDefaultUpdateInput noticeOfDefaultUpdateDto
+        [FromRoute] NoticeOfDefaultWhereUniqueInput uniqueId,
+        [FromQuery] NoticeOfDefaultUpdateInput noticeOfDefaultUpdateDto
     )
     {
         try

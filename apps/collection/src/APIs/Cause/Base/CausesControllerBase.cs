@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CausesControllerBase : ControllerBase
 {
     protected readonly ICausesService _service;
@@ -19,9 +18,9 @@ public abstract class CausesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one CAUSE
+    ///     Create one CAUSE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Cause>> CreateCause(CauseCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class CausesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one CAUSE
+    ///     Delete one CAUSE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteCause([FromRoute()] CauseWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteCause([FromRoute] CauseWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,30 +49,30 @@ public abstract class CausesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many CAUSES
+    ///     Find many CAUSES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<List<Cause>>> Causes([FromQuery()] CauseFindManyArgs filter)
+    public async Task<ActionResult<List<Cause>>> Causes([FromQuery] CauseFindManyArgs filter)
     {
         return Ok(await _service.Causes(filter));
     }
 
     /// <summary>
-    /// Meta data about CAUSE records
+    ///     Meta data about CAUSE records
     /// </summary>
     [HttpPost("meta")]
-    public async Task<ActionResult<MetadataDto>> CausesMeta([FromQuery()] CauseFindManyArgs filter)
+    public async Task<ActionResult<MetadataDto>> CausesMeta([FromQuery] CauseFindManyArgs filter)
     {
         return Ok(await _service.CausesMeta(filter));
     }
 
     /// <summary>
-    /// Get one CAUSE
+    ///     Get one CAUSE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Cause>> Cause([FromRoute()] CauseWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Cause>> Cause([FromRoute] CauseWhereUniqueInput uniqueId)
     {
         try
         {
@@ -86,13 +85,13 @@ public abstract class CausesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one CAUSE
+    ///     Update one CAUSE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCause(
-        [FromRoute()] CauseWhereUniqueInput uniqueId,
-        [FromQuery()] CauseUpdateInput causeUpdateDto
+        [FromRoute] CauseWhereUniqueInput uniqueId,
+        [FromQuery] CauseUpdateInput causeUpdateDto
     )
     {
         try

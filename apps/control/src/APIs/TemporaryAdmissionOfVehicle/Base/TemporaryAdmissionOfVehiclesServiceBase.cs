@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
     }
 
     /// <summary>
-    /// Create one TEMPORARY ADMISSION OF VEHICLE
+    ///     Create one TEMPORARY ADMISSION OF VEHICLE
     /// </summary>
     public async Task<TemporaryAdmissionOfVehicle> CreateTemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleCreateInput createDto
@@ -42,10 +41,7 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            temporaryAdmissionOfVehicle.Id = createDto.Id;
-        }
+        if (createDto.Id != null) temporaryAdmissionOfVehicle.Id = createDto.Id;
 
         _context.TemporaryAdmissionOfVehicles.Add(temporaryAdmissionOfVehicle);
         await _context.SaveChangesAsync();
@@ -54,16 +50,13 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
             temporaryAdmissionOfVehicle.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one TEMPORARY ADMISSION OF VEHICLE
+    ///     Delete one TEMPORARY ADMISSION OF VEHICLE
     /// </summary>
     public async Task DeleteTemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId
@@ -72,17 +65,14 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
         var temporaryAdmissionOfVehicle = await _context.TemporaryAdmissionOfVehicles.FindAsync(
             uniqueId.Id
         );
-        if (temporaryAdmissionOfVehicle == null)
-        {
-            throw new NotFoundException();
-        }
+        if (temporaryAdmissionOfVehicle == null) throw new NotFoundException();
 
         _context.TemporaryAdmissionOfVehicles.Remove(temporaryAdmissionOfVehicle);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many TEMPORARY ADMISSION OF VEHICLES
+    ///     Find many TEMPORARY ADMISSION OF VEHICLES
     /// </summary>
     public async Task<List<TemporaryAdmissionOfVehicle>> TemporaryAdmissionOfVehicles(
         TemporaryAdmissionOfVehicleFindManyArgs findManyArgs
@@ -100,7 +90,7 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
     }
 
     /// <summary>
-    /// Meta data about TEMPORARY ADMISSION OF VEHICLE records
+    ///     Meta data about TEMPORARY ADMISSION OF VEHICLE records
     /// </summary>
     public async Task<MetadataDto> TemporaryAdmissionOfVehiclesMeta(
         TemporaryAdmissionOfVehicleFindManyArgs findManyArgs
@@ -114,29 +104,26 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
     }
 
     /// <summary>
-    /// Get one TEMPORARY ADMISSION OF VEHICLE
+    ///     Get one TEMPORARY ADMISSION OF VEHICLE
     /// </summary>
     public async Task<TemporaryAdmissionOfVehicle> TemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId
     )
     {
-        var temporaryAdmissionOfVehicles = await this.TemporaryAdmissionOfVehicles(
+        var temporaryAdmissionOfVehicles = await TemporaryAdmissionOfVehicles(
             new TemporaryAdmissionOfVehicleFindManyArgs
             {
                 Where = new TemporaryAdmissionOfVehicleWhereInput { Id = uniqueId.Id }
             }
         );
         var temporaryAdmissionOfVehicle = temporaryAdmissionOfVehicles.FirstOrDefault();
-        if (temporaryAdmissionOfVehicle == null)
-        {
-            throw new NotFoundException();
-        }
+        if (temporaryAdmissionOfVehicle == null) throw new NotFoundException();
 
         return temporaryAdmissionOfVehicle;
     }
 
     /// <summary>
-    /// Update one TEMPORARY ADMISSION OF VEHICLE
+    ///     Update one TEMPORARY ADMISSION OF VEHICLE
     /// </summary>
     public async Task UpdateTemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId,
@@ -158,13 +145,8 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
                     e.Id == temporaryAdmissionOfVehicle.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

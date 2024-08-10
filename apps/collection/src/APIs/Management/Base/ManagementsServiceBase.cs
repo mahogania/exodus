@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class ManagementsServiceBase : IManagementsService
     }
 
     /// <summary>
-    /// Create one MANAGEMENT
+    ///     Create one MANAGEMENT
     /// </summary>
     public async Task<Management> CreateManagement(ManagementCreateInput createDto)
     {
@@ -45,41 +44,32 @@ public abstract class ManagementsServiceBase : IManagementsService
             WriterServiceCode = createDto.WriterServiceCode
         };
 
-        if (createDto.Id != null)
-        {
-            management.Id = createDto.Id;
-        }
+        if (createDto.Id != null) management.Id = createDto.Id;
 
         _context.Managements.Add(management);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<ManagementDbModel>(management.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one MANAGEMENT
+    ///     Delete one MANAGEMENT
     /// </summary>
     public async Task DeleteManagement(ManagementWhereUniqueInput uniqueId)
     {
         var management = await _context.Managements.FindAsync(uniqueId.Id);
-        if (management == null)
-        {
-            throw new NotFoundException();
-        }
+        if (management == null) throw new NotFoundException();
 
         _context.Managements.Remove(management);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many MANAGEMENTS
+    ///     Find many MANAGEMENTS
     /// </summary>
     public async Task<List<Management>> Managements(ManagementFindManyArgs findManyArgs)
     {
@@ -93,7 +83,7 @@ public abstract class ManagementsServiceBase : IManagementsService
     }
 
     /// <summary>
-    /// Meta data about MANAGEMENT records
+    ///     Meta data about MANAGEMENT records
     /// </summary>
     public async Task<MetadataDto> ManagementsMeta(ManagementFindManyArgs findManyArgs)
     {
@@ -103,24 +93,21 @@ public abstract class ManagementsServiceBase : IManagementsService
     }
 
     /// <summary>
-    /// Get one MANAGEMENT
+    ///     Get one MANAGEMENT
     /// </summary>
     public async Task<Management> Management(ManagementWhereUniqueInput uniqueId)
     {
-        var managements = await this.Managements(
+        var managements = await Managements(
             new ManagementFindManyArgs { Where = new ManagementWhereInput { Id = uniqueId.Id } }
         );
         var management = managements.FirstOrDefault();
-        if (management == null)
-        {
-            throw new NotFoundException();
-        }
+        if (management == null) throw new NotFoundException();
 
         return management;
     }
 
     /// <summary>
-    /// Update one MANAGEMENT
+    ///     Update one MANAGEMENT
     /// </summary>
     public async Task UpdateManagement(
         ManagementWhereUniqueInput uniqueId,
@@ -138,13 +125,8 @@ public abstract class ManagementsServiceBase : IManagementsService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Managements.Any(e => e.Id == management.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

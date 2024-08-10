@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class StateOfGoodsForPassivePerfectionCommonsControllerBase : ControllerBase
 {
     protected readonly IStateOfGoodsForPassivePerfectionCommonsService _service;
@@ -21,9 +20,9 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsControllerBase : Co
     }
 
     /// <summary>
-    /// Create one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Create one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<StateOfGoodsForPassivePerfectionCommon>
@@ -42,12 +41,12 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsControllerBase : Co
     }
 
     /// <summary>
-    /// Delete one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Delete one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteStateOfGoodsForPassivePerfectionCommon(
-        [FromRoute()] StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId
+        [FromRoute] StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsControllerBase : Co
     }
 
     /// <summary>
-    /// Find many STATE OF GOODS FOR PASSIVE PERFECTION COMMONS
+    ///     Find many STATE OF GOODS FOR PASSIVE PERFECTION COMMONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<StateOfGoodsForPassivePerfectionCommon>>
     > StateOfGoodsForPassivePerfectionCommons(
-        [FromQuery()] StateOfGoodsForPassivePerfectionCommonFindManyArgs filter
+        [FromQuery] StateOfGoodsForPassivePerfectionCommonFindManyArgs filter
     )
     {
         return Ok(await _service.StateOfGoodsForPassivePerfectionCommons(filter));
     }
 
     /// <summary>
-    /// Meta data about STATE OF GOODS FOR PASSIVE PERFECTION COMMON records
+    ///     Meta data about STATE OF GOODS FOR PASSIVE PERFECTION COMMON records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> StateOfGoodsForPassivePerfectionCommonsMeta(
-        [FromQuery()] StateOfGoodsForPassivePerfectionCommonFindManyArgs filter
+        [FromQuery] StateOfGoodsForPassivePerfectionCommonFindManyArgs filter
     )
     {
         return Ok(await _service.StateOfGoodsForPassivePerfectionCommonsMeta(filter));
     }
 
     /// <summary>
-    /// Get one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Get one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<StateOfGoodsForPassivePerfectionCommon>
     > StateOfGoodsForPassivePerfectionCommon(
-        [FromRoute()] StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId
+        [FromRoute] StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,13 @@ public abstract class StateOfGoodsForPassivePerfectionCommonsControllerBase : Co
     }
 
     /// <summary>
-    /// Update one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Update one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateStateOfGoodsForPassivePerfectionCommon(
-        [FromRoute()] StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId,
-        [FromQuery()]
-            StateOfGoodsForPassivePerfectionCommonUpdateInput stateOfGoodsForPassivePerfectionCommonUpdateDto
+        [FromRoute] StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId,
+        [FromQuery] StateOfGoodsForPassivePerfectionCommonUpdateInput stateOfGoodsForPassivePerfectionCommonUpdateDto
     )
     {
         try

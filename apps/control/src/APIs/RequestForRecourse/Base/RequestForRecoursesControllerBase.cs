@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class RequestForRecoursesControllerBase : ControllerBase
 {
     protected readonly IRequestForRecoursesService _service;
@@ -19,9 +18,9 @@ public abstract class RequestForRecoursesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one REQUEST FOR RECOURSE
+    ///     Create one REQUEST FOR RECOURSE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<RequestForRecourse>> CreateRequestForRecourse(
         RequestForRecourseCreateInput input
@@ -37,12 +36,12 @@ public abstract class RequestForRecoursesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one REQUEST FOR RECOURSE
+    ///     Delete one REQUEST FOR RECOURSE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteRequestForRecourse(
-        [FromRoute()] RequestForRecourseWhereUniqueInput uniqueId
+        [FromRoute] RequestForRecourseWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class RequestForRecoursesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many REQUEST FOR RECOURSES
+    ///     Find many REQUEST FOR RECOURSES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<RequestForRecourse>>> RequestForRecourses(
-        [FromQuery()] RequestForRecourseFindManyArgs filter
+        [FromQuery] RequestForRecourseFindManyArgs filter
     )
     {
         return Ok(await _service.RequestForRecourses(filter));
     }
 
     /// <summary>
-    /// Meta data about REQUEST FOR RECOURSE records
+    ///     Meta data about REQUEST FOR RECOURSE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> RequestForRecoursesMeta(
-        [FromQuery()] RequestForRecourseFindManyArgs filter
+        [FromQuery] RequestForRecourseFindManyArgs filter
     )
     {
         return Ok(await _service.RequestForRecoursesMeta(filter));
     }
 
     /// <summary>
-    /// Get one REQUEST FOR RECOURSE
+    ///     Get one REQUEST FOR RECOURSE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<RequestForRecourse>> RequestForRecourse(
-        [FromRoute()] RequestForRecourseWhereUniqueInput uniqueId
+        [FromRoute] RequestForRecourseWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class RequestForRecoursesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one REQUEST FOR RECOURSE
+    ///     Update one REQUEST FOR RECOURSE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateRequestForRecourse(
-        [FromRoute()] RequestForRecourseWhereUniqueInput uniqueId,
-        [FromQuery()] RequestForRecourseUpdateInput requestForRecourseUpdateDto
+        [FromRoute] RequestForRecourseWhereUniqueInput uniqueId,
+        [FromQuery] RequestForRecourseUpdateInput requestForRecourseUpdateDto
     )
     {
         try

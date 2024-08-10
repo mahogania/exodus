@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ArticlesControllerBase : ControllerBase
 {
     protected readonly IArticlesService _service;
@@ -19,9 +18,9 @@ public abstract class ArticlesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one ARTICLE
+    ///     Create one ARTICLE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Article>> CreateArticle(ArticleCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class ArticlesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one ARTICLE
+    ///     Delete one ARTICLE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteArticle([FromRoute()] ArticleWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteArticle([FromRoute] ArticleWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,34 +49,34 @@ public abstract class ArticlesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many ARTICLES
+    ///     Find many ARTICLES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Article>>> Articles(
-        [FromQuery()] ArticleFindManyArgs filter
+        [FromQuery] ArticleFindManyArgs filter
     )
     {
         return Ok(await _service.Articles(filter));
     }
 
     /// <summary>
-    /// Meta data about ARTICLE records
+    ///     Meta data about ARTICLE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ArticlesMeta(
-        [FromQuery()] ArticleFindManyArgs filter
+        [FromQuery] ArticleFindManyArgs filter
     )
     {
         return Ok(await _service.ArticlesMeta(filter));
     }
 
     /// <summary>
-    /// Get one ARTICLE
+    ///     Get one ARTICLE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Article>> Article([FromRoute()] ArticleWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Article>> Article([FromRoute] ArticleWhereUniqueInput uniqueId)
     {
         try
         {
@@ -90,13 +89,13 @@ public abstract class ArticlesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one ARTICLE
+    ///     Update one ARTICLE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateArticle(
-        [FromRoute()] ArticleWhereUniqueInput uniqueId,
-        [FromQuery()] ArticleUpdateInput articleUpdateDto
+        [FromRoute] ArticleWhereUniqueInput uniqueId,
+        [FromQuery] ArticleUpdateInput articleUpdateDto
     )
     {
         try

@@ -1,0 +1,3405 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Syncfusion.Blazor.Popups</name>
+    </assembly>
+    <members>
+        <member name="T:Syncfusion.Blazor.Popups.DialogAnimationSettings">
+            <summary>
+            A class used for configuring the animation properties in the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/>.
+            </summary>
+            <example>
+            In the following example, change the animation effect and delay time while opening the dialog.
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+                <DialogAnimationSettings Delay="400" Effect="DialogEffect.SlideTop">
+               </DialogAnimationSettings>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogAnimationSettings.Delay">
+            <summary>
+            Gets or sets the delay in milliseconds before the animation begins.
+            </summary>
+            <value>
+            The animation delay is used for showing or hiding the dialog.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogAnimationSettings.Duration">
+            <summary>
+            Gets or sets the duration in milliseconds that the animation takes to open or close the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/>.
+            </summary>
+            <value>
+            The animation duration for showing or hiding the dialog. The default value is <c>400</c>. 
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogAnimationSettings.Effect">
+            <summary>
+            Gets or sets the name of the animation that should be used when opening and closing the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/>.
+            The following are the list of animation effects available to configure to the dialog:
+            1. Fade
+            2. FadeZoom
+            3. FlipLeftDown
+            4. FlipLeftUp
+            5. FlipRightDown
+            6. FlipRightUp
+            7. FlipXDown
+            8. FlipXUp
+            9. FlipYLeft
+            10. FlipYRight
+            11. SlideBottom
+            12. SlideLeft
+            13. SlideRight
+            14. SlideTop
+            15. Zoom
+            16. None.
+            </summary>
+            <value>
+            The animation effect for showing or hiding the dialog.
+            </value>        
+            <remarks>
+            If the Fade animation is enabled, the dialog will open with the 'FadeIn' effect and close with the 'FadeOut' effect.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogAnimationSettings.OnInitializedAsync">
+            <summary>
+            Method invoked when the component is ready to start.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogAnimationSettings.OnParametersSetAsync">
+            <summary>
+            Method invoked when the component has received parameters from its parent.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogAnimationSettings.Dispose">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogAnimationSettings.Dispose(System.Boolean)">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+            <param name="disposing">Boolean value to dispose the object.</param>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DialogButton">
+            <summary>
+            A class used for configuring the button properties in the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+            <example>
+            In the following code example, a basic DialogButton has been rendered using the tag directive.
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogButtons>
+                  <DialogButton IsPrimary="true" Content="Ok" OnClick="@OnBtnClick" />
+                  <DialogButton Content="Cancel" OnClick="@OnBtnClick" />
+             </DialogButtons>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnBtnClick()
+              {
+               this.Visibility = false;
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.ChildContent">
+            <summary> 
+            Gets or sets a value that indicates the child content for the button including HTML element. If the child content is not specified, the button is rendered using the property.
+            </summary> 
+            <value> 
+            The template content. The default value is <c>null</c>. 
+            </value> 
+            <remarks> 
+            The child content specified within the tag directive is either a string or HTML Element. 
+            The string content is also specified using the property.
+            </remarks> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.Content">
+            <summary> 
+            Gets or sets a value that indicates the content of button element. 
+            </summary> 
+            <value> 
+            Accepts a string value. The default value is <c>String.Empty</c>. 
+            </value> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.CssClass">
+            <summary> 
+            Gets or sets a value that indicates the CSS class string to customize the appearance of button. 
+            </summary> 
+            <value> 
+            Accepts a CSS class string separated by space to customize the appearance of the button. The default value is <c>String.Empty</c>. 
+            </value> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.Disabled">
+            <summary> 
+            Gets or sets a value that indicates whether to enable or disable the button. 
+            </summary> 
+            <value> 
+            <c>true</c>, if the button component is disabled. The default value is <c>false</c>. 
+            </value> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.EnableRtl">
+            <summary> 
+            Gets or sets a value that indicates whether to enable or disable the right-to-left direction for the button.
+            </summary> 
+            <value> 
+            <c>true</c>, if the right-to-left direction is enabled for the button. The default value is <c>false</c>. 
+            </value> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.IconCss">
+            <summary> 
+            Gets or sets a value that indicates the CSS class string to include an icon or image for the button.  
+            </summary> 
+            <value> 
+            Accepts a CSS class string separated by space to include an icon or image for the button. The default value is <c>String.Empty</c>. 
+            </value> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.IconPosition">
+            <summary> 
+            Gets or sets a value that indicates how to display icons in the button. 
+            </summary> 
+            <value> 
+            One of the <see cref="P:Syncfusion.Blazor.Popups.DialogButton.IconPosition"/> enumeration. The default value is <see cref="F:Syncfusion.Blazor.Buttons.IconPosition.Left"/> 
+            </value> 
+            <remarks> 
+            If the <c>IconPosition</c> is <c>Left</c>, the icon will be placed left to the content of the button. 
+            If the <c>IconPosition</c> is <c>Right</c>, the icon will be placed right to the content of the button. 
+            If the <c>IconPosition</c> is <c>Top</c>, the icon will be placed above the content of the button. 
+            If the <c>IconPosition</c> is <c>Bottom</c>, the icon will be placed below the content of the button. 
+            </remarks> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.IsPrimary">
+            <summary> 
+            Gets or sets a value that indicates whether to enable or disable the primary style for button. 
+            </summary> 
+            <value> 
+            <c>true</c>, if the primary style is enabled for button. The default value is <c>false</c>. 
+            </value> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.IsToggle">
+            <summary> 
+            Gets or sets a value that indicates whether to enable or disable the toggle option for button. 
+            </summary> 
+            <value> 
+            <c>true</c>, if the toggle option is enabled for button. The default value is <c>false</c>. 
+            </value> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.OnClick">
+            <summary> 
+            Gets or sets an event callback that is triggered when the button is clicked.
+            </summary> 
+            <remarks> 
+            The event is triggered for UI-based clicks only.
+            </remarks> 
+            <example> 
+            <code><![CDATA[ 
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogButtons>
+                  <DialogButton IsPrimary="true" Content="Ok" OnClick="@OnBtnClick" />
+             </DialogButtons>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnBtnClick()
+              {
+               this.Visibility = false;
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.Type">
+            <summary>
+            Gets or sets a value that indicates the type of button.
+            </summary>
+            <para>Possible values are:</para>
+            <list type="bullet">
+            <item>
+            <term>Button</term>
+            <description>Perform a standard button click action.</description>
+            </item>
+            <item>
+            <term>Submit</term>
+            <description>Sends form data to a server for processing.</description>
+            </item>
+            <item>
+            <term>Reset</term>
+            <description>Reset the filled values of a form to its initial values.</description>
+            </item>
+            </list>
+            <value> 
+            One of the <see cref="T:Syncfusion.Blazor.Popups.ButtonType"/> enumeration. The default value is <see cref="F:Syncfusion.Blazor.Popups.ButtonType.Button"/> 
+            </value>
+            <example> 
+            <code><![CDATA[ 
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogButtons>
+                  <DialogButton Type="ButtonType.Submit" Content="Submit" OnClick="@OnBtnClick" />
+             </DialogButtons>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnBtnClick()
+              {
+               this.Visibility = false;
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.IsFlat">
+            <summary>
+            Gets or sets a value indicating whether to enable or disable the flat appearance of the dialog buttons.
+            </summary>
+            <value> 
+            <c>true</c>, if the flat appearence is enabled for dialog button. The default value is <c>true</c>. 
+            </value> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButton.HtmlAttributes">
+            <exclude/>
+            <summary> 
+            Gets or sets a a value that indicates the collection of additional attributes that will applied to the button container element. 
+            </summary> 
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogButton.OnInitializedAsync">
+            <summary>
+            Method invoked when the component is ready to start.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogButton.OnParametersSetAsync">
+            <summary>
+            Method invoked when the component has received parameters from its parent.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogButton.Dispose">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogButton.Dispose(System.Boolean)">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+            <param name="disposing">Boolean value to dispose the object.</param>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DialogButtons">
+            <summary>
+            Represents a collection of <see cref="T:Syncfusion.Blazor.Popups.DialogButton"/>.
+            </summary>
+            <remarks>
+            To generate dynamic <see cref="T:Syncfusion.Blazor.Popups.DialogButton"/> based on collection, use <c>@foreach</c> within <see cref="T:Syncfusion.Blazor.Popups.DialogButtons"/> tag directive.
+            </remarks>
+            <example>
+            In the following code example, a basic has been rendered using the tag directive.
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogButtons>
+                  <DialogButton IsPrimary="true" Content="Ok" OnClick="@OnBtnClick" />
+                  <DialogButton Content="Cancel" OnClick="@OnBtnClick" />
+             </DialogButtons>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnBtnClick()
+              {
+               this.Visibility = false;
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButtons.ChildContent">
+            <summary>
+            Gets or sets the content of the Dialog Button element.
+            </summary>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogButtons.Dispose">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogButtons.Dispose(System.Boolean)">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+            <param name="disposing">Boolean value to dispose the object.</param>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DialogEvents">
+            <summary>
+            A class used for configuring the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component events.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.Closed">
+            <summary> 
+            Gets or sets the event callback that will be invoked when the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is closed.  
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogEvents Closed="OnClosedHandler"></DialogEvents>
+              <DialogButtons>
+                  <DialogButton Content="Ok" OnClick="@OnBtnClick" />
+             </DialogButtons>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnClosedHandler(CloseEventArgs args)
+              {
+                 //Write your code here.
+              }
+              private void OnBtnClick()
+              {
+               this.Visibility = false;
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.Created">
+            <summary> 
+            Gets or sets the event callback that will be invoked when the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> rendering is completed.  
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.Destroyed">
+            <summary> 
+            Gets or sets the event callback that will be invoked when the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> disposing is completed.  
+            </summary> 
+            <value>
+            An event callback function.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.OnClose">
+            <summary>
+            Gets or sets the event callback that will be invoked when the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is closed.  
+            </summary> 
+            <value>
+            An event callback function.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogEvents OnClose="OnCloseHandler"></DialogEvents>
+              <DialogButtons>
+                  <DialogButton Content="Ok" OnClick="@OnBtnClick" />
+             </DialogButtons>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnCloseHandler(BeforeCloseEventArgs args)
+              {
+                 //Write your code here.
+              }
+              private void OnBtnClick()
+              {
+               this.Visibility = false;
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.OnDrag">
+            <summary>
+            Gets or sets the event callback that will be invoked when the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is dragging.  
+            </summary>
+            <value>
+            An event callback function.
+            </value> 
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogEvents OnDrag="OnDragHandler"></DialogEvents>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnDragHandler(DragEventArgs args)
+              {
+                 //Write your code here.
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.OnDragStart">
+            <summary>
+            Gets or sets the event callback that will be invoked when the drag of the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is initiated.
+            </summary> 
+            <value>
+            An event callback function.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogEvents OnDragStart="OnDragStartHandler"></DialogEvents>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnDragStartHandler(DragEventArgs args)
+              {
+                 //Write your code here.
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.OnDragStop">
+            <summary>
+            Gets or sets the event callback that will be invoked when the drag of the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is stopped.
+            </summary> 
+            <value>
+            An event callback function.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogEvents OnDragStop="OnDragStopHandler"></DialogEvents>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnDragStopHandler(DragStopEventArgs args)
+              {
+                 //Write your code here.
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.OnOpen">
+            <summary>
+            Gets or sets the event callback that will be invoked when the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is opening.  
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogEvents OnOpen="OnOpenHandler"></DialogEvents>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnOpenHandler(BeforeOpenEventArgs args)
+              {
+                 //Write your code here.
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.OnOverlayModalClick">
+            <summary>
+            Gets or sets the event callback that will be invoked when the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> modal overlay is clicked.  
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility" IsModal="true">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogEvents OnOverlayModalClick="OnOverlayModalClickHandler"></DialogEvents>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnOverlayModalClickHandler(OverlayModalClickEventArgs args)
+              {
+                 //Write your code here.
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.OnResizeStart">
+            <summary>
+            Gets or sets the event callback that will be invoked when resize of the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is initiated.  
+            </summary> 
+            <value>
+            An event callback function.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogEvents OnResizeStart="OnOnResizeStartHandler"></DialogEvents>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnOnResizeStartHandler(MouseEventArgs args)
+              {
+                 //Write your code here.
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.OnResizeStop">
+            <summary>
+            Gets or sets the event callback that will be invoked when resize of the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is stopped.  
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogEvents OnResizeStop="OnResizeStopHandler"></DialogEvents>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnResizeStopHandler(MouseEventArgs args)
+              {
+                 //Write your code here.
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.Opened">
+            <summary>
+            Event triggers when a dialog is opened.
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogEvents.Resizing">
+            <summary>
+            Gets or sets the event callback that will be invoked when the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is resizing.  
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogEvents Resizing="OnResizingHandler"></DialogEvents>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnResizingHandler(MouseEventArgs args)
+              {
+                 //Write your code here.
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogEvents.OnInitializedAsync">
+            <summary>
+            Method invoked when the component is ready to start.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogEvents.Dispose">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogEvents.Dispose(System.Boolean)">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+            <param name="disposing">Boolean value to dispose the object.</param>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DialogPositionData">
+            <summary>
+            A class used in the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> to configure the custom position within the document or target.
+            </summary>
+            <example>
+            In the following example, change the animation effect and delay time while opening the dialog.
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              <DialogPositionData X="center" Y="top">
+              </DialogPositionData>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogPositionData.X">
+            <summary>
+            Gets or sets the offset left value for positioning the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/>.
+            </summary>
+            <value> 
+            Accepts a string value. The default value is <c>String.Empty</c>. 
+            </value> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogPositionData.Y">
+            <summary>
+            Gets or sets the offset top value for positioning the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/>.
+            </summary>
+            <value> 
+            Accepts a string value. The default value is <c>String.Empty</c>. 
+            </value> 
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogPositionData.OnInitializedAsync">
+            <summary>
+            Method invoked when the component is ready to start.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogPositionData.OnParametersSetAsync">
+            <summary>
+            Method invoked when the component has received parameters from its parent.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogPositionData.Dispose">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogPositionData.Dispose(System.Boolean)">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+            <param name="disposing">Boolean value to dispose the object.</param>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DialogTemplates">
+            <summary>
+            A class used in the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> to configure templates to display within a header, content, and footer section of Dialog.
+            </summary>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Header><h1>Dialog Heade</h1></Header>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+                <FooterTemplate>
+                   <button class="e-btn" style="background-color:#8A2BE2;" onclick="@OnBtnClick">OK</button>
+                </FooterTemplate>
+              </DialogTemplates>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnBtnClick()
+              {
+               this.Visibility = false;
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogTemplates.Header">
+            <summary>
+            Gets or sets template as <see cref="T:Microsoft.AspNetCore.Components.RenderFragment"/> that defines the custom appearance of title area.
+            </summary>
+            <value>
+            A template content that specifies the visualization of dialog title area. The default value in <c>null</c>.
+            </value>
+            <remarks>
+            The <c>Header</c> is used to define the appearance of the dialog title area. Specify <see cref="P:Syncfusion.Blazor.Popups.DialogTemplates.Header"/> within <see cref="T:Syncfusion.Blazor.Popups.DialogTemplates"/> tag directive.
+            </remarks>        
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Header><h1>Dialog Heade</h1></Header>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogTemplates.Content">
+            <summary>
+            Gets or sets template as <see cref="T:Microsoft.AspNetCore.Components.RenderFragment"/> that defines the custom appearance of content area.
+            </summary>
+            <value>
+            A template content that specifies the visualization of dialog content area. The default value in <c>null</c>.
+            </value>
+            <remarks>
+            The <c>Content</c> is used to define the appearance of the dialog content area. Specify <see cref="P:Syncfusion.Blazor.Popups.DialogTemplates.Content"/> within <see cref="T:Syncfusion.Blazor.Popups.DialogTemplates"/> tag directive.
+            </remarks>        
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogTemplates.FooterTemplate">
+            <summary>
+            Gets or sets template as <see cref="T:Microsoft.AspNetCore.Components.RenderFragment"/> that defines the custom appearance of footer area.
+            </summary>
+            <value>
+            The action buttons are enabled by default in the footer. The default value is <c>null</c>.
+            </value>
+            <remarks>
+            The <c>FooterTemplate</c> is used to define the appearance of the dialog footer area. Specify <see cref="P:Syncfusion.Blazor.Popups.DialogTemplates.FooterTemplate"/> within <see cref="T:Syncfusion.Blazor.Popups.DialogTemplates"/> tag directive.
+            </remarks>        
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+                <FooterTemplate>
+                   <button class="e-btn" style="background-color:#8A2BE2;" onclick="@OnBtnClick">OK</button>
+                </FooterTemplate>
+              </DialogTemplates>
+              </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private void OnBtnClick()
+              {
+               this.Visibility = false;
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogTemplates.OnInitialized">
+            <summary>
+            Method invoked when the component is ready to start.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogTemplates.Dispose">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.DialogTemplates.Dispose(System.Boolean)">
+            <summary>
+            Dispose the unmanaged resources.
+            </summary>
+            <param name="disposing">Boolean value to dispose the object.</param>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.ResizeDirection">
+            <summary>
+            Specifies the direction of resizing in the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ResizeDirection.SouthEast">
+            <summary>
+            Defines the edge resize of the dialog in the south-east direction.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ResizeDirection.South">
+            <summary>
+            Defines the border resize of the dialog in the south direction.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ResizeDirection.North">
+            <summary>
+            Defines the border resize of the dialog in the north direction.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ResizeDirection.East">
+            <summary>
+            Defines the border resize of the dialog in the east direction.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ResizeDirection.West">
+            <summary>
+            Defines border resize of the dialog in the west direction.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ResizeDirection.NorthEast">
+            <summary>
+            Defines the edge resize of the dialog in the north-east direction.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ResizeDirection.NorthWest">
+            <summary>
+            Defines the edge resize of the dialog in the north-west direction.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ResizeDirection.SouthWest">
+            <summary>
+            Defines the edge resize of the dialog in the south-west direction.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ResizeDirection.All">
+            <summary>
+            Defines the border resize of the dialog in all directions.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.ButtonType">
+            <summary>
+            Specifies the type of button in the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ButtonType.Button">
+            <summary>
+            Defines ButtonType as Button.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ButtonType.Submit">
+            <summary>
+            Defines ButtonType as Submit.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.ButtonType.Reset">
+            <summary>
+            Defines ButtonType as Reset.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DialogEffect">
+            <summary>
+            Specifies the animation effect, which needs to be applied on showing or hiding of <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.Fade">
+            <summary>
+            Applies fade animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.FadeZoom">
+            <summary>
+            Applies fade-zoom animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.FlipLeftDown">
+            <summary>
+            Applies flip-left-down animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.FlipLeftUp">
+            <summary>
+            Applies flip-left-up animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.FlipRightDown">
+            <summary>
+            Applies flip-right-down animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.FlipRightUp">
+            <summary>
+            Applies flip-right-up animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.FlipXDown">
+             <summary>
+            Applies flip-x-down animation effect on showing or hiding dialog.
+             </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.FlipXUp">
+            <summary>
+            Applies flip-x-up animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.FlipYLeft">
+            <summary>
+            Applies flip-y-left animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.FlipYRight">
+            <summary>
+            Applies flip-y-right animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.SlideBottom">
+            <summary>
+             Applies slide-bottom animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.SlideLeft">
+            <summary>
+            Applies slide-left animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.SlideRight">
+            <summary>
+            Applies slide-right animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.SlideTop">
+            <summary>
+            Applies slide-top animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.Zoom">
+            <summary>
+            Applies zoom animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.DialogEffect.None">
+            <summary>
+            Applies no animation effect on showing or hiding dialog.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DialogDimension">
+            <summary>
+            Provides data for GetDimension method.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogDimension.Width">
+            <summary>
+            Defines the current width of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:System.Int32" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogDimension.Height">
+            <summary>
+            Defines the current height of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:System.Int32" />
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.OverlayModalClickEventArgs">
+            <summary>
+            Provides information about an <see cref="P:Syncfusion.Blazor.Popups.DialogEvents.OnOverlayModalClick"/> event being triggered.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.OverlayModalClickEventArgs.Event">
+            <summary>
+            Gets the mouse event arguments.
+            </summary>
+            <value>  
+            <see cref="T:Microsoft.AspNetCore.Components.Web.MouseEventArgs" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.OverlayModalClickEventArgs.PreventFocus">
+            <summary>
+            Gets or sets whether the default focus on the first focusable element in a dialog can be prevented or not.
+            </summary>
+            <value>  
+            <see cref="T:System.Boolean" />
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.BeforeCloseEventArgs">
+            <summary>
+            Provides information about an <see cref="P:Syncfusion.Blazor.Popups.DialogEvents.OnClose"/> event being triggered.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.BeforeCloseEventArgs.Cancel">
+            <summary>
+            Gets or sets whether the current action should be canceled or not.
+            </summary>
+            <value>  
+            <see cref="T:System.Boolean" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.BeforeCloseEventArgs.ClosedBy">
+            <summary>
+            Gets whether the dialog is closed by <c>Close Icon</c>, <c>Escape</c> or <c>User Action</c>.
+            </summary>
+            <value>  
+            <see cref="T:System.String" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.BeforeCloseEventArgs.Event">
+            <summary>
+            Gets the event arguments.
+            </summary>
+            <value>  
+            <see cref="T:System.EventArgs" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.BeforeCloseEventArgs.IsInteracted">
+            <summary>
+            Gets the information about whether the <c>OnClose</c> event is invoked by user interaction or not.
+            </summary>
+            <value>  
+            <see cref="T:System.Boolean" />
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.BeforeOpenEventArgs">
+            <summary>
+            Provides information about an <see cref="P:Syncfusion.Blazor.Popups.DialogEvents.OnOpen"/> event being triggered.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.BeforeOpenEventArgs.Cancel">
+            <summary>
+            Gets or sets whether the current action should be canceled or not.
+            </summary>
+            <value>  
+            <see cref="T:System.Boolean" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.BeforeOpenEventArgs.Container">
+            <summary>
+            Gets the container element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.BeforeOpenEventArgs.Element">
+            <summary>
+            Gets the element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.BeforeOpenEventArgs.MaxHeight">
+            <summary>
+            Gets or sets the value that overrides the dialog's maximum height.
+            </summary>
+            <value>  
+            <see cref="T:System.String" />
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.CloseEventArgs">
+            <summary>
+            Provides information about an <see cref="P:Syncfusion.Blazor.Popups.DialogEvents.Closed"/> event being triggered.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.CloseEventArgs.Cancel">
+            <summary>
+            Gets or sets whether the current action should be canceled or not.
+            </summary>
+            <value>  
+            <see cref="T:System.Boolean" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.CloseEventArgs.ClosedBy">
+            <summary>
+            Gets whether the dialog is closed by <c>Close Icon</c>, <c>Escape</c> or <c>User Action</c>.
+            </summary>
+            <value>  
+            <see cref="T:System.String" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.CloseEventArgs.Container">
+            <summary>
+            Gets the container element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.CloseEventArgs.Element">
+            <summary>
+            Gets the element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.CloseEventArgs.Event">
+            <summary>
+            Gets the event arguments.
+            </summary>
+            <value>  
+            <see cref="T:System.EventArgs" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.CloseEventArgs.IsInteracted">
+            <summary>
+            Gets the information about whether the <c>Closed</c> event is invoked by user interaction or not.
+            </summary>
+            <value>  
+            <see cref="T:System.Boolean" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.CloseEventArgs.Name">
+            <summary>
+            Gets the name of the event.
+            </summary>
+            <value>  
+            <see cref="T:System.String" />
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DragEventArgs">
+            <summary>
+            Provides information about an <see cref="P:Syncfusion.Blazor.Popups.DialogEvents.OnDrag"/> event being triggered.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragEventArgs.Element">
+            <summary>
+            Gets the element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragEventArgs.Event">
+            <summary>
+            Gets the mouse event arguments.
+            </summary>
+            <value>  
+            <see cref="T:Microsoft.AspNetCore.Components.Web.MouseEventArgs" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragEventArgs.Name">
+            <summary>
+            Gets the name of the event.
+            </summary>
+            <value>  
+            <see cref="T:System.String" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragEventArgs.Target">
+            <summary>
+            Gets the target element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DragStartEventArgs">
+            <summary>
+            Provides information about an <see cref="P:Syncfusion.Blazor.Popups.DialogEvents.OnDragStart"/> event being triggered.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragStartEventArgs.Element">
+            <summary>
+            Gets the element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragStartEventArgs.Event">
+            <summary>
+            Gets the mouse event arguments.
+            </summary>
+            <value>  
+            <see cref="T:Microsoft.AspNetCore.Components.Web.MouseEventArgs" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragStartEventArgs.Name">
+            <summary>
+            Gets the name of the event.
+            </summary>
+            <value>  
+            <see cref="T:System.String" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragStartEventArgs.Target">
+            <summary>
+            Gets the target element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DragStopEventArgs">
+            <summary>
+            Provides information about an <see cref="P:Syncfusion.Blazor.Popups.DialogEvents.OnDragStop"/> event being triggered.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragStopEventArgs.Element">
+            <summary>
+            Gets the element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragStopEventArgs.Event">
+            <summary>
+            Gets the mouse event arguments.
+            </summary>
+            <value>  
+            <see cref="T:Microsoft.AspNetCore.Components.Web.MouseEventArgs" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragStopEventArgs.Helper">
+            <summary>
+            Gets the drag helper element.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragStopEventArgs.Name">
+            <summary>
+            Gets the name of the event.
+            </summary>
+            <value>  
+            <see cref="T:System.String" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DragStopEventArgs.Target">
+            <summary>
+            Gets the target element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.OpenEventArgs">
+            <summary>
+            Provides information about an <see cref="P:Syncfusion.Blazor.Popups.DialogEvents.OnOpen"/> event being triggered.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.OpenEventArgs.Cancel">
+            <summary>
+            Gets or sets whether the current action should be canceled or not.
+            </summary>
+            <value>  
+            <see cref="T:System.Boolean" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.OpenEventArgs.Container">
+            <summary>
+            Gets the container element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.OpenEventArgs.Element">
+            <summary>
+            Gets the element of the dialog.
+            </summary>
+            <value>  
+            <see cref="T:Syncfusion.Blazor.DOM" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.OpenEventArgs.Name">
+            <summary>
+            Gets the name of the event.
+            </summary>
+            <value>  
+            <see cref="T:System.String" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.OpenEventArgs.PreventFocus">
+            <summary>
+            Gets or sets whether the default focus on the first focusable element in a dialog can be prevented.
+            </summary>
+            <value>  
+            <see cref="T:System.Boolean" />
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.SfDialog">
+            <summary>
+            The Blazor Dialog is a user interface (UI) component that displays critical information, errors, warnings, and questions to users, as well as confirms decisions and collects input from the users.
+            Based on user interactions, the dialog is classified as modal or non-modal (modeless).
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.OnInitializedAsync">
+            <summary>
+            Method invoked when the component is ready to start.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.OnParametersSetAsync">
+            <summary>
+            Method invoked when the component has received parameters from its parent.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.OnAfterRenderAsync(System.Boolean)">
+            <summary>
+            Method invoked after each time the component has been rendered.
+            </summary>
+            <param name="firstRender"> Set to true if this is the first time OnAfterRender(Boolean) has been invoked.</param>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.ID">
+            <summary>
+            Sets id attribute for the dialog element.
+            </summary>
+            <value>
+            Accepts the string value.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.EnablePersistence">
+            <summary>
+            Gets or sets whether to persist component's state between page reloads. When set to <c>true</c>, the <see cref="T:Syncfusion.Blazor.Popups.Position" />, <see cref="P:Syncfusion.Blazor.Popups.SfDialog.Width" /> and <see cref="P:Syncfusion.Blazor.Popups.SfDialog.Height" /> properties values are persisted
+            </summary>
+            <value>
+            <c>true</c>, if the component's state persistence is enabled. The default value is <c>false</c>.
+            </value>
+            <remarks>
+            Component's <see cref="T:Syncfusion.Blazor.Popups.Position" />, <see cref="P:Syncfusion.Blazor.Popups.SfDialog.Width" /> and <see cref="P:Syncfusion.Blazor.Popups.SfDialog.Height" /> properties will be stored in browser local storage to persist component's state when page reloads. 
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.ChildContent">
+            <summary>
+            Gets or sets the child content of <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+            <exclude />
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.AllowDragging">
+            <summary>
+            Gets or sets whether the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component can be dragged by the user. 
+            </summary>
+            <value>
+            <c>true</c>, if the dragging is enabled for dialog component. The default value is <c>false</c>.
+            </value>
+            <remarks>
+            You can reposition the dialog by clicking and dragging the header. You can only drag the dialog within the container element.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.CloseOnEscape">
+            <summary>
+            Gets or sets the value whether the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component can be closed on pressing the escape <c>(ESC)</c> key.
+            </summary>
+            <value>
+            <c>true</c>, if the dialog closing by pressing the escap key. The default value is <c>true</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.Content">
+            <summary>
+            Gets or sets the value that can be displayed in the content section of the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+            <value>
+            The content displayed in the dialog component.The default value is <c>string.Empty</c>.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility" Content="@DialogContent">
+            </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private string DialogContent { get; set; } = "<p> Dialog content </p>";
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.CssClass">
+            <summary> 
+            Gets or sets the custom classes to customize the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.  
+            </summary> 
+            <value> 
+            If we set the css class, then the custom class is applied for dialog. The default value is <c>string.Empty</c>.
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+            </SfDialog>
+            <style>
+            .custom-class .e-dlg-content{
+               background-color: #e0f6ff;
+             }
+            </style>
+             @code {
+              private bool Visibility { get; set; } = true;
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.EnableResize">
+            <summary>
+            Gets or sets whether the user can resize the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+            <value>
+            <c>true</c>, if the dialog component creates a grip to resize it in a diagonal direction. The default value is <c>false</c>.
+            </value>
+            <remarks>
+            You can't able to resize the dialog below the value specified in the <see cref="P:Syncfusion.Blazor.Popups.SfDialog.MinHeight"/> property.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.ResizeHandles">
+            <summary>
+            Gets or sets the resize handles direction in the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component that the user can resize.
+            </summary>
+            <value>
+            You can set the resize direction for dialog component. The default value is <c>new ResizeDirection[] { ResizeDirection.SouthEast }</c>.
+            </value>
+            <remarks>
+            To resize the dialog in a specific direction, enable <see cref="P:Syncfusion.Blazor.Popups.SfDialog.EnableResize"/>.
+            </remarks>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility" ResizeHandles="ResizeHandles" EnableResize="true">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+            </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private ResizeDirection[] ResizeHandles { get; set; }
+              protected override void OnInitialized()
+              {
+                ResizeHandles = new ResizeDirection[] { ResizeDirection.NorthEast };
+              }
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.EnableRtl">
+            <summary>
+            Gets or sets whether the right to left direction is enabled for <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+            <value> 
+            <c>true</c>, if the right to left direction is enabled for dialog component. The default value is `false`. 
+            </value> 
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.FooterTemplate">
+            <summary>
+            Gets or sets template as string, that defines custom appearance of <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> footer area.
+            </summary>
+            <value> 
+            The action buttons are enabled by default in the footer. The default value is `string.Empty`. 
+            </value>
+            <remarks>
+             This is an optional property and can be used only when the footer is occupied with information or custom components.
+             If the footer template is configured to the dialog, the <see cref="T:Syncfusion.Blazor.Popups.DialogButtons"/> tag will be disabled.
+            </remarks>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility" FooterTemplate="@FoooterTemplate">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+            </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private string FoooterTemplate { get; set; } = "<p>Footer content</p>";
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.Header">
+            <summary>
+            Gets or sets template as string, that defines custom appearance of <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> title area.
+            </summary>
+            <value> 
+            <c>string.Empty</c>, if dialog will be displayed without the header. The default value is `string.Empty`. 
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility" Header="@HeaderTemplate">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+            </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+              private string HeaderTemplate { get; set; } = "<p>Header content</p>";
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.Height">
+            <summary> 
+            Gets or sets the height of the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> in pixels/number/percentage. Number value is considered as pixels. 
+            </summary> 
+            <value> 
+            If we set the height value, then the dialog will render based on specified height otherwise the default height value `auto` is set.  
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility"  Height="150px">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+            </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+             }
+            ]]></code>
+            </example>
+            <seealso cref="P:Syncfusion.Blazor.Popups.SfDialog.MinHeight"/>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.HtmlAttributes">
+            <summary>
+            You can add the additional Html attributes such as id, title, etc., to the dialog element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.IsModal">
+            <summary>
+            Gets or sets whether the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> can be displayed as modal.
+            </summary>
+            <value> 
+            <c>true</c>, if the modal dialog is enabled. The default value is `false`. 
+            </value> 
+            <remarks>
+            <c>Modal</c>: It creates an overlay that prevents interaction with the parent application and the user.
+            <c>Modeless</c>: It does not prevent the user from interacting with the parent application.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.MinHeight">
+            <summary> 
+            Gets or sets the min-height of the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> in pixels/number/percentage. Number value is considered as pixels. 
+            </summary> 
+            <value> 
+            If we set the min-height value, then the dialog will render based on specified min-height. The default value is <c>string.Empty</c>.
+            </value>
+            <remarks>
+            The dialog's minimum height can be adjusted using the MinHeight property.
+            The dialog size will be limited to the MinHeight setting if the user attempts to resize it below this threshold.
+            </remarks>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility"  MinHeight="150px">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+            </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+             }
+            ]]></code>
+            </example>
+            <seealso cref="P:Syncfusion.Blazor.Popups.SfDialog.Height"/>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.ShowCloseIcon">
+            <summary>
+            Gets or sets the value that represents whether the close icon can be displayed in the dialog's title section.
+            </summary>
+            <value>
+            <c>true</c>, if the close icon in dialog component is enabled. The default value is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.Target">
+            <summary>
+             Gets or sets the target element in which the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> should be displayed. 
+            </summary>
+            <value>
+            The default value is null, which refers to the `Document.body` element.
+            </value>
+            <remarks>
+             You can use this property to specify the CSS selector.
+            </remarks>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <div id="target" style="width:100%; height:300px;"></div>
+            <SfDialog Width="500px" @bind-Visible="Visibility" Target="#target">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+            </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.Visible">
+            <summary>
+            Gets or sets the value that represents whether the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component is visible.
+            </summary>
+            <value>
+            <c>true</c>, if the dialog will be open at initially. The default value is <c>true</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.VisibleChanged">
+            <summary>
+            Gets or sets an event callback that is raised when the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component is visible.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.Width">
+            <summary> 
+            Gets or sets the width of the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> in pixels/number/percentage. Number value is considered as pixels. 
+            </summary> 
+            <value> 
+            If we set the width value, then the dialog will render based on specified width otherwise the default width value <c>100%</c> is set.  
+            </value>
+            <example>
+            <code><![CDATA[
+            @using Syncfusion.Blazor.Popups
+            <SfDialog Width="500px" @bind-Visible="Visibility"  Width="150px">
+              <DialogTemplates>
+                <Content>
+                    <p>
+                       Dialog content
+                      </p>
+                  </Content>
+              </DialogTemplates>
+            </SfDialog>
+             @code {
+              private bool Visibility { get; set; } = true;
+             }
+            ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.ZIndex">
+            <summary>
+            Gets or sets the ZIndex that determines whether the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is displayed in front of or behind another component.
+            </summary>
+            <value>
+            The dialog will display in front of other component. The default value is <c>1000</c>.
+            </value>
+            <remarks>
+             Set the ZIndex to the dialog by obtaining all of the ZIndex elements from a page and calculating the maximum ZIndex.
+            </remarks>    
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.AllowPrerender">
+            <summary>
+            Gets or sets whether the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component re-render or not when the dialog gets open.
+            </summary>
+            <value>
+            <c>true</c>, if dialog component elements are maintained on the DOM when closing and opening it; otherwise, <b>false</b>.The default value is <c>false</c>.
+            </value>
+            <remarks>
+            Disabling this property, the Dialog component DOM element will be destroyed when closing and re-rendered the dialog DOM element while opening it. Otherwise, the dialog will be shown when opening it and remain hidden while closing it when enabled.
+            </remarks>
+            <seealso cref="P:Syncfusion.Blazor.Popups.SfDialog.Visible"/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.GetButton(System.Int32)">
+            <summary>
+            Returns the specific DialogButton instance in the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+            <param name="index">Specifies the button index.</param>
+            <returns><see cref="T:Syncfusion.Blazor.Popups.DialogButton"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.GetButtonItems">
+            <summary>
+            Returns the collection of DialogButton instances in the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+            <returns> <see cref="T:System.Collections.Generic.List`1"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.HideAsync">
+            <summary>
+            The <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> is closed if it is visible.
+            </summary>
+            <returns><see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.HideAsync(System.String)">
+            <summary>
+            Closes the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> if it is in a visible state.
+            </summary>
+            <param name="args">Specifies the interaction type.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.HideAsync(Microsoft.AspNetCore.Components.Web.MouseEventArgs)">
+            <summary>
+            Closes the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> if it is in a visible state.
+            </summary>
+            <param name="args">Specifies the mouse interaction type.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.HideAsync(Microsoft.AspNetCore.Components.Web.KeyboardEventArgs)">
+            <summary>
+            Closes the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> if it is in a visible state.
+            </summary>
+            <param name="args">Specifies the keyboard arguments.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.RefreshPositionAsync">
+            <summary>
+            Refreshes the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> position when the user changes its height and width dynamically.
+            </summary>        
+            <returns><see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.ShowAsync(System.Nullable{System.Boolean})">
+            <summary>
+            Opens the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> if it is in a hidden state.
+            </summary>
+            <param name="isFullScreen">Specifies whether the dialog will open in full screen mode or not.</param>
+            <returns><see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.GetDimension">
+            <summary>
+            Gets the current height and width of the <see cref="T:Syncfusion.Blazor.Popups.SfDialog"/> component.
+            </summary>
+            <returns><see cref="T:System.Threading.Tasks.Task"/>.</returns>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfDialog.IsStaticRendering">
+            <summary>
+            Specifies whether the target application is rendered with SSR none mode.
+            </summary>
+            <exclude />
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.CreatedEvent">
+            <summary>
+            Method invoked after component has been rendered.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.OpenEvent(System.String)">
+            <summary>
+            Method invoked after dialog opened.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.CloseEvent(System.String)">
+            <summary>
+            Method invoked after dialog closed.
+            </summary>
+            <param name="classes">Specify the class names.</param>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.DragStartEvent(Syncfusion.Blazor.Popups.DragStartEventArgs)">
+            <summary>
+            Method invoked when start to drag the dialog.
+            </summary>
+            <param name="args">Defines the DragStart Event arguments.</param>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.DragEvent(Syncfusion.Blazor.Popups.DragEventArgs)">
+            <summary>
+            Method invoked when drag the dialog.
+            </summary>
+            <param name="args">Defines the Drag Event arguments.</param>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.DragStopEvent(Syncfusion.Blazor.Popups.DragStopEventArgs)">
+            <summary>
+            Method invoked when complete the drag action.
+            </summary>
+            <param name="args">Defines the DragStop Event arguments.</param>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.ResizeStartEvent(Microsoft.AspNetCore.Components.Web.MouseEventArgs)">
+            <summary>
+            Method invoked when start to resize the dialog.
+            </summary>
+            <param name="args">Defines the Mouse Event arguments.</param>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.ResizingEvent(Microsoft.AspNetCore.Components.Web.MouseEventArgs)">
+            <summary>
+            Method invoked while resizing the dialog.
+            </summary>
+            <param name="args">Defines the Mouse Event arguments.</param>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.ResizeStopEvent(Microsoft.AspNetCore.Components.Web.MouseEventArgs)">
+            <summary>
+            Method invoked after the dialog resize.
+            </summary>
+            <param name="args">Defines the Mouse Event arguments.</param>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.ShowDialog">
+            <summary>
+            Method invoked after the dialog resize.
+            </summary>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialog.CloseDialog(Microsoft.AspNetCore.Components.Web.KeyboardEventArgs)">
+            <summary>
+            Method invoked after dialog closed.
+            </summary>
+            <param name="args">Specifies KeyBoard arguments.</param>
+            <returns>A System.Threading.Tasks.Task representing any asynchronous operation.</returns>
+            <exclude/>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.SfDialogProvider">
+            <summary>
+            DialogProvider is a target element where the built-in dialogs are shown using <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.ConfirmAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/>,
+            <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.AlertAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/> and <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.PromptAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/> 
+            methods that are appended to this element. 
+            </summary>
+            <remarks>
+            It is recommended to add this component in `MainLayout.razor` to show utility dialogs from anywhere in the application.
+            If you add this to any particular page, the utility dialogs can then be displayed only for that page.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialogProvider.Dispose">
+            <inheritdoc />
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialogProvider.OnInitialized">
+            <inheritdoc />
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.SfDialogService">
+            <summary>
+            A class that represents the dialog utility service which is used to configure built-in dialog options.
+            </summary>
+            <remarks>
+            <see cref="T:Syncfusion.Blazor.Popups.SfDialogService"/> can be injected using `@inject SfDialogService DialogService` in any page to show the built-in dialogs. 
+            </remarks>
+            <example>
+            Dialog service must be configured in the `Program.cs` file for Blazor WASM App, .NET 6 Blazor Server App and 
+            `Startup.cs` file for .NET 5 and lower version Blazor Server App.
+            In `Program.cs` dialog service can be configured like the below code,
+            <code><![CDATA[
+            using Syncfusion.Blazor.Popups;
+            . . .
+            builder.Services.AddScoped<SfDialogService>();
+            ]]></code>
+            In `Startup.cs` dialog service can be configured like the below code,
+            <code><![CDATA[
+            using Syncfusion.Blazor.Popups;
+            . . .
+            public void ConfigureServices(IServiceCollection services) 
+            {
+                . . .
+                services.AddScoped<SfDialogService>();
+            }
+            ]]></code>
+            </example>
+        </member>
+        <member name="E:Syncfusion.Blazor.Popups.SfDialogService.OnOpen">
+            <summary>
+            Gets or sets the event callback that will be invoked before the dialog opens and closes.
+            </summary>
+            <remarks>
+            Internal purpose.
+            </remarks>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialogService.ConfirmAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)">
+            <summary>
+            Opens a confirmation dialog box with two buttons as <c>OK</c> and <c>Cancel</c>.
+            </summary>
+            <param name="content">A string specifies the text to be displayed in the confirmation dialog. </param>
+            <param name="title">Optional. A string specifies the title to be displayed in the confirmation dialog. </param>
+            <param name="options">Optional. A <see cref="T:Syncfusion.Blazor.Popups.DialogOptions"/> specifies the options to configure confirm dialog. </param>
+            <example>
+            Code example to show confirmation dialog.
+            <code><![CDATA[
+            bool isConfirm = await DialogService.ConfirmAsync("Are you sure you want to permanently delete these items?", "Delete Multiple Items");
+            string confirmMessage = isConfirm ? "confirmed" : "canceled";
+            Console.WriteLine($"The user {confirmMessage} the dialog box.");
+            ]]></code>
+            </example>
+            <returns>
+            Returns a boolean value which specifies which button is clicked by user. <c>true</c>, if the user clicked `OK` button; Otherwise <c>false</c>.
+            </returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialogService.AlertAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)">
+            <summary>
+            Opens an alert dialog box which is used to display warning messages to the users.
+            </summary>
+            <param name="content">A string specifies the text to be displayed in the alert dialog. </param>
+            <param name="title">Optional. A string specifies the title to be displayed in the alert dialog. </param>
+            <param name="options">Optional. A <see cref="T:Syncfusion.Blazor.Popups.DialogOptions"/> specifies the options to configure alert dialog. </param>
+            <example>
+            Code example to show alert dialog.
+            <code><![CDATA[
+            await DialogService.AlertAsync("Alert Dialog Content");
+            Console.WriteLine($"The user closed the alert dialog.");
+            ]]></code>
+            </example>
+            <returns>
+            A task representing the asynchronous operation.
+            </returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfDialogService.PromptAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)">
+            <summary>
+            Opens a prompt dialog that prompts the user to input text. Where the user enters a string content, it returns when clicked OK and null when clicked Cancel.
+            </summary>
+            <param name="content">A string specifies the text to be displayed in the prompt dialog. </param>
+            <param name="title">Optional. A string specifies the title to be displayed in the prompt dialog. </param>
+            <param name="options">Optional. A <see cref="T:Syncfusion.Blazor.Popups.DialogOptions"/> specifies the options to configure prompt dialog. </param>
+            <example>
+            Code example to show prompt dialog.
+            <code><![CDATA[
+            string promptText = await DialogService.PromptAsync("Enter your name:", "Join Chat Group", new DialogOptions()
+            {
+            PrimaryButtonOptions = new DialogButtonOptions { Content = "Okay" },
+            CancelButtonOptions = new DialogButtonOptions { Content = "Cancel" }, 
+            });
+            if (promptText == null)
+            {
+            Console.WriteLine($"The user the canceled dialog box.");
+            }
+            else
+            {
+            Console.WriteLine($"The User's input is returned as \"{promptText}\".");
+            }
+            ]]></code>
+            </example>
+            <returns>
+            Returns a string entered by the user when the user clicks `OK`; Otherwise `null`.
+            </returns>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DialogOptions">
+            <summary>
+            Provides options to configure built-in dialogs shown using <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.ConfirmAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/>,
+            <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.AlertAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/> and <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.PromptAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/> methods. 
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.AllowDragging">
+            <summary>
+            Gets or sets whether the dialog can be dragged by the end-user.
+            </summary>
+            <value>
+            <c>true</c>, if the dialog can be dragged by the user; Otherwise, <b>false</b>. The default value is <c>false</c>.
+            </value>
+            <remarks>
+            When <see cref="P:Syncfusion.Blazor.Popups.DialogOptions.AllowDragging"/> is set as true it allows a user to drag by selecting the header and dragging it for repositioning the dialog.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.ShowCloseIcon">
+            <summary>
+            Gets or sets whether to show the close icon in the title of dialog.
+            </summary>
+            <value>
+            <c>true</c>, the close icon is displayed in the dialog title section; otherwise, <b>false</b>. The default value is <c>false</c>.
+            </value>
+            <seealso cref="P:Syncfusion.Blazor.Popups.DialogOptions.CloseOnEscape"/>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.CloseOnEscape">
+            <summary>
+            Gets or sets whether the dialog can be closed by pressing the escape (ESC) key.
+            </summary>
+            <value>
+            <c>true</c>, if the dialog can be closed by pressing the escape (ESC) key; otherwise, <b>false</b>. The default value is <c>true</c>.
+            </value>
+            <seealso cref="P:Syncfusion.Blazor.Popups.DialogOptions.ShowCloseIcon"/>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.CssClass">
+            <summary>
+            Gets or sets the CSS class name that can be appended with the root element of the utility dialog.
+            </summary>
+            <value>
+            The default value is <c>String.Empty</c>.
+            </value>
+            <remarks>
+            One or more custom CSS classes can be added to a utility dialog.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.Width">
+            <summary>
+            Gets or sets the width of the dialog..
+            </summary>
+            <value>
+            The default value is <c>auto</c>.
+            </value>
+            <seealso cref="P:Syncfusion.Blazor.Popups.DialogOptions.Height"/>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.Height">
+            <summary>
+            Gets or sets the height of the dialog..
+            </summary>
+            <value>
+            The default value is <c>auto</c>.
+            </value>
+            <seealso cref="P:Syncfusion.Blazor.Popups.DialogOptions.Width"/>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.ZIndex">
+            <summary>
+            Gets or sets the z-order that determines whether the utility dialog is displayed in front or behind of another component.
+            </summary>
+            <value>
+            The `ZIndex` value range can be changed depending on the application's needs. The default value is <c>1000</c>.
+            </value>
+            <seealso cref="P:Syncfusion.Blazor.Popups.DialogOptions.CssClass"/>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.Position">
+            <summary>
+            Gets or sets the value where the utility dialog can be positioned within the document or target.
+            </summary>
+            <value>
+            The position can be represented with pre-configured positions or specific X and Y values.
+            <c>PositionDataModel.X</c> can be configured with a left, center, right, or offset value.
+            <c>PositionDataModel.Y</c> can be configured with a top, center, bottom, or offset value.
+            <see cref="T:Syncfusion.Blazor.Popups.PositionDataModel"/>
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.AnimationSettings">
+            <summary>
+            Gets or sets the animation settings of the dialog component.
+            </summary>
+            <value>
+            <see cref="T:Syncfusion.Blazor.Popups.DialogAnimationSettings"/>
+            </value>
+            <remarks>
+            The animation effect can be applied to open and close the dialog with duration and delay.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.PrimaryButtonOptions">
+            <summary>
+            Gets or sets the primary (OK) action button settings.
+            </summary>
+            <value>
+            <see cref="T:Syncfusion.Blazor.Popups.DialogButtonOptions"/>
+            </value>
+            <seealso cref="P:Syncfusion.Blazor.Popups.DialogOptions.CancelButtonOptions"/>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.CancelButtonOptions">
+            <summary>
+            Gets or sets the cancel action settings.
+            </summary>
+            <value>
+            <see cref="T:Syncfusion.Blazor.Popups.DialogButtonOptions"/>
+            </value>
+            <seealso cref="P:Syncfusion.Blazor.Popups.DialogOptions.PrimaryButtonOptions"/>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogOptions.ChildContent">
+            <summary>
+            Gets or sets a template content that used as content dialog. 
+            </summary>
+            <value>
+            The template content.
+            </value>
+            <example>
+            In the code example below, the child content is configured for the prompt dialog box.
+            <code><![CDATA[
+            await DialogService.PromptAsync(null, "Enter Your Details", new DialogOptions()
+            {
+                ChildContent = @<SfTextBox Placeholder = "Enter Name"></SfTextBox>
+            });
+            ]]></code>
+            </example>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DialogButtonOptions">
+            <summary>
+            Provides options to configure dialog buttons of 
+            built-in dialogs shown using <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.ConfirmAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/>,
+            <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.AlertAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/> and <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.PromptAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/> methods.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButtonOptions.Content">
+            <summary>
+            Gets or sets the text content of the button.
+            </summary>
+            <value>
+            The default value is <c>String.Empty</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButtonOptions.IconCss">
+            <summary>
+            Gets or sets one or more CSS classes to include an icon or image for the Button.
+            </summary>
+            <value>
+            Accepts a CSS class string separated by space to include an icon or image for the button. The default value is String.Empty.
+            </value>
+            <remarks>
+            Buttons can also include font icon and sprite image.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogButtonOptions.Disabled">
+            <summary>
+            Gets or sets whether the Button is enabled or disabled.
+            </summary>
+            <value>
+            <c>true</c>, the button is disabled; otherwise, <b>false</b>. The default value is <c>false</c>.
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.DialogAnimationOptions">
+            <summary>
+            The animation options for the built-in dialogs is shown using <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.ConfirmAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/>,
+            <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.AlertAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/> and <see cref="M:Syncfusion.Blazor.Popups.SfDialogService.PromptAsync(System.String,System.String,Syncfusion.Blazor.Popups.DialogOptions)"/> methods.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogAnimationOptions.Delay">
+            <summary>
+            Gets or sets the delay in milliseconds to start the animation.
+            </summary>
+            <value>
+            The amount of time in milliseconds to delay animation before start.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogAnimationOptions.Duration">
+            <summary>
+            Gets or sets the duration in milliseconds that the animation takes to open or close the dialog.
+            </summary>
+            <value>
+            The amount of time in milliseconds to complete animation.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.DialogAnimationOptions.Effect">
+            <summary>
+            Gets or sets the animation effect to apply when open and close the dialog. 
+            If the user sets Fade animation, the dialog will open with the `FadeIn` effect and close with the `FadeOut` effect.
+            </summary>
+            <value>
+            The following are the list of animation effects available to configure:
+            1. Fade
+            2. FadeZoom
+            3. FlipLeftDown
+            4. FlipLeftUp
+            5. FlipRightDown
+            6. FlipRightUp
+            7. FlipXDown
+            8. FlipXUp
+            9. FlipYLeft
+            10. FlipYRight
+            11. SlideBottom
+            12. SlideLeft
+            13. SlideRight
+            14. SlideTop
+            15. Zoom
+            16. None.
+            </value>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.TargetType">
+            <summary>
+            Defines the types of target.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.TargetType.Relative">
+            <summary>
+            Defines the TargetType as Relative.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.TargetType.Container">
+            <summary>
+            Defines the TargetType as Container.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.CollisionType">
+            <summary>
+            Defines the types of collision.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.CollisionType.None">
+            <summary>
+            Defines the CollisionType as None.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.CollisionType.Flip">
+            <summary>
+            Defines the CollisionType as Flip.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.CollisionType.Fit">
+            <summary>
+            Defines the CollisionType as Fit.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.PopupModel">
+            <summary>
+            Provides data for the PopupModel.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.PopupModel.Collision">
+            <summary>
+            Specifies the collision handler settings of the component.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.PopupModel.Position">
+            <summary>
+            Specifies the popup element position, respective to the relative element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.PopupModel.RelateTo">
+            <summary>
+            Specifies the element selector for relative container element of the popup element .Based on the relative element, popup element will be positioned.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.PopupModel.TargetType">
+            <summary>
+            Specifies the relative element type of the component.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.PopupModel.OffsetX">
+            <summary>
+            specifies the popup element offset-x value, respective to the relative element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.PopupModel.OffsetY">
+            <summary>
+            specifies the popup element offset-y value, respective to the relative element.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.CollisionAxis">
+            <summary>
+             Provides information about a CollisionAxis.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.CollisionAxis.X">
+            <summary>
+            Specify the collision handler for a X-Axis.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.CollisionAxis.Y">
+            <summary>
+            specify the collision handler for a Y-Axis.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.PositionDataModel">
+            <summary>
+             Provides information about a PositionDataModel.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.PositionDataModel.X">
+            <summary>
+            Specify the offset left value.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.PositionDataModel.Y">
+            <summary>
+            Specify the offset top value.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.Effect">
+            <summary>
+            Animation effects that are applicable to the Tooltip. A different animation can be set for tooltip open and close action.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FadeIn">
+            <summary>
+            Tooltip open/close actions occur with the FadeIn animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FadeOut">
+            <summary>
+            Tooltip open/close actions occur with the FadeOut animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FadeZoomIn">
+            <summary>
+            Tooltip open/close actions occur with the FadeZoomIn animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FadeZoomOut">
+            <summary>
+            Tooltip open/close actions occur with the FadeZoomOut animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FlipXDownIn">
+            <summary>
+            Tooltip open/close actions occur with the FlipXDownIn animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FlipXDownOut">
+            <summary>
+            Tooltip open/close actions occur with the FlipXDownOut animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FlipXUpIn">
+            <summary>
+            Tooltip open/close actions occur with the FlipXUpIn animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FlipXUpOut">
+            <summary>
+            Tooltip open/close actions occur with the FlipXUpOut animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FlipYLeftIn">
+            <summary>
+            Tooltip open/close actions occur with the FlipYLeftIn animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FlipYLeftOut">
+            <summary>
+            Tooltip open/close actions occur with the FlipYLeftOut animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FlipYRightIn">
+            <summary>
+            Tooltip open/close actions occur with the FlipYRightIn animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.FlipYRightOut">
+            <summary>
+            Tooltip open/close actions occur with the FlipYRightOut animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.ZoomIn">
+            <summary>
+            Tooltip open/close actions occur with the ZoomIn animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.ZoomOut">
+            <summary>
+            Tooltip open/close actions occur with the ZoomOut animation effect.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Effect.None">
+            <summary>
+            Tooltip open/close actions occur without any animation effect.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.OpenMode">
+            <summary>
+            To set the open modes available for the Tooltip.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.OpenMode.Auto">
+            <summary>
+            In Auto mode, the tooltip appears when you hover over the target or when the target element receives the focus.
+            In mobile devices, the tooltip opens on tap and hold of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.OpenMode.Hover">
+            <summary>
+            In Hover mode, the tooltip appears when you hover over the target on the desktop.
+            In mobile devices, the tooltip opens on a tap and hold of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.OpenMode.Click">
+            <summary>
+            In Click mode, the tooltip appears when you click a target element on the desktop.
+            In mobile devices, Tooltip appears with a single tap on the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.OpenMode.Focus">
+            <summary>
+            In Focus mode, Tooltip appears when you focus on a target element in desktop.
+            In mobile devices, Tooltip appears with a single tap on the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.OpenMode.Custom">
+            <summary>
+            In Custom mode, the tooltip will not appear on any default action. You have to bind your custom events and use either open or close public methods in both desktop and mobile devices.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.Position">
+            <summary>
+            To set the applicable positions where the Tooltip can be displayed over specific target elements.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.TopCenter">
+            <summary>
+            Positions the Tooltip to the top-center of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.TopLeft">
+            <summary>
+            Positions the Tooltip to the top-left of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.TopRight">
+            <summary>
+            Positions the Tooltip to the top-right of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.BottomLeft">
+            <summary>
+            Positions the Tooltip to the bottom-left of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.BottomCenter">
+            <summary>
+            Positions the Tooltip to the bottom-center of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.BottomRight">
+            <summary>
+            Positions the Tooltip to the bottom-right of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.LeftTop">
+            <summary>
+            Positions the Tooltip to the left-top of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.LeftCenter">
+            <summary>
+            Positions the Tooltip to the left-center of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.LeftBottom">
+            <summary>
+            Positions the Tooltip to the left-bottom of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.RightTop">
+            <summary>
+            Positions the Tooltip to the right-top of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.RightCenter">
+            <summary>
+            Positions the Tooltip to the right-center of the target element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.Position.RightBottom">
+            <summary>
+            Positions the Tooltip to the right-bottom of the target element.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.TipPointerPosition">
+            <summary>
+            Applicable tip positions are attached to the Tooltip.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.TipPointerPosition.Auto">
+            <summary>
+            Automatically adjusts the tip pointer position.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.TipPointerPosition.Start">
+            <summary>
+            Positions the tip pointer at the start of the Tooltip element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.TipPointerPosition.Middle">
+            <summary>
+            Positions the tip pointer in the middle of the Tooltip element.
+            </summary>
+        </member>
+        <member name="F:Syncfusion.Blazor.Popups.TipPointerPosition.End">
+            <summary>
+            Positions the tip pointer at the end of the Tooltip element.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.TooltipAnimationSettings">
+            <summary>
+            Animation options that are common for both open and close actions of the Tooltip.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipAnimationSettings.Delay">
+            <summary>
+            Gets or sets the delay value in milliseconds and indicating the waiting time before the animation begins.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipAnimationSettings.Duration">
+            <summary>
+            Gets or sets the duration of the animation that is completed per the animation cycle.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipAnimationSettings.Effect">
+            <summary>
+            Gets or sets the Animation effect on the Tooltip, during open and close actions.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.TooltipEventArgs">
+            <summary>
+            Interface for Tooltip event arguments.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.Cancel">
+            <summary>
+            Gets or sets whether the current action should be cancelled or not.
+            </summary>
+            <value>
+            <c>true</c>, if the current action needs to be cancelled. Otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.CollidedPosition">
+            <summary>
+            Gets or sets a value that denotes the Collided Tooltip position.
+            </summary>
+            <value>
+            A value that specifies the position of Tooltip element. The default value is <see cref="F:Syncfusion.Blazor.Popups.Position.TopCenter" />
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.Element">
+            <summary>
+            Gets or sets a value that denotes the Tooltip element.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.Event">
+            <summary>
+            Gets or sets a value that specify the current event object.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.HasText">
+            <summary>
+            Gets or sets a value that determines whether the Tooltip content contains text character or not.
+            </summary>
+            <value>
+            <c>true</c>, if the Tooltip content contains text character. Otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.Top">
+            <summary>
+            Gets or sets a value that specifies the clientY position of the target element.
+            </summary>
+            <value>
+            Accepts the double value.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.Left">
+            <summary>
+            Gets or sets a value that specifies the clientX position of the target element.
+            </summary>
+            <value>
+            Accepts the double value.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.IsInteracted">
+            <summary>
+            If the event is triggered by interaction, it returns true. Otherwise, it returns false.
+            </summary>
+            <value>
+            <c>true</c>, if the event is triggered by interaction. Otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.Name">
+            <summary>
+            Specifies the name of the event triggered in Tooltip.
+            </summary>
+            <value>
+            Accepts the string value.
+            </value>
+            <remarks>
+            The list of event names that will be received are
+             - beforeCollision
+             - beforeRender
+             - beforeOpen
+             - beforeClose
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.Target">
+            <summary>
+            Gets or sets a value that denotes the current target element where the Tooltip is to be displayed.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipEventArgs.Type">
+            <summary>
+            Gets or sets a value that denotes the type of triggered event.
+            </summary>
+            <value>
+            Accepts the string value.
+            </value>
+            <remarks>
+            The list of types that will be received are
+             - mouseover
+             - mouseleave
+             - mousedown
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.TooltipEventArgs.Equals(System.Object)">
+            <exclude/>
+            <summary>
+            Compares the obj.
+            </summary>
+            <param name="obj">obj.</param>
+            <returns>="obj".</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.TooltipEventArgs.GetHashCode">
+            <summary>
+            Gets the HashCode.
+            </summary>
+            <exclude/>
+            <returns>int.</returns>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.AnimationModel">
+            <summary>
+            Interface for a class Animation.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.AnimationModel.Close">
+            <summary>
+            Animation settings to be applied to the Tooltip when it is closed.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.AnimationModel.Open">
+            <summary>
+            Animation settings to be applied on the Tooltip, while it is being shown over the target.
+            </summary>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.SfTooltip">
+            <summary>
+            The SfTooltip component displays a pop-up containing information or a message when you hover, click, focus, or touch an element.
+            </summary>
+            <summary>
+            The SfTooltip component displays a pop-up containing information or a message when you hover, click, focus, or touch an element.
+            </summary>
+            <summary>
+            The SfTooltip component displays a pop-up containing information or a message when you hover, click, focus, or touch an element.
+            </summary>
+             <summary>
+             The SfTooltip component displays a tooltip that appears as a pop-up containing information or a message when you hover, click, focus, or touch an element.
+             </summary>
+             <remarks>
+             The SfTooltip component can be customized with various properties such as content, position, and animation. 
+             The Tooltip can be triggered by various events including hover, click and focus. 
+             The component can be used to provide additional context or information about an element on a web page.
+             </remarks>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+            <summary>
+            The SfTooltip component displays a pop-up containing information or a message when you hover, click, focus, or touch an element.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.GetEventsList">
+            <summary>
+            The method to get events list.
+            </summary>
+            <exclude/>
+            <returns>eventList.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.GetProperties">
+            <summary>
+            The method to get Properties.
+            </summary>
+            <exclude/>
+            <returns>properties.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.GetPropertyChanges">
+            <summary>
+            The method to get Property changes.
+            </summary>
+            <exclude/>
+            <returns>properties.</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.CreateTooltip(System.Boolean)">
+            <exclude/>
+            <summary>
+            Add/Removes the Tooltip Element.
+            </summary>
+            <param name="args">args.</param>
+            <returns>="Task".</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.StickyClose">
+            <exclude/>
+            <summary>
+            Closes the Tooltip Element.
+            </summary>
+            <returns>="Task".</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.TriggerBeforeRenderEvent(Syncfusion.Blazor.Popups.TooltipEventArgs)">
+            <exclude/>
+            <summary>
+            Triggers before render event.
+            </summary>
+            <returns>="Task".</returns>
+            <param name="beforeRenderArgs">beforeRenderArgs.</param>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.TriggerBeforeCollisionEvent(Syncfusion.Blazor.Popups.TooltipEventArgs)">
+            <exclude/>
+            <summary>
+            Triggers before collision event.
+            </summary>
+            <param name="beforeCollisionArgs">beforeCollisionArgs.</param>
+            <returns>="Task".</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.TriggerBeforeOpenEvent(Syncfusion.Blazor.Popups.TooltipEventArgs)">
+            <exclude/>
+            <summary>
+            Triggers before open event.
+            </summary>
+            <param name="beforeOpenEventArgs">beforeOpenEventArgs.</param>
+            <returns>"Task".</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.TriggerOpenedEvent(Syncfusion.Blazor.Popups.TooltipEventArgs)">
+            <exclude/>
+            <summary>
+            Triggers before opened event.
+            </summary>
+            <param name="openedEventArgs">openedEventArgs.</param>
+            <returns>="Task".</returns>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.TriggerBeforeCloseEvent(Syncfusion.Blazor.Popups.TooltipEventArgs)">
+            <exclude/>
+            <summary>
+            Triggers before close event.
+            </summary>
+            <returns>"Task".</returns>
+            <param name="beforeCloseEventArgs">beforeCloseEventArgs.</param>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.TriggerClosedEvent(Syncfusion.Blazor.Popups.TooltipEventArgs)">
+            <exclude/>
+            <summary>
+            Triggers before closed event.
+            </summary>
+            <param name="closedEventArgs">closedEventArgs.</param>
+            <returns>="Task".</returns>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Closed">
+            <summary>
+            Gets or sets an event callback that is raised when the Tooltip component is closed.
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <remarks>
+            This event is useful for performing additional actions when the Tooltip is closed, such as updating the UI or performing cleanup tasks.
+            The event callback function takes a TooltipEventArgs parameter, which provides information about the Tooltip that was closed.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Opened">
+            <summary>
+            Gets or sets an event callback that is raised when the Tooltip component is opened.
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <remarks>
+            This event is useful for performing additional actions when the Tooltip is opened, such as updating the UI or tracking user interactions.
+            The event callback function takes a TooltipEventArgs parameter, which provides information about the Tooltip that was opened.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.OnClose">
+            <summary>
+            Gets or sets an event callback that is raised before the Tooltip hides from the screen.
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <remarks>
+            This event is useful for performing additional actions before the Tooltip is closed, such as updating the UI or validating user input.
+            The event callback function takes a TooltipEventArgs parameter, which provides information about the Tooltip that is about to be closed.
+            To prevent the Tooltip from closing, set the cancel property of the TooltipEventArgs parameter to true.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.OnCollision">
+            <summary>
+            Gets or sets an event callback that is raised for every collision fit calculation.
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <remarks>
+            This event is useful for fine-tuning the placement of the Tooltip on the screen and avoiding overlaps with other UI elements.
+            The event callback function takes a TooltipEventArgs parameter, which provides information about the Tooltip and its placement.
+            The TooltipEventArgs parameter includes the target element and collisionInfo object, which describe the Tooltip's position and collision detection results.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.OnOpen">
+            <summary>
+            Gets or sets an event callback that is raised before the Tooltip is displayed over the target element.
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <remarks>
+            This event is useful for customizing the Tooltip's appearance or behavior before it is displayed.
+            The event callback function takes a TooltipEventArgs parameter, which provides information about the Tooltip and its target element.
+            The TooltipEventArgs parameter includes the target element and an optional cancel argument, which can be set to true to prevent the Tooltip from being displayed.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.OnRender">
+            <summary>
+            Gets or sets an event callback that is raised before the Tooltip and its contents will be added to the DOM.
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+            <remarks>
+            When one of its arguments `cancel` is set to true, the Tooltip can be prevented from rendering on the page.
+            This event is mainly used to customize the Tooltip before it shows up on the screen.
+            For example, to load the AJAX content or to set new animation effects on the Tooltip, this event can be opted.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Created">
+            <summary>
+            Gets or sets an event callback that is raised after the Tooltip component is created.
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Destroyed">
+            <summary>
+            Gets or sets an event callback that is raised when the Tooltip component is destroyed.
+            </summary>
+            <value>
+            An event callback function.
+            </value>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.OnInitializedAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.OnParametersSetAsync">
+            <inheritdoc/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.OnAfterRenderAsync(System.Boolean)">
+            <inheritdoc/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.PreventRender(System.Boolean)">
+            <summary>
+            Controls the re-rendering behavior of the Tooltip component.
+            </summary>
+            <param name="preventRender">Optional. Determines whether the component should be prevented from re-rendering. Default value is true.</param>
+            <remarks>
+            This method internally sets the value to be returned by the ShouldRender method.
+            By default, this method prevents the component from rendering. To enable rendering again, set preventRender to false.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.ChildContent">
+            <exclude/>
+            <summary>
+            Defines the content which has to be passed.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.ID">
+            <exclude/>
+            <summary>
+            Defines the Id of the Tooltip component.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.ContentTemplate">
+            <exclude/>
+            <summary>
+            Gets or sets the template that defines the content of the component.
+            </summary>
+            <remarks>
+            The ContentTemplate is a RenderFragment that allows developers to customize the appearance and content of the component. 
+            This property can be used to define custom HTML or Razor markup to be rendered as the content of the component.
+            </remarks>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Animation">
+             <summary>
+             Gets or sets the animation settings for the opening and closing of the Tooltip.
+             </summary>
+             <remarks>
+             The animation property allows you to customize the animation of the Tooltip component, including the delay, duration, and various other effects of your choice. 
+             You can set the same or different animation options to the Tooltip when it is in the open or close state.
+             </remarks>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" Animation="@Animation">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+            @code {
+              public AnimationModel Animation { get; set; } = new AnimationModel
+             {
+                Open = new TooltipAnimationSettings {Delay = 0, Duration = 500, Effect = Effect.ZoomIn },
+                Close = new TooltipAnimationSettings{Delay=0,Duration=500,Effect=Effect.ZoomOut}
+             };
+             }
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.CloseDelay">
+             <summary>
+             Gets or sets the delay in milliseconds before the Tooltip closes.
+             </summary>
+             <remarks>
+             The CloseDelay property is used to specify the delay in milliseconds before the Tooltip closes. If no delay is needed, the default value of 0 can be used.
+             </remarks>
+             <value>
+             Accepts a double value representing the delay in milliseconds. The default value is 0.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" CloseDelay="2000">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Content">
+             <summary>
+             Gets or sets the content of the Tooltip component.
+             </summary>
+             <remarks>
+             The Content property is used to specify the content of the Tooltip component as a string element.
+             </remarks>
+             <value>
+             Accepts a string value representing the content of the Tooltip component.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.CssClass">
+             <summary>
+             Gets or sets the CSS classes to be applied to the Tooltip component.
+             </summary>
+             <remarks>
+             The CssClass property is used to apply custom CSS class names that define specific user-defined styles and themes to be applied to the Tooltip element. Multiple class names can be specified by separating them with a space.
+             </remarks>
+             <value>
+             Accepts a CSS class string separated by space to customize the appearance of the component.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" CssClass="customtip">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.EnableRtl">
+            <summary>
+            Gets or sets a value indicating whether to enable or disable the rendering of the component in right-to-left (RTL) direction.
+            </summary>
+            <remarks>
+            The EnableRtl property is used to render the Tooltip component from right to left direction.
+            </remarks>
+            <value>
+            <c>true</c>, if the right to left direction can be enabled; Otherwise, <c>false</c>. The default value is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.WindowCollision">
+            <summary>
+            Gets or sets a value indicating whether to set the collision target element as the page viewport (window) or the Tooltip element, when using the target.
+            </summary>
+            <remarks>
+            The WindowCollision property is used to enable or disable the collision calculation between the target elements and viewport (window) instead of the Tooltip element. 
+            If the value is set to <c>true</c>, the collision will be calculated between the target and the viewport (window). Otherwise, the collision will be calculated between the target and the Tooltip element.
+            </remarks>
+            <value>
+            <c>true</c>, if the window collision can be enabled; otherwise, <c>false</c>. The default value is <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Height">
+             <summary>
+             Gets or sets the height of the Tooltip component.
+             </summary>
+             <remarks>
+             The Height property is used to specify the height of the Tooltip component. 
+             If no height is specified, the Tooltip height will be set based on its content.
+             When the content of the Tooltip exceeds the height value, the scroll mode will be enabled. 
+             The value can be any valid CSS height value, such as "100px" or "50%".
+             </remarks>
+             <value>
+             Accepts the string value. The default value is <c>auto</c>.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" Height="40px">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.IsSticky">
+             <summary>
+             Gets or sets a value indicating whether the Tooltip should be displayed in an open state until it is closed manually.
+             </summary>
+             <remarks>
+             The IsSticky property is used to set the behavior of the Tooltip when it is displayed.
+             If the value is set to true, the Tooltip will be displayed in an open state until it is closed manually, regardless of the user interaction that triggered the Tooltip. 
+             If the value is set to false, the Tooltip will be displayed for a specified duration based on the Animation property and then automatically closed.
+            </remarks>
+             <value>
+             <c>true</c>, if the Tooltip should be displayed in an open state until it is closed manually. Otherwise, <c>false</c>. The default value is <c>false</c>.
+             </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.MouseTrail">
+            <summary>
+            Enables or disables the ability for the Tooltip to follow the mouse pointer as it moves over the specified target element.
+            </summary>
+            <value>
+            <c>true</c>, if the Tooltip should be shown when the mouse pointer moves over the specific target. Otherwise, <c>false</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.OffsetX">
+             <summary>
+             Gets or sets the X-axis offset between the target and Tooltip element.
+             </summary>
+             <value>
+             A double value representing the space between the target and Tooltip element in X-axis.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" OffsetX="20">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.OffsetY">
+             <summary>
+             Gets or sets the space between the target and Tooltip element in the Y-axis.
+             </summary>
+             <value>
+             Accepts a double value representing the space between the target and Tooltip element in the Y-axis.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" OffsetY="70">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.OpenDelay">
+             <summary>
+             Gets or sets the delay time in milliseconds for opening the Tooltip after the user hovers over the target element.
+             </summary>
+             <value>
+             A double value representing the delay time in milliseconds. The default value is 0, which means that the Tooltip opens immediately after the user hovers over the target element.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" OpenDelay="2000">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.OpensOn">
+             <summary>
+             Determines the type of open mode to display the Tooltip content.
+             The available open modes are Auto, Hover, Click, Focus, and Custom.
+             </summary>
+             <value>
+             Accepts the string value. The default value is <c>Auto</c>.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" OpensOn="Click">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Position">
+             <summary>
+             To set the position of the Tooltip element with respect to the Target element.
+             </summary>
+             <value>
+             A value of the <see cref="P:Syncfusion.Blazor.Popups.SfTooltip.Position" /> enumeration that specifies the position of Tooltip element. The default value is <see cref="F:Syncfusion.Blazor.Popups.Position.TopCenter" />.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" Position=Position.LeftBottom>
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.ShowTipPointer">
+            <summary>
+            To show or hide the tip pointer of the Tooltip.
+            </summary>
+            <value>
+            <c>true</c>, if the tip pointer should be shown. Otherwise, <c>false</c>. The default value is <c>true</c>.
+            </value>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Target">
+             <summary>
+             Gets or sets the target selector where the Tooltip needs to be displayed.
+             </summary>
+             <value>
+             A string value representing the target selector. The target element is considered as the parent container.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" Target="#btn" >
+              <SfButton ID="btn" Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Container">
+             <summary>
+             Gets or sets the container element in which the Tooltip's pop-up will be appended.
+             </summary>
+             <value>
+             A string value that represents the container element selector. The default value is <c>body</c>".
+             </value>
+             <example>
+             <code><![CDATA[
+             <div class="parent">
+             <SfTooltip Content="Let's go green to save the planet!!" Container=".parent">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             </div>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.TipPointerPosition">
+             <summary>
+             It is used to customize the position of the tip pointer on the tooltip. The available options are Auto, Start, Middle, and End.
+             When set to auto, the tip pointer gets auto adjusted within the space of the target's length and does not point outside.
+             </summary>
+             <value>
+             A value of the <see cref="P:Syncfusion.Blazor.Popups.SfTooltip.TipPointerPosition" /> enumeration that specifies the position of the tip pointer. The default value is <see cref="F:Syncfusion.Blazor.Popups.TipPointerPosition.Auto" />.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" TipPointerPosition=TipPointerPosition.End>
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.SfTooltip.Width">
+             <summary>
+             To set the width of the Tooltip component which accepts a string value.
+             </summary>
+             <remarks>
+             When set to auto, the Tooltip width gets auto adjusted to display its content within the viewable screen.
+            </remarks>
+             <value>
+             Accepts the string value.The default value is <c>auto</c>.
+             </value>
+             <example>
+             <code><![CDATA[
+             <SfTooltip Content="Let's go green to save the planet!!" Width="100px">
+              <SfButton Content="Show Tooltip"></SfButton>
+             </SfTooltip>
+             ]]></code>
+            </example>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.Open(System.Nullable{Microsoft.AspNetCore.Components.ElementReference},Syncfusion.Blazor.Popups.TooltipAnimationSettings)">
+            <summary>
+            It is used to show the Tooltip on the specified target with specific animation settings.
+            You can also pass the additional arguments like target element in which the tooltip should appear and animation settings for the tooltip open action.
+            </summary>
+            <param name="element">element.</param>
+            <param name="animation">animation.</param>
+            <returns>="Task".</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.OpenAsync(System.Nullable{Microsoft.AspNetCore.Components.ElementReference},Syncfusion.Blazor.Popups.TooltipAnimationSettings)">
+            <summary>
+            Opens the Tooltip with the specified animation settings and optional target element.
+            </summary>
+            <param name="element">The target element in which the Tooltip should appear. If null, uses the default Tooltip element.</param>
+            <param name="animation">The animation settings for the Tooltip open action. If null, uses the default "Open" animation.</param>
+            <returns>A task that represents the asynchronous operation of opening the tooltip.</returns>
+            <remarks>
+            This method shows the Tooltip on the specified target with the specified animation settings. 
+            If the animation settings are not specified, the default "Open" animation is used.
+            The optional target element allows the Tooltip to be displayed in a specific element on the page, rather than the default Tooltip element.
+            If the target element is not specified, the default tooltip element is used.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.Close(Syncfusion.Blazor.Popups.TooltipAnimationSettings)">
+            <summary>
+            It is used to hide the Tooltip with a specific animation effect. You can pass the animation settings for tooltip close action.
+            </summary>
+            <param name="animation">animation.</param>
+            <returns>="Task".</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.CloseAsync(Syncfusion.Blazor.Popups.TooltipAnimationSettings)">
+            <summary>
+            Hides the Tooltip with the specified animation settings.
+            </summary>
+            <param name="animation">The animation settings for the Tooltip close action. If null, uses the default "Close" animation.</param>
+            <returns>A task that represents the asynchronous operation of closing the Tooltip.</returns>
+            <remarks>
+            This method hides the Tooltip with the specified animation settings. If the animation settings are not specified, the default "Close" animation is used.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.Refresh">
+            <summary>
+            Refresh the tooltip component when the target element is dynamically used.
+            </summary>
+            <returns>="Task".</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.RefreshAsync">
+            <summary>
+            Refreshes the Tooltip component when the target element is dynamically updated.
+            </summary>
+            <returns>A task that represents the asynchronous operation of refreshing the Tooltip.</returns>
+            <remarks>
+            This method refreshes the Tooltip component when the target element is dynamically updated, for example, when the Tooltip is added to a new element in the DOM.
+            It ensures that the Tooltip is properly positioned and styled based on the new target element.
+            </remarks>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.RefreshPosition(System.Nullable{Microsoft.AspNetCore.Components.ElementReference})">
+            <summary>
+            Dynamically refreshes the tooltip element position based on the target element.
+            </summary>
+            <param name="target">target.</param>
+            <returns>="Task".</returns>
+            <exclude/>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.SfTooltip.RefreshPositionAsync(System.Nullable{Microsoft.AspNetCore.Components.ElementReference})">
+            <summary>
+            Dynamically refreshes the position of the Tooltip element based on the target element.
+            </summary>
+            <param name="target">The target element that the Tooltip is associated with. If null, uses the default target element.</param>
+            <returns>A task that represents the asynchronous operation of refreshing the Tooltip position.</returns>
+            <remarks>
+            This method refreshes the position of the Tooltip element based on the target element. If the target element is not specified, the default target element is used.
+            This method is useful when the position of the target element changes dynamically, such as when the element is resized or moved.
+            </remarks>
+        </member>
+        <member name="T:Syncfusion.Blazor.Popups.TooltipTemplates">
+            <summary>
+            Configure templates to display content within the tooltip component.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipTemplates.ChildContent">
+            <exclude/>
+            <summary>
+            Defines the content which has to be passed.
+            </summary>
+        </member>
+        <member name="P:Syncfusion.Blazor.Popups.TooltipTemplates.Content">
+            <exclude/>
+            <summary>
+            Defines the content to be passed.
+            </summary>
+        </member>
+        <member name="M:Syncfusion.Blazor.Popups.TooltipTemplates.OnInitialized">
+            <summary>
+            Method invoked when the component is ready to start.
+            </summary>
+        </member>
+    </members>
+</doc>

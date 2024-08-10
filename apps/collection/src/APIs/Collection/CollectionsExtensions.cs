@@ -31,7 +31,7 @@ public static class CollectionsExtensions
             RegistrationSystemCategoryCode = model.RegistrationSystemCategoryCode,
             ServiceCode = model.ServiceCode,
             TaxpayerPhoneNo = model.TaxpayerPhoneNo,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -65,14 +65,8 @@ public static class CollectionsExtensions
             TaxpayerPhoneNo = updateDto.TaxpayerPhoneNo
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            collection.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            collection.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) collection.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) collection.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return collection;
     }

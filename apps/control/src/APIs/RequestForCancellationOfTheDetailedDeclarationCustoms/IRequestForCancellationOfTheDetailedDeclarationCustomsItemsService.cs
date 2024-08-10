@@ -6,21 +6,23 @@ namespace Control.APIs;
 public interface IRequestForCancellationOfTheDetailedDeclarationCustomsItemsService
 {
     /// <summary>
-    /// Create one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Create one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    public Task<RequestForCancellationOfTheDetailedDeclarationCustoms> CreateRequestForCancellationOfTheDetailedDeclarationCustoms(
-        RequestForCancellationOfTheDetailedDeclarationCustomsCreateInput requestforcancellationofthedetaileddeclarationcustoms
-    );
+    public Task<RequestForCancellationOfTheDetailedDeclarationCustoms>
+        CreateRequestForCancellationOfTheDetailedDeclarationCustoms(
+            RequestForCancellationOfTheDetailedDeclarationCustomsCreateInput
+                requestforcancellationofthedetaileddeclarationcustoms
+        );
 
     /// <summary>
-    /// Delete one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Delete one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task DeleteRequestForCancellationOfTheDetailedDeclarationCustoms(
         RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Find many REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)s
+    ///     Find many REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)s
     /// </summary>
     public Task<
         List<RequestForCancellationOfTheDetailedDeclarationCustoms>
@@ -29,21 +31,22 @@ public interface IRequestForCancellationOfTheDetailedDeclarationCustomsItemsServ
     );
 
     /// <summary>
-    /// Meta data about REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS) records
+    ///     Meta data about REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS) records
     /// </summary>
     public Task<MetadataDto> RequestForCancellationOfTheDetailedDeclarationCustomsItemsMeta(
         RequestForCancellationOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Get one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
-    public Task<RequestForCancellationOfTheDetailedDeclarationCustoms> RequestForCancellationOfTheDetailedDeclarationCustoms(
-        RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
-    );
+    public Task<RequestForCancellationOfTheDetailedDeclarationCustoms>
+        RequestForCancellationOfTheDetailedDeclarationCustoms(
+            RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+        );
 
     /// <summary>
-    /// Update one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
+    ///     Update one REQUEST FOR CANCELLATION OF THE DETAILED DECLARATION (CUSTOMS)
     /// </summary>
     public Task UpdateRequestForCancellationOfTheDetailedDeclarationCustoms(
         RequestForCancellationOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,

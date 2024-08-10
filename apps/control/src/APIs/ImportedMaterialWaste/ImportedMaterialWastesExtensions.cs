@@ -23,7 +23,7 @@ public static class ImportedMaterialWastesExtensions
             RequestNumberOfRegime = model.RequestNumberOfRegime,
             SequenceNumber = model.SequenceNumber,
             SuppressionOn = model.SuppressionOn,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -49,14 +49,8 @@ public static class ImportedMaterialWastesExtensions
             SuppressionOn = updateDto.SuppressionOn
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            importedMaterialWaste.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            importedMaterialWaste.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) importedMaterialWaste.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) importedMaterialWaste.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return importedMaterialWaste;
     }

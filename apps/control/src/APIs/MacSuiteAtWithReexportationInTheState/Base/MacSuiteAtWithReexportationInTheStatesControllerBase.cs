@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class MacSuiteAtWithReexportationInTheStatesControllerBase : ControllerBase
 {
     protected readonly IMacSuiteAtWithReexportationInTheStatesService _service;
@@ -21,9 +20,9 @@ public abstract class MacSuiteAtWithReexportationInTheStatesControllerBase : Con
     }
 
     /// <summary>
-    /// Create one MAC SUITE AT WITH REEXPORTATION IN THE STATE
+    ///     Create one MAC SUITE AT WITH REEXPORTATION IN THE STATE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<MacSuiteAtWithReexportationInTheState>
@@ -42,12 +41,12 @@ public abstract class MacSuiteAtWithReexportationInTheStatesControllerBase : Con
     }
 
     /// <summary>
-    /// Delete one MAC SUITE AT WITH REEXPORTATION IN THE STATE
+    ///     Delete one MAC SUITE AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteMacSuiteAtWithReexportationInTheState(
-        [FromRoute()] MacSuiteAtWithReexportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] MacSuiteAtWithReexportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -63,39 +62,39 @@ public abstract class MacSuiteAtWithReexportationInTheStatesControllerBase : Con
     }
 
     /// <summary>
-    /// Find many MAC SUITE AT WITH REEXPORTATION IN THE STATES
+    ///     Find many MAC SUITE AT WITH REEXPORTATION IN THE STATES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<MacSuiteAtWithReexportationInTheState>>
     > MacSuiteAtWithReexportationInTheStates(
-        [FromQuery()] MacSuiteAtWithReexportationInTheStateFindManyArgs filter
+        [FromQuery] MacSuiteAtWithReexportationInTheStateFindManyArgs filter
     )
     {
         return Ok(await _service.MacSuiteAtWithReexportationInTheStates(filter));
     }
 
     /// <summary>
-    /// Meta data about MAC SUITE AT WITH REEXPORTATION IN THE STATE records
+    ///     Meta data about MAC SUITE AT WITH REEXPORTATION IN THE STATE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> MacSuiteAtWithReexportationInTheStatesMeta(
-        [FromQuery()] MacSuiteAtWithReexportationInTheStateFindManyArgs filter
+        [FromQuery] MacSuiteAtWithReexportationInTheStateFindManyArgs filter
     )
     {
         return Ok(await _service.MacSuiteAtWithReexportationInTheStatesMeta(filter));
     }
 
     /// <summary>
-    /// Get one MAC SUITE AT WITH REEXPORTATION IN THE STATE
+    ///     Get one MAC SUITE AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<MacSuiteAtWithReexportationInTheState>
     > MacSuiteAtWithReexportationInTheState(
-        [FromRoute()] MacSuiteAtWithReexportationInTheStateWhereUniqueInput uniqueId
+        [FromRoute] MacSuiteAtWithReexportationInTheStateWhereUniqueInput uniqueId
     )
     {
         try
@@ -109,14 +108,13 @@ public abstract class MacSuiteAtWithReexportationInTheStatesControllerBase : Con
     }
 
     /// <summary>
-    /// Update one MAC SUITE AT WITH REEXPORTATION IN THE STATE
+    ///     Update one MAC SUITE AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateMacSuiteAtWithReexportationInTheState(
-        [FromRoute()] MacSuiteAtWithReexportationInTheStateWhereUniqueInput uniqueId,
-        [FromQuery()]
-            MacSuiteAtWithReexportationInTheStateUpdateInput macSuiteAtWithReexportationInTheStateUpdateDto
+        [FromRoute] MacSuiteAtWithReexportationInTheStateWhereUniqueInput uniqueId,
+        [FromQuery] MacSuiteAtWithReexportationInTheStateUpdateInput macSuiteAtWithReexportationInTheStateUpdateDto
     )
     {
         try

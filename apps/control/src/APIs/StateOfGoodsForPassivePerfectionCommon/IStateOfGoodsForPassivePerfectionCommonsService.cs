@@ -6,21 +6,21 @@ namespace Control.APIs;
 public interface IStateOfGoodsForPassivePerfectionCommonsService
 {
     /// <summary>
-    /// Create one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Create one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     public Task<StateOfGoodsForPassivePerfectionCommon> CreateStateOfGoodsForPassivePerfectionCommon(
         StateOfGoodsForPassivePerfectionCommonCreateInput stateofgoodsforpassiveperfectioncommon
     );
 
     /// <summary>
-    /// Delete one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Delete one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     public Task DeleteStateOfGoodsForPassivePerfectionCommon(
         StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Find many STATE OF GOODS FOR PASSIVE PERFECTION COMMONS
+    ///     Find many STATE OF GOODS FOR PASSIVE PERFECTION COMMONS
     /// </summary>
     public Task<
         List<StateOfGoodsForPassivePerfectionCommon>
@@ -29,21 +29,21 @@ public interface IStateOfGoodsForPassivePerfectionCommonsService
     );
 
     /// <summary>
-    /// Meta data about STATE OF GOODS FOR PASSIVE PERFECTION COMMON records
+    ///     Meta data about STATE OF GOODS FOR PASSIVE PERFECTION COMMON records
     /// </summary>
     public Task<MetadataDto> StateOfGoodsForPassivePerfectionCommonsMeta(
         StateOfGoodsForPassivePerfectionCommonFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Get one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     public Task<StateOfGoodsForPassivePerfectionCommon> StateOfGoodsForPassivePerfectionCommon(
         StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
+    ///     Update one STATE OF GOODS FOR PASSIVE PERFECTION COMMON
     /// </summary>
     public Task UpdateStateOfGoodsForPassivePerfectionCommon(
         StateOfGoodsForPassivePerfectionCommonWhereUniqueInput uniqueId,

@@ -6,5 +6,7 @@ public class CustomsClearanceOfPostalGoodsItemsService
     : CustomsClearanceOfPostalGoodsItemsServiceBase
 {
     public CustomsClearanceOfPostalGoodsItemsService(ControlDbContext context)
-        : base(context) { }
+        : base(context)
+    {
+    }
 }

@@ -68,7 +68,7 @@ public static class DemandForRcoClresExtensions
             UserGuideOn = model.UserGuideOn,
             VerificationOfWritingOfInformationYn = model.VerificationOfWritingOfInformationYn,
             ZipcodeApplicant = model.ZipcodeApplicant,
-            ZipcodeHolder = model.ZipcodeHolder,
+            ZipcodeHolder = model.ZipcodeHolder
         };
     }
 
@@ -139,14 +139,8 @@ public static class DemandForRcoClresExtensions
             ZipcodeHolder = updateDto.ZipcodeHolder
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            demandForRcoClre.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            demandForRcoClre.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) demandForRcoClre.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) demandForRcoClre.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return demandForRcoClre;
     }

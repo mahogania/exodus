@@ -26,7 +26,7 @@ public static class ReimbursementsExtensions
             ReimbursementNo = model.ReimbursementNo,
             ReimbursementReasonContent = model.ReimbursementReasonContent,
             ReimbursementRequestNo = model.ReimbursementRequestNo,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -55,14 +55,8 @@ public static class ReimbursementsExtensions
             ReimbursementRequestNo = updateDto.ReimbursementRequestNo
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            reimbursement.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            reimbursement.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) reimbursement.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) reimbursement.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return reimbursement;
     }

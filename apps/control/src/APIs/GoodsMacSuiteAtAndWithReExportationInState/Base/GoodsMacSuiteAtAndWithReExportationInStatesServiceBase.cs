@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Create one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
+    ///     Create one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
     /// </summary>
     public async Task<GoodsMacSuiteAtAndWithReExportationInState> CreateGoodsMacSuiteAtAndWithReExportationInState(
         GoodsMacSuiteAtAndWithReExportationInStateCreateInput createDto
@@ -53,10 +52,7 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
                 Value = createDto.Value
             };
 
-        if (createDto.Id != null)
-        {
-            goodsMacSuiteAtAndWithReExportationInState.Id = createDto.Id;
-        }
+        if (createDto.Id != null) goodsMacSuiteAtAndWithReExportationInState.Id = createDto.Id;
 
         _context.GoodsMacSuiteAtAndWithReExportationInStates.Add(
             goodsMacSuiteAtAndWithReExportationInState
@@ -67,16 +63,13 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
             goodsMacSuiteAtAndWithReExportationInState.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
+    ///     Delete one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
     /// </summary>
     public async Task DeleteGoodsMacSuiteAtAndWithReExportationInState(
         GoodsMacSuiteAtAndWithReExportationInStateWhereUniqueInput uniqueId
@@ -84,10 +77,7 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
     {
         var goodsMacSuiteAtAndWithReExportationInState =
             await _context.GoodsMacSuiteAtAndWithReExportationInStates.FindAsync(uniqueId.Id);
-        if (goodsMacSuiteAtAndWithReExportationInState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (goodsMacSuiteAtAndWithReExportationInState == null) throw new NotFoundException();
 
         _context.GoodsMacSuiteAtAndWithReExportationInStates.Remove(
             goodsMacSuiteAtAndWithReExportationInState
@@ -96,7 +86,7 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Find many GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATES
+    ///     Find many GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATES
     /// </summary>
     public async Task<
         List<GoodsMacSuiteAtAndWithReExportationInState>
@@ -117,7 +107,7 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Meta data about GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE records
+    ///     Meta data about GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE records
     /// </summary>
     public async Task<MetadataDto> GoodsMacSuiteAtAndWithReExportationInStatesMeta(
         GoodsMacSuiteAtAndWithReExportationInStateFindManyArgs findManyArgs
@@ -131,14 +121,14 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
     }
 
     /// <summary>
-    /// Get one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
+    ///     Get one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
     /// </summary>
     public async Task<GoodsMacSuiteAtAndWithReExportationInState> GoodsMacSuiteAtAndWithReExportationInState(
         GoodsMacSuiteAtAndWithReExportationInStateWhereUniqueInput uniqueId
     )
     {
         var goodsMacSuiteAtAndWithReExportationInStates =
-            await this.GoodsMacSuiteAtAndWithReExportationInStates(
+            await GoodsMacSuiteAtAndWithReExportationInStates(
                 new GoodsMacSuiteAtAndWithReExportationInStateFindManyArgs
                 {
                     Where = new GoodsMacSuiteAtAndWithReExportationInStateWhereInput
@@ -149,16 +139,13 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
             );
         var goodsMacSuiteAtAndWithReExportationInState =
             goodsMacSuiteAtAndWithReExportationInStates.FirstOrDefault();
-        if (goodsMacSuiteAtAndWithReExportationInState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (goodsMacSuiteAtAndWithReExportationInState == null) throw new NotFoundException();
 
         return goodsMacSuiteAtAndWithReExportationInState;
     }
 
     /// <summary>
-    /// Update one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
+    ///     Update one GOODS MAC SUITE AT AND WITH RE-EXPORTATION IN STATE
     /// </summary>
     public async Task UpdateGoodsMacSuiteAtAndWithReExportationInState(
         GoodsMacSuiteAtAndWithReExportationInStateWhereUniqueInput uniqueId,
@@ -180,13 +167,8 @@ public abstract class GoodsMacSuiteAtAndWithReExportationInStatesServiceBase
                     e.Id == goodsMacSuiteAtAndWithReExportationInState.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

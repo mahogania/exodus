@@ -48,7 +48,7 @@ public static class CreditsExtensions
             UnknownField = model.UnknownField,
             UpdatedAt = model.UpdatedAt,
             ValidityEndDate = model.ValidityEndDate,
-            ValidityStartDate = model.ValidityStartDate,
+            ValidityStartDate = model.ValidityStartDate
         };
     }
 
@@ -99,14 +99,8 @@ public static class CreditsExtensions
             ValidityStartDate = updateDto.ValidityStartDate
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            credit.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            credit.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) credit.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) credit.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return credit;
     }

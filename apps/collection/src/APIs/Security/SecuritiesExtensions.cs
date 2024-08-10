@@ -46,7 +46,7 @@ public static class SecuritiesExtensions
             TaxIdentificationNumber = model.TaxIdentificationNumber,
             UpdatedAt = model.UpdatedAt,
             ValidityEndDate = model.ValidityEndDate,
-            ValidityStartDate = model.ValidityStartDate,
+            ValidityStartDate = model.ValidityStartDate
         };
     }
 
@@ -96,14 +96,8 @@ public static class SecuritiesExtensions
             ValidityStartDate = updateDto.ValidityStartDate
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            security.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            security.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) security.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) security.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return security;
     }

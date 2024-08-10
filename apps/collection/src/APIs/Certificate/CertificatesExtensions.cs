@@ -36,7 +36,7 @@ public static class CertificatesExtensions
             VehicleEnergy = model.VehicleEnergy,
             VehicleModelName = model.VehicleModelName,
             VehiclePower = model.VehiclePower,
-            VehicleType = model.VehicleType,
+            VehicleType = model.VehicleType
         };
     }
 
@@ -75,14 +75,8 @@ public static class CertificatesExtensions
             VehicleType = updateDto.VehicleType
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            certificate.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            certificate.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) certificate.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) certificate.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return certificate;
     }

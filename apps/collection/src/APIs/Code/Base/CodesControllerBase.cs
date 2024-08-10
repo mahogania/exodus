@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CodesControllerBase : ControllerBase
 {
     protected readonly ICodesService _service;
@@ -19,9 +18,9 @@ public abstract class CodesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one CODE
+    ///     Create one CODE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Code>> CreateCode(CodeCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class CodesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one CODE
+    ///     Delete one CODE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteCode([FromRoute()] CodeWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteCode([FromRoute] CodeWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,30 +49,30 @@ public abstract class CodesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many CODES
+    ///     Find many CODES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<List<Code>>> Codes([FromQuery()] CodeFindManyArgs filter)
+    public async Task<ActionResult<List<Code>>> Codes([FromQuery] CodeFindManyArgs filter)
     {
         return Ok(await _service.Codes(filter));
     }
 
     /// <summary>
-    /// Meta data about CODE records
+    ///     Meta data about CODE records
     /// </summary>
     [HttpPost("meta")]
-    public async Task<ActionResult<MetadataDto>> CodesMeta([FromQuery()] CodeFindManyArgs filter)
+    public async Task<ActionResult<MetadataDto>> CodesMeta([FromQuery] CodeFindManyArgs filter)
     {
         return Ok(await _service.CodesMeta(filter));
     }
 
     /// <summary>
-    /// Get one CODE
+    ///     Get one CODE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Code>> Code([FromRoute()] CodeWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Code>> Code([FromRoute] CodeWhereUniqueInput uniqueId)
     {
         try
         {
@@ -86,13 +85,13 @@ public abstract class CodesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one CODE
+    ///     Update one CODE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCode(
-        [FromRoute()] CodeWhereUniqueInput uniqueId,
-        [FromQuery()] CodeUpdateInput codeUpdateDto
+        [FromRoute] CodeWhereUniqueInput uniqueId,
+        [FromQuery] CodeUpdateInput codeUpdateDto
     )
     {
         try

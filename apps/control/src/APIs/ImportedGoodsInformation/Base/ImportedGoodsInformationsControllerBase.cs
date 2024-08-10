@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ImportedGoodsInformationsControllerBase : ControllerBase
 {
     protected readonly IImportedGoodsInformationsService _service;
@@ -19,9 +18,9 @@ public abstract class ImportedGoodsInformationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one IMPORTED GOODS INFORMATION
+    ///     Create one IMPORTED GOODS INFORMATION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ImportedGoodsInformation>> CreateImportedGoodsInformation(
         ImportedGoodsInformationCreateInput input
@@ -37,12 +36,12 @@ public abstract class ImportedGoodsInformationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one IMPORTED GOODS INFORMATION
+    ///     Delete one IMPORTED GOODS INFORMATION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteImportedGoodsInformation(
-        [FromRoute()] ImportedGoodsInformationWhereUniqueInput uniqueId
+        [FromRoute] ImportedGoodsInformationWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class ImportedGoodsInformationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many IMPORTED GOODS INFORMATIONS
+    ///     Find many IMPORTED GOODS INFORMATIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<ImportedGoodsInformation>>> ImportedGoodsInformations(
-        [FromQuery()] ImportedGoodsInformationFindManyArgs filter
+        [FromQuery] ImportedGoodsInformationFindManyArgs filter
     )
     {
         return Ok(await _service.ImportedGoodsInformations(filter));
     }
 
     /// <summary>
-    /// Meta data about IMPORTED GOODS INFORMATION records
+    ///     Meta data about IMPORTED GOODS INFORMATION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ImportedGoodsInformationsMeta(
-        [FromQuery()] ImportedGoodsInformationFindManyArgs filter
+        [FromQuery] ImportedGoodsInformationFindManyArgs filter
     )
     {
         return Ok(await _service.ImportedGoodsInformationsMeta(filter));
     }
 
     /// <summary>
-    /// Get one IMPORTED GOODS INFORMATION
+    ///     Get one IMPORTED GOODS INFORMATION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ImportedGoodsInformation>> ImportedGoodsInformation(
-        [FromRoute()] ImportedGoodsInformationWhereUniqueInput uniqueId
+        [FromRoute] ImportedGoodsInformationWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class ImportedGoodsInformationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one IMPORTED GOODS INFORMATION
+    ///     Update one IMPORTED GOODS INFORMATION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateImportedGoodsInformation(
-        [FromRoute()] ImportedGoodsInformationWhereUniqueInput uniqueId,
-        [FromQuery()] ImportedGoodsInformationUpdateInput importedGoodsInformationUpdateDto
+        [FromRoute] ImportedGoodsInformationWhereUniqueInput uniqueId,
+        [FromQuery] ImportedGoodsInformationUpdateInput importedGoodsInformationUpdateDto
     )
     {
         try

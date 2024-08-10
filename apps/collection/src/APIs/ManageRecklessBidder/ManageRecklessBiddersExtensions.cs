@@ -26,7 +26,7 @@ public static class ManageRecklessBiddersExtensions
             RemarkContent = model.RemarkContent,
             SalePvNo = model.SalePvNo,
             ServiceCode = model.ServiceCode,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -55,14 +55,8 @@ public static class ManageRecklessBiddersExtensions
             ServiceCode = updateDto.ServiceCode
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            manageRecklessBidder.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            manageRecklessBidder.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) manageRecklessBidder.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) manageRecklessBidder.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return manageRecklessBidder;
     }

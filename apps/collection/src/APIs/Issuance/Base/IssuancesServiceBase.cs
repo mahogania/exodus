@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class IssuancesServiceBase : IIssuancesService
     }
 
     /// <summary>
-    /// Create one ISSUANCE
+    ///     Create one ISSUANCE
     /// </summary>
     public async Task<Issuance> CreateIssuance(IssuanceCreateInput createDto)
     {
@@ -40,41 +39,32 @@ public abstract class IssuancesServiceBase : IIssuancesService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            issuance.Id = createDto.Id;
-        }
+        if (createDto.Id != null) issuance.Id = createDto.Id;
 
         _context.Issuances.Add(issuance);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<IssuanceDbModel>(issuance.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one ISSUANCE
+    ///     Delete one ISSUANCE
     /// </summary>
     public async Task DeleteIssuance(IssuanceWhereUniqueInput uniqueId)
     {
         var issuance = await _context.Issuances.FindAsync(uniqueId.Id);
-        if (issuance == null)
-        {
-            throw new NotFoundException();
-        }
+        if (issuance == null) throw new NotFoundException();
 
         _context.Issuances.Remove(issuance);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many ISSUANCES
+    ///     Find many ISSUANCES
     /// </summary>
     public async Task<List<Issuance>> Issuances(IssuanceFindManyArgs findManyArgs)
     {
@@ -88,7 +78,7 @@ public abstract class IssuancesServiceBase : IIssuancesService
     }
 
     /// <summary>
-    /// Meta data about ISSUANCE records
+    ///     Meta data about ISSUANCE records
     /// </summary>
     public async Task<MetadataDto> IssuancesMeta(IssuanceFindManyArgs findManyArgs)
     {
@@ -98,24 +88,21 @@ public abstract class IssuancesServiceBase : IIssuancesService
     }
 
     /// <summary>
-    /// Get one ISSUANCE
+    ///     Get one ISSUANCE
     /// </summary>
     public async Task<Issuance> Issuance(IssuanceWhereUniqueInput uniqueId)
     {
-        var issuances = await this.Issuances(
+        var issuances = await Issuances(
             new IssuanceFindManyArgs { Where = new IssuanceWhereInput { Id = uniqueId.Id } }
         );
         var issuance = issuances.FirstOrDefault();
-        if (issuance == null)
-        {
-            throw new NotFoundException();
-        }
+        if (issuance == null) throw new NotFoundException();
 
         return issuance;
     }
 
     /// <summary>
-    /// Update one ISSUANCE
+    ///     Update one ISSUANCE
     /// </summary>
     public async Task UpdateIssuance(
         IssuanceWhereUniqueInput uniqueId,
@@ -133,13 +120,8 @@ public abstract class IssuancesServiceBase : IIssuancesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Issuances.Any(e => e.Id == issuance.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

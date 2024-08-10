@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : ControllerBase
 {
     protected readonly IExpressCustomsClearanceDetailsItemsService _service;
@@ -21,9 +20,9 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Create one EXPRESS CUSTOMS CLEARANCE DETAILS
+    ///     Create one EXPRESS CUSTOMS CLEARANCE DETAILS
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ExpressCustomsClearanceDetails>
@@ -41,12 +40,12 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Delete one EXPRESS CUSTOMS CLEARANCE DETAILS
+    ///     Delete one EXPRESS CUSTOMS CLEARANCE DETAILS
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteExpressCustomsClearanceDetails(
-        [FromRoute()] ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
+        [FromRoute] ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
     )
     {
         try
@@ -62,37 +61,37 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Find many EXPRESS CUSTOMS CLEARANCE DETAILSItems
+    ///     Find many EXPRESS CUSTOMS CLEARANCE DETAILSItems
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<ExpressCustomsClearanceDetails>>
     > ExpressCustomsClearanceDetailsItems(
-        [FromQuery()] ExpressCustomsClearanceDetailsFindManyArgs filter
+        [FromQuery] ExpressCustomsClearanceDetailsFindManyArgs filter
     )
     {
         return Ok(await _service.ExpressCustomsClearanceDetailsItems(filter));
     }
 
     /// <summary>
-    /// Meta data about EXPRESS CUSTOMS CLEARANCE DETAILS records
+    ///     Meta data about EXPRESS CUSTOMS CLEARANCE DETAILS records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ExpressCustomsClearanceDetailsItemsMeta(
-        [FromQuery()] ExpressCustomsClearanceDetailsFindManyArgs filter
+        [FromQuery] ExpressCustomsClearanceDetailsFindManyArgs filter
     )
     {
         return Ok(await _service.ExpressCustomsClearanceDetailsItemsMeta(filter));
     }
 
     /// <summary>
-    /// Get one EXPRESS CUSTOMS CLEARANCE DETAILS
+    ///     Get one EXPRESS CUSTOMS CLEARANCE DETAILS
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ExpressCustomsClearanceDetails>> ExpressCustomsClearanceDetails(
-        [FromRoute()] ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
+        [FromRoute] ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
     )
     {
         try
@@ -106,14 +105,13 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Update one EXPRESS CUSTOMS CLEARANCE DETAILS
+    ///     Update one EXPRESS CUSTOMS CLEARANCE DETAILS
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateExpressCustomsClearanceDetails(
-        [FromRoute()] ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId,
-        [FromQuery()]
-            ExpressCustomsClearanceDetailsUpdateInput expressCustomsClearanceDetailsUpdateDto
+        [FromRoute] ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId,
+        [FromQuery] ExpressCustomsClearanceDetailsUpdateInput expressCustomsClearanceDetailsUpdateDto
     )
     {
         try

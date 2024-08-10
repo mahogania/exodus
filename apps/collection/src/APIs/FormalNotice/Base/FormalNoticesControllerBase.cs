@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class FormalNoticesControllerBase : ControllerBase
 {
     protected readonly IFormalNoticesService _service;
@@ -19,9 +18,9 @@ public abstract class FormalNoticesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one FORMAL NOTICE
+    ///     Create one FORMAL NOTICE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<FormalNotice>> CreateFormalNotice(FormalNoticeCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class FormalNoticesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one FORMAL NOTICE
+    ///     Delete one FORMAL NOTICE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteFormalNotice(
-        [FromRoute()] FormalNoticeWhereUniqueInput uniqueId
+        [FromRoute] FormalNoticeWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class FormalNoticesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many FORMAL NOTICES
+    ///     Find many FORMAL NOTICES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<FormalNotice>>> FormalNotices(
-        [FromQuery()] FormalNoticeFindManyArgs filter
+        [FromQuery] FormalNoticeFindManyArgs filter
     )
     {
         return Ok(await _service.FormalNotices(filter));
     }
 
     /// <summary>
-    /// Meta data about FORMAL NOTICE records
+    ///     Meta data about FORMAL NOTICE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> FormalNoticesMeta(
-        [FromQuery()] FormalNoticeFindManyArgs filter
+        [FromQuery] FormalNoticeFindManyArgs filter
     )
     {
         return Ok(await _service.FormalNoticesMeta(filter));
     }
 
     /// <summary>
-    /// Get one FORMAL NOTICE
+    ///     Get one FORMAL NOTICE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<FormalNotice>> FormalNotice(
-        [FromRoute()] FormalNoticeWhereUniqueInput uniqueId
+        [FromRoute] FormalNoticeWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class FormalNoticesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one FORMAL NOTICE
+    ///     Update one FORMAL NOTICE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateFormalNotice(
-        [FromRoute()] FormalNoticeWhereUniqueInput uniqueId,
-        [FromQuery()] FormalNoticeUpdateInput formalNoticeUpdateDto
+        [FromRoute] FormalNoticeWhereUniqueInput uniqueId,
+        [FromQuery] FormalNoticeUpdateInput formalNoticeUpdateDto
     )
     {
         try

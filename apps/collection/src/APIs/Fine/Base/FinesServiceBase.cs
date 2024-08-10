@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class FinesServiceBase : IFinesService
     }
 
     /// <summary>
-    /// Create one FINE
+    ///     Create one FINE
     /// </summary>
     public async Task<Fine> CreateFine(FineCreateInput createDto)
     {
@@ -59,41 +58,32 @@ public abstract class FinesServiceBase : IFinesService
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            fine.Id = createDto.Id;
-        }
+        if (createDto.Id != null) fine.Id = createDto.Id;
 
         _context.Fines.Add(fine);
         await _context.SaveChangesAsync();
 
         var result = await _context.FindAsync<FineDbModel>(fine.Id);
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one FINE
+    ///     Delete one FINE
     /// </summary>
     public async Task DeleteFine(FineWhereUniqueInput uniqueId)
     {
         var fine = await _context.Fines.FindAsync(uniqueId.Id);
-        if (fine == null)
-        {
-            throw new NotFoundException();
-        }
+        if (fine == null) throw new NotFoundException();
 
         _context.Fines.Remove(fine);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many FINES
+    ///     Find many FINES
     /// </summary>
     public async Task<List<Fine>> Fines(FineFindManyArgs findManyArgs)
     {
@@ -107,7 +97,7 @@ public abstract class FinesServiceBase : IFinesService
     }
 
     /// <summary>
-    /// Meta data about FINE records
+    ///     Meta data about FINE records
     /// </summary>
     public async Task<MetadataDto> FinesMeta(FineFindManyArgs findManyArgs)
     {
@@ -117,24 +107,21 @@ public abstract class FinesServiceBase : IFinesService
     }
 
     /// <summary>
-    /// Get one FINE
+    ///     Get one FINE
     /// </summary>
     public async Task<Fine> Fine(FineWhereUniqueInput uniqueId)
     {
-        var fines = await this.Fines(
+        var fines = await Fines(
             new FineFindManyArgs { Where = new FineWhereInput { Id = uniqueId.Id } }
         );
         var fine = fines.FirstOrDefault();
-        if (fine == null)
-        {
-            throw new NotFoundException();
-        }
+        if (fine == null) throw new NotFoundException();
 
         return fine;
     }
 
     /// <summary>
-    /// Update one FINE
+    ///     Update one FINE
     /// </summary>
     public async Task UpdateFine(FineWhereUniqueInput uniqueId, FineUpdateInput updateDto)
     {
@@ -149,13 +136,8 @@ public abstract class FinesServiceBase : IFinesService
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.Fines.Any(e => e.Id == fine.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

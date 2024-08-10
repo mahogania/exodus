@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class FineCausesControllerBase : ControllerBase
 {
     protected readonly IFineCausesService _service;
@@ -19,9 +18,9 @@ public abstract class FineCausesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one FINE CAUSE
+    ///     Create one FINE CAUSE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<FineCause>> CreateFineCause(FineCauseCreateInput input)
     {
@@ -31,12 +30,12 @@ public abstract class FineCausesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one FINE CAUSE
+    ///     Delete one FINE CAUSE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteFineCause(
-        [FromRoute()] FineCauseWhereUniqueInput uniqueId
+        [FromRoute] FineCauseWhereUniqueInput uniqueId
     )
     {
         try
@@ -52,35 +51,35 @@ public abstract class FineCausesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many FINE CAUSES
+    ///     Find many FINE CAUSES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<FineCause>>> FineCauses(
-        [FromQuery()] FineCauseFindManyArgs filter
+        [FromQuery] FineCauseFindManyArgs filter
     )
     {
         return Ok(await _service.FineCauses(filter));
     }
 
     /// <summary>
-    /// Meta data about FINE CAUSE records
+    ///     Meta data about FINE CAUSE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> FineCausesMeta(
-        [FromQuery()] FineCauseFindManyArgs filter
+        [FromQuery] FineCauseFindManyArgs filter
     )
     {
         return Ok(await _service.FineCausesMeta(filter));
     }
 
     /// <summary>
-    /// Get one FINE CAUSE
+    ///     Get one FINE CAUSE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<FineCause>> FineCause(
-        [FromRoute()] FineCauseWhereUniqueInput uniqueId
+        [FromRoute] FineCauseWhereUniqueInput uniqueId
     )
     {
         try
@@ -94,13 +93,13 @@ public abstract class FineCausesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one FINE CAUSE
+    ///     Update one FINE CAUSE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateFineCause(
-        [FromRoute()] FineCauseWhereUniqueInput uniqueId,
-        [FromQuery()] FineCauseUpdateInput fineCauseUpdateDto
+        [FromRoute] FineCauseWhereUniqueInput uniqueId,
+        [FromQuery] FineCauseUpdateInput fineCauseUpdateDto
     )
     {
         try

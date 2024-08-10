@@ -23,7 +23,7 @@ public static class TextZoneForSpecifyingTheItinerariesExtensions
             SequenceNumber = model.SequenceNumber,
             SuppressionOn = model.SuppressionOn,
             TirRegistrationNumber = model.TirRegistrationNumber,
-            UpdatedAt = model.UpdatedAt,
+            UpdatedAt = model.UpdatedAt
         };
     }
 
@@ -47,14 +47,8 @@ public static class TextZoneForSpecifyingTheItinerariesExtensions
             TirRegistrationNumber = updateDto.TirRegistrationNumber
         };
 
-        if (updateDto.CreatedAt != null)
-        {
-            textZoneForSpecifyingTheItinerary.CreatedAt = updateDto.CreatedAt.Value;
-        }
-        if (updateDto.UpdatedAt != null)
-        {
-            textZoneForSpecifyingTheItinerary.UpdatedAt = updateDto.UpdatedAt.Value;
-        }
+        if (updateDto.CreatedAt != null) textZoneForSpecifyingTheItinerary.CreatedAt = updateDto.CreatedAt.Value;
+        if (updateDto.UpdatedAt != null) textZoneForSpecifyingTheItinerary.UpdatedAt = updateDto.UpdatedAt.Value;
 
         return textZoneForSpecifyingTheItinerary;
     }

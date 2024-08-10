@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class CautionsControllerBase : ControllerBase
 {
     protected readonly ICautionsService _service;
@@ -19,9 +18,9 @@ public abstract class CautionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one CAUTION
+    ///     Create one CAUTION
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Caution>> CreateCaution(CautionCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class CautionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one CAUTION
+    ///     Delete one CAUTION
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteCaution([FromRoute()] CautionWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteCaution([FromRoute] CautionWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,34 +49,34 @@ public abstract class CautionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many CAUTIONS
+    ///     Find many CAUTIONS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<Caution>>> Cautions(
-        [FromQuery()] CautionFindManyArgs filter
+        [FromQuery] CautionFindManyArgs filter
     )
     {
         return Ok(await _service.Cautions(filter));
     }
 
     /// <summary>
-    /// Meta data about CAUTION records
+    ///     Meta data about CAUTION records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CautionsMeta(
-        [FromQuery()] CautionFindManyArgs filter
+        [FromQuery] CautionFindManyArgs filter
     )
     {
         return Ok(await _service.CautionsMeta(filter));
     }
 
     /// <summary>
-    /// Get one CAUTION
+    ///     Get one CAUTION
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Caution>> Caution([FromRoute()] CautionWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Caution>> Caution([FromRoute] CautionWhereUniqueInput uniqueId)
     {
         try
         {
@@ -90,13 +89,13 @@ public abstract class CautionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one CAUTION
+    ///     Update one CAUTION
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCaution(
-        [FromRoute()] CautionWhereUniqueInput uniqueId,
-        [FromQuery()] CautionUpdateInput cautionUpdateDto
+        [FromRoute] CautionWhereUniqueInput uniqueId,
+        [FromQuery] CautionUpdateInput cautionUpdateDto
     )
     {
         try

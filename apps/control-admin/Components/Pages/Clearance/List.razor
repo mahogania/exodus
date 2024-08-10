@@ -1,8 +1,4 @@
 @page "/pending-clearance"
-@using Syncfusion.Blazor.Grids
-@using Syncfusion.Blazor.Inputs
-@using Syncfusion.Blazor.Buttons
-@using Syncfusion.Blazor.DropDowns
 @inject IStringLocalizer<Pages.PendingClearance> Localizer
 
 <div class="container">
@@ -10,26 +6,26 @@
 
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline" TValue="string"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfDropDownList Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string"></SfDropDownList>
+            <SfDropDownList Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string" TValue="string"></SfDropDownList>
         </div>
         <div class="col-md-3">
-            <SfDateRangePicker Placeholder="@Localizer["DeclarationRegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
+            <SfDateRangePicker Placeholder="@Localizer["DeclarationRegistrationDate"]" CssClass="e-outline" TValue="DateTime?"></SfDateRangePicker>
         </div>
         <div class="col-md-3">
-            <SfDropDownList Placeholder="@Localizer["ExecutionStatus"]" CssClass="e-outline" DataSource="@ExecutionStatuses" TItem="string"></SfDropDownList>
+            <SfDropDownList Placeholder="@Localizer["ExecutionStatus"]" CssClass="e-outline" DataSource="@ExecutionStatuses" TItem="string" TValue="string"></SfDropDownList>
         </div>
     </div>
 
     <div class="row mb-3">
         <div class="col-md-3">
-            <SfRadioButton Label="@Localizer["DeclarantNo"]" Name="searchCriteria" Value="DeclarantNo" Checked="true"></SfRadioButton>
-            <SfRadioButton Label="@Localizer["NIF"]" Name="searchCriteria" Value="NIF"></SfRadioButton>
+            <SfRadioButton Label="@Localizer["DeclarantNo"]" Name="searchCriteria" Value="DeclarantNo" Checked="true" TValue="string" TChecked="bool"></SfRadioButton>
+            <SfRadioButton Label="@Localizer["NIF"]" Name="searchCriteria" Value="NIF" TValue="string" TChecked="bool"></SfRadioButton>
         </div>
         <div class="col-md-3">
-            <SfTextBox Placeholder="@Localizer["Details"]" CssClass="e-outline" Value="H0001"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["Details"]" CssClass="e-outline" Value="H0001" TValue="string"></SfTextBox>
         </div>
         <div class="col-md-3">
             <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
@@ -61,6 +57,7 @@
 </div>
 
 @code {
+
     public class PendingDeclaration
     {
         public string DeclarationNo { get; set; }
@@ -76,7 +73,7 @@
         public string ExecutionStatus { get; set; }
     }
 
-    public List<string> DeclarationTypes = new List<string>
+    public List<string> DeclarationTypes = new()
     {
         "IMS - Admission Temporaire",
         "IM4 - Déclaration de l'importation",
@@ -84,7 +81,7 @@
         // Add more types as needed
     };
 
-    public List<string> ExecutionStatuses = new List<string>
+    public List<string> ExecutionStatuses = new()
     {
         "Apurée avant l'échéance",
         "En cours",
@@ -92,9 +89,10 @@
         // Add more statuses as needed
     };
 
-    public List<PendingDeclaration> PendingDeclarationsData = new List<PendingDeclaration>
+    public List<PendingDeclaration> PendingDeclarationsData = new()
     {
         new PendingDeclaration { DeclarationNo = "ALGER-2022-C000001", DeclarationRegistrationDate = new DateTime(2022, 2, 10), DeclarationType = "IMS - Admission Temporaire", EPC = "5100", Importer = "Importateur", Exporter = "Exportateur", CustomsZone = "221345", DueDate = new DateTime(2022, 4, 10), ExecutionDate = new DateTime(2022, 4, 10), BasePrice = 3000, ExecutionStatus = "Apurée avant l'échéance" }
         // Add more data as needed
     };
+
 }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class GoodsImportedForPerfectingsControllerBase : ControllerBase
 {
     protected readonly IGoodsImportedForPerfectingsService _service;
@@ -19,9 +18,9 @@ public abstract class GoodsImportedForPerfectingsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one GOODS IMPORTED FOR PERFECTING
+    ///     Create one GOODS IMPORTED FOR PERFECTING
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<GoodsImportedForPerfecting>> CreateGoodsImportedForPerfecting(
         GoodsImportedForPerfectingCreateInput input
@@ -37,12 +36,12 @@ public abstract class GoodsImportedForPerfectingsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one GOODS IMPORTED FOR PERFECTING
+    ///     Delete one GOODS IMPORTED FOR PERFECTING
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteGoodsImportedForPerfecting(
-        [FromRoute()] GoodsImportedForPerfectingWhereUniqueInput uniqueId
+        [FromRoute] GoodsImportedForPerfectingWhereUniqueInput uniqueId
     )
     {
         try
@@ -58,35 +57,35 @@ public abstract class GoodsImportedForPerfectingsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many GOODS IMPORTED FOR PERFECTINGS
+    ///     Find many GOODS IMPORTED FOR PERFECTINGS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<GoodsImportedForPerfecting>>> GoodsImportedForPerfectings(
-        [FromQuery()] GoodsImportedForPerfectingFindManyArgs filter
+        [FromQuery] GoodsImportedForPerfectingFindManyArgs filter
     )
     {
         return Ok(await _service.GoodsImportedForPerfectings(filter));
     }
 
     /// <summary>
-    /// Meta data about GOODS IMPORTED FOR PERFECTING records
+    ///     Meta data about GOODS IMPORTED FOR PERFECTING records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> GoodsImportedForPerfectingsMeta(
-        [FromQuery()] GoodsImportedForPerfectingFindManyArgs filter
+        [FromQuery] GoodsImportedForPerfectingFindManyArgs filter
     )
     {
         return Ok(await _service.GoodsImportedForPerfectingsMeta(filter));
     }
 
     /// <summary>
-    /// Get one GOODS IMPORTED FOR PERFECTING
+    ///     Get one GOODS IMPORTED FOR PERFECTING
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<GoodsImportedForPerfecting>> GoodsImportedForPerfecting(
-        [FromRoute()] GoodsImportedForPerfectingWhereUniqueInput uniqueId
+        [FromRoute] GoodsImportedForPerfectingWhereUniqueInput uniqueId
     )
     {
         try
@@ -100,13 +99,13 @@ public abstract class GoodsImportedForPerfectingsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one GOODS IMPORTED FOR PERFECTING
+    ///     Update one GOODS IMPORTED FOR PERFECTING
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateGoodsImportedForPerfecting(
-        [FromRoute()] GoodsImportedForPerfectingWhereUniqueInput uniqueId,
-        [FromQuery()] GoodsImportedForPerfectingUpdateInput goodsImportedForPerfectingUpdateDto
+        [FromRoute] GoodsImportedForPerfectingWhereUniqueInput uniqueId,
+        [FromQuery] GoodsImportedForPerfectingUpdateInput goodsImportedForPerfectingUpdateDto
     )
     {
         try

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -22,11 +21,12 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesServ
     }
 
     /// <summary>
-    /// Create one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
+    ///     Create one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
     /// </summary>
-    public async Task<InformationOfGoodsTransferredInWarehousePublicPrivate> CreateInformationOfGoodsTransferredInWarehousePublicPrivate(
-        InformationOfGoodsTransferredInWarehousePublicPrivateCreateInput createDto
-    )
+    public async Task<InformationOfGoodsTransferredInWarehousePublicPrivate>
+        CreateInformationOfGoodsTransferredInWarehousePublicPrivate(
+            InformationOfGoodsTransferredInWarehousePublicPrivateCreateInput createDto
+        )
     {
         var informationOfGoodsTransferredInWarehousePublicPrivate =
             new InformationOfGoodsTransferredInWarehousePublicPrivateDbModel
@@ -52,10 +52,7 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesServ
                 Value = createDto.Value
             };
 
-        if (createDto.Id != null)
-        {
-            informationOfGoodsTransferredInWarehousePublicPrivate.Id = createDto.Id;
-        }
+        if (createDto.Id != null) informationOfGoodsTransferredInWarehousePublicPrivate.Id = createDto.Id;
 
         _context.InformationOfGoodsTransferredInWarehousePublicPrivates.Add(
             informationOfGoodsTransferredInWarehousePublicPrivate
@@ -67,16 +64,13 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesServ
                 informationOfGoodsTransferredInWarehousePublicPrivate.Id
             );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
+    ///     Delete one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
     /// </summary>
     public async Task DeleteInformationOfGoodsTransferredInWarehousePublicPrivate(
         InformationOfGoodsTransferredInWarehousePublicPrivateWhereUniqueInput uniqueId
@@ -86,10 +80,7 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesServ
             await _context.InformationOfGoodsTransferredInWarehousePublicPrivates.FindAsync(
                 uniqueId.Id
             );
-        if (informationOfGoodsTransferredInWarehousePublicPrivate == null)
-        {
-            throw new NotFoundException();
-        }
+        if (informationOfGoodsTransferredInWarehousePublicPrivate == null) throw new NotFoundException();
 
         _context.InformationOfGoodsTransferredInWarehousePublicPrivates.Remove(
             informationOfGoodsTransferredInWarehousePublicPrivate
@@ -98,7 +89,7 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesServ
     }
 
     /// <summary>
-    /// Find many INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)s
+    ///     Find many INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)s
     /// </summary>
     public async Task<
         List<InformationOfGoodsTransferredInWarehousePublicPrivate>
@@ -119,7 +110,7 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesServ
     }
 
     /// <summary>
-    /// Meta data about INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE) records
+    ///     Meta data about INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE) records
     /// </summary>
     public async Task<MetadataDto> InformationOfGoodsTransferredInWarehousePublicPrivatesMeta(
         InformationOfGoodsTransferredInWarehousePublicPrivateFindManyArgs findManyArgs
@@ -133,14 +124,15 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesServ
     }
 
     /// <summary>
-    /// Get one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
+    ///     Get one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
     /// </summary>
-    public async Task<InformationOfGoodsTransferredInWarehousePublicPrivate> InformationOfGoodsTransferredInWarehousePublicPrivate(
-        InformationOfGoodsTransferredInWarehousePublicPrivateWhereUniqueInput uniqueId
-    )
+    public async Task<InformationOfGoodsTransferredInWarehousePublicPrivate>
+        InformationOfGoodsTransferredInWarehousePublicPrivate(
+            InformationOfGoodsTransferredInWarehousePublicPrivateWhereUniqueInput uniqueId
+        )
     {
         var informationOfGoodsTransferredInWarehousePublicPrivates =
-            await this.InformationOfGoodsTransferredInWarehousePublicPrivates(
+            await InformationOfGoodsTransferredInWarehousePublicPrivates(
                 new InformationOfGoodsTransferredInWarehousePublicPrivateFindManyArgs
                 {
                     Where = new InformationOfGoodsTransferredInWarehousePublicPrivateWhereInput
@@ -151,16 +143,13 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesServ
             );
         var informationOfGoodsTransferredInWarehousePublicPrivate =
             informationOfGoodsTransferredInWarehousePublicPrivates.FirstOrDefault();
-        if (informationOfGoodsTransferredInWarehousePublicPrivate == null)
-        {
-            throw new NotFoundException();
-        }
+        if (informationOfGoodsTransferredInWarehousePublicPrivate == null) throw new NotFoundException();
 
         return informationOfGoodsTransferredInWarehousePublicPrivate;
     }
 
     /// <summary>
-    /// Update one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
+    ///     Update one INFORMATION OF GOODS TRANSFERRED IN WAREHOUSE (PUBLIC, PRIVATE)
     /// </summary>
     public async Task UpdateInformationOfGoodsTransferredInWarehousePublicPrivate(
         InformationOfGoodsTransferredInWarehousePublicPrivateWhereUniqueInput uniqueId,
@@ -183,13 +172,8 @@ public abstract class InformationOfGoodsTransferredInWarehousePublicPrivatesServ
                     e.Id == informationOfGoodsTransferredInWarehousePublicPrivate.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

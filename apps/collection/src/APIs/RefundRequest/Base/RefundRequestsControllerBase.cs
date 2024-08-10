@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class RefundRequestsControllerBase : ControllerBase
 {
     protected readonly IRefundRequestsService _service;
@@ -19,9 +18,9 @@ public abstract class RefundRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one REFUND REQUEST
+    ///     Create one REFUND REQUEST
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<RefundRequest>> CreateRefundRequest(
         RefundRequestCreateInput input
@@ -33,12 +32,12 @@ public abstract class RefundRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one REFUND REQUEST
+    ///     Delete one REFUND REQUEST
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteRefundRequest(
-        [FromRoute()] RefundRequestWhereUniqueInput uniqueId
+        [FromRoute] RefundRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -54,35 +53,35 @@ public abstract class RefundRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many REFUND REQUESTS
+    ///     Find many REFUND REQUESTS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<RefundRequest>>> RefundRequests(
-        [FromQuery()] RefundRequestFindManyArgs filter
+        [FromQuery] RefundRequestFindManyArgs filter
     )
     {
         return Ok(await _service.RefundRequests(filter));
     }
 
     /// <summary>
-    /// Meta data about REFUND REQUEST records
+    ///     Meta data about REFUND REQUEST records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> RefundRequestsMeta(
-        [FromQuery()] RefundRequestFindManyArgs filter
+        [FromQuery] RefundRequestFindManyArgs filter
     )
     {
         return Ok(await _service.RefundRequestsMeta(filter));
     }
 
     /// <summary>
-    /// Get one REFUND REQUEST
+    ///     Get one REFUND REQUEST
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<RefundRequest>> RefundRequest(
-        [FromRoute()] RefundRequestWhereUniqueInput uniqueId
+        [FromRoute] RefundRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -96,13 +95,13 @@ public abstract class RefundRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one REFUND REQUEST
+    ///     Update one REFUND REQUEST
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateRefundRequest(
-        [FromRoute()] RefundRequestWhereUniqueInput uniqueId,
-        [FromQuery()] RefundRequestUpdateInput refundRequestUpdateDto
+        [FromRoute] RefundRequestWhereUniqueInput uniqueId,
+        [FromQuery] RefundRequestUpdateInput refundRequestUpdateDto
     )
     {
         try

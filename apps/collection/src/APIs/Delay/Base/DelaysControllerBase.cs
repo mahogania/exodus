@@ -1,4 +1,3 @@
-using Collection.APIs;
 using Collection.APIs.Common;
 using Collection.APIs.Dtos;
 using Collection.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Collection.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class DelaysControllerBase : ControllerBase
 {
     protected readonly IDelaysService _service;
@@ -19,9 +18,9 @@ public abstract class DelaysControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one DELAY
+    ///     Create one DELAY
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<Delay>> CreateDelay(DelayCreateInput input)
     {
@@ -31,11 +30,11 @@ public abstract class DelaysControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one DELAY
+    ///     Delete one DELAY
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DeleteDelay([FromRoute()] DelayWhereUniqueInput uniqueId)
+    public async Task<ActionResult> DeleteDelay([FromRoute] DelayWhereUniqueInput uniqueId)
     {
         try
         {
@@ -50,30 +49,30 @@ public abstract class DelaysControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many DELAYS
+    ///     Find many DELAYS
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<List<Delay>>> Delays([FromQuery()] DelayFindManyArgs filter)
+    public async Task<ActionResult<List<Delay>>> Delays([FromQuery] DelayFindManyArgs filter)
     {
         return Ok(await _service.Delays(filter));
     }
 
     /// <summary>
-    /// Meta data about DELAY records
+    ///     Meta data about DELAY records
     /// </summary>
     [HttpPost("meta")]
-    public async Task<ActionResult<MetadataDto>> DelaysMeta([FromQuery()] DelayFindManyArgs filter)
+    public async Task<ActionResult<MetadataDto>> DelaysMeta([FromQuery] DelayFindManyArgs filter)
     {
         return Ok(await _service.DelaysMeta(filter));
     }
 
     /// <summary>
-    /// Get one DELAY
+    ///     Get one DELAY
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult<Delay>> Delay([FromRoute()] DelayWhereUniqueInput uniqueId)
+    public async Task<ActionResult<Delay>> Delay([FromRoute] DelayWhereUniqueInput uniqueId)
     {
         try
         {
@@ -86,13 +85,13 @@ public abstract class DelaysControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one DELAY
+    ///     Update one DELAY
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateDelay(
-        [FromRoute()] DelayWhereUniqueInput uniqueId,
-        [FromQuery()] DelayUpdateInput delayUpdateDto
+        [FromRoute] DelayWhereUniqueInput uniqueId,
+        [FromQuery] DelayUpdateInput delayUpdateDto
     )
     {
         try

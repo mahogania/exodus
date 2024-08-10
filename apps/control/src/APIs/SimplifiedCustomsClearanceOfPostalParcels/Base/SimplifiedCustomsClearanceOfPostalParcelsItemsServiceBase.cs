@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsServiceBase
     }
 
     /// <summary>
-    /// Create one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
+    ///     Create one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
     /// </summary>
     public async Task<SimplifiedCustomsClearanceOfPostalParcels> CreateSimplifiedCustomsClearanceOfPostalParcels(
         SimplifiedCustomsClearanceOfPostalParcelsCreateInput createDto
@@ -82,10 +81,7 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsServiceBase
                 Weight = createDto.Weight
             };
 
-        if (createDto.Id != null)
-        {
-            simplifiedCustomsClearanceOfPostalParcels.Id = createDto.Id;
-        }
+        if (createDto.Id != null) simplifiedCustomsClearanceOfPostalParcels.Id = createDto.Id;
 
         _context.SimplifiedCustomsClearanceOfPostalParcelsItems.Add(
             simplifiedCustomsClearanceOfPostalParcels
@@ -96,16 +92,13 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsServiceBase
             simplifiedCustomsClearanceOfPostalParcels.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
+    ///     Delete one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
     /// </summary>
     public async Task DeleteSimplifiedCustomsClearanceOfPostalParcels(
         SimplifiedCustomsClearanceOfPostalParcelsWhereUniqueInput uniqueId
@@ -113,10 +106,7 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsServiceBase
     {
         var simplifiedCustomsClearanceOfPostalParcels =
             await _context.SimplifiedCustomsClearanceOfPostalParcelsItems.FindAsync(uniqueId.Id);
-        if (simplifiedCustomsClearanceOfPostalParcels == null)
-        {
-            throw new NotFoundException();
-        }
+        if (simplifiedCustomsClearanceOfPostalParcels == null) throw new NotFoundException();
 
         _context.SimplifiedCustomsClearanceOfPostalParcelsItems.Remove(
             simplifiedCustomsClearanceOfPostalParcels
@@ -125,7 +115,7 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsServiceBase
     }
 
     /// <summary>
-    /// Find many SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELSItems
+    ///     Find many SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELSItems
     /// </summary>
     public async Task<
         List<SimplifiedCustomsClearanceOfPostalParcels>
@@ -146,7 +136,7 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsServiceBase
     }
 
     /// <summary>
-    /// Meta data about SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS records
+    ///     Meta data about SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS records
     /// </summary>
     public async Task<MetadataDto> SimplifiedCustomsClearanceOfPostalParcelsItemsMeta(
         SimplifiedCustomsClearanceOfPostalParcelsFindManyArgs findManyArgs
@@ -160,14 +150,14 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsServiceBase
     }
 
     /// <summary>
-    /// Get one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
+    ///     Get one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
     /// </summary>
     public async Task<SimplifiedCustomsClearanceOfPostalParcels> SimplifiedCustomsClearanceOfPostalParcels(
         SimplifiedCustomsClearanceOfPostalParcelsWhereUniqueInput uniqueId
     )
     {
         var simplifiedCustomsClearanceOfPostalParcelsItems =
-            await this.SimplifiedCustomsClearanceOfPostalParcelsItems(
+            await SimplifiedCustomsClearanceOfPostalParcelsItems(
                 new SimplifiedCustomsClearanceOfPostalParcelsFindManyArgs
                 {
                     Where = new SimplifiedCustomsClearanceOfPostalParcelsWhereInput
@@ -178,16 +168,13 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsServiceBase
             );
         var simplifiedCustomsClearanceOfPostalParcels =
             simplifiedCustomsClearanceOfPostalParcelsItems.FirstOrDefault();
-        if (simplifiedCustomsClearanceOfPostalParcels == null)
-        {
-            throw new NotFoundException();
-        }
+        if (simplifiedCustomsClearanceOfPostalParcels == null) throw new NotFoundException();
 
         return simplifiedCustomsClearanceOfPostalParcels;
     }
 
     /// <summary>
-    /// Update one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
+    ///     Update one SIMPLIFIED CUSTOMS CLEARANCE OF POSTAL PARCELS
     /// </summary>
     public async Task UpdateSimplifiedCustomsClearanceOfPostalParcels(
         SimplifiedCustomsClearanceOfPostalParcelsWhereUniqueInput uniqueId,
@@ -209,13 +196,8 @@ public abstract class SimplifiedCustomsClearanceOfPostalParcelsItemsServiceBase
                     e.Id == simplifiedCustomsClearanceOfPostalParcels.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

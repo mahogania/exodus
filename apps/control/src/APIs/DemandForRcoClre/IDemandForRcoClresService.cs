@@ -6,36 +6,36 @@ namespace Control.APIs;
 public interface IDemandForRcoClresService
 {
     /// <summary>
-    /// Create one Demand for RCO | CLRE
+    ///     Create one Demand for RCO | CLRE
     /// </summary>
     public Task<DemandForRcoClre> CreateDemandForRcoClre(
         DemandForRcoClreCreateInput demandforrcoclre
     );
 
     /// <summary>
-    /// Delete one Demand for RCO | CLRE
+    ///     Delete one Demand for RCO | CLRE
     /// </summary>
     public Task DeleteDemandForRcoClre(DemandForRcoClreWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Find many Demand for RCO | CLRES
+    ///     Find many Demand for RCO | CLRES
     /// </summary>
     public Task<List<DemandForRcoClre>> DemandForRcoClres(
         DemandForRcoClreFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Meta data about Demand for RCO | CLRE records
+    ///     Meta data about Demand for RCO | CLRE records
     /// </summary>
     public Task<MetadataDto> DemandForRcoClresMeta(DemandForRcoClreFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Get one Demand for RCO | CLRE
+    ///     Get one Demand for RCO | CLRE
     /// </summary>
     public Task<DemandForRcoClre> DemandForRcoClre(DemandForRcoClreWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Update one Demand for RCO | CLRE
+    ///     Update one Demand for RCO | CLRE
     /// </summary>
     public Task UpdateDemandForRcoClre(
         DemandForRcoClreWhereUniqueInput uniqueId,

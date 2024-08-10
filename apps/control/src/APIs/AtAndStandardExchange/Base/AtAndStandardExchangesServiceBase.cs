@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class AtAndStandardExchangesServiceBase : IAtAndStandardExchange
     }
 
     /// <summary>
-    /// Create one AT? AND STANDARD EXCHANGE
+    ///     Create one AT? AND STANDARD EXCHANGE
     /// </summary>
     public async Task<AtAndStandardExchange> CreateAtAndStandardExchange(
         AtAndStandardExchangeCreateInput createDto
@@ -48,10 +47,7 @@ public abstract class AtAndStandardExchangesServiceBase : IAtAndStandardExchange
             WarrantyFrame = createDto.WarrantyFrame
         };
 
-        if (createDto.Id != null)
-        {
-            atAndStandardExchange.Id = createDto.Id;
-        }
+        if (createDto.Id != null) atAndStandardExchange.Id = createDto.Id;
 
         _context.AtAndStandardExchanges.Add(atAndStandardExchange);
         await _context.SaveChangesAsync();
@@ -60,31 +56,25 @@ public abstract class AtAndStandardExchangesServiceBase : IAtAndStandardExchange
             atAndStandardExchange.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one AT? AND STANDARD EXCHANGE
+    ///     Delete one AT? AND STANDARD EXCHANGE
     /// </summary>
     public async Task DeleteAtAndStandardExchange(AtAndStandardExchangeWhereUniqueInput uniqueId)
     {
         var atAndStandardExchange = await _context.AtAndStandardExchanges.FindAsync(uniqueId.Id);
-        if (atAndStandardExchange == null)
-        {
-            throw new NotFoundException();
-        }
+        if (atAndStandardExchange == null) throw new NotFoundException();
 
         _context.AtAndStandardExchanges.Remove(atAndStandardExchange);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many AT? AND STANDARD EXCHANGES
+    ///     Find many AT? AND STANDARD EXCHANGES
     /// </summary>
     public async Task<List<AtAndStandardExchange>> AtAndStandardExchanges(
         AtAndStandardExchangeFindManyArgs findManyArgs
@@ -102,7 +92,7 @@ public abstract class AtAndStandardExchangesServiceBase : IAtAndStandardExchange
     }
 
     /// <summary>
-    /// Meta data about AT? AND STANDARD EXCHANGE records
+    ///     Meta data about AT? AND STANDARD EXCHANGE records
     /// </summary>
     public async Task<MetadataDto> AtAndStandardExchangesMeta(
         AtAndStandardExchangeFindManyArgs findManyArgs
@@ -116,29 +106,26 @@ public abstract class AtAndStandardExchangesServiceBase : IAtAndStandardExchange
     }
 
     /// <summary>
-    /// Get one AT? AND STANDARD EXCHANGE
+    ///     Get one AT? AND STANDARD EXCHANGE
     /// </summary>
     public async Task<AtAndStandardExchange> AtAndStandardExchange(
         AtAndStandardExchangeWhereUniqueInput uniqueId
     )
     {
-        var atAndStandardExchanges = await this.AtAndStandardExchanges(
+        var atAndStandardExchanges = await AtAndStandardExchanges(
             new AtAndStandardExchangeFindManyArgs
             {
                 Where = new AtAndStandardExchangeWhereInput { Id = uniqueId.Id }
             }
         );
         var atAndStandardExchange = atAndStandardExchanges.FirstOrDefault();
-        if (atAndStandardExchange == null)
-        {
-            throw new NotFoundException();
-        }
+        if (atAndStandardExchange == null) throw new NotFoundException();
 
         return atAndStandardExchange;
     }
 
     /// <summary>
-    /// Update one AT? AND STANDARD EXCHANGE
+    ///     Update one AT? AND STANDARD EXCHANGE
     /// </summary>
     public async Task UpdateAtAndStandardExchange(
         AtAndStandardExchangeWhereUniqueInput uniqueId,
@@ -156,13 +143,8 @@ public abstract class AtAndStandardExchangesServiceBase : IAtAndStandardExchange
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.AtAndStandardExchanges.Any(e => e.Id == atAndStandardExchange.Id))
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

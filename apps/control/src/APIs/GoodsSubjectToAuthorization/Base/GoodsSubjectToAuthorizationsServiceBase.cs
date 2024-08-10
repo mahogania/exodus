@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -19,7 +18,7 @@ public abstract class GoodsSubjectToAuthorizationsServiceBase : IGoodsSubjectToA
     }
 
     /// <summary>
-    /// Create one GOODS SUBJECT TO AUTHORIZATION
+    ///     Create one GOODS SUBJECT TO AUTHORIZATION
     /// </summary>
     public async Task<GoodsSubjectToAuthorization> CreateGoodsSubjectToAuthorization(
         GoodsSubjectToAuthorizationCreateInput createDto
@@ -50,10 +49,7 @@ public abstract class GoodsSubjectToAuthorizationsServiceBase : IGoodsSubjectToA
             Value = createDto.Value
         };
 
-        if (createDto.Id != null)
-        {
-            goodsSubjectToAuthorization.Id = createDto.Id;
-        }
+        if (createDto.Id != null) goodsSubjectToAuthorization.Id = createDto.Id;
 
         _context.GoodsSubjectToAuthorizations.Add(goodsSubjectToAuthorization);
         await _context.SaveChangesAsync();
@@ -62,16 +58,13 @@ public abstract class GoodsSubjectToAuthorizationsServiceBase : IGoodsSubjectToA
             goodsSubjectToAuthorization.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one GOODS SUBJECT TO AUTHORIZATION
+    ///     Delete one GOODS SUBJECT TO AUTHORIZATION
     /// </summary>
     public async Task DeleteGoodsSubjectToAuthorization(
         GoodsSubjectToAuthorizationWhereUniqueInput uniqueId
@@ -80,17 +73,14 @@ public abstract class GoodsSubjectToAuthorizationsServiceBase : IGoodsSubjectToA
         var goodsSubjectToAuthorization = await _context.GoodsSubjectToAuthorizations.FindAsync(
             uniqueId.Id
         );
-        if (goodsSubjectToAuthorization == null)
-        {
-            throw new NotFoundException();
-        }
+        if (goodsSubjectToAuthorization == null) throw new NotFoundException();
 
         _context.GoodsSubjectToAuthorizations.Remove(goodsSubjectToAuthorization);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many GOODS SUBJECT TO AUTHORIZATIONS
+    ///     Find many GOODS SUBJECT TO AUTHORIZATIONS
     /// </summary>
     public async Task<List<GoodsSubjectToAuthorization>> GoodsSubjectToAuthorizations(
         GoodsSubjectToAuthorizationFindManyArgs findManyArgs
@@ -108,7 +98,7 @@ public abstract class GoodsSubjectToAuthorizationsServiceBase : IGoodsSubjectToA
     }
 
     /// <summary>
-    /// Meta data about GOODS SUBJECT TO AUTHORIZATION records
+    ///     Meta data about GOODS SUBJECT TO AUTHORIZATION records
     /// </summary>
     public async Task<MetadataDto> GoodsSubjectToAuthorizationsMeta(
         GoodsSubjectToAuthorizationFindManyArgs findManyArgs
@@ -122,29 +112,26 @@ public abstract class GoodsSubjectToAuthorizationsServiceBase : IGoodsSubjectToA
     }
 
     /// <summary>
-    /// Get one GOODS SUBJECT TO AUTHORIZATION
+    ///     Get one GOODS SUBJECT TO AUTHORIZATION
     /// </summary>
     public async Task<GoodsSubjectToAuthorization> GoodsSubjectToAuthorization(
         GoodsSubjectToAuthorizationWhereUniqueInput uniqueId
     )
     {
-        var goodsSubjectToAuthorizations = await this.GoodsSubjectToAuthorizations(
+        var goodsSubjectToAuthorizations = await GoodsSubjectToAuthorizations(
             new GoodsSubjectToAuthorizationFindManyArgs
             {
                 Where = new GoodsSubjectToAuthorizationWhereInput { Id = uniqueId.Id }
             }
         );
         var goodsSubjectToAuthorization = goodsSubjectToAuthorizations.FirstOrDefault();
-        if (goodsSubjectToAuthorization == null)
-        {
-            throw new NotFoundException();
-        }
+        if (goodsSubjectToAuthorization == null) throw new NotFoundException();
 
         return goodsSubjectToAuthorization;
     }
 
     /// <summary>
-    /// Update one GOODS SUBJECT TO AUTHORIZATION
+    ///     Update one GOODS SUBJECT TO AUTHORIZATION
     /// </summary>
     public async Task UpdateGoodsSubjectToAuthorization(
         GoodsSubjectToAuthorizationWhereUniqueInput uniqueId,
@@ -166,13 +153,8 @@ public abstract class GoodsSubjectToAuthorizationsServiceBase : IGoodsSubjectToA
                     e.Id == goodsSubjectToAuthorization.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class MacSuiteAtWithReexportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Create one MAC SUITE AT WITH REEXPORTATION IN THE STATE
+    ///     Create one MAC SUITE AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     public async Task<MacSuiteAtWithReexportationInTheState> CreateMacSuiteAtWithReexportationInTheState(
         MacSuiteAtWithReexportationInTheStateCreateInput createDto
@@ -56,10 +55,7 @@ public abstract class MacSuiteAtWithReexportationInTheStatesServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            macSuiteAtWithReexportationInTheState.Id = createDto.Id;
-        }
+        if (createDto.Id != null) macSuiteAtWithReexportationInTheState.Id = createDto.Id;
 
         _context.MacSuiteAtWithReexportationInTheStates.Add(macSuiteAtWithReexportationInTheState);
         await _context.SaveChangesAsync();
@@ -68,16 +64,13 @@ public abstract class MacSuiteAtWithReexportationInTheStatesServiceBase
             macSuiteAtWithReexportationInTheState.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one MAC SUITE AT WITH REEXPORTATION IN THE STATE
+    ///     Delete one MAC SUITE AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     public async Task DeleteMacSuiteAtWithReexportationInTheState(
         MacSuiteAtWithReexportationInTheStateWhereUniqueInput uniqueId
@@ -85,10 +78,7 @@ public abstract class MacSuiteAtWithReexportationInTheStatesServiceBase
     {
         var macSuiteAtWithReexportationInTheState =
             await _context.MacSuiteAtWithReexportationInTheStates.FindAsync(uniqueId.Id);
-        if (macSuiteAtWithReexportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (macSuiteAtWithReexportationInTheState == null) throw new NotFoundException();
 
         _context.MacSuiteAtWithReexportationInTheStates.Remove(
             macSuiteAtWithReexportationInTheState
@@ -97,7 +87,7 @@ public abstract class MacSuiteAtWithReexportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Find many MAC SUITE AT WITH REEXPORTATION IN THE STATES
+    ///     Find many MAC SUITE AT WITH REEXPORTATION IN THE STATES
     /// </summary>
     public async Task<
         List<MacSuiteAtWithReexportationInTheState>
@@ -117,7 +107,7 @@ public abstract class MacSuiteAtWithReexportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Meta data about MAC SUITE AT WITH REEXPORTATION IN THE STATE records
+    ///     Meta data about MAC SUITE AT WITH REEXPORTATION IN THE STATE records
     /// </summary>
     public async Task<MetadataDto> MacSuiteAtWithReexportationInTheStatesMeta(
         MacSuiteAtWithReexportationInTheStateFindManyArgs findManyArgs
@@ -131,14 +121,14 @@ public abstract class MacSuiteAtWithReexportationInTheStatesServiceBase
     }
 
     /// <summary>
-    /// Get one MAC SUITE AT WITH REEXPORTATION IN THE STATE
+    ///     Get one MAC SUITE AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     public async Task<MacSuiteAtWithReexportationInTheState> MacSuiteAtWithReexportationInTheState(
         MacSuiteAtWithReexportationInTheStateWhereUniqueInput uniqueId
     )
     {
         var macSuiteAtWithReexportationInTheStates =
-            await this.MacSuiteAtWithReexportationInTheStates(
+            await MacSuiteAtWithReexportationInTheStates(
                 new MacSuiteAtWithReexportationInTheStateFindManyArgs
                 {
                     Where = new MacSuiteAtWithReexportationInTheStateWhereInput { Id = uniqueId.Id }
@@ -146,16 +136,13 @@ public abstract class MacSuiteAtWithReexportationInTheStatesServiceBase
             );
         var macSuiteAtWithReexportationInTheState =
             macSuiteAtWithReexportationInTheStates.FirstOrDefault();
-        if (macSuiteAtWithReexportationInTheState == null)
-        {
-            throw new NotFoundException();
-        }
+        if (macSuiteAtWithReexportationInTheState == null) throw new NotFoundException();
 
         return macSuiteAtWithReexportationInTheState;
     }
 
     /// <summary>
-    /// Update one MAC SUITE AT WITH REEXPORTATION IN THE STATE
+    ///     Update one MAC SUITE AT WITH REEXPORTATION IN THE STATE
     /// </summary>
     public async Task UpdateMacSuiteAtWithReexportationInTheState(
         MacSuiteAtWithReexportationInTheStateWhereUniqueInput uniqueId,
@@ -177,13 +164,8 @@ public abstract class MacSuiteAtWithReexportationInTheStatesServiceBase
                     e.Id == macSuiteAtWithReexportationInTheState.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }

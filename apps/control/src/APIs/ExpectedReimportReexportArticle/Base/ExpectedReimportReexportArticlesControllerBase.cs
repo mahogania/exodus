@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,7 +7,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController()]
+[ApiController]
 public abstract class ExpectedReimportReexportArticlesControllerBase : ControllerBase
 {
     protected readonly IExpectedReimportReexportArticlesService _service;
@@ -21,9 +20,9 @@ public abstract class ExpectedReimportReexportArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Create one EXPECTED REIMPORT/REEXPORT ARTICLE
+    ///     Create one EXPECTED REIMPORT/REEXPORT ARTICLE
     /// </summary>
-    [HttpPost()]
+    [HttpPost]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ExpectedReimportReexportArticle>
@@ -41,12 +40,12 @@ public abstract class ExpectedReimportReexportArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Delete one EXPECTED REIMPORT/REEXPORT ARTICLE
+    ///     Delete one EXPECTED REIMPORT/REEXPORT ARTICLE
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteExpectedReimportReexportArticle(
-        [FromRoute()] ExpectedReimportReexportArticleWhereUniqueInput uniqueId
+        [FromRoute] ExpectedReimportReexportArticleWhereUniqueInput uniqueId
     )
     {
         try
@@ -62,39 +61,39 @@ public abstract class ExpectedReimportReexportArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Find many EXPECTED REIMPORT/REEXPORT ARTICLES
+    ///     Find many EXPECTED REIMPORT/REEXPORT ARTICLES
     /// </summary>
-    [HttpGet()]
+    [HttpGet]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<ExpectedReimportReexportArticle>>
     > ExpectedReimportReexportArticles(
-        [FromQuery()] ExpectedReimportReexportArticleFindManyArgs filter
+        [FromQuery] ExpectedReimportReexportArticleFindManyArgs filter
     )
     {
         return Ok(await _service.ExpectedReimportReexportArticles(filter));
     }
 
     /// <summary>
-    /// Meta data about EXPECTED REIMPORT/REEXPORT ARTICLE records
+    ///     Meta data about EXPECTED REIMPORT/REEXPORT ARTICLE records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ExpectedReimportReexportArticlesMeta(
-        [FromQuery()] ExpectedReimportReexportArticleFindManyArgs filter
+        [FromQuery] ExpectedReimportReexportArticleFindManyArgs filter
     )
     {
         return Ok(await _service.ExpectedReimportReexportArticlesMeta(filter));
     }
 
     /// <summary>
-    /// Get one EXPECTED REIMPORT/REEXPORT ARTICLE
+    ///     Get one EXPECTED REIMPORT/REEXPORT ARTICLE
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<ExpectedReimportReexportArticle>
     > ExpectedReimportReexportArticle(
-        [FromRoute()] ExpectedReimportReexportArticleWhereUniqueInput uniqueId
+        [FromRoute] ExpectedReimportReexportArticleWhereUniqueInput uniqueId
     )
     {
         try
@@ -108,14 +107,13 @@ public abstract class ExpectedReimportReexportArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Update one EXPECTED REIMPORT/REEXPORT ARTICLE
+    ///     Update one EXPECTED REIMPORT/REEXPORT ARTICLE
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateExpectedReimportReexportArticle(
-        [FromRoute()] ExpectedReimportReexportArticleWhereUniqueInput uniqueId,
-        [FromQuery()]
-            ExpectedReimportReexportArticleUpdateInput expectedReimportReexportArticleUpdateDto
+        [FromRoute] ExpectedReimportReexportArticleWhereUniqueInput uniqueId,
+        [FromQuery] ExpectedReimportReexportArticleUpdateInput expectedReimportReexportArticleUpdateDto
     )
     {
         try

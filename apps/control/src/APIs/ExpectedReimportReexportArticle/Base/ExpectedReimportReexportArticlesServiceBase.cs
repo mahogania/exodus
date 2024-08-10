@@ -1,4 +1,3 @@
-using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -20,7 +19,7 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
     }
 
     /// <summary>
-    /// Create one EXPECTED REIMPORT/REEXPORT ARTICLE
+    ///     Create one EXPECTED REIMPORT/REEXPORT ARTICLE
     /// </summary>
     public async Task<ExpectedReimportReexportArticle> CreateExpectedReimportReexportArticle(
         ExpectedReimportReexportArticleCreateInput createDto
@@ -50,10 +49,7 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null)
-        {
-            expectedReimportReexportArticle.Id = createDto.Id;
-        }
+        if (createDto.Id != null) expectedReimportReexportArticle.Id = createDto.Id;
 
         _context.ExpectedReimportReexportArticles.Add(expectedReimportReexportArticle);
         await _context.SaveChangesAsync();
@@ -62,16 +58,13 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
             expectedReimportReexportArticle.Id
         );
 
-        if (result == null)
-        {
-            throw new NotFoundException();
-        }
+        if (result == null) throw new NotFoundException();
 
         return result.ToDto();
     }
 
     /// <summary>
-    /// Delete one EXPECTED REIMPORT/REEXPORT ARTICLE
+    ///     Delete one EXPECTED REIMPORT/REEXPORT ARTICLE
     /// </summary>
     public async Task DeleteExpectedReimportReexportArticle(
         ExpectedReimportReexportArticleWhereUniqueInput uniqueId
@@ -79,17 +72,14 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
     {
         var expectedReimportReexportArticle =
             await _context.ExpectedReimportReexportArticles.FindAsync(uniqueId.Id);
-        if (expectedReimportReexportArticle == null)
-        {
-            throw new NotFoundException();
-        }
+        if (expectedReimportReexportArticle == null) throw new NotFoundException();
 
         _context.ExpectedReimportReexportArticles.Remove(expectedReimportReexportArticle);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find many EXPECTED REIMPORT/REEXPORT ARTICLES
+    ///     Find many EXPECTED REIMPORT/REEXPORT ARTICLES
     /// </summary>
     public async Task<List<ExpectedReimportReexportArticle>> ExpectedReimportReexportArticles(
         ExpectedReimportReexportArticleFindManyArgs findManyArgs
@@ -107,7 +97,7 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
     }
 
     /// <summary>
-    /// Meta data about EXPECTED REIMPORT/REEXPORT ARTICLE records
+    ///     Meta data about EXPECTED REIMPORT/REEXPORT ARTICLE records
     /// </summary>
     public async Task<MetadataDto> ExpectedReimportReexportArticlesMeta(
         ExpectedReimportReexportArticleFindManyArgs findManyArgs
@@ -121,29 +111,26 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
     }
 
     /// <summary>
-    /// Get one EXPECTED REIMPORT/REEXPORT ARTICLE
+    ///     Get one EXPECTED REIMPORT/REEXPORT ARTICLE
     /// </summary>
     public async Task<ExpectedReimportReexportArticle> ExpectedReimportReexportArticle(
         ExpectedReimportReexportArticleWhereUniqueInput uniqueId
     )
     {
-        var expectedReimportReexportArticles = await this.ExpectedReimportReexportArticles(
+        var expectedReimportReexportArticles = await ExpectedReimportReexportArticles(
             new ExpectedReimportReexportArticleFindManyArgs
             {
                 Where = new ExpectedReimportReexportArticleWhereInput { Id = uniqueId.Id }
             }
         );
         var expectedReimportReexportArticle = expectedReimportReexportArticles.FirstOrDefault();
-        if (expectedReimportReexportArticle == null)
-        {
-            throw new NotFoundException();
-        }
+        if (expectedReimportReexportArticle == null) throw new NotFoundException();
 
         return expectedReimportReexportArticle;
     }
 
     /// <summary>
-    /// Update one EXPECTED REIMPORT/REEXPORT ARTICLE
+    ///     Update one EXPECTED REIMPORT/REEXPORT ARTICLE
     /// </summary>
     public async Task UpdateExpectedReimportReexportArticle(
         ExpectedReimportReexportArticleWhereUniqueInput uniqueId,
@@ -165,13 +152,8 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
                     e.Id == expectedReimportReexportArticle.Id
                 )
             )
-            {
                 throw new NotFoundException();
-            }
-            else
-            {
-                throw;
-            }
+            throw;
         }
     }
 }
