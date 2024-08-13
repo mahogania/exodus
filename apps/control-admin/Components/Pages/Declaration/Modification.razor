@@ -1,5 +1,7 @@
 @page "/modification-request-detailed-declaration"
-@inject IStringLocalizer<Pages.DetailedDeclaration> Localizer
+@using Microsoft.Extensions.Localization
+@using Syncfusion.Blazor.Diagram
+@inject IStringLocalizer Localizer
 
 <div class="container">
 <h3>@Localizer["ModificationRequestDetailedDeclarationTitle"]</h3>
@@ -183,7 +185,7 @@
 </TabItem>
 <TabItem HeaderText="@Localizer["Tax"]">
     <ChildContent>
-        <SfGrid TValue="Tax" DataSource="@TaxData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+        <SfGrid TValue="Tax" DataSource="@TaxData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
             <GridColumns>
                 <GridColumn Field="TaxCode" HeaderText="@Localizer["TaxCode"]" Width="150"></GridColumn>
                 <GridColumn Field="TaxableValue" HeaderText="@Localizer["TaxableValue"]" Width="150"></GridColumn>
@@ -195,7 +197,7 @@
 </TabItem>
 <TabItem HeaderText="@Localizer["PaymentNotificationHistory"]">
     <ChildContent>
-        <SfGrid TValue="PaymentHistory" DataSource="@PaymentHistoryData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+        <SfGrid TValue="PaymentHistory" DataSource="@PaymentHistoryData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
             <GridColumns>
                 <GridColumn Field="PaymentNoticeNo" HeaderText="@Localizer["PaymentNoticeNo"]" Width="150"></GridColumn>
                 <GridColumn Field="PaymentType" HeaderText="@Localizer["PaymentType"]" Width="150"></GridColumn>
@@ -210,7 +212,7 @@
 </TabItem>
 <TabItem HeaderText="@Localizer["Container"]">
     <ChildContent>
-        <SfGrid TValue="Container" DataSource="@ContainerData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+        <SfGrid TValue="Container" DataSource="@ContainerData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
             <GridColumns>
                 <GridColumn Field="ContainerNo" HeaderText="@Localizer["ContainerNo"]" Width="150"></GridColumn>
                 <GridColumn Field="ContainerCategory" HeaderText="@Localizer["ContainerCategory"]" Width="150"></GridColumn>

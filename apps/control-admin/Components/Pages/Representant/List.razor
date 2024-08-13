@@ -1,4 +1,5 @@
 @page "/rde-list"
+@using Syncfusion.Blazor.Diagram
 
 <div class="container">
     <h3>Consult the List of Economic Customs Regime Requests (RDE)</h3>
@@ -10,10 +11,10 @@
             <SfTextBox TValue="string" Placeholder="Regime Authorization No" CssClass="e-outline"></SfTextBox>
         </div>
         <div class="col-md-3">
-            <SfDropDownList TItem="string" TValue="string" Placeholder="Status" CssClass="e-outline" DataSource="@statuses" Value="Received"></SfDropDownList>
+            <SfDropDownList TItem="string" TValue="string" Placeholder="Status" CssClass="e-outline" DataSource="@Statuses"></SfDropDownList>
         </div>
         <div class="col-md-3">
-            <SfDropDownList TItem="string" TValue="string" Placeholder="Usage" CssClass="e-outline" DataSource="@usages" Value="YES"></SfDropDownList>
+            <SfDropDownList TItem="string" TValue="string" Placeholder="Usage" CssClass="e-outline" DataSource="@Usages"></SfDropDownList>
         </div>
     </div>
     <div class="row mt-3">
@@ -23,7 +24,7 @@
         </div>
     </div>
 
-    <SfGrid DataSource="@RDEData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@RDEData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="RegimeAuthorizationNo" HeaderText="Regime Authorization No" Width="150"></GridColumn>
             <GridColumn Field="DeclarationOffice" HeaderText="Declaration Office" Width="150"></GridColumn>
@@ -69,6 +70,6 @@
         // Add more data as needed
     };
 
-    public List<string> statuses = new() { "Received", "In Progress", "Completed" };
-    public List<string> usages = new() { "YES", "NO" };
+    public List<string> Statuses = new() { "Received", "In Progress", "Completed" };
+    public List<string> Usages = new() { "YES", "NO" };
 }

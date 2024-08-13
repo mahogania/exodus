@@ -1,5 +1,6 @@
 @page "/history-tax-details"
-@inject IStringLocalizer<Pages.TaxDetails> Localizer
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["TaxDetailsTitle"]</h3>
@@ -26,7 +27,7 @@
                     <div class="row">
                         <div class="col-md-12">
                             <h4>@Localizer["DetailsOfDutiesAndTaxes"]</h4>
-                            <SfGrid DataSource="@TaxDetailsData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+                            <SfGrid DataSource="@TaxDetailsData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
                                 <GridColumns>
                                     <GridColumn Field="TaxCode" HeaderText="@Localizer["TaxCode"]" Width="150"></GridColumn>
                                     <GridColumn Field="TaxableValue" HeaderText="@Localizer["TaxableValue"]" Width="150"></GridColumn>
@@ -40,7 +41,7 @@
             </TabItem>
             <TabItem HeaderText="@Localizer["Tax"]">
                 <ChildContent>
-                    <SfGrid DataSource="@TaxData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+                    <SfGrid DataSource="@TaxData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
                         <GridColumns>
                             <GridColumn Field="TaxCode" HeaderText="@Localizer["TaxCode"]" Width="150"></GridColumn>
                             <GridColumn Field="TaxableValue" HeaderText="@Localizer["TaxableValue"]" Width="150"></GridColumn>
@@ -52,7 +53,7 @@
             </TabItem>
             <TabItem HeaderText="@Localizer["PaymentNotificationHistory"]">
                 <ChildContent>
-                    <SfGrid DataSource="@PaymentHistoryData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+                    <SfGrid DataSource="@PaymentHistoryData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
                         <GridColumns>
                             <GridColumn Field="PaymentNoticeNo" HeaderText="@Localizer["PaymentNoticeNo"]" Width="150"></GridColumn>
                             <GridColumn Field="PaymentType" HeaderText="@Localizer["PaymentType"]" Width="150"></GridColumn>
@@ -67,7 +68,7 @@
             </TabItem>
             <TabItem HeaderText="@Localizer["Container"]">
                 <ChildContent>
-                    <SfGrid DataSource="@ContainerData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+                    <SfGrid DataSource="@ContainerData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
                         <GridColumns>
                             <GridColumn Field="ContainerNo" HeaderText="@Localizer["ContainerNo"]" Width="150"></GridColumn>
                             <GridColumn Field="ContainerCategory" HeaderText="@Localizer["ContainerCategory"]" Width="150"></GridColumn>

@@ -1,5 +1,6 @@
 @page "/cancellation-request-detailed-declaration"
-@inject IStringLocalizer<Pages.CancellationRequest> Localizer
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["CancellationRequestTitle"]</h3>
@@ -81,7 +82,9 @@
                 <ChildContent>
                     <div class="row">
                         <div class="col-md-6">
-                            <SfDropDownList Placeholder="@Localizer["CancellationReason"]" CssClass="e-outline" DataSource="@CancellationReasons" TItem="string" Value="A - Erreurs lors de la rédaction de la déclaration" TValue="string"></SfDropDownList>
+                            <SfDropDownList Placeholder="@Localizer["CancellationReason"]" CssClass="e-outline" DataSource="@CancellationReasons" TItem="string" TValue="string">
+                                @* Value="'A - Erreurs lors de la rédaction de la déclaration'" *@
+                            </SfDropDownList>
                         </div>
                         <div class="col-md-6">
                             <SfTextArea Placeholder="@Localizer["Remarks"]" CssClass="e-outline" TValue="string"></SfTextArea>

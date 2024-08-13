@@ -1,7 +1,7 @@
 @page "/q-a-list"
 @using Microsoft.Extensions.Localization
 @using Syncfusion.Blazor.Diagram
-@inject IStringLocalizer<Pages.DeclarationStatus> Localizer
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["QAListTitle"]</h3>
@@ -14,7 +14,7 @@
             <SfDateRangePicker TValue="DateTime?" Placeholder="@Localizer["DeclarationRegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
         </div>
         <div class="col-md-3">
-            <SfDropDownList TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string" Value="EX1 / Exportation"></SfDropDownList>
+            <SfDropDownList TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string"></SfDropDownList>
         </div>
         <div class="col-md-3">
             <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <SfGrid DataSource="@DeclarationStatusData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@DeclarationStatusData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="No" HeaderText="@Localizer["No"]" Width="50"></GridColumn>
             <GridColumn Field="ReferenceNo" HeaderText="@Localizer["ReferenceNo"]" Width="150"></GridColumn>

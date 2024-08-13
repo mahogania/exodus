@@ -1,10 +1,21 @@
 using control_admin.Components;
+using Syncfusion.Blazor;
+using Microsoft.Extensions.Localization;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
+
+// Add Syncfusion services
+builder.Services.AddSyncfusionBlazor();
+
+// Add localization services
+builder.Services.AddLocalization();
+
+// Register IStringLocalizer
+builder.Services.AddSingleton<IStringLocalizer, StringLocalizer<App>>();
 
 var app = builder.Build();
 
@@ -21,7 +32,12 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseAntiforgery();
 
+app.UseRequestLocalization();
+
 app.MapRazorComponents<App>()
     .AddInteractiveServerRenderMode();
+
+// Register Syncfusion license
+Syncfusion.Licensing.SyncfusionLicenseProvider.RegisterLicense("YOUR_LICENSE_KEY");
 
 app.Run();

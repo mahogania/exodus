@@ -1,7 +1,6 @@
 @page "/external-appeals"
 @using Microsoft.Extensions.Localization
-@using Syncfusion.Blazor.Diagram
-@inject IStringLocalizer<Pages.ExternalAppeals> Localizer
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["ExternalAppealsTitle"]</h3>
@@ -25,7 +24,7 @@
         </div>
     </div>
 
-    <SfGrid DataSource="@ExternalAppealsData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@ExternalAppealsData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="AppealNo" HeaderText="@Localizer["AppealNo"]" Width="150"></GridColumn>
             <GridColumn Field="AppealType" HeaderText="@Localizer["AppealType"]" Width="150"></GridColumn>

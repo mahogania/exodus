@@ -1,11 +1,13 @@
 @page "/payment-notification"
-@inject IStringLocalizer<Pages.PaymentNotification> Localizer
+@using Microsoft.Extensions.Localization
+@using Syncfusion.Blazor.Diagram
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["PaymentNotificationTitle"]</h3>
 
     <h4>@Localizer["PaymentNotificationHistory"]</h4>
-    <SfGrid DataSource="@PaymentHistoryData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@PaymentHistoryData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="PaymentNoticeNo" HeaderText="@Localizer["PaymentNoticeNo"]" Width="150"></GridColumn>
             <GridColumn Field="PaymentType" HeaderText="@Localizer["PaymentType"]" Width="150"></GridColumn>
@@ -38,7 +40,7 @@
     </div>
 
     <h4>@Localizer["PaymentAmountDetails"]</h4>
-    <SfGrid DataSource="@PaymentAmountDetailsData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@PaymentAmountDetailsData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="InstitutionName" HeaderText="@Localizer["InstitutionName"]" Width="150"></GridColumn>
             <GridColumn Field="AccountType" HeaderText="@Localizer["AccountType"]" Width="150"></GridColumn>

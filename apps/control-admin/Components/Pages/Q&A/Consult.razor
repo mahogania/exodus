@@ -1,5 +1,7 @@
 @page "/question-response"
-@inject IStringLocalizer<Pages.QuestionResponse> Localizer
+@using Microsoft.Extensions.Localization
+@using Syncfusion.Blazor.Diagram
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["QuestionResponseTitle"]</h3>
@@ -50,7 +52,7 @@
         </div>
     </div>
 
-    <SfGrid DataSource="@QuestionResponseData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@QuestionResponseData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="RegisteredBy" HeaderText="@Localizer["RegisteredBy"]" Width="150"></GridColumn>
             <GridColumn Field="Details" HeaderText="@Localizer["Details"]" Width="150"></GridColumn>

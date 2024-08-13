@@ -1,13 +1,18 @@
-﻿<SfToolbar>
+﻿@using Syncfusion.Blazor.Navigations
+@using Syncfusion.Blazor
+
+@inject SyncfusionBlazorService SyncfusionService
+
+<SfToolbar>
     <SfToolbarItems>
-        <SfToolbarItem Template="@(context =>  < div class ='navbar-brand' > control - admin </div >)"></SfToolbarItem>
+        <SfToolbarItem></SfToolbarItem>
     </SfToolbarItems>
 </SfToolbar>
 
-<SfSidebar Type="Push" Width="250px" Target=".main-content">
-    <SfListView>
-        <ListViewFieldSettings Text="Home" Id="home" IconCss="bi bi-house-door-fill-nav-menu" Url="/"></ListViewFieldSettings>
-        <ListViewFieldSettings Text="Notifications" Id="notifications" IconCss="bi bi-bell-fill-nav-menu" Url="/notifications"></ListViewFieldSettings>
-        <ListViewFieldSettings Text="Payments" Id="payments" IconCss="bi bi-currency-dollar-nav-menu" Url="/payments"></ListViewFieldSettings>
+<SfSidebar Type="SidebarType.Push" Width="250px" Target=".main-content">
+    <SfListView TValue="string">
+        <ListViewFieldSettings TValue="string" Text="Home" Id="home" IconCss="bi bi-house-door-fill-nav-menu" Url="/"></ListViewFieldSettings>
+        <ListViewFieldSettings TValue="string" Text="Notifications" Id="notifications" IconCss="bi bi-bell-fill-nav-menu" Url="/notifications"></ListViewFieldSettings>
+        <ListViewFieldSettings TValue="string" Text="Payments" Id="payments" IconCss="bi bi-currency-dollar-nav-menu" Url="/payments"></ListViewFieldSettings>
     </SfListView>
 </SfSidebar>

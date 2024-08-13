@@ -1,5 +1,6 @@
 @page "/extension-request-details"
-@inject IStringLocalizer<Pages.ExtensionRequestDetails> Localizer
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["ExtensionRequestDetailsTitle"]</h3>

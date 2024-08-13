@@ -51,8 +51,22 @@
 
 @code {
 
-    public class Manifest
+    public class ManifestInfo
     {
+        public ManifestInfo(string transportTitleNo, DateTime arrivalDate, string crn, string goodsLocation, string container, string transportNationality, string transportMode, string transportIdentificationNo, int entryWeight, int stockWeight)
+        {
+            TransportTitleNo = transportTitleNo;
+            ArrivalDate = arrivalDate;
+            CRN = crn;
+            GoodsLocation = goodsLocation;
+            Container = container;
+            TransportNationality = transportNationality;
+            TransportMode = transportMode;
+            TransportIdentificationNo = transportIdentificationNo;
+            EntryWeight = entryWeight;
+            StockWeight = stockWeight;
+        }
+
         public string TransportTitleNo { get; set; }
         public DateTime ArrivalDate { get; set; }
         public string CRN { get; set; }
@@ -72,9 +86,9 @@
         // Add more options as needed
     };
 
-    public List<Manifest> ManifestData = new()
+    public List<ManifestInfo> ManifestData = new()
     {
-        new Manifest { TransportTitleNo = "TRAININGBLIMPP0001", ArrivalDate = new DateTime(2022, 3, 30), CRN = "A00012022000001-0001", GoodsLocation = "FOO002", Container = "Y", TransportNationality = "JP", TransportMode = "10", TransportIdentificationNo = "1234567", EntryWeight = 2640, StockWeight = 2640 }
+        new ManifestInfo("TRAININGBLIMPP0001", new DateTime(2022, 3, 30), "A00012022000001-0001", "FOO002", "Y", "JP", "10", "1234567", 2640, 2640)
         // Add more data as needed
     };
 

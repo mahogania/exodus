@@ -1,10 +1,12 @@
 @page "/declaration-notifications"
-@inject IStringLocalizer<Pages.DeclarationNotifications> Localizer
+@using Microsoft.Extensions.Localization
+@using Syncfusion.Blazor.Diagram
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["DeclarationNotificationsTitle"]</h3>
 
-    <SfGrid DataSource="@NotificationData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@NotificationData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="Number" HeaderText="@Localizer["Number"]" Width="50"></GridColumn>
             <GridColumn Field="Type" HeaderText="@Localizer["Type"]" Width="200"></GridColumn>
@@ -12,7 +14,7 @@
             <GridColumn Field="Status" HeaderText="@Localizer["Status"]" Width="150"></GridColumn>
             <GridColumn Field="SendDateTime" HeaderText="@Localizer["SendDateTime"]" Width="200" Format="g"></GridColumn>
             <GridColumn Field="ProcessingDateTime" HeaderText="@Localizer["ProcessingDateTime"]" Width="200" Format="g"></GridColumn>
-            <GridColumn Field="NotificationDetails" HeaderText="@Localizer["NotificationDetails"]" Width="200" Template="@DetailsTemplate"></GridColumn>
+            <GridColumn Field="NotificationDetails" HeaderText="@Localizer["NotificationDetails"]" Width="200"></GridColumn>
         </GridColumns>
     </SfGrid>
 
@@ -43,14 +45,6 @@
         new Notification { Number = 2, Type = "Reception Notification", ModificationVersion = "Received", Status = "Received", SendDateTime = new DateTime(2022, 3, 30, 10, 23, 56), ProcessingDateTime = new DateTime(2022, 3, 30, 10, 28, 42), NotificationDetails = "Details of the notification" },
         new Notification { Number = 1, Type = "Successfully Received", ModificationVersion = "Received", Status = "Received", SendDateTime = new DateTime(2022, 3, 30, 10, 23, 56), ProcessingDateTime = new DateTime(2022, 3, 30, 10, 24, 02), NotificationDetails = "-" }
         // Add more data as needed
-    };
-
-    private readonly RenderFragment<Notification> DetailsTemplate = context => __builder =>
-    {
-        __builder.OpenElement(0, "a");
-        __builder.AddAttribute(1, "href", "#");
-        __builder.AddContent(2, context.NotificationDetails);
-        __builder.CloseElement();
     };
 
 }

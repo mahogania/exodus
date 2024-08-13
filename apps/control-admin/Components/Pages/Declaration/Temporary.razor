@@ -1,5 +1,7 @@
 @page "/temporary-stored-documents"
-@inject IStringLocalizer<Pages.TemporaryStoredDocuments> Localizer
+@using Microsoft.Extensions.Localization
+@using Syncfusion.Blazor.Diagram
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["TemporaryStoredDocumentsTitle"]</h3>
@@ -20,7 +22,7 @@
         </div>
     </div>
 
-    <SfGrid DataSource="@TemporaryStoredDocumentData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@TemporaryStoredDocumentData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="ReferenceNo" HeaderText="@Localizer["ReferenceNo"]" Width="150"></GridColumn>
             <GridColumn Field="RegistrationDate" HeaderText="@Localizer["RegistrationDate"]" Width="150" Format="d"></GridColumn>

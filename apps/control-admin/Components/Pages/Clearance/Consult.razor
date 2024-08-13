@@ -1,5 +1,6 @@
 @page "/clearance-details"
-@inject IStringLocalizer<Pages.ClearanceDetails> Localizer
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["ClearanceDetailsTitle"]</h3>
@@ -65,7 +66,7 @@
 
     <h4>@Localizer["ArticleDetails"]</h4>
 
-    <SfGrid DataSource="@ArticleDetailsData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@ArticleDetailsData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="ArticleNo" HeaderText="@Localizer["ArticleNo"]" Width="150"></GridColumn>
             <GridColumn Field="TariffSubPosition" HeaderText="@Localizer["TariffSubPosition"]" Width="150"></GridColumn>
@@ -80,7 +81,7 @@
 
     <h4>@Localizer["ExecutionDeclaration"]</h4>
 
-    <SfGrid DataSource="@ExecutionDeclarationData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@ExecutionDeclarationData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="DeclarationNo" HeaderText="@Localizer["DeclarationNo"]" Width="150"></GridColumn>
             <GridColumn Field="DeclarationRegistrationDate" HeaderText="@Localizer["DeclarationRegistrationDate"]" Width="150" Format="d"></GridColumn>

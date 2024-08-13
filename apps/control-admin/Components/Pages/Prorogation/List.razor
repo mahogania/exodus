@@ -1,7 +1,7 @@
 @page "/extension-requests"
 @using Microsoft.Extensions.Localization
 @using Syncfusion.Blazor.Diagram
-@inject IStringLocalizer<Pages.ExtensionRequests> Localizer
+@inject IStringLocalizer Localizer
 
 <div class="container">
     <h3>@Localizer["ExtensionRequestsTitle"]</h3>
@@ -25,7 +25,7 @@
         </div>
     </div>
 
-    <SfGrid DataSource="@ExtensionRequestData" AllowPaging="true" PageSettings="new PageSettings { PageSize = 10 }" AllowSorting="true">
+    <SfGrid DataSource="@ExtensionRequestData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
         <GridColumns>
             <GridColumn Field="DDENo" HeaderText="@Localizer["DDENo"]" Width="150"></GridColumn>
             <GridColumn Field="ReferenceNo" HeaderText="@Localizer["ReferenceNo"]" Width="150"></GridColumn>
