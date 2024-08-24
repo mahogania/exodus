@@ -148,13 +148,6 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
                 .FirstOrDefaultAsync();
         }
 
-        if (createDto.Changes != null)
-        {
-            commonDetailedDeclaration.Changes = await _context
-                .ChangeInTheDetailedDeclarations.Where(changeInTheDetailedDeclaration => createDto.Changes.Select(t => t.Id).Contains(changeInTheDetailedDeclaration.Id))
-                .ToListAsync();
-        }
-
         if (createDto.Container != null)
         {
             commonDetailedDeclaration.Container = await _context
@@ -225,7 +218,7 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
     {
         var commonDetailedDeclarations = await _context
               .CommonDetailedDeclarations
-      .Include(x => x.Articles).Include(x => x.Operator).Include(x => x.ValueDeclaration).Include(x => x.ArticlesExpectedForReImportExport).Include(x => x.Container).Include(x => x.Assessment).Include(x => x.Document).Include(x => x.Changes).Include(x => x.Journal)
+      .Include(x => x.Articles).Include(x => x.Operator).Include(x => x.ValueDeclaration).Include(x => x.ArticlesExpectedForReImportExport).Include(x => x.Container).Include(x => x.Assessment).Include(x => x.Document).Include(x => x.Journal)
       .ApplyWhere(findManyArgs.Where)
       .ApplySkip(findManyArgs.Skip)
       .ApplyTake(findManyArgs.Take)
@@ -283,13 +276,6 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
         {
             commonDetailedDeclaration.ArticlesExpectedForReImportExport = await _context
                 .ExpectedReimportReexportArticles.Where(expectedReimportReexportArticle => updateDto.ArticlesExpectedForReImportExport.Select(t => t).Contains(expectedReimportReexportArticle.Id))
-                .ToListAsync();
-        }
-
-        if (updateDto.Changes != null)
-        {
-            commonDetailedDeclaration.Changes = await _context
-                .ChangeInTheDetailedDeclarations.Where(changeInTheDetailedDeclaration => updateDto.Changes.Select(t => t).Contains(changeInTheDetailedDeclaration.Id))
                 .ToListAsync();
         }
 

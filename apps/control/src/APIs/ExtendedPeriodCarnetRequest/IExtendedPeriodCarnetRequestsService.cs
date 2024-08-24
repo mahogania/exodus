@@ -49,13 +49,6 @@ public interface IExtendedPeriodCarnetRequestsService
     );
 
     /// <summary>
-    /// Get a Carnet Request record for Extended Period Carnet Request
-    /// </summary>
-    public Task<CarnetRequest> GetCarnetRequest(
-        ExtendedPeriodCarnetRequestWhereUniqueInput uniqueId
-    );
-
-    /// <summary>
     /// Get a Extended Period Carnet Control record for Extended Period Carnet Request
     /// </summary>
     public Task<ExtendedPeriodCarnetControl> GetExtendedPeriodCarnetControl(

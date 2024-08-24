@@ -47,11 +47,6 @@ public interface ITransitCarnetRequestsService
     );
 
     /// <summary>
-    /// Get a Carnet Request record for Transit Carnet Request
-    /// </summary>
-    public Task<CarnetRequest> GetCarnetRequest(TransitCarnetRequestWhereUniqueInput uniqueId);
-
-    /// <summary>
     /// Get a Transit Carnet Control record for Transit Carnet Request
     /// </summary>
     public Task<TransitCarnetControl> GetTransitCarnetControl(

@@ -4,8 +4,6 @@ public class CommonCarnetRequestWhereInput
 {
     public string? AttachedFileId { get; set; }
 
-    public List<string>? CarnetRequests { get; set; }
-
     public string? CertificationOrganization { get; set; }
 
     public DateTime? CreatedAt { get; set; }

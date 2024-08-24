@@ -18,7 +18,6 @@ public static class CommonDetailedDeclarationsExtensions
             BankAgencyCode = model.BankAgencyCode,
             BillOfLadingDate = model.BillOfLadingDate,
             BillOfLadingNumber = model.BillOfLadingNumber,
-            Changes = model.Changes?.Select(x => x.Id).ToList(),
             ConditionCode_2 = model.ConditionCode_2,
             Container = model.ContainerId,
             ContainerizedCargoOn = model.ContainerizedCargoOn,

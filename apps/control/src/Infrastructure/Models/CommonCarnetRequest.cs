@@ -9,9 +9,6 @@ public class CommonCarnetRequestDbModel
     [StringLength(1000)]
     public string? AttachedFileId { get; set; }
 
-    public List<CarnetRequestDbModel>? CarnetRequests { get; set; } =
-        new List<CarnetRequestDbModel>();
-
     [StringLength(1000)]
     public string? CertificationOrganization { get; set; }
 

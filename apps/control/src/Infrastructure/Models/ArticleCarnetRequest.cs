@@ -17,11 +17,6 @@ public class ArticleCarnetRequestDbModel
     [StringLength(1000)]
     public string? CarnetNumber { get; set; }
 
-    public string? CarnetRequestId { get; set; }
-
-    [ForeignKey(nameof(CarnetRequestId))]
-    public CarnetRequestDbModel? CarnetRequest { get; set; } = null;
-
     [StringLength(1000)]
     public string? CarnetTypeCode { get; set; }
 

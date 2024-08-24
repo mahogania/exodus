@@ -2,8 +2,6 @@ namespace Control.APIs.Dtos;
 
 public class TransitCarnetRequestWhereInput
 {
-    public string? CarnetRequest { get; set; }
-
     public string? CarnetTypeCode { get; set; }
 
     public DateTime? CreatedAt { get; set; }

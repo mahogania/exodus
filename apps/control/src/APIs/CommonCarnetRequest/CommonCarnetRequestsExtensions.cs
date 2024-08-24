@@ -10,7 +10,6 @@ public static class CommonCarnetRequestsExtensions
         return new CommonCarnetRequest
         {
             AttachedFileId = model.AttachedFileId,
-            CarnetRequests = model.CarnetRequests?.Select(x => x.Id).ToList(),
             CertificationOrganization = model.CertificationOrganization,
             CreatedAt = model.CreatedAt,
             CustomsOfficeCode = model.CustomsOfficeCode,

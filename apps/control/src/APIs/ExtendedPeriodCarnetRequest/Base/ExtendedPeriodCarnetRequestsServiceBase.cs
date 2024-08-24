@@ -38,15 +38,6 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
         {
             extendedPeriodCarnetRequest.Id = createDto.Id;
         }
-        if (createDto.CarnetRequest != null)
-        {
-            extendedPeriodCarnetRequest.CarnetRequest = await _context
-                .CarnetRequests.Where(carnetRequest =>
-                    createDto.CarnetRequest.Id == carnetRequest.Id
-                )
-                .FirstOrDefaultAsync();
-        }
-
         if (createDto.ExtendedPeriodCarnetControl != null)
         {
             extendedPeriodCarnetRequest.ExtendedPeriodCarnetControl = await _context
@@ -98,8 +89,7 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
     )
     {
         var extendedPeriodCarnetRequests = await _context
-            .ExtendedPeriodCarnetRequests.Include(x => x.CarnetRequest)
-            .Include(x => x.ExtendedPeriodCarnetControl)
+            .ExtendedPeriodCarnetRequests.Include(x => x.ExtendedPeriodCarnetControl)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -177,26 +167,6 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
                 throw;
             }
         }
-    }
-
-    /// <summary>
-    /// Get a Carnet Request record for Extended Period Carnet Request
-    /// </summary>
-    public async Task<CarnetRequest> GetCarnetRequest(
-        ExtendedPeriodCarnetRequestWhereUniqueInput uniqueId
-    )
-    {
-        var extendedPeriodCarnetRequest = await _context
-            .ExtendedPeriodCarnetRequests.Where(extendedPeriodCarnetRequest =>
-                extendedPeriodCarnetRequest.Id == uniqueId.Id
-            )
-            .Include(extendedPeriodCarnetRequest => extendedPeriodCarnetRequest.CarnetRequest)
-            .FirstOrDefaultAsync();
-        if (extendedPeriodCarnetRequest == null)
-        {
-            throw new NotFoundException();
-        }
-        return extendedPeriodCarnetRequest.CarnetRequest.ToDto();
     }
 
     /// <summary>

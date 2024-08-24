@@ -43,36 +43,4 @@ public interface ICommonCarnetRequestsService
         CommonCarnetRequestWhereUniqueInput uniqueId,
         CommonCarnetRequestUpdateInput updateDto
     );
-
-    /// <summary>
-    /// Connect multiple Carnet Requests records to Common Carnet Request
-    /// </summary>
-    public Task ConnectCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        CarnetRequestWhereUniqueInput[] carnetRequestsId
-    );
-
-    /// <summary>
-    /// Disconnect multiple Carnet Requests records from Common Carnet Request
-    /// </summary>
-    public Task DisconnectCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        CarnetRequestWhereUniqueInput[] carnetRequestsId
-    );
-
-    /// <summary>
-    /// Find multiple Carnet Requests records for Common Carnet Request
-    /// </summary>
-    public Task<List<CarnetRequest>> FindCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        CarnetRequestFindManyArgs CarnetRequestFindManyArgs
-    );
-
-    /// <summary>
-    /// Update multiple Carnet Requests records for Common Carnet Request
-    /// </summary>
-    public Task UpdateCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        CarnetRequestWhereUniqueInput[] carnetRequestsId
-    );
 }

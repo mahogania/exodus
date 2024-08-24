@@ -6,11 +6,6 @@ namespace Control.Infrastructure.Models;
 [Table("TransitCarnetRequests")]
 public class TransitCarnetRequestDbModel
 {
-    public string? CarnetRequestId { get; set; }
-
-    [ForeignKey(nameof(CarnetRequestId))]
-    public CarnetRequestDbModel? CarnetRequest { get; set; } = null;
-
     [StringLength(1000)]
     public string? CarnetTypeCode { get; set; }
 

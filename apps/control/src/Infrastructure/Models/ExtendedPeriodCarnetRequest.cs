@@ -6,8 +6,6 @@ namespace Control.Infrastructure.Models;
 [Table("ExtendedPeriodCarnetRequests")]
 public class ExtendedPeriodCarnetRequestDbModel
 {
-    public CarnetRequestDbModel? CarnetRequest { get; set; } = null;
-
     [StringLength(1000)]
     public string? CarnetTypeCode { get; set; }
 

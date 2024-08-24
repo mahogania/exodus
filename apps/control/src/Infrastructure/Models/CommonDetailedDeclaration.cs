@@ -27,9 +27,6 @@ public class CommonDetailedDeclarationDbModel
     [StringLength(1000)]
     public string? BillOfLadingNumber { get; set; }
 
-    public List<ChangeInTheDetailedDeclarationDbModel>? Changes { get; set; } =
-        new List<ChangeInTheDetailedDeclarationDbModel>();
-
     [StringLength(1000)]
     public string? ConditionCode_2 { get; set; }
 

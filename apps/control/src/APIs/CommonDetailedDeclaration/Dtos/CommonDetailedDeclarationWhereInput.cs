@@ -16,8 +16,6 @@ public class CommonDetailedDeclarationWhereInput
 
     public string? BillOfLadingNumber { get; set; }
 
-    public List<string>? Changes { get; set; }
-
     public string? ConditionCode_2 { get; set; }
 
     public string? Container { get; set; }

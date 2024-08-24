@@ -16,8 +16,6 @@ public class CommonDetailedDeclarationCreateInput
 
     public string? BillOfLadingNumber { get; set; }
 
-    public List<ChangeInTheDetailedDeclaration>? Changes { get; set; }
-
     public string? ConditionCode_2 { get; set; }
 
     public ContainerOfTheDetailedDeclarationCustoms? Container { get; set; }

@@ -38,15 +38,6 @@ public abstract class TransitCarnetRequestsServiceBase : ITransitCarnetRequestsS
         {
             transitCarnetRequest.Id = createDto.Id;
         }
-        if (createDto.CarnetRequest != null)
-        {
-            transitCarnetRequest.CarnetRequest = await _context
-                .CarnetRequests.Where(carnetRequest =>
-                    createDto.CarnetRequest.Id == carnetRequest.Id
-                )
-                .FirstOrDefaultAsync();
-        }
-
         if (createDto.TransitCarnetControl != null)
         {
             transitCarnetRequest.TransitCarnetControl = await _context
@@ -92,8 +83,7 @@ public abstract class TransitCarnetRequestsServiceBase : ITransitCarnetRequestsS
     )
     {
         var transitCarnetRequests = await _context
-            .TransitCarnetRequests.Include(x => x.CarnetRequest)
-            .Include(x => x.TransitCarnetControl)
+            .TransitCarnetRequests.Include(x => x.TransitCarnetControl)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -167,24 +157,6 @@ public abstract class TransitCarnetRequestsServiceBase : ITransitCarnetRequestsS
                 throw;
             }
         }
-    }
-
-    /// <summary>
-    /// Get a Carnet Request record for Transit Carnet Request
-    /// </summary>
-    public async Task<CarnetRequest> GetCarnetRequest(TransitCarnetRequestWhereUniqueInput uniqueId)
-    {
-        var transitCarnetRequest = await _context
-            .TransitCarnetRequests.Where(transitCarnetRequest =>
-                transitCarnetRequest.Id == uniqueId.Id
-            )
-            .Include(transitCarnetRequest => transitCarnetRequest.CarnetRequest)
-            .FirstOrDefaultAsync();
-        if (transitCarnetRequest == null)
-        {
-            throw new NotFoundException();
-        }
-        return transitCarnetRequest.CarnetRequest.ToDto();
     }
 
     /// <summary>

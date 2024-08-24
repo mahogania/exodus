@@ -9,7 +9,6 @@ public static class ExtendedPeriodCarnetRequestsExtensions
     {
         return new ExtendedPeriodCarnetRequest
         {
-            CarnetRequest = model.CarnetRequest?.ToDto(),
             CarnetTypeCode = model.CarnetTypeCode,
             CreatedAt = model.CreatedAt,
             ExtendedPeriodCarnetControl = model.ExtendedPeriodCarnetControl?.ToDto(),
