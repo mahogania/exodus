@@ -46,5 +46,7 @@ public class TransitCarnetControl
 
     public string? ReferenceNo { get; set; }
 
+    public List<string>? TransitCarnetRequests { get; set; }
+
     public DateTime UpdatedAt { get; set; }
 }

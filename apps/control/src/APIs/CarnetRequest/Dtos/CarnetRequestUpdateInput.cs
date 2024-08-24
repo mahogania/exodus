@@ -2,6 +2,8 @@ namespace Control.APIs.Dtos;
 
 public class CarnetRequestUpdateInput
 {
+    public List<string>? ArticleCarnetRequests { get; set; }
+
     public string? CarnetTypeCode { get; set; }
 
     public DateTime? CreatedAt { get; set; }

@@ -22,6 +22,11 @@ public class ExtendedPeriodCarnetControlDbModel
 
     public DateTime? DeletedOn { get; set; }
 
+    public string? ExtendedPeriodCarnetRequestId { get; set; }
+
+    [ForeignKey(nameof(ExtendedPeriodCarnetRequestId))]
+    public ExtendedPeriodCarnetRequestDbModel? ExtendedPeriodCarnetRequest { get; set; } = null;
+
     public DateTime? FirstRecordDateAndTime { get; set; }
 
     [StringLength(1000)]

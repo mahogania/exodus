@@ -45,4 +45,18 @@ public interface ITransitCarnetRequestsService
         TransitCarnetRequestWhereUniqueInput uniqueId,
         TransitCarnetRequestUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Common Carnet Request record for Transit Carnet Request
+    /// </summary>
+    public Task<CommonCarnetRequest> GetCommonCarnetRequest(
+        TransitCarnetRequestWhereUniqueInput uniqueId
+    );
+
+    /// <summary>
+    /// Get a Transit Carnet Control record for Transit Carnet Request
+    /// </summary>
+    public Task<TransitCarnetControl> GetTransitCarnetControl(
+        TransitCarnetRequestWhereUniqueInput uniqueId
+    );
 }

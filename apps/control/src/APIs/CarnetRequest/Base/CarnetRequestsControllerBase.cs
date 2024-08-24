@@ -116,4 +116,90 @@ public abstract class CarnetRequestsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Connect multiple Article Carnet Requests records to Carnet Request
+    /// </summary>
+    [HttpPost("{Id}/articleCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> ConnectArticleCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromQuery()] ArticleCarnetRequestWhereUniqueInput[] articleCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.ConnectArticleCarnetRequests(uniqueId, articleCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Article Carnet Requests records from Carnet Request
+    /// </summary>
+    [HttpDelete("{Id}/articleCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> DisconnectArticleCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromBody()] ArticleCarnetRequestWhereUniqueInput[] articleCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectArticleCarnetRequests(uniqueId, articleCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple Article Carnet Requests records for Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/articleCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult<List<ArticleCarnetRequest>>> FindArticleCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromQuery()] ArticleCarnetRequestFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindArticleCarnetRequests(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple Article Carnet Requests records for Carnet Request
+    /// </summary>
+    [HttpPatch("{Id}/articleCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> UpdateArticleCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromBody()] ArticleCarnetRequestWhereUniqueInput[] articleCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.UpdateArticleCarnetRequests(uniqueId, articleCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
 }

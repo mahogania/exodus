@@ -120,4 +120,90 @@ public abstract class TransitCarnetControlsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Connect multiple Transit Carnet Requests records to Transit Carnet Control
+    /// </summary>
+    [HttpPost("{Id}/transitCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> ConnectTransitCarnetRequests(
+        [FromRoute()] TransitCarnetControlWhereUniqueInput uniqueId,
+        [FromQuery()] TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.ConnectTransitCarnetRequests(uniqueId, transitCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Transit Carnet Requests records from Transit Carnet Control
+    /// </summary>
+    [HttpDelete("{Id}/transitCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> DisconnectTransitCarnetRequests(
+        [FromRoute()] TransitCarnetControlWhereUniqueInput uniqueId,
+        [FromBody()] TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectTransitCarnetRequests(uniqueId, transitCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple Transit Carnet Requests records for Transit Carnet Control
+    /// </summary>
+    [HttpGet("{Id}/transitCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult<List<TransitCarnetRequest>>> FindTransitCarnetRequests(
+        [FromRoute()] TransitCarnetControlWhereUniqueInput uniqueId,
+        [FromQuery()] TransitCarnetRequestFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindTransitCarnetRequests(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple Transit Carnet Requests records for Transit Carnet Control
+    /// </summary>
+    [HttpPatch("{Id}/transitCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> UpdateTransitCarnetRequests(
+        [FromRoute()] TransitCarnetControlWhereUniqueInput uniqueId,
+        [FromBody()] TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.UpdateTransitCarnetRequests(uniqueId, transitCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
 }

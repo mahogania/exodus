@@ -1,6 +1,6 @@
 namespace Control.APIs.Dtos;
 
-public class RequestForCommonCarnetWhereInput
+public class CommonCarnetRequestUpdateInput
 {
     public string? AttachedFileId { get; set; }
 
@@ -60,6 +60,8 @@ public class RequestForCommonCarnetWhereInput
 
     public double? Destination_3TransportQuantity { get; set; }
 
+    public List<string>? ExtendedPeriodCarnetRequests { get; set; }
+
     public string? FinalModifierSId { get; set; }
 
     public string? FirstRecorderSId { get; set; }
@@ -99,6 +101,8 @@ public class RequestForCommonCarnetWhereInput
     public string? TirRegistrationNumber { get; set; }
 
     public double? TotalNumberOfGoods { get; set; }
+
+    public List<string>? TransitCarnetRequests { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 

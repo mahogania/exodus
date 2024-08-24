@@ -48,6 +48,14 @@ public abstract class ExtendedPeriodCarnetControlsServiceBase : IExtendedPeriodC
         {
             extendedPeriodCarnetControl.Id = createDto.Id;
         }
+        if (createDto.ExtendedPeriodCarnetRequest != null)
+        {
+            extendedPeriodCarnetControl.ExtendedPeriodCarnetRequest = await _context
+                .ExtendedPeriodCarnetRequests.Where(extendedPeriodCarnetRequest =>
+                    createDto.ExtendedPeriodCarnetRequest.Id == extendedPeriodCarnetRequest.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.ExtendedPeriodCarnetControls.Add(extendedPeriodCarnetControl);
         await _context.SaveChangesAsync();
@@ -91,7 +99,8 @@ public abstract class ExtendedPeriodCarnetControlsServiceBase : IExtendedPeriodC
     )
     {
         var extendedPeriodCarnetControls = await _context
-            .ExtendedPeriodCarnetControls.ApplyWhere(findManyArgs.Where)
+            .ExtendedPeriodCarnetControls.Include(x => x.ExtendedPeriodCarnetRequest)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -168,5 +177,27 @@ public abstract class ExtendedPeriodCarnetControlsServiceBase : IExtendedPeriodC
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Extended Period Carnet Request record for Extended Period Carnet Control
+    /// </summary>
+    public async Task<ExtendedPeriodCarnetRequest> GetExtendedPeriodCarnetRequest(
+        ExtendedPeriodCarnetControlWhereUniqueInput uniqueId
+    )
+    {
+        var extendedPeriodCarnetControl = await _context
+            .ExtendedPeriodCarnetControls.Where(extendedPeriodCarnetControl =>
+                extendedPeriodCarnetControl.Id == uniqueId.Id
+            )
+            .Include(extendedPeriodCarnetControl =>
+                extendedPeriodCarnetControl.ExtendedPeriodCarnetRequest
+            )
+            .FirstOrDefaultAsync();
+        if (extendedPeriodCarnetControl == null)
+        {
+            throw new NotFoundException();
+        }
+        return extendedPeriodCarnetControl.ExtendedPeriodCarnetRequest.ToDto();
     }
 }

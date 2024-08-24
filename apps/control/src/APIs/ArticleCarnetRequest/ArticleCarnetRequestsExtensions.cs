@@ -9,8 +9,10 @@ public static class ArticleCarnetRequestsExtensions
     {
         return new ArticleCarnetRequest
         {
+            ArticleCarnetControl = model.ArticleCarnetControlId,
             ArticleNumber = model.ArticleNumber,
             CarnetNumber = model.CarnetNumber,
+            CarnetRequest = model.CarnetRequestId,
             CarnetTypeCode = model.CarnetTypeCode,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
@@ -37,6 +39,14 @@ public static class ArticleCarnetRequestsExtensions
             ReferenceNo = updateDto.ReferenceNo
         };
 
+        if (updateDto.ArticleCarnetControl != null)
+        {
+            articleCarnetRequest.ArticleCarnetControlId = updateDto.ArticleCarnetControl;
+        }
+        if (updateDto.CarnetRequest != null)
+        {
+            articleCarnetRequest.CarnetRequestId = updateDto.CarnetRequest;
+        }
         if (updateDto.CreatedAt != null)
         {
             articleCarnetRequest.CreatedAt = updateDto.CreatedAt.Value;

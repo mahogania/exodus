@@ -37,4 +37,36 @@ public interface ICarnetRequestsService
         CarnetRequestWhereUniqueInput uniqueId,
         CarnetRequestUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Connect multiple Article Carnet Requests records to Carnet Request
+    /// </summary>
+    public Task ConnectArticleCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ArticleCarnetRequestWhereUniqueInput[] articleCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple Article Carnet Requests records from Carnet Request
+    /// </summary>
+    public Task DisconnectArticleCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ArticleCarnetRequestWhereUniqueInput[] articleCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Find multiple Article Carnet Requests records for Carnet Request
+    /// </summary>
+    public Task<List<ArticleCarnetRequest>> FindArticleCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ArticleCarnetRequestFindManyArgs ArticleCarnetRequestFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple Article Carnet Requests records for Carnet Request
+    /// </summary>
+    public Task UpdateArticleCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ArticleCarnetRequestWhereUniqueInput[] articleCarnetRequestsId
+    );
 }

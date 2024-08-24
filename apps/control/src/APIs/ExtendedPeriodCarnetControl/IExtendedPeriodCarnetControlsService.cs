@@ -47,4 +47,11 @@ public interface IExtendedPeriodCarnetControlsService
         ExtendedPeriodCarnetControlWhereUniqueInput uniqueId,
         ExtendedPeriodCarnetControlUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Extended Period Carnet Request record for Extended Period Carnet Control
+    /// </summary>
+    public Task<ExtendedPeriodCarnetRequest> GetExtendedPeriodCarnetRequest(
+        ExtendedPeriodCarnetControlWhereUniqueInput uniqueId
+    );
 }

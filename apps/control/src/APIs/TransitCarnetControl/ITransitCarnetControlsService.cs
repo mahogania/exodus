@@ -45,4 +45,36 @@ public interface ITransitCarnetControlsService
         TransitCarnetControlWhereUniqueInput uniqueId,
         TransitCarnetControlUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Connect multiple Transit Carnet Requests records to Transit Carnet Control
+    /// </summary>
+    public Task ConnectTransitCarnetRequests(
+        TransitCarnetControlWhereUniqueInput uniqueId,
+        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple Transit Carnet Requests records from Transit Carnet Control
+    /// </summary>
+    public Task DisconnectTransitCarnetRequests(
+        TransitCarnetControlWhereUniqueInput uniqueId,
+        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Find multiple Transit Carnet Requests records for Transit Carnet Control
+    /// </summary>
+    public Task<List<TransitCarnetRequest>> FindTransitCarnetRequests(
+        TransitCarnetControlWhereUniqueInput uniqueId,
+        TransitCarnetRequestFindManyArgs TransitCarnetRequestFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple Transit Carnet Requests records for Transit Carnet Control
+    /// </summary>
+    public Task UpdateTransitCarnetRequests(
+        TransitCarnetControlWhereUniqueInput uniqueId,
+        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    );
 }

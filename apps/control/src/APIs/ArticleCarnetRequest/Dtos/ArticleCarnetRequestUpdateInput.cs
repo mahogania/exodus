@@ -2,9 +2,13 @@ namespace Control.APIs.Dtos;
 
 public class ArticleCarnetRequestUpdateInput
 {
+    public string? ArticleCarnetControl { get; set; }
+
     public string? ArticleNumber { get; set; }
 
     public string? CarnetNumber { get; set; }
+
+    public string? CarnetRequest { get; set; }
 
     public string? CarnetTypeCode { get; set; }
 

@@ -6,6 +6,9 @@ namespace Control.Infrastructure.Models;
 [Table("CarnetRequests")]
 public class CarnetRequestDbModel
 {
+    public List<ArticleCarnetRequestDbModel>? ArticleCarnetRequests { get; set; } =
+        new List<ArticleCarnetRequestDbModel>();
+
     [StringLength(1000)]
     public string? CarnetTypeCode { get; set; }
 

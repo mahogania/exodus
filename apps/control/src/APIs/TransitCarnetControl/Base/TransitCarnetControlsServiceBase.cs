@@ -55,6 +55,16 @@ public abstract class TransitCarnetControlsServiceBase : ITransitCarnetControlsS
         {
             transitCarnetControl.Id = createDto.Id;
         }
+        if (createDto.TransitCarnetRequests != null)
+        {
+            transitCarnetControl.TransitCarnetRequests = await _context
+                .TransitCarnetRequests.Where(transitCarnetRequest =>
+                    createDto
+                        .TransitCarnetRequests.Select(t => t.Id)
+                        .Contains(transitCarnetRequest.Id)
+                )
+                .ToListAsync();
+        }
 
         _context.TransitCarnetControls.Add(transitCarnetControl);
         await _context.SaveChangesAsync();
@@ -92,7 +102,8 @@ public abstract class TransitCarnetControlsServiceBase : ITransitCarnetControlsS
     )
     {
         var transitCarnetControls = await _context
-            .TransitCarnetControls.ApplyWhere(findManyArgs.Where)
+            .TransitCarnetControls.Include(x => x.TransitCarnetRequests)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -148,6 +159,15 @@ public abstract class TransitCarnetControlsServiceBase : ITransitCarnetControlsS
     {
         var transitCarnetControl = updateDto.ToModel(uniqueId);
 
+        if (updateDto.TransitCarnetRequests != null)
+        {
+            transitCarnetControl.TransitCarnetRequests = await _context
+                .TransitCarnetRequests.Where(transitCarnetRequest =>
+                    updateDto.TransitCarnetRequests.Select(t => t).Contains(transitCarnetRequest.Id)
+                )
+                .ToListAsync();
+        }
+
         _context.Entry(transitCarnetControl).State = EntityState.Modified;
 
         try
@@ -165,5 +185,122 @@ public abstract class TransitCarnetControlsServiceBase : ITransitCarnetControlsS
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Connect multiple Transit Carnet Requests records to Transit Carnet Control
+    /// </summary>
+    public async Task ConnectTransitCarnetRequests(
+        TransitCarnetControlWhereUniqueInput uniqueId,
+        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    )
+    {
+        var parent = await _context
+            .TransitCarnetControls.Include(x => x.TransitCarnetRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var transitCarnetRequests = await _context
+            .TransitCarnetRequests.Where(t =>
+                transitCarnetRequestsId.Select(x => x.Id).Contains(t.Id)
+            )
+            .ToListAsync();
+        if (transitCarnetRequests.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var transitCarnetRequestsToConnect = transitCarnetRequests.Except(
+            parent.TransitCarnetRequests
+        );
+
+        foreach (var transitCarnetRequest in transitCarnetRequestsToConnect)
+        {
+            parent.TransitCarnetRequests.Add(transitCarnetRequest);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Transit Carnet Requests records from Transit Carnet Control
+    /// </summary>
+    public async Task DisconnectTransitCarnetRequests(
+        TransitCarnetControlWhereUniqueInput uniqueId,
+        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    )
+    {
+        var parent = await _context
+            .TransitCarnetControls.Include(x => x.TransitCarnetRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var transitCarnetRequests = await _context
+            .TransitCarnetRequests.Where(t =>
+                transitCarnetRequestsId.Select(x => x.Id).Contains(t.Id)
+            )
+            .ToListAsync();
+
+        foreach (var transitCarnetRequest in transitCarnetRequests)
+        {
+            parent.TransitCarnetRequests?.Remove(transitCarnetRequest);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple Transit Carnet Requests records for Transit Carnet Control
+    /// </summary>
+    public async Task<List<TransitCarnetRequest>> FindTransitCarnetRequests(
+        TransitCarnetControlWhereUniqueInput uniqueId,
+        TransitCarnetRequestFindManyArgs transitCarnetControlFindManyArgs
+    )
+    {
+        var transitCarnetRequests = await _context
+            .TransitCarnetRequests.Where(m => m.TransitCarnetControlId == uniqueId.Id)
+            .ApplyWhere(transitCarnetControlFindManyArgs.Where)
+            .ApplySkip(transitCarnetControlFindManyArgs.Skip)
+            .ApplyTake(transitCarnetControlFindManyArgs.Take)
+            .ApplyOrderBy(transitCarnetControlFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return transitCarnetRequests.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple Transit Carnet Requests records for Transit Carnet Control
+    /// </summary>
+    public async Task UpdateTransitCarnetRequests(
+        TransitCarnetControlWhereUniqueInput uniqueId,
+        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    )
+    {
+        var transitCarnetControl = await _context
+            .TransitCarnetControls.Include(t => t.TransitCarnetRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (transitCarnetControl == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var transitCarnetRequests = await _context
+            .TransitCarnetRequests.Where(a =>
+                transitCarnetRequestsId.Select(x => x.Id).Contains(a.Id)
+            )
+            .ToListAsync();
+
+        if (transitCarnetRequests.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        transitCarnetControl.TransitCarnetRequests = transitCarnetRequests;
+        await _context.SaveChangesAsync();
     }
 }

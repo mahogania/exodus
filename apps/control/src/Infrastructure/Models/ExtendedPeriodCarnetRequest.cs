@@ -7,13 +7,17 @@ namespace Control.Infrastructure.Models;
 public class ExtendedPeriodCarnetRequestDbModel
 {
     [StringLength(1000)]
-    public string? CarnetNumber { get; set; }
-
-    [StringLength(1000)]
     public string? CarnetTypeCode { get; set; }
+
+    public string? CommonCarnetRequestId { get; set; }
+
+    [ForeignKey(nameof(CommonCarnetRequestId))]
+    public CommonCarnetRequestDbModel? CommonCarnetRequest { get; set; } = null;
 
     [Required()]
     public DateTime CreatedAt { get; set; }
+
+    public ExtendedPeriodCarnetControlDbModel? ExtendedPeriodCarnetControl { get; set; } = null;
 
     [Key()]
     [Required()]

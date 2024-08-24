@@ -3,11 +3,11 @@ using Control.Infrastructure.Models;
 
 namespace Control.APIs.Extensions;
 
-public static class RequestForCommonCarnetsExtensions
+public static class CommonCarnetRequestsExtensions
 {
-    public static RequestForCommonCarnet ToDto(this RequestForCommonCarnetDbModel model)
+    public static CommonCarnetRequest ToDto(this CommonCarnetRequestDbModel model)
     {
-        return new RequestForCommonCarnet
+        return new CommonCarnetRequest
         {
             AttachedFileId = model.AttachedFileId,
             CertificationOrganization = model.CertificationOrganization,
@@ -38,6 +38,9 @@ public static class RequestForCommonCarnetsExtensions
             Destination_1TransportQuantity = model.Destination_1TransportQuantity,
             Destination_2TransportQuantity = model.Destination_2TransportQuantity,
             Destination_3TransportQuantity = model.Destination_3TransportQuantity,
+            ExtendedPeriodCarnetRequests = model
+                .ExtendedPeriodCarnetRequests?.Select(x => x.Id)
+                .ToList(),
             FinalModifierSId = model.FinalModifierSId,
             FirstRecorderSId = model.FirstRecorderSId,
             HolderSAddress = model.HolderSAddress,
@@ -58,18 +61,19 @@ public static class RequestForCommonCarnetsExtensions
             TirNumber = model.TirNumber,
             TirRegistrationNumber = model.TirRegistrationNumber,
             TotalNumberOfGoods = model.TotalNumberOfGoods,
+            TransitCarnetRequests = model.TransitCarnetRequests?.Select(x => x.Id).ToList(),
             UpdatedAt = model.UpdatedAt,
             ValidUntil = model.ValidUntil,
             VehicleCertificationNoAndDate = model.VehicleCertificationNoAndDate,
         };
     }
 
-    public static RequestForCommonCarnetDbModel ToModel(
-        this RequestForCommonCarnetUpdateInput updateDto,
-        RequestForCommonCarnetWhereUniqueInput uniqueId
+    public static CommonCarnetRequestDbModel ToModel(
+        this CommonCarnetRequestUpdateInput updateDto,
+        CommonCarnetRequestWhereUniqueInput uniqueId
     )
     {
-        var requestForCommonCarnet = new RequestForCommonCarnetDbModel
+        var commonCarnetRequest = new CommonCarnetRequestDbModel
         {
             Id = uniqueId.Id,
             AttachedFileId = updateDto.AttachedFileId,
@@ -125,13 +129,13 @@ public static class RequestForCommonCarnetsExtensions
 
         if (updateDto.CreatedAt != null)
         {
-            requestForCommonCarnet.CreatedAt = updateDto.CreatedAt.Value;
+            commonCarnetRequest.CreatedAt = updateDto.CreatedAt.Value;
         }
         if (updateDto.UpdatedAt != null)
         {
-            requestForCommonCarnet.UpdatedAt = updateDto.UpdatedAt.Value;
+            commonCarnetRequest.UpdatedAt = updateDto.UpdatedAt.Value;
         }
 
-        return requestForCommonCarnet;
+        return commonCarnetRequest;
     }
 }

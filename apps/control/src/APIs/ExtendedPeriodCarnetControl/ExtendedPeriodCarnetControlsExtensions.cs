@@ -15,6 +15,7 @@ public static class ExtendedPeriodCarnetControlsExtensions
             CarnetTypeCode = model.CarnetTypeCode,
             CreatedAt = model.CreatedAt,
             DeletedOn = model.DeletedOn,
+            ExtendedPeriodCarnetRequest = model.ExtendedPeriodCarnetRequestId,
             FirstRecordDateAndTime = model.FirstRecordDateAndTime,
             FirstRecorderId = model.FirstRecorderId,
             Id = model.Id,
@@ -54,6 +55,11 @@ public static class ExtendedPeriodCarnetControlsExtensions
         if (updateDto.CreatedAt != null)
         {
             extendedPeriodCarnetControl.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.ExtendedPeriodCarnetRequest != null)
+        {
+            extendedPeriodCarnetControl.ExtendedPeriodCarnetRequestId =
+                updateDto.ExtendedPeriodCarnetRequest;
         }
         if (updateDto.UpdatedAt != null)
         {

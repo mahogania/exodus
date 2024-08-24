@@ -9,9 +9,10 @@ public static class ExtendedPeriodCarnetRequestsExtensions
     {
         return new ExtendedPeriodCarnetRequest
         {
-            CarnetNumber = model.CarnetNumber,
             CarnetTypeCode = model.CarnetTypeCode,
+            CommonCarnetRequest = model.CommonCarnetRequestId,
             CreatedAt = model.CreatedAt,
+            ExtendedPeriodCarnetControl = model.ExtendedPeriodCarnetControl?.ToDto(),
             Id = model.Id,
             ManagementNumberOfCarnet = model.ManagementNumberOfCarnet,
             SequenceNumber = model.SequenceNumber,
@@ -27,12 +28,15 @@ public static class ExtendedPeriodCarnetRequestsExtensions
         var extendedPeriodCarnetRequest = new ExtendedPeriodCarnetRequestDbModel
         {
             Id = uniqueId.Id,
-            CarnetNumber = updateDto.CarnetNumber,
             CarnetTypeCode = updateDto.CarnetTypeCode,
             ManagementNumberOfCarnet = updateDto.ManagementNumberOfCarnet,
             SequenceNumber = updateDto.SequenceNumber
         };
 
+        if (updateDto.CommonCarnetRequest != null)
+        {
+            extendedPeriodCarnetRequest.CommonCarnetRequestId = updateDto.CommonCarnetRequest;
+        }
         if (updateDto.CreatedAt != null)
         {
             extendedPeriodCarnetRequest.CreatedAt = updateDto.CreatedAt.Value;

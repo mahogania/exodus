@@ -6,6 +6,8 @@ namespace Control.Infrastructure.Models;
 [Table("ArticleCarnetControls")]
 public class ArticleCarnetControlDbModel
 {
+    public ArticleCarnetRequestDbModel? ArticleCarnetRequest { get; set; } = null;
+
     [StringLength(1000)]
     public string? ArticleNumber { get; set; }
 

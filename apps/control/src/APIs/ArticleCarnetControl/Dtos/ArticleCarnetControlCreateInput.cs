@@ -2,6 +2,8 @@ namespace Control.APIs.Dtos;
 
 public class ArticleCarnetControlCreateInput
 {
+    public ArticleCarnetRequest? ArticleCarnetRequest { get; set; }
+
     public string? ArticleNumber { get; set; }
 
     public string? AttachmentFileId { get; set; }

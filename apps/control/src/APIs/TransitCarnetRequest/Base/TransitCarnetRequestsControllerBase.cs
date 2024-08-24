@@ -120,4 +120,28 @@ public abstract class TransitCarnetRequestsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Common Carnet Request record for Transit Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/commonCarnetRequests")]
+    public async Task<ActionResult<List<CommonCarnetRequest>>> GetCommonCarnetRequest(
+        [FromRoute()] TransitCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var commonCarnetRequest = await _service.GetCommonCarnetRequest(uniqueId);
+        return Ok(commonCarnetRequest);
+    }
+
+    /// <summary>
+    /// Get a Transit Carnet Control record for Transit Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/transitCarnetControls")]
+    public async Task<ActionResult<List<TransitCarnetControl>>> GetTransitCarnetControl(
+        [FromRoute()] TransitCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var transitCarnetControl = await _service.GetTransitCarnetControl(uniqueId);
+        return Ok(transitCarnetControl);
+    }
 }

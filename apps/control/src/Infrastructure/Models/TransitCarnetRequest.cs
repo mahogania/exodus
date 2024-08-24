@@ -7,10 +7,12 @@ namespace Control.Infrastructure.Models;
 public class TransitCarnetRequestDbModel
 {
     [StringLength(1000)]
-    public string? CarnetNumber { get; set; }
-
-    [StringLength(1000)]
     public string? CarnetTypeCode { get; set; }
+
+    public string? CommonCarnetRequestId { get; set; }
+
+    [ForeignKey(nameof(CommonCarnetRequestId))]
+    public CommonCarnetRequestDbModel? CommonCarnetRequest { get; set; } = null;
 
     [Required()]
     public DateTime CreatedAt { get; set; }
@@ -24,6 +26,11 @@ public class TransitCarnetRequestDbModel
 
     [StringLength(1000)]
     public string? ReferenceNo { get; set; }
+
+    public string? TransitCarnetControlId { get; set; }
+
+    [ForeignKey(nameof(TransitCarnetControlId))]
+    public TransitCarnetControlDbModel? TransitCarnetControl { get; set; } = null;
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

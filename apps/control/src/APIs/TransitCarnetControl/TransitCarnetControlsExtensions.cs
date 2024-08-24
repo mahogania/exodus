@@ -31,6 +31,7 @@ public static class TransitCarnetControlsExtensions
             ReExportationDate = model.ReExportationDate,
             ReExportedArticles = model.ReExportedArticles,
             ReferenceNo = model.ReferenceNo,
+            TransitCarnetRequests = model.TransitCarnetRequests?.Select(x => x.Id).ToList(),
             UpdatedAt = model.UpdatedAt,
         };
     }

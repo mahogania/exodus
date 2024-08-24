@@ -45,4 +45,16 @@ public interface IArticleCarnetRequestsService
         ArticleCarnetRequestWhereUniqueInput uniqueId,
         ArticleCarnetRequestUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Article Carnet Control record for Article Carnet Request
+    /// </summary>
+    public Task<ArticleCarnetControl> GetArticleCarnetControl(
+        ArticleCarnetRequestWhereUniqueInput uniqueId
+    );
+
+    /// <summary>
+    /// Get a Carnet Request record for Article Carnet Request
+    /// </summary>
+    public Task<CarnetRequest> GetCarnetRequest(ArticleCarnetRequestWhereUniqueInput uniqueId);
 }

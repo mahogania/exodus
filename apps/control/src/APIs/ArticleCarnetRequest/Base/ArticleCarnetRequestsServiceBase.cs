@@ -41,6 +41,23 @@ public abstract class ArticleCarnetRequestsServiceBase : IArticleCarnetRequestsS
         {
             articleCarnetRequest.Id = createDto.Id;
         }
+        if (createDto.ArticleCarnetControl != null)
+        {
+            articleCarnetRequest.ArticleCarnetControl = await _context
+                .ArticleCarnetControls.Where(articleCarnetControl =>
+                    createDto.ArticleCarnetControl.Id == articleCarnetControl.Id
+                )
+                .FirstOrDefaultAsync();
+        }
+
+        if (createDto.CarnetRequest != null)
+        {
+            articleCarnetRequest.CarnetRequest = await _context
+                .CarnetRequests.Where(carnetRequest =>
+                    createDto.CarnetRequest.Id == carnetRequest.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.ArticleCarnetRequests.Add(articleCarnetRequest);
         await _context.SaveChangesAsync();
@@ -78,7 +95,9 @@ public abstract class ArticleCarnetRequestsServiceBase : IArticleCarnetRequestsS
     )
     {
         var articleCarnetRequests = await _context
-            .ArticleCarnetRequests.ApplyWhere(findManyArgs.Where)
+            .ArticleCarnetRequests.Include(x => x.CarnetRequest)
+            .Include(x => x.ArticleCarnetControl)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -151,5 +170,43 @@ public abstract class ArticleCarnetRequestsServiceBase : IArticleCarnetRequestsS
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Article Carnet Control record for Article Carnet Request
+    /// </summary>
+    public async Task<ArticleCarnetControl> GetArticleCarnetControl(
+        ArticleCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var articleCarnetRequest = await _context
+            .ArticleCarnetRequests.Where(articleCarnetRequest =>
+                articleCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(articleCarnetRequest => articleCarnetRequest.ArticleCarnetControl)
+            .FirstOrDefaultAsync();
+        if (articleCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return articleCarnetRequest.ArticleCarnetControl.ToDto();
+    }
+
+    /// <summary>
+    /// Get a Carnet Request record for Article Carnet Request
+    /// </summary>
+    public async Task<CarnetRequest> GetCarnetRequest(ArticleCarnetRequestWhereUniqueInput uniqueId)
+    {
+        var articleCarnetRequest = await _context
+            .ArticleCarnetRequests.Where(articleCarnetRequest =>
+                articleCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(articleCarnetRequest => articleCarnetRequest.CarnetRequest)
+            .FirstOrDefaultAsync();
+        if (articleCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return articleCarnetRequest.CarnetRequest.ToDto();
     }
 }

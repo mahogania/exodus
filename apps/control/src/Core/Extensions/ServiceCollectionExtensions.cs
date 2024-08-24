@@ -27,6 +27,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<ICommonActiveGoodsRequestsService, CommonActiveGoodsRequestsService>();
         services.AddScoped<ICommonAtaCarnetControlsService, CommonAtaCarnetControlsService>();
         services.AddScoped<ICommonAtaCarnetControlAltsService, CommonAtaCarnetControlAltsService>();
+        services.AddScoped<ICommonCarnetRequestsService, CommonCarnetRequestsService>();
         services.AddScoped<ICommonDetailedDeclarationsService, CommonDetailedDeclarationsService>();
         services.AddScoped<ICommonExpressClearancesService, CommonExpressClearancesService>();
         services.AddScoped<
@@ -181,7 +182,6 @@ public static class ServiceCollectionExtensions
             ReimportedGoodsForPerfectingsService
         >();
         services.AddScoped<IReplenishmentsService, ReplenishmentsService>();
-        services.AddScoped<IRequestForCommonCarnetsService, RequestForCommonCarnetsService>();
         services.AddScoped<IRequestForRecoursesService, RequestForRecoursesService>();
         services.AddScoped<
             IRequestForTirCarnetOfTheArticlesService,

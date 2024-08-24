@@ -27,7 +27,6 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
     {
         var extendedPeriodCarnetRequest = new ExtendedPeriodCarnetRequestDbModel
         {
-            CarnetNumber = createDto.CarnetNumber,
             CarnetTypeCode = createDto.CarnetTypeCode,
             CreatedAt = createDto.CreatedAt,
             ManagementNumberOfCarnet = createDto.ManagementNumberOfCarnet,
@@ -38,6 +37,23 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
         if (createDto.Id != null)
         {
             extendedPeriodCarnetRequest.Id = createDto.Id;
+        }
+        if (createDto.CommonCarnetRequest != null)
+        {
+            extendedPeriodCarnetRequest.CommonCarnetRequest = await _context
+                .CommonCarnetRequests.Where(commonCarnetRequest =>
+                    createDto.CommonCarnetRequest.Id == commonCarnetRequest.Id
+                )
+                .FirstOrDefaultAsync();
+        }
+
+        if (createDto.ExtendedPeriodCarnetControl != null)
+        {
+            extendedPeriodCarnetRequest.ExtendedPeriodCarnetControl = await _context
+                .ExtendedPeriodCarnetControls.Where(extendedPeriodCarnetControl =>
+                    createDto.ExtendedPeriodCarnetControl.Id == extendedPeriodCarnetControl.Id
+                )
+                .FirstOrDefaultAsync();
         }
 
         _context.ExtendedPeriodCarnetRequests.Add(extendedPeriodCarnetRequest);
@@ -82,7 +98,9 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
     )
     {
         var extendedPeriodCarnetRequests = await _context
-            .ExtendedPeriodCarnetRequests.ApplyWhere(findManyArgs.Where)
+            .ExtendedPeriodCarnetRequests.Include(x => x.CommonCarnetRequest)
+            .Include(x => x.ExtendedPeriodCarnetControl)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -159,5 +177,47 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Common Carnet Request record for Extended Period Carnet Request
+    /// </summary>
+    public async Task<CommonCarnetRequest> GetCommonCarnetRequest(
+        ExtendedPeriodCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var extendedPeriodCarnetRequest = await _context
+            .ExtendedPeriodCarnetRequests.Where(extendedPeriodCarnetRequest =>
+                extendedPeriodCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(extendedPeriodCarnetRequest => extendedPeriodCarnetRequest.CommonCarnetRequest)
+            .FirstOrDefaultAsync();
+        if (extendedPeriodCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return extendedPeriodCarnetRequest.CommonCarnetRequest.ToDto();
+    }
+
+    /// <summary>
+    /// Get a Extended Period Carnet Control record for Extended Period Carnet Request
+    /// </summary>
+    public async Task<ExtendedPeriodCarnetControl> GetExtendedPeriodCarnetControl(
+        ExtendedPeriodCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var extendedPeriodCarnetRequest = await _context
+            .ExtendedPeriodCarnetRequests.Where(extendedPeriodCarnetRequest =>
+                extendedPeriodCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(extendedPeriodCarnetRequest =>
+                extendedPeriodCarnetRequest.ExtendedPeriodCarnetControl
+            )
+            .FirstOrDefaultAsync();
+        if (extendedPeriodCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return extendedPeriodCarnetRequest.ExtendedPeriodCarnetControl.ToDto();
     }
 }

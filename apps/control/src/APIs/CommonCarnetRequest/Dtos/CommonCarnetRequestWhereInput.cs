@@ -1,12 +1,12 @@
 namespace Control.APIs.Dtos;
 
-public class RequestForCommonCarnetCreateInput
+public class CommonCarnetRequestWhereInput
 {
     public string? AttachedFileId { get; set; }
 
     public string? CertificationOrganization { get; set; }
 
-    public DateTime CreatedAt { get; set; }
+    public DateTime? CreatedAt { get; set; }
 
     public string? CustomsOfficeCode { get; set; }
 
@@ -60,6 +60,8 @@ public class RequestForCommonCarnetCreateInput
 
     public double? Destination_3TransportQuantity { get; set; }
 
+    public List<string>? ExtendedPeriodCarnetRequests { get; set; }
+
     public string? FinalModifierSId { get; set; }
 
     public string? FirstRecorderSId { get; set; }
@@ -100,7 +102,9 @@ public class RequestForCommonCarnetCreateInput
 
     public double? TotalNumberOfGoods { get; set; }
 
-    public DateTime UpdatedAt { get; set; }
+    public List<string>? TransitCarnetRequests { get; set; }
+
+    public DateTime? UpdatedAt { get; set; }
 
     public string? ValidUntil { get; set; }
 

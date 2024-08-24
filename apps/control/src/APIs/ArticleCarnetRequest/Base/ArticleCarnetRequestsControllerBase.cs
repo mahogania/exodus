@@ -120,4 +120,28 @@ public abstract class ArticleCarnetRequestsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Article Carnet Control record for Article Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/articleCarnetControls")]
+    public async Task<ActionResult<List<ArticleCarnetControl>>> GetArticleCarnetControl(
+        [FromRoute()] ArticleCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var articleCarnetControl = await _service.GetArticleCarnetControl(uniqueId);
+        return Ok(articleCarnetControl);
+    }
+
+    /// <summary>
+    /// Get a Carnet Request record for Article Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/carnetRequests")]
+    public async Task<ActionResult<List<CarnetRequest>>> GetCarnetRequest(
+        [FromRoute()] ArticleCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var carnetRequest = await _service.GetCarnetRequest(uniqueId);
+        return Ok(carnetRequest);
+    }
 }

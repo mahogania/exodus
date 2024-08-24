@@ -38,7 +38,7 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<GoodsImportedForPerfectingDbModel> GoodsImportedForPerfectings { get; set; }
 
-    public DbSet<RequestForCommonCarnetDbModel> RequestForCommonCarnets { get; set; }
+    public DbSet<CommonCarnetRequestDbModel> CommonCarnetRequests { get; set; }
 
     public DbSet<ReimportedGoodsForPerfectingDbModel> ReimportedGoodsForPerfectings { get; set; }
 

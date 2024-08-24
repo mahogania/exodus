@@ -9,6 +9,7 @@ public static class CarnetRequestsExtensions
     {
         return new CarnetRequest
         {
+            ArticleCarnetRequests = model.ArticleCarnetRequests?.Select(x => x.Id).ToList(),
             CarnetTypeCode = model.CarnetTypeCode,
             CreatedAt = model.CreatedAt,
             Id = model.Id,

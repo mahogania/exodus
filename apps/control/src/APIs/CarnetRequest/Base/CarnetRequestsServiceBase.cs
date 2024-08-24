@@ -35,6 +35,16 @@ public abstract class CarnetRequestsServiceBase : ICarnetRequestsService
         {
             carnetRequest.Id = createDto.Id;
         }
+        if (createDto.ArticleCarnetRequests != null)
+        {
+            carnetRequest.ArticleCarnetRequests = await _context
+                .ArticleCarnetRequests.Where(articleCarnetRequest =>
+                    createDto
+                        .ArticleCarnetRequests.Select(t => t.Id)
+                        .Contains(articleCarnetRequest.Id)
+                )
+                .ToListAsync();
+        }
 
         _context.CarnetRequests.Add(carnetRequest);
         await _context.SaveChangesAsync();
@@ -70,7 +80,8 @@ public abstract class CarnetRequestsServiceBase : ICarnetRequestsService
     public async Task<List<CarnetRequest>> CarnetRequests(CarnetRequestFindManyArgs findManyArgs)
     {
         var carnetRequests = await _context
-            .CarnetRequests.ApplyWhere(findManyArgs.Where)
+            .CarnetRequests.Include(x => x.ArticleCarnetRequests)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -118,6 +129,15 @@ public abstract class CarnetRequestsServiceBase : ICarnetRequestsService
     {
         var carnetRequest = updateDto.ToModel(uniqueId);
 
+        if (updateDto.ArticleCarnetRequests != null)
+        {
+            carnetRequest.ArticleCarnetRequests = await _context
+                .ArticleCarnetRequests.Where(articleCarnetRequest =>
+                    updateDto.ArticleCarnetRequests.Select(t => t).Contains(articleCarnetRequest.Id)
+                )
+                .ToListAsync();
+        }
+
         _context.Entry(carnetRequest).State = EntityState.Modified;
 
         try
@@ -135,5 +155,122 @@ public abstract class CarnetRequestsServiceBase : ICarnetRequestsService
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Connect multiple Article Carnet Requests records to Carnet Request
+    /// </summary>
+    public async Task ConnectArticleCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ArticleCarnetRequestWhereUniqueInput[] articleCarnetRequestsId
+    )
+    {
+        var parent = await _context
+            .CarnetRequests.Include(x => x.ArticleCarnetRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var articleCarnetRequests = await _context
+            .ArticleCarnetRequests.Where(t =>
+                articleCarnetRequestsId.Select(x => x.Id).Contains(t.Id)
+            )
+            .ToListAsync();
+        if (articleCarnetRequests.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var articleCarnetRequestsToConnect = articleCarnetRequests.Except(
+            parent.ArticleCarnetRequests
+        );
+
+        foreach (var articleCarnetRequest in articleCarnetRequestsToConnect)
+        {
+            parent.ArticleCarnetRequests.Add(articleCarnetRequest);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Article Carnet Requests records from Carnet Request
+    /// </summary>
+    public async Task DisconnectArticleCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ArticleCarnetRequestWhereUniqueInput[] articleCarnetRequestsId
+    )
+    {
+        var parent = await _context
+            .CarnetRequests.Include(x => x.ArticleCarnetRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var articleCarnetRequests = await _context
+            .ArticleCarnetRequests.Where(t =>
+                articleCarnetRequestsId.Select(x => x.Id).Contains(t.Id)
+            )
+            .ToListAsync();
+
+        foreach (var articleCarnetRequest in articleCarnetRequests)
+        {
+            parent.ArticleCarnetRequests?.Remove(articleCarnetRequest);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple Article Carnet Requests records for Carnet Request
+    /// </summary>
+    public async Task<List<ArticleCarnetRequest>> FindArticleCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ArticleCarnetRequestFindManyArgs carnetRequestFindManyArgs
+    )
+    {
+        var articleCarnetRequests = await _context
+            .ArticleCarnetRequests.Where(m => m.CarnetRequestId == uniqueId.Id)
+            .ApplyWhere(carnetRequestFindManyArgs.Where)
+            .ApplySkip(carnetRequestFindManyArgs.Skip)
+            .ApplyTake(carnetRequestFindManyArgs.Take)
+            .ApplyOrderBy(carnetRequestFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return articleCarnetRequests.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple Article Carnet Requests records for Carnet Request
+    /// </summary>
+    public async Task UpdateArticleCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ArticleCarnetRequestWhereUniqueInput[] articleCarnetRequestsId
+    )
+    {
+        var carnetRequest = await _context
+            .CarnetRequests.Include(t => t.ArticleCarnetRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (carnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var articleCarnetRequests = await _context
+            .ArticleCarnetRequests.Where(a =>
+                articleCarnetRequestsId.Select(x => x.Id).Contains(a.Id)
+            )
+            .ToListAsync();
+
+        if (articleCarnetRequests.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        carnetRequest.ArticleCarnetRequests = articleCarnetRequests;
+        await _context.SaveChangesAsync();
     }
 }

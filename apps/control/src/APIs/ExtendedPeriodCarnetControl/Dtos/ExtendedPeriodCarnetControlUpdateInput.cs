@@ -14,6 +14,8 @@ public class ExtendedPeriodCarnetControlUpdateInput
 
     public DateTime? DeletedOn { get; set; }
 
+    public string? ExtendedPeriodCarnetRequest { get; set; }
+
     public DateTime? FirstRecordDateAndTime { get; set; }
 
     public string? FirstRecorderId { get; set; }

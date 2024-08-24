@@ -123,4 +123,18 @@ public abstract class ExtendedPeriodCarnetControlsControllerBase : ControllerBas
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Extended Period Carnet Request record for Extended Period Carnet Control
+    /// </summary>
+    [HttpGet("{Id}/extendedPeriodCarnetRequests")]
+    public async Task<
+        ActionResult<List<ExtendedPeriodCarnetRequest>>
+    > GetExtendedPeriodCarnetRequest(
+        [FromRoute()] ExtendedPeriodCarnetControlWhereUniqueInput uniqueId
+    )
+    {
+        var extendedPeriodCarnetRequest = await _service.GetExtendedPeriodCarnetRequest(uniqueId);
+        return Ok(extendedPeriodCarnetRequest);
+    }
 }

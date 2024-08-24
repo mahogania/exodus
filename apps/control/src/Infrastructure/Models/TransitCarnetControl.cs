@@ -66,6 +66,9 @@ public class TransitCarnetControlDbModel
     [StringLength(1000)]
     public string? ReferenceNo { get; set; }
 
+    public List<TransitCarnetRequestDbModel>? TransitCarnetRequests { get; set; } =
+        new List<TransitCarnetRequestDbModel>();
+
     [Required()]
     public DateTime UpdatedAt { get; set; }
 }

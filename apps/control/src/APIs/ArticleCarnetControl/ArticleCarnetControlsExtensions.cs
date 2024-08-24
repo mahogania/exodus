@@ -9,6 +9,7 @@ public static class ArticleCarnetControlsExtensions
     {
         return new ArticleCarnetControl
         {
+            ArticleCarnetRequest = model.ArticleCarnetRequest?.ToDto(),
             ArticleNumber = model.ArticleNumber,
             AttachmentFileId = model.AttachmentFileId,
             AuthorizationDate = model.AuthorizationDate,
