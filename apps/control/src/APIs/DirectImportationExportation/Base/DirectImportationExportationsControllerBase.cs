@@ -21,7 +21,7 @@ public abstract class DirectImportationExportationsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Create one DIRECT IMPORTATION/EXPORTATION
+    /// Create one Direct Importation/Exportation
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -39,7 +39,7 @@ public abstract class DirectImportationExportationsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Delete one DIRECT IMPORTATION/EXPORTATION
+    /// Delete one Direct Importation/Exportation
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -72,7 +72,7 @@ public abstract class DirectImportationExportationsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Meta data about DIRECT IMPORTATION/EXPORTATION records
+    /// Meta data about Direct Importation/Exportation records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> DirectImportationExportationsMeta(
@@ -83,7 +83,7 @@ public abstract class DirectImportationExportationsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Get one DIRECT IMPORTATION/EXPORTATION
+    /// Get one Direct Importation/Exportation
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -102,7 +102,7 @@ public abstract class DirectImportationExportationsControllerBase : ControllerBa
     }
 
     /// <summary>
-    /// Update one DIRECT IMPORTATION/EXPORTATION
+    /// Update one Direct Importation/Exportation
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]

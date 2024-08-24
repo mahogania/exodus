@@ -6,14 +6,14 @@ namespace Control.APIs;
 public interface IDirectImportationExportationsService
 {
     /// <summary>
-    /// Create one DIRECT IMPORTATION/EXPORTATION
+    /// Create one Direct Importation/Exportation
     /// </summary>
     public Task<DirectImportationExportation> CreateDirectImportationExportation(
         DirectImportationExportationCreateInput directimportationexportation
     );
 
     /// <summary>
-    /// Delete one DIRECT IMPORTATION/EXPORTATION
+    /// Delete one Direct Importation/Exportation
     /// </summary>
     public Task DeleteDirectImportationExportation(
         DirectImportationExportationWhereUniqueInput uniqueId
@@ -27,21 +27,21 @@ public interface IDirectImportationExportationsService
     );
 
     /// <summary>
-    /// Meta data about DIRECT IMPORTATION/EXPORTATION records
+    /// Meta data about Direct Importation/Exportation records
     /// </summary>
     public Task<MetadataDto> DirectImportationExportationsMeta(
         DirectImportationExportationFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one DIRECT IMPORTATION/EXPORTATION
+    /// Get one Direct Importation/Exportation
     /// </summary>
     public Task<DirectImportationExportation> DirectImportationExportation(
         DirectImportationExportationWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one DIRECT IMPORTATION/EXPORTATION
+    /// Update one Direct Importation/Exportation
     /// </summary>
     public Task UpdateDirectImportationExportation(
         DirectImportationExportationWhereUniqueInput uniqueId,

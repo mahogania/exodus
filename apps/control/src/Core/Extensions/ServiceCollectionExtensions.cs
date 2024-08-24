@@ -11,17 +11,22 @@ public static class ServiceCollectionExtensions
     {
         services.AddScoped<IArticlesService, ArticlesService>();
         services.AddScoped<IArticleAssessmentsService, ArticleAssessmentsService>();
+        services.AddScoped<IArticleCarnetControlsService, ArticleCarnetControlsService>();
+        services.AddScoped<IArticleCarnetRequestsService, ArticleCarnetRequestsService>();
         services.AddScoped<IAtAndStandardExchangesService, AtAndStandardExchangesService>();
         services.AddScoped<
             IAtWithReExportationInTheStatesService,
             AtWithReExportationInTheStatesService
         >();
         services.AddScoped<ICancellationRequestsService, CancellationRequestsService>();
+        services.AddScoped<ICarnetRequestsService, CarnetRequestsService>();
         services.AddScoped<
             IChangeInTheDetailedDeclarationsService,
             ChangeInTheDetailedDeclarationsService
         >();
         services.AddScoped<ICommonActiveGoodsRequestsService, CommonActiveGoodsRequestsService>();
+        services.AddScoped<ICommonAtaCarnetControlsService, CommonAtaCarnetControlsService>();
+        services.AddScoped<ICommonAtaCarnetControlAltsService, CommonAtaCarnetControlAltsService>();
         services.AddScoped<ICommonDetailedDeclarationsService, CommonDetailedDeclarationsService>();
         services.AddScoped<ICommonExpressClearancesService, CommonExpressClearancesService>();
         services.AddScoped<
@@ -77,6 +82,14 @@ public static class ServiceCollectionExtensions
             ExpressCustomsClearanceDetailsService
         >();
         services.AddScoped<
+            IExtendedPeriodCarnetControlsService,
+            ExtendedPeriodCarnetControlsService
+        >();
+        services.AddScoped<
+            IExtendedPeriodCarnetRequestsService,
+            ExtendedPeriodCarnetRequestsService
+        >();
+        services.AddScoped<
             IFinalExportFollowedByReimportationInTheStatesService,
             FinalExportFollowedByReimportationInTheStatesService
         >();
@@ -97,6 +110,8 @@ public static class ServiceCollectionExtensions
             IGoodsSubjectToAuthorizationsService,
             GoodsSubjectToAuthorizationsService
         >();
+        services.AddScoped<IImportCarnetControlsService, ImportCarnetControlsService>();
+        services.AddScoped<IImportCarnetRequestsService, ImportCarnetRequestsService>();
         services.AddScoped<IImportedGoodsInformationsService, ImportedGoodsInformationsService>();
         services.AddScoped<IImportedMaterialWastesService, ImportedMaterialWastesService>();
         services.AddScoped<
@@ -159,6 +174,8 @@ public static class ServiceCollectionExtensions
         >();
         services.AddScoped<IRawMaterialsService, RawMaterialsService>();
         services.AddScoped<IRCODemandsService, RCODemandsService>();
+        services.AddScoped<IReexportCarnetControlsService, ReexportCarnetControlsService>();
+        services.AddScoped<IReexportCarnetRequestsService, ReexportCarnetRequestsService>();
         services.AddScoped<
             IReimportedGoodsForPerfectingsService,
             ReimportedGoodsForPerfectingsService
@@ -187,6 +204,8 @@ public static class ServiceCollectionExtensions
             ITemporaryAdmissionOfVehiclesService,
             TemporaryAdmissionOfVehiclesService
         >();
+        services.AddScoped<ITransitCarnetControlsService, TransitCarnetControlsService>();
+        services.AddScoped<ITransitCarnetRequestsService, TransitCarnetRequestsService>();
         services.AddScoped<IValueAssessmentsService, ValueAssessmentsService>();
         services.AddScoped<IValueDeclarationsService, ValueDeclarationsService>();
         services.AddScoped<IVehiclesService, VehiclesService>();

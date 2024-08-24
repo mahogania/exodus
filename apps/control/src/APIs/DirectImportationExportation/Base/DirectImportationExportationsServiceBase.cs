@@ -20,7 +20,7 @@ public abstract class DirectImportationExportationsServiceBase
     }
 
     /// <summary>
-    /// Create one DIRECT IMPORTATION/EXPORTATION
+    /// Create one Direct Importation/Exportation
     /// </summary>
     public async Task<DirectImportationExportation> CreateDirectImportationExportation(
         DirectImportationExportationCreateInput createDto
@@ -74,7 +74,7 @@ public abstract class DirectImportationExportationsServiceBase
     }
 
     /// <summary>
-    /// Delete one DIRECT IMPORTATION/EXPORTATION
+    /// Delete one Direct Importation/Exportation
     /// </summary>
     public async Task DeleteDirectImportationExportation(
         DirectImportationExportationWhereUniqueInput uniqueId
@@ -111,7 +111,7 @@ public abstract class DirectImportationExportationsServiceBase
     }
 
     /// <summary>
-    /// Meta data about DIRECT IMPORTATION/EXPORTATION records
+    /// Meta data about Direct Importation/Exportation records
     /// </summary>
     public async Task<MetadataDto> DirectImportationExportationsMeta(
         DirectImportationExportationFindManyArgs findManyArgs
@@ -125,7 +125,7 @@ public abstract class DirectImportationExportationsServiceBase
     }
 
     /// <summary>
-    /// Get one DIRECT IMPORTATION/EXPORTATION
+    /// Get one Direct Importation/Exportation
     /// </summary>
     public async Task<DirectImportationExportation> DirectImportationExportation(
         DirectImportationExportationWhereUniqueInput uniqueId
@@ -147,7 +147,7 @@ public abstract class DirectImportationExportationsServiceBase
     }
 
     /// <summary>
-    /// Update one DIRECT IMPORTATION/EXPORTATION
+    /// Update one Direct Importation/Exportation
     /// </summary>
     public async Task UpdateDirectImportationExportation(
         DirectImportationExportationWhereUniqueInput uniqueId,

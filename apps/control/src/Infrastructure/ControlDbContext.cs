@@ -145,4 +145,30 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
     public DbSet<ChangeInTheDetailedDeclarationDbModel> ChangeInTheDetailedDeclarations { get; set; }
 
     public DbSet<JournalDbModel> Journals { get; set; }
+
+    public DbSet<CarnetRequestDbModel> CarnetRequests { get; set; }
+
+    public DbSet<ExtendedPeriodCarnetRequestDbModel> ExtendedPeriodCarnetRequests { get; set; }
+
+    public DbSet<CommonAtaCarnetControlDbModel> CommonAtaCarnetControls { get; set; }
+
+    public DbSet<ExtendedPeriodCarnetControlDbModel> ExtendedPeriodCarnetControls { get; set; }
+
+    public DbSet<CommonAtaCarnetControlAltDbModel> CommonAtaCarnetControlAlts { get; set; }
+
+    public DbSet<TransitCarnetRequestDbModel> TransitCarnetRequests { get; set; }
+
+    public DbSet<TransitCarnetControlDbModel> TransitCarnetControls { get; set; }
+
+    public DbSet<ArticleCarnetRequestDbModel> ArticleCarnetRequests { get; set; }
+
+    public DbSet<ImportCarnetRequestDbModel> ImportCarnetRequests { get; set; }
+
+    public DbSet<ReexportCarnetRequestDbModel> ReexportCarnetRequests { get; set; }
+
+    public DbSet<ImportCarnetControlDbModel> ImportCarnetControls { get; set; }
+
+    public DbSet<ReexportCarnetControlDbModel> ReexportCarnetControls { get; set; }
+
+    public DbSet<ArticleCarnetControlDbModel> ArticleCarnetControls { get; set; }
 }
