@@ -28,6 +28,7 @@ public static class ReexportCarnetControlsExtensions
             ManagementNumberOfCarnet = model.ManagementNumberOfCarnet,
             OtherContents = model.OtherContents,
             ProcessingStatusCode = model.ProcessingStatusCode,
+            ReexportCarnetRequests = model.ReexportCarnetRequestsId,
             ReexportedArticles = model.ReexportedArticles,
             ReferenceNo = model.ReferenceNo,
             UpdatedAt = model.UpdatedAt,
@@ -66,6 +67,10 @@ public static class ReexportCarnetControlsExtensions
         if (updateDto.CreatedAt != null)
         {
             reexportCarnetControl.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.ReexportCarnetRequests != null)
+        {
+            reexportCarnetControl.ReexportCarnetRequestsId = updateDto.ReexportCarnetRequests;
         }
         if (updateDto.UpdatedAt != null)
         {

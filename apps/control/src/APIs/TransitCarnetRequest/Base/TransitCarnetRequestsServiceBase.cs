@@ -38,11 +38,11 @@ public abstract class TransitCarnetRequestsServiceBase : ITransitCarnetRequestsS
         {
             transitCarnetRequest.Id = createDto.Id;
         }
-        if (createDto.CommonCarnetRequest != null)
+        if (createDto.CarnetRequest != null)
         {
-            transitCarnetRequest.CommonCarnetRequest = await _context
-                .CommonCarnetRequests.Where(commonCarnetRequest =>
-                    createDto.CommonCarnetRequest.Id == commonCarnetRequest.Id
+            transitCarnetRequest.CarnetRequest = await _context
+                .CarnetRequests.Where(carnetRequest =>
+                    createDto.CarnetRequest.Id == carnetRequest.Id
                 )
                 .FirstOrDefaultAsync();
         }
@@ -92,7 +92,7 @@ public abstract class TransitCarnetRequestsServiceBase : ITransitCarnetRequestsS
     )
     {
         var transitCarnetRequests = await _context
-            .TransitCarnetRequests.Include(x => x.CommonCarnetRequest)
+            .TransitCarnetRequests.Include(x => x.CarnetRequest)
             .Include(x => x.TransitCarnetControl)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
@@ -170,23 +170,21 @@ public abstract class TransitCarnetRequestsServiceBase : ITransitCarnetRequestsS
     }
 
     /// <summary>
-    /// Get a Common Carnet Request record for Transit Carnet Request
+    /// Get a Carnet Request record for Transit Carnet Request
     /// </summary>
-    public async Task<CommonCarnetRequest> GetCommonCarnetRequest(
-        TransitCarnetRequestWhereUniqueInput uniqueId
-    )
+    public async Task<CarnetRequest> GetCarnetRequest(TransitCarnetRequestWhereUniqueInput uniqueId)
     {
         var transitCarnetRequest = await _context
             .TransitCarnetRequests.Where(transitCarnetRequest =>
                 transitCarnetRequest.Id == uniqueId.Id
             )
-            .Include(transitCarnetRequest => transitCarnetRequest.CommonCarnetRequest)
+            .Include(transitCarnetRequest => transitCarnetRequest.CarnetRequest)
             .FirstOrDefaultAsync();
         if (transitCarnetRequest == null)
         {
             throw new NotFoundException();
         }
-        return transitCarnetRequest.CommonCarnetRequest.ToDto();
+        return transitCarnetRequest.CarnetRequest.ToDto();
     }
 
     /// <summary>

@@ -10,10 +10,12 @@ public static class ReexportCarnetRequestsExtensions
         return new ReexportCarnetRequest
         {
             CarnetNumber = model.CarnetNumber,
+            CarnetRequest = model.CarnetRequestId,
             CarnetTypeCode = model.CarnetTypeCode,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
             ManagementNumberOfCarnet = model.ManagementNumberOfCarnet,
+            ReexportCarnetControl = model.ReexportCarnetControl?.ToDto(),
             ReferenceNo = model.ReferenceNo,
             UpdatedAt = model.UpdatedAt,
         };
@@ -33,6 +35,10 @@ public static class ReexportCarnetRequestsExtensions
             ReferenceNo = updateDto.ReferenceNo
         };
 
+        if (updateDto.CarnetRequest != null)
+        {
+            reexportCarnetRequest.CarnetRequestId = updateDto.CarnetRequest;
+        }
         if (updateDto.CreatedAt != null)
         {
             reexportCarnetRequest.CreatedAt = updateDto.CreatedAt.Value;

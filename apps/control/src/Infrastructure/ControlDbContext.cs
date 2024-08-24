@@ -14,9 +14,9 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<CommonExpressClearanceDbModel> CommonExpressClearances { get; set; }
 
-    public DbSet<OriginDeterminingInformationDbModel> OriginDeterminingInformations { get; set; }
-
     public DbSet<CompensatoryProductsForPerfectionDbModel> CompensatoryProductsForPerfections { get; set; }
+
+    public DbSet<OriginDeterminingInformationDbModel> OriginDeterminingInformations { get; set; }
 
     public DbSet<TemporaryAdmissionOfVehicleDbModel> TemporaryAdmissionOfVehicles { get; set; }
 

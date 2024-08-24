@@ -2,9 +2,9 @@ namespace Control.APIs.Dtos;
 
 public class ExtendedPeriodCarnetRequestWhereInput
 {
-    public string? CarnetTypeCode { get; set; }
+    public string? CarnetRequest { get; set; }
 
-    public string? CommonCarnetRequest { get; set; }
+    public string? CarnetTypeCode { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 

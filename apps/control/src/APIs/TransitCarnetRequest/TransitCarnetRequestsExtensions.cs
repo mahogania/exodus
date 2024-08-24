@@ -9,8 +9,8 @@ public static class TransitCarnetRequestsExtensions
     {
         return new TransitCarnetRequest
         {
+            CarnetRequest = model.CarnetRequestId,
             CarnetTypeCode = model.CarnetTypeCode,
-            CommonCarnetRequest = model.CommonCarnetRequestId,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
             ManagementNumberOfCarnet = model.ManagementNumberOfCarnet,
@@ -33,9 +33,9 @@ public static class TransitCarnetRequestsExtensions
             ReferenceNo = updateDto.ReferenceNo
         };
 
-        if (updateDto.CommonCarnetRequest != null)
+        if (updateDto.CarnetRequest != null)
         {
-            transitCarnetRequest.CommonCarnetRequestId = updateDto.CommonCarnetRequest;
+            transitCarnetRequest.CarnetRequestId = updateDto.CarnetRequest;
         }
         if (updateDto.CreatedAt != null)
         {

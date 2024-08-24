@@ -202,4 +202,286 @@ public abstract class CarnetRequestsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Common Carnet Request record for Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/commonCarnetRequests")]
+    public async Task<ActionResult<List<CommonCarnetRequest>>> GetCommonCarnetRequest(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var commonCarnetRequest = await _service.GetCommonCarnetRequest(uniqueId);
+        return Ok(commonCarnetRequest);
+    }
+
+    /// <summary>
+    /// Get a Extended Period Carnet Requests record for Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/extendedPeriodCarnetRequests")]
+    public async Task<
+        ActionResult<List<ExtendedPeriodCarnetRequest>>
+    > GetExtendedPeriodCarnetRequests([FromRoute()] CarnetRequestWhereUniqueInput uniqueId)
+    {
+        var extendedPeriodCarnetRequest = await _service.GetExtendedPeriodCarnetRequests(uniqueId);
+        return Ok(extendedPeriodCarnetRequest);
+    }
+
+    /// <summary>
+    /// Connect multiple Import Carnet Requests records to Carnet Request
+    /// </summary>
+    [HttpPost("{Id}/importCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> ConnectImportCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromQuery()] ImportCarnetRequestWhereUniqueInput[] importCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.ConnectImportCarnetRequests(uniqueId, importCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Import Carnet Requests records from Carnet Request
+    /// </summary>
+    [HttpDelete("{Id}/importCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> DisconnectImportCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromBody()] ImportCarnetRequestWhereUniqueInput[] importCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectImportCarnetRequests(uniqueId, importCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple Import Carnet Requests records for Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/importCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult<List<ImportCarnetRequest>>> FindImportCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromQuery()] ImportCarnetRequestFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindImportCarnetRequests(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple Import Carnet Requests records for Carnet Request
+    /// </summary>
+    [HttpPatch("{Id}/importCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> UpdateImportCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromBody()] ImportCarnetRequestWhereUniqueInput[] importCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.UpdateImportCarnetRequests(uniqueId, importCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Connect multiple Reexport Carnet Requests records to Carnet Request
+    /// </summary>
+    [HttpPost("{Id}/reexportCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> ConnectReexportCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromQuery()] ReexportCarnetRequestWhereUniqueInput[] reexportCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.ConnectReexportCarnetRequests(uniqueId, reexportCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Reexport Carnet Requests records from Carnet Request
+    /// </summary>
+    [HttpDelete("{Id}/reexportCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> DisconnectReexportCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromBody()] ReexportCarnetRequestWhereUniqueInput[] reexportCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectReexportCarnetRequests(uniqueId, reexportCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple Reexport Carnet Requests records for Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/reexportCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult<List<ReexportCarnetRequest>>> FindReexportCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromQuery()] ReexportCarnetRequestFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindReexportCarnetRequests(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple Reexport Carnet Requests records for Carnet Request
+    /// </summary>
+    [HttpPatch("{Id}/reexportCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> UpdateReexportCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromBody()] ReexportCarnetRequestWhereUniqueInput[] reexportCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.UpdateReexportCarnetRequests(uniqueId, reexportCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Connect multiple Transit Carnet Requests records to Carnet Request
+    /// </summary>
+    [HttpPost("{Id}/transitCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> ConnectTransitCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromQuery()] TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.ConnectTransitCarnetRequests(uniqueId, transitCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Transit Carnet Requests records from Carnet Request
+    /// </summary>
+    [HttpDelete("{Id}/transitCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> DisconnectTransitCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromBody()] TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectTransitCarnetRequests(uniqueId, transitCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple Transit Carnet Requests records for Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/transitCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult<List<TransitCarnetRequest>>> FindTransitCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromQuery()] TransitCarnetRequestFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindTransitCarnetRequests(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple Transit Carnet Requests records for Carnet Request
+    /// </summary>
+    [HttpPatch("{Id}/transitCarnetRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> UpdateTransitCarnetRequests(
+        [FromRoute()] CarnetRequestWhereUniqueInput uniqueId,
+        [FromBody()] TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    )
+    {
+        try
+        {
+            await _service.UpdateTransitCarnetRequests(uniqueId, transitCarnetRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
 }

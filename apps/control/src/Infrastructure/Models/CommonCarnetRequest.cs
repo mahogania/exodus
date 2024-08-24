@@ -9,6 +9,9 @@ public class CommonCarnetRequestDbModel
     [StringLength(1000)]
     public string? AttachedFileId { get; set; }
 
+    public List<CarnetRequestDbModel>? CarnetRequests { get; set; } =
+        new List<CarnetRequestDbModel>();
+
     [StringLength(1000)]
     public string? CertificationOrganization { get; set; }
 
@@ -91,9 +94,6 @@ public class CommonCarnetRequestDbModel
     [Range(-999999999, 999999999)]
     public double? Destination_3TransportQuantity { get; set; }
 
-    public List<ExtendedPeriodCarnetRequestDbModel>? ExtendedPeriodCarnetRequests { get; set; } =
-        new List<ExtendedPeriodCarnetRequestDbModel>();
-
     [StringLength(1000)]
     public string? FinalModifierSId { get; set; }
 
@@ -154,9 +154,6 @@ public class CommonCarnetRequestDbModel
 
     [Range(-999999999, 999999999)]
     public double? TotalNumberOfGoods { get; set; }
-
-    public List<TransitCarnetRequestDbModel>? TransitCarnetRequests { get; set; } =
-        new List<TransitCarnetRequestDbModel>();
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

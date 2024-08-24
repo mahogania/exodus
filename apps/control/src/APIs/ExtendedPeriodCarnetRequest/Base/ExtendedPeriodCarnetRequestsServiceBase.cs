@@ -38,11 +38,11 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
         {
             extendedPeriodCarnetRequest.Id = createDto.Id;
         }
-        if (createDto.CommonCarnetRequest != null)
+        if (createDto.CarnetRequest != null)
         {
-            extendedPeriodCarnetRequest.CommonCarnetRequest = await _context
-                .CommonCarnetRequests.Where(commonCarnetRequest =>
-                    createDto.CommonCarnetRequest.Id == commonCarnetRequest.Id
+            extendedPeriodCarnetRequest.CarnetRequest = await _context
+                .CarnetRequests.Where(carnetRequest =>
+                    createDto.CarnetRequest.Id == carnetRequest.Id
                 )
                 .FirstOrDefaultAsync();
         }
@@ -98,7 +98,7 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
     )
     {
         var extendedPeriodCarnetRequests = await _context
-            .ExtendedPeriodCarnetRequests.Include(x => x.CommonCarnetRequest)
+            .ExtendedPeriodCarnetRequests.Include(x => x.CarnetRequest)
             .Include(x => x.ExtendedPeriodCarnetControl)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
@@ -180,9 +180,9 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
     }
 
     /// <summary>
-    /// Get a Common Carnet Request record for Extended Period Carnet Request
+    /// Get a Carnet Request record for Extended Period Carnet Request
     /// </summary>
-    public async Task<CommonCarnetRequest> GetCommonCarnetRequest(
+    public async Task<CarnetRequest> GetCarnetRequest(
         ExtendedPeriodCarnetRequestWhereUniqueInput uniqueId
     )
     {
@@ -190,13 +190,13 @@ public abstract class ExtendedPeriodCarnetRequestsServiceBase : IExtendedPeriodC
             .ExtendedPeriodCarnetRequests.Where(extendedPeriodCarnetRequest =>
                 extendedPeriodCarnetRequest.Id == uniqueId.Id
             )
-            .Include(extendedPeriodCarnetRequest => extendedPeriodCarnetRequest.CommonCarnetRequest)
+            .Include(extendedPeriodCarnetRequest => extendedPeriodCarnetRequest.CarnetRequest)
             .FirstOrDefaultAsync();
         if (extendedPeriodCarnetRequest == null)
         {
             throw new NotFoundException();
         }
-        return extendedPeriodCarnetRequest.CommonCarnetRequest.ToDto();
+        return extendedPeriodCarnetRequest.CarnetRequest.ToDto();
     }
 
     /// <summary>

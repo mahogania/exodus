@@ -20,6 +20,8 @@ public class ImportCarnetControlCreateInput
 
     public string? Id { get; set; }
 
+    public ImportCarnetRequest? ImportCarnetRequest { get; set; }
+
     public DateTime? LastModificationDateAndTime { get; set; }
 
     public string? LastModifierId { get; set; }

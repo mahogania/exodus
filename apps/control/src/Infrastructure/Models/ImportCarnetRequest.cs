@@ -9,6 +9,11 @@ public class ImportCarnetRequestDbModel
     [StringLength(1000)]
     public string? CarnetNumber { get; set; }
 
+    public string? CarnetRequestId { get; set; }
+
+    [ForeignKey(nameof(CarnetRequestId))]
+    public CarnetRequestDbModel? CarnetRequest { get; set; } = null;
+
     [StringLength(1000)]
     public string? CarnetTypeCode { get; set; }
 
@@ -18,6 +23,11 @@ public class ImportCarnetRequestDbModel
     [Key()]
     [Required()]
     public string Id { get; set; }
+
+    public string? ImportCarnetControlId { get; set; }
+
+    [ForeignKey(nameof(ImportCarnetControlId))]
+    public ImportCarnetControlDbModel? ImportCarnetControl { get; set; } = null;
 
     [StringLength(1000)]
     public string? ManagementNumberOfCarnet { get; set; }

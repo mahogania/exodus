@@ -45,66 +45,34 @@ public interface ICommonCarnetRequestsService
     );
 
     /// <summary>
-    /// Connect multiple Extended Period Carnet Requests records to Common Carnet Request
+    /// Connect multiple Carnet Requests records to Common Carnet Request
     /// </summary>
-    public Task ConnectExtendedPeriodCarnetRequests(
+    public Task ConnectCarnetRequests(
         CommonCarnetRequestWhereUniqueInput uniqueId,
-        ExtendedPeriodCarnetRequestWhereUniqueInput[] extendedPeriodCarnetRequestsId
+        CarnetRequestWhereUniqueInput[] carnetRequestsId
     );
 
     /// <summary>
-    /// Disconnect multiple Extended Period Carnet Requests records from Common Carnet Request
+    /// Disconnect multiple Carnet Requests records from Common Carnet Request
     /// </summary>
-    public Task DisconnectExtendedPeriodCarnetRequests(
+    public Task DisconnectCarnetRequests(
         CommonCarnetRequestWhereUniqueInput uniqueId,
-        ExtendedPeriodCarnetRequestWhereUniqueInput[] extendedPeriodCarnetRequestsId
+        CarnetRequestWhereUniqueInput[] carnetRequestsId
     );
 
     /// <summary>
-    /// Find multiple Extended Period Carnet Requests records for Common Carnet Request
+    /// Find multiple Carnet Requests records for Common Carnet Request
     /// </summary>
-    public Task<List<ExtendedPeriodCarnetRequest>> FindExtendedPeriodCarnetRequests(
+    public Task<List<CarnetRequest>> FindCarnetRequests(
         CommonCarnetRequestWhereUniqueInput uniqueId,
-        ExtendedPeriodCarnetRequestFindManyArgs ExtendedPeriodCarnetRequestFindManyArgs
+        CarnetRequestFindManyArgs CarnetRequestFindManyArgs
     );
 
     /// <summary>
-    /// Update multiple Extended Period Carnet Requests records for Common Carnet Request
+    /// Update multiple Carnet Requests records for Common Carnet Request
     /// </summary>
-    public Task UpdateExtendedPeriodCarnetRequests(
+    public Task UpdateCarnetRequests(
         CommonCarnetRequestWhereUniqueInput uniqueId,
-        ExtendedPeriodCarnetRequestWhereUniqueInput[] extendedPeriodCarnetRequestsId
-    );
-
-    /// <summary>
-    /// Connect multiple Transit Carnet Requests records to Common Carnet Request
-    /// </summary>
-    public Task ConnectTransitCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
-    );
-
-    /// <summary>
-    /// Disconnect multiple Transit Carnet Requests records from Common Carnet Request
-    /// </summary>
-    public Task DisconnectTransitCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
-    );
-
-    /// <summary>
-    /// Find multiple Transit Carnet Requests records for Common Carnet Request
-    /// </summary>
-    public Task<List<TransitCarnetRequest>> FindTransitCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        TransitCarnetRequestFindManyArgs TransitCarnetRequestFindManyArgs
-    );
-
-    /// <summary>
-    /// Update multiple Transit Carnet Requests records for Common Carnet Request
-    /// </summary>
-    public Task UpdateTransitCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+        CarnetRequestWhereUniqueInput[] carnetRequestsId
     );
 }

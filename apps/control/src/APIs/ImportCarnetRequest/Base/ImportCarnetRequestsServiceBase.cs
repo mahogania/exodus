@@ -39,6 +39,23 @@ public abstract class ImportCarnetRequestsServiceBase : IImportCarnetRequestsSer
         {
             importCarnetRequest.Id = createDto.Id;
         }
+        if (createDto.CarnetRequest != null)
+        {
+            importCarnetRequest.CarnetRequest = await _context
+                .CarnetRequests.Where(carnetRequest =>
+                    createDto.CarnetRequest.Id == carnetRequest.Id
+                )
+                .FirstOrDefaultAsync();
+        }
+
+        if (createDto.ImportCarnetControl != null)
+        {
+            importCarnetRequest.ImportCarnetControl = await _context
+                .ImportCarnetControls.Where(importCarnetControl =>
+                    createDto.ImportCarnetControl.Id == importCarnetControl.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.ImportCarnetRequests.Add(importCarnetRequest);
         await _context.SaveChangesAsync();
@@ -76,7 +93,9 @@ public abstract class ImportCarnetRequestsServiceBase : IImportCarnetRequestsSer
     )
     {
         var importCarnetRequests = await _context
-            .ImportCarnetRequests.ApplyWhere(findManyArgs.Where)
+            .ImportCarnetRequests.Include(x => x.CarnetRequest)
+            .Include(x => x.ImportCarnetControl)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -145,5 +164,43 @@ public abstract class ImportCarnetRequestsServiceBase : IImportCarnetRequestsSer
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Carnet Request record for Import Carnet Request
+    /// </summary>
+    public async Task<CarnetRequest> GetCarnetRequest(ImportCarnetRequestWhereUniqueInput uniqueId)
+    {
+        var importCarnetRequest = await _context
+            .ImportCarnetRequests.Where(importCarnetRequest =>
+                importCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(importCarnetRequest => importCarnetRequest.CarnetRequest)
+            .FirstOrDefaultAsync();
+        if (importCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return importCarnetRequest.CarnetRequest.ToDto();
+    }
+
+    /// <summary>
+    /// Get a Import Carnet Control record for Import Carnet Request
+    /// </summary>
+    public async Task<ImportCarnetControl> GetImportCarnetControl(
+        ImportCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var importCarnetRequest = await _context
+            .ImportCarnetRequests.Where(importCarnetRequest =>
+                importCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(importCarnetRequest => importCarnetRequest.ImportCarnetControl)
+            .FirstOrDefaultAsync();
+        if (importCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return importCarnetRequest.ImportCarnetControl.ToDto();
     }
 }

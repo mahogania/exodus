@@ -4,6 +4,8 @@ public class CommonCarnetRequest
 {
     public string? AttachedFileId { get; set; }
 
+    public List<string>? CarnetRequests { get; set; }
+
     public string? CertificationOrganization { get; set; }
 
     public DateTime CreatedAt { get; set; }
@@ -60,8 +62,6 @@ public class CommonCarnetRequest
 
     public double? Destination_3TransportQuantity { get; set; }
 
-    public List<string>? ExtendedPeriodCarnetRequests { get; set; }
-
     public string? FinalModifierSId { get; set; }
 
     public string? FirstRecorderSId { get; set; }
@@ -101,8 +101,6 @@ public class CommonCarnetRequest
     public string? TirRegistrationNumber { get; set; }
 
     public double? TotalNumberOfGoods { get; set; }
-
-    public List<string>? TransitCarnetRequests { get; set; }
 
     public DateTime UpdatedAt { get; set; }
 

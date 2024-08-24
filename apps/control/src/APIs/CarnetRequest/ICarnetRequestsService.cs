@@ -69,4 +69,112 @@ public interface ICarnetRequestsService
         CarnetRequestWhereUniqueInput uniqueId,
         ArticleCarnetRequestWhereUniqueInput[] articleCarnetRequestsId
     );
+
+    /// <summary>
+    /// Get a Common Carnet Request record for Carnet Request
+    /// </summary>
+    public Task<CommonCarnetRequest> GetCommonCarnetRequest(CarnetRequestWhereUniqueInput uniqueId);
+
+    /// <summary>
+    /// Get a Extended Period Carnet Requests record for Carnet Request
+    /// </summary>
+    public Task<ExtendedPeriodCarnetRequest> GetExtendedPeriodCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId
+    );
+
+    /// <summary>
+    /// Connect multiple Import Carnet Requests records to Carnet Request
+    /// </summary>
+    public Task ConnectImportCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ImportCarnetRequestWhereUniqueInput[] importCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple Import Carnet Requests records from Carnet Request
+    /// </summary>
+    public Task DisconnectImportCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ImportCarnetRequestWhereUniqueInput[] importCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Find multiple Import Carnet Requests records for Carnet Request
+    /// </summary>
+    public Task<List<ImportCarnetRequest>> FindImportCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ImportCarnetRequestFindManyArgs ImportCarnetRequestFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple Import Carnet Requests records for Carnet Request
+    /// </summary>
+    public Task UpdateImportCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ImportCarnetRequestWhereUniqueInput[] importCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Connect multiple Reexport Carnet Requests records to Carnet Request
+    /// </summary>
+    public Task ConnectReexportCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ReexportCarnetRequestWhereUniqueInput[] reexportCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple Reexport Carnet Requests records from Carnet Request
+    /// </summary>
+    public Task DisconnectReexportCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ReexportCarnetRequestWhereUniqueInput[] reexportCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Find multiple Reexport Carnet Requests records for Carnet Request
+    /// </summary>
+    public Task<List<ReexportCarnetRequest>> FindReexportCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ReexportCarnetRequestFindManyArgs ReexportCarnetRequestFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple Reexport Carnet Requests records for Carnet Request
+    /// </summary>
+    public Task UpdateReexportCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        ReexportCarnetRequestWhereUniqueInput[] reexportCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Connect multiple Transit Carnet Requests records to Carnet Request
+    /// </summary>
+    public Task ConnectTransitCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple Transit Carnet Requests records from Carnet Request
+    /// </summary>
+    public Task DisconnectTransitCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    );
+
+    /// <summary>
+    /// Find multiple Transit Carnet Requests records for Carnet Request
+    /// </summary>
+    public Task<List<TransitCarnetRequest>> FindTransitCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        TransitCarnetRequestFindManyArgs TransitCarnetRequestFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple Transit Carnet Requests records for Carnet Request
+    /// </summary>
+    public Task UpdateTransitCarnetRequests(
+        CarnetRequestWhereUniqueInput uniqueId,
+        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
+    );
 }

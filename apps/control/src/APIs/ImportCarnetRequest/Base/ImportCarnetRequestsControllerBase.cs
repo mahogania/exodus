@@ -120,4 +120,28 @@ public abstract class ImportCarnetRequestsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Carnet Request record for Import Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/carnetRequests")]
+    public async Task<ActionResult<List<CarnetRequest>>> GetCarnetRequest(
+        [FromRoute()] ImportCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var carnetRequest = await _service.GetCarnetRequest(uniqueId);
+        return Ok(carnetRequest);
+    }
+
+    /// <summary>
+    /// Get a Import Carnet Control record for Import Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/importCarnetControls")]
+    public async Task<ActionResult<List<ImportCarnetControl>>> GetImportCarnetControl(
+        [FromRoute()] ImportCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var importCarnetControl = await _service.GetImportCarnetControl(uniqueId);
+        return Ok(importCarnetControl);
+    }
 }

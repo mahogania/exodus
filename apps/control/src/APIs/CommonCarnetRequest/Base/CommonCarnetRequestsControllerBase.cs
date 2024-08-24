@@ -122,21 +122,18 @@ public abstract class CommonCarnetRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Connect multiple Extended Period Carnet Requests records to Common Carnet Request
+    /// Connect multiple Carnet Requests records to Common Carnet Request
     /// </summary>
-    [HttpPost("{Id}/extendedPeriodCarnetRequests")]
+    [HttpPost("{Id}/carnetRequests")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> ConnectExtendedPeriodCarnetRequests(
+    public async Task<ActionResult> ConnectCarnetRequests(
         [FromRoute()] CommonCarnetRequestWhereUniqueInput uniqueId,
-        [FromQuery()] ExtendedPeriodCarnetRequestWhereUniqueInput[] extendedPeriodCarnetRequestsId
+        [FromQuery()] CarnetRequestWhereUniqueInput[] carnetRequestsId
     )
     {
         try
         {
-            await _service.ConnectExtendedPeriodCarnetRequests(
-                uniqueId,
-                extendedPeriodCarnetRequestsId
-            );
+            await _service.ConnectCarnetRequests(uniqueId, carnetRequestsId);
         }
         catch (NotFoundException)
         {
@@ -147,21 +144,18 @@ public abstract class CommonCarnetRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Disconnect multiple Extended Period Carnet Requests records from Common Carnet Request
+    /// Disconnect multiple Carnet Requests records from Common Carnet Request
     /// </summary>
-    [HttpDelete("{Id}/extendedPeriodCarnetRequests")]
+    [HttpDelete("{Id}/carnetRequests")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> DisconnectExtendedPeriodCarnetRequests(
+    public async Task<ActionResult> DisconnectCarnetRequests(
         [FromRoute()] CommonCarnetRequestWhereUniqueInput uniqueId,
-        [FromBody()] ExtendedPeriodCarnetRequestWhereUniqueInput[] extendedPeriodCarnetRequestsId
+        [FromBody()] CarnetRequestWhereUniqueInput[] carnetRequestsId
     )
     {
         try
         {
-            await _service.DisconnectExtendedPeriodCarnetRequests(
-                uniqueId,
-                extendedPeriodCarnetRequestsId
-            );
+            await _service.DisconnectCarnetRequests(uniqueId, carnetRequestsId);
         }
         catch (NotFoundException)
         {
@@ -172,20 +166,18 @@ public abstract class CommonCarnetRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find multiple Extended Period Carnet Requests records for Common Carnet Request
+    /// Find multiple Carnet Requests records for Common Carnet Request
     /// </summary>
-    [HttpGet("{Id}/extendedPeriodCarnetRequests")]
+    [HttpGet("{Id}/carnetRequests")]
     [Authorize(Roles = "user")]
-    public async Task<
-        ActionResult<List<ExtendedPeriodCarnetRequest>>
-    > FindExtendedPeriodCarnetRequests(
+    public async Task<ActionResult<List<CarnetRequest>>> FindCarnetRequests(
         [FromRoute()] CommonCarnetRequestWhereUniqueInput uniqueId,
-        [FromQuery()] ExtendedPeriodCarnetRequestFindManyArgs filter
+        [FromQuery()] CarnetRequestFindManyArgs filter
     )
     {
         try
         {
-            return Ok(await _service.FindExtendedPeriodCarnetRequests(uniqueId, filter));
+            return Ok(await _service.FindCarnetRequests(uniqueId, filter));
         }
         catch (NotFoundException)
         {
@@ -194,107 +186,18 @@ public abstract class CommonCarnetRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update multiple Extended Period Carnet Requests records for Common Carnet Request
+    /// Update multiple Carnet Requests records for Common Carnet Request
     /// </summary>
-    [HttpPatch("{Id}/extendedPeriodCarnetRequests")]
+    [HttpPatch("{Id}/carnetRequests")]
     [Authorize(Roles = "user")]
-    public async Task<ActionResult> UpdateExtendedPeriodCarnetRequests(
+    public async Task<ActionResult> UpdateCarnetRequests(
         [FromRoute()] CommonCarnetRequestWhereUniqueInput uniqueId,
-        [FromBody()] ExtendedPeriodCarnetRequestWhereUniqueInput[] extendedPeriodCarnetRequestsId
+        [FromBody()] CarnetRequestWhereUniqueInput[] carnetRequestsId
     )
     {
         try
         {
-            await _service.UpdateExtendedPeriodCarnetRequests(
-                uniqueId,
-                extendedPeriodCarnetRequestsId
-            );
-        }
-        catch (NotFoundException)
-        {
-            return NotFound();
-        }
-
-        return NoContent();
-    }
-
-    /// <summary>
-    /// Connect multiple Transit Carnet Requests records to Common Carnet Request
-    /// </summary>
-    [HttpPost("{Id}/transitCarnetRequests")]
-    [Authorize(Roles = "user")]
-    public async Task<ActionResult> ConnectTransitCarnetRequests(
-        [FromRoute()] CommonCarnetRequestWhereUniqueInput uniqueId,
-        [FromQuery()] TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
-    )
-    {
-        try
-        {
-            await _service.ConnectTransitCarnetRequests(uniqueId, transitCarnetRequestsId);
-        }
-        catch (NotFoundException)
-        {
-            return NotFound();
-        }
-
-        return NoContent();
-    }
-
-    /// <summary>
-    /// Disconnect multiple Transit Carnet Requests records from Common Carnet Request
-    /// </summary>
-    [HttpDelete("{Id}/transitCarnetRequests")]
-    [Authorize(Roles = "user")]
-    public async Task<ActionResult> DisconnectTransitCarnetRequests(
-        [FromRoute()] CommonCarnetRequestWhereUniqueInput uniqueId,
-        [FromBody()] TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
-    )
-    {
-        try
-        {
-            await _service.DisconnectTransitCarnetRequests(uniqueId, transitCarnetRequestsId);
-        }
-        catch (NotFoundException)
-        {
-            return NotFound();
-        }
-
-        return NoContent();
-    }
-
-    /// <summary>
-    /// Find multiple Transit Carnet Requests records for Common Carnet Request
-    /// </summary>
-    [HttpGet("{Id}/transitCarnetRequests")]
-    [Authorize(Roles = "user")]
-    public async Task<ActionResult<List<TransitCarnetRequest>>> FindTransitCarnetRequests(
-        [FromRoute()] CommonCarnetRequestWhereUniqueInput uniqueId,
-        [FromQuery()] TransitCarnetRequestFindManyArgs filter
-    )
-    {
-        try
-        {
-            return Ok(await _service.FindTransitCarnetRequests(uniqueId, filter));
-        }
-        catch (NotFoundException)
-        {
-            return NotFound();
-        }
-    }
-
-    /// <summary>
-    /// Update multiple Transit Carnet Requests records for Common Carnet Request
-    /// </summary>
-    [HttpPatch("{Id}/transitCarnetRequests")]
-    [Authorize(Roles = "user")]
-    public async Task<ActionResult> UpdateTransitCarnetRequests(
-        [FromRoute()] CommonCarnetRequestWhereUniqueInput uniqueId,
-        [FromBody()] TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
-    )
-    {
-        try
-        {
-            await _service.UpdateTransitCarnetRequests(uniqueId, transitCarnetRequestsId);
+            await _service.UpdateCarnetRequests(uniqueId, carnetRequestsId);
         }
         catch (NotFoundException)
         {

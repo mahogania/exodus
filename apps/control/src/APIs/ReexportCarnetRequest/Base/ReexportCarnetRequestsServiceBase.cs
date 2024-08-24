@@ -39,6 +39,23 @@ public abstract class ReexportCarnetRequestsServiceBase : IReexportCarnetRequest
         {
             reexportCarnetRequest.Id = createDto.Id;
         }
+        if (createDto.CarnetRequest != null)
+        {
+            reexportCarnetRequest.CarnetRequest = await _context
+                .CarnetRequests.Where(carnetRequest =>
+                    createDto.CarnetRequest.Id == carnetRequest.Id
+                )
+                .FirstOrDefaultAsync();
+        }
+
+        if (createDto.ReexportCarnetControl != null)
+        {
+            reexportCarnetRequest.ReexportCarnetControl = await _context
+                .ReexportCarnetControls.Where(reexportCarnetControl =>
+                    createDto.ReexportCarnetControl.Id == reexportCarnetControl.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.ReexportCarnetRequests.Add(reexportCarnetRequest);
         await _context.SaveChangesAsync();
@@ -78,7 +95,9 @@ public abstract class ReexportCarnetRequestsServiceBase : IReexportCarnetRequest
     )
     {
         var reexportCarnetRequests = await _context
-            .ReexportCarnetRequests.ApplyWhere(findManyArgs.Where)
+            .ReexportCarnetRequests.Include(x => x.CarnetRequest)
+            .Include(x => x.ReexportCarnetControl)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -151,5 +170,45 @@ public abstract class ReexportCarnetRequestsServiceBase : IReexportCarnetRequest
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Carnet Request record for Reexport Carnet Request
+    /// </summary>
+    public async Task<CarnetRequest> GetCarnetRequest(
+        ReexportCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var reexportCarnetRequest = await _context
+            .ReexportCarnetRequests.Where(reexportCarnetRequest =>
+                reexportCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(reexportCarnetRequest => reexportCarnetRequest.CarnetRequest)
+            .FirstOrDefaultAsync();
+        if (reexportCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return reexportCarnetRequest.CarnetRequest.ToDto();
+    }
+
+    /// <summary>
+    /// Get a Reexport Carnet Control record for Reexport Carnet Request
+    /// </summary>
+    public async Task<ReexportCarnetControl> GetReexportCarnetControl(
+        ReexportCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var reexportCarnetRequest = await _context
+            .ReexportCarnetRequests.Where(reexportCarnetRequest =>
+                reexportCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(reexportCarnetRequest => reexportCarnetRequest.ReexportCarnetControl)
+            .FirstOrDefaultAsync();
+        if (reexportCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return reexportCarnetRequest.ReexportCarnetControl.ToDto();
     }
 }

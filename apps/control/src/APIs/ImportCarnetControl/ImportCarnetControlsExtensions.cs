@@ -18,6 +18,7 @@ public static class ImportCarnetControlsExtensions
             FirstRecordDateAndTime = model.FirstRecordDateAndTime,
             FirstRecorderId = model.FirstRecorderId,
             Id = model.Id,
+            ImportCarnetRequest = model.ImportCarnetRequest?.ToDto(),
             LastModificationDateAndTime = model.LastModificationDateAndTime,
             LastModifierId = model.LastModifierId,
             ManagementNumberOfCarnet = model.ManagementNumberOfCarnet,

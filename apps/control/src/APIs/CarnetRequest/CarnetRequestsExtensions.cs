@@ -11,9 +11,14 @@ public static class CarnetRequestsExtensions
         {
             ArticleCarnetRequests = model.ArticleCarnetRequests?.Select(x => x.Id).ToList(),
             CarnetTypeCode = model.CarnetTypeCode,
+            CommonCarnetRequest = model.CommonCarnetRequestId,
             CreatedAt = model.CreatedAt,
+            ExtendedPeriodCarnetRequests = model.ExtendedPeriodCarnetRequestsId,
             Id = model.Id,
+            ImportCarnetRequests = model.ImportCarnetRequests?.Select(x => x.Id).ToList(),
             ManagementNumberOfCarnet = model.ManagementNumberOfCarnet,
+            ReexportCarnetRequests = model.ReexportCarnetRequests?.Select(x => x.Id).ToList(),
+            TransitCarnetRequests = model.TransitCarnetRequests?.Select(x => x.Id).ToList(),
             UpdatedAt = model.UpdatedAt,
         };
     }
@@ -30,9 +35,17 @@ public static class CarnetRequestsExtensions
             ManagementNumberOfCarnet = updateDto.ManagementNumberOfCarnet
         };
 
+        if (updateDto.CommonCarnetRequest != null)
+        {
+            carnetRequest.CommonCarnetRequestId = updateDto.CommonCarnetRequest;
+        }
         if (updateDto.CreatedAt != null)
         {
             carnetRequest.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.ExtendedPeriodCarnetRequests != null)
+        {
+            carnetRequest.ExtendedPeriodCarnetRequestsId = updateDto.ExtendedPeriodCarnetRequests;
         }
         if (updateDto.UpdatedAt != null)
         {

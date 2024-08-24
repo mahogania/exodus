@@ -125,15 +125,15 @@ public abstract class ExtendedPeriodCarnetRequestsControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Get a Common Carnet Request record for Extended Period Carnet Request
+    /// Get a Carnet Request record for Extended Period Carnet Request
     /// </summary>
-    [HttpGet("{Id}/commonCarnetRequests")]
-    public async Task<ActionResult<List<CommonCarnetRequest>>> GetCommonCarnetRequest(
+    [HttpGet("{Id}/carnetRequests")]
+    public async Task<ActionResult<List<CarnetRequest>>> GetCarnetRequest(
         [FromRoute()] ExtendedPeriodCarnetRequestWhereUniqueInput uniqueId
     )
     {
-        var commonCarnetRequest = await _service.GetCommonCarnetRequest(uniqueId);
-        return Ok(commonCarnetRequest);
+        var carnetRequest = await _service.GetCarnetRequest(uniqueId);
+        return Ok(carnetRequest);
     }
 
     /// <summary>

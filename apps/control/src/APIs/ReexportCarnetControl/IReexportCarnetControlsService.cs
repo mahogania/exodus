@@ -45,4 +45,11 @@ public interface IReexportCarnetControlsService
         ReexportCarnetControlWhereUniqueInput uniqueId,
         ReexportCarnetControlUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Reexport Carnet Request record for Reexport Carnet Control
+    /// </summary>
+    public Task<ReexportCarnetRequest> GetReexportCarnetRequests(
+        ReexportCarnetControlWhereUniqueInput uniqueId
+    );
 }

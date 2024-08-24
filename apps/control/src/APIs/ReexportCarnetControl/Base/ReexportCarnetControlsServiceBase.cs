@@ -54,6 +54,14 @@ public abstract class ReexportCarnetControlsServiceBase : IReexportCarnetControl
         {
             reexportCarnetControl.Id = createDto.Id;
         }
+        if (createDto.ReexportCarnetRequests != null)
+        {
+            reexportCarnetControl.ReexportCarnetRequests = await _context
+                .ReexportCarnetRequests.Where(reexportCarnetRequest =>
+                    createDto.ReexportCarnetRequests.Id == reexportCarnetRequest.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.ReexportCarnetControls.Add(reexportCarnetControl);
         await _context.SaveChangesAsync();
@@ -93,7 +101,8 @@ public abstract class ReexportCarnetControlsServiceBase : IReexportCarnetControl
     )
     {
         var reexportCarnetControls = await _context
-            .ReexportCarnetControls.ApplyWhere(findManyArgs.Where)
+            .ReexportCarnetControls.Include(x => x.ReexportCarnetRequests)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -166,5 +175,25 @@ public abstract class ReexportCarnetControlsServiceBase : IReexportCarnetControl
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Reexport Carnet Request record for Reexport Carnet Control
+    /// </summary>
+    public async Task<ReexportCarnetRequest> GetReexportCarnetRequests(
+        ReexportCarnetControlWhereUniqueInput uniqueId
+    )
+    {
+        var reexportCarnetControl = await _context
+            .ReexportCarnetControls.Where(reexportCarnetControl =>
+                reexportCarnetControl.Id == uniqueId.Id
+            )
+            .Include(reexportCarnetControl => reexportCarnetControl.ReexportCarnetRequests)
+            .FirstOrDefaultAsync();
+        if (reexportCarnetControl == null)
+        {
+            throw new NotFoundException();
+        }
+        return reexportCarnetControl.ReexportCarnetRequests.ToDto();
     }
 }

@@ -84,24 +84,11 @@ public abstract class CommonCarnetRequestsServiceBase : ICommonCarnetRequestsSer
         {
             commonCarnetRequest.Id = createDto.Id;
         }
-        if (createDto.ExtendedPeriodCarnetRequests != null)
+        if (createDto.CarnetRequests != null)
         {
-            commonCarnetRequest.ExtendedPeriodCarnetRequests = await _context
-                .ExtendedPeriodCarnetRequests.Where(extendedPeriodCarnetRequest =>
-                    createDto
-                        .ExtendedPeriodCarnetRequests.Select(t => t.Id)
-                        .Contains(extendedPeriodCarnetRequest.Id)
-                )
-                .ToListAsync();
-        }
-
-        if (createDto.TransitCarnetRequests != null)
-        {
-            commonCarnetRequest.TransitCarnetRequests = await _context
-                .TransitCarnetRequests.Where(transitCarnetRequest =>
-                    createDto
-                        .TransitCarnetRequests.Select(t => t.Id)
-                        .Contains(transitCarnetRequest.Id)
+            commonCarnetRequest.CarnetRequests = await _context
+                .CarnetRequests.Where(carnetRequest =>
+                    createDto.CarnetRequests.Select(t => t.Id).Contains(carnetRequest.Id)
                 )
                 .ToListAsync();
         }
@@ -142,8 +129,7 @@ public abstract class CommonCarnetRequestsServiceBase : ICommonCarnetRequestsSer
     )
     {
         var commonCarnetRequests = await _context
-            .CommonCarnetRequests.Include(x => x.ExtendedPeriodCarnetRequests)
-            .Include(x => x.TransitCarnetRequests)
+            .CommonCarnetRequests.Include(x => x.CarnetRequests)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -196,22 +182,11 @@ public abstract class CommonCarnetRequestsServiceBase : ICommonCarnetRequestsSer
     {
         var commonCarnetRequest = updateDto.ToModel(uniqueId);
 
-        if (updateDto.ExtendedPeriodCarnetRequests != null)
+        if (updateDto.CarnetRequests != null)
         {
-            commonCarnetRequest.ExtendedPeriodCarnetRequests = await _context
-                .ExtendedPeriodCarnetRequests.Where(extendedPeriodCarnetRequest =>
-                    updateDto
-                        .ExtendedPeriodCarnetRequests.Select(t => t)
-                        .Contains(extendedPeriodCarnetRequest.Id)
-                )
-                .ToListAsync();
-        }
-
-        if (updateDto.TransitCarnetRequests != null)
-        {
-            commonCarnetRequest.TransitCarnetRequests = await _context
-                .TransitCarnetRequests.Where(transitCarnetRequest =>
-                    updateDto.TransitCarnetRequests.Select(t => t).Contains(transitCarnetRequest.Id)
+            commonCarnetRequest.CarnetRequests = await _context
+                .CarnetRequests.Where(carnetRequest =>
+                    updateDto.CarnetRequests.Select(t => t).Contains(carnetRequest.Id)
                 )
                 .ToListAsync();
         }
@@ -236,236 +211,111 @@ public abstract class CommonCarnetRequestsServiceBase : ICommonCarnetRequestsSer
     }
 
     /// <summary>
-    /// Connect multiple Extended Period Carnet Requests records to Common Carnet Request
+    /// Connect multiple Carnet Requests records to Common Carnet Request
     /// </summary>
-    public async Task ConnectExtendedPeriodCarnetRequests(
+    public async Task ConnectCarnetRequests(
         CommonCarnetRequestWhereUniqueInput uniqueId,
-        ExtendedPeriodCarnetRequestWhereUniqueInput[] extendedPeriodCarnetRequestsId
+        CarnetRequestWhereUniqueInput[] carnetRequestsId
     )
     {
         var parent = await _context
-            .CommonCarnetRequests.Include(x => x.ExtendedPeriodCarnetRequests)
+            .CommonCarnetRequests.Include(x => x.CarnetRequests)
             .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
         if (parent == null)
         {
             throw new NotFoundException();
         }
 
-        var extendedPeriodCarnetRequests = await _context
-            .ExtendedPeriodCarnetRequests.Where(t =>
-                extendedPeriodCarnetRequestsId.Select(x => x.Id).Contains(t.Id)
-            )
+        var carnetRequests = await _context
+            .CarnetRequests.Where(t => carnetRequestsId.Select(x => x.Id).Contains(t.Id))
             .ToListAsync();
-        if (extendedPeriodCarnetRequests.Count == 0)
+        if (carnetRequests.Count == 0)
         {
             throw new NotFoundException();
         }
 
-        var extendedPeriodCarnetRequestsToConnect = extendedPeriodCarnetRequests.Except(
-            parent.ExtendedPeriodCarnetRequests
-        );
+        var carnetRequestsToConnect = carnetRequests.Except(parent.CarnetRequests);
 
-        foreach (var extendedPeriodCarnetRequest in extendedPeriodCarnetRequestsToConnect)
+        foreach (var carnetRequest in carnetRequestsToConnect)
         {
-            parent.ExtendedPeriodCarnetRequests.Add(extendedPeriodCarnetRequest);
+            parent.CarnetRequests.Add(carnetRequest);
         }
 
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Disconnect multiple Extended Period Carnet Requests records from Common Carnet Request
+    /// Disconnect multiple Carnet Requests records from Common Carnet Request
     /// </summary>
-    public async Task DisconnectExtendedPeriodCarnetRequests(
+    public async Task DisconnectCarnetRequests(
         CommonCarnetRequestWhereUniqueInput uniqueId,
-        ExtendedPeriodCarnetRequestWhereUniqueInput[] extendedPeriodCarnetRequestsId
+        CarnetRequestWhereUniqueInput[] carnetRequestsId
     )
     {
         var parent = await _context
-            .CommonCarnetRequests.Include(x => x.ExtendedPeriodCarnetRequests)
+            .CommonCarnetRequests.Include(x => x.CarnetRequests)
             .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
         if (parent == null)
         {
             throw new NotFoundException();
         }
 
-        var extendedPeriodCarnetRequests = await _context
-            .ExtendedPeriodCarnetRequests.Where(t =>
-                extendedPeriodCarnetRequestsId.Select(x => x.Id).Contains(t.Id)
-            )
+        var carnetRequests = await _context
+            .CarnetRequests.Where(t => carnetRequestsId.Select(x => x.Id).Contains(t.Id))
             .ToListAsync();
 
-        foreach (var extendedPeriodCarnetRequest in extendedPeriodCarnetRequests)
+        foreach (var carnetRequest in carnetRequests)
         {
-            parent.ExtendedPeriodCarnetRequests?.Remove(extendedPeriodCarnetRequest);
+            parent.CarnetRequests?.Remove(carnetRequest);
         }
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    /// Find multiple Extended Period Carnet Requests records for Common Carnet Request
+    /// Find multiple Carnet Requests records for Common Carnet Request
     /// </summary>
-    public async Task<List<ExtendedPeriodCarnetRequest>> FindExtendedPeriodCarnetRequests(
+    public async Task<List<CarnetRequest>> FindCarnetRequests(
         CommonCarnetRequestWhereUniqueInput uniqueId,
-        ExtendedPeriodCarnetRequestFindManyArgs commonCarnetRequestFindManyArgs
+        CarnetRequestFindManyArgs commonCarnetRequestFindManyArgs
     )
     {
-        var extendedPeriodCarnetRequests = await _context
-            .ExtendedPeriodCarnetRequests.Where(m => m.CommonCarnetRequestId == uniqueId.Id)
+        var carnetRequests = await _context
+            .CarnetRequests.Where(m => m.CommonCarnetRequestId == uniqueId.Id)
             .ApplyWhere(commonCarnetRequestFindManyArgs.Where)
             .ApplySkip(commonCarnetRequestFindManyArgs.Skip)
             .ApplyTake(commonCarnetRequestFindManyArgs.Take)
             .ApplyOrderBy(commonCarnetRequestFindManyArgs.SortBy)
             .ToListAsync();
 
-        return extendedPeriodCarnetRequests.Select(x => x.ToDto()).ToList();
+        return carnetRequests.Select(x => x.ToDto()).ToList();
     }
 
     /// <summary>
-    /// Update multiple Extended Period Carnet Requests records for Common Carnet Request
+    /// Update multiple Carnet Requests records for Common Carnet Request
     /// </summary>
-    public async Task UpdateExtendedPeriodCarnetRequests(
+    public async Task UpdateCarnetRequests(
         CommonCarnetRequestWhereUniqueInput uniqueId,
-        ExtendedPeriodCarnetRequestWhereUniqueInput[] extendedPeriodCarnetRequestsId
+        CarnetRequestWhereUniqueInput[] carnetRequestsId
     )
     {
         var commonCarnetRequest = await _context
-            .CommonCarnetRequests.Include(t => t.ExtendedPeriodCarnetRequests)
+            .CommonCarnetRequests.Include(t => t.CarnetRequests)
             .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
         if (commonCarnetRequest == null)
         {
             throw new NotFoundException();
         }
 
-        var extendedPeriodCarnetRequests = await _context
-            .ExtendedPeriodCarnetRequests.Where(a =>
-                extendedPeriodCarnetRequestsId.Select(x => x.Id).Contains(a.Id)
-            )
+        var carnetRequests = await _context
+            .CarnetRequests.Where(a => carnetRequestsId.Select(x => x.Id).Contains(a.Id))
             .ToListAsync();
 
-        if (extendedPeriodCarnetRequests.Count == 0)
+        if (carnetRequests.Count == 0)
         {
             throw new NotFoundException();
         }
 
-        commonCarnetRequest.ExtendedPeriodCarnetRequests = extendedPeriodCarnetRequests;
-        await _context.SaveChangesAsync();
-    }
-
-    /// <summary>
-    /// Connect multiple Transit Carnet Requests records to Common Carnet Request
-    /// </summary>
-    public async Task ConnectTransitCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
-    )
-    {
-        var parent = await _context
-            .CommonCarnetRequests.Include(x => x.TransitCarnetRequests)
-            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
-        if (parent == null)
-        {
-            throw new NotFoundException();
-        }
-
-        var transitCarnetRequests = await _context
-            .TransitCarnetRequests.Where(t =>
-                transitCarnetRequestsId.Select(x => x.Id).Contains(t.Id)
-            )
-            .ToListAsync();
-        if (transitCarnetRequests.Count == 0)
-        {
-            throw new NotFoundException();
-        }
-
-        var transitCarnetRequestsToConnect = transitCarnetRequests.Except(
-            parent.TransitCarnetRequests
-        );
-
-        foreach (var transitCarnetRequest in transitCarnetRequestsToConnect)
-        {
-            parent.TransitCarnetRequests.Add(transitCarnetRequest);
-        }
-
-        await _context.SaveChangesAsync();
-    }
-
-    /// <summary>
-    /// Disconnect multiple Transit Carnet Requests records from Common Carnet Request
-    /// </summary>
-    public async Task DisconnectTransitCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
-    )
-    {
-        var parent = await _context
-            .CommonCarnetRequests.Include(x => x.TransitCarnetRequests)
-            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
-        if (parent == null)
-        {
-            throw new NotFoundException();
-        }
-
-        var transitCarnetRequests = await _context
-            .TransitCarnetRequests.Where(t =>
-                transitCarnetRequestsId.Select(x => x.Id).Contains(t.Id)
-            )
-            .ToListAsync();
-
-        foreach (var transitCarnetRequest in transitCarnetRequests)
-        {
-            parent.TransitCarnetRequests?.Remove(transitCarnetRequest);
-        }
-        await _context.SaveChangesAsync();
-    }
-
-    /// <summary>
-    /// Find multiple Transit Carnet Requests records for Common Carnet Request
-    /// </summary>
-    public async Task<List<TransitCarnetRequest>> FindTransitCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        TransitCarnetRequestFindManyArgs commonCarnetRequestFindManyArgs
-    )
-    {
-        var transitCarnetRequests = await _context
-            .TransitCarnetRequests.Where(m => m.CommonCarnetRequestId == uniqueId.Id)
-            .ApplyWhere(commonCarnetRequestFindManyArgs.Where)
-            .ApplySkip(commonCarnetRequestFindManyArgs.Skip)
-            .ApplyTake(commonCarnetRequestFindManyArgs.Take)
-            .ApplyOrderBy(commonCarnetRequestFindManyArgs.SortBy)
-            .ToListAsync();
-
-        return transitCarnetRequests.Select(x => x.ToDto()).ToList();
-    }
-
-    /// <summary>
-    /// Update multiple Transit Carnet Requests records for Common Carnet Request
-    /// </summary>
-    public async Task UpdateTransitCarnetRequests(
-        CommonCarnetRequestWhereUniqueInput uniqueId,
-        TransitCarnetRequestWhereUniqueInput[] transitCarnetRequestsId
-    )
-    {
-        var commonCarnetRequest = await _context
-            .CommonCarnetRequests.Include(t => t.TransitCarnetRequests)
-            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
-        if (commonCarnetRequest == null)
-        {
-            throw new NotFoundException();
-        }
-
-        var transitCarnetRequests = await _context
-            .TransitCarnetRequests.Where(a =>
-                transitCarnetRequestsId.Select(x => x.Id).Contains(a.Id)
-            )
-            .ToListAsync();
-
-        if (transitCarnetRequests.Count == 0)
-        {
-            throw new NotFoundException();
-        }
-
-        commonCarnetRequest.TransitCarnetRequests = transitCarnetRequests;
+        commonCarnetRequest.CarnetRequests = carnetRequests;
         await _context.SaveChangesAsync();
     }
 }

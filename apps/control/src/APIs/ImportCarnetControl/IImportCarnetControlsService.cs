@@ -43,4 +43,11 @@ public interface IImportCarnetControlsService
         ImportCarnetControlWhereUniqueInput uniqueId,
         ImportCarnetControlUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Import Carnet Request record for Import Carnet Control
+    /// </summary>
+    public Task<ImportCarnetRequest> GetImportCarnetRequest(
+        ImportCarnetControlWhereUniqueInput uniqueId
+    );
 }

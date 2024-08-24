@@ -10,6 +10,7 @@ public static class CommonCarnetRequestsExtensions
         return new CommonCarnetRequest
         {
             AttachedFileId = model.AttachedFileId,
+            CarnetRequests = model.CarnetRequests?.Select(x => x.Id).ToList(),
             CertificationOrganization = model.CertificationOrganization,
             CreatedAt = model.CreatedAt,
             CustomsOfficeCode = model.CustomsOfficeCode,
@@ -38,9 +39,6 @@ public static class CommonCarnetRequestsExtensions
             Destination_1TransportQuantity = model.Destination_1TransportQuantity,
             Destination_2TransportQuantity = model.Destination_2TransportQuantity,
             Destination_3TransportQuantity = model.Destination_3TransportQuantity,
-            ExtendedPeriodCarnetRequests = model
-                .ExtendedPeriodCarnetRequests?.Select(x => x.Id)
-                .ToList(),
             FinalModifierSId = model.FinalModifierSId,
             FirstRecorderSId = model.FirstRecorderSId,
             HolderSAddress = model.HolderSAddress,
@@ -61,7 +59,6 @@ public static class CommonCarnetRequestsExtensions
             TirNumber = model.TirNumber,
             TirRegistrationNumber = model.TirRegistrationNumber,
             TotalNumberOfGoods = model.TotalNumberOfGoods,
-            TransitCarnetRequests = model.TransitCarnetRequests?.Select(x => x.Id).ToList(),
             UpdatedAt = model.UpdatedAt,
             ValidUntil = model.ValidUntil,
             VehicleCertificationNoAndDate = model.VehicleCertificationNoAndDate,

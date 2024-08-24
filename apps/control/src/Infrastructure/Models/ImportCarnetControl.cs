@@ -31,6 +31,8 @@ public class ImportCarnetControlDbModel
     [Required()]
     public string Id { get; set; }
 
+    public ImportCarnetRequestDbModel? ImportCarnetRequest { get; set; } = null;
+
     public DateTime? LastModificationDateAndTime { get; set; }
 
     [StringLength(1000)]

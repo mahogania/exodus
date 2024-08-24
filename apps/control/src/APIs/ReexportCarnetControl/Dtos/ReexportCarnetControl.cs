@@ -36,6 +36,8 @@ public class ReexportCarnetControl
 
     public string? ProcessingStatusCode { get; set; }
 
+    public string? ReexportCarnetRequests { get; set; }
+
     public string? ReexportedArticles { get; set; }
 
     public string? ReferenceNo { get; set; }

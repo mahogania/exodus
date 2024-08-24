@@ -2,9 +2,9 @@ namespace Control.APIs.Dtos;
 
 public class TransitCarnetRequestCreateInput
 {
-    public string? CarnetTypeCode { get; set; }
+    public CarnetRequest? CarnetRequest { get; set; }
 
-    public CommonCarnetRequest? CommonCarnetRequest { get; set; }
+    public string? CarnetTypeCode { get; set; }
 
     public DateTime CreatedAt { get; set; }
 

@@ -120,4 +120,16 @@ public abstract class ReexportCarnetControlsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Reexport Carnet Request record for Reexport Carnet Control
+    /// </summary>
+    [HttpGet("{Id}/reexportCarnetRequests")]
+    public async Task<ActionResult<List<ReexportCarnetRequest>>> GetReexportCarnetRequests(
+        [FromRoute()] ReexportCarnetControlWhereUniqueInput uniqueId
+    )
+    {
+        var reexportCarnetRequest = await _service.GetReexportCarnetRequests(uniqueId);
+        return Ok(reexportCarnetRequest);
+    }
 }

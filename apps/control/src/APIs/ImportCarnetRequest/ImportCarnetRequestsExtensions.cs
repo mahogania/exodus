@@ -10,9 +10,11 @@ public static class ImportCarnetRequestsExtensions
         return new ImportCarnetRequest
         {
             CarnetNumber = model.CarnetNumber,
+            CarnetRequest = model.CarnetRequestId,
             CarnetTypeCode = model.CarnetTypeCode,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
+            ImportCarnetControl = model.ImportCarnetControlId,
             ManagementNumberOfCarnet = model.ManagementNumberOfCarnet,
             ReferenceNo = model.ReferenceNo,
             UpdatedAt = model.UpdatedAt,
@@ -33,9 +35,17 @@ public static class ImportCarnetRequestsExtensions
             ReferenceNo = updateDto.ReferenceNo
         };
 
+        if (updateDto.CarnetRequest != null)
+        {
+            importCarnetRequest.CarnetRequestId = updateDto.CarnetRequest;
+        }
         if (updateDto.CreatedAt != null)
         {
             importCarnetRequest.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.ImportCarnetControl != null)
+        {
+            importCarnetRequest.ImportCarnetControlId = updateDto.ImportCarnetControl;
         }
         if (updateDto.UpdatedAt != null)
         {

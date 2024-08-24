@@ -54,6 +54,11 @@ public class ReexportCarnetControlDbModel
     [StringLength(1000)]
     public string? ProcessingStatusCode { get; set; }
 
+    public string? ReexportCarnetRequestsId { get; set; }
+
+    [ForeignKey(nameof(ReexportCarnetRequestsId))]
+    public ReexportCarnetRequestDbModel? ReexportCarnetRequests { get; set; } = null;
+
     [StringLength(1000)]
     public string? ReexportedArticles { get; set; }
 

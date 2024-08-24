@@ -4,6 +4,8 @@ public class ReexportCarnetRequest
 {
     public string? CarnetNumber { get; set; }
 
+    public string? CarnetRequest { get; set; }
+
     public string? CarnetTypeCode { get; set; }
 
     public DateTime CreatedAt { get; set; }
@@ -11,6 +13,8 @@ public class ReexportCarnetRequest
     public string Id { get; set; }
 
     public string? ManagementNumberOfCarnet { get; set; }
+
+    public string? ReexportCarnetControl { get; set; }
 
     public string? ReferenceNo { get; set; }
 
