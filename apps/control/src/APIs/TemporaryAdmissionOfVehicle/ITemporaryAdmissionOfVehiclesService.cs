@@ -6,14 +6,14 @@ namespace Control.APIs;
 public interface ITemporaryAdmissionOfVehiclesService
 {
     /// <summary>
-    /// Create one TEMPORARY ADMISSION OF VEHICLE
+    /// Create one Temporary Admission Of Vehicle
     /// </summary>
     public Task<TemporaryAdmissionOfVehicle> CreateTemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleCreateInput temporaryadmissionofvehicle
     );
 
     /// <summary>
-    /// Delete one TEMPORARY ADMISSION OF VEHICLE
+    /// Delete one Temporary Admission Of Vehicle
     /// </summary>
     public Task DeleteTemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId
@@ -27,21 +27,21 @@ public interface ITemporaryAdmissionOfVehiclesService
     );
 
     /// <summary>
-    /// Meta data about TEMPORARY ADMISSION OF VEHICLE records
+    /// Meta data about Temporary Admission Of Vehicle records
     /// </summary>
     public Task<MetadataDto> TemporaryAdmissionOfVehiclesMeta(
         TemporaryAdmissionOfVehicleFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one TEMPORARY ADMISSION OF VEHICLE
+    /// Get one Temporary Admission Of Vehicle
     /// </summary>
     public Task<TemporaryAdmissionOfVehicle> TemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one TEMPORARY ADMISSION OF VEHICLE
+    /// Update one Temporary Admission Of Vehicle
     /// </summary>
     public Task UpdateTemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId,

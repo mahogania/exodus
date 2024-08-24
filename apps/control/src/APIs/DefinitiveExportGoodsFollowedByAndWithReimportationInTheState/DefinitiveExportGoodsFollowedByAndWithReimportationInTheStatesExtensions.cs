@@ -31,7 +31,6 @@ public static class DefinitiveExportGoodsFollowedByAndWithReimportationInTheStat
             StorageLocation = model.StorageLocation,
             SuppressionOn = model.SuppressionOn,
             TechnicalDesignationOfTheMaterials = model.TechnicalDesignationOfTheMaterials,
-            UnknownField = model.UnknownField,
             UpdatedAt = model.UpdatedAt,
             Value = model.Value,
             ValueInCurrencyOfTheGoods = model.ValueInCurrencyOfTheGoods,
@@ -65,7 +64,6 @@ public static class DefinitiveExportGoodsFollowedByAndWithReimportationInTheStat
                 StorageLocation = updateDto.StorageLocation,
                 SuppressionOn = updateDto.SuppressionOn,
                 TechnicalDesignationOfTheMaterials = updateDto.TechnicalDesignationOfTheMaterials,
-                UnknownField = updateDto.UnknownField,
                 Value = updateDto.Value,
                 ValueInCurrencyOfTheGoods = updateDto.ValueInCurrencyOfTheGoods
             };

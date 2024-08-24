@@ -19,7 +19,7 @@ public abstract class TemporaryAdmissionOfVehiclesControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Create one TEMPORARY ADMISSION OF VEHICLE
+    /// Create one Temporary Admission Of Vehicle
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -37,7 +37,7 @@ public abstract class TemporaryAdmissionOfVehiclesControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Delete one TEMPORARY ADMISSION OF VEHICLE
+    /// Delete one Temporary Admission Of Vehicle
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -70,7 +70,7 @@ public abstract class TemporaryAdmissionOfVehiclesControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Meta data about TEMPORARY ADMISSION OF VEHICLE records
+    /// Meta data about Temporary Admission Of Vehicle records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> TemporaryAdmissionOfVehiclesMeta(
@@ -81,7 +81,7 @@ public abstract class TemporaryAdmissionOfVehiclesControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Get one TEMPORARY ADMISSION OF VEHICLE
+    /// Get one Temporary Admission Of Vehicle
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -100,7 +100,7 @@ public abstract class TemporaryAdmissionOfVehiclesControllerBase : ControllerBas
     }
 
     /// <summary>
-    /// Update one TEMPORARY ADMISSION OF VEHICLE
+    /// Update one Temporary Admission Of Vehicle
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]

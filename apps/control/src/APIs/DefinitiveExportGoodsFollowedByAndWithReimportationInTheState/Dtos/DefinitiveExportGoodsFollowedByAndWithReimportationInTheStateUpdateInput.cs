@@ -40,8 +40,6 @@ public class DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateUpdate
 
     public string? TechnicalDesignationOfTheMaterials { get; set; }
 
-    public double? UnknownField { get; set; }
-
     public DateTime? UpdatedAt { get; set; }
 
     public double? Value { get; set; }

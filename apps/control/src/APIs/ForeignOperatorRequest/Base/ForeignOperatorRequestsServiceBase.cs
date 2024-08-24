@@ -19,7 +19,7 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
     }
 
     /// <summary>
-    /// Create one FOREIGN OPERATOR REQUEST
+    /// Create one Foreign Operator Request
     /// </summary>
     public async Task<ForeignOperatorRequest> CreateForeignOperatorRequest(
         ForeignOperatorRequestCreateInput createDto
@@ -56,6 +56,12 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
         {
             foreignOperatorRequest.Id = createDto.Id;
         }
+        if (createDto.Request != null)
+        {
+            foreignOperatorRequest.Request = await _context
+                .Journals.Where(journal => createDto.Request.Id == journal.Id)
+                .FirstOrDefaultAsync();
+        }
 
         _context.ForeignOperatorRequests.Add(foreignOperatorRequest);
         await _context.SaveChangesAsync();
@@ -73,7 +79,7 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
     }
 
     /// <summary>
-    /// Delete one FOREIGN OPERATOR REQUEST
+    /// Delete one Foreign Operator Request
     /// </summary>
     public async Task DeleteForeignOperatorRequest(ForeignOperatorRequestWhereUniqueInput uniqueId)
     {
@@ -95,7 +101,8 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
     )
     {
         var foreignOperatorRequests = await _context
-            .ForeignOperatorRequests.ApplyWhere(findManyArgs.Where)
+            .ForeignOperatorRequests.Include(x => x.Request)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -106,7 +113,7 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
     }
 
     /// <summary>
-    /// Meta data about FOREIGN OPERATOR REQUEST records
+    /// Meta data about Foreign Operator Request records
     /// </summary>
     public async Task<MetadataDto> ForeignOperatorRequestsMeta(
         ForeignOperatorRequestFindManyArgs findManyArgs
@@ -120,7 +127,7 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
     }
 
     /// <summary>
-    /// Get one FOREIGN OPERATOR REQUEST
+    /// Get one Foreign Operator Request
     /// </summary>
     public async Task<ForeignOperatorRequest> ForeignOperatorRequest(
         ForeignOperatorRequestWhereUniqueInput uniqueId
@@ -142,7 +149,7 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
     }
 
     /// <summary>
-    /// Update one FOREIGN OPERATOR REQUEST
+    /// Update one Foreign Operator Request
     /// </summary>
     public async Task UpdateForeignOperatorRequest(
         ForeignOperatorRequestWhereUniqueInput uniqueId,
@@ -168,5 +175,23 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Request record for Foreign Operator Request
+    /// </summary>
+    public async Task<Journal> GetRequest(ForeignOperatorRequestWhereUniqueInput uniqueId)
+    {
+        var foreignOperatorRequest = await _context
+            .ForeignOperatorRequests.Where(foreignOperatorRequest =>
+                foreignOperatorRequest.Id == uniqueId.Id
+            )
+            .Include(foreignOperatorRequest => foreignOperatorRequest.Request)
+            .FirstOrDefaultAsync();
+        if (foreignOperatorRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return foreignOperatorRequest.Request.ToDto();
     }
 }

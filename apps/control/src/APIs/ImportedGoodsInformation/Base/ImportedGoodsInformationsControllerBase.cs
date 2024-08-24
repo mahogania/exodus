@@ -19,7 +19,7 @@ public abstract class ImportedGoodsInformationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one IMPORTED GOODS INFORMATION
+    /// Create one Imported Goods Information
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -37,7 +37,7 @@ public abstract class ImportedGoodsInformationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one IMPORTED GOODS INFORMATION
+    /// Delete one Imported Goods Information
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -70,7 +70,7 @@ public abstract class ImportedGoodsInformationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Meta data about IMPORTED GOODS INFORMATION records
+    /// Meta data about Imported Goods Information records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ImportedGoodsInformationsMeta(
@@ -81,7 +81,7 @@ public abstract class ImportedGoodsInformationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Get one IMPORTED GOODS INFORMATION
+    /// Get one Imported Goods Information
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -100,7 +100,7 @@ public abstract class ImportedGoodsInformationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one IMPORTED GOODS INFORMATION
+    /// Update one Imported Goods Information
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]

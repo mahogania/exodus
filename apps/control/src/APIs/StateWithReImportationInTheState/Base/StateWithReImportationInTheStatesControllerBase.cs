@@ -21,7 +21,7 @@ public abstract class StateWithReImportationInTheStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Create one STATE WITH RE-IMPORTATION IN THE STATE
+    /// Create one State With ReImportation In The State
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -40,7 +40,7 @@ public abstract class StateWithReImportationInTheStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Delete one STATE WITH RE-IMPORTATION IN THE STATE
+    /// Delete one State With ReImportation In The State
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -75,7 +75,7 @@ public abstract class StateWithReImportationInTheStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Meta data about STATE WITH RE-IMPORTATION IN THE STATE records
+    /// Meta data about State With ReImportation In The State records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> StateWithReImportationInTheStatesMeta(
@@ -86,7 +86,7 @@ public abstract class StateWithReImportationInTheStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Get one STATE WITH RE-IMPORTATION IN THE STATE
+    /// Get one State With ReImportation In The State
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -107,7 +107,7 @@ public abstract class StateWithReImportationInTheStatesControllerBase : Controll
     }
 
     /// <summary>
-    /// Update one STATE WITH RE-IMPORTATION IN THE STATE
+    /// Update one State With ReImportation In The State
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]

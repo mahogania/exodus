@@ -169,6 +169,13 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
                 .FirstOrDefaultAsync();
         }
 
+        if (createDto.Journal != null)
+        {
+            commonDetailedDeclaration.Journal = await _context
+                .Journals.Where(journal => createDto.Journal.Id == journal.Id)
+                .FirstOrDefaultAsync();
+        }
+
         if (createDto.Operator != null)
         {
             commonDetailedDeclaration.Operator = await _context
@@ -218,7 +225,7 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
     {
         var commonDetailedDeclarations = await _context
               .CommonDetailedDeclarations
-      .Include(x => x.Articles).Include(x => x.Operator).Include(x => x.ValueDeclaration).Include(x => x.ArticlesExpectedForReImportExport).Include(x => x.Container).Include(x => x.Document).Include(x => x.Assessment).Include(x => x.Changes)
+      .Include(x => x.Articles).Include(x => x.Operator).Include(x => x.ValueDeclaration).Include(x => x.ArticlesExpectedForReImportExport).Include(x => x.Container).Include(x => x.Document).Include(x => x.Assessment).Include(x => x.Changes).Include(x => x.Journal)
       .ApplyWhere(findManyArgs.Where)
       .ApplySkip(findManyArgs.Skip)
       .ApplyTake(findManyArgs.Take)
@@ -401,6 +408,22 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
 
         commonDetailedDeclaration.ArticlesExpectedForReImportExport = expectedReimportReexportArticles;
         await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Get a Journal record for Common Detailed Declaration
+    /// </summary>
+    public async Task<Journal> GetJournal(CommonDetailedDeclarationWhereUniqueInput uniqueId)
+    {
+        var commonDetailedDeclaration = await _context
+              .CommonDetailedDeclarations.Where(commonDetailedDeclaration => commonDetailedDeclaration.Id == uniqueId.Id)
+      .Include(commonDetailedDeclaration => commonDetailedDeclaration.Journal)
+      .FirstOrDefaultAsync();
+        if (commonDetailedDeclaration == null)
+        {
+            throw new NotFoundException();
+        }
+        return commonDetailedDeclaration.Journal.ToDto();
     }
 
 }

@@ -77,4 +77,9 @@ public interface ICommonDetailedDeclarationsService
         CommonDetailedDeclarationWhereUniqueInput uniqueId,
         ExpectedReimportReexportArticleWhereUniqueInput[] expectedReimportReexportArticlesId
     );
+
+    /// <summary>
+    /// Get a Journal record for Common Detailed Declaration
+    /// </summary>
+    public Task<Journal> GetJournal(CommonDetailedDeclarationWhereUniqueInput uniqueId);
 }

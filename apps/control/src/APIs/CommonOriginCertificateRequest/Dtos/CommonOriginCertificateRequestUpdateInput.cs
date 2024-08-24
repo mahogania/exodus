@@ -72,6 +72,8 @@ public class CommonOriginCertificateRequestUpdateInput
 
     public string? RemarkContent { get; set; }
 
+    public string? Request { get; set; }
+
     public string? RequestDate { get; set; }
 
     public string? SuppressionOn { get; set; }

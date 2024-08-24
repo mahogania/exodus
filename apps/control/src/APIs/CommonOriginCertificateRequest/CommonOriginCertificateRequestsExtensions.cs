@@ -47,6 +47,7 @@ public static class CommonOriginCertificateRequestsExtensions
             RecipientSName = model.RecipientSName,
             RectificationFrequency = model.RectificationFrequency,
             RemarkContent = model.RemarkContent,
+            Request = model.RequestId,
             RequestDate = model.RequestDate,
             SuppressionOn = model.SuppressionOn,
             TinOfTheDestination = model.TinOfTheDestination,
@@ -104,6 +105,10 @@ public static class CommonOriginCertificateRequestsExtensions
         if (updateDto.CreatedAt != null)
         {
             commonOriginCertificateRequest.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.Request != null)
+        {
+            commonOriginCertificateRequest.RequestId = updateDto.Request;
         }
         if (updateDto.UpdatedAt != null)
         {

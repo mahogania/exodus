@@ -72,6 +72,8 @@ public class CommonOriginCertificateRequestCreateInput
 
     public string? RemarkContent { get; set; }
 
+    public Journal? Request { get; set; }
+
     public string? RequestDate { get; set; }
 
     public string? SuppressionOn { get; set; }

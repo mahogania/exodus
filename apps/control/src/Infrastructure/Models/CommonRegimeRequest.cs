@@ -53,6 +53,11 @@ public class CommonRegimeRequestDbModel
     [Required()]
     public string Id { get; set; }
 
+    public string? JournalId { get; set; }
+
+    [ForeignKey(nameof(JournalId))]
+    public JournalDbModel? Journal { get; set; } = null;
+
     [StringLength(1000)]
     public string? ProcessingStatusCode { get; set; }
 

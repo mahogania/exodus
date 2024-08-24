@@ -59,6 +59,11 @@ public class ForeignOperatorRequestDbModel
     [StringLength(1000)]
     public string? ProcessingStatusCode { get; set; }
 
+    public string? RequestId { get; set; }
+
+    [ForeignKey(nameof(RequestId))]
+    public JournalDbModel? Request { get; set; } = null;
+
     [StringLength(1000)]
     public string? RequestDate { get; set; }
 

@@ -120,4 +120,16 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Journal record for Common Regime Request
+    /// </summary>
+    [HttpGet("{Id}/journals")]
+    public async Task<ActionResult<List<Journal>>> GetJournal(
+        [FromRoute()] CommonRegimeRequestWhereUniqueInput uniqueId
+    )
+    {
+        var journal = await _service.GetJournal(uniqueId);
+        return Ok(journal);
+    }
 }

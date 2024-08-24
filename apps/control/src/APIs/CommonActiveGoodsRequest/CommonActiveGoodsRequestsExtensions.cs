@@ -10,7 +10,9 @@ public static class CommonActiveGoodsRequestsExtensions
         return new CommonActiveGoodsRequest
         {
             CreatedAt = model.CreatedAt,
+            Details = model.Details?.Select(x => x.Id).ToList(),
             Id = model.Id,
+            Journal = model.JournalId,
             UpdatedAt = model.UpdatedAt,
         };
     }
@@ -25,6 +27,10 @@ public static class CommonActiveGoodsRequestsExtensions
         if (updateDto.CreatedAt != null)
         {
             commonActiveGoodsRequest.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.Journal != null)
+        {
+            commonActiveGoodsRequest.JournalId = updateDto.Journal;
         }
         if (updateDto.UpdatedAt != null)
         {

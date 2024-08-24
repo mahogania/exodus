@@ -43,4 +43,9 @@ public interface ICommonRegimeRequestsService
         CommonRegimeRequestWhereUniqueInput uniqueId,
         CommonRegimeRequestUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Journal record for Common Regime Request
+    /// </summary>
+    public Task<Journal> GetJournal(CommonRegimeRequestWhereUniqueInput uniqueId);
 }

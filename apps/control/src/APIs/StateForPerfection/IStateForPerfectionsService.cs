@@ -6,14 +6,14 @@ namespace Control.APIs;
 public interface IStateForPerfectionsService
 {
     /// <summary>
-    /// Create one STATE FOR PERFECTION
+    /// Create one State For Perfection
     /// </summary>
     public Task<StateForPerfection> CreateStateForPerfection(
         StateForPerfectionCreateInput stateforperfection
     );
 
     /// <summary>
-    /// Delete one STATE FOR PERFECTION
+    /// Delete one State For Perfection
     /// </summary>
     public Task DeleteStateForPerfection(StateForPerfectionWhereUniqueInput uniqueId);
 
@@ -25,17 +25,17 @@ public interface IStateForPerfectionsService
     );
 
     /// <summary>
-    /// Meta data about STATE FOR PERFECTION records
+    /// Meta data about State For Perfection records
     /// </summary>
     public Task<MetadataDto> StateForPerfectionsMeta(StateForPerfectionFindManyArgs findManyArgs);
 
     /// <summary>
-    /// Get one STATE FOR PERFECTION
+    /// Get one State For Perfection
     /// </summary>
     public Task<StateForPerfection> StateForPerfection(StateForPerfectionWhereUniqueInput uniqueId);
 
     /// <summary>
-    /// Update one STATE FOR PERFECTION
+    /// Update one State For Perfection
     /// </summary>
     public Task UpdateStateForPerfection(
         StateForPerfectionWhereUniqueInput uniqueId,

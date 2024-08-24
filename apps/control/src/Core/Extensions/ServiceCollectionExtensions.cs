@@ -16,6 +16,7 @@ public static class ServiceCollectionExtensions
             IAtWithReExportationInTheStatesService,
             AtWithReExportationInTheStatesService
         >();
+        services.AddScoped<ICancellationRequestsService, CancellationRequestsService>();
         services.AddScoped<
             IChangeInTheDetailedDeclarationsService,
             ChangeInTheDetailedDeclarationsService
@@ -36,17 +37,13 @@ public static class ServiceCollectionExtensions
             IContainerOfTheDetailedDeclarationCustomsService,
             ContainerOfTheDetailedDeclarationCustomsService
         >();
-        services.AddScoped<
-            ICustomsClearanceOfPostalGoodsService,
-            CustomsClearanceOfPostalGoodsService
-        >();
         services.AddScoped<ICustomsDeclarationBondsService, CustomsDeclarationBondsService>();
         services.AddScoped<
             IDefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesService,
             DefinitiveExportGoodsFollowedByAndWithReimportationInTheStatesService
         >();
-        services.AddScoped<IDemandForRcoClresService, DemandForRcoClresService>();
         services.AddScoped<IDetailedDeclarationTaxesService, DetailedDeclarationTaxesService>();
+        services.AddScoped<IDetailOfActiveGoodsService, DetailOfActiveGoodsService>();
         services.AddScoped<
             IDetailOfRequestForOriginCertificatesService,
             DetailOfRequestForOriginCertificatesService
@@ -56,16 +53,8 @@ public static class ServiceCollectionExtensions
             DetailOfTheApprovalOfTheRegimeRequestsService
         >();
         services.AddScoped<
-            IDetailsOfAtGoodsForActivePerfectingsService,
-            DetailsOfAtGoodsForActivePerfectingsService
-        >();
-        services.AddScoped<
             IDetailsOfGoodsForPassivePerfectionsService,
             DetailsOfGoodsForPassivePerfectionsService
-        >();
-        services.AddScoped<
-            IDetailsOfTheCustomsClearanceOfPostalGoodsService,
-            DetailsOfTheCustomsClearanceOfPostalGoodsService
         >();
         services.AddScoped<
             IDirectImportationExportationsService,
@@ -115,10 +104,6 @@ public static class ServiceCollectionExtensions
             ImportExportDetailedStatementsService
         >();
         services.AddScoped<
-            IInformationForDeterminingOriginsService,
-            InformationForDeterminingOriginsService
-        >();
-        services.AddScoped<
             IInformationOfGoodsAtAndStandardExchangesService,
             InformationOfGoodsAtAndStandardExchangesService
         >();
@@ -130,7 +115,9 @@ public static class ServiceCollectionExtensions
             IInfosGoodsToBeReprovisionedsService,
             InfosGoodsToBeReprovisionedsService
         >();
+        services.AddScoped<IItinerariesService, ItinerariesService>();
         services.AddScoped<IJointDocumentsService, JointDocumentsService>();
+        services.AddScoped<IJournalsService, JournalsService>();
         services.AddScoped<IMacSubjectToAuthorizationsService, MacSubjectToAuthorizationsService>();
         services.AddScoped<
             IMacSuiteAtWithReexportationInTheStatesService,
@@ -146,6 +133,10 @@ public static class ServiceCollectionExtensions
         >();
         services.AddScoped<IOperatorsService, OperatorsService>();
         services.AddScoped<
+            IOriginDeterminingInformationsService,
+            OriginDeterminingInformationsService
+        >();
+        services.AddScoped<
             IPlaceOfExecutionAndWithReImportationInStatesService,
             PlaceOfExecutionAndWithReImportationInStatesService
         >();
@@ -153,29 +144,31 @@ public static class ServiceCollectionExtensions
             IPlaceOfExecutionAtWithReexportationInTheStatesService,
             PlaceOfExecutionAtWithReexportationInTheStatesService
         >();
+        services.AddScoped<IPostalGoodsClearancesService, PostalGoodsClearancesService>();
+        services.AddScoped<
+            IPostalGoodsClearanceDetailsService,
+            PostalGoodsClearanceDetailsService
+        >();
+        services.AddScoped<
+            IPostalParcelSimplifiedClearancesService,
+            PostalParcelSimplifiedClearancesService
+        >();
         services.AddScoped<
             IRatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsService,
             RatesOfQuantitiesOfMaterialContainedInExportedOrToBeExportedGoodsService
         >();
         services.AddScoped<IRawMaterialsService, RawMaterialsService>();
+        services.AddScoped<IRCODemandsService, RCODemandsService>();
         services.AddScoped<
             IReimportedGoodsForPerfectingsService,
             ReimportedGoodsForPerfectingsService
         >();
-        services.AddScoped<IReplenishmentInDutyFreesService, ReplenishmentInDutyFreesService>();
-        services.AddScoped<
-            IRequestForCancellationOfTheDetailedDeclarationCustomsService,
-            RequestForCancellationOfTheDetailedDeclarationCustomsService
-        >();
+        services.AddScoped<IReplenishmentsService, ReplenishmentsService>();
         services.AddScoped<IRequestForCommonCarnetsService, RequestForCommonCarnetsService>();
         services.AddScoped<IRequestForRecoursesService, RequestForRecoursesService>();
         services.AddScoped<
             IRequestForTirCarnetOfTheArticlesService,
             RequestForTirCarnetOfTheArticlesService
-        >();
-        services.AddScoped<
-            ISimplifiedCustomsClearanceOfPostalParcelsService,
-            SimplifiedCustomsClearanceOfPostalParcelsService
         >();
         services.AddScoped<IStateForPerfectionsService, StateForPerfectionsService>();
         services.AddScoped<
@@ -194,16 +187,9 @@ public static class ServiceCollectionExtensions
             ITemporaryAdmissionOfVehiclesService,
             TemporaryAdmissionOfVehiclesService
         >();
-        services.AddScoped<
-            ITextZoneForSpecifyingTheItinerariesService,
-            TextZoneForSpecifyingTheItinerariesService
-        >();
         services.AddScoped<IValueAssessmentsService, ValueAssessmentsService>();
         services.AddScoped<IValueDeclarationsService, ValueDeclarationsService>();
         services.AddScoped<IVehiclesService, VehiclesService>();
-        services.AddScoped<
-            IWarehouseTransferPublicPrivatesService,
-            WarehouseTransferPublicPrivatesService
-        >();
+        services.AddScoped<IWarehouseTransfersService, WarehouseTransfersService>();
     }
 }

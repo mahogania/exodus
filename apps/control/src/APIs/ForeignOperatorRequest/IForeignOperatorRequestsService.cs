@@ -6,14 +6,14 @@ namespace Control.APIs;
 public interface IForeignOperatorRequestsService
 {
     /// <summary>
-    /// Create one FOREIGN OPERATOR REQUEST
+    /// Create one Foreign Operator Request
     /// </summary>
     public Task<ForeignOperatorRequest> CreateForeignOperatorRequest(
         ForeignOperatorRequestCreateInput foreignoperatorrequest
     );
 
     /// <summary>
-    /// Delete one FOREIGN OPERATOR REQUEST
+    /// Delete one Foreign Operator Request
     /// </summary>
     public Task DeleteForeignOperatorRequest(ForeignOperatorRequestWhereUniqueInput uniqueId);
 
@@ -25,24 +25,29 @@ public interface IForeignOperatorRequestsService
     );
 
     /// <summary>
-    /// Meta data about FOREIGN OPERATOR REQUEST records
+    /// Meta data about Foreign Operator Request records
     /// </summary>
     public Task<MetadataDto> ForeignOperatorRequestsMeta(
         ForeignOperatorRequestFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one FOREIGN OPERATOR REQUEST
+    /// Get one Foreign Operator Request
     /// </summary>
     public Task<ForeignOperatorRequest> ForeignOperatorRequest(
         ForeignOperatorRequestWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one FOREIGN OPERATOR REQUEST
+    /// Update one Foreign Operator Request
     /// </summary>
     public Task UpdateForeignOperatorRequest(
         ForeignOperatorRequestWhereUniqueInput uniqueId,
         ForeignOperatorRequestUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Request record for Foreign Operator Request
+    /// </summary>
+    public Task<Journal> GetRequest(ForeignOperatorRequestWhereUniqueInput uniqueId);
 }

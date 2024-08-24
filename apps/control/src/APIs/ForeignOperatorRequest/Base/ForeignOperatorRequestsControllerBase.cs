@@ -19,7 +19,7 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one FOREIGN OPERATOR REQUEST
+    /// Create one Foreign Operator Request
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -37,7 +37,7 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one FOREIGN OPERATOR REQUEST
+    /// Delete one Foreign Operator Request
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -70,7 +70,7 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Meta data about FOREIGN OPERATOR REQUEST records
+    /// Meta data about Foreign Operator Request records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ForeignOperatorRequestsMeta(
@@ -81,7 +81,7 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Get one FOREIGN OPERATOR REQUEST
+    /// Get one Foreign Operator Request
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -100,7 +100,7 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one FOREIGN OPERATOR REQUEST
+    /// Update one Foreign Operator Request
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
@@ -119,5 +119,17 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
         }
 
         return NoContent();
+    }
+
+    /// <summary>
+    /// Get a Request record for Foreign Operator Request
+    /// </summary>
+    [HttpGet("{Id}/journals")]
+    public async Task<ActionResult<List<Journal>>> GetRequest(
+        [FromRoute()] ForeignOperatorRequestWhereUniqueInput uniqueId
+    )
+    {
+        var journal = await _service.GetRequest(uniqueId);
+        return Ok(journal);
     }
 }

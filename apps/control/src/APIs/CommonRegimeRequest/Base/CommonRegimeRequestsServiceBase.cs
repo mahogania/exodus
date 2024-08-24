@@ -56,6 +56,12 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
         {
             commonRegimeRequest.Id = createDto.Id;
         }
+        if (createDto.Journal != null)
+        {
+            commonRegimeRequest.Journal = await _context
+                .Journals.Where(journal => createDto.Journal.Id == journal.Id)
+                .FirstOrDefaultAsync();
+        }
 
         _context.CommonRegimeRequests.Add(commonRegimeRequest);
         await _context.SaveChangesAsync();
@@ -93,7 +99,8 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
     )
     {
         var commonRegimeRequests = await _context
-            .CommonRegimeRequests.ApplyWhere(findManyArgs.Where)
+            .CommonRegimeRequests.Include(x => x.Journal)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -162,5 +169,23 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Journal record for Common Regime Request
+    /// </summary>
+    public async Task<Journal> GetJournal(CommonRegimeRequestWhereUniqueInput uniqueId)
+    {
+        var commonRegimeRequest = await _context
+            .CommonRegimeRequests.Where(commonRegimeRequest =>
+                commonRegimeRequest.Id == uniqueId.Id
+            )
+            .Include(commonRegimeRequest => commonRegimeRequest.Journal)
+            .FirstOrDefaultAsync();
+        if (commonRegimeRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return commonRegimeRequest.Journal.ToDto();
     }
 }

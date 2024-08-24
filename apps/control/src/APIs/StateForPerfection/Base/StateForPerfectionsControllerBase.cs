@@ -19,7 +19,7 @@ public abstract class StateForPerfectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one STATE FOR PERFECTION
+    /// Create one State For Perfection
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -37,7 +37,7 @@ public abstract class StateForPerfectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one STATE FOR PERFECTION
+    /// Delete one State For Perfection
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -70,7 +70,7 @@ public abstract class StateForPerfectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Meta data about STATE FOR PERFECTION records
+    /// Meta data about State For Perfection records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> StateForPerfectionsMeta(
@@ -81,7 +81,7 @@ public abstract class StateForPerfectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Get one STATE FOR PERFECTION
+    /// Get one State For Perfection
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -100,7 +100,7 @@ public abstract class StateForPerfectionsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one STATE FOR PERFECTION
+    /// Update one State For Perfection
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]

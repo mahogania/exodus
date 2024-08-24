@@ -112,6 +112,8 @@ public class CommonDetailedDeclaration
 
     public string? InvoiceNumber { get; set; }
 
+    public string Journal { get; set; }
+
     public string? LoadingLocationCode { get; set; }
 
     public double? ManagementAndMonitoringClearancePeriod { get; set; }

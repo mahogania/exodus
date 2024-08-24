@@ -66,6 +66,7 @@ public static class CommonDetailedDeclarationsExtensions
             InitialDeclarationDate = model.InitialDeclarationDate,
             InvoiceIssuanceDate = model.InvoiceIssuanceDate,
             InvoiceNumber = model.InvoiceNumber,
+            Journal = model.Journal?.ToDto(),
             LoadingLocationCode = model.LoadingLocationCode,
             ManagementAndMonitoringClearancePeriod = model.ManagementAndMonitoringClearancePeriod,
             MeansOfTransportIdentificationNumber = model.MeansOfTransportIdentificationNumber,

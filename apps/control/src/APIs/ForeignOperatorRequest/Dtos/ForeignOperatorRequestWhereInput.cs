@@ -38,6 +38,8 @@ public class ForeignOperatorRequestWhereInput
 
     public string? ProcessingStatusCode { get; set; }
 
+    public string? Request { get; set; }
+
     public string? RequestDate { get; set; }
 
     public string? RequestReasonContent { get; set; }

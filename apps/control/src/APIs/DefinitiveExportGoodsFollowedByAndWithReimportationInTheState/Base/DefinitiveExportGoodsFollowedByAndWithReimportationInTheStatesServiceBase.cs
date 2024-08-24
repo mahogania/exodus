@@ -50,7 +50,6 @@ public abstract class DefinitiveExportGoodsFollowedByAndWithReimportationInTheSt
                 StorageLocation = createDto.StorageLocation,
                 SuppressionOn = createDto.SuppressionOn,
                 TechnicalDesignationOfTheMaterials = createDto.TechnicalDesignationOfTheMaterials,
-                UnknownField = createDto.UnknownField,
                 UpdatedAt = createDto.UpdatedAt,
                 Value = createDto.Value,
                 ValueInCurrencyOfTheGoods = createDto.ValueInCurrencyOfTheGoods

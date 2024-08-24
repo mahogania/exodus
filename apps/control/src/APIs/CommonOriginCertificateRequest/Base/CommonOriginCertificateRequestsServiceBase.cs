@@ -84,6 +84,13 @@ public abstract class CommonOriginCertificateRequestsServiceBase
                 .ToListAsync();
         }
 
+        if (createDto.Request != null)
+        {
+            commonOriginCertificateRequest.Request = await _context
+                .Journals.Where(journal => createDto.Request.Id == journal.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.CommonOriginCertificateRequests.Add(commonOriginCertificateRequest);
         await _context.SaveChangesAsync();
 
@@ -126,6 +133,7 @@ public abstract class CommonOriginCertificateRequestsServiceBase
     {
         var commonOriginCertificateRequests = await _context
             .CommonOriginCertificateRequests.Include(x => x.Details)
+            .Include(x => x.Request)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -214,5 +222,23 @@ public abstract class CommonOriginCertificateRequestsServiceBase
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Request record for Common Origin Certificate Request
+    /// </summary>
+    public async Task<Journal> GetRequest(CommonOriginCertificateRequestWhereUniqueInput uniqueId)
+    {
+        var commonOriginCertificateRequest = await _context
+            .CommonOriginCertificateRequests.Where(commonOriginCertificateRequest =>
+                commonOriginCertificateRequest.Id == uniqueId.Id
+            )
+            .Include(commonOriginCertificateRequest => commonOriginCertificateRequest.Request)
+            .FirstOrDefaultAsync();
+        if (commonOriginCertificateRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return commonOriginCertificateRequest.Request.ToDto();
     }
 }

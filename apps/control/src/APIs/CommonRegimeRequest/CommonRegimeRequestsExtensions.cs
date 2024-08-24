@@ -25,6 +25,7 @@ public static class CommonRegimeRequestsExtensions
             FinalOn = model.FinalOn,
             FirstRecorderSId = model.FirstRecorderSId,
             Id = model.Id,
+            Journal = model.JournalId,
             ProcessingStatusCode = model.ProcessingStatusCode,
             RectificationFrequency = model.RectificationFrequency,
             RegimeRequestContent = model.RegimeRequestContent,
@@ -70,6 +71,10 @@ public static class CommonRegimeRequestsExtensions
         if (updateDto.CreatedAt != null)
         {
             commonRegimeRequest.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.Journal != null)
+        {
+            commonRegimeRequest.JournalId = updateDto.Journal;
         }
         if (updateDto.UpdatedAt != null)
         {

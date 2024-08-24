@@ -6,14 +6,14 @@ namespace Control.APIs;
 public interface IImportedGoodsInformationsService
 {
     /// <summary>
-    /// Create one IMPORTED GOODS INFORMATION
+    /// Create one Imported Goods Information
     /// </summary>
     public Task<ImportedGoodsInformation> CreateImportedGoodsInformation(
         ImportedGoodsInformationCreateInput importedgoodsinformation
     );
 
     /// <summary>
-    /// Delete one IMPORTED GOODS INFORMATION
+    /// Delete one Imported Goods Information
     /// </summary>
     public Task DeleteImportedGoodsInformation(ImportedGoodsInformationWhereUniqueInput uniqueId);
 
@@ -25,21 +25,21 @@ public interface IImportedGoodsInformationsService
     );
 
     /// <summary>
-    /// Meta data about IMPORTED GOODS INFORMATION records
+    /// Meta data about Imported Goods Information records
     /// </summary>
     public Task<MetadataDto> ImportedGoodsInformationsMeta(
         ImportedGoodsInformationFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one IMPORTED GOODS INFORMATION
+    /// Get one Imported Goods Information
     /// </summary>
     public Task<ImportedGoodsInformation> ImportedGoodsInformation(
         ImportedGoodsInformationWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one IMPORTED GOODS INFORMATION
+    /// Update one Imported Goods Information
     /// </summary>
     public Task UpdateImportedGoodsInformation(
         ImportedGoodsInformationWhereUniqueInput uniqueId,

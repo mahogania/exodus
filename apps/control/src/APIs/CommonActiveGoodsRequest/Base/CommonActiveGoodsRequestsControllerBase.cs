@@ -123,4 +123,16 @@ public abstract class CommonActiveGoodsRequestsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Journal record for Common Active Goods Request
+    /// </summary>
+    [HttpGet("{Id}/journals")]
+    public async Task<ActionResult<List<Journal>>> GetJournal(
+        [FromRoute()] CommonActiveGoodsRequestWhereUniqueInput uniqueId
+    )
+    {
+        var journal = await _service.GetJournal(uniqueId);
+        return Ok(journal);
+    }
 }

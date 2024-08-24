@@ -173,6 +173,8 @@ public class CommonDetailedDeclarationDbModel
     [StringLength(1000)]
     public string? InvoiceNumber { get; set; }
 
+    public JournalDbModel Journal { get; set; } = null;
+
     [StringLength(1000)]
     public string? LoadingLocationCode { get; set; }
 

@@ -19,7 +19,7 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
     }
 
     /// <summary>
-    /// Create one TEMPORARY ADMISSION OF VEHICLE
+    /// Create one Temporary Admission Of Vehicle
     /// </summary>
     public async Task<TemporaryAdmissionOfVehicle> CreateTemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleCreateInput createDto
@@ -63,7 +63,7 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
     }
 
     /// <summary>
-    /// Delete one TEMPORARY ADMISSION OF VEHICLE
+    /// Delete one Temporary Admission Of Vehicle
     /// </summary>
     public async Task DeleteTemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId
@@ -100,7 +100,7 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
     }
 
     /// <summary>
-    /// Meta data about TEMPORARY ADMISSION OF VEHICLE records
+    /// Meta data about Temporary Admission Of Vehicle records
     /// </summary>
     public async Task<MetadataDto> TemporaryAdmissionOfVehiclesMeta(
         TemporaryAdmissionOfVehicleFindManyArgs findManyArgs
@@ -114,7 +114,7 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
     }
 
     /// <summary>
-    /// Get one TEMPORARY ADMISSION OF VEHICLE
+    /// Get one Temporary Admission Of Vehicle
     /// </summary>
     public async Task<TemporaryAdmissionOfVehicle> TemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId
@@ -136,7 +136,7 @@ public abstract class TemporaryAdmissionOfVehiclesServiceBase : ITemporaryAdmiss
     }
 
     /// <summary>
-    /// Update one TEMPORARY ADMISSION OF VEHICLE
+    /// Update one Temporary Admission Of Vehicle
     /// </summary>
     public async Task UpdateTemporaryAdmissionOfVehicle(
         TemporaryAdmissionOfVehicleWhereUniqueInput uniqueId,

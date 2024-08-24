@@ -62,9 +62,6 @@ public class DefinitiveExportGoodsFollowedByAndWithReimportationInTheStateDbMode
     [StringLength(1000)]
     public string? TechnicalDesignationOfTheMaterials { get; set; }
 
-    [Range(-999999999, 999999999)]
-    public double? UnknownField { get; set; }
-
     [Required()]
     public DateTime UpdatedAt { get; set; }
 

@@ -19,7 +19,7 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
     }
 
     /// <summary>
-    /// Create one IMPORTED GOODS INFORMATION
+    /// Create one Imported Goods Information
     /// </summary>
     public async Task<ImportedGoodsInformation> CreateImportedGoodsInformation(
         ImportedGoodsInformationCreateInput createDto
@@ -79,7 +79,7 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
     }
 
     /// <summary>
-    /// Delete one IMPORTED GOODS INFORMATION
+    /// Delete one Imported Goods Information
     /// </summary>
     public async Task DeleteImportedGoodsInformation(
         ImportedGoodsInformationWhereUniqueInput uniqueId
@@ -116,7 +116,7 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
     }
 
     /// <summary>
-    /// Meta data about IMPORTED GOODS INFORMATION records
+    /// Meta data about Imported Goods Information records
     /// </summary>
     public async Task<MetadataDto> ImportedGoodsInformationsMeta(
         ImportedGoodsInformationFindManyArgs findManyArgs
@@ -130,7 +130,7 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
     }
 
     /// <summary>
-    /// Get one IMPORTED GOODS INFORMATION
+    /// Get one Imported Goods Information
     /// </summary>
     public async Task<ImportedGoodsInformation> ImportedGoodsInformation(
         ImportedGoodsInformationWhereUniqueInput uniqueId
@@ -152,7 +152,7 @@ public abstract class ImportedGoodsInformationsServiceBase : IImportedGoodsInfor
     }
 
     /// <summary>
-    /// Update one IMPORTED GOODS INFORMATION
+    /// Update one Imported Goods Information
     /// </summary>
     public async Task UpdateImportedGoodsInformation(
         ImportedGoodsInformationWhereUniqueInput uniqueId,

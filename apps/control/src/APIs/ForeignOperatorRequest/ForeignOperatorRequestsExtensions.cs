@@ -27,6 +27,7 @@ public static class ForeignOperatorRequestsExtensions
             Id = model.Id,
             ProcessingDate = model.ProcessingDate,
             ProcessingStatusCode = model.ProcessingStatusCode,
+            Request = model.RequestId,
             RequestDate = model.RequestDate,
             RequestReasonContent = model.RequestReasonContent,
             RequestTypeCode = model.RequestTypeCode,
@@ -70,6 +71,10 @@ public static class ForeignOperatorRequestsExtensions
         if (updateDto.CreatedAt != null)
         {
             foreignOperatorRequest.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.Request != null)
+        {
+            foreignOperatorRequest.RequestId = updateDto.Request;
         }
         if (updateDto.UpdatedAt != null)
         {

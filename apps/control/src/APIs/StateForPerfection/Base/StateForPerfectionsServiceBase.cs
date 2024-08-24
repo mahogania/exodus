@@ -19,7 +19,7 @@ public abstract class StateForPerfectionsServiceBase : IStateForPerfectionsServi
     }
 
     /// <summary>
-    /// Create one STATE FOR PERFECTION
+    /// Create one State For Perfection
     /// </summary>
     public async Task<StateForPerfection> CreateStateForPerfection(
         StateForPerfectionCreateInput createDto
@@ -79,7 +79,7 @@ public abstract class StateForPerfectionsServiceBase : IStateForPerfectionsServi
     }
 
     /// <summary>
-    /// Delete one STATE FOR PERFECTION
+    /// Delete one State For Perfection
     /// </summary>
     public async Task DeleteStateForPerfection(StateForPerfectionWhereUniqueInput uniqueId)
     {
@@ -110,7 +110,7 @@ public abstract class StateForPerfectionsServiceBase : IStateForPerfectionsServi
     }
 
     /// <summary>
-    /// Meta data about STATE FOR PERFECTION records
+    /// Meta data about State For Perfection records
     /// </summary>
     public async Task<MetadataDto> StateForPerfectionsMeta(
         StateForPerfectionFindManyArgs findManyArgs
@@ -122,7 +122,7 @@ public abstract class StateForPerfectionsServiceBase : IStateForPerfectionsServi
     }
 
     /// <summary>
-    /// Get one STATE FOR PERFECTION
+    /// Get one State For Perfection
     /// </summary>
     public async Task<StateForPerfection> StateForPerfection(
         StateForPerfectionWhereUniqueInput uniqueId
@@ -144,7 +144,7 @@ public abstract class StateForPerfectionsServiceBase : IStateForPerfectionsServi
     }
 
     /// <summary>
-    /// Update one STATE FOR PERFECTION
+    /// Update one State For Perfection
     /// </summary>
     public async Task UpdateStateForPerfection(
         StateForPerfectionWhereUniqueInput uniqueId,

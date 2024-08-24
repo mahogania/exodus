@@ -35,6 +35,21 @@ public abstract class CommonActiveGoodsRequestsServiceBase : ICommonActiveGoodsR
         {
             commonActiveGoodsRequest.Id = createDto.Id;
         }
+        if (createDto.Details != null)
+        {
+            commonActiveGoodsRequest.Details = await _context
+                .DetailOfActiveGoodsItems.Where(detailOfActiveGoods =>
+                    createDto.Details.Select(t => t.Id).Contains(detailOfActiveGoods.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (createDto.Journal != null)
+        {
+            commonActiveGoodsRequest.Journal = await _context
+                .Journals.Where(journal => createDto.Journal.Id == journal.Id)
+                .FirstOrDefaultAsync();
+        }
 
         _context.CommonActiveGoodsRequests.Add(commonActiveGoodsRequest);
         await _context.SaveChangesAsync();
@@ -78,7 +93,9 @@ public abstract class CommonActiveGoodsRequestsServiceBase : ICommonActiveGoodsR
     )
     {
         var commonActiveGoodsRequests = await _context
-            .CommonActiveGoodsRequests.ApplyWhere(findManyArgs.Where)
+            .CommonActiveGoodsRequests.Include(x => x.Details)
+            .Include(x => x.Journal)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -134,6 +151,15 @@ public abstract class CommonActiveGoodsRequestsServiceBase : ICommonActiveGoodsR
     {
         var commonActiveGoodsRequest = updateDto.ToModel(uniqueId);
 
+        if (updateDto.Details != null)
+        {
+            commonActiveGoodsRequest.Details = await _context
+                .DetailOfActiveGoodsItems.Where(detailOfActiveGoods =>
+                    updateDto.Details.Select(t => t).Contains(detailOfActiveGoods.Id)
+                )
+                .ToListAsync();
+        }
+
         _context.Entry(commonActiveGoodsRequest).State = EntityState.Modified;
 
         try
@@ -151,5 +177,23 @@ public abstract class CommonActiveGoodsRequestsServiceBase : ICommonActiveGoodsR
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Journal record for Common Active Goods Request
+    /// </summary>
+    public async Task<Journal> GetJournal(CommonActiveGoodsRequestWhereUniqueInput uniqueId)
+    {
+        var commonActiveGoodsRequest = await _context
+            .CommonActiveGoodsRequests.Where(commonActiveGoodsRequest =>
+                commonActiveGoodsRequest.Id == uniqueId.Id
+            )
+            .Include(commonActiveGoodsRequest => commonActiveGoodsRequest.Journal)
+            .FirstOrDefaultAsync();
+        if (commonActiveGoodsRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return commonActiveGoodsRequest.Journal.ToDto();
     }
 }

@@ -45,4 +45,9 @@ public interface ICommonActiveGoodsRequestsService
         CommonActiveGoodsRequestWhereUniqueInput uniqueId,
         CommonActiveGoodsRequestUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Journal record for Common Active Goods Request
+    /// </summary>
+    public Task<Journal> GetJournal(CommonActiveGoodsRequestWhereUniqueInput uniqueId);
 }

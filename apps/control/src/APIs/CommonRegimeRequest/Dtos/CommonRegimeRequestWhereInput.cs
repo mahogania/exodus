@@ -34,6 +34,8 @@ public class CommonRegimeRequestWhereInput
 
     public string? Id { get; set; }
 
+    public string? Journal { get; set; }
+
     public string? ProcessingStatusCode { get; set; }
 
     public double? RectificationFrequency { get; set; }
