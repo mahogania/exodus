@@ -15,6 +15,7 @@ public static class CommonExpressClearancesExtensions
             CreatedAt = model.CreatedAt,
             CustomsOfficeCode = model.CustomsOfficeCode,
             DeletionOn = model.DeletionOn,
+            Details = model.Details?.Select(x => x.Id).ToList(),
             ExpressClearanceRequestNumber = model.ExpressClearanceRequestNumber,
             ExpressOperatorCode = model.ExpressOperatorCode,
             ExpressOperatorName = model.ExpressOperatorName,

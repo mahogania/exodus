@@ -46,6 +46,9 @@ public class CommonOriginCertificateRequestDbModel
     [StringLength(1000)]
     public string? DestinationCountryCode { get; set; }
 
+    public List<DetailOfRequestForOriginCertificateDbModel>? Details { get; set; } =
+        new List<DetailOfRequestForOriginCertificateDbModel>();
+
     [StringLength(1000)]
     public string? ExporterSAddress { get; set; }
 

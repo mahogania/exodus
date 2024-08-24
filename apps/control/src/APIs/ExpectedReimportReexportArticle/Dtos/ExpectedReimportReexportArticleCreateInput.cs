@@ -8,6 +8,8 @@ public class ExpectedReimportReexportArticleCreateInput
 
     public double? ArticleNetWeight { get; set; }
 
+    public CommonDetailedDeclaration? CommonDetailedDeclarations { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public DateTime? DateAndTimeOfFinalModification { get; set; }

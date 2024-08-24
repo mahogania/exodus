@@ -10,6 +10,8 @@ public class ExpressCustomsClearanceDetails
 
     public string? CommercialDenomination { get; set; }
 
+    public string? CommonExpressClearance { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public string? CustomsClearanceCode { get; set; }

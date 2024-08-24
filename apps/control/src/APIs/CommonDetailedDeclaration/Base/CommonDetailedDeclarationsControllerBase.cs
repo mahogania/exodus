@@ -19,7 +19,7 @@ public abstract class CommonDetailedDeclarationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one COMMON DETAILED DECLARATION
+    /// Create one Common Detailed Declaration
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -37,7 +37,7 @@ public abstract class CommonDetailedDeclarationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one COMMON DETAILED DECLARATION
+    /// Delete one Common Detailed Declaration
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -70,7 +70,7 @@ public abstract class CommonDetailedDeclarationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Meta data about COMMON DETAILED DECLARATION records
+    /// Meta data about Common Detailed Declaration records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CommonDetailedDeclarationsMeta(
@@ -81,7 +81,7 @@ public abstract class CommonDetailedDeclarationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Get one COMMON DETAILED DECLARATION
+    /// Get one Common Detailed Declaration
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -100,7 +100,7 @@ public abstract class CommonDetailedDeclarationsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one COMMON DETAILED DECLARATION
+    /// Update one Common Detailed Declaration
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
@@ -114,6 +114,106 @@ public abstract class CommonDetailedDeclarationsControllerBase : ControllerBase
             await _service.UpdateCommonDetailedDeclaration(
                 uniqueId,
                 commonDetailedDeclarationUpdateDto
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Connect multiple Articles Expected for Re Import/Export records to COMMON DETAILED DECLARATION
+    /// </summary>
+    [HttpPost("{Id}/expectedReimportReexportArticles")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> ConnectArticlesExpectedForReImportExport(
+        [FromRoute()] CommonDetailedDeclarationWhereUniqueInput uniqueId,
+        [FromQuery()]
+            ExpectedReimportReexportArticleWhereUniqueInput[] expectedReimportReexportArticlesId
+    )
+    {
+        try
+        {
+            await _service.ConnectArticlesExpectedForReImportExport(
+                uniqueId,
+                expectedReimportReexportArticlesId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Articles Expected for Re Import/Export records from COMMON DETAILED DECLARATION
+    /// </summary>
+    [HttpDelete("{Id}/expectedReimportReexportArticles")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> DisconnectArticlesExpectedForReImportExport(
+        [FromRoute()] CommonDetailedDeclarationWhereUniqueInput uniqueId,
+        [FromBody()]
+            ExpectedReimportReexportArticleWhereUniqueInput[] expectedReimportReexportArticlesId
+    )
+    {
+        try
+        {
+            await _service.DisconnectArticlesExpectedForReImportExport(
+                uniqueId,
+                expectedReimportReexportArticlesId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple Articles Expected for Re Import/Export records for COMMON DETAILED DECLARATION
+    /// </summary>
+    [HttpGet("{Id}/expectedReimportReexportArticles")]
+    [Authorize(Roles = "user")]
+    public async Task<
+        ActionResult<List<ExpectedReimportReexportArticle>>
+    > FindArticlesExpectedForReImportExport(
+        [FromRoute()] CommonDetailedDeclarationWhereUniqueInput uniqueId,
+        [FromQuery()] ExpectedReimportReexportArticleFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindArticlesExpectedForReImportExport(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple Articles Expected for Re Import/Export records for COMMON DETAILED DECLARATION
+    /// </summary>
+    [HttpPatch("{Id}/expectedReimportReexportArticles")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> UpdateArticlesExpectedForReImportExport(
+        [FromRoute()] CommonDetailedDeclarationWhereUniqueInput uniqueId,
+        [FromBody()]
+            ExpectedReimportReexportArticleWhereUniqueInput[] expectedReimportReexportArticlesId
+    )
+    {
+        try
+        {
+            await _service.UpdateArticlesExpectedForReImportExport(
+                uniqueId,
+                expectedReimportReexportArticlesId
             );
         }
         catch (NotFoundException)

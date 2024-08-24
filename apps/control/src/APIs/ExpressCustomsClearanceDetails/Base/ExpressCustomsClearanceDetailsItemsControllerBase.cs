@@ -21,7 +21,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Create one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Create one Express Customs Clearance Detail
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -41,7 +41,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Delete one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Delete one Express Customs Clearance Detail
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -62,7 +62,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Find many EXPRESS CUSTOMS CLEARANCE DETAILSItems
+    /// Find many Express Customs Clearance Details
     /// </summary>
     [HttpGet()]
     [Authorize(Roles = "user")]
@@ -76,7 +76,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Meta data about EXPRESS CUSTOMS CLEARANCE DETAILS records
+    /// Meta data about Express Customs Clearance Detail records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ExpressCustomsClearanceDetailsItemsMeta(
@@ -87,7 +87,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Get one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Get one Express Customs Clearance Detail
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -106,7 +106,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
     }
 
     /// <summary>
-    /// Update one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Update one Express Customs Clearance Detail
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
@@ -129,5 +129,17 @@ public abstract class ExpressCustomsClearanceDetailsItemsControllerBase : Contro
         }
 
         return NoContent();
+    }
+
+    /// <summary>
+    /// Get a COMMON EXPRESS CLEARANCE record for EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// </summary>
+    [HttpGet("{Id}/commonExpressClearances")]
+    public async Task<ActionResult<List<CommonExpressClearance>>> GetCommonExpressClearance(
+        [FromRoute()] ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
+    )
+    {
+        var commonExpressClearance = await _service.GetCommonExpressClearance(uniqueId);
+        return Ok(commonExpressClearance);
     }
 }

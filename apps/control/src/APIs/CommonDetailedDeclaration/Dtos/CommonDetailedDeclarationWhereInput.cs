@@ -2,7 +2,13 @@ namespace Control.APIs.Dtos;
 
 public class CommonDetailedDeclarationWhereInput
 {
-    public string? ArrivalDate { get; set; }
+    public DateTime? ArrivalDate { get; set; }
+
+    public List<string>? Articles { get; set; }
+
+    public List<string>? ArticlesExpectedForReImportExport { get; set; }
+
+    public string? Assessment { get; set; }
 
     public string? BankAgencyCode { get; set; }
 
@@ -10,7 +16,11 @@ public class CommonDetailedDeclarationWhereInput
 
     public string? BillOfLadingNumber { get; set; }
 
+    public List<string>? Changes { get; set; }
+
     public string? ConditionCode_2 { get; set; }
+
+    public string? Container { get; set; }
 
     public string? ContainerizedCargoOn { get; set; }
 
@@ -46,7 +56,9 @@ public class CommonDetailedDeclarationWhereInput
 
     public string? DetailedDeclarationNumber { get; set; }
 
-    public string? DomiciliationDate { get; set; }
+    public string? Document { get; set; }
+
+    public DateTime? DomiciliationDate { get; set; }
 
     public string? DomiciliationStatusCode { get; set; }
 
@@ -117,6 +129,8 @@ public class CommonDetailedDeclarationWhereInput
     public double? NumberOfItems { get; set; }
 
     public string? OperationType { get; set; }
+
+    public string? Operator { get; set; }
 
     public string? PartialCustomsClearanceTypeCode { get; set; }
 
@@ -193,6 +207,8 @@ public class CommonDetailedDeclarationWhereInput
     public string? UnloadingLocationCode { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
+
+    public string? ValueDeclaration { get; set; }
 
     public string? ValueDeclarationOn { get; set; }
 

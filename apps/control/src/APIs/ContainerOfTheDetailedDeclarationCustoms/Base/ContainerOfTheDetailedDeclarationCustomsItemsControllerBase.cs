@@ -21,7 +21,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBas
     }
 
     /// <summary>
-    /// Create one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    /// Create one Container Of The Detailed Declaration
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -42,7 +42,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBas
     }
 
     /// <summary>
-    /// Delete one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    /// Delete one Container Of The Detailed Declaration
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -77,7 +77,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBas
     }
 
     /// <summary>
-    /// Meta data about CONTAINER OF THE DETAILED DECLARATION (CUSTOMS) records
+    /// Meta data about Container Of The Detailed Declaration records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ContainerOfTheDetailedDeclarationCustomsItemsMeta(
@@ -88,7 +88,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBas
     }
 
     /// <summary>
-    /// Get one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    /// Get one Container Of The Detailed Declaration
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -109,7 +109,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBas
     }
 
     /// <summary>
-    /// Update one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    /// Update one Container Of The Detailed Declaration
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
@@ -132,5 +132,17 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsControllerBas
         }
 
         return NoContent();
+    }
+
+    /// <summary>
+    /// Get a COMMON DETAILED DECLARATIONS record for CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    /// </summary>
+    [HttpGet("{Id}/commonDetailedDeclarations")]
+    public async Task<ActionResult<List<CommonDetailedDeclaration>>> GetCommonDetailedDeclarations(
+        [FromRoute()] ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+    )
+    {
+        var commonDetailedDeclaration = await _service.GetCommonDetailedDeclarations(uniqueId);
+        return Ok(commonDetailedDeclaration);
     }
 }

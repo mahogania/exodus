@@ -6,45 +6,52 @@ namespace Control.APIs;
 public interface IExpressCustomsClearanceDetailsItemsService
 {
     /// <summary>
-    /// Create one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Create one Express Customs Clearance Detail
     /// </summary>
     public Task<ExpressCustomsClearanceDetails> CreateExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsCreateInput expresscustomsclearancedetails
     );
 
     /// <summary>
-    /// Delete one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Delete one Express Customs Clearance Detail
     /// </summary>
     public Task DeleteExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Find many EXPRESS CUSTOMS CLEARANCE DETAILSItems
+    /// Find many Express Customs Clearance Details
     /// </summary>
     public Task<List<ExpressCustomsClearanceDetails>> ExpressCustomsClearanceDetailsItems(
         ExpressCustomsClearanceDetailsFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Meta data about EXPRESS CUSTOMS CLEARANCE DETAILS records
+    /// Meta data about Express Customs Clearance Detail records
     /// </summary>
     public Task<MetadataDto> ExpressCustomsClearanceDetailsItemsMeta(
         ExpressCustomsClearanceDetailsFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Get one Express Customs Clearance Detail
     /// </summary>
     public Task<ExpressCustomsClearanceDetails> ExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Update one Express Customs Clearance Detail
     /// </summary>
     public Task UpdateExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId,
         ExpressCustomsClearanceDetailsUpdateInput updateDto
+    );
+
+    /// <summary>
+    /// Get a COMMON EXPRESS CLEARANCE record for EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// </summary>
+    public Task<CommonExpressClearance> GetCommonExpressClearance(
+        ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
     );
 }

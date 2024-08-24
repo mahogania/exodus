@@ -20,7 +20,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
     }
 
     /// <summary>
-    /// Create one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Create one Express Customs Clearance Detail
     /// </summary>
     public async Task<ExpressCustomsClearanceDetails> CreateExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsCreateInput createDto
@@ -77,6 +77,14 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
         {
             expressCustomsClearanceDetails.Id = createDto.Id;
         }
+        if (createDto.CommonExpressClearance != null)
+        {
+            expressCustomsClearanceDetails.CommonExpressClearance = await _context
+                .CommonExpressClearances.Where(commonExpressClearance =>
+                    createDto.CommonExpressClearance.Id == commonExpressClearance.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.ExpressCustomsClearanceDetailsItems.Add(expressCustomsClearanceDetails);
         await _context.SaveChangesAsync();
@@ -94,7 +102,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
     }
 
     /// <summary>
-    /// Delete one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Delete one Express Customs Clearance Detail
     /// </summary>
     public async Task DeleteExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
@@ -112,14 +120,15 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
     }
 
     /// <summary>
-    /// Find many EXPRESS CUSTOMS CLEARANCE DETAILSItems
+    /// Find many Express Customs Clearance Details
     /// </summary>
     public async Task<List<ExpressCustomsClearanceDetails>> ExpressCustomsClearanceDetailsItems(
         ExpressCustomsClearanceDetailsFindManyArgs findManyArgs
     )
     {
         var expressCustomsClearanceDetailsItems = await _context
-            .ExpressCustomsClearanceDetailsItems.ApplyWhere(findManyArgs.Where)
+            .ExpressCustomsClearanceDetailsItems.Include(x => x.CommonExpressClearance)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -130,7 +139,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
     }
 
     /// <summary>
-    /// Meta data about EXPRESS CUSTOMS CLEARANCE DETAILS records
+    /// Meta data about Express Customs Clearance Detail records
     /// </summary>
     public async Task<MetadataDto> ExpressCustomsClearanceDetailsItemsMeta(
         ExpressCustomsClearanceDetailsFindManyArgs findManyArgs
@@ -144,7 +153,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
     }
 
     /// <summary>
-    /// Get one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Get one Express Customs Clearance Detail
     /// </summary>
     public async Task<ExpressCustomsClearanceDetails> ExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
@@ -166,7 +175,7 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
     }
 
     /// <summary>
-    /// Update one EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// Update one Express Customs Clearance Detail
     /// </summary>
     public async Task UpdateExpressCustomsClearanceDetails(
         ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId,
@@ -196,5 +205,27 @@ public abstract class ExpressCustomsClearanceDetailsItemsServiceBase
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a COMMON EXPRESS CLEARANCE record for EXPRESS CUSTOMS CLEARANCE DETAILS
+    /// </summary>
+    public async Task<CommonExpressClearance> GetCommonExpressClearance(
+        ExpressCustomsClearanceDetailsWhereUniqueInput uniqueId
+    )
+    {
+        var expressCustomsClearanceDetails = await _context
+            .ExpressCustomsClearanceDetailsItems.Where(expressCustomsClearanceDetails =>
+                expressCustomsClearanceDetails.Id == uniqueId.Id
+            )
+            .Include(expressCustomsClearanceDetails =>
+                expressCustomsClearanceDetails.CommonExpressClearance
+            )
+            .FirstOrDefaultAsync();
+        if (expressCustomsClearanceDetails == null)
+        {
+            throw new NotFoundException();
+        }
+        return expressCustomsClearanceDetails.CommonExpressClearance.ToDto();
     }
 }

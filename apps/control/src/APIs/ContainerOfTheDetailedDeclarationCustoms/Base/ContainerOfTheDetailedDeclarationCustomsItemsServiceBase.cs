@@ -20,7 +20,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Create one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    /// Create one Container Of The Detailed Declaration
     /// </summary>
     public async Task<ContainerOfTheDetailedDeclarationCustoms> CreateContainerOfTheDetailedDeclarationCustoms(
         ContainerOfTheDetailedDeclarationCustomsCreateInput createDto
@@ -56,6 +56,14 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
         {
             containerOfTheDetailedDeclarationCustoms.Id = createDto.Id;
         }
+        if (createDto.CommonDetailedDeclarations != null)
+        {
+            containerOfTheDetailedDeclarationCustoms.CommonDetailedDeclarations = await _context
+                .CommonDetailedDeclarations.Where(commonDetailedDeclaration =>
+                    createDto.CommonDetailedDeclarations.Id == commonDetailedDeclaration.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.ContainerOfTheDetailedDeclarationCustomsItems.Add(
             containerOfTheDetailedDeclarationCustoms
@@ -75,7 +83,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Delete one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    /// Delete one Container Of The Detailed Declaration
     /// </summary>
     public async Task DeleteContainerOfTheDetailedDeclarationCustoms(
         ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
@@ -104,7 +112,10 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     )
     {
         var containerOfTheDetailedDeclarationCustomsItems = await _context
-            .ContainerOfTheDetailedDeclarationCustomsItems.ApplyWhere(findManyArgs.Where)
+            .ContainerOfTheDetailedDeclarationCustomsItems.Include(x =>
+                x.CommonDetailedDeclarations
+            )
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -116,7 +127,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Meta data about CONTAINER OF THE DETAILED DECLARATION (CUSTOMS) records
+    /// Meta data about Container Of The Detailed Declaration records
     /// </summary>
     public async Task<MetadataDto> ContainerOfTheDetailedDeclarationCustomsItemsMeta(
         ContainerOfTheDetailedDeclarationCustomsFindManyArgs findManyArgs
@@ -130,7 +141,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Get one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    /// Get one Container Of The Detailed Declaration
     /// </summary>
     public async Task<ContainerOfTheDetailedDeclarationCustoms> ContainerOfTheDetailedDeclarationCustoms(
         ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
@@ -157,7 +168,7 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
     }
 
     /// <summary>
-    /// Update one CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    /// Update one Container Of The Detailed Declaration
     /// </summary>
     public async Task UpdateContainerOfTheDetailedDeclarationCustoms(
         ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId,
@@ -187,5 +198,28 @@ public abstract class ContainerOfTheDetailedDeclarationCustomsItemsServiceBase
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a COMMON DETAILED DECLARATIONS record for CONTAINER OF THE DETAILED DECLARATION (CUSTOMS)
+    /// </summary>
+    public async Task<CommonDetailedDeclaration> GetCommonDetailedDeclarations(
+        ContainerOfTheDetailedDeclarationCustomsWhereUniqueInput uniqueId
+    )
+    {
+        var containerOfTheDetailedDeclarationCustoms = await _context
+            .ContainerOfTheDetailedDeclarationCustomsItems.Where(
+                containerOfTheDetailedDeclarationCustoms =>
+                    containerOfTheDetailedDeclarationCustoms.Id == uniqueId.Id
+            )
+            .Include(containerOfTheDetailedDeclarationCustoms =>
+                containerOfTheDetailedDeclarationCustoms.CommonDetailedDeclarations
+            )
+            .FirstOrDefaultAsync();
+        if (containerOfTheDetailedDeclarationCustoms == null)
+        {
+            throw new NotFoundException();
+        }
+        return containerOfTheDetailedDeclarationCustoms.CommonDetailedDeclarations.ToDto();
     }
 }

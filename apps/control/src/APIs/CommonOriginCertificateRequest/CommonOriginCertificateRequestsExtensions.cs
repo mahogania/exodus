@@ -25,6 +25,7 @@ public static class CommonOriginCertificateRequestsExtensions
             DeclarantSName = model.DeclarantSName,
             DepartureDate = model.DepartureDate,
             DestinationCountryCode = model.DestinationCountryCode,
+            Details = model.Details?.Select(x => x.Id).ToList(),
             ExporterSAddress = model.ExporterSAddress,
             ExporterSCountryCode = model.ExporterSCountryCode,
             ExporterSName = model.ExporterSName,

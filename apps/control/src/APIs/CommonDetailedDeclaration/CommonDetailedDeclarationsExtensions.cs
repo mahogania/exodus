@@ -10,10 +10,17 @@ public static class CommonDetailedDeclarationsExtensions
         return new CommonDetailedDeclaration
         {
             ArrivalDate = model.ArrivalDate,
+            Articles = model.Articles?.Select(x => x.Id).ToList(),
+            ArticlesExpectedForReImportExport = model
+                .ArticlesExpectedForReImportExport?.Select(x => x.Id)
+                .ToList(),
+            Assessment = model.AssessmentId,
             BankAgencyCode = model.BankAgencyCode,
             BillOfLadingDate = model.BillOfLadingDate,
             BillOfLadingNumber = model.BillOfLadingNumber,
+            Changes = model.Changes?.Select(x => x.Id).ToList(),
             ConditionCode_2 = model.ConditionCode_2,
+            Container = model.ContainerId,
             ContainerizedCargoOn = model.ContainerizedCargoOn,
             CreatedAt = model.CreatedAt,
             Crn = model.Crn,
@@ -31,6 +38,7 @@ public static class CommonDetailedDeclarationsExtensions
             DeliveryLocationCode = model.DeliveryLocationCode,
             DestinationCountryCode = model.DestinationCountryCode,
             DetailedDeclarationNumber = model.DetailedDeclarationNumber,
+            Document = model.DocumentId,
             DomiciliationDate = model.DomiciliationDate,
             DomiciliationStatusCode = model.DomiciliationStatusCode,
             EntryAndExitOfficeCode = model.EntryAndExitOfficeCode,
@@ -68,6 +76,7 @@ public static class CommonDetailedDeclarationsExtensions
             NumberOfContainers = model.NumberOfContainers,
             NumberOfItems = model.NumberOfItems,
             OperationType = model.OperationType,
+            Operator = model.OperatorId,
             PartialCustomsClearanceTypeCode = model.PartialCustomsClearanceTypeCode,
             PaymentAccountNumber = model.PaymentAccountNumber,
             PaymentBankAgencyCode = model.PaymentBankAgencyCode,
@@ -106,6 +115,7 @@ public static class CommonDetailedDeclarationsExtensions
             UnloadingDate = model.UnloadingDate,
             UnloadingLocationCode = model.UnloadingLocationCode,
             UpdatedAt = model.UpdatedAt,
+            ValueDeclaration = model.ValueDeclarationId,
             ValueDeclarationOn = model.ValueDeclarationOn,
             VehiclePickupOn = model.VehiclePickupOn,
         };
@@ -218,13 +228,33 @@ public static class CommonDetailedDeclarationsExtensions
             VehiclePickupOn = updateDto.VehiclePickupOn
         };
 
+        if (updateDto.Assessment != null)
+        {
+            commonDetailedDeclaration.AssessmentId = updateDto.Assessment;
+        }
+        if (updateDto.Container != null)
+        {
+            commonDetailedDeclaration.ContainerId = updateDto.Container;
+        }
         if (updateDto.CreatedAt != null)
         {
             commonDetailedDeclaration.CreatedAt = updateDto.CreatedAt.Value;
         }
+        if (updateDto.Document != null)
+        {
+            commonDetailedDeclaration.DocumentId = updateDto.Document;
+        }
+        if (updateDto.Operator != null)
+        {
+            commonDetailedDeclaration.OperatorId = updateDto.Operator;
+        }
         if (updateDto.UpdatedAt != null)
         {
             commonDetailedDeclaration.UpdatedAt = updateDto.UpdatedAt.Value;
+        }
+        if (updateDto.ValueDeclaration != null)
+        {
+            commonDetailedDeclaration.ValueDeclarationId = updateDto.ValueDeclaration;
         }
 
         return commonDetailedDeclaration;

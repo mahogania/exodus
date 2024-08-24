@@ -11,6 +11,7 @@ public static class ContainerOfTheDetailedDeclarationCustomsItemsExtensions
     {
         return new ContainerOfTheDetailedDeclarationCustoms
         {
+            CommonDetailedDeclarations = model.CommonDetailedDeclarations?.ToDto(),
             ContainerNumber = model.ContainerNumber,
             ContainerPackingStateCode = model.ContainerPackingStateCode,
             ContainerSequenceNumber = model.ContainerSequenceNumber,

@@ -6,14 +6,14 @@ namespace Control.APIs;
 public interface ICommonExpressClearancesService
 {
     /// <summary>
-    /// Create one COMMON EXPRESS CLEARANCE
+    /// Create one Common Express Clearance
     /// </summary>
     public Task<CommonExpressClearance> CreateCommonExpressClearance(
         CommonExpressClearanceCreateInput commonexpressclearance
     );
 
     /// <summary>
-    /// Delete one COMMON EXPRESS CLEARANCE
+    /// Delete one Common Express Clearance
     /// </summary>
     public Task DeleteCommonExpressClearance(CommonExpressClearanceWhereUniqueInput uniqueId);
 
@@ -25,21 +25,21 @@ public interface ICommonExpressClearancesService
     );
 
     /// <summary>
-    /// Meta data about COMMON EXPRESS CLEARANCE records
+    /// Meta data about Common Express Clearance records
     /// </summary>
     public Task<MetadataDto> CommonExpressClearancesMeta(
         CommonExpressClearanceFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one COMMON EXPRESS CLEARANCE
+    /// Get one Common Express Clearance
     /// </summary>
     public Task<CommonExpressClearance> CommonExpressClearance(
         CommonExpressClearanceWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one COMMON EXPRESS CLEARANCE
+    /// Update one Common Express Clearance
     /// </summary>
     public Task UpdateCommonExpressClearance(
         CommonExpressClearanceWhereUniqueInput uniqueId,

@@ -19,7 +19,7 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one COMMON REGIME REQUEST
+    /// Create one Common Regime Request
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -37,7 +37,7 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one COMMON REGIME REQUEST
+    /// Delete one Common Regime Request
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -70,7 +70,7 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Meta data about COMMON REGIME REQUEST records
+    /// Meta data about Common Regime Request records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CommonRegimeRequestsMeta(
@@ -81,7 +81,7 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Get one COMMON REGIME REQUEST
+    /// Get one Common Regime Request
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -100,7 +100,7 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one COMMON REGIME REQUEST
+    /// Update one Common Regime Request
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]

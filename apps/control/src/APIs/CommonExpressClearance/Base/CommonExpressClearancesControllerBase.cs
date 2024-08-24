@@ -19,7 +19,7 @@ public abstract class CommonExpressClearancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one COMMON EXPRESS CLEARANCE
+    /// Create one Common Express Clearance
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -37,7 +37,7 @@ public abstract class CommonExpressClearancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one COMMON EXPRESS CLEARANCE
+    /// Delete one Common Express Clearance
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -70,7 +70,7 @@ public abstract class CommonExpressClearancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Meta data about COMMON EXPRESS CLEARANCE records
+    /// Meta data about Common Express Clearance records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CommonExpressClearancesMeta(
@@ -81,7 +81,7 @@ public abstract class CommonExpressClearancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Get one COMMON EXPRESS CLEARANCE
+    /// Get one Common Express Clearance
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -100,7 +100,7 @@ public abstract class CommonExpressClearancesControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one COMMON EXPRESS CLEARANCE
+    /// Update one Common Express Clearance
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]

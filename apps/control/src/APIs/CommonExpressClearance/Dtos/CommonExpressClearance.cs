@@ -14,6 +14,8 @@ public class CommonExpressClearance
 
     public string? DeletionOn { get; set; }
 
+    public List<string>? Details { get; set; }
+
     public string? ExpressClearanceRequestNumber { get; set; }
 
     public string? ExpressOperatorCode { get; set; }

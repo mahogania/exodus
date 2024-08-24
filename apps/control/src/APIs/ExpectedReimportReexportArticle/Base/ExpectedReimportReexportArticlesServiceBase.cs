@@ -20,7 +20,7 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
     }
 
     /// <summary>
-    /// Create one EXPECTED REIMPORT/REEXPORT ARTICLE
+    /// Create one Expected Reimport Reexport Article
     /// </summary>
     public async Task<ExpectedReimportReexportArticle> CreateExpectedReimportReexportArticle(
         ExpectedReimportReexportArticleCreateInput createDto
@@ -54,6 +54,14 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
         {
             expectedReimportReexportArticle.Id = createDto.Id;
         }
+        if (createDto.CommonDetailedDeclarations != null)
+        {
+            expectedReimportReexportArticle.CommonDetailedDeclarations = await _context
+                .CommonDetailedDeclarations.Where(commonDetailedDeclaration =>
+                    createDto.CommonDetailedDeclarations.Id == commonDetailedDeclaration.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.ExpectedReimportReexportArticles.Add(expectedReimportReexportArticle);
         await _context.SaveChangesAsync();
@@ -71,7 +79,7 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
     }
 
     /// <summary>
-    /// Delete one EXPECTED REIMPORT/REEXPORT ARTICLE
+    /// Delete one Expected Reimport Reexport Article
     /// </summary>
     public async Task DeleteExpectedReimportReexportArticle(
         ExpectedReimportReexportArticleWhereUniqueInput uniqueId
@@ -96,7 +104,8 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
     )
     {
         var expectedReimportReexportArticles = await _context
-            .ExpectedReimportReexportArticles.ApplyWhere(findManyArgs.Where)
+            .ExpectedReimportReexportArticles.Include(x => x.CommonDetailedDeclarations)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -107,7 +116,7 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
     }
 
     /// <summary>
-    /// Meta data about EXPECTED REIMPORT/REEXPORT ARTICLE records
+    /// Meta data about Expected Reimport Reexport Article records
     /// </summary>
     public async Task<MetadataDto> ExpectedReimportReexportArticlesMeta(
         ExpectedReimportReexportArticleFindManyArgs findManyArgs
@@ -121,7 +130,7 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
     }
 
     /// <summary>
-    /// Get one EXPECTED REIMPORT/REEXPORT ARTICLE
+    /// Get one Expected Reimport Reexport Article
     /// </summary>
     public async Task<ExpectedReimportReexportArticle> ExpectedReimportReexportArticle(
         ExpectedReimportReexportArticleWhereUniqueInput uniqueId
@@ -143,7 +152,7 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
     }
 
     /// <summary>
-    /// Update one EXPECTED REIMPORT/REEXPORT ARTICLE
+    /// Update one Expected Reimport Reexport Article
     /// </summary>
     public async Task UpdateExpectedReimportReexportArticle(
         ExpectedReimportReexportArticleWhereUniqueInput uniqueId,
@@ -173,5 +182,27 @@ public abstract class ExpectedReimportReexportArticlesServiceBase
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a COMMON DETAILED DECLARATIONS record for EXPECTED REIMPORT/REEXPORT ARTICLE
+    /// </summary>
+    public async Task<CommonDetailedDeclaration> GetCommonDetailedDeclarations(
+        ExpectedReimportReexportArticleWhereUniqueInput uniqueId
+    )
+    {
+        var expectedReimportReexportArticle = await _context
+            .ExpectedReimportReexportArticles.Where(expectedReimportReexportArticle =>
+                expectedReimportReexportArticle.Id == uniqueId.Id
+            )
+            .Include(expectedReimportReexportArticle =>
+                expectedReimportReexportArticle.CommonDetailedDeclarations
+            )
+            .FirstOrDefaultAsync();
+        if (expectedReimportReexportArticle == null)
+        {
+            throw new NotFoundException();
+        }
+        return expectedReimportReexportArticle.CommonDetailedDeclarations.ToDto();
     }
 }

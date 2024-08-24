@@ -15,6 +15,7 @@ public static class ExpressCustomsClearanceDetailsItemsExtensions
             BarcodeTransmissionDateAndTime = model.BarcodeTransmissionDateAndTime,
             CarrierCode = model.CarrierCode,
             CommercialDenomination = model.CommercialDenomination,
+            CommonExpressClearance = model.CommonExpressClearanceId,
             CreatedAt = model.CreatedAt,
             CustomsClearanceCode = model.CustomsClearanceCode,
             CustomsNote = model.CustomsNote,
@@ -109,6 +110,11 @@ public static class ExpressCustomsClearanceDetailsItemsExtensions
             Weight = updateDto.Weight
         };
 
+        if (updateDto.CommonExpressClearance != null)
+        {
+            expressCustomsClearanceDetails.CommonExpressClearanceId =
+                updateDto.CommonExpressClearance;
+        }
         if (updateDto.CreatedAt != null)
         {
             expressCustomsClearanceDetails.CreatedAt = updateDto.CreatedAt.Value;

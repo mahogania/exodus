@@ -6,14 +6,14 @@ namespace Control.APIs;
 public interface ITemporaryAdmissionForPerfectionsService
 {
     /// <summary>
-    /// Create one TEMPORARY ADMISSION FOR PERFECTION
+    /// Create one Temporary Admission For Perfection
     /// </summary>
     public Task<TemporaryAdmissionForPerfection> CreateTemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionCreateInput temporaryadmissionforperfection
     );
 
     /// <summary>
-    /// Delete one TEMPORARY ADMISSION FOR PERFECTION
+    /// Delete one Temporary Admission For Perfection
     /// </summary>
     public Task DeleteTemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId
@@ -27,21 +27,21 @@ public interface ITemporaryAdmissionForPerfectionsService
     );
 
     /// <summary>
-    /// Meta data about TEMPORARY ADMISSION FOR PERFECTION records
+    /// Meta data about Temporary Admission For Perfection records
     /// </summary>
     public Task<MetadataDto> TemporaryAdmissionForPerfectionsMeta(
         TemporaryAdmissionForPerfectionFindManyArgs findManyArgs
     );
 
     /// <summary>
-    /// Get one TEMPORARY ADMISSION FOR PERFECTION
+    /// Get one Temporary Admission For Perfection
     /// </summary>
     public Task<TemporaryAdmissionForPerfection> TemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    /// Update one TEMPORARY ADMISSION FOR PERFECTION
+    /// Update one Temporary Admission For Perfection
     /// </summary>
     public Task UpdateTemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId,

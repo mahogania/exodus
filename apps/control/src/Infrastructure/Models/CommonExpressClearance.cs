@@ -24,6 +24,9 @@ public class CommonExpressClearanceDbModel
     [StringLength(1000)]
     public string? DeletionOn { get; set; }
 
+    public List<ExpressCustomsClearanceDetailsDbModel>? Details { get; set; } =
+        new List<ExpressCustomsClearanceDetailsDbModel>();
+
     [StringLength(1000)]
     public string? ExpressClearanceRequestNumber { get; set; }
 

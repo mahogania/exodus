@@ -6,6 +6,8 @@ namespace Control.Infrastructure.Models;
 [Table("ContainerOfTheDetailedDeclarationCustoms")]
 public class ContainerOfTheDetailedDeclarationCustomsDbModel
 {
+    public CommonDetailedDeclarationDbModel? CommonDetailedDeclarations { get; set; } = null;
+
     [StringLength(1000)]
     public string? ContainerNumber { get; set; }
 

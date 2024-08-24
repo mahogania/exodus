@@ -6,8 +6,17 @@ namespace Control.Infrastructure.Models;
 [Table("CommonDetailedDeclarations")]
 public class CommonDetailedDeclarationDbModel
 {
-    [StringLength(1000)]
-    public string? ArrivalDate { get; set; }
+    public DateTime? ArrivalDate { get; set; }
+
+    public List<ArticleDbModel>? Articles { get; set; } = new List<ArticleDbModel>();
+
+    public List<ExpectedReimportReexportArticleDbModel>? ArticlesExpectedForReImportExport { get; set; } =
+        new List<ExpectedReimportReexportArticleDbModel>();
+
+    public string? AssessmentId { get; set; }
+
+    [ForeignKey(nameof(AssessmentId))]
+    public ValueAssessmentDbModel? Assessment { get; set; } = null;
 
     [StringLength(1000)]
     public string? BankAgencyCode { get; set; }
@@ -18,8 +27,16 @@ public class CommonDetailedDeclarationDbModel
     [StringLength(1000)]
     public string? BillOfLadingNumber { get; set; }
 
+    public List<ChangeInTheDetailedDeclarationDbModel>? Changes { get; set; } =
+        new List<ChangeInTheDetailedDeclarationDbModel>();
+
     [StringLength(1000)]
     public string? ConditionCode_2 { get; set; }
+
+    public string? ContainerId { get; set; }
+
+    [ForeignKey(nameof(ContainerId))]
+    public ContainerOfTheDetailedDeclarationCustomsDbModel? Container { get; set; } = null;
 
     [StringLength(1000)]
     public string? ContainerizedCargoOn { get; set; }
@@ -70,8 +87,12 @@ public class CommonDetailedDeclarationDbModel
     [StringLength(1000)]
     public string? DetailedDeclarationNumber { get; set; }
 
-    [StringLength(1000)]
-    public string? DomiciliationDate { get; set; }
+    public string? DocumentId { get; set; }
+
+    [ForeignKey(nameof(DocumentId))]
+    public JointDocumentDbModel? Document { get; set; } = null;
+
+    public DateTime? DomiciliationDate { get; set; }
 
     [StringLength(1000)]
     public string? DomiciliationStatusCode { get; set; }
@@ -178,6 +199,11 @@ public class CommonDetailedDeclarationDbModel
 
     [StringLength(1000)]
     public string? OperationType { get; set; }
+
+    public string? OperatorId { get; set; }
+
+    [ForeignKey(nameof(OperatorId))]
+    public OperatorDbModel? Operator { get; set; } = null;
 
     [StringLength(1000)]
     public string? PartialCustomsClearanceTypeCode { get; set; }
@@ -292,6 +318,11 @@ public class CommonDetailedDeclarationDbModel
 
     [Required()]
     public DateTime UpdatedAt { get; set; }
+
+    public string? ValueDeclarationId { get; set; }
+
+    [ForeignKey(nameof(ValueDeclarationId))]
+    public ValueDeclarationDbModel? ValueDeclaration { get; set; } = null;
 
     [StringLength(1000)]
     public string? ValueDeclarationOn { get; set; }

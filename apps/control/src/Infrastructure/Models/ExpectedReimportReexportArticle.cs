@@ -15,6 +15,11 @@ public class ExpectedReimportReexportArticleDbModel
     [Range(-999999999, 999999999)]
     public double? ArticleNetWeight { get; set; }
 
+    public string? CommonDetailedDeclarationsId { get; set; }
+
+    [ForeignKey(nameof(CommonDetailedDeclarationsId))]
+    public CommonDetailedDeclarationDbModel? CommonDetailedDeclarations { get; set; } = null;
+
     [Required()]
     public DateTime CreatedAt { get; set; }
 

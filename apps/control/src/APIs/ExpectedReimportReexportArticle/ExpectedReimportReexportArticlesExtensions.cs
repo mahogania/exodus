@@ -14,6 +14,7 @@ public static class ExpectedReimportReexportArticlesExtensions
             ArticleGrossWeight = model.ArticleGrossWeight,
             ArticleName = model.ArticleName,
             ArticleNetWeight = model.ArticleNetWeight,
+            CommonDetailedDeclarations = model.CommonDetailedDeclarationsId,
             CreatedAt = model.CreatedAt,
             DateAndTimeOfFinalModification = model.DateAndTimeOfFinalModification,
             DateAndTimeOfFirstRegistration = model.DateAndTimeOfFirstRegistration,
@@ -63,6 +64,11 @@ public static class ExpectedReimportReexportArticlesExtensions
             TransactionArticleName = updateDto.TransactionArticleName
         };
 
+        if (updateDto.CommonDetailedDeclarations != null)
+        {
+            expectedReimportReexportArticle.CommonDetailedDeclarationsId =
+                updateDto.CommonDetailedDeclarations;
+        }
         if (updateDto.CreatedAt != null)
         {
             expectedReimportReexportArticle.CreatedAt = updateDto.CreatedAt.Value;

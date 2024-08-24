@@ -30,6 +30,8 @@ public class CommonOriginCertificateRequestWhereInput
 
     public string? DestinationCountryCode { get; set; }
 
+    public List<string>? Details { get; set; }
+
     public string? ExporterSAddress { get; set; }
 
     public string? ExporterSCountryCode { get; set; }

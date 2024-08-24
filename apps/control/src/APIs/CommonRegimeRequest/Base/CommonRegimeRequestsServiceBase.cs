@@ -19,7 +19,7 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
     }
 
     /// <summary>
-    /// Create one COMMON REGIME REQUEST
+    /// Create one Common Regime Request
     /// </summary>
     public async Task<CommonRegimeRequest> CreateCommonRegimeRequest(
         CommonRegimeRequestCreateInput createDto
@@ -71,7 +71,7 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
     }
 
     /// <summary>
-    /// Delete one COMMON REGIME REQUEST
+    /// Delete one Common Regime Request
     /// </summary>
     public async Task DeleteCommonRegimeRequest(CommonRegimeRequestWhereUniqueInput uniqueId)
     {
@@ -102,7 +102,7 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
     }
 
     /// <summary>
-    /// Meta data about COMMON REGIME REQUEST records
+    /// Meta data about Common Regime Request records
     /// </summary>
     public async Task<MetadataDto> CommonRegimeRequestsMeta(
         CommonRegimeRequestFindManyArgs findManyArgs
@@ -114,7 +114,7 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
     }
 
     /// <summary>
-    /// Get one COMMON REGIME REQUEST
+    /// Get one Common Regime Request
     /// </summary>
     public async Task<CommonRegimeRequest> CommonRegimeRequest(
         CommonRegimeRequestWhereUniqueInput uniqueId
@@ -136,7 +136,7 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
     }
 
     /// <summary>
-    /// Update one COMMON REGIME REQUEST
+    /// Update one Common Regime Request
     /// </summary>
     public async Task UpdateCommonRegimeRequest(
         CommonRegimeRequestWhereUniqueInput uniqueId,

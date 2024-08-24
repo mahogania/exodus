@@ -20,7 +20,7 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Create one TEMPORARY ADMISSION FOR PERFECTION
+    /// Create one Temporary Admission For Perfection
     /// </summary>
     public async Task<TemporaryAdmissionForPerfection> CreateTemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionCreateInput createDto
@@ -110,7 +110,7 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Delete one TEMPORARY ADMISSION FOR PERFECTION
+    /// Delete one Temporary Admission For Perfection
     /// </summary>
     public async Task DeleteTemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId
@@ -146,7 +146,7 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Meta data about TEMPORARY ADMISSION FOR PERFECTION records
+    /// Meta data about Temporary Admission For Perfection records
     /// </summary>
     public async Task<MetadataDto> TemporaryAdmissionForPerfectionsMeta(
         TemporaryAdmissionForPerfectionFindManyArgs findManyArgs
@@ -160,7 +160,7 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Get one TEMPORARY ADMISSION FOR PERFECTION
+    /// Get one Temporary Admission For Perfection
     /// </summary>
     public async Task<TemporaryAdmissionForPerfection> TemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId
@@ -182,7 +182,7 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
     }
 
     /// <summary>
-    /// Update one TEMPORARY ADMISSION FOR PERFECTION
+    /// Update one Temporary Admission For Perfection
     /// </summary>
     public async Task UpdateTemporaryAdmissionForPerfection(
         TemporaryAdmissionForPerfectionWhereUniqueInput uniqueId,

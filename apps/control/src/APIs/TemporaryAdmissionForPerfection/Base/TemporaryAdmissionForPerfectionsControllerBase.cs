@@ -21,7 +21,7 @@ public abstract class TemporaryAdmissionForPerfectionsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Create one TEMPORARY ADMISSION FOR PERFECTION
+    /// Create one Temporary Admission For Perfection
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -41,7 +41,7 @@ public abstract class TemporaryAdmissionForPerfectionsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Delete one TEMPORARY ADMISSION FOR PERFECTION
+    /// Delete one Temporary Admission For Perfection
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -76,7 +76,7 @@ public abstract class TemporaryAdmissionForPerfectionsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Meta data about TEMPORARY ADMISSION FOR PERFECTION records
+    /// Meta data about Temporary Admission For Perfection records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> TemporaryAdmissionForPerfectionsMeta(
@@ -87,7 +87,7 @@ public abstract class TemporaryAdmissionForPerfectionsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Get one TEMPORARY ADMISSION FOR PERFECTION
+    /// Get one Temporary Admission For Perfection
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -108,7 +108,7 @@ public abstract class TemporaryAdmissionForPerfectionsControllerBase : Controlle
     }
 
     /// <summary>
-    /// Update one TEMPORARY ADMISSION FOR PERFECTION
+    /// Update one Temporary Admission For Perfection
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]

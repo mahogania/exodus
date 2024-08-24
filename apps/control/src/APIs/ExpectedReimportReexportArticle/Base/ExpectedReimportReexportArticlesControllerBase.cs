@@ -21,7 +21,7 @@ public abstract class ExpectedReimportReexportArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Create one EXPECTED REIMPORT/REEXPORT ARTICLE
+    /// Create one Expected Reimport Reexport Article
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -41,7 +41,7 @@ public abstract class ExpectedReimportReexportArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Delete one EXPECTED REIMPORT/REEXPORT ARTICLE
+    /// Delete one Expected Reimport Reexport Article
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -76,7 +76,7 @@ public abstract class ExpectedReimportReexportArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Meta data about EXPECTED REIMPORT/REEXPORT ARTICLE records
+    /// Meta data about Expected Reimport Reexport Article records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ExpectedReimportReexportArticlesMeta(
@@ -87,7 +87,7 @@ public abstract class ExpectedReimportReexportArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Get one EXPECTED REIMPORT/REEXPORT ARTICLE
+    /// Get one Expected Reimport Reexport Article
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -108,7 +108,7 @@ public abstract class ExpectedReimportReexportArticlesControllerBase : Controlle
     }
 
     /// <summary>
-    /// Update one EXPECTED REIMPORT/REEXPORT ARTICLE
+    /// Update one Expected Reimport Reexport Article
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
@@ -131,5 +131,17 @@ public abstract class ExpectedReimportReexportArticlesControllerBase : Controlle
         }
 
         return NoContent();
+    }
+
+    /// <summary>
+    /// Get a COMMON DETAILED DECLARATIONS record for EXPECTED REIMPORT/REEXPORT ARTICLE
+    /// </summary>
+    [HttpGet("{Id}/commonDetailedDeclarations")]
+    public async Task<ActionResult<List<CommonDetailedDeclaration>>> GetCommonDetailedDeclarations(
+        [FromRoute()] ExpectedReimportReexportArticleWhereUniqueInput uniqueId
+    )
+    {
+        var commonDetailedDeclaration = await _service.GetCommonDetailedDeclarations(uniqueId);
+        return Ok(commonDetailedDeclaration);
     }
 }

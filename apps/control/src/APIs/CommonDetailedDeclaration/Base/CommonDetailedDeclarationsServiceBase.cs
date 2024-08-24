@@ -1,10 +1,10 @@
 using Control.APIs;
-using Control.APIs.Common;
+using Control.Infrastructure;
 using Control.APIs.Dtos;
+using Control.Infrastructure.Models;
 using Control.APIs.Errors;
 using Control.APIs.Extensions;
-using Control.Infrastructure;
-using Control.Infrastructure.Models;
+using Control.APIs.Common;
 using Microsoft.EntityFrameworkCore;
 
 namespace Control.APIs;
@@ -12,18 +12,15 @@ namespace Control.APIs;
 public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDeclarationsService
 {
     protected readonly ControlDbContext _context;
-
     public CommonDetailedDeclarationsServiceBase(ControlDbContext context)
     {
         _context = context;
     }
 
     /// <summary>
-    /// Create one COMMON DETAILED DECLARATION
+    /// Create one Common Detailed Declaration
     /// </summary>
-    public async Task<CommonDetailedDeclaration> CreateCommonDetailedDeclaration(
-        CommonDetailedDeclarationCreateInput createDto
-    )
+    public async Task<CommonDetailedDeclaration> CreateCommonDetailedDeclaration(CommonDetailedDeclarationCreateInput createDto)
     {
         var commonDetailedDeclaration = new CommonDetailedDeclarationDbModel
         {
@@ -76,11 +73,9 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
             InvoiceIssuanceDate = createDto.InvoiceIssuanceDate,
             InvoiceNumber = createDto.InvoiceNumber,
             LoadingLocationCode = createDto.LoadingLocationCode,
-            ManagementAndMonitoringClearancePeriod =
-                createDto.ManagementAndMonitoringClearancePeriod,
+            ManagementAndMonitoringClearancePeriod = createDto.ManagementAndMonitoringClearancePeriod,
             MeansOfTransportIdentificationNumber = createDto.MeansOfTransportIdentificationNumber,
-            MeansOfTransportIdentificationNumberTypeCode =
-                createDto.MeansOfTransportIdentificationNumberTypeCode,
+            MeansOfTransportIdentificationNumberTypeCode = createDto.MeansOfTransportIdentificationNumberTypeCode,
             MeansOfTransportNationalityCode = createDto.MeansOfTransportNationalityCode,
             ModificationReasonCode = createDto.ModificationReasonCode,
             NumberOfContainers = createDto.NumberOfContainers,
@@ -132,13 +127,66 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
         {
             commonDetailedDeclaration.Id = createDto.Id;
         }
+        if (createDto.Articles != null)
+        {
+            commonDetailedDeclaration.Articles = await _context
+                .Articles.Where(article => createDto.Articles.Select(t => t.Id).Contains(article.Id))
+                .ToListAsync();
+        }
+
+        if (createDto.ArticlesExpectedForReImportExport != null)
+        {
+            commonDetailedDeclaration.ArticlesExpectedForReImportExport = await _context
+                .ExpectedReimportReexportArticles.Where(expectedReimportReexportArticle => createDto.ArticlesExpectedForReImportExport.Select(t => t.Id).Contains(expectedReimportReexportArticle.Id))
+                .ToListAsync();
+        }
+
+        if (createDto.Assessment != null)
+        {
+            commonDetailedDeclaration.Assessment = await _context
+                .ValueAssessments.Where(valueAssessment => createDto.Assessment.Id == valueAssessment.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        if (createDto.Changes != null)
+        {
+            commonDetailedDeclaration.Changes = await _context
+                .ChangeInTheDetailedDeclarations.Where(changeInTheDetailedDeclaration => createDto.Changes.Select(t => t.Id).Contains(changeInTheDetailedDeclaration.Id))
+                .ToListAsync();
+        }
+
+        if (createDto.Container != null)
+        {
+            commonDetailedDeclaration.Container = await _context
+                .ContainerOfTheDetailedDeclarationCustomsItems.Where(containerOfTheDetailedDeclarationCustoms => createDto.Container.Id == containerOfTheDetailedDeclarationCustoms.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        if (createDto.Document != null)
+        {
+            commonDetailedDeclaration.Document = await _context
+                .JointDocuments.Where(jointDocument => createDto.Document.Id == jointDocument.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        if (createDto.Operator != null)
+        {
+            commonDetailedDeclaration.Operator = await _context
+                .Operators.Where(operator => createDto.Operator.Id == operator.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        if (createDto.ValueDeclaration != null)
+        {
+            commonDetailedDeclaration.ValueDeclaration = await _context
+                .ValueDeclarations.Where(valueDeclaration => createDto.ValueDeclaration.Id == valueDeclaration.Id)
+                .FirstOrDefaultAsync();
+        }
 
         _context.CommonDetailedDeclarations.Add(commonDetailedDeclaration);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<CommonDetailedDeclarationDbModel>(
-            commonDetailedDeclaration.Id
-        );
+        var result = await _context.FindAsync<CommonDetailedDeclarationDbModel>(commonDetailedDeclaration.Id);
 
         if (result == null)
         {
@@ -149,15 +197,11 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
     }
 
     /// <summary>
-    /// Delete one COMMON DETAILED DECLARATION
+    /// Delete one Common Detailed Declaration
     /// </summary>
-    public async Task DeleteCommonDetailedDeclaration(
-        CommonDetailedDeclarationWhereUniqueInput uniqueId
-    )
+    public async Task DeleteCommonDetailedDeclaration(CommonDetailedDeclarationWhereUniqueInput uniqueId)
     {
-        var commonDetailedDeclaration = await _context.CommonDetailedDeclarations.FindAsync(
-            uniqueId.Id
-        );
+        var commonDetailedDeclaration = await _context.CommonDetailedDeclarations.FindAsync(uniqueId.Id);
         if (commonDetailedDeclaration == null)
         {
             throw new NotFoundException();
@@ -170,48 +214,41 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
     /// <summary>
     /// Find many COMMON DETAILED DECLARATIONS
     /// </summary>
-    public async Task<List<CommonDetailedDeclaration>> CommonDetailedDeclarations(
-        CommonDetailedDeclarationFindManyArgs findManyArgs
-    )
+    public async Task<List<CommonDetailedDeclaration>> CommonDetailedDeclarations(CommonDetailedDeclarationFindManyArgs findManyArgs)
     {
         var commonDetailedDeclarations = await _context
-            .CommonDetailedDeclarations.ApplyWhere(findManyArgs.Where)
-            .ApplySkip(findManyArgs.Skip)
-            .ApplyTake(findManyArgs.Take)
-            .ApplyOrderBy(findManyArgs.SortBy)
-            .ToListAsync();
-        return commonDetailedDeclarations.ConvertAll(commonDetailedDeclaration =>
-            commonDetailedDeclaration.ToDto()
-        );
+              .CommonDetailedDeclarations
+      .Include(x => x.Articles).Include(x => x.Operator).Include(x => x.ValueDeclaration).Include(x => x.ArticlesExpectedForReImportExport).Include(x => x.Container).Include(x => x.Document).Include(x => x.Assessment).Include(x => x.Changes)
+      .ApplyWhere(findManyArgs.Where)
+      .ApplySkip(findManyArgs.Skip)
+      .ApplyTake(findManyArgs.Take)
+      .ApplyOrderBy(findManyArgs.SortBy)
+      .ToListAsync();
+        return commonDetailedDeclarations.ConvertAll(commonDetailedDeclaration => commonDetailedDeclaration.ToDto());
     }
 
     /// <summary>
-    /// Meta data about COMMON DETAILED DECLARATION records
+    /// Meta data about Common Detailed Declaration records
     /// </summary>
-    public async Task<MetadataDto> CommonDetailedDeclarationsMeta(
-        CommonDetailedDeclarationFindManyArgs findManyArgs
-    )
+    public async Task<MetadataDto> CommonDetailedDeclarationsMeta(CommonDetailedDeclarationFindManyArgs findManyArgs)
     {
+
         var count = await _context
-            .CommonDetailedDeclarations.ApplyWhere(findManyArgs.Where)
-            .CountAsync();
+    .CommonDetailedDeclarations
+    .ApplyWhere(findManyArgs.Where)
+    .CountAsync();
 
         return new MetadataDto { Count = count };
     }
 
     /// <summary>
-    /// Get one COMMON DETAILED DECLARATION
+    /// Get one Common Detailed Declaration
     /// </summary>
-    public async Task<CommonDetailedDeclaration> CommonDetailedDeclaration(
-        CommonDetailedDeclarationWhereUniqueInput uniqueId
-    )
+    public async Task<CommonDetailedDeclaration> CommonDetailedDeclaration(CommonDetailedDeclarationWhereUniqueInput uniqueId)
     {
         var commonDetailedDeclarations = await this.CommonDetailedDeclarations(
-            new CommonDetailedDeclarationFindManyArgs
-            {
-                Where = new CommonDetailedDeclarationWhereInput { Id = uniqueId.Id }
-            }
-        );
+                  new CommonDetailedDeclarationFindManyArgs { Where = new CommonDetailedDeclarationWhereInput { Id = uniqueId.Id } }
+      );
         var commonDetailedDeclaration = commonDetailedDeclarations.FirstOrDefault();
         if (commonDetailedDeclaration == null)
         {
@@ -222,14 +259,32 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
     }
 
     /// <summary>
-    /// Update one COMMON DETAILED DECLARATION
+    /// Update one Common Detailed Declaration
     /// </summary>
-    public async Task UpdateCommonDetailedDeclaration(
-        CommonDetailedDeclarationWhereUniqueInput uniqueId,
-        CommonDetailedDeclarationUpdateInput updateDto
-    )
+    public async Task UpdateCommonDetailedDeclaration(CommonDetailedDeclarationWhereUniqueInput uniqueId, CommonDetailedDeclarationUpdateInput updateDto)
     {
         var commonDetailedDeclaration = updateDto.ToModel(uniqueId);
+
+        if (updateDto.Articles != null)
+        {
+            commonDetailedDeclaration.Articles = await _context
+                .Articles.Where(article => updateDto.Articles.Select(t => t).Contains(article.Id))
+                .ToListAsync();
+        }
+
+        if (updateDto.ArticlesExpectedForReImportExport != null)
+        {
+            commonDetailedDeclaration.ArticlesExpectedForReImportExport = await _context
+                .ExpectedReimportReexportArticles.Where(expectedReimportReexportArticle => updateDto.ArticlesExpectedForReImportExport.Select(t => t).Contains(expectedReimportReexportArticle.Id))
+                .ToListAsync();
+        }
+
+        if (updateDto.Changes != null)
+        {
+            commonDetailedDeclaration.Changes = await _context
+                .ChangeInTheDetailedDeclarations.Where(changeInTheDetailedDeclaration => updateDto.Changes.Select(t => t).Contains(changeInTheDetailedDeclaration.Id))
+                .ToListAsync();
+        }
 
         _context.Entry(commonDetailedDeclaration).State = EntityState.Modified;
 
@@ -249,4 +304,103 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
             }
         }
     }
+
+    /// <summary>
+    /// Connect multiple Articles Expected for Re Import/Export records to COMMON DETAILED DECLARATION
+    /// </summary>
+    public async Task ConnectArticlesExpectedForReImportExport(CommonDetailedDeclarationWhereUniqueInput uniqueId, ExpectedReimportReexportArticleWhereUniqueInput[] expectedReimportReexportArticlesId)
+    {
+        var parent = await _context
+              .CommonDetailedDeclarations.Include(x => x.ArticlesExpectedForReImportExport)
+      .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var expectedReimportReexportArticles = await _context
+          .ExpectedReimportReexportArticles.Where(t => expectedReimportReexportArticlesId.Select(x => x.Id).Contains(t.Id))
+          .ToListAsync();
+        if (expectedReimportReexportArticles.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var expectedReimportReexportArticlesToConnect = expectedReimportReexportArticles.Except(parent.ArticlesExpectedForReImportExport);
+
+        foreach (var expectedReimportReexportArticle in expectedReimportReexportArticlesToConnect)
+        {
+            parent.ArticlesExpectedForReImportExport.Add(expectedReimportReexportArticle);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Articles Expected for Re Import/Export records from COMMON DETAILED DECLARATION
+    /// </summary>
+    public async Task DisconnectArticlesExpectedForReImportExport(CommonDetailedDeclarationWhereUniqueInput uniqueId, ExpectedReimportReexportArticleWhereUniqueInput[] expectedReimportReexportArticlesId)
+    {
+        var parent = await _context
+                                .CommonDetailedDeclarations.Include(x => x.ArticlesExpectedForReImportExport)
+                        .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var expectedReimportReexportArticles = await _context
+          .ExpectedReimportReexportArticles.Where(t => expectedReimportReexportArticlesId.Select(x => x.Id).Contains(t.Id))
+          .ToListAsync();
+
+        foreach (var expectedReimportReexportArticle in expectedReimportReexportArticles)
+        {
+            parent.ArticlesExpectedForReImportExport?.Remove(expectedReimportReexportArticle);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple Articles Expected for Re Import/Export records for COMMON DETAILED DECLARATION
+    /// </summary>
+    public async Task<List<ExpectedReimportReexportArticle>> FindArticlesExpectedForReImportExport(CommonDetailedDeclarationWhereUniqueInput uniqueId, ExpectedReimportReexportArticleFindManyArgs commonDetailedDeclarationFindManyArgs)
+    {
+        var expectedReimportReexportArticles = await _context
+              .ExpectedReimportReexportArticles
+      .Where(m => m.CommonDetailedDeclarationsId == uniqueId.Id)
+      .ApplyWhere(commonDetailedDeclarationFindManyArgs.Where)
+      .ApplySkip(commonDetailedDeclarationFindManyArgs.Skip)
+      .ApplyTake(commonDetailedDeclarationFindManyArgs.Take)
+      .ApplyOrderBy(commonDetailedDeclarationFindManyArgs.SortBy)
+      .ToListAsync();
+
+        return expectedReimportReexportArticles.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple Articles Expected for Re Import/Export records for COMMON DETAILED DECLARATION
+    /// </summary>
+    public async Task UpdateArticlesExpectedForReImportExport(CommonDetailedDeclarationWhereUniqueInput uniqueId, ExpectedReimportReexportArticleWhereUniqueInput[] expectedReimportReexportArticlesId)
+    {
+        var commonDetailedDeclaration = await _context
+                .CommonDetailedDeclarations.Include(t => t.ArticlesExpectedForReImportExport)
+        .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (commonDetailedDeclaration == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var expectedReimportReexportArticles = await _context
+          .ExpectedReimportReexportArticles.Where(a => expectedReimportReexportArticlesId.Select(x => x.Id).Contains(a.Id))
+          .ToListAsync();
+
+        if (expectedReimportReexportArticles.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        commonDetailedDeclaration.ArticlesExpectedForReImportExport = expectedReimportReexportArticles;
+        await _context.SaveChangesAsync();
+    }
+
 }

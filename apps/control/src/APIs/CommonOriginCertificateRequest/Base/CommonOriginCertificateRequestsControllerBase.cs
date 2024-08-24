@@ -21,7 +21,7 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
     }
 
     /// <summary>
-    /// Create one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Create one Common Origin Certificate Request
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -41,7 +41,7 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
     }
 
     /// <summary>
-    /// Delete one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Delete one Common Origin Certificate Request
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -76,7 +76,7 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
     }
 
     /// <summary>
-    /// Meta data about COMMON ORIGIN CERTIFICATE REQUEST records
+    /// Meta data about Common Origin Certificate Request records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CommonOriginCertificateRequestsMeta(
@@ -87,7 +87,7 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
     }
 
     /// <summary>
-    /// Get one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Get one Common Origin Certificate Request
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -106,7 +106,7 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
     }
 
     /// <summary>
-    /// Update one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Update one Common Origin Certificate Request
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]

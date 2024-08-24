@@ -17,6 +17,11 @@ public class ExpressCustomsClearanceDetailsDbModel
     [StringLength(1000)]
     public string? CommercialDenomination { get; set; }
 
+    public string? CommonExpressClearanceId { get; set; }
+
+    [ForeignKey(nameof(CommonExpressClearanceId))]
+    public CommonExpressClearanceDbModel? CommonExpressClearance { get; set; } = null;
+
     [Required()]
     public DateTime CreatedAt { get; set; }
 

@@ -2,6 +2,8 @@ namespace Control.APIs.Dtos;
 
 public class ContainerOfTheDetailedDeclarationCustomsWhereInput
 {
+    public string? CommonDetailedDeclarations { get; set; }
+
     public string? ContainerNumber { get; set; }
 
     public string? ContainerPackingStateCode { get; set; }

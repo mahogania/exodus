@@ -14,6 +14,8 @@ public class CommonExpressClearanceCreateInput
 
     public string? DeletionOn { get; set; }
 
+    public List<ExpressCustomsClearanceDetails>? Details { get; set; }
+
     public string? ExpressClearanceRequestNumber { get; set; }
 
     public string? ExpressOperatorCode { get; set; }

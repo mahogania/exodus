@@ -19,7 +19,7 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     }
 
     /// <summary>
-    /// Create one COMMON EXPRESS CLEARANCE
+    /// Create one Common Express Clearance
     /// </summary>
     public async Task<CommonExpressClearance> CreateCommonExpressClearance(
         CommonExpressClearanceCreateInput createDto
@@ -52,6 +52,14 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
         {
             commonExpressClearance.Id = createDto.Id;
         }
+        if (createDto.Details != null)
+        {
+            commonExpressClearance.Details = await _context
+                .ExpressCustomsClearanceDetailsItems.Where(expressCustomsClearanceDetails =>
+                    createDto.Details.Select(t => t.Id).Contains(expressCustomsClearanceDetails.Id)
+                )
+                .ToListAsync();
+        }
 
         _context.CommonExpressClearances.Add(commonExpressClearance);
         await _context.SaveChangesAsync();
@@ -69,7 +77,7 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     }
 
     /// <summary>
-    /// Delete one COMMON EXPRESS CLEARANCE
+    /// Delete one Common Express Clearance
     /// </summary>
     public async Task DeleteCommonExpressClearance(CommonExpressClearanceWhereUniqueInput uniqueId)
     {
@@ -91,7 +99,8 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     )
     {
         var commonExpressClearances = await _context
-            .CommonExpressClearances.ApplyWhere(findManyArgs.Where)
+            .CommonExpressClearances.Include(x => x.Details)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -102,7 +111,7 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     }
 
     /// <summary>
-    /// Meta data about COMMON EXPRESS CLEARANCE records
+    /// Meta data about Common Express Clearance records
     /// </summary>
     public async Task<MetadataDto> CommonExpressClearancesMeta(
         CommonExpressClearanceFindManyArgs findManyArgs
@@ -116,7 +125,7 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     }
 
     /// <summary>
-    /// Get one COMMON EXPRESS CLEARANCE
+    /// Get one Common Express Clearance
     /// </summary>
     public async Task<CommonExpressClearance> CommonExpressClearance(
         CommonExpressClearanceWhereUniqueInput uniqueId
@@ -138,7 +147,7 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     }
 
     /// <summary>
-    /// Update one COMMON EXPRESS CLEARANCE
+    /// Update one Common Express Clearance
     /// </summary>
     public async Task UpdateCommonExpressClearance(
         CommonExpressClearanceWhereUniqueInput uniqueId,
@@ -146,6 +155,15 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     )
     {
         var commonExpressClearance = updateDto.ToModel(uniqueId);
+
+        if (updateDto.Details != null)
+        {
+            commonExpressClearance.Details = await _context
+                .ExpressCustomsClearanceDetailsItems.Where(expressCustomsClearanceDetails =>
+                    updateDto.Details.Select(t => t).Contains(expressCustomsClearanceDetails.Id)
+                )
+                .ToListAsync();
+        }
 
         _context.Entry(commonExpressClearance).State = EntityState.Modified;
 
