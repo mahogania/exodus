@@ -33,6 +33,9 @@ public class JournalDbModel
     [Required()]
     public string Id { get; set; }
 
+    public List<RecourseRequestDbModel>? RecourseRequests { get; set; } =
+        new List<RecourseRequestDbModel>();
+
     [Required()]
     public DateTime UpdatedAt { get; set; }
 }

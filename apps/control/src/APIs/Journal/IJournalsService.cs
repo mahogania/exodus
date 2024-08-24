@@ -201,4 +201,36 @@ public interface IJournalsService
         JournalWhereUniqueInput uniqueId,
         ForeignOperatorRequestWhereUniqueInput[] foreignOperatorRequestsId
     );
+
+    /// <summary>
+    /// Connect multiple Recourse Requests records to Journal
+    /// </summary>
+    public Task ConnectRecourseRequests(
+        JournalWhereUniqueInput uniqueId,
+        RecourseRequestWhereUniqueInput[] recourseRequestsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple Recourse Requests records from Journal
+    /// </summary>
+    public Task DisconnectRecourseRequests(
+        JournalWhereUniqueInput uniqueId,
+        RecourseRequestWhereUniqueInput[] recourseRequestsId
+    );
+
+    /// <summary>
+    /// Find multiple Recourse Requests records for Journal
+    /// </summary>
+    public Task<List<RecourseRequest>> FindRecourseRequests(
+        JournalWhereUniqueInput uniqueId,
+        RecourseRequestFindManyArgs RecourseRequestFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple Recourse Requests records for Journal
+    /// </summary>
+    public Task UpdateRecourseRequests(
+        JournalWhereUniqueInput uniqueId,
+        RecourseRequestWhereUniqueInput[] recourseRequestsId
+    );
 }

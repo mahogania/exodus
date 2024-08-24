@@ -43,13 +43,12 @@ public static class TemporaryAdmissionForPerfectionsExtensions
             ImportOperationFinancingMode = model.ImportOperationFinancingMode,
             ImportedMaterialQuantitiesRate = model.ImportedMaterialQuantitiesRate,
             ImportedPackagingQuantitiesRate = model.ImportedPackagingQuantitiesRate,
+            LegalName = model.LegalName,
             LocalAddress = model.LocalAddress,
             LossRate = model.LossRate,
             NameAndLegalNameOfThirdParty = model.NameAndLegalNameOfThirdParty,
             NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepaired =
                 model.NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepaired,
-            NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepairedByThirdParty =
-                model.NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepairedByThirdParty,
             NationalOriginMaterialQuantitiesRate = model.NationalOriginMaterialQuantitiesRate,
             NatureOfOperation = model.NatureOfOperation,
             NatureOfOperationPerformedByThirdParty = model.NatureOfOperationPerformedByThirdParty,
@@ -111,13 +110,12 @@ public static class TemporaryAdmissionForPerfectionsExtensions
             ImportOperationFinancingMode = updateDto.ImportOperationFinancingMode,
             ImportedMaterialQuantitiesRate = updateDto.ImportedMaterialQuantitiesRate,
             ImportedPackagingQuantitiesRate = updateDto.ImportedPackagingQuantitiesRate,
+            LegalName = updateDto.LegalName,
             LocalAddress = updateDto.LocalAddress,
             LossRate = updateDto.LossRate,
             NameAndLegalNameOfThirdParty = updateDto.NameAndLegalNameOfThirdParty,
             NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepaired =
                 updateDto.NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepaired,
-            NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepairedByThirdParty =
-                updateDto.NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepairedByThirdParty,
             NationalOriginMaterialQuantitiesRate = updateDto.NationalOriginMaterialQuantitiesRate,
             NatureOfOperation = updateDto.NatureOfOperation,
             NatureOfOperationPerformedByThirdParty =

@@ -24,9 +24,9 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<PostalGoodsClearanceDbModel> PostalGoodsClearances { get; set; }
 
-    public DbSet<TemporaryAdmissionForPerfectionDbModel> TemporaryAdmissionForPerfections { get; set; }
-
     public DbSet<ArticleDbModel> Articles { get; set; }
+
+    public DbSet<TemporaryAdmissionForPerfectionDbModel> TemporaryAdmissionForPerfections { get; set; }
 
     public DbSet<ForeignOperatorRequestDbModel> ForeignOperatorRequests { get; set; }
 
@@ -38,9 +38,9 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<GoodsImportedForPerfectingDbModel> GoodsImportedForPerfectings { get; set; }
 
-    public DbSet<CommonCarnetRequestDbModel> CommonCarnetRequests { get; set; }
-
     public DbSet<ReimportedGoodsForPerfectingDbModel> ReimportedGoodsForPerfectings { get; set; }
+
+    public DbSet<CommonCarnetRequestDbModel> CommonCarnetRequests { get; set; }
 
     public DbSet<GoodsSubjectToAuthorizationDbModel> GoodsSubjectToAuthorizations { get; set; }
 
@@ -102,13 +102,13 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<CommonActiveGoodsRequestDbModel> CommonActiveGoodsRequests { get; set; }
 
-    public DbSet<JointDocumentDbModel> JointDocuments { get; set; }
-
     public DbSet<ValueAssessmentDbModel> ValueAssessments { get; set; }
+
+    public DbSet<JointDocumentDbModel> JointDocuments { get; set; }
 
     public DbSet<AtWithReExportationInTheStateDbModel> AtWithReExportationInTheStates { get; set; }
 
-    public DbSet<RequestForRecourseDbModel> RequestForRecourses { get; set; }
+    public DbSet<RecourseRequestDbModel> RecourseRequests { get; set; }
 
     public DbSet<GoodsAndWithReImportationInStateDbModel> GoodsAndWithReImportationInStates { get; set; }
 
@@ -131,8 +131,6 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
     public DbSet<ExportedOrToBeExportedGoodsInformationDbModel> ExportedOrToBeExportedGoodsInformations { get; set; }
 
     public DbSet<PostalGoodsClearanceDetailDbModel> PostalGoodsClearanceDetails { get; set; }
-
-    public DbSet<RequestForTirCarnetOfTheArticleDbModel> RequestForTirCarnetOfTheArticles { get; set; }
 
     public DbSet<MaterialsAtWithReexportationInTheStateDbModel> MaterialsAtWithReexportationInTheStates { get; set; }
 

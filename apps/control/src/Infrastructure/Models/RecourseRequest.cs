@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Control.Infrastructure.Models;
 
-[Table("RequestForRecourses")]
-public class RequestForRecourseDbModel
+[Table("RecourseRequests")]
+public class RecourseRequestDbModel
 {
     [Required()]
     public DateTime CreatedAt { get; set; }
@@ -12,6 +12,11 @@ public class RequestForRecourseDbModel
     [Key()]
     [Required()]
     public string Id { get; set; }
+
+    public string? JournalId { get; set; }
+
+    [ForeignKey(nameof(JournalId))]
+    public JournalDbModel? Journal { get; set; } = null;
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

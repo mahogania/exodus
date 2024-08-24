@@ -175,6 +175,7 @@ public static class ServiceCollectionExtensions
         >();
         services.AddScoped<IRawMaterialsService, RawMaterialsService>();
         services.AddScoped<IRCODemandsService, RCODemandsService>();
+        services.AddScoped<IRecourseRequestsService, RecourseRequestsService>();
         services.AddScoped<IReexportCarnetControlsService, ReexportCarnetControlsService>();
         services.AddScoped<IReexportCarnetRequestsService, ReexportCarnetRequestsService>();
         services.AddScoped<
@@ -182,11 +183,6 @@ public static class ServiceCollectionExtensions
             ReimportedGoodsForPerfectingsService
         >();
         services.AddScoped<IReplenishmentsService, ReplenishmentsService>();
-        services.AddScoped<IRequestForRecoursesService, RequestForRecoursesService>();
-        services.AddScoped<
-            IRequestForTirCarnetOfTheArticlesService,
-            RequestForTirCarnetOfTheArticlesService
-        >();
         services.AddScoped<IStateForPerfectionsService, StateForPerfectionsService>();
         services.AddScoped<
             IStateOfGoodsForPassivePerfectionCommonsService,

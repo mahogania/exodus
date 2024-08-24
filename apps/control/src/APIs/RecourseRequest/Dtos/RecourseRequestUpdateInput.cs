@@ -1,10 +1,12 @@
 namespace Control.APIs.Dtos;
 
-public class RequestForRecourseUpdateInput
+public class RecourseRequestUpdateInput
 {
     public DateTime? CreatedAt { get; set; }
 
     public string? Id { get; set; }
+
+    public string? Journal { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 }

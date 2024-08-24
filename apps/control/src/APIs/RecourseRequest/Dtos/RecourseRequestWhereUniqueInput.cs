@@ -1,6 +1,6 @@
 namespace Control.APIs.Dtos;
 
-public class RequestForTirCarnetOfTheArticleWhereUniqueInput
+public class RecourseRequestWhereUniqueInput
 {
     public string Id { get; set; }
 }

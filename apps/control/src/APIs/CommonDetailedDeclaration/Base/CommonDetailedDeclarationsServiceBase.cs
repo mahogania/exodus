@@ -225,7 +225,7 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
     {
         var commonDetailedDeclarations = await _context
               .CommonDetailedDeclarations
-      .Include(x => x.Articles).Include(x => x.Operator).Include(x => x.ValueDeclaration).Include(x => x.ArticlesExpectedForReImportExport).Include(x => x.Container).Include(x => x.Document).Include(x => x.Assessment).Include(x => x.Changes).Include(x => x.Journal)
+      .Include(x => x.Articles).Include(x => x.Operator).Include(x => x.ValueDeclaration).Include(x => x.ArticlesExpectedForReImportExport).Include(x => x.Container).Include(x => x.Assessment).Include(x => x.Document).Include(x => x.Changes).Include(x => x.Journal)
       .ApplyWhere(findManyArgs.Where)
       .ApplySkip(findManyArgs.Skip)
       .ApplyTake(findManyArgs.Take)

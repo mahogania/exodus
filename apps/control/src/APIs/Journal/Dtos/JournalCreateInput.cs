@@ -18,5 +18,7 @@ public class JournalCreateInput
 
     public string? Id { get; set; }
 
+    public List<RecourseRequest>? RecourseRequests { get; set; }
+
     public DateTime UpdatedAt { get; set; }
 }

@@ -569,4 +569,90 @@ public abstract class JournalsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Connect multiple Recourse Requests records to Journal
+    /// </summary>
+    [HttpPost("{Id}/recourseRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> ConnectRecourseRequests(
+        [FromRoute()] JournalWhereUniqueInput uniqueId,
+        [FromQuery()] RecourseRequestWhereUniqueInput[] recourseRequestsId
+    )
+    {
+        try
+        {
+            await _service.ConnectRecourseRequests(uniqueId, recourseRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Recourse Requests records from Journal
+    /// </summary>
+    [HttpDelete("{Id}/recourseRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> DisconnectRecourseRequests(
+        [FromRoute()] JournalWhereUniqueInput uniqueId,
+        [FromBody()] RecourseRequestWhereUniqueInput[] recourseRequestsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectRecourseRequests(uniqueId, recourseRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple Recourse Requests records for Journal
+    /// </summary>
+    [HttpGet("{Id}/recourseRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult<List<RecourseRequest>>> FindRecourseRequests(
+        [FromRoute()] JournalWhereUniqueInput uniqueId,
+        [FromQuery()] RecourseRequestFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindRecourseRequests(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple Recourse Requests records for Journal
+    /// </summary>
+    [HttpPatch("{Id}/recourseRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> UpdateRecourseRequests(
+        [FromRoute()] JournalWhereUniqueInput uniqueId,
+        [FromBody()] RecourseRequestWhereUniqueInput[] recourseRequestsId
+    )
+    {
+        try
+        {
+            await _service.UpdateRecourseRequests(uniqueId, recourseRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
 }

@@ -96,6 +96,9 @@ public class TemporaryAdmissionForPerfectionDbModel
     public double? ImportedPackagingQuantitiesRate { get; set; }
 
     [StringLength(1000)]
+    public string? LegalName { get; set; }
+
+    [StringLength(1000)]
     public string? LocalAddress { get; set; }
 
     [Range(-999999999, 999999999)]
@@ -106,9 +109,6 @@ public class TemporaryAdmissionForPerfectionDbModel
 
     [StringLength(1000)]
     public string? NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepaired { get; set; }
-
-    [StringLength(1000)]
-    public string? NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepairedByThirdParty { get; set; }
 
     [Range(-999999999, 999999999)]
     public double? NationalOriginMaterialQuantitiesRate { get; set; }

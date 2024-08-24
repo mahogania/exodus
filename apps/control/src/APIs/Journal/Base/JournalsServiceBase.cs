@@ -97,6 +97,15 @@ public abstract class JournalsServiceBase : IJournalsService
                 .ToListAsync();
         }
 
+        if (createDto.RecourseRequests != null)
+        {
+            journal.RecourseRequests = await _context
+                .RecourseRequests.Where(recourseRequest =>
+                    createDto.RecourseRequests.Select(t => t.Id).Contains(recourseRequest.Id)
+                )
+                .ToListAsync();
+        }
+
         _context.Journals.Add(journal);
         await _context.SaveChangesAsync();
 
@@ -136,6 +145,7 @@ public abstract class JournalsServiceBase : IJournalsService
             .Include(x => x.CommonDetailedDeclaration)
             .Include(x => x.CancellationRequests)
             .Include(x => x.CommonActiveGoodsRequests)
+            .Include(x => x.RecourseRequests)
             .Include(x => x.CommonOriginCertificateRequests)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
@@ -215,6 +225,15 @@ public abstract class JournalsServiceBase : IJournalsService
                     updateDto
                         .CommonActiveGoodsRequests.Select(t => t)
                         .Contains(commonActiveGoodsRequest.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.RecourseRequests != null)
+        {
+            journal.RecourseRequests = await _context
+                .RecourseRequests.Where(recourseRequest =>
+                    updateDto.RecourseRequests.Select(t => t).Contains(recourseRequest.Id)
                 )
                 .ToListAsync();
         }
@@ -849,6 +868,115 @@ public abstract class JournalsServiceBase : IJournalsService
         }
 
         journal.ForeignOperatorRequests = foreignOperatorRequests;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Connect multiple Recourse Requests records to Journal
+    /// </summary>
+    public async Task ConnectRecourseRequests(
+        JournalWhereUniqueInput uniqueId,
+        RecourseRequestWhereUniqueInput[] recourseRequestsId
+    )
+    {
+        var parent = await _context
+            .Journals.Include(x => x.RecourseRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var recourseRequests = await _context
+            .RecourseRequests.Where(t => recourseRequestsId.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (recourseRequests.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var recourseRequestsToConnect = recourseRequests.Except(parent.RecourseRequests);
+
+        foreach (var recourseRequest in recourseRequestsToConnect)
+        {
+            parent.RecourseRequests.Add(recourseRequest);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Recourse Requests records from Journal
+    /// </summary>
+    public async Task DisconnectRecourseRequests(
+        JournalWhereUniqueInput uniqueId,
+        RecourseRequestWhereUniqueInput[] recourseRequestsId
+    )
+    {
+        var parent = await _context
+            .Journals.Include(x => x.RecourseRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var recourseRequests = await _context
+            .RecourseRequests.Where(t => recourseRequestsId.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var recourseRequest in recourseRequests)
+        {
+            parent.RecourseRequests?.Remove(recourseRequest);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple Recourse Requests records for Journal
+    /// </summary>
+    public async Task<List<RecourseRequest>> FindRecourseRequests(
+        JournalWhereUniqueInput uniqueId,
+        RecourseRequestFindManyArgs journalFindManyArgs
+    )
+    {
+        var recourseRequests = await _context
+            .RecourseRequests.Where(m => m.JournalId == uniqueId.Id)
+            .ApplyWhere(journalFindManyArgs.Where)
+            .ApplySkip(journalFindManyArgs.Skip)
+            .ApplyTake(journalFindManyArgs.Take)
+            .ApplyOrderBy(journalFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return recourseRequests.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple Recourse Requests records for Journal
+    /// </summary>
+    public async Task UpdateRecourseRequests(
+        JournalWhereUniqueInput uniqueId,
+        RecourseRequestWhereUniqueInput[] recourseRequestsId
+    )
+    {
+        var journal = await _context
+            .Journals.Include(t => t.RecourseRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (journal == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var recourseRequests = await _context
+            .RecourseRequests.Where(a => recourseRequestsId.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (recourseRequests.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        journal.RecourseRequests = recourseRequests;
         await _context.SaveChangesAsync();
     }
 }

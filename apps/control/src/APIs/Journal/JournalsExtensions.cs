@@ -19,6 +19,7 @@ public static class JournalsExtensions
             CreatedAt = model.CreatedAt,
             ForeignOperatorRequests = model.ForeignOperatorRequests?.Select(x => x.Id).ToList(),
             Id = model.Id,
+            RecourseRequests = model.RecourseRequests?.Select(x => x.Id).ToList(),
             UpdatedAt = model.UpdatedAt,
         };
     }

@@ -5,5 +5,5 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
-public class RequestForTirCarnetOfTheArticleFindManyArgs
-    : FindManyInput<RequestForTirCarnetOfTheArticle, RequestForTirCarnetOfTheArticleWhereInput> { }
+public class RecourseRequestFindManyArgs
+    : FindManyInput<RecourseRequest, RecourseRequestWhereInput> { }

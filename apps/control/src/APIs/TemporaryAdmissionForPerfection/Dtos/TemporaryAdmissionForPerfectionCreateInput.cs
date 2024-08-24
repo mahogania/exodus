@@ -62,6 +62,8 @@ public class TemporaryAdmissionForPerfectionCreateInput
 
     public double? ImportedPackagingQuantitiesRate { get; set; }
 
+    public string? LegalName { get; set; }
+
     public string? LocalAddress { get; set; }
 
     public double? LossRate { get; set; }
@@ -69,8 +71,6 @@ public class TemporaryAdmissionForPerfectionCreateInput
     public string? NameAndLegalNameOfThirdParty { get; set; }
 
     public string? NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepaired { get; set; }
-
-    public string? NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepairedByThirdParty { get; set; }
 
     public double? NationalOriginMaterialQuantitiesRate { get; set; }
 

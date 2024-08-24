@@ -59,13 +59,12 @@ public abstract class TemporaryAdmissionForPerfectionsServiceBase
             ImportOperationFinancingMode = createDto.ImportOperationFinancingMode,
             ImportedMaterialQuantitiesRate = createDto.ImportedMaterialQuantitiesRate,
             ImportedPackagingQuantitiesRate = createDto.ImportedPackagingQuantitiesRate,
+            LegalName = createDto.LegalName,
             LocalAddress = createDto.LocalAddress,
             LossRate = createDto.LossRate,
             NameAndLegalNameOfThirdParty = createDto.NameAndLegalNameOfThirdParty,
             NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepaired =
                 createDto.NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepaired,
-            NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepairedByThirdParty =
-                createDto.NameLegalNameOfEstablishmentWhereImportedGoodsMustBeTransformedRepairedByThirdParty,
             NationalOriginMaterialQuantitiesRate = createDto.NationalOriginMaterialQuantitiesRate,
             NatureOfOperation = createDto.NatureOfOperation,
             NatureOfOperationPerformedByThirdParty =
