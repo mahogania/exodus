@@ -9,11 +9,17 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static void RegisterServices(this IServiceCollection services)
     {
+        services.AddScoped<IAppealsService, AppealsService>();
         services.AddScoped<IArticlesService, ArticlesService>();
         services.AddScoped<IArticleAssessmentsService, ArticleAssessmentsService>();
         services.AddScoped<IArticleCarnetControlsService, ArticleCarnetControlsService>();
         services.AddScoped<IArticleCarnetRequestsService, ArticleCarnetRequestsService>();
+        services.AddScoped<
+            IArticlesSubmittedForVerificationsService,
+            ArticlesSubmittedForVerificationsService
+        >();
         services.AddScoped<ICancellationRequestsService, CancellationRequestsService>();
+        services.AddScoped<ICarnetControlsService, CarnetControlsService>();
         services.AddScoped<ICommonActiveGoodsRequestsService, CommonActiveGoodsRequestsService>();
         services.AddScoped<ICommonCarnetRequestsService, CommonCarnetRequestsService>();
         services.AddScoped<ICommonDetailedDeclarationsService, CommonDetailedDeclarationsService>();
@@ -23,10 +29,12 @@ public static class ServiceCollectionExtensions
             CommonOriginCertificateRequestsService
         >();
         services.AddScoped<ICommonRegimeRequestsService, CommonRegimeRequestsService>();
+        services.AddScoped<ICommonVerificationsService, CommonVerificationsService>();
         services.AddScoped<
             IContainerOfTheDetailedDeclarationCustomsService,
             ContainerOfTheDetailedDeclarationCustomsService
         >();
+        services.AddScoped<IContainerValueAssessmentsService, ContainerValueAssessmentsService>();
         services.AddScoped<IDetailedDeclarationTaxesService, DetailedDeclarationTaxesService>();
         services.AddScoped<IDetailOfActiveGoodsService, DetailOfActiveGoodsService>();
         services.AddScoped<
@@ -68,6 +76,10 @@ public static class ServiceCollectionExtensions
             IModelofDetailedDeclarationsService,
             ModelofDetailedDeclarationsService
         >();
+        services.AddScoped<
+            IModelValueEvaluationVerificationsService,
+            ModelValueEvaluationVerificationsService
+        >();
         services.AddScoped<IOperatorsService, OperatorsService>();
         services.AddScoped<
             IOriginDeterminingInformationsService,
@@ -87,6 +99,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IRecourseRequestsService, RecourseRequestsService>();
         services.AddScoped<IReexportCarnetControlsService, ReexportCarnetControlsService>();
         services.AddScoped<IReexportCarnetRequestsService, ReexportCarnetRequestsService>();
+        services.AddScoped<ITaxForVerificationsService, TaxForVerificationsService>();
         services.AddScoped<
             ITemporaryAdmissionForPerfectionsService,
             TemporaryAdmissionForPerfectionsService
@@ -100,6 +113,8 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IValueAssessmentsService, ValueAssessmentsService>();
         services.AddScoped<IValueDeclarationsService, ValueDeclarationsService>();
         services.AddScoped<IVehiclesService, VehiclesService>();
+        services.AddScoped<IVerificationResultsService, VerificationResultsService>();
+        services.AddScoped<IVerificationResultDetailsService, VerificationResultDetailsService>();
         services.AddScoped<IWarehouseTransfersService, WarehouseTransfersService>();
     }
 }

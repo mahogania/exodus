@@ -56,9 +56,9 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<RCODemandDbModel> RcoDemands { get; set; }
 
-    public DbSet<RawMaterialDbModel> RawMaterials { get; set; }
-
     public DbSet<DetailOfRequestForOriginCertificateDbModel> DetailOfRequestForOriginCertificates { get; set; }
+
+    public DbSet<RawMaterialDbModel> RawMaterials { get; set; }
 
     public DbSet<ItineraryDbModel> Itineraries { get; set; }
 
@@ -74,9 +74,9 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<VehicleDbModel> Vehicles { get; set; }
 
-    public DbSet<DetailOfTheApprovalOfTheRegimeRequestDbModel> DetailOfTheApprovalOfTheRegimeRequests { get; set; }
-
     public DbSet<ArticleAssessmentDbModel> ArticleAssessments { get; set; }
+
+    public DbSet<DetailOfTheApprovalOfTheRegimeRequestDbModel> DetailOfTheApprovalOfTheRegimeRequests { get; set; }
 
     public DbSet<PostalGoodsClearanceDetailDbModel> PostalGoodsClearanceDetails { get; set; }
 
@@ -103,4 +103,22 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
     public DbSet<ReexportCarnetControlDbModel> ReexportCarnetControls { get; set; }
 
     public DbSet<ArticleCarnetControlDbModel> ArticleCarnetControls { get; set; }
+
+    public DbSet<CarnetControlDbModel> CarnetControls { get; set; }
+
+    public DbSet<AppealDbModel> Appeals { get; set; }
+
+    public DbSet<CommonVerificationDbModel> CommonVerifications { get; set; }
+
+    public DbSet<ArticlesSubmittedForVerificationDbModel> ArticlesSubmittedForVerifications { get; set; }
+
+    public DbSet<TaxForVerificationDbModel> TaxForVerifications { get; set; }
+
+    public DbSet<VerificationResultDbModel> VerificationResults { get; set; }
+
+    public DbSet<VerificationResultDetailDbModel> VerificationResultDetails { get; set; }
+
+    public DbSet<ContainerValueAssessmentDbModel> ContainerValueAssessments { get; set; }
+
+    public DbSet<ModelValueEvaluationVerificationDbModel> ModelValueEvaluationVerifications { get; set; }
 }
