@@ -1,0 +1,114 @@
+@page "/tarif/request"
+@using Microsoft.Extensions.Localization
+
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h2>@Localizer["Title"]</h2>
+    <div class="form-group">
+        <SfTextBox TValue="string" Placeholder="@Localizer["RTCNumber"]" CssClass="e-field" Value="RTC-2022-000001"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["Requester"]</label>
+        <SfTextBox TValue="string" Placeholder="@Localizer["Requester"]" CssClass="e-field" Value="0000001"></SfTextBox>
+        <SfButton CssClass="e-search">🔍</SfButton>
+        <SfTextBox TValue="string" Placeholder="@Localizer["NRC"]" CssClass="e-field" Value="000000123456789"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["NIF"]" CssClass="e-field" Value="000000123456789"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["Address"]" CssClass="e-field"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["Email"]" CssClass="e-field"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["HolderConfidential"]</label>
+        <SfTextBox TValue="string" Placeholder="@Localizer["Holder"]" CssClass="e-field" Value="0000002"></SfTextBox>
+        <SfButton CssClass="e-search">🔍</SfButton>
+        <SfTextBox TValue="string" Placeholder="@Localizer["NRC"]" CssClass="e-field" Value="000000123456789"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["NIF"]" CssClass="e-field" Value="000000123456789"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["Address"]" CssClass="e-field"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["Email"]" CssClass="e-field"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <SfTextBox TValue="string" Placeholder="@Localizer["OeaNumber"]" CssClass="e-field" Value="1020 du 20/11/2019"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["ReissueRTC"]</label>
+        <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceRTCNumber"]" CssClass="e-field"></SfTextBox>
+        <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["StartDateValidity"]" CssClass="e-field"></SfDatePicker>
+        <SfTextBox TValue="string" Placeholder="@Localizer["GoodsDescription"]" CssClass="e-field"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["TariffPosition"]" CssClass="e-field"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["OperationType"]</label>
+        <SfRadioButton TValue="bool" TChecked="bool" Label="@Localizer["Import"]" Name="operationType"></SfRadioButton>
+        <SfRadioButton TValue="bool" TChecked="bool" Label="@Localizer["Export"]" Name="operationType"></SfRadioButton>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["ImportantNote"]</label>
+        <SfTextBox TValue="string" Placeholder="@Localizer["ImportantNote"]" CssClass="e-field" Multiline="true"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["CommercialDenomination"]</label>
+        <SfTextBox TValue="string" Placeholder="@Localizer["CommercialDenomination"]" CssClass="e-field"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["CountryOfOrigin"]" CssClass="e-field"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["Value"]" CssClass="e-field"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["Weight"]" CssClass="e-field"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["ClassificationEnvisaged"]</label>
+        <SfTextBox TValue="string" Placeholder="@Localizer["TariffPosition"]" CssClass="e-field"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["InterpretationRules"]" CssClass="e-field" Multiline="true"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["GoodsDescription"]" CssClass="e-field" Multiline="true"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["ElementsAndProofs"]</label>
+        <SfCheckBox TValue="bool" TChecked="bool" Label="@Localizer["Samples"]"></SfCheckBox>
+        <SfCheckBox TValue="bool" TChecked="bool" Label="@Localizer["Brochures"]"></SfCheckBox>
+        <SfCheckBox TValue="bool" TChecked="bool" Label="@Localizer["Photographs"]"></SfCheckBox>
+        <SfCheckBox TValue="bool" TChecked="bool" Label="@Localizer["Reports"]"></SfCheckBox>
+        <SfCheckBox TValue="bool" TChecked="bool" Label="@Localizer["OthersSpecify"]"></SfCheckBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["SampleReturn"]</label>
+        <SfRadioButton TValue="bool" TChecked="bool" Label="@Localizer["Yes"]" Name="sampleReturn"></SfRadioButton>
+        <SfRadioButton TValue="bool" TChecked="bool" Label="@Localizer["No"]" Name="sampleReturn"></SfRadioButton>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["OtherRTCRequests"]</label>
+        <SfRadioButton TValue="bool" TChecked="bool" Label="@Localizer["Yes"]" Name="otherRequests"></SfRadioButton>
+        <SfRadioButton TValue="bool" TChecked="bool" Label="@Localizer["No"]" Name="otherRequests"></SfRadioButton>
+        <SfTextBox TValue="string" Placeholder="@Localizer["RequestDate"]" CssClass="e-field"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["RTCReference"]" CssClass="e-field"></SfTextBox>
+        <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["StartDateValidity"]" CssClass="e-field"></SfDatePicker>
+        <SfTextBox TValue="string" Placeholder="@Localizer["TariffPosition"]" CssClass="e-field"></SfTextBox>
+        <SfTextBox TValue="string" Placeholder="@Localizer["GoodsDescription"]" CssClass="e-field"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["KnowledgeOfExistingDecision"]</label>
+        <SfTextBox TValue="string" Placeholder="@Localizer["Description"]" CssClass="e-field" Multiline="true"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["PhotoUpload"]</label>
+        <SfUploader TValue="object"></SfUploader>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["SuspensionReason"]</label>
+        <SfTextBox TValue="string" Placeholder="@Localizer["SuspensionReason"]" CssClass="e-field" Multiline="true"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <label>@Localizer["AdditionalInformation"]</label>
+        <SfTextBox TValue="string" Placeholder="@Localizer["AdditionalInformation"]" CssClass="e-field" Multiline="true"></SfTextBox>
+    </div>
+    <div class="form-group">
+        <SfButton CssClass="e-primary">@Localizer["Save"]</SfButton>
+        <SfButton CssClass="e-secondary">@Localizer["Modify"]</SfButton>
+        <SfButton CssClass="e-danger">@Localizer["Delete"]</SfButton>
+        <SfButton CssClass="e-info">@Localizer["Send"]</SfButton>
+        <SfButton CssClass="e-warning">@Localizer["Withdraw"]</SfButton>
+        <SfButton CssClass="e-success">@Localizer["RequestSuspension"]</SfButton>
+        <SfButton CssClass="e-dark">@Localizer["ControlResult"]</SfButton>
+        <SfButton CssClass="e-light">@Localizer["Contest"]</SfButton>
+    </div>
+</div>
+
+@code {
+    // Add any necessary code here
+}

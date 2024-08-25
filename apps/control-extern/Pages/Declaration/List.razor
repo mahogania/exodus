@@ -1,0 +1,162 @@
+@page "/declaration-details"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["DeclarationDetailsTitle"]</h3>
+    <div class="row">
+        <div class="col-md-3">
+            <SfDateRangePicker TValue="DateTime[]" Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList TItem="string" TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@declarationTypes"></SfDropDownList>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["TransportTitleNo"]" CssClass="e-outline"></SfTextBox>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["RegionalDirection"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarantNo"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["NIF"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["ElementToConsult"]" CssClass="e-outline"></SfTextBox>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["ValueToConsult"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <SfGrid DataSource="@DeclarationData" AllowPaging="true" AllowSorting="true">
+        <GridPageSettings PageSize="10"></GridPageSettings>
+        <GridColumns>
+            <GridColumn Field="@nameof(Declaration.DeclarationNo)" HeaderText="@Localizer["DeclarationNo"]" Width="150"></GridColumn>
+            <GridColumn Field="@nameof(Declaration.RegistrationDate)" HeaderText="@Localizer["RegistrationDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="@nameof(Declaration.RegionalDirection)" HeaderText="@Localizer["RegionalDirection"]" Width="150"></GridColumn>
+            <GridColumn Field="@nameof(Declaration.DeclarationType)" HeaderText="@Localizer["DeclarationType"]" Width="150"></GridColumn>
+            <GridColumn Field="@nameof(Declaration.Exporter)" HeaderText="@Localizer["Exporter"]" Width="150"></GridColumn>
+            <GridColumn Field="@nameof(Declaration.PaymentNoticeNo)" HeaderText="@Localizer["PaymentNoticeNo"]" Width="150"></GridColumn>
+            <GridColumn Field="@nameof(Declaration.TransportDeadline)" HeaderText="@Localizer["TransportDeadline"]" Width="150"></GridColumn>
+            <GridColumn Field="@nameof(Declaration.Status)" HeaderText="@Localizer["Status"]" Width="150"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-success">@Localizer["DownloadExcel"]</SfButton>
+        </div>
+    </div>
+
+    <SfTab>
+        <TabItems>
+            <TabItem>
+                @* <TabHeader>@Localizer["Article"]</TabHeader> *@
+                <ContentTemplate>
+                    <SfGrid DataSource="@ArticleData" AllowPaging="true" AllowSorting="true" TValue="Article">
+                        <GridPageSettings PageSize="10"></GridPageSettings>
+                        <GridColumns>
+                            <GridColumn Field="@nameof(Article.TariffPosition)" HeaderText="@Localizer["TariffPosition"]" Width="150"></GridColumn>
+                            <GridColumn Field="@nameof(Article.Quantity)" HeaderText="@Localizer["Quantity"]" Width="100"></GridColumn>
+                            <GridColumn Field="@nameof(Article.PackageNo)" HeaderText="@Localizer["PackageNo"]" Width="100"></GridColumn>
+                            <GridColumn Field="@nameof(Article.CountryOfOrigin)" HeaderText="@Localizer["CountryOfOrigin"]" Width="150"></GridColumn>
+                            <GridColumn Field="@nameof(Article.GoodsName)" HeaderText="@Localizer["GoodsName"]" Width="150"></GridColumn>
+                            <GridColumn Field="@nameof(Article.GrossWeight)" HeaderText="@Localizer["GrossWeight"]" Width="100"></GridColumn>
+                            <GridColumn Field="@nameof(Article.NetWeight)" HeaderText="@Localizer["NetWeight"]" Width="100"></GridColumn>
+                            <GridColumn Field="@nameof(Article.VehicleChassisNo)" HeaderText="@Localizer["VehicleChassisNo"]" Width="150"></GridColumn>
+                        </GridColumns>
+                    </SfGrid>
+                </ContentTemplate>
+            </TabItem>
+            <TabItem>
+                @* <TabHeader>@Localizer["Container"]</TabHeader> *@
+                <ContentTemplate>
+                    <SfGrid DataSource="@ContainerData" AllowPaging="true" AllowSorting="true">
+                        <GridPageSettings PageSize="10"></GridPageSettings>
+                        <GridColumns>
+                            <GridColumn Field="@nameof(Container.ContainerNo)" HeaderText="@Localizer["ContainerNo"]" Width="150"></GridColumn>
+                            <GridColumn Field="@nameof(Container.ContainerCategory)" HeaderText="@Localizer["ContainerCategory"]" Width="150"></GridColumn>
+                            <GridColumn Field="@nameof(Container.SealedState)" HeaderText="@Localizer["SealedState"]" Width="100"></GridColumn>
+                            <GridColumn Field="@nameof(Container.SealNo1)" HeaderText="@Localizer["SealNo1"]" Width="100"></GridColumn>
+                            <GridColumn Field="@nameof(Container.SealNo2)" HeaderText="@Localizer["SealNo2"]" Width="100"></GridColumn>
+                            <GridColumn Field="@nameof(Container.SealNo3)" HeaderText="@Localizer["SealNo3"]" Width="100"></GridColumn>
+                            <GridColumn Field="@nameof(Container.SealCharge)" HeaderText="@Localizer["SealCharge"]" Width="100"></GridColumn>
+                        </GridColumns>
+                    </SfGrid>
+                </ContentTemplate>
+            </TabItem>
+        </TabItems>
+    </SfTab>
+</div>
+
+@code {
+
+    public class Declaration
+    {
+        public string DeclarationNo { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public string RegionalDirection { get; set; }
+        public string DeclarationType { get; set; }
+        public string Exporter { get; set; }
+        public string PaymentNoticeNo { get; set; }
+        public string TransportDeadline { get; set; }
+        public string Status { get; set; }
+    }
+
+    public class Article
+    {
+        public string TariffPosition { get; set; }
+        public int Quantity { get; set; }
+        public int PackageNo { get; set; }
+        public string CountryOfOrigin { get; set; }
+        public string GoodsName { get; set; }
+        public string GrossWeight { get; set; }
+        public string NetWeight { get; set; }
+        public string VehicleChassisNo { get; set; }
+    }
+
+    public class Container
+    {
+        public string ContainerNo { get; set; }
+        public string ContainerCategory { get; set; }
+        public int SealedState { get; set; }
+        public string SealNo1 { get; set; }
+        public string SealNo2 { get; set; }
+        public string SealNo3 { get; set; }
+        public string SealCharge { get; set; }
+    }
+
+    public List<Declaration> DeclarationData = new()
+    {
+        new Declaration { DeclarationNo = "ALGER-2022-C000001", RegistrationDate = new DateTime(2022, 3, 30), RegionalDirection = "ALGER-M", DeclarationType = "Export/Import", Exporter = "Exporter", PaymentNoticeNo = "DZ-2022-G-000001", TransportDeadline = "1", Status = "Validation" }
+        // Add more data as needed
+    };
+
+    public List<Article> ArticleData = new()
+    {
+        new Article { TariffPosition = "87033290100", Quantity = 1, PackageNo = 1, CountryOfOrigin = "KR", GoodsName = "MERCEDES BENZ GLS 580 4MATIC", GrossWeight = "2640.00", NetWeight = "2640.00", VehicleChassisNo = "WDDZF4JBXKA281920" }
+        // Add more data as needed
+    };
+
+    public List<Container> ContainerData = new()
+    {
+        new Container { ContainerNo = "ROYL111111", ContainerCategory = "20GO", SealedState = 5, SealNo1 = "SEAL01", SealNo2 = "SEAL02", SealNo3 = "SEAL03", SealCharge = "TOP" }
+        // Add more data as needed
+    };
+
+    public List<string> declarationTypes = new() { "Export/Import", "Temporary Admission" };
+}

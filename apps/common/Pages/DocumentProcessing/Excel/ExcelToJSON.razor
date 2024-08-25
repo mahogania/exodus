@@ -1,0 +1,120 @@
+﻿@page "/excel/excel-to-json"
+@inject Microsoft.JSInterop.IJSRuntime Js
+@inject HttpClient Http
+@using System.IO;
+@using BlazorDemos
+
+@using Syncfusion.Blazor.Buttons
+@using BlazorDemos.Shared
+@*Hidden:Lines*@
+
+
+@*End:Hidden*@
+@*Hidden:Lines*@
+@inherits BlazorDemos.Shared.SampleBaseComponent
+@inject NavigationManager NavigationManager
+
+
+@*End:Hidden*@
+
+<SampleDescription>
+    <p>This sample demonstrates the conversion of Excel documents to JSON file using Essential XlsIO.</p>
+</SampleDescription>
+<ActionDescription>
+    <p>Essential XlsIO supports to convert Excel data to JSON files by simply saving the workbook using the SaveAsJson method.</p>
+    <p style='display: block'><b>Features:</b></p>
+    <ul>
+        <li>Save as a simple JSON file or a JSON file with XML schema</li>
+        <li>Save a workbook to JSON</li>
+        <li>Save a worksheet to JSON</li>
+        <li>Save a range to JSON</li>
+        <li>Save as a stream with the above features</li>
+    </ul>
+</ActionDescription>
+
+<div class="control-section">
+    <p style="font-weight:normal">Click the “Input Template” button to view the input Excel document. Please note that the Microsoft Excel viewer or Microsoft Excel is required to view the Excel document.</p>
+    <p style="font-weight:normal">Click the “Convert to JSON” button to view the converted JSON file.</p>
+    <div class="radio-control">
+        <label>
+            Convert
+        </label>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="e-radio-wrapper">
+            <SfRadioButton Label="Workbook" Name="Workbook" Value=@("Workbook") @bind-Checked="@_option"></SfRadioButton>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="e-radio-wrapper">
+            <SfRadioButton Label="Worksheet" Name="Worksheet" Value=@("Worksheet") @bind-Checked="@_option"></SfRadioButton>
+        </div>
+        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        <div class="e-radio-wrapper">
+            <SfRadioButton Label="Range" Name="Range" Value=@("Range") @bind-Checked="@_option"></SfRadioButton>
+        </div>
+    </div>
+    <div class="checkbox-control">
+        <div class="row">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<SfCheckBox @bind-Checked=_schema Label="As Schema" TChecked="bool"></SfCheckBox>
+        </div>
+    </div>
+    <div class="button-section">
+        <div id="button-control">
+            <div class="row">
+                <div>
+                    <SfButton @onclick="InputDocument">Input Template</SfButton>&nbsp;
+                    <SfButton @onclick="CreateDocument">Convert To JSON</SfButton>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .control-section .row {
+        margin: 10px 0;
+    }
+</style>
+
+@code {
+    MemoryStream? _stream;
+    string _option = "Workbook";
+    bool _schema = true;
+    string _button = string.Empty;
+    //Hidden:Lines
+
+
+    readonly Dictionary<string, MemoryStream> _fileData = new();
+
+
+    //End:Hidden
+
+    /// <summary>
+    /// Download the input Excel document
+    /// </summary>
+    public async Task InputDocument()
+    {
+        string fileDataPath = NavigationManager.BaseUri + SampleService.WebAssetsPath;
+        byte[] data = await Http.GetByteArrayAsync(fileDataPath + "data/xlsio/excel-to-json.xlsx");
+        _fileData.Add("excel-to-json.xlsx", new MemoryStream(data));
+        ExcelToJsonService service = new ExcelToJsonService(_fileData);
+        _button = "Input Document";
+        _stream = service.ExcelToJsonXlsIo(_button, _option, _schema);
+        service.Close();
+        if (_stream != null) await Js.SaveAs("ExcelToJSON.xlsx", _stream.ToArray());
+    }
+
+    /// <summary>
+    /// Download the JSON document
+    /// </summary>
+    public async Task CreateDocument()
+    {
+        string fileDataPath = NavigationManager.BaseUri + SampleService.WebAssetsPath;
+        byte[] data = await Http.GetByteArrayAsync(fileDataPath + "data/xlsio/excel-to-json.xlsx");
+        _fileData.Add("excel-to-json.xlsx", new MemoryStream(data));
+        ExcelToJsonService service = new ExcelToJsonService(_fileData);
+        _button = "Create Document";
+        _stream = service.ExcelToJsonXlsIo(_button, _option, _schema);
+        service.Close();
+        if (_stream != null) await Js.SaveAs("ExcelToJSON.Json", _stream.ToArray());
+    }
+}

@@ -1,0 +1,84 @@
+@page "/external-appeals"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["ExternalAppealsTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["AppealNo"]" CssClass="e-outline" TValue="string"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDateRangePicker Placeholder="@Localizer["RequestDate"]" CssClass="e-outline" TValue="DateTime?"></SfDateRangePicker>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList Placeholder="@Localizer["AppealType"]" CssClass="e-outline" DataSource="@AppealTypes" TItem="string" TValue="string"></SfDropDownList>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList Placeholder="@Localizer["RelatedWorkNo"]" CssClass="e-outline" DataSource="@RelatedWorkNos" TItem="string" TValue="string"></SfDropDownList>
+        </div>
+        <div class="col-md-3 mt-2">
+            <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <SfGrid DataSource="@ExternalAppealsData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="AppealNo" HeaderText="@Localizer["AppealNo"]" Width="150"></GridColumn>
+            <GridColumn Field="AppealType" HeaderText="@Localizer["AppealType"]" Width="150"></GridColumn>
+            <GridColumn Field="RelatedWork" HeaderText="@Localizer["RelatedWork"]" Width="150"></GridColumn>
+            <GridColumn Field="RelatedWorkNo" HeaderText="@Localizer["RelatedWorkNo"]" Width="150"></GridColumn>
+            <GridColumn Field="RequestDate" HeaderText="@Localizer["RequestDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="RequesterName" HeaderText="@Localizer["RequesterName"]" Width="150"></GridColumn>
+            <GridColumn Field="Status" HeaderText="@Localizer["Status"]" Width="150"></GridColumn>
+            <GridColumn Field="StatusDate" HeaderText="@Localizer["StatusDate"]" Width="150" Format="d"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["DownloadExcel"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public class ExternalAppeal
+    {
+        public string AppealNo { get; set; }
+        public string AppealType { get; set; }
+        public string RelatedWork { get; set; }
+        public string RelatedWorkNo { get; set; }
+        public DateTime RequestDate { get; set; }
+        public string RequesterName { get; set; }
+        public string Status { get; set; }
+        public DateTime StatusDate { get; set; }
+    }
+
+    public List<string> AppealTypes = new()
+    {
+        "CNR",
+        "CRR",
+        "Other"
+        // Add more types as needed
+    };
+
+    public List<string> RelatedWorkNos = new()
+    {
+        "2022-RCO-000001",
+        "2022-RTC-000002",
+        "Other"
+        // Add more related work numbers as needed
+    };
+
+    public List<ExternalAppeal> ExternalAppealsData = new()
+    {
+        new ExternalAppeal { AppealNo = "ALGER-2022-C000001-1", AppealType = "CNR", RelatedWork = "RCO", RelatedWorkNo = "2022-RCO-000001", RequestDate = new DateTime(2022, 2, 10), RequesterName = "RCO", Status = "Receive", StatusDate = new DateTime(2022, 2, 10) },
+        new ExternalAppeal { AppealNo = "ALGER-2022-C000002-1", AppealType = "CRR", RelatedWork = "RTC", RelatedWorkNo = "2022-RTC-000002", RequestDate = new DateTime(2022, 3, 10), RequesterName = "RTC", Status = "Approval", StatusDate = new DateTime(2022, 3, 10) }
+        // Add more data as needed
+    };
+
+}

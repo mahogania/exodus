@@ -1,0 +1,172 @@
+@page "/notification/result-history"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["ControlResultsNotificationHistoryTitle"]</h3>
+
+    <h4>@Localizer["General"]</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" Value="IM4/Import Declaration"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["RegionalDirection"]" CssClass="e-outline" Value="ALGER-M"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline" Value="ALGER-2022-C000001"></SfTextBox>
+        </div>
+        <div class="col-md-6">
+            <SfDatePicker Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 3, 30))"></SfDatePicker>
+            <SfTextBox Placeholder="@Localizer["EPC"]" CssClass="e-outline" Value="4100"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER"></SfTextBox>
+            <SfTextBox Placeholder="@Localizer["DocumentType"]" CssClass="e-outline" Value="Final Declaration"></SfTextBox>
+        </div>
+    </div>
+    <SfTextBox Placeholder="@Localizer["Remark"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+
+    <h4>@Localizer["ControlResult"]</h4>
+    <div class="row">
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["Result"]" CssClass="e-outline" Value="NORM00 - No problem found"></SfTextBox>
+        </div>
+        <div class="col-md-6">
+            <SfTextBox Placeholder="@Localizer["Observations"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+        </div>
+    </div>
+
+    <SfTab>
+        <TabItems>
+            <TabItem HeaderText="@Localizer["Value"]">
+                <ChildContent>
+                    <SfGrid DataSource="@ValueData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+                        <GridColumns>
+                            <GridColumn Field="Category" HeaderText="@Localizer["Category"]" Width="150"></GridColumn>
+                            <GridColumn Field="DeclaredUSD" HeaderText="@Localizer["DeclaredUSD"]" Width="150"></GridColumn>
+                            <GridColumn Field="LiquidatedUSD" HeaderText="@Localizer["LiquidatedUSD"]" Width="150"></GridColumn>
+                            <GridColumn Field="DeclaredDZD" HeaderText="@Localizer["DeclaredDZD"]" Width="150"></GridColumn>
+                            <GridColumn Field="LiquidatedDZD" HeaderText="@Localizer["LiquidatedDZD"]" Width="150"></GridColumn>
+                        </GridColumns>
+                    </SfGrid>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["Tax"]">
+                <ChildContent>
+                    <SfGrid DataSource="@TaxData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+                        <GridColumns>
+                            <GridColumn Field="TaxCode" HeaderText="@Localizer["TaxCode"]" Width="150"></GridColumn>
+                            <GridColumn Field="TaxableValue" HeaderText="@Localizer["TaxableValue"]" Width="150"></GridColumn>
+                            <GridColumn Field="TaxRate" HeaderText="@Localizer["TaxRate"]" Width="150"></GridColumn>
+                            <GridColumn Field="TaxAmount" HeaderText="@Localizer["TaxAmount"]" Width="150"></GridColumn>
+                        </GridColumns>
+                    </SfGrid>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["PaymentNotificationHistory"]">
+                <ChildContent>
+                    <SfGrid DataSource="@PaymentHistoryData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+                        <GridColumns>
+                            <GridColumn Field="PaymentNoticeNo" HeaderText="@Localizer["PaymentNoticeNo"]" Width="150"></GridColumn>
+                            <GridColumn Field="PaymentType" HeaderText="@Localizer["PaymentType"]" Width="150"></GridColumn>
+                            <GridColumn Field="TotalNotificationAmount" HeaderText="@Localizer["TotalNotificationAmount"]" Width="150"></GridColumn>
+                            <GridColumn Field="Encashment" HeaderText="@Localizer["Encashment"]" Width="100"></GridColumn>
+                            <GridColumn Field="NotificationDate" HeaderText="@Localizer["NotificationDate"]" Width="150" Format="d"></GridColumn>
+                            <GridColumn Field="PaymentDueDate" HeaderText="@Localizer["PaymentDueDate"]" Width="150" Format="d"></GridColumn>
+                            <GridColumn Field="Extinction" HeaderText="@Localizer["Extinction"]" Width="100"></GridColumn>
+                        </GridColumns>
+                    </SfGrid>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["Container"]">
+                <ChildContent>
+                    <SfGrid DataSource="@ContainerData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+                        <GridColumns>
+                            <GridColumn Field="ContainerNo" HeaderText="@Localizer["ContainerNo"]" Width="150"></GridColumn>
+                            <GridColumn Field="ContainerCategory" HeaderText="@Localizer["ContainerCategory"]" Width="150"></GridColumn>
+                            <GridColumn Field="SealedState" HeaderText="@Localizer["SealedState"]" Width="150"></GridColumn>
+                            <GridColumn Field="SealNo1" HeaderText="@Localizer["SealNo1"]" Width="150"></GridColumn>
+                            <GridColumn Field="SealNo2" HeaderText="@Localizer["SealNo2"]" Width="150"></GridColumn>
+                            <GridColumn Field="SealNo3" HeaderText="@Localizer["SealNo3"]" Width="150"></GridColumn>
+                            <GridColumn Field="SealCharge" HeaderText="@Localizer["SealCharge"]" Width="150"></GridColumn>
+                        </GridColumns>
+                    </SfGrid>
+                </ChildContent>
+            </TabItem>
+        </TabItems>
+    </SfTab>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["Accept"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Contest"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public class Value
+    {
+        public string Category { get; set; }
+        public decimal DeclaredUSD { get; set; }
+        public decimal LiquidatedUSD { get; set; }
+        public decimal DeclaredDZD { get; set; }
+        public decimal LiquidatedDZD { get; set; }
+    }
+
+    public class Tax
+    {
+        public string TaxCode { get; set; }
+        public decimal TaxableValue { get; set; }
+        public decimal TaxRate { get; set; }
+        public decimal TaxAmount { get; set; }
+    }
+
+    public class PaymentHistory
+    {
+        public string PaymentNoticeNo { get; set; }
+        public string PaymentType { get; set; }
+        public decimal TotalNotificationAmount { get; set; }
+        public string Encashment { get; set; }
+        public DateTime NotificationDate { get; set; }
+        public DateTime PaymentDueDate { get; set; }
+        public string Extinction { get; set; }
+    }
+
+    public class Container
+    {
+        public string ContainerNo { get; set; }
+        public string ContainerCategory { get; set; }
+        public int SealedState { get; set; }
+        public string SealNo1 { get; set; }
+        public string SealNo2 { get; set; }
+        public string SealNo3 { get; set; }
+        public string SealCharge { get; set; }
+    }
+
+    public List<Value> ValueData = new()
+    {
+        new Value { Category = "Invoice", DeclaredUSD = 8000000, LiquidatedUSD = 8000000, DeclaredDZD = 8986640, LiquidatedDZD = 8986640 },
+        new Value { Category = "Insurance", DeclaredUSD = 1000000, LiquidatedUSD = 1000000, DeclaredDZD = 1233130, LiquidatedDZD = 1233130 },
+        new Value { Category = "Other Fees", DeclaredUSD = 1000000, LiquidatedUSD = 1000000, DeclaredDZD = 1233130, LiquidatedDZD = 1233130 }
+        // Add more data as needed
+    };
+
+    public List<Tax> TaxData = new()
+    {
+        new Tax { TaxCode = "ITF", TaxableValue = 101099700, TaxRate = 0.25m, TaxAmount = 252749 },
+        new Tax { TaxCode = "IMD", TaxableValue = 101099700, TaxRate = 0.30m, TaxAmount = 30329190 },
+        new Tax { TaxCode = "VAT", TaxableValue = 101099700, TaxRate = 0.175m, TaxAmount = 23000181 }
+        // Add more data as needed
+    };
+
+    public List<PaymentHistory> PaymentHistoryData = new()
+    {
+        new PaymentHistory { PaymentNoticeNo = "DZ-2022-G-000001-I", PaymentType = "G/General", TotalNotificationAmount = 53582840, Encashment = "N/NON", NotificationDate = new DateTime(2022, 3, 30), PaymentDueDate = new DateTime(2022, 4, 28), Extinction = "N/NON" }
+        // Add more data as needed
+    };
+
+    public List<Container> ContainerData = new()
+    {
+        new Container { ContainerNo = "ROYL111111", ContainerCategory = "20GO", SealedState = 5, SealNo1 = "SEAL01", SealNo2 = "SEAL02", SealNo3 = "SEAL03", SealCharge = "TOP" }
+        // Add more data as needed
+    };
+
+}

@@ -1,0 +1,276 @@
+{
+  "format": 1,
+  "restore": {
+    "/Users/sidahmedarroui/Future/startup/exodus/apps/common/common.csproj": {}
+  },
+  "projects": {
+    "/Users/sidahmedarroui/Future/startup/exodus/apps/common/common.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "/Users/sidahmedarroui/Future/startup/exodus/apps/common/common.csproj",
+        "projectName": "common",
+        "projectPath": "/Users/sidahmedarroui/Future/startup/exodus/apps/common/common.csproj",
+        "packagesPath": "/Users/sidahmedarroui/.nuget/packages/",
+        "outputPath": "/Users/sidahmedarroui/Future/startup/exodus/apps/common/obj/",
+        "projectStyle": "PackageReference",
+        "configFilePaths": [
+          "/Users/sidahmedarroui/.nuget/NuGet/NuGet.Config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "/Users/sidahmedarroui/.dotnet/library-packs": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Components.Web": {
+              "target": "Package",
+              "version": "[8.0.0, )"
+            },
+            "Syncfusion.Blazor.BarcodeGenerator": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.BulletChart": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Buttons": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Calendars": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Cards": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Chart3D": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Charts": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.CircularGauge": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Core": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.DataForm": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Diagram": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.DropDowns": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.FileManager": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Gantt": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Grid": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.HeatMap": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.ImageEditor": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.InPlaceEditor": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Inputs": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Kanban": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Layouts": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.LinearGauge": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Maps": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Navigations": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Notifications": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.PdfViewerServer.OSX": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.PivotTable": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Popups": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.ProgressBar": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.QueryBuilder": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.RangeNavigator": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.RichTextEditor": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Schedule": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.SfPdfViewer": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.SmithChart": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Sparkline": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Spinner": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.SplitButtons": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.StockChart": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.Themes": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.TreeGrid": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.TreeMap": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Blazor.WordProcessor": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.DocIO.Net.Core": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.DocIORenderer.Net.Core": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Licensing": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Pdf.Imaging.Net.Core": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Pdf.Net.Core": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.Presentation.Net.Core": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.PresentationRenderer.Net.Core": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.XlsIO.Net.Core": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            },
+            "Syncfusion.XlsIORenderer.Net.Core": {
+              "target": "Package",
+              "version": "[26.2.4, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "/Users/sidahmedarroui/.dotnet/sdk/8.0.100/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,8 @@
+/Users/sidahmedarroui/Future/startup/exodus/apps/control/src/obj/Debug/net8.0/control.csproj.AssemblyReference.cache
+/Users/sidahmedarroui/Future/startup/exodus/apps/control/src/obj/Debug/net8.0/control.GeneratedMSBuildEditorConfig.editorconfig
+/Users/sidahmedarroui/Future/startup/exodus/apps/control/src/obj/Debug/net8.0/control.AssemblyInfoInputs.cache
+/Users/sidahmedarroui/Future/startup/exodus/apps/control/src/obj/Debug/net8.0/control.AssemblyInfo.cs
+/Users/sidahmedarroui/Future/startup/exodus/apps/control/src/obj/Debug/net8.0/control.csproj.CoreCompileInputs.cache
+/Users/sidahmedarroui/Future/startup/exodus/apps/control/src/obj/Debug/net8.0/control.MvcApplicationPartsAssemblyInfo.cs
+/Users/sidahmedarroui/Future/startup/exodus/apps/control/src/obj/Debug/net8.0/control.MvcApplicationPartsAssemblyInfo.cache
+/Users/sidahmedarroui/Future/startup/exodus/apps/control/src/obj/Debug/net8.0/control.sourcelink.json

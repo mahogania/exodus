@@ -1,0 +1,138 @@
+﻿@page "/gantt-chart/ganttresponsive"
+
+
+
+@using Syncfusion.Blazor.Gantt
+@using Syncfusion.Blazor.DropDowns
+@using Syncfusion.Blazor.Grids
+@using Syncfusion.Blazor.Buttons;
+@using Syncfusion.Blazor.Navigations;
+@inject NavigationManager Navigation
+@inject Microsoft.AspNetCore.Components.NavigationManager UriHelper
+@using ej2_blazor_defaultdata;
+@using global::Overview.Pages;
+
+@inherits SampleBaseComponent;
+@*End:Hidden*@
+<SampleDescription>
+    <p>This sample demonstrates the responsive behavior in the Gantt Chart.</p>
+</SampleDescription>
+<ActionDescription>
+    <p>This sample demonstrates dynamically adjusting the chart's size based on predefined options such as small, medium, large, or none. This options allows you to customize responsively customize the width of the GanttChart.</p>
+</ActionDescription>
+<div class="col-lg-12 control-section">
+    <div class="content-wrapper">
+        <div class="row" >
+            <div class="center" style="width:@width">
+                <div class="e-switch-control" style="width:420px">
+                    <label class="responsive" style="padding: 10px 15px 10px 10px"> Responsive :</label>
+                    <SfDropDownList TItem="DropDownValues" TValue="string" PopupHeight="230px" Width="118px" @bind-Value="@DropDownValue" DataSource="@Names">
+                        <DropDownListEvents TItem="DropDownValues" TValue="string" ValueChange="OnChange" />
+                        <DropDownListFieldSettings Text="Name" Value="Name" />
+                    </SfDropDownList>
+                </div>
+            <SfGantt @ref="Gantt" DataSource="@TaskCollection" Height="450px" Width="100%" AllowResizing="true" TreeColumnIndex="1" ProjectStartDate="@ProjectStart" ProjectEndDate="@ProjectEnd" HighlightWeekends="true">
+                <GanttTaskFields Id="TaskId" Name="TaskName" StartDate="StartDate" EndDate="EndDate" Duration="Duration" Progress="Progress" ParentID="ParentId" Dependency="Predecessor">
+                </GanttTaskFields>
+                <GanttColumns>
+                    <GanttColumn Field="TaskId" Width="100"></GanttColumn>
+                    <GanttColumn Field="TaskName" Width="275" ClipMode="Syncfusion.Blazor.Grids.ClipMode.EllipsisWithTooltip"></GanttColumn>
+                    <GanttColumn Field="StartDate" HeaderText="Start Date" MinWidth="120"></GanttColumn>
+                    <GanttColumn Field="EndDate" HeaderText="End Date" MinWidth="120"></GanttColumn>
+                    <GanttColumn Field="Duration" HeaderText="Duration" MinWidth="120"></GanttColumn>
+                    <GanttColumn Field="Progress" HeaderText="Progress" MinWidth="120"></GanttColumn>
+                    <GanttColumn Field="Predecessor" HeaderText="Dependency" MinWidth="200"></GanttColumn>
+                </GanttColumns>
+                <GanttHolidays>
+                    <GanttHoliday From="new DateTime(2021, 04, 03)" To="new DateTime(2021, 04, 05)" Label="Public holiday"></GanttHoliday>
+                </GanttHolidays>
+                <GanttDayWorkingTimeCollection>
+                    <GanttDayWorkingTime From="9" To="18"></GanttDayWorkingTime>
+                </GanttDayWorkingTimeCollection>
+                <GanttSplitterSettings Position="28%"></GanttSplitterSettings>
+                <GanttLabelSettings RightLabel="TaskName" TValue="WorkData.TaskData"></GanttLabelSettings>
+            </SfGantt>
+        </div>
+        </div>
+    </div>
+</div>
+@code {
+    private DateTime ProjectStart = new DateTime(2021, 3, 28);
+    private DateTime ProjectEnd = new DateTime(2021, 7, 6);
+    private SfGantt<WorkData.TaskData> Gantt;
+    public string width { get; set; } = "100%";
+    private List<WorkData.TaskData> TaskCollection { get; set; }
+    public string DropDownValue = "None";
+    public class DropDownValues
+    {
+        public string Name { get; set; }
+    }
+    private List<DropDownValues> Names = new List<DropDownValues>()
+    {
+        new DropDownValues(){ Name= "Small" },
+        new DropDownValues(){ Name= "Medium" },
+        new DropDownValues(){ Name= "Large" },
+        new DropDownValues(){ Name= "None" }
+     };
+    public void OnChange(Syncfusion.Blazor.DropDowns.ChangeEventArgs<string, DropDownValues> args)
+    {
+        if (args.ItemData.Name == "Small")
+        {
+            width = "40%";
+            
+        }
+        else if (args.ItemData.Name == "Medium")
+        {
+            width = "60%";
+            
+        }
+        else if (args.ItemData.Name == "Large")
+        {
+            width = "80%";
+            
+        }
+        else if (args.ItemData.Name == "None")
+        {
+            width = "100%";
+            
+        }
+    }
+    protected override void OnInitialized()
+    {
+        this.TaskCollection = WorkData.GetTaskCollection();
+    }
+}
+<style>
+    .responsive
+    {
+        font-size: 16px;
+        font-weight: bold;
+        padding-right: 5px;
+    }
+
+    .e-switch-control {
+        display: flex;
+        align-items: center;
+    }
+    .row {
+        display: flex;
+        justify-content: center;
+        background: #e2dfdf70;
+        flex-wrap: wrap;
+    }
+    .e-bigger {
+    .row{
+        background: #e2dfdf70;
+    }
+    }
+
+    @@media only screen and (max-width: 425px) {
+        .row {
+            background:none !important;
+        }
+
+        .e-switch-control {
+            overflow: scroll !important;
+        }
+        }
+</style>

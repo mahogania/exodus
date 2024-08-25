@@ -1,0 +1,93 @@
+@page "/question-response"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["QuestionResponseTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline" Value="ALGER-2022-C000001"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER - Bureaux de Douane d'Alger"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["ClearanceTiming"]" CssClass="e-outline" Value="PAD - Pre-Arrival Declaration"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["InvoiceNo"]" CssClass="e-outline" Value="TRAININGVIMPP0001"></SfTextBox>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["Status"]" CssClass="e-outline" Value="Validation"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["DeclarationRegistrationDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 3, 30))"></SfDatePicker>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" Value="IM4/Import Declaration"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["OperationType"]" CssClass="e-outline" Value="REVENTE EN L'ETAT"></SfTextBox>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["InvoiceTotalAmount"]" CssClass="e-outline" Value="88,000,000 USD"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["TotalBaseValue"]" CssClass="e-outline" Value="101,099,700"></SfTextBox>
+        </div>
+    </div>
+
+    <SfGrid DataSource="@QuestionResponseData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="RegisteredBy" HeaderText="@Localizer["RegisteredBy"]" Width="150"></GridColumn>
+            <GridColumn Field="Details" HeaderText="@Localizer["Details"]" Width="150"></GridColumn>
+            <GridColumn Field="DateTime" HeaderText="@Localizer["DateTime"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="Modify" HeaderText="@Localizer["Modify"]" Width="100"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <SfTextArea TValue="string" Placeholder="@Localizer["AskQuestions"]" CssClass="e-outline"></SfTextArea>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Send"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public class QuestionResponse
+    {
+        public string RegisteredBy { get; set; }
+        public string Details { get; set; }
+        public DateTime DateTime { get; set; }
+        public string Modify { get; set; }
+    }
+
+    public List<QuestionResponse> QuestionResponseData = new()
+    {
+        new QuestionResponse { RegisteredBy = "Déclarant", Details = "Poser les questions", DateTime = new DateTime(2022, 4, 10, 21, 27, 26), Modify = "Modifier" },
+        new QuestionResponse { RegisteredBy = "Douanier", Details = "Répondre", DateTime = new DateTime(2022, 4, 10, 21, 28, 21), Modify = "Modifier" }
+        // Add more data as needed
+    };
+
+}

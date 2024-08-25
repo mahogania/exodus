@@ -1,0 +1,321 @@
+is_global = true
+build_property.TargetFramework = net8.0
+build_property.TargetPlatformMinVersion = 
+build_property.UsingMicrosoftNETSdkWeb = true
+build_property.ProjectTypeGuids = 
+build_property.InvariantGlobalization = 
+build_property.PlatformNeutralAssembly = 
+build_property.EnforceExtendedAnalyzerRules = 
+build_property._SupportedPlatformList = Linux,macOS,Windows,browser
+build_property.RootNamespace = control-admin
+build_property.RootNamespace = control-admin
+build_property.ProjectDir = /Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/
+build_property.EnableComHosting = 
+build_property.EnableGeneratedComInterfaceComImportInterop = 
+build_property.RazorLangVersion = 8.0
+build_property.SupportLocalizedComponentNames = 
+build_property.GenerateRazorMetadataSourceChecksumAttributes = 
+build_property.MSBuildProjectDirectory = /Users/sidahmedarroui/Future/startup/exodus/apps/control-internal
+build_property._RazorSourceGeneratorDebug = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Appeal/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXBwZWFsL0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Appeal/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQXBwZWFsL1JlcXVlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Backlog/Grid.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQmFja2xvZy9HcmlkLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Backlog/Kanban.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQmFja2xvZy9LYW5iYW4ucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Clearance/Consult.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xlYXJhbmNlL0NvbnN1bHQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Clearance/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xlYXJhbmNlL0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Clearance/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQ2xlYXJhbmNlL1JlcXVlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Declaration/Anticipated.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVjbGFyYXRpb24vQW50aWNpcGF0ZWQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Declaration/Cancellation.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVjbGFyYXRpb24vQ2FuY2VsbGF0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Declaration/Fill.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVjbGFyYXRpb24vRmlsbC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Declaration/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVjbGFyYXRpb24vTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Declaration/Manifest.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVjbGFyYXRpb24vTWFuaWZlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Declaration/Modification.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVjbGFyYXRpb24vTW9kaWZpY2F0aW9uLnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Declaration/Previous.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVjbGFyYXRpb24vUHJldmlvdXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Declaration/Temporary.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRGVjbGFyYXRpb24vVGVtcG9yYXJ5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Notification/History Acceptance.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Notification/History Registration.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Notification/History Result.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Notification/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTm90aWZpY2F0aW9uL0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Origin/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvT3JpZ2luL0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Origin/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvT3JpZ2luL1JlcXVlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Payment/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGF5bWVudC9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Prorogation/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvcm9nYXRpb24vTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Prorogation/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvcm9nYXRpb24vUmVxdWVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Q&A/Consult.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Q&A/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Representant/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVwcmVzZW50YW50L0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Representant/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUmVwcmVzZW50YW50L1JlcXVlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Tarif/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFyaWYvTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Tarif/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFyaWYvUmVxdWVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Tax/History.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGF4L0hpc3RvcnkucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Verification/Consult.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVmVyaWZpY2F0aW9uL0NvbnN1bHQucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Verification/List.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVmVyaWZpY2F0aW9uL0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/_Imports.razor]
+build_metadata.AdditionalFiles.TargetPath = 
+build_metadata.AdditionalFiles.TargetPath = X0ltcG9ydHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Components/App.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9BcHAucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Components/Routes.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9Sb3V0ZXMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Admission/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaXNzaW9uL0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Admission/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvQWRtaXNzaW9uL1JlcXVlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Enquiry/Consult.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRW5xdWlyeS9Db25zdWx0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Enquiry/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRW5xdWlyeS9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Expert/Details.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhwZXJ0L0RldGFpbHMucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Expert/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhwZXJ0L1JlcXVlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Express/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhwcmVzcy9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Express/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvRXhwcmVzcy9SZXF1ZXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Notification/Acceptance-History.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTm90aWZpY2F0aW9uL0FjY2VwdGFuY2UtSGlzdG9yeS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Notification/Registration-History.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTm90aWZpY2F0aW9uL1JlZ2lzdHJhdGlvbi1IaXN0b3J5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Notification/Result-History.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvTm90aWZpY2F0aW9uL1Jlc3VsdC1IaXN0b3J5LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Package/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGFja2FnZS9MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Package/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGFja2FnZS9SZXF1ZXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Package/Simplified-List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGFja2FnZS9TaW1wbGlmaWVkLUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Package/Simplified-Request.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUGFja2FnZS9TaW1wbGlmaWVkLVJlcXVlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Proof/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvb2YvTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Proof/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvUHJvb2YvUmVxdWVzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Suspicion/List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3VzcGljaW9uL0xpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Suspicion/Request.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvU3VzcGljaW9uL1JlcXVlc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Tarif/Contingency-List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFyaWYvQ29udGluZ2VuY3ktTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Tarif/Duty-List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFyaWYvRHV0eS1MaXN0LnJhem9y
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Tarif/Fee-List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFyaWYvRmVlLUxpc3QucmF6b3I=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Pages/Tarif/Register-List.razor]
+build_metadata.AdditionalFiles.TargetPath = UGFnZXMvVGFyaWYvUmVnaXN0ZXItTGlzdC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Components/Layout/MainLayout.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTWFpbkxheW91dC5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-6vmb3atesn
+
+[/Users/sidahmedarroui/Future/startup/exodus/apps/control-internal/Components/Layout/NavMenu.razor]
+build_metadata.AdditionalFiles.TargetPath = Q29tcG9uZW50cy9MYXlvdXQvTmF2TWVudS5yYXpvcg==
+build_metadata.AdditionalFiles.CssScope = b-4cl1n2j3d4

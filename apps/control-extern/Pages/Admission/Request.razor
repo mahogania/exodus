@@ -1,0 +1,170 @@
+@page "/admission/request"
+
+<div class="row mb-3">
+    <div class="col-md-2">
+        <SfTextBox Placeholder="N° de la gestion du carnet ATA" @bind-Value="ManagementNumberFilter"></SfTextBox>
+    </div>
+    <div class="col-md-2">
+        <SfTextBox Placeholder="N° Carnet" @bind-Value="CarnetNumberFilter"></SfTextBox>
+    </div>
+    <div class="col-md-2">
+        <SfDatePicker Placeholder="Date de délivrance" @bind-Value="IssueDateFilter"></SfDatePicker>
+    </div>
+    <div class="col-md-2">
+        <SfDatePicker Placeholder="Date d'enregistrement" @bind-Value="RegistrationDateFilter"></SfDatePicker>
+    </div>
+    <div class="col-md-2">
+        <SfDropDownList TItem="string" TValue="string" Placeholder="Catégorie" DataSource="@Categories" @bind-Value="CategoryFilter"></SfDropDownList>
+    </div>
+    <div class="col-md-2">
+        <SfDropDownList TItem="string" TValue="string" Placeholder="Statut" DataSource="@Statuses" @bind-Value="StatusFilter"></SfDropDownList>
+    </div>
+</div>
+<div class="row mb-3">
+    <div class="col-md-2">
+        <SfButton CssClass="e-primary" Click="OnSearchClick">Rechercher</SfButton>
+        <SfButton CssClass="e-secondary" Click="OnResetClick">Réinitialiser</SfButton>
+    </div>
+</div>
+
+<SfGrid TItem="Admission" DataSource="@FilteredGridData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }">
+    <GridColumns>
+        <GridColumn Field="ManagementNumber" HeaderText="N° de la gestion du carnet ATA" Width="150"></GridColumn>
+        <GridColumn Field="CarnetNumber" HeaderText="N° Carnet" Width="150"></GridColumn>
+        <GridColumn Field="Category" HeaderText="Catégorie" Width="100"></GridColumn>
+        <GridColumn Field="Holder" HeaderText="Titulaire" Width="150"></GridColumn>
+        <GridColumn Field="IssuedBy" HeaderText="Délivré par" Width="150"></GridColumn>
+        <GridColumn Field="IssueDate" HeaderText="Date de délivrance" Width="150" Format="d"></GridColumn>
+        <GridColumn Field="RegistrationDate" HeaderText="Date d'enregistrement" Width="150" Format="d"></GridColumn>
+        <GridColumn Field="ValidUntil" HeaderText="Valable jusqu'au" Width="150" Format="d"></GridColumn>
+        <GridColumn Field="Status" HeaderText="Statut" Width="100"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+<SfAccordion>
+    <AccordionItems>
+        <AccordionItem HeaderText="Détails de la demande">
+            <div class="row">
+                <div class="col-md-6">
+                    <SfTextBox Placeholder="N° de la gestion du carnet ATA" Value="ALGER-IM-2022-C000001" ReadOnly="true"></SfTextBox>
+                    <SfTextBox Placeholder="N° Carnet" Value="KR000000001" ReadOnly="true"></SfTextBox>
+                    <SfTextBox Placeholder="Catégorie" Value="IMPORTATION" ReadOnly="true"></SfTextBox>
+                    <SfTextBox Placeholder="Titulaire" Value="KOREA COMPANY" ReadOnly="true"></SfTextBox>
+                    <SfTextBox Placeholder="Délivré par" Value="LA CHAMBRE DE COMMERCE DU KOREA" ReadOnly="true"></SfTextBox>
+                </div>
+                <div class="col-md-6">
+                    <SfDatePicker Placeholder="Date de délivrance" Value="@(new DateTime(2022, 3, 1))" ReadOnly="true"></SfDatePicker>
+                    <SfDatePicker Placeholder="Date d'enregistrement" Value="@(new DateTime(2022, 3, 20))" ReadOnly="true"></SfDatePicker>
+                    <SfDatePicker Placeholder="Valable jusqu'au" Value="@(new DateTime(2023, 3, 1))" ReadOnly="true"></SfDatePicker>
+                    <SfTextBox Placeholder="Statut" Value="TRANSIT" ReadOnly="true"></SfTextBox>
+                </div>
+            </div>
+        </AccordionItem>
+        <AccordionItem HeaderText="Articles">
+            <SfGrid TItem="Article" DataSource="@ArticleData">
+                <GridColumns>
+                    <GridColumn Field="@nameof(Article.ArticleNumber)" HeaderText="N° d'article" Width="100"></GridColumn>
+                    <GridColumn Field="@nameof(Article.Description)" HeaderText="Description" Width="200"></GridColumn>
+                    <GridColumn Field="@nameof(Article.Quantity)" HeaderText="Quantité" Width="100"></GridColumn>
+                    <GridColumn Field="@nameof(Article.Unit)" HeaderText="Unité" Width="100"></GridColumn>
+                    <GridColumn Field="@nameof(Article.Value)" HeaderText="Valeur" Width="100"></GridColumn>
+                    <GridColumn Field="@nameof(Article.Currency)" HeaderText="Devise" Width="100"></GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </AccordionItem>
+        <AccordionItem HeaderText="Documents">
+            <div class="row">
+                <div class="col-md-12">
+                    <SfTextBox Placeholder="Document 1" ReadOnly="true"></SfTextBox>
+                    <SfTextBox Placeholder="Document 2" ReadOnly="true"></SfTextBox>
+                </div>
+            </div>
+        </AccordionItem>
+    </AccordionItems>
+</SfAccordion>
+
+<div class="row mt-3">
+    <div class="col-md-12 text-right">
+        <SfButton CssClass="e-primary">Enregistrer</SfButton>
+        <SfButton CssClass="e-secondary">Envoyer</SfButton>
+    </div>
+</div>
+
+@code {
+    private string ManagementNumberFilter { get; set; }
+    private string CarnetNumberFilter { get; set; }
+    private DateTime? IssueDateFilter { get; set; }
+    private DateTime? RegistrationDateFilter { get; set; }
+    private string CategoryFilter { get; set; }
+    private string StatusFilter { get; set; }
+
+    private List<string> Categories = new List<string> { "Importation", "Exportation" };
+    private List<string> Statuses = new List<string> { "Tout", "Transit", "Réimportation" };
+
+    private List<Admission> GridData = new List<Admission>
+    {
+        new Admission { ManagementNumber = "ALGER-IM-2022-C000001", CarnetNumber = "KR000000001", Category = "IMPORTATION", Holder = "KOREA COMPANY", IssuedBy = "LA CHAMBRE DE COMMERCE DU KOREA", IssueDate = new DateTime(2022, 3, 1), RegistrationDate = new DateTime(2022, 3, 20), ValidUntil = new DateTime(2023, 3, 1), Status = "TRANSIT" },
+        new Admission { ManagementNumber = "ALGER-EX-2022-C000001", CarnetNumber = "BE000000001", Category = "EXPORTATION", Holder = "ALGER COMPANY", IssuedBy = "LA CHAMBRE DE COMMERCE DU ALGERIA", IssueDate = new DateTime(2022, 4, 1), RegistrationDate = new DateTime(2022, 4, 20), ValidUntil = new DateTime(2023, 4, 1), Status = "REIMPORTATION" },
+        // Add more data as needed
+    };
+
+    private List<Article> ArticleData = new List<Article>
+    {
+        new Article { ArticleNumber = "1", Description = "Article 1", Quantity = "10", Unit = "pcs", Value = "1000", Currency = "USD" },
+        new Article { ArticleNumber = "2", Description = "Article 2", Quantity = "20", Unit = "pcs", Value = "2000", Currency = "USD" },
+        // Add more data as needed
+    };
+
+    private List<Admission> FilteredGridData => GridData
+        .Where(data => string.IsNullOrEmpty(ManagementNumberFilter) || data.ManagementNumber.Contains(ManagementNumberFilter, StringComparison.OrdinalIgnoreCase))
+        .Where(data => string.IsNullOrEmpty(CarnetNumberFilter) || data.CarnetNumber.Contains(CarnetNumberFilter, StringComparison.OrdinalIgnoreCase))
+        .Where(data => !IssueDateFilter.HasValue || data.IssueDate.Date == IssueDateFilter.Value.Date)
+        .Where(data => !RegistrationDateFilter.HasValue || data.RegistrationDate.Date == RegistrationDateFilter.Value.Date)
+        .Where(data => string.IsNullOrEmpty(CategoryFilter) || data.Category.Equals(CategoryFilter, StringComparison.OrdinalIgnoreCase))
+        .Where(data => string.IsNullOrEmpty(StatusFilter) || data.Status.Equals(StatusFilter, StringComparison.OrdinalIgnoreCase) || StatusFilter == "Tout")
+        .ToList();
+
+    private void OnSearchClick()
+    {
+        // Trigger re-render to apply filters
+        StateHasChanged();
+    }
+
+    private void OnResetClick()
+    {
+        ManagementNumberFilter = string.Empty;
+        CarnetNumberFilter = string.Empty;
+        IssueDateFilter = null;
+        RegistrationDateFilter = null;
+        CategoryFilter = null;
+        StatusFilter = null;
+        StateHasChanged();
+    }
+
+    private void OnDownloadExcelClick()
+    {
+    }
+
+    public class Admission
+    {
+        public string ManagementNumber { get; set; }
+        public string CarnetNumber { get; set; }
+        public string Category { get; set; }
+        public string Holder { get; set; }
+        public string IssuedBy { get; set; }
+        public DateTime IssueDate { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public DateTime ValidUntil { get; set; }
+        public string Status { get; set; }
+    }
+
+    public class Article
+    {
+        public string ArticleNumber { get; set; }
+        public string Description { get; set; }
+        public string Quantity { get; set; }
+        public string Unit { get; set; }
+        public string Value { get; set; }
+        public string Currency { get; set; }
+    }
+}

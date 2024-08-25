@@ -1,0 +1,53 @@
+@page "/to-do-list-kanban"
+@using Microsoft.Extensions.Localization
+@using Syncfusion.Blazor.Kanban
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["ToDoListTitle"]</h3>
+
+    <SfKanban DataSource="@ToDoData" KeyField="Status">
+        <KanbanColumns>
+            <KanbanColumn HeaderText="@Localizer["ToDo"]"></KanbanColumn>
+        </KanbanColumns>
+        <KanbanCardSettings HeaderField="Number" ContentField="Description">
+        </KanbanCardSettings>
+    </SfKanban>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["Close"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public class Task
+    {
+        public Task(int number, string description, string status)
+        {
+            Number = number;
+            Description = description;
+            Status = status;
+        }
+
+        public int Number { get; set; }
+        public string Description { get; set; }
+        public string Status { get; set; }
+    }
+
+    public List<Task> ToDoData = new()
+    {
+        new Task(1, "L'avis de paiement en instance de paiement existe pour cette déclaration. Veuillez le régler.", "ToDo")
+        // Add more data as needed
+    };
+
+    private readonly RenderFragment<Task> CardTemplate = context => __builder =>
+    {
+        __builder.OpenElement(0, "div");
+        __builder.AddContent(1, context.Description);
+        __builder.CloseElement();
+    };
+
+}

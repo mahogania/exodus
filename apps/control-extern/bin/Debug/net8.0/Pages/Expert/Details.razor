@@ -1,0 +1,138 @@
+@page "/expert-request-details"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="row mb-3">
+    <div class="col-md-3">
+        <SfTextBox Placeholder="@Localizer["AnalysisExpertiseRequestNumber"]" @bind-Value="RequestNumberFilter"></SfTextBox>
+    </div>
+    <div class="col-md-3">
+        <SfButton CssClass="e-primary" OnClick="OnSearchClick">@Localizer["Search"]</SfButton>
+    </div>
+</div>
+
+<SfAccordion>
+    <AccordionItems>
+        <AccordionItem>
+            <HeaderTemplate>@Localizer["General"]</HeaderTemplate>
+            <ContentTemplate>
+                <div class="row">
+                    <div class="col-md-6">
+                        <SfTextBox Placeholder="@Localizer["DeclarationNumber"]" Value="ALGER-2022-C000001" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["DeclarationType"]" Value="@Localizer["ImportDeclaration"]" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["DeclarationOffice"]" Value="@Localizer["AlgerCustomsOffice"]" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["DeclarantNumber"]" Value="H0001 CUSTOMS BROKER COMPANY NAME" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["Exporter"]" Value="EXPORTER COMPANY NAME" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["NumberOfArticles"]" Value="1" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["NetWeight"]" Value="2,640" Readonly="true"></SfTextBox>
+                    </div>
+                    <div class="col-md-6">
+                        <SfDatePicker Placeholder="@Localizer["DeclarationRegistrationDate"]" Value="@(new DateTime(2022, 10, 2))" Readonly="true"></SfDatePicker>
+                        <SfDatePicker Placeholder="@Localizer["RequestDate"]" Value="@(new DateTime(2022, 10, 2))" Readonly="true"></SfDatePicker>
+                        <SfTextBox Placeholder="@Localizer["EPC"]" Value="@Localizer["DirectConsumption"]" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["ArticleLocation"]" Value="@Localizer["ContainerTerminal"]" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["Taxpayer"]" Value="2359205401 | IMPORTER COMPANY NAME" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["Importer"]" Value="IMPORTER COMPANY NAME" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["NumberOfPackages"]" Value="1" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["Status"]" Value="@Localizer["VerificationControlInProgress"]" Readonly="true"></SfTextBox>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </AccordionItem>
+        <AccordionItem>
+            <HeaderTemplate>@Localizer["Article"]</HeaderTemplate>
+            <ContentTemplate>
+                <SfGrid DataSource="@articles">
+                    <GridColumns>
+                        <GridColumn Field="Number" HeaderText="@Localizer["ArticleNumber"]" Width="100"></GridColumn>
+                        <GridColumn Field="Category" HeaderText="@Localizer["Category"]" Width="150"></GridColumn>
+                        <GridColumn Field="TariffSubheading" HeaderText="@Localizer["TariffSubheading"]" Width="150"></GridColumn>
+                        <GridColumn Field="CountryOfOrigin" HeaderText="@Localizer["CountryOfOrigin"]" Width="100"></GridColumn>
+                        <GridColumn Field="Quantity" HeaderText="@Localizer["Quantity"]" Width="100"></GridColumn>
+                        <GridColumn Field="NetWeight" HeaderText="@Localizer["NetWeight"]" Width="100"></GridColumn>
+                        <GridColumn Field="Status" HeaderText="@Localizer["Status"]" Width="150"></GridColumn>
+                    </GridColumns>
+                </SfGrid>
+            </ContentTemplate>
+        </AccordionItem>
+        <AccordionItem>
+            <HeaderTemplate>@Localizer["AnalysisRequestInformation"]</HeaderTemplate>
+            <ContentTemplate>
+                <div class="row">
+                    <div class="col-md-6">
+                        <SfTextBox Placeholder="@Localizer["Number"]" Value="2022-01-000001" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["SampleCollectionLocation"]" Value="@Localizer["Location"]" Readonly="true"></SfTextBox>
+                        <SfDatePicker Placeholder="@Localizer["SampleCollectionRequestDate"]" Value="new DateTime(2022, 4, 10)" Readonly="true" TValue="DateTime"></SfDatePicker>
+                        <SfDatePicker Placeholder="@Localizer["SampleCollectionStartDate"]" Value="new DateTime(2022, 4, 10)" Readonly="true" TValue="DateTime"></SfDatePicker>
+                        <SfTextBox Placeholder="@Localizer["Quantity"]" Value="1" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["DeclarantNotificationContent"]" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["SampleApplicationContents"]" Readonly="true"></SfTextBox>
+                        <SfDropDownList TValue="string" TItem="string" Placeholder="@Localizer["SampleRestitution"]" DataSource="choices"></SfDropDownList>
+                    </div>
+                    <div class="col-md-6">
+                        <SfTextBox Placeholder="@Localizer["Category"]" Value="@Localizer["Category"]" Readonly="true"></SfTextBox>
+                        <SfDropDownList TValue="string" TItem="string" Placeholder="@Localizer["NotifyDeclarant"]" DataSource="choices"></SfDropDownList>
+                        <SfDropDownList TValue="string" TItem="string" Placeholder="@Localizer["DeclarantPresence"]" DataSource="choices"></SfDropDownList>
+                        <SfDatePicker Placeholder="@Localizer["SampleCollectionEndDate"]" Value="new DateTime(2022, 4, 10)" Readonly="true"></SfDatePicker>
+                        <SfTextBox Placeholder="@Localizer["Weight"]" Value="2,640" Readonly="true"></SfTextBox>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </AccordionItem>
+        <AccordionItem>
+            <HeaderTemplate>@Localizer["AnalysisControlInformation"]</HeaderTemplate>
+            <ContentTemplate>
+                <div class="row">
+                    <div class="col-md-6">
+                        <SfTextBox Placeholder="@Localizer["ControlEstablishment"]" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["ControlResult"]" Readonly="true"></SfTextBox>
+                        <SfDatePicker Placeholder="@Localizer["ControlResultReceptionDate"]" Readonly="true" TValue="DateTime"></SfDatePicker>
+                        <SfTextBox Placeholder="@Localizer["ControlResultContent"]" Readonly="true"></SfTextBox>
+                        <SfDropDownList TValue="string" TItem="string" Placeholder="@Localizer["SampleRestitutionCompleted"]" DataSource="choices"></SfDropDownList>
+                    </div>
+                    <div class="col-md-6">
+                        <SfTextBox Placeholder="@Localizer["InspectorName"]" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["SealNumber"]" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["ExpertiseDeadline"]" Readonly="true"></SfTextBox>
+                        <SfDatePicker Placeholder="@Localizer["SampleRestitutionDate"]" Readonly="true" TValue="DateTime"></SfDatePicker>
+                        <SfTextBox Placeholder="@Localizer["QuantityReturned"]" Value="1" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["WeightReturned"]" Value="2,640" Readonly="true"></SfTextBox>
+                        <SfTextBox Placeholder="@Localizer["AttachedDocument"]" Readonly="true"></SfTextBox>
+                    </div>
+                </div>
+            </ContentTemplate>
+        </AccordionItem>
+    </AccordionItems>
+</SfAccordion>
+
+<div class="row mt-3">
+    <div class="col-md-12 text-right">
+        <SfButton CssClass="e-primary">@Localizer["Save"]</SfButton>
+        <SfButton CssClass="e-secondary">@Localizer["Send"]</SfButton>
+        <SfButton CssClass="e-warning">@Localizer["RequestCounterExpertise"]</SfButton>
+    </div>
+</div>
+
+@code {
+    private string RequestNumberFilter { get; set; }
+    private readonly List<string> choices = new() { "Yes", "No" };
+
+    private readonly List<Article> articles = [new Article { Number = "1", Category = "AnalysisExpertise", TariffPosition = "110409.90.1000", CountryOfOrigin = "KR-KOREA", Quantity = "1", NetWeight = "2,640", Status = "VerificationControlInProgress" }];
+
+    private void OnSearchClick()
+    {
+        // Handle search logic here
+    }
+
+    public class Article
+    {
+        public string Number { get; set; }
+        public string Category { get; set; }
+        public string TariffPosition { get; set; }
+        public string CountryOfOrigin { get; set; }
+        public string Quantity { get; set; }
+        public string NetWeight { get; set; }
+        public string Status { get; set; }
+    }
+
+}

@@ -1,0 +1,131 @@
+@page "/regime-request"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["RegimeRequestTitle"]</h3>
+    <div class="row">
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["RegimeAuthorizationNo"]" CssClass="e-outline" Value="RDE-2022-000001"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["EPC"]" CssClass="e-outline" Value="S10"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList TItem="string" TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes"></SfDropDownList>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["APC"]" CssClass="e-outline" Value="S12"></SfTextBox>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <SfTextBox TValue="string" Placeholder="@Localizer["RegimeRequestTitle"]" CssClass="e-outline"></SfTextBox>
+            <SfTextBox TValue="string" Placeholder="@Localizer["RegimeRequestContent"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <SfButton CssClass="e-primary">@Localizer["New"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Save"]</SfButton>
+        </div>
+    </div>
+
+    <SfTab>
+        <TabItems>
+            <TabItem HeaderText="@Localizer["CommonRegimeRequest"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <SfTextBox TValue="string" Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Applicant"]" CssClass="e-outline" Value="0000001234"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Address"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["PhoneNo"]" CssClass="e-outline"></SfTextBox>
+                        </div>
+                        <div class="col-md-6">
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Email"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["RequestContent"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["ResponseContent"]" CssClass="e-outline" Multiline="true"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["TemporaryVehicleAdmission"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <SfTextBox TValue="string" Placeholder="@Localizer["SocialReason"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["AddressInAlgeria"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["AddressAbroad"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["ContractReference"]" CssClass="e-outline"></SfTextBox>
+                            <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["StartDate"]" CssClass="e-outline"></SfDatePicker>
+                            <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["EndDate"]" CssClass="e-outline"></SfDatePicker>
+                        </div>
+                        <div class="col-md-6">
+                            <SfTextBox TValue="string" Placeholder="@Localizer["ExecutionPlace"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["CompanyStaff"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Quantity"]" CssClass="e-outline"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["ImportExportEmployment"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Reference"]" CssClass="e-outline"></SfTextBox>
+                            <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["StartDate"]" CssClass="e-outline"></SfDatePicker>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Object"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["ExecutionPlace"]" CssClass="e-outline"></SfTextBox>
+                            <SfDatePicker TValue="DateTime?" Placeholder="@Localizer["ImportExportDeadline"]" CssClass="e-outline"></SfDatePicker>
+                        </div>
+                        <div class="col-md-6">
+                            <SfTextBox TValue="string" Placeholder="@Localizer["MaterialStateCode"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["SuspensionPeriod"]" CssClass="e-outline"></SfTextBox>
+                            <SfTextBox TValue="string" Placeholder="@Localizer["Treatment"]" CssClass="e-outline"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+        </TabItems>
+    </SfTab>
+
+    <SfGrid DataSource="@RegimeData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="TariffPosition" HeaderText="@Localizer["TariffPosition"]" Width="150"></GridColumn>
+            <GridColumn Field="CommercialName" HeaderText="@Localizer["CommercialName"]" Width="150"></GridColumn>
+            <GridColumn Field="TechnicalName" HeaderText="@Localizer["TechnicalName"]" Width="150"></GridColumn>
+            <GridColumn Field="Quantity" HeaderText="@Localizer["Quantity"]" Width="100"></GridColumn>
+            <GridColumn Field="CountryOfOrigin" HeaderText="@Localizer["CountryOfOrigin"]" Width="150"></GridColumn>
+            <GridColumn Field="Value" HeaderText="@Localizer["Value"]" Width="100"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-success">@Localizer["AddLine"]</SfButton>
+            <SfButton CssClass="e-danger">@Localizer["RemoveLine"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public class RegimeRequest
+    {
+        public string TariffPosition { get; set; }
+        public string CommercialName { get; set; }
+        public string TechnicalName { get; set; }
+        public int Quantity { get; set; }
+        public string CountryOfOrigin { get; set; }
+        public decimal Value { get; set; }
+    }
+
+    public List<RegimeRequest> RegimeData = new()
+    {
+        new RegimeRequest { TariffPosition = "8528.72.92.4", CommercialName = "SMART TV", TechnicalName = "LED TV", Quantity = 100, CountryOfOrigin = "China", Value = 50000 }
+        // Add more data as needed
+    };
+
+    public List<string> DeclarationTypes = new() { "Temporary Admission", "Export/Import" };
+}

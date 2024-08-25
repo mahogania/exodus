@@ -1,0 +1,214 @@
+@page "/anticipated-declaration"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["TransportInformationTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarationNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" Value="IM4/Import Declaration"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 3, 30))"></SfDatePicker>
+        </div>
+    </div>
+
+    <SfTab>
+        <TabItems>
+            <TabItem HeaderText="@Localizer["General"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["EPC"]" CssClass="e-outline" Value="4100"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["RegimeAuthorizationNo"]" CssClass="e-outline" Value="4100-2022-000002"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["ClearanceTiming"]" CssClass="e-outline" Value="PAD - Pre-Arrival Declaration"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" Value="G-General"></SfTextBox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["NumberOfArticles"]" CssClass="e-outline" Value="1"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["Container"]" CssClass="e-outline" Value="OUI"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["GrossWeight"]" CssClass="e-outline" Value="2,640"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["NetWeight"]" CssClass="e-outline" Value="2,640"></SfTextBox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["ExportCountry"]" CssClass="e-outline" Value="KOREA"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["DestinationCountry"]" CssClass="e-outline" Value="Algeria"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["TransactionCode"]" CssClass="e-outline"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["Exporter"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["NIF"]" CssClass="e-outline" Value="00026002014442"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["Company"]" CssClass="e-outline" Value="EXPORTER COMPANY NAME"></SfTextBox>
+                        </div>
+                        <div class="col-md-6">
+                            <SfTextBox Placeholder="@Localizer["Address"]" CssClass="e-outline" Value="12345DUNSAN-DAE-RO 123, DUNSAN-DONG, SEO-UL, KOREA"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["Importer"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["NIF"]" CssClass="e-outline" Value="00026002014442"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["Company"]" CssClass="e-outline" Value="IMPORTER COMPANY NAME"></SfTextBox>
+                        </div>
+                        <div class="col-md-6">
+                            <SfTextBox Placeholder="@Localizer["Address"]" CssClass="e-outline" Value="12345ALGER CENTRE 123, Algeria"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["Finance"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["DeliveryCondition"]" CssClass="e-outline" Value="FOB - Franco à Bord"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["InvoiceNo"]" CssClass="e-outline" Value="TRAININGVIMPP0001"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfDatePicker Placeholder="@Localizer["InvoiceDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 3, 30))"></SfDatePicker>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["TotalInvoiceAmount"]" CssClass="e-outline" Value="88,000 USD"></SfTextBox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["PaymentType"]" CssClass="e-outline" Value="01-Contant"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["PaymentBank"]" CssClass="e-outline"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["BankAgency"]" CssClass="e-outline"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["GuaranteeCategory"]" CssClass="e-outline" Value="Comprehensive"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["TransportInfo"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["TransportMode"]" CssClass="e-outline" Value="10 - Transport maritime"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["TransportNationality"]" CssClass="e-outline" Value="JP - Japan"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["CRN"]" CssClass="e-outline" Value="A00012022000001-0001"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfDatePicker Placeholder="@Localizer["ArrivalDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 3, 30))"></SfDatePicker>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["LoadingPlace"]" CssClass="e-outline" Value="KR/PUS"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["UnloadingPlace"]" CssClass="e-outline" Value="DZ/AGR"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["TransportTitleNo"]" CssClass="e-outline" Value="TRAININGBLIMPP0001"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["TransportIdentificationNo"]" CssClass="e-outline" Value="1234567"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+        </TabItems>
+    </SfTab>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["Submit"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public class TransportInformation
+    {
+        public string ReferenceNo { get; set; }
+        public string DeclarationNo { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public string EPC { get; set; }
+        public string RegimeAuthorizationNo { get; set; }
+        public string ClearanceTiming { get; set; }
+        public string DeclarationType { get; set; }
+        public int NumberOfArticles { get; set; }
+        public string Container { get; set; }
+        public decimal GrossWeight { get; set; }
+        public decimal NetWeight { get; set; }
+        public string ExportCountry { get; set; }
+        public string DestinationCountry { get; set; }
+        public string TransactionCode { get; set; }
+        public string ExporterNIF { get; set; }
+        public string ExporterCompany { get; set; }
+        public string ExporterAddress { get; set; }
+        public string ImporterNIF { get; set; }
+        public string ImporterCompany { get; set; }
+        public string ImporterAddress { get; set; }
+        public string DeliveryCondition { get; set; }
+        public string InvoiceNo { get; set; }
+        public DateTime InvoiceDate { get; set; }
+        public string TotalInvoiceAmount { get; set; }
+        public string PaymentType { get; set; }
+        public string PaymentBank { get; set; }
+        public string BankAgency { get; set; }
+        public string GuaranteeCategory { get; set; }
+        public string TransportMode { get; set; }
+        public string TransportNationality { get; set; }
+        public string CRN { get; set; }
+        public DateTime ArrivalDate { get; set; }
+        public string LoadingPlace { get; set; }
+        public string UnloadingPlace { get; set; }
+        public string TransportTitleNo { get; set; }
+        public string TransportIdentificationNo { get; set; }
+    }
+
+}

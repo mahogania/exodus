@@ -1,0 +1,95 @@
+@page "/external-appeal-request"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["ExternalAppealRequestTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["AppealNo"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["No"]" CssClass="e-outline" Value="1"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList Placeholder="@Localizer["AppealType"]" CssClass="e-outline" DataSource="@AppealTypes" TItem="string" TValue="string">
+                @* Value="CNR" *@
+            </SfDropDownList>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["AppealNo"]" CssClass="e-outline" Value="ALGER-2022-C000001-1"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["RelatedWorkNo"]" CssClass="e-outline" Value="2022-RCO-0001"></SfTextBox>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["Declarant"]" CssClass="e-outline" Value="CUPIA"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER PORT"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["RequesterName"]" CssClass="e-outline" Value="RCO"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextArea Placeholder="@Localizer["Details"]" CssClass="e-outline" Value="RCO RECOURS"></SfTextArea>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfDropDownList Placeholder="@Localizer["Status"]" CssClass="e-outline" DataSource="@StatusOptions" TItem="string" TValue="int" Value="defaultStatus"></SfDropDownList>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker Placeholder="@Localizer["RequestDate"]" CssClass="e-outline" TValue="DateTime" Value="@(new DateTime(2022, 2, 10))"></SfDatePicker>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["ResponderName"]" CssClass="e-outline" Value="AMI"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextArea Placeholder="@Localizer["ResponseContent"]" CssClass="e-outline" Value="OK"></SfTextArea>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["Save"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Edit"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Delete"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Send"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public int defaultStatus = 0;
+
+    public List<string> AppealTypes = new()
+    {
+        "CNR",
+        "CRR",
+        "Other"
+        // Add more types as needed
+    };
+
+    public List<string> StatusOptions = new()
+    {
+        "Réceptionner",
+        "Autoriser",
+        "Rejeter"
+        // Add more statuses as needed
+    };
+
+}

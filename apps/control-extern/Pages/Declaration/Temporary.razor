@@ -1,0 +1,74 @@
+@page "/temporary-stored-documents"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["TemporaryStoredDocumentsTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfDateRangePicker TValue="DateTime[]" Placeholder="@Localizer["RegistrationDateRange"]" CssClass="e-outline"></SfDateRangePicker>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string"></SfDropDownList>
+        </div>
+        <div class="col-md-3">
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <SfGrid DataSource="@TemporaryStoredDocumentData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="ReferenceNo" HeaderText="@Localizer["ReferenceNo"]" Width="150"></GridColumn>
+            <GridColumn Field="RegistrationDate" HeaderText="@Localizer["RegistrationDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="RegionalDirection" HeaderText="@Localizer["RegionalDirection"]" Width="150"></GridColumn>
+            <GridColumn Field="EPC" HeaderText="@Localizer["EPC"]" Width="100"></GridColumn>
+            <GridColumn Field="DeclarationType" HeaderText="@Localizer["DeclarationType"]" Width="150"></GridColumn>
+            <GridColumn Field="ClearanceTiming" HeaderText="@Localizer["ClearanceTiming"]" Width="150"></GridColumn>
+            <GridColumn Field="DocumentType" HeaderText="@Localizer["DocumentType"]" Width="150"></GridColumn>
+            <GridColumn Field="InvoiceNo" HeaderText="@Localizer["InvoiceNo"]" Width="150"></GridColumn>
+            <GridColumn Field="TransportTitleNo" HeaderText="@Localizer["TransportTitleNo"]" Width="150"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Confirm"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Close"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public class TemporaryStoredDocument
+    {
+        public string ReferenceNo { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public string RegionalDirection { get; set; }
+        public string EPC { get; set; }
+        public string DeclarationType { get; set; }
+        public string ClearanceTiming { get; set; }
+        public string DocumentType { get; set; }
+        public string InvoiceNo { get; set; }
+        public string TransportTitleNo { get; set; }
+    }
+
+    public List<string> DeclarationTypes = new()
+    {
+        "EX1/Exportation",
+        "IM4/Import Declaration"
+        // Add more types as needed
+    };
+
+    public List<TemporaryStoredDocument> TemporaryStoredDocumentData = new()
+    {
+        new TemporaryStoredDocument { ReferenceNo = "H0001-2022-DAU-000001-E", RegistrationDate = new DateTime(2022, 3, 30), RegionalDirection = "ALGER-M", EPC = "4100", DeclarationType = "IM4/Import Declaration", ClearanceTiming = "PMD - Post-Manifest Declaration", DocumentType = "G-General", InvoiceNo = "TRAININGVIMPP0001", TransportTitleNo = "TRAININGBLIMPP0001" }
+        // Add more data as needed
+    };
+
+}

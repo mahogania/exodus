@@ -1,0 +1,91 @@
+@page "/suspicion/list"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="row mb-3">
+    <div class="col-md-3">
+        <SfTextBox Placeholder="@Localizer["RequestNumber"]" @bind-Value="RequestNumberFilter"></SfTextBox>
+    </div>
+    <div class="col-md-3">
+        <SfTextBox Placeholder="@Localizer["DeclarationNumber"]" @bind-Value="DeclarationNumberFilter"></SfTextBox>
+    </div>
+    <div class="col-md-3">
+        <SfDatePicker Placeholder="@Localizer["RegistrationDate"]" @bind-Value="RegistrationDateFilter"></SfDatePicker>
+    </div>
+    <div class="col-md-3">
+        <SfButton CssClass="e-primary" Click="OnSearchClick">@Localizer["Search"]</SfButton>
+        <SfButton CssClass="e-secondary" Click="OnResetClick">@Localizer["Reset"]</SfButton>
+    </div>
+</div>
+
+<SfGrid @ref="Grid" DataSource="@filteredRequests" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }">
+    <GridToolbar>
+        <GridToolbarItems>
+            <GridToolbarItem Text="@Localizer["DownloadExcel"]" Click="OnDownloadExcelClick"></GridToolbarItem>
+        </GridToolbarItems>
+    </GridToolbar>
+    <GridColumns>
+        <GridColumn Field="RequestNumber" HeaderText="@Localizer["RequestNumber"]" Width="150"></GridColumn>
+        <GridColumn Field="DeclarationNumber" HeaderText="@Localizer["DeclarationNumber"]" Width="150"></GridColumn>
+        <GridColumn Field="ArticleNumber" HeaderText="@Localizer["ArticleNumber"]" Width="100"></GridColumn>
+        <GridColumn Field="Content" HeaderText="@Localizer["RequestContent"]" Width="200"></GridColumn>
+        <GridColumn Field="ControlEstablishment" HeaderText="@Localizer["ControlEstablishment"]" Width="150"></GridColumn>
+        <GridColumn Field="Inspector" HeaderText="@Localizer["Inspector"]" Width="100"></GridColumn>
+        <GridColumn Field="ControlResult" HeaderText="@Localizer["ControlResult"]" Width="150"></GridColumn>
+        <GridColumn Field="Status" HeaderText="@Localizer["Status"]" Width="100"></GridColumn>
+        <GridColumn Field="ProcessingDate" HeaderText="@Localizer["ProcessingDateTime"]" Width="150" Format="d"></GridColumn>
+    </GridColumns>
+</SfGrid>
+
+@code {
+    private SfGrid<Request> Grid;
+
+    private string RequestNumberFilter { get; set; }
+    private string DeclarationNumberFilter { get; set; }
+    private DateTime? RegistrationDateFilter { get; set; }
+
+    private readonly List<Request> requests = new()
+    {
+        new() { RequestNumber = "ALGER-2022-C000001", DeclarationNumber = "ALGER-2022-C000001-1", ArticleNumber = "001", Content = "suspicion des contrefaçons", ControlEstablishment = "", Inspector = "", ControlResult = "", Status = "Receive", ProcessingDate = new DateTime(2022, 10, 2) },
+        new() { RequestNumber = "ALGER-2022-C000002", DeclarationNumber = "ALGER-2022-C000002-1", ArticleNumber = "002", Content = "suspicion des contrefaçons", ControlEstablishment = "", Inspector = "", ControlResult = "", Status = "Approval", ProcessingDate = new DateTime(2022, 10, 3) }
+        // Add more data as needed
+    };
+
+    private List<Request> filteredRequests => requests
+        .Where(data => string.IsNullOrEmpty(RequestNumberFilter) || data.RequestNumber.Contains(RequestNumberFilter, StringComparison.OrdinalIgnoreCase))
+        .Where(data => string.IsNullOrEmpty(DeclarationNumberFilter) || data.DeclarationNumber.Contains(DeclarationNumberFilter, StringComparison.OrdinalIgnoreCase))
+        .Where(data => !RegistrationDateFilter.HasValue || data.ProcessingDate.Date == RegistrationDateFilter.Value.Date)
+        .ToList();
+
+    private void OnSearchClick()
+    {
+        // Trigger re-render to apply filters
+        StateHasChanged();
+    }
+
+    private void OnResetClick()
+    {
+        RequestNumberFilter = string.Empty;
+        DeclarationNumberFilter = string.Empty;
+        RegistrationDateFilter = null;
+        StateHasChanged();
+    }
+
+    private void OnDownloadExcelClick()
+    {
+    }
+
+    public class Request
+    {
+        public string RequestNumber { get; set; }
+        public string DeclarationNumber { get; set; }
+        public string ArticleNumber { get; set; }
+        public string Content { get; set; }
+        public string ControlEstablishment { get; set; }
+        public string Inspector { get; set; }
+        public string ControlResult { get; set; }
+        public string Status { get; set; }
+        public DateTime ProcessingDate { get; set; }
+    }
+
+}

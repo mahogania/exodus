@@ -1,0 +1,62 @@
+@page "/q-a-list"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["QAListTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfDateRangePicker TValue="DateTime?" Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
+        </div>
+        <div class="col-md-3">
+            <SfDateRangePicker TValue="DateTime?" Placeholder="@Localizer["DeclarationRegistrationDate"]" CssClass="e-outline"></SfDateRangePicker>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList TValue="string" Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" DataSource="@DeclarationTypes" TItem="string"></SfDropDownList>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3 mt-2">
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <SfGrid DataSource="@DeclarationStatusData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="No" HeaderText="@Localizer["No"]" Width="50"></GridColumn>
+            <GridColumn Field="ReferenceNo" HeaderText="@Localizer["ReferenceNo"]" Width="150"></GridColumn>
+            <GridColumn Field="RegistrationDate" HeaderText="@Localizer["RegistrationDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="DeclarationRegistrationDate" HeaderText="@Localizer["DeclarationRegistrationDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="RegisteredBy" HeaderText="@Localizer["RegisteredBy"]" Width="150"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+</div>
+
+@code {
+
+    public class DeclarationStatus
+    {
+        public int No { get; set; }
+        public string ReferenceNo { get; set; }
+        public DateTime RegistrationDate { get; set; }
+        public DateTime DeclarationRegistrationDate { get; set; }
+        public string RegisteredBy { get; set; }
+    }
+
+    public List<string> DeclarationTypes = new()
+    {
+        "EX1/Exportation",
+        "IM4/Import Declaration"
+        // Add more types as needed
+    };
+
+    public List<DeclarationStatus> DeclarationStatusData = new()
+    {
+        new DeclarationStatus { No = 1, ReferenceNo = "H0001-2022-DAU-000001-E", RegistrationDate = new DateTime(2022, 4, 10), DeclarationRegistrationDate = new DateTime(2022, 3, 30), RegisteredBy = "Douanier" }
+        // Add more data as needed
+    };
+
+}

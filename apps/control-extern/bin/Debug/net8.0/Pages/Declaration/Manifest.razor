@@ -1,0 +1,95 @@
+@page "/manifest-consultation"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["ManifestConsultationTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["TransportTitleNo"]" CssClass="e-outline" Value="TRAININGBLIMPP0001" TValue="string"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["CRN"]" CssClass="e-outline" TValue="string"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDatePicker Placeholder="@Localizer["ArrivalDate"]" CssClass="e-outline" TValue="DateTime"></SfDatePicker>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList Placeholder="@Localizer["Unloading"]" CssClass="e-outline" DataSource="@UnloadingOptions" TItem="string" TValue="string">
+
+            </SfDropDownList>
+        </div>
+        <div class="col-md-3 mt-2">
+            <SfButton CssClass="e-primary">@Localizer["Reset"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <SfGrid DataSource="@ManifestData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="TransportTitleNo" HeaderText="@Localizer["TransportTitleNo"]" Width="150"></GridColumn>
+            <GridColumn Field="ArrivalDate" HeaderText="@Localizer["ArrivalDate"]" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="CRN" HeaderText="@Localizer["CRN"]" Width="150"></GridColumn>
+            <GridColumn Field="GoodsLocation" HeaderText="@Localizer["GoodsLocation"]" Width="150"></GridColumn>
+            <GridColumn Field="Container" HeaderText="@Localizer["Container"]" Width="150"></GridColumn>
+            <GridColumn Field="TransportNationality" HeaderText="@Localizer["TransportNationality"]" Width="150"></GridColumn>
+            <GridColumn Field="TransportMode" HeaderText="@Localizer["TransportMode"]" Width="150"></GridColumn>
+            <GridColumn Field="TransportIdentificationNo" HeaderText="@Localizer["TransportIdentificationNo"]" Width="150"></GridColumn>
+            <GridColumn Field="EntryWeight" HeaderText="@Localizer["EntryWeight"]" Width="150"></GridColumn>
+            <GridColumn Field="StockWeight" HeaderText="@Localizer["StockWeight"]" Width="150"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["Confirm"]</SfButton>
+            <SfButton CssClass="e-primary">@Localizer["Close"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public class ManifestInfo
+    {
+        public ManifestInfo(string transportTitleNo, DateTime arrivalDate, string crn, string goodsLocation, string container, string transportNationality, string transportMode, string transportIdentificationNo, int entryWeight, int stockWeight)
+        {
+            TransportTitleNo = transportTitleNo;
+            ArrivalDate = arrivalDate;
+            CRN = crn;
+            GoodsLocation = goodsLocation;
+            Container = container;
+            TransportNationality = transportNationality;
+            TransportMode = transportMode;
+            TransportIdentificationNo = transportIdentificationNo;
+            EntryWeight = entryWeight;
+            StockWeight = stockWeight;
+        }
+
+        public string TransportTitleNo { get; set; }
+        public DateTime ArrivalDate { get; set; }
+        public string CRN { get; set; }
+        public string GoodsLocation { get; set; }
+        public string Container { get; set; }
+        public string TransportNationality { get; set; }
+        public string TransportMode { get; set; }
+        public string TransportIdentificationNo { get; set; }
+        public int EntryWeight { get; set; }
+        public int StockWeight { get; set; }
+    }
+
+    public List<string> UnloadingOptions = new()
+    {
+        "OUI",
+        "NON"
+        // Add more options as needed
+    };
+
+    public List<ManifestInfo> ManifestData = new()
+    {
+        new ManifestInfo("TRAININGBLIMPP0001", new DateTime(2022, 3, 30), "A00012022000001-0001", "FOO002", "Y", "JP", "10", "1234567", 2640, 2640)
+        // Add more data as needed
+    };
+
+}

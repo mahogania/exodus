@@ -1,0 +1,74 @@
+@page "/rde-list"
+
+<div class="container">
+    <h3>Consult the List of Economic Customs Regime Requests (RDE)</h3>
+    <div class="row">
+        <div class="col-md-3">
+            <SfDateRangePicker TValue="DateTime[]" Placeholder="Request Date" CssClass="e-outline"></SfDateRangePicker>
+        </div>
+        <div class="col-md-3">
+            <SfTextBox TValue="string" Placeholder="Regime Authorization No" CssClass="e-outline"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList TItem="string" TValue="string" Placeholder="Status" CssClass="e-outline" DataSource="@Statuses"></SfDropDownList>
+        </div>
+        <div class="col-md-3">
+            <SfDropDownList TItem="string" TValue="string" Placeholder="Usage" CssClass="e-outline" DataSource="@Usages"></SfDropDownList>
+        </div>
+    </div>
+    <div class="row mt-3">
+        <div class="col-md-12">
+            <SfButton TValue="string" CssClass="e-primary">Reset</SfButton>
+            <SfButton TValue="string" CssClass="e-primary">Search</SfButton>
+        </div>
+    </div>
+
+    <SfGrid DataSource="@RDEData" AllowPaging="true" PageSettings="new GridPageSettings { PageSize = 10 }" AllowSorting="true">
+        <GridColumns>
+            <GridColumn Field="RegimeAuthorizationNo" HeaderText="Regime Authorization No" Width="150"></GridColumn>
+            <GridColumn Field="DeclarationOffice" HeaderText="Declaration Office" Width="150"></GridColumn>
+            <GridColumn Field="DeclarationType" HeaderText="Declaration Type" Width="150"></GridColumn>
+            <GridColumn Field="EPC" HeaderText="EPC" Width="100"></GridColumn>
+            <GridColumn Field="APC" HeaderText="APC" Width="100"></GridColumn>
+            <GridColumn Field="RegimeRequestTitle" HeaderText="Regime Request Title" Width="150"></GridColumn>
+            <GridColumn Field="Applicant" HeaderText="Applicant" Width="150"></GridColumn>
+            <GridColumn Field="RequestDate" HeaderText="Request Date" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="ValidationDate" HeaderText="Validation Date" Width="150" Format="d"></GridColumn>
+            <GridColumn Field="Status" HeaderText="Status" Width="150"></GridColumn>
+            <GridColumn Field="Usage" HeaderText="Usage" Width="100"></GridColumn>
+        </GridColumns>
+    </SfGrid>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton TValue="string" CssClass="e-success">Download in Excel</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public class RDERequest
+    {
+        public string RegimeAuthorizationNo { get; set; }
+        public string DeclarationOffice { get; set; }
+        public string DeclarationType { get; set; }
+        public string EPC { get; set; }
+        public string APC { get; set; }
+        public string RegimeRequestTitle { get; set; }
+        public string Applicant { get; set; }
+        public DateTime RequestDate { get; set; }
+        public DateTime ValidationDate { get; set; }
+        public string Status { get; set; }
+        public string Usage { get; set; }
+    }
+
+    public List<RDERequest> RDEData = new()
+    {
+        new RDERequest { RegimeAuthorizationNo = "RDE-2022-000001", DeclarationOffice = "ALGER", DeclarationType = "IMS/Temporary Admission", EPC = "S10", APC = "S12", RegimeRequestTitle = "Regime Request Title", Applicant = "000000123456789", RequestDate = new DateTime(2021, 11, 25), ValidationDate = new DateTime(2021, 11, 25), Status = "Verification/Control in progress", Usage = "NO" }
+        // Add more data as needed
+    };
+
+    public List<string> Statuses = new() { "Received", "In Progress", "Completed" };
+    public List<string> Usages = new() { "YES", "NO" };
+}

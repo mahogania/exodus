@@ -1,0 +1,115 @@
+@page "/cancellation-request-detailed-declaration"
+@using Microsoft.Extensions.Localization
+@inject IStringLocalizer Localizer
+
+<div class="container">
+    <h3>@Localizer["CancellationRequestTitle"]</h3>
+
+    <div class="row mb-3">
+        <div class="col-md-3">
+            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E" TValue="string"></SfTextBox>
+        </div>
+        <div class="col-md-3">
+            <SfButton CssClass="e-primary">@Localizer["Search"]</SfButton>
+        </div>
+    </div>
+
+    <SfTab>
+        <TabItems>
+            <TabItem HeaderText="@Localizer["Exporter"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["NIF"]" CssClass="e-outline" Value="00026002014442" TValue="string"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["Company"]" CssClass="e-outline" Value="EXPORTER COMPANY NAME" TValue="string"></SfTextBox>
+                        </div>
+                        <div class="col-md-6">
+                            <SfTextBox Placeholder="@Localizer["Address"]" CssClass="e-outline" Value="12345DUNSAN-DAE-RO 123, DUNSAN-DONG, SEO-UL, KOREA" TValue="string"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["Importer"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["NIF"]" CssClass="e-outline" Value="00026002014442" TValue="string"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["Company"]" CssClass="e-outline" Value="IMPORTER COMPANY NAME" TValue="string"></SfTextBox>
+                        </div>
+                        <div class="col-md-6">
+                            <SfTextBox Placeholder="@Localizer["Address"]" CssClass="e-outline" Value="12345ALGER CENTRE 123, Algeria" TValue="string"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["Others"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["ReferenceNo"]" CssClass="e-outline" Value="H0001-2022-DAU-000001-E" TValue="string"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["DeclarationOffice"]" CssClass="e-outline" Value="ALGER - Bureaux de Douane d'Alger" TValue="string"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["ClearanceTiming"]" CssClass="e-outline" Value="PAD - Pre-Arrival Declaration" TValue="string"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["TransportTitleNo"]" CssClass="e-outline" Value="TRAININGBLIMPP0001" TValue="string"></SfTextBox>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["DeclarationType"]" CssClass="e-outline" Value="IM4/Import Declaration" TValue="string"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfDatePicker Placeholder="@Localizer["RegistrationDate"]" CssClass="e-outline" Value="@(new DateTime(2022, 3, 30))" TValue="DateTime"></SfDatePicker>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["OperationType"]" CssClass="e-outline" Value="REVENTE EN L'ETAT" TValue="string"></SfTextBox>
+                        </div>
+                        <div class="col-md-3">
+                            <SfTextBox Placeholder="@Localizer["InvoiceNo"]" CssClass="e-outline" Value="TRAININGVIMPP0001" TValue="string"></SfTextBox>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+            <TabItem HeaderText="@Localizer["CancellationReason"]">
+                <ChildContent>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <SfDropDownList Placeholder="@Localizer["CancellationReason"]" CssClass="e-outline" DataSource="@CancellationReasons" TItem="string" TValue="string">
+                                @* Value="'A - Erreurs lors de la rédaction de la déclaration'" *@
+                            </SfDropDownList>
+                        </div>
+                        <div class="col-md-6">
+                            <SfTextArea Placeholder="@Localizer["Remarks"]" CssClass="e-outline" TValue="string"></SfTextArea>
+                        </div>
+                    </div>
+                </ChildContent>
+            </TabItem>
+        </TabItems>
+    </SfTab>
+
+    <div class="row mt-3">
+        <div class="col-md-12 text-right">
+            <SfButton CssClass="e-primary">@Localizer["Submit"]</SfButton>
+        </div>
+    </div>
+</div>
+
+@code {
+
+    public List<string> CancellationReasons = new()
+    {
+        "A - Erreurs lors de la rédaction de la déclaration",
+        "B - Annulation demandée par l'importateur",
+        "C - Autres raisons"
+        // Add more reasons as needed
+    };
+
+}
