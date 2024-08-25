@@ -2,7 +2,11 @@ namespace Control.APIs.Dtos;
 
 public class RequestForCommonCarnetUpdateInput
 {
+    public List<string>? ArticleCarnetRequests { get; set; }
+
     public string? AttachedFileId { get; set; }
+
+    public List<string>? CarnetControls { get; set; }
 
     public string? CertificationOrganization { get; set; }
 
@@ -60,6 +64,8 @@ public class RequestForCommonCarnetUpdateInput
 
     public double? Destination_3TransportQuantity { get; set; }
 
+    public List<string>? ExtendedPeriodCarnetRequests { get; set; }
+
     public string? FinalModifierSId { get; set; }
 
     public string? FirstRecorderSId { get; set; }
@@ -74,6 +80,8 @@ public class RequestForCommonCarnetUpdateInput
 
     public string? Id { get; set; }
 
+    public List<string>? ImportCarnetRequests { get; set; }
+
     public string? InternationalOrganizationName { get; set; }
 
     public string? IssueDate { get; set; }
@@ -85,6 +93,8 @@ public class RequestForCommonCarnetUpdateInput
     public string? Observations { get; set; }
 
     public string? OfficialUse { get; set; }
+
+    public List<string>? ReexportCarnetRequests { get; set; }
 
     public string? RegistrationDate { get; set; }
 
@@ -99,6 +109,8 @@ public class RequestForCommonCarnetUpdateInput
     public string? TirRegistrationNumber { get; set; }
 
     public double? TotalNumberOfGoods { get; set; }
+
+    public List<string>? TransitCarnetRequests { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
 

@@ -15,6 +15,7 @@ public static class CommonExpressClearancesExtensions
             CreatedAt = model.CreatedAt,
             CustomsOfficeCode = model.CustomsOfficeCode,
             DeletionOn = model.DeletionOn,
+            Details = model.Details?.Select(x => x.Id).ToList(),
             ExpressClearanceRequestNumber = model.ExpressClearanceRequestNumber,
             ExpressOperatorCode = model.ExpressOperatorCode,
             ExpressOperatorName = model.ExpressOperatorName,
@@ -24,11 +25,12 @@ public static class CommonExpressClearancesExtensions
             FirstRegistrationDateAndTime = model.FirstRegistrationDateAndTime,
             Id = model.Id,
             MasterBlNumber = model.MasterBlNumber,
+            Procedure = model.ProcedureId,
             RequestDate = model.RequestDate,
             ShipName = model.ShipName,
             TransmissionTypeCode = model.TransmissionTypeCode,
             TreatmentStatusCode = model.TreatmentStatusCode,
-            UpdatedAt = model.UpdatedAt
+            UpdatedAt = model.UpdatedAt,
         };
     }
 
@@ -59,8 +61,18 @@ public static class CommonExpressClearancesExtensions
             TreatmentStatusCode = updateDto.TreatmentStatusCode
         };
 
-        if (updateDto.CreatedAt != null) commonExpressClearance.CreatedAt = updateDto.CreatedAt.Value;
-        if (updateDto.UpdatedAt != null) commonExpressClearance.UpdatedAt = updateDto.UpdatedAt.Value;
+        if (updateDto.CreatedAt != null)
+        {
+            commonExpressClearance.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.Procedure != null)
+        {
+            commonExpressClearance.ProcedureId = updateDto.Procedure;
+        }
+        if (updateDto.UpdatedAt != null)
+        {
+            commonExpressClearance.UpdatedAt = updateDto.UpdatedAt.Value;
+        }
 
         return commonExpressClearance;
     }

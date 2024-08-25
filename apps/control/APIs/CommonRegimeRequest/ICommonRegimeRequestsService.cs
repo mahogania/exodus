@@ -6,41 +6,46 @@ namespace Control.APIs;
 public interface ICommonRegimeRequestsService
 {
     /// <summary>
-    ///     Create one COMMON REGIME REQUEST
+    /// Create one Common Regime Request
     /// </summary>
     public Task<CommonRegimeRequest> CreateCommonRegimeRequest(
         CommonRegimeRequestCreateInput commonregimerequest
     );
 
     /// <summary>
-    ///     Delete one COMMON REGIME REQUEST
+    /// Delete one Common Regime Request
     /// </summary>
     public Task DeleteCommonRegimeRequest(CommonRegimeRequestWhereUniqueInput uniqueId);
 
     /// <summary>
-    ///     Find many COMMON REGIME REQUESTS
+    /// Find many COMMON REGIME REQUESTS
     /// </summary>
     public Task<List<CommonRegimeRequest>> CommonRegimeRequests(
         CommonRegimeRequestFindManyArgs findManyArgs
     );
 
     /// <summary>
-    ///     Meta data about COMMON REGIME REQUEST records
+    /// Meta data about Common Regime Request records
     /// </summary>
     public Task<MetadataDto> CommonRegimeRequestsMeta(CommonRegimeRequestFindManyArgs findManyArgs);
 
     /// <summary>
-    ///     Get one COMMON REGIME REQUEST
+    /// Get one Common Regime Request
     /// </summary>
     public Task<CommonRegimeRequest> CommonRegimeRequest(
         CommonRegimeRequestWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    ///     Update one COMMON REGIME REQUEST
+    /// Update one Common Regime Request
     /// </summary>
     public Task UpdateCommonRegimeRequest(
         CommonRegimeRequestWhereUniqueInput uniqueId,
         CommonRegimeRequestUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Journal record for Common Regime Request
+    /// </summary>
+    public Task<Procedure> GetJournal(CommonRegimeRequestWhereUniqueInput uniqueId);
 }

@@ -9,7 +9,9 @@ public static class RequestForCommonCarnetsExtensions
     {
         return new RequestForCommonCarnet
         {
+            ArticleCarnetRequests = model.ArticleCarnetRequests?.Select(x => x.Id).ToList(),
             AttachedFileId = model.AttachedFileId,
+            CarnetControls = model.CarnetControls?.Select(x => x.Id).ToList(),
             CertificationOrganization = model.CertificationOrganization,
             CreatedAt = model.CreatedAt,
             CustomsOfficeCode = model.CustomsOfficeCode,
@@ -38,6 +40,9 @@ public static class RequestForCommonCarnetsExtensions
             Destination_1TransportQuantity = model.Destination_1TransportQuantity,
             Destination_2TransportQuantity = model.Destination_2TransportQuantity,
             Destination_3TransportQuantity = model.Destination_3TransportQuantity,
+            ExtendedPeriodCarnetRequests = model
+                .ExtendedPeriodCarnetRequests?.Select(x => x.Id)
+                .ToList(),
             FinalModifierSId = model.FinalModifierSId,
             FirstRecorderSId = model.FirstRecorderSId,
             HolderSAddress = model.HolderSAddress,
@@ -45,12 +50,14 @@ public static class RequestForCommonCarnetsExtensions
             HolderSName = model.HolderSName,
             HolderSZipcode = model.HolderSZipcode,
             Id = model.Id,
+            ImportCarnetRequests = model.ImportCarnetRequests?.Select(x => x.Id).ToList(),
             InternationalOrganizationName = model.InternationalOrganizationName,
             IssueDate = model.IssueDate,
             IssuedBy = model.IssuedBy,
             NumberOfContainerConcerned = model.NumberOfContainerConcerned,
             Observations = model.Observations,
             OfficialUse = model.OfficialUse,
+            ReexportCarnetRequests = model.ReexportCarnetRequests?.Select(x => x.Id).ToList(),
             RegistrationDate = model.RegistrationDate,
             RegistrationNumber = model.RegistrationNumber,
             SealNumber = model.SealNumber,
@@ -58,6 +65,7 @@ public static class RequestForCommonCarnetsExtensions
             TirNumber = model.TirNumber,
             TirRegistrationNumber = model.TirRegistrationNumber,
             TotalNumberOfGoods = model.TotalNumberOfGoods,
+            TransitCarnetRequests = model.TransitCarnetRequests?.Select(x => x.Id).ToList(),
             UpdatedAt = model.UpdatedAt,
             ValidUntil = model.ValidUntil,
             VehicleCertificationNoAndDate = model.VehicleCertificationNoAndDate

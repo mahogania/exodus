@@ -1,3 +1,4 @@
+using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -8,24 +9,23 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Control.APIs;
 
-public abstract class CustomsClearanceOfPostalGoodsItemsServiceBase
-    : ICustomsClearanceOfPostalGoodsItemsService
+public abstract class PostalGoodsClearancesServiceBase : IPostalGoodsClearancesService
 {
     protected readonly ControlDbContext _context;
 
-    public CustomsClearanceOfPostalGoodsItemsServiceBase(ControlDbContext context)
+    public PostalGoodsClearancesServiceBase(ControlDbContext context)
     {
         _context = context;
     }
 
     /// <summary>
-    ///     Create one CUSTOMS CLEARANCE OF POSTAL GOODS
+    /// Create one Postal Goods Clearance
     /// </summary>
-    public async Task<CustomsClearanceOfPostalGoods> CreateCustomsClearanceOfPostalGoods(
-        CustomsClearanceOfPostalGoodsCreateInput createDto
+    public async Task<PostalGoodsClearance> CreatePostalGoodsClearance(
+        PostalGoodsClearanceCreateInput createDto
     )
     {
-        var customsClearanceOfPostalGoods = new CustomsClearanceOfPostalGoodsDbModel
+        var postalGoodsClearance = new PostalGoodsClearanceDbModel
         {
             ArrivalDate = createDto.ArrivalDate,
             AttachedFileId = createDto.AttachedFileId,
@@ -91,97 +91,134 @@ public abstract class CustomsClearanceOfPostalGoodsItemsServiceBase
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null) customsClearanceOfPostalGoods.Id = createDto.Id;
+        if (createDto.Id != null)
+        {
+            postalGoodsClearance.Id = createDto.Id;
+        }
+        if (createDto.PostalGoodsClearanceDetails != null)
+        {
+            postalGoodsClearance.PostalGoodsClearanceDetails = await _context
+                .PostalGoodsClearanceDetails.Where(postalGoodsClearanceDetail =>
+                    createDto
+                        .PostalGoodsClearanceDetails.Select(t => t.Id)
+                        .Contains(postalGoodsClearanceDetail.Id)
+                )
+                .ToListAsync();
+        }
 
-        _context.CustomsClearanceOfPostalGoodsItems.Add(customsClearanceOfPostalGoods);
+        if (createDto.Procedure != null)
+        {
+            postalGoodsClearance.Procedure = await _context
+                .Procedures.Where(procedure => createDto.Procedure.Id == procedure.Id)
+                .FirstOrDefaultAsync();
+        }
+
+        _context.PostalGoodsClearances.Add(postalGoodsClearance);
         await _context.SaveChangesAsync();
 
-        var result = await _context.FindAsync<CustomsClearanceOfPostalGoodsDbModel>(
-            customsClearanceOfPostalGoods.Id
-        );
+        var result = await _context.FindAsync<PostalGoodsClearanceDbModel>(postalGoodsClearance.Id);
 
-        if (result == null) throw new NotFoundException();
+        if (result == null)
+        {
+            throw new NotFoundException();
+        }
 
         return result.ToDto();
     }
 
     /// <summary>
-    ///     Delete one CUSTOMS CLEARANCE OF POSTAL GOODS
+    /// Delete one Postal Goods Clearance
     /// </summary>
-    public async Task DeleteCustomsClearanceOfPostalGoods(
-        CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
-    )
+    public async Task DeletePostalGoodsClearance(PostalGoodsClearanceWhereUniqueInput uniqueId)
     {
-        var customsClearanceOfPostalGoods =
-            await _context.CustomsClearanceOfPostalGoodsItems.FindAsync(uniqueId.Id);
-        if (customsClearanceOfPostalGoods == null) throw new NotFoundException();
+        var postalGoodsClearance = await _context.PostalGoodsClearances.FindAsync(uniqueId.Id);
+        if (postalGoodsClearance == null)
+        {
+            throw new NotFoundException();
+        }
 
-        _context.CustomsClearanceOfPostalGoodsItems.Remove(customsClearanceOfPostalGoods);
+        _context.PostalGoodsClearances.Remove(postalGoodsClearance);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    ///     Find many CUSTOMS CLEARANCE OF POSTAL GOODSItems
+    /// Find many CUSTOMS CLEARANCE OF POSTAL GOODSItems
     /// </summary>
-    public async Task<List<CustomsClearanceOfPostalGoods>> CustomsClearanceOfPostalGoodsItems(
-        CustomsClearanceOfPostalGoodsFindManyArgs findManyArgs
+    public async Task<List<PostalGoodsClearance>> PostalGoodsClearances(
+        PostalGoodsClearanceFindManyArgs findManyArgs
     )
     {
-        var customsClearanceOfPostalGoodsItems = await _context
-            .CustomsClearanceOfPostalGoodsItems.ApplyWhere(findManyArgs.Where)
+        var postalGoodsClearances = await _context
+            .PostalGoodsClearances.Include(x => x.PostalGoodsClearanceDetails)
+            .Include(x => x.Procedure)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
             .ToListAsync();
-        return customsClearanceOfPostalGoodsItems.ConvertAll(customsClearanceOfPostalGoods =>
-            customsClearanceOfPostalGoods.ToDto()
+        return postalGoodsClearances.ConvertAll(postalGoodsClearance =>
+            postalGoodsClearance.ToDto()
         );
     }
 
     /// <summary>
-    ///     Meta data about CUSTOMS CLEARANCE OF POSTAL GOODS records
+    /// Meta data about Postal Goods Clearance records
     /// </summary>
-    public async Task<MetadataDto> CustomsClearanceOfPostalGoodsItemsMeta(
-        CustomsClearanceOfPostalGoodsFindManyArgs findManyArgs
+    public async Task<MetadataDto> PostalGoodsClearancesMeta(
+        PostalGoodsClearanceFindManyArgs findManyArgs
     )
     {
         var count = await _context
-            .CustomsClearanceOfPostalGoodsItems.ApplyWhere(findManyArgs.Where)
+            .PostalGoodsClearances.ApplyWhere(findManyArgs.Where)
             .CountAsync();
 
         return new MetadataDto { Count = count };
     }
 
     /// <summary>
-    ///     Get one CUSTOMS CLEARANCE OF POSTAL GOODS
+    /// Get one Postal Goods Clearance
     /// </summary>
-    public async Task<CustomsClearanceOfPostalGoods> CustomsClearanceOfPostalGoods(
-        CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
+    public async Task<PostalGoodsClearance> PostalGoodsClearance(
+        PostalGoodsClearanceWhereUniqueInput uniqueId
     )
     {
-        var customsClearanceOfPostalGoodsItems = await CustomsClearanceOfPostalGoodsItems(
-            new CustomsClearanceOfPostalGoodsFindManyArgs
+        var postalGoodsClearances = await this.PostalGoodsClearances(
+            new PostalGoodsClearanceFindManyArgs
             {
-                Where = new CustomsClearanceOfPostalGoodsWhereInput { Id = uniqueId.Id }
+                Where = new PostalGoodsClearanceWhereInput { Id = uniqueId.Id }
             }
         );
-        var customsClearanceOfPostalGoods = customsClearanceOfPostalGoodsItems.FirstOrDefault();
-        if (customsClearanceOfPostalGoods == null) throw new NotFoundException();
+        var postalGoodsClearance = postalGoodsClearances.FirstOrDefault();
+        if (postalGoodsClearance == null)
+        {
+            throw new NotFoundException();
+        }
 
-        return customsClearanceOfPostalGoods;
+        return postalGoodsClearance;
     }
 
     /// <summary>
-    ///     Update one CUSTOMS CLEARANCE OF POSTAL GOODS
+    /// Update one Postal Goods Clearance
     /// </summary>
-    public async Task UpdateCustomsClearanceOfPostalGoods(
-        CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId,
-        CustomsClearanceOfPostalGoodsUpdateInput updateDto
+    public async Task UpdatePostalGoodsClearance(
+        PostalGoodsClearanceWhereUniqueInput uniqueId,
+        PostalGoodsClearanceUpdateInput updateDto
     )
     {
-        var customsClearanceOfPostalGoods = updateDto.ToModel(uniqueId);
+        var postalGoodsClearance = updateDto.ToModel(uniqueId);
 
-        _context.Entry(customsClearanceOfPostalGoods).State = EntityState.Modified;
+        if (updateDto.PostalGoodsClearanceDetails != null)
+        {
+            postalGoodsClearance.PostalGoodsClearanceDetails = await _context
+                .PostalGoodsClearanceDetails.Where(postalGoodsClearanceDetail =>
+                    updateDto
+                        .PostalGoodsClearanceDetails.Select(t => t)
+                        .Contains(postalGoodsClearanceDetail.Id)
+                )
+                .ToListAsync();
+        }
+
+        _context.Entry(postalGoodsClearance).State = EntityState.Modified;
 
         try
         {
@@ -189,13 +226,149 @@ public abstract class CustomsClearanceOfPostalGoodsItemsServiceBase
         }
         catch (DbUpdateConcurrencyException)
         {
-            if (
-                !_context.CustomsClearanceOfPostalGoodsItems.Any(e =>
-                    e.Id == customsClearanceOfPostalGoods.Id
-                )
-            )
+            if (!_context.PostalGoodsClearances.Any(e => e.Id == postalGoodsClearance.Id))
+            {
                 throw new NotFoundException();
-            throw;
+            }
+            else
+            {
+                throw;
+            }
         }
+    }
+
+    /// <summary>
+    /// Connect multiple Postal Goods Clearance Details records to Postal Goods Clearance
+    /// </summary>
+    public async Task ConnectPostalGoodsClearanceDetails(
+        PostalGoodsClearanceWhereUniqueInput uniqueId,
+        PostalGoodsClearanceDetailWhereUniqueInput[] postalGoodsClearanceDetailsId
+    )
+    {
+        var parent = await _context
+            .PostalGoodsClearances.Include(x => x.PostalGoodsClearanceDetails)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var postalGoodsClearanceDetails = await _context
+            .PostalGoodsClearanceDetails.Where(t =>
+                postalGoodsClearanceDetailsId.Select(x => x.Id).Contains(t.Id)
+            )
+            .ToListAsync();
+        if (postalGoodsClearanceDetails.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var postalGoodsClearanceDetailsToConnect = postalGoodsClearanceDetails.Except(
+            parent.PostalGoodsClearanceDetails
+        );
+
+        foreach (var postalGoodsClearanceDetail in postalGoodsClearanceDetailsToConnect)
+        {
+            parent.PostalGoodsClearanceDetails.Add(postalGoodsClearanceDetail);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Postal Goods Clearance Details records from Postal Goods Clearance
+    /// </summary>
+    public async Task DisconnectPostalGoodsClearanceDetails(
+        PostalGoodsClearanceWhereUniqueInput uniqueId,
+        PostalGoodsClearanceDetailWhereUniqueInput[] postalGoodsClearanceDetailsId
+    )
+    {
+        var parent = await _context
+            .PostalGoodsClearances.Include(x => x.PostalGoodsClearanceDetails)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var postalGoodsClearanceDetails = await _context
+            .PostalGoodsClearanceDetails.Where(t =>
+                postalGoodsClearanceDetailsId.Select(x => x.Id).Contains(t.Id)
+            )
+            .ToListAsync();
+
+        foreach (var postalGoodsClearanceDetail in postalGoodsClearanceDetails)
+        {
+            parent.PostalGoodsClearanceDetails?.Remove(postalGoodsClearanceDetail);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple Postal Goods Clearance Details records for Postal Goods Clearance
+    /// </summary>
+    public async Task<List<PostalGoodsClearanceDetail>> FindPostalGoodsClearanceDetails(
+        PostalGoodsClearanceWhereUniqueInput uniqueId,
+        PostalGoodsClearanceDetailFindManyArgs postalGoodsClearanceFindManyArgs
+    )
+    {
+        var postalGoodsClearanceDetails = await _context
+            .PostalGoodsClearanceDetails.Where(m => m.PostalGoodsClearanceId == uniqueId.Id)
+            .ApplyWhere(postalGoodsClearanceFindManyArgs.Where)
+            .ApplySkip(postalGoodsClearanceFindManyArgs.Skip)
+            .ApplyTake(postalGoodsClearanceFindManyArgs.Take)
+            .ApplyOrderBy(postalGoodsClearanceFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return postalGoodsClearanceDetails.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple Postal Goods Clearance Details records for Postal Goods Clearance
+    /// </summary>
+    public async Task UpdatePostalGoodsClearanceDetails(
+        PostalGoodsClearanceWhereUniqueInput uniqueId,
+        PostalGoodsClearanceDetailWhereUniqueInput[] postalGoodsClearanceDetailsId
+    )
+    {
+        var postalGoodsClearance = await _context
+            .PostalGoodsClearances.Include(t => t.PostalGoodsClearanceDetails)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (postalGoodsClearance == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var postalGoodsClearanceDetails = await _context
+            .PostalGoodsClearanceDetails.Where(a =>
+                postalGoodsClearanceDetailsId.Select(x => x.Id).Contains(a.Id)
+            )
+            .ToListAsync();
+
+        if (postalGoodsClearanceDetails.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        postalGoodsClearance.PostalGoodsClearanceDetails = postalGoodsClearanceDetails;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Get a Procedure record for Postal Goods Clearance
+    /// </summary>
+    public async Task<Procedure> GetProcedure(PostalGoodsClearanceWhereUniqueInput uniqueId)
+    {
+        var postalGoodsClearance = await _context
+            .PostalGoodsClearances.Where(postalGoodsClearance =>
+                postalGoodsClearance.Id == uniqueId.Id
+            )
+            .Include(postalGoodsClearance => postalGoodsClearance.Procedure)
+            .FirstOrDefaultAsync();
+        if (postalGoodsClearance == null)
+        {
+            throw new NotFoundException();
+        }
+        return postalGoodsClearance.Procedure.ToDto();
     }
 }

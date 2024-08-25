@@ -1,3 +1,4 @@
+using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController]
+[ApiController()]
 public abstract class CommonRegimeRequestsControllerBase : ControllerBase
 {
     protected readonly ICommonRegimeRequestsService _service;
@@ -18,9 +19,9 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    ///     Create one COMMON REGIME REQUEST
+    /// Create one Common Regime Request
     /// </summary>
-    [HttpPost]
+    [HttpPost()]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<CommonRegimeRequest>> CreateCommonRegimeRequest(
         CommonRegimeRequestCreateInput input
@@ -36,12 +37,12 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    ///     Delete one COMMON REGIME REQUEST
+    /// Delete one Common Regime Request
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCommonRegimeRequest(
-        [FromRoute] CommonRegimeRequestWhereUniqueInput uniqueId
+        [FromRoute()] CommonRegimeRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -57,35 +58,35 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    ///     Find many COMMON REGIME REQUESTS
+    /// Find many COMMON REGIME REQUESTS
     /// </summary>
-    [HttpGet]
+    [HttpGet()]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<CommonRegimeRequest>>> CommonRegimeRequests(
-        [FromQuery] CommonRegimeRequestFindManyArgs filter
+        [FromQuery()] CommonRegimeRequestFindManyArgs filter
     )
     {
         return Ok(await _service.CommonRegimeRequests(filter));
     }
 
     /// <summary>
-    ///     Meta data about COMMON REGIME REQUEST records
+    /// Meta data about Common Regime Request records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CommonRegimeRequestsMeta(
-        [FromQuery] CommonRegimeRequestFindManyArgs filter
+        [FromQuery()] CommonRegimeRequestFindManyArgs filter
     )
     {
         return Ok(await _service.CommonRegimeRequestsMeta(filter));
     }
 
     /// <summary>
-    ///     Get one COMMON REGIME REQUEST
+    /// Get one Common Regime Request
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<CommonRegimeRequest>> CommonRegimeRequest(
-        [FromRoute] CommonRegimeRequestWhereUniqueInput uniqueId
+        [FromRoute()] CommonRegimeRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -99,13 +100,13 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    ///     Update one COMMON REGIME REQUEST
+    /// Update one Common Regime Request
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCommonRegimeRequest(
-        [FromRoute] CommonRegimeRequestWhereUniqueInput uniqueId,
-        [FromQuery] CommonRegimeRequestUpdateInput commonRegimeRequestUpdateDto
+        [FromRoute()] CommonRegimeRequestWhereUniqueInput uniqueId,
+        [FromQuery()] CommonRegimeRequestUpdateInput commonRegimeRequestUpdateDto
     )
     {
         try
@@ -118,5 +119,17 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
         }
 
         return NoContent();
+    }
+
+    /// <summary>
+    /// Get a Journal record for Common Regime Request
+    /// </summary>
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetJournal(
+        [FromRoute()] CommonRegimeRequestWhereUniqueInput uniqueId
+    )
+    {
+        var procedure = await _service.GetJournal(uniqueId);
+        return Ok(procedure);
     }
 }

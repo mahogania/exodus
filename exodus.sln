@@ -21,10 +21,6 @@ Global
 		{22651C26-1818-410E-A13D-9376D9E05AA4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22651C26-1818-410E-A13D-9376D9E05AA4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22651C26-1818-410E-A13D-9376D9E05AA4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{EB2F6D7A-1037-4207-B53D-F6CE27FE2A19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{EB2F6D7A-1037-4207-B53D-F6CE27FE2A19}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{EB2F6D7A-1037-4207-B53D-F6CE27FE2A19}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{EB2F6D7A-1037-4207-B53D-F6CE27FE2A19}.Release|Any CPU.Build.0 = Release|Any CPU
 		{EB7B70FF-679E-4C3B-8649-5CCA5E9BF73F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{EB7B70FF-679E-4C3B-8649-5CCA5E9BF73F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EB7B70FF-679E-4C3B-8649-5CCA5E9BF73F}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -41,8 +37,6 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "control-intern", "apps\control-intern\control-intern.csproj", "{82E10B99-2DDE-4516-890A-4D592E717C30}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "common", "apps\common\common.csproj", "{861CB433-06D9-4DEF-BADF-464D0D772E96}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "control-mobile", "apps\control-mobile\control-mobile.csproj", "{EB2F6D7A-1037-4207-B53D-F6CE27FE2A19}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "control", "apps\control\control.csproj", "{EB7B70FF-679E-4C3B-8649-5CCA5E9BF73F}"
 EndProject

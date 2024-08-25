@@ -1,6 +1,6 @@
 namespace Control.APIs.Dtos;
 
-public class RequestForCancellationOfTheDetailedDeclarationCustomsCreateInput
+public class CancellationRequestCreateInput
 {
     public string? CancellationContent { get; set; }
 
@@ -27,6 +27,8 @@ public class RequestForCancellationOfTheDetailedDeclarationCustomsCreateInput
     public string? ProcessingStatusCode { get; set; }
 
     public string? ReferenceNumber { get; set; }
+
+    public Procedure? Request { get; set; }
 
     public string? SuppressionOn { get; set; }
 

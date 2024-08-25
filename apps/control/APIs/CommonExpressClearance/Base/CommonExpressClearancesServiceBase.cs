@@ -1,3 +1,4 @@
+using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -18,7 +19,7 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     }
 
     /// <summary>
-    ///     Create one COMMON EXPRESS CLEARANCE
+    /// Create one Common Express Clearance
     /// </summary>
     public async Task<CommonExpressClearance> CreateCommonExpressClearance(
         CommonExpressClearanceCreateInput createDto
@@ -47,7 +48,25 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
             UpdatedAt = createDto.UpdatedAt
         };
 
-        if (createDto.Id != null) commonExpressClearance.Id = createDto.Id;
+        if (createDto.Id != null)
+        {
+            commonExpressClearance.Id = createDto.Id;
+        }
+        if (createDto.Details != null)
+        {
+            commonExpressClearance.Details = await _context
+                .ExpressCustomsClearanceDetailsItems.Where(expressCustomsClearanceDetails =>
+                    createDto.Details.Select(t => t.Id).Contains(expressCustomsClearanceDetails.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (createDto.Procedure != null)
+        {
+            commonExpressClearance.Procedure = await _context
+                .Procedures.Where(procedure => createDto.Procedure.Id == procedure.Id)
+                .FirstOrDefaultAsync();
+        }
 
         _context.CommonExpressClearances.Add(commonExpressClearance);
         await _context.SaveChangesAsync();
@@ -56,32 +75,40 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
             commonExpressClearance.Id
         );
 
-        if (result == null) throw new NotFoundException();
+        if (result == null)
+        {
+            throw new NotFoundException();
+        }
 
         return result.ToDto();
     }
 
     /// <summary>
-    ///     Delete one COMMON EXPRESS CLEARANCE
+    /// Delete one Common Express Clearance
     /// </summary>
     public async Task DeleteCommonExpressClearance(CommonExpressClearanceWhereUniqueInput uniqueId)
     {
         var commonExpressClearance = await _context.CommonExpressClearances.FindAsync(uniqueId.Id);
-        if (commonExpressClearance == null) throw new NotFoundException();
+        if (commonExpressClearance == null)
+        {
+            throw new NotFoundException();
+        }
 
         _context.CommonExpressClearances.Remove(commonExpressClearance);
         await _context.SaveChangesAsync();
     }
 
     /// <summary>
-    ///     Find many COMMON EXPRESS CLEARANCES
+    /// Find many COMMON EXPRESS CLEARANCES
     /// </summary>
     public async Task<List<CommonExpressClearance>> CommonExpressClearances(
         CommonExpressClearanceFindManyArgs findManyArgs
     )
     {
         var commonExpressClearances = await _context
-            .CommonExpressClearances.ApplyWhere(findManyArgs.Where)
+            .CommonExpressClearances.Include(x => x.Details)
+            .Include(x => x.Procedure)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -92,7 +119,7 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     }
 
     /// <summary>
-    ///     Meta data about COMMON EXPRESS CLEARANCE records
+    /// Meta data about Common Express Clearance records
     /// </summary>
     public async Task<MetadataDto> CommonExpressClearancesMeta(
         CommonExpressClearanceFindManyArgs findManyArgs
@@ -106,26 +133,29 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     }
 
     /// <summary>
-    ///     Get one COMMON EXPRESS CLEARANCE
+    /// Get one Common Express Clearance
     /// </summary>
     public async Task<CommonExpressClearance> CommonExpressClearance(
         CommonExpressClearanceWhereUniqueInput uniqueId
     )
     {
-        var commonExpressClearances = await CommonExpressClearances(
+        var commonExpressClearances = await this.CommonExpressClearances(
             new CommonExpressClearanceFindManyArgs
             {
                 Where = new CommonExpressClearanceWhereInput { Id = uniqueId.Id }
             }
         );
         var commonExpressClearance = commonExpressClearances.FirstOrDefault();
-        if (commonExpressClearance == null) throw new NotFoundException();
+        if (commonExpressClearance == null)
+        {
+            throw new NotFoundException();
+        }
 
         return commonExpressClearance;
     }
 
     /// <summary>
-    ///     Update one COMMON EXPRESS CLEARANCE
+    /// Update one Common Express Clearance
     /// </summary>
     public async Task UpdateCommonExpressClearance(
         CommonExpressClearanceWhereUniqueInput uniqueId,
@@ -133,6 +163,15 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     )
     {
         var commonExpressClearance = updateDto.ToModel(uniqueId);
+
+        if (updateDto.Details != null)
+        {
+            commonExpressClearance.Details = await _context
+                .ExpressCustomsClearanceDetailsItems.Where(expressCustomsClearanceDetails =>
+                    updateDto.Details.Select(t => t).Contains(expressCustomsClearanceDetails.Id)
+                )
+                .ToListAsync();
+        }
 
         _context.Entry(commonExpressClearance).State = EntityState.Modified;
 
@@ -143,8 +182,31 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
         catch (DbUpdateConcurrencyException)
         {
             if (!_context.CommonExpressClearances.Any(e => e.Id == commonExpressClearance.Id))
+            {
                 throw new NotFoundException();
-            throw;
+            }
+            else
+            {
+                throw;
+            }
         }
+    }
+
+    /// <summary>
+    /// Get a Procedure record for Common Express Clearance
+    /// </summary>
+    public async Task<Procedure> GetProcedure(CommonExpressClearanceWhereUniqueInput uniqueId)
+    {
+        var commonExpressClearance = await _context
+            .CommonExpressClearances.Where(commonExpressClearance =>
+                commonExpressClearance.Id == uniqueId.Id
+            )
+            .Include(commonExpressClearance => commonExpressClearance.Procedure)
+            .FirstOrDefaultAsync();
+        if (commonExpressClearance == null)
+        {
+            throw new NotFoundException();
+        }
+        return commonExpressClearance.Procedure.ToDto();
     }
 }

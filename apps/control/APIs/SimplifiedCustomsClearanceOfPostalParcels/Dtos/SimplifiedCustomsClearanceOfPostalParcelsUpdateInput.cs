@@ -62,6 +62,8 @@ public class SimplifiedCustomsClearanceOfPostalParcelsUpdateInput
 
     public string? PostalParcelNumber { get; set; }
 
+    public string? Procedure { get; set; }
+
     public double? Quantity { get; set; }
 
     public string? ReasonsForArticlesSuspectedOfInfringingIntellectualPropertyRights { get; set; }

@@ -1,3 +1,4 @@
+using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController]
+[ApiController()]
 public abstract class CommonOriginCertificateRequestsControllerBase : ControllerBase
 {
     protected readonly ICommonOriginCertificateRequestsService _service;
@@ -20,9 +21,9 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
     }
 
     /// <summary>
-    ///     Create one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Create one Common Origin Certificate Request
     /// </summary>
-    [HttpPost]
+    [HttpPost()]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<CommonOriginCertificateRequest>
@@ -40,12 +41,12 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
     }
 
     /// <summary>
-    ///     Delete one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Delete one Common Origin Certificate Request
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteCommonOriginCertificateRequest(
-        [FromRoute] CommonOriginCertificateRequestWhereUniqueInput uniqueId
+        [FromRoute()] CommonOriginCertificateRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -61,37 +62,37 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
     }
 
     /// <summary>
-    ///     Find many COMMON ORIGIN CERTIFICATE REQUESTS
+    /// Find many COMMON ORIGIN CERTIFICATE REQUESTS
     /// </summary>
-    [HttpGet]
+    [HttpGet()]
     [Authorize(Roles = "user")]
     public async Task<
         ActionResult<List<CommonOriginCertificateRequest>>
     > CommonOriginCertificateRequests(
-        [FromQuery] CommonOriginCertificateRequestFindManyArgs filter
+        [FromQuery()] CommonOriginCertificateRequestFindManyArgs filter
     )
     {
         return Ok(await _service.CommonOriginCertificateRequests(filter));
     }
 
     /// <summary>
-    ///     Meta data about COMMON ORIGIN CERTIFICATE REQUEST records
+    /// Meta data about Common Origin Certificate Request records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CommonOriginCertificateRequestsMeta(
-        [FromQuery] CommonOriginCertificateRequestFindManyArgs filter
+        [FromQuery()] CommonOriginCertificateRequestFindManyArgs filter
     )
     {
         return Ok(await _service.CommonOriginCertificateRequestsMeta(filter));
     }
 
     /// <summary>
-    ///     Get one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Get one Common Origin Certificate Request
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<CommonOriginCertificateRequest>> CommonOriginCertificateRequest(
-        [FromRoute] CommonOriginCertificateRequestWhereUniqueInput uniqueId
+        [FromRoute()] CommonOriginCertificateRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -105,13 +106,14 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
     }
 
     /// <summary>
-    ///     Update one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Update one Common Origin Certificate Request
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateCommonOriginCertificateRequest(
-        [FromRoute] CommonOriginCertificateRequestWhereUniqueInput uniqueId,
-        [FromQuery] CommonOriginCertificateRequestUpdateInput commonOriginCertificateRequestUpdateDto
+        [FromRoute()] CommonOriginCertificateRequestWhereUniqueInput uniqueId,
+        [FromQuery()]
+            CommonOriginCertificateRequestUpdateInput commonOriginCertificateRequestUpdateDto
     )
     {
         try
@@ -127,5 +129,17 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
         }
 
         return NoContent();
+    }
+
+    /// <summary>
+    /// Get a Request record for Common Origin Certificate Request
+    /// </summary>
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetRequest(
+        [FromRoute()] CommonOriginCertificateRequestWhereUniqueInput uniqueId
+    )
+    {
+        var procedure = await _service.GetRequest(uniqueId);
+        return Ok(procedure);
     }
 }

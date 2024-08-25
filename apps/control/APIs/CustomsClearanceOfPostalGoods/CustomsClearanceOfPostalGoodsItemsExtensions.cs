@@ -3,13 +3,11 @@ using Control.Infrastructure.Models;
 
 namespace Control.APIs.Extensions;
 
-public static class CustomsClearanceOfPostalGoodsItemsExtensions
+public static class PostalGoodsClearancesExtensions
 {
-    public static CustomsClearanceOfPostalGoods ToDto(
-        this CustomsClearanceOfPostalGoodsDbModel model
-    )
+    public static PostalGoodsClearance ToDto(this PostalGoodsClearanceDbModel model)
     {
-        return new CustomsClearanceOfPostalGoods
+        return new PostalGoodsClearance
         {
             ArrivalDate = model.ArrivalDate,
             AttachedFileId = model.AttachedFileId,
@@ -44,10 +42,14 @@ public static class CustomsClearanceOfPostalGoodsItemsExtensions
             OperationType = model.OperationType,
             OrdinaryCustomsClearanceOn = model.OrdinaryCustomsClearanceOn,
             OriginPost = model.OriginPost,
+            PostalGoodsClearanceDetails = model
+                .PostalGoodsClearanceDetails?.Select(x => x.Id)
+                .ToList(),
             PostalNumber = model.PostalNumber,
             PostalPackageCustomsClearanceRequestNumber =
                 model.PostalPackageCustomsClearanceRequestNumber,
             PostalPackageValue = model.PostalPackageValue,
+            Procedure = model.ProcedureId,
             ReceiverSEmail = model.ReceiverSEmail,
             ReceiverSId = model.ReceiverSId,
             ReceptionDateAlgerPort = model.ReceptionDateAlgerPort,
@@ -73,16 +75,16 @@ public static class CustomsClearanceOfPostalGoodsItemsExtensions
             TransportDate = model.TransportDate,
             TreatmentCode = model.TreatmentCode,
             TreatmentStatusCode = model.TreatmentStatusCode,
-            UpdatedAt = model.UpdatedAt
+            UpdatedAt = model.UpdatedAt,
         };
     }
 
-    public static CustomsClearanceOfPostalGoodsDbModel ToModel(
-        this CustomsClearanceOfPostalGoodsUpdateInput updateDto,
-        CustomsClearanceOfPostalGoodsWhereUniqueInput uniqueId
+    public static PostalGoodsClearanceDbModel ToModel(
+        this PostalGoodsClearanceUpdateInput updateDto,
+        PostalGoodsClearanceWhereUniqueInput uniqueId
     )
     {
-        var customsClearanceOfPostalGoods = new CustomsClearanceOfPostalGoodsDbModel
+        var postalGoodsClearance = new PostalGoodsClearanceDbModel
         {
             Id = uniqueId.Id,
             ArrivalDate = updateDto.ArrivalDate,
@@ -147,9 +149,19 @@ public static class CustomsClearanceOfPostalGoodsItemsExtensions
             TreatmentStatusCode = updateDto.TreatmentStatusCode
         };
 
-        if (updateDto.CreatedAt != null) customsClearanceOfPostalGoods.CreatedAt = updateDto.CreatedAt.Value;
-        if (updateDto.UpdatedAt != null) customsClearanceOfPostalGoods.UpdatedAt = updateDto.UpdatedAt.Value;
+        if (updateDto.CreatedAt != null)
+        {
+            postalGoodsClearance.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.Procedure != null)
+        {
+            postalGoodsClearance.ProcedureId = updateDto.Procedure;
+        }
+        if (updateDto.UpdatedAt != null)
+        {
+            postalGoodsClearance.UpdatedAt = updateDto.UpdatedAt.Value;
+        }
 
-        return customsClearanceOfPostalGoods;
+        return postalGoodsClearance;
     }
 }

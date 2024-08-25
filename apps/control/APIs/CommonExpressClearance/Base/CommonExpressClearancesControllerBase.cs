@@ -119,4 +119,16 @@ public abstract class CommonExpressClearancesControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Procedure record for Common Express Clearance
+    /// </summary>
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetProcedure(
+        [FromRoute()] CommonExpressClearanceWhereUniqueInput uniqueId
+    )
+    {
+        var procedure = await _service.GetProcedure(uniqueId);
+        return Ok(procedure);
+    }
 }

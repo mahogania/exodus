@@ -1,3 +1,4 @@
+using Control.APIs;
 using Control.APIs.Common;
 using Control.APIs.Dtos;
 using Control.APIs.Errors;
@@ -7,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Control.APIs;
 
 [Route("api/[controller]")]
-[ApiController]
+[ApiController()]
 public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
 {
     protected readonly IForeignOperatorRequestsService _service;
@@ -18,9 +19,9 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    ///     Create one FOREIGN OPERATOR REQUEST
+    /// Create one Foreign Operator Request
     /// </summary>
-    [HttpPost]
+    [HttpPost()]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ForeignOperatorRequest>> CreateForeignOperatorRequest(
         ForeignOperatorRequestCreateInput input
@@ -36,12 +37,12 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    ///     Delete one FOREIGN OPERATOR REQUEST
+    /// Delete one Foreign Operator Request
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> DeleteForeignOperatorRequest(
-        [FromRoute] ForeignOperatorRequestWhereUniqueInput uniqueId
+        [FromRoute()] ForeignOperatorRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -57,35 +58,35 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    ///     Find many FOREIGN OPERATOR REQUESTS
+    /// Find many FOREIGN OPERATOR REQUESTS
     /// </summary>
-    [HttpGet]
+    [HttpGet()]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<List<ForeignOperatorRequest>>> ForeignOperatorRequests(
-        [FromQuery] ForeignOperatorRequestFindManyArgs filter
+        [FromQuery()] ForeignOperatorRequestFindManyArgs filter
     )
     {
         return Ok(await _service.ForeignOperatorRequests(filter));
     }
 
     /// <summary>
-    ///     Meta data about FOREIGN OPERATOR REQUEST records
+    /// Meta data about Foreign Operator Request records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> ForeignOperatorRequestsMeta(
-        [FromQuery] ForeignOperatorRequestFindManyArgs filter
+        [FromQuery()] ForeignOperatorRequestFindManyArgs filter
     )
     {
         return Ok(await _service.ForeignOperatorRequestsMeta(filter));
     }
 
     /// <summary>
-    ///     Get one FOREIGN OPERATOR REQUEST
+    /// Get one Foreign Operator Request
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult<ForeignOperatorRequest>> ForeignOperatorRequest(
-        [FromRoute] ForeignOperatorRequestWhereUniqueInput uniqueId
+        [FromRoute()] ForeignOperatorRequestWhereUniqueInput uniqueId
     )
     {
         try
@@ -99,13 +100,13 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
-    ///     Update one FOREIGN OPERATOR REQUEST
+    /// Update one Foreign Operator Request
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
     public async Task<ActionResult> UpdateForeignOperatorRequest(
-        [FromRoute] ForeignOperatorRequestWhereUniqueInput uniqueId,
-        [FromQuery] ForeignOperatorRequestUpdateInput foreignOperatorRequestUpdateDto
+        [FromRoute()] ForeignOperatorRequestWhereUniqueInput uniqueId,
+        [FromQuery()] ForeignOperatorRequestUpdateInput foreignOperatorRequestUpdateDto
     )
     {
         try
@@ -118,5 +119,17 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
         }
 
         return NoContent();
+    }
+
+    /// <summary>
+    /// Get a Request record for Foreign Operator Request
+    /// </summary>
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetRequest(
+        [FromRoute()] ForeignOperatorRequestWhereUniqueInput uniqueId
+    )
+    {
+        var procedure = await _service.GetRequest(uniqueId);
+        return Ok(procedure);
     }
 }

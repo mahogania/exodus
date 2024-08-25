@@ -2,7 +2,13 @@ namespace Control.APIs.Dtos;
 
 public class CommonDetailedDeclarationCreateInput
 {
-    public string? ArrivalDate { get; set; }
+    public DateTime? ArrivalDate { get; set; }
+
+    public List<Article>? Articles { get; set; }
+
+    public List<ExpectedReimportReexportArticle>? ArticlesExpectedForReImportExport { get; set; }
+
+    public ValueAssessment? Assessment { get; set; }
 
     public string? BankAgencyCode { get; set; }
 
@@ -11,6 +17,8 @@ public class CommonDetailedDeclarationCreateInput
     public string? BillOfLadingNumber { get; set; }
 
     public string? ConditionCode_2 { get; set; }
+
+    public ContainerOfTheDetailedDeclarationCustoms? Container { get; set; }
 
     public string? ContainerizedCargoOn { get; set; }
 
@@ -46,7 +54,9 @@ public class CommonDetailedDeclarationCreateInput
 
     public string? DetailedDeclarationNumber { get; set; }
 
-    public string? DomiciliationDate { get; set; }
+    public JointDocument? Document { get; set; }
+
+    public DateTime? DomiciliationDate { get; set; }
 
     public string? DomiciliationStatusCode { get; set; }
 
@@ -100,6 +110,8 @@ public class CommonDetailedDeclarationCreateInput
 
     public string? InvoiceNumber { get; set; }
 
+    public Procedure Journal { get; set; }
+
     public string? LoadingLocationCode { get; set; }
 
     public double? ManagementAndMonitoringClearancePeriod { get; set; }
@@ -117,6 +129,8 @@ public class CommonDetailedDeclarationCreateInput
     public double? NumberOfItems { get; set; }
 
     public string? OperationType { get; set; }
+
+    public Operator? Operator { get; set; }
 
     public string? PartialCustomsClearanceTypeCode { get; set; }
 
@@ -193,6 +207,8 @@ public class CommonDetailedDeclarationCreateInput
     public string? UnloadingLocationCode { get; set; }
 
     public DateTime UpdatedAt { get; set; }
+
+    public ValueDeclaration? ValueDeclaration { get; set; }
 
     public string? ValueDeclarationOn { get; set; }
 

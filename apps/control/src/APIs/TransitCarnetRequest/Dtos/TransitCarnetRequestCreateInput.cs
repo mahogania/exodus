@@ -1,0 +1,20 @@
+namespace Control.APIs.Dtos;
+
+public class TransitCarnetRequestCreateInput
+{
+    public string? CarnetTypeCode { get; set; }
+
+    public CommonCarnetRequest? CommonCarnetRequest { get; set; }
+
+    public DateTime CreatedAt { get; set; }
+
+    public string? Id { get; set; }
+
+    public string? ManagementNumberOfCarnet { get; set; }
+
+    public string? ReferenceNo { get; set; }
+
+    public TransitCarnetControl? TransitCarnetControl { get; set; }
+
+    public DateTime UpdatedAt { get; set; }
+}

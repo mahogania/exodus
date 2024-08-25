@@ -6,45 +6,50 @@ namespace Control.APIs;
 public interface ICommonOriginCertificateRequestsService
 {
     /// <summary>
-    ///     Create one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Create one Common Origin Certificate Request
     /// </summary>
     public Task<CommonOriginCertificateRequest> CreateCommonOriginCertificateRequest(
         CommonOriginCertificateRequestCreateInput commonorigincertificaterequest
     );
 
     /// <summary>
-    ///     Delete one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Delete one Common Origin Certificate Request
     /// </summary>
     public Task DeleteCommonOriginCertificateRequest(
         CommonOriginCertificateRequestWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    ///     Find many COMMON ORIGIN CERTIFICATE REQUESTS
+    /// Find many COMMON ORIGIN CERTIFICATE REQUESTS
     /// </summary>
     public Task<List<CommonOriginCertificateRequest>> CommonOriginCertificateRequests(
         CommonOriginCertificateRequestFindManyArgs findManyArgs
     );
 
     /// <summary>
-    ///     Meta data about COMMON ORIGIN CERTIFICATE REQUEST records
+    /// Meta data about Common Origin Certificate Request records
     /// </summary>
     public Task<MetadataDto> CommonOriginCertificateRequestsMeta(
         CommonOriginCertificateRequestFindManyArgs findManyArgs
     );
 
     /// <summary>
-    ///     Get one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Get one Common Origin Certificate Request
     /// </summary>
     public Task<CommonOriginCertificateRequest> CommonOriginCertificateRequest(
         CommonOriginCertificateRequestWhereUniqueInput uniqueId
     );
 
     /// <summary>
-    ///     Update one COMMON ORIGIN CERTIFICATE REQUEST
+    /// Update one Common Origin Certificate Request
     /// </summary>
     public Task UpdateCommonOriginCertificateRequest(
         CommonOriginCertificateRequestWhereUniqueInput uniqueId,
         CommonOriginCertificateRequestUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Request record for Common Origin Certificate Request
+    /// </summary>
+    public Task<Procedure> GetRequest(CommonOriginCertificateRequestWhereUniqueInput uniqueId);
 }
