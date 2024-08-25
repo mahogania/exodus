@@ -47,6 +47,13 @@ public interface IReexportCarnetRequestsService
     );
 
     /// <summary>
+    /// Get a Common Carnet Request record for Reexport Carnet Request
+    /// </summary>
+    public Task<CommonCarnetRequest> GetCommonCarnetRequest(
+        ReexportCarnetRequestWhereUniqueInput uniqueId
+    );
+
+    /// <summary>
     /// Get a Reexport Carnet Control record for Reexport Carnet Request
     /// </summary>
     public Task<ReexportCarnetControl> GetReexportCarnetControl(

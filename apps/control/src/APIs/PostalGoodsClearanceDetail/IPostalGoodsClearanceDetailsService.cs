@@ -47,4 +47,11 @@ public interface IPostalGoodsClearanceDetailsService
         PostalGoodsClearanceDetailWhereUniqueInput uniqueId,
         PostalGoodsClearanceDetailUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Postal Goods Clearance record for Postal Goods Clearance Detail
+    /// </summary>
+    public Task<PostalGoodsClearance> GetPostalGoodsClearance(
+        PostalGoodsClearanceDetailWhereUniqueInput uniqueId
+    );
 }

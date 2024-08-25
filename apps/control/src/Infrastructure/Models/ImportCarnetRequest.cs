@@ -12,6 +12,11 @@ public class ImportCarnetRequestDbModel
     [StringLength(1000)]
     public string? CarnetTypeCode { get; set; }
 
+    public string? CommonCarnetRequestId { get; set; }
+
+    [ForeignKey(nameof(CommonCarnetRequestId))]
+    public CommonCarnetRequestDbModel? CommonCarnetRequest { get; set; } = null;
+
     [Required()]
     public DateTime CreatedAt { get; set; }
 

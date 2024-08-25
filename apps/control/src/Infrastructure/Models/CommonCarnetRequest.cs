@@ -6,8 +6,14 @@ namespace Control.Infrastructure.Models;
 [Table("CommonCarnetRequests")]
 public class CommonCarnetRequestDbModel
 {
+    public List<ArticleCarnetRequestDbModel>? ArticleCarnetRequests { get; set; } =
+        new List<ArticleCarnetRequestDbModel>();
+
     [StringLength(1000)]
     public string? AttachedFileId { get; set; }
+
+    public List<CarnetControlDbModel>? CarnetControls { get; set; } =
+        new List<CarnetControlDbModel>();
 
     [StringLength(1000)]
     public string? CertificationOrganization { get; set; }
@@ -91,6 +97,9 @@ public class CommonCarnetRequestDbModel
     [Range(-999999999, 999999999)]
     public double? Destination_3TransportQuantity { get; set; }
 
+    public List<ExtendedPeriodCarnetRequestDbModel>? ExtendedPeriodCarnetRequests { get; set; } =
+        new List<ExtendedPeriodCarnetRequestDbModel>();
+
     [StringLength(1000)]
     public string? FinalModifierSId { get; set; }
 
@@ -113,6 +122,9 @@ public class CommonCarnetRequestDbModel
     [Required()]
     public string Id { get; set; }
 
+    public List<ImportCarnetRequestDbModel>? ImportCarnetRequests { get; set; } =
+        new List<ImportCarnetRequestDbModel>();
+
     [StringLength(1000)]
     public string? InternationalOrganizationName { get; set; }
 
@@ -130,6 +142,9 @@ public class CommonCarnetRequestDbModel
 
     [StringLength(1000)]
     public string? OfficialUse { get; set; }
+
+    public List<ReexportCarnetRequestDbModel>? ReexportCarnetRequests { get; set; } =
+        new List<ReexportCarnetRequestDbModel>();
 
     [StringLength(1000)]
     public string? RegistrationDate { get; set; }
@@ -151,6 +166,9 @@ public class CommonCarnetRequestDbModel
 
     [Range(-999999999, 999999999)]
     public double? TotalNumberOfGoods { get; set; }
+
+    public List<TransitCarnetRequestDbModel>? TransitCarnetRequests { get; set; } =
+        new List<TransitCarnetRequestDbModel>();
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

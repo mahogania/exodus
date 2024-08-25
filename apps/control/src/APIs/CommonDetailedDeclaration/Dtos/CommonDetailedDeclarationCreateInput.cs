@@ -110,7 +110,7 @@ public class CommonDetailedDeclarationCreateInput
 
     public string? InvoiceNumber { get; set; }
 
-    public Journal Journal { get; set; }
+    public Procedure Journal { get; set; }
 
     public string? LoadingLocationCode { get; set; }
 

@@ -53,6 +53,11 @@ public class PostalGoodsClearanceDetailDbModel
     [Range(-999999999, 999999999)]
     public double? NetWeightOfTheArticle { get; set; }
 
+    public string? PostalGoodsClearanceId { get; set; }
+
+    [ForeignKey(nameof(PostalGoodsClearanceId))]
+    public PostalGoodsClearanceDbModel? PostalGoodsClearance { get; set; } = null;
+
     [Range(-999999999, 999999999)]
     public double? Quantity { get; set; }
 

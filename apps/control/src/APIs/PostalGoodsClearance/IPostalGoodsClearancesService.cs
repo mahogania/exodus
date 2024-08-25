@@ -45,4 +45,41 @@ public interface IPostalGoodsClearancesService
         PostalGoodsClearanceWhereUniqueInput uniqueId,
         PostalGoodsClearanceUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Connect multiple Postal Goods Clearance Details records to Postal Goods Clearance
+    /// </summary>
+    public Task ConnectPostalGoodsClearanceDetails(
+        PostalGoodsClearanceWhereUniqueInput uniqueId,
+        PostalGoodsClearanceDetailWhereUniqueInput[] postalGoodsClearanceDetailsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple Postal Goods Clearance Details records from Postal Goods Clearance
+    /// </summary>
+    public Task DisconnectPostalGoodsClearanceDetails(
+        PostalGoodsClearanceWhereUniqueInput uniqueId,
+        PostalGoodsClearanceDetailWhereUniqueInput[] postalGoodsClearanceDetailsId
+    );
+
+    /// <summary>
+    /// Find multiple Postal Goods Clearance Details records for Postal Goods Clearance
+    /// </summary>
+    public Task<List<PostalGoodsClearanceDetail>> FindPostalGoodsClearanceDetails(
+        PostalGoodsClearanceWhereUniqueInput uniqueId,
+        PostalGoodsClearanceDetailFindManyArgs PostalGoodsClearanceDetailFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple Postal Goods Clearance Details records for Postal Goods Clearance
+    /// </summary>
+    public Task UpdatePostalGoodsClearanceDetails(
+        PostalGoodsClearanceWhereUniqueInput uniqueId,
+        PostalGoodsClearanceDetailWhereUniqueInput[] postalGoodsClearanceDetailsId
+    );
+
+    /// <summary>
+    /// Get a Procedure record for Postal Goods Clearance
+    /// </summary>
+    public Task<Procedure> GetProcedure(PostalGoodsClearanceWhereUniqueInput uniqueId);
 }

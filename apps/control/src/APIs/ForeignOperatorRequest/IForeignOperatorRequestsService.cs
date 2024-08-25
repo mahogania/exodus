@@ -49,5 +49,5 @@ public interface IForeignOperatorRequestsService
     /// <summary>
     /// Get a Request record for Foreign Operator Request
     /// </summary>
-    public Task<Journal> GetRequest(ForeignOperatorRequestWhereUniqueInput uniqueId);
+    public Task<Procedure> GetRequest(ForeignOperatorRequestWhereUniqueInput uniqueId);
 }

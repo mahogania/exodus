@@ -8,7 +8,7 @@ public class CommonActiveGoodsRequestCreateInput
 
     public string? Id { get; set; }
 
-    public Journal? Journal { get; set; }
+    public Procedure? Journal { get; set; }
 
     public DateTime UpdatedAt { get; set; }
 }

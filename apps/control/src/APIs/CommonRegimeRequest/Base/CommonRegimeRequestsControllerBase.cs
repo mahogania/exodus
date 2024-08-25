@@ -124,12 +124,12 @@ public abstract class CommonRegimeRequestsControllerBase : ControllerBase
     /// <summary>
     /// Get a Journal record for Common Regime Request
     /// </summary>
-    [HttpGet("{Id}/journals")]
-    public async Task<ActionResult<List<Journal>>> GetJournal(
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetJournal(
         [FromRoute()] CommonRegimeRequestWhereUniqueInput uniqueId
     )
     {
-        var journal = await _service.GetJournal(uniqueId);
-        return Ok(journal);
+        var procedure = await _service.GetJournal(uniqueId);
+        return Ok(procedure);
     }
 }

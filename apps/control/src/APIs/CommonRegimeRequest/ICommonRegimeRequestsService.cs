@@ -47,5 +47,5 @@ public interface ICommonRegimeRequestsService
     /// <summary>
     /// Get a Journal record for Common Regime Request
     /// </summary>
-    public Task<Journal> GetJournal(CommonRegimeRequestWhereUniqueInput uniqueId);
+    public Task<Procedure> GetJournal(CommonRegimeRequestWhereUniqueInput uniqueId);
 }

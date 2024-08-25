@@ -210,6 +210,92 @@ public abstract class ArticlesControllerBase : ControllerBase
     }
 
     /// <summary>
+    /// Connect multiple Sample Requests records to Article
+    /// </summary>
+    [HttpPost("{Id}/sampleRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> ConnectSampleRequests(
+        [FromRoute()] ArticleWhereUniqueInput uniqueId,
+        [FromQuery()] SampleRequestWhereUniqueInput[] sampleRequestsId
+    )
+    {
+        try
+        {
+            await _service.ConnectSampleRequests(uniqueId, sampleRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Sample Requests records from Article
+    /// </summary>
+    [HttpDelete("{Id}/sampleRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> DisconnectSampleRequests(
+        [FromRoute()] ArticleWhereUniqueInput uniqueId,
+        [FromBody()] SampleRequestWhereUniqueInput[] sampleRequestsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectSampleRequests(uniqueId, sampleRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple Sample Requests records for Article
+    /// </summary>
+    [HttpGet("{Id}/sampleRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult<List<SampleRequest>>> FindSampleRequests(
+        [FromRoute()] ArticleWhereUniqueInput uniqueId,
+        [FromQuery()] SampleRequestFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindSampleRequests(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple Sample Requests records for Article
+    /// </summary>
+    [HttpPatch("{Id}/sampleRequests")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> UpdateSampleRequests(
+        [FromRoute()] ArticleWhereUniqueInput uniqueId,
+        [FromBody()] SampleRequestWhereUniqueInput[] sampleRequestsId
+    )
+    {
+        try
+        {
+            await _service.UpdateSampleRequests(uniqueId, sampleRequestsId);
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
     /// Get a Tax record for Article
     /// </summary>
     [HttpGet("{Id}/detailedDeclarationTaxes")]

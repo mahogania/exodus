@@ -4,6 +4,8 @@ public class ModelValueEvaluationVerificationCreateInput
 {
     public string? ArticleNumber { get; set; }
 
+    public ArticlesSubmittedForVerification? ArticlesSubmittedForVerification { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public DateTime? DateAndTimeOfFinalModification { get; set; }

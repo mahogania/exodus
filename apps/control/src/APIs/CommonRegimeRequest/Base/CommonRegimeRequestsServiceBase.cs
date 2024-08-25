@@ -59,7 +59,7 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
         if (createDto.Journal != null)
         {
             commonRegimeRequest.Journal = await _context
-                .Journals.Where(journal => createDto.Journal.Id == journal.Id)
+                .Procedures.Where(procedure => createDto.Journal.Id == procedure.Id)
                 .FirstOrDefaultAsync();
         }
 
@@ -174,7 +174,7 @@ public abstract class CommonRegimeRequestsServiceBase : ICommonRegimeRequestsSer
     /// <summary>
     /// Get a Journal record for Common Regime Request
     /// </summary>
-    public async Task<Journal> GetJournal(CommonRegimeRequestWhereUniqueInput uniqueId)
+    public async Task<Procedure> GetJournal(CommonRegimeRequestWhereUniqueInput uniqueId)
     {
         var commonRegimeRequest = await _context
             .CommonRegimeRequests.Where(commonRegimeRequest =>

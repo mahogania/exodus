@@ -19,7 +19,7 @@ public abstract class CarnetControlsServiceBase : ICarnetControlsService
     }
 
     /// <summary>
-    /// Create one CarnetControl
+    /// Create one Carnet Control
     /// </summary>
     public async Task<CarnetControl> CreateCarnetControl(CarnetControlCreateInput createDto)
     {
@@ -45,6 +45,14 @@ public abstract class CarnetControlsServiceBase : ICarnetControlsService
         {
             carnetControl.Id = createDto.Id;
         }
+        if (createDto.CommonCarnetRequest != null)
+        {
+            carnetControl.CommonCarnetRequest = await _context
+                .CommonCarnetRequests.Where(commonCarnetRequest =>
+                    createDto.CommonCarnetRequest.Id == commonCarnetRequest.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.CarnetControls.Add(carnetControl);
         await _context.SaveChangesAsync();
@@ -60,7 +68,7 @@ public abstract class CarnetControlsServiceBase : ICarnetControlsService
     }
 
     /// <summary>
-    /// Delete one CarnetControl
+    /// Delete one Carnet Control
     /// </summary>
     public async Task DeleteCarnetControl(CarnetControlWhereUniqueInput uniqueId)
     {
@@ -75,12 +83,13 @@ public abstract class CarnetControlsServiceBase : ICarnetControlsService
     }
 
     /// <summary>
-    /// Find many CarnetControls
+    /// Find many Carnet Controls
     /// </summary>
     public async Task<List<CarnetControl>> CarnetControls(CarnetControlFindManyArgs findManyArgs)
     {
         var carnetControls = await _context
-            .CarnetControls.ApplyWhere(findManyArgs.Where)
+            .CarnetControls.Include(x => x.CommonCarnetRequest)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -89,7 +98,7 @@ public abstract class CarnetControlsServiceBase : ICarnetControlsService
     }
 
     /// <summary>
-    /// Meta data about CarnetControl records
+    /// Meta data about Carnet Control records
     /// </summary>
     public async Task<MetadataDto> CarnetControlsMeta(CarnetControlFindManyArgs findManyArgs)
     {
@@ -99,7 +108,7 @@ public abstract class CarnetControlsServiceBase : ICarnetControlsService
     }
 
     /// <summary>
-    /// Get one CarnetControl
+    /// Get one Carnet Control
     /// </summary>
     public async Task<CarnetControl> CarnetControl(CarnetControlWhereUniqueInput uniqueId)
     {
@@ -119,7 +128,7 @@ public abstract class CarnetControlsServiceBase : ICarnetControlsService
     }
 
     /// <summary>
-    /// Update one CarnetControl
+    /// Update one Carnet Control
     /// </summary>
     public async Task UpdateCarnetControl(
         CarnetControlWhereUniqueInput uniqueId,
@@ -145,5 +154,23 @@ public abstract class CarnetControlsServiceBase : ICarnetControlsService
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Common Carnet Request record for CarnetControl
+    /// </summary>
+    public async Task<CommonCarnetRequest> GetCommonCarnetRequest(
+        CarnetControlWhereUniqueInput uniqueId
+    )
+    {
+        var carnetControl = await _context
+            .CarnetControls.Where(carnetControl => carnetControl.Id == uniqueId.Id)
+            .Include(carnetControl => carnetControl.CommonCarnetRequest)
+            .FirstOrDefaultAsync();
+        if (carnetControl == null)
+        {
+            throw new NotFoundException();
+        }
+        return carnetControl.CommonCarnetRequest.ToDto();
     }
 }

@@ -85,6 +85,12 @@ public abstract class PostalParcelSimplifiedClearancesServiceBase
         {
             postalParcelSimplifiedClearance.Id = createDto.Id;
         }
+        if (createDto.Procedure != null)
+        {
+            postalParcelSimplifiedClearance.Procedure = await _context
+                .Procedures.Where(procedure => createDto.Procedure.Id == procedure.Id)
+                .FirstOrDefaultAsync();
+        }
 
         _context.PostalParcelSimplifiedClearances.Add(postalParcelSimplifiedClearance);
         await _context.SaveChangesAsync();
@@ -127,7 +133,8 @@ public abstract class PostalParcelSimplifiedClearancesServiceBase
     )
     {
         var postalParcelSimplifiedClearances = await _context
-            .PostalParcelSimplifiedClearances.ApplyWhere(findManyArgs.Where)
+            .PostalParcelSimplifiedClearances.Include(x => x.Procedure)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -204,5 +211,25 @@ public abstract class PostalParcelSimplifiedClearancesServiceBase
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Procedure record for Postal Parcel Simplified Clearance
+    /// </summary>
+    public async Task<Procedure> GetProcedure(
+        PostalParcelSimplifiedClearanceWhereUniqueInput uniqueId
+    )
+    {
+        var postalParcelSimplifiedClearance = await _context
+            .PostalParcelSimplifiedClearances.Where(postalParcelSimplifiedClearance =>
+                postalParcelSimplifiedClearance.Id == uniqueId.Id
+            )
+            .Include(postalParcelSimplifiedClearance => postalParcelSimplifiedClearance.Procedure)
+            .FirstOrDefaultAsync();
+        if (postalParcelSimplifiedClearance == null)
+        {
+            throw new NotFoundException();
+        }
+        return postalParcelSimplifiedClearance.Procedure.ToDto();
     }
 }

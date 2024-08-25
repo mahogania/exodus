@@ -38,6 +38,15 @@ public abstract class TransitCarnetRequestsServiceBase : ITransitCarnetRequestsS
         {
             transitCarnetRequest.Id = createDto.Id;
         }
+        if (createDto.CommonCarnetRequest != null)
+        {
+            transitCarnetRequest.CommonCarnetRequest = await _context
+                .CommonCarnetRequests.Where(commonCarnetRequest =>
+                    createDto.CommonCarnetRequest.Id == commonCarnetRequest.Id
+                )
+                .FirstOrDefaultAsync();
+        }
+
         if (createDto.TransitCarnetControl != null)
         {
             transitCarnetRequest.TransitCarnetControl = await _context
@@ -83,7 +92,8 @@ public abstract class TransitCarnetRequestsServiceBase : ITransitCarnetRequestsS
     )
     {
         var transitCarnetRequests = await _context
-            .TransitCarnetRequests.Include(x => x.TransitCarnetControl)
+            .TransitCarnetRequests.Include(x => x.CommonCarnetRequest)
+            .Include(x => x.TransitCarnetControl)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -157,6 +167,26 @@ public abstract class TransitCarnetRequestsServiceBase : ITransitCarnetRequestsS
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Common Carnet Request record for Transit Carnet Request
+    /// </summary>
+    public async Task<CommonCarnetRequest> GetCommonCarnetRequest(
+        TransitCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var transitCarnetRequest = await _context
+            .TransitCarnetRequests.Where(transitCarnetRequest =>
+                transitCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(transitCarnetRequest => transitCarnetRequest.CommonCarnetRequest)
+            .FirstOrDefaultAsync();
+        if (transitCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return transitCarnetRequest.CommonCarnetRequest.ToDto();
     }
 
     /// <summary>

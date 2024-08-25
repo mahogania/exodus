@@ -13,6 +13,7 @@ public static class ArticleCarnetRequestsExtensions
             ArticleNumber = model.ArticleNumber,
             CarnetNumber = model.CarnetNumber,
             CarnetTypeCode = model.CarnetTypeCode,
+            CommonCarnetRequest = model.CommonCarnetRequestId,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
             ManagementNumberOfCarnet = model.ManagementNumberOfCarnet,
@@ -41,6 +42,10 @@ public static class ArticleCarnetRequestsExtensions
         if (updateDto.ArticleCarnetControl != null)
         {
             articleCarnetRequest.ArticleCarnetControlId = updateDto.ArticleCarnetControl;
+        }
+        if (updateDto.CommonCarnetRequest != null)
+        {
+            articleCarnetRequest.CommonCarnetRequestId = updateDto.CommonCarnetRequest;
         }
         if (updateDto.CreatedAt != null)
         {

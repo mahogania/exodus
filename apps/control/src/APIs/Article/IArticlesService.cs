@@ -75,6 +75,38 @@ public interface IArticlesService
     );
 
     /// <summary>
+    /// Connect multiple Sample Requests records to Article
+    /// </summary>
+    public Task ConnectSampleRequests(
+        ArticleWhereUniqueInput uniqueId,
+        SampleRequestWhereUniqueInput[] sampleRequestsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple Sample Requests records from Article
+    /// </summary>
+    public Task DisconnectSampleRequests(
+        ArticleWhereUniqueInput uniqueId,
+        SampleRequestWhereUniqueInput[] sampleRequestsId
+    );
+
+    /// <summary>
+    /// Find multiple Sample Requests records for Article
+    /// </summary>
+    public Task<List<SampleRequest>> FindSampleRequests(
+        ArticleWhereUniqueInput uniqueId,
+        SampleRequestFindManyArgs SampleRequestFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple Sample Requests records for Article
+    /// </summary>
+    public Task UpdateSampleRequests(
+        ArticleWhereUniqueInput uniqueId,
+        SampleRequestWhereUniqueInput[] sampleRequestsId
+    );
+
+    /// <summary>
     /// Get a Tax record for Article
     /// </summary>
     public Task<DetailedDeclarationTax> GetTax(ArticleWhereUniqueInput uniqueId);

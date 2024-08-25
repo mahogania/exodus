@@ -98,6 +98,9 @@ public class PostalGoodsClearanceDbModel
     [StringLength(1000)]
     public string? OriginPost { get; set; }
 
+    public List<PostalGoodsClearanceDetailDbModel>? PostalGoodsClearanceDetails { get; set; } =
+        new List<PostalGoodsClearanceDetailDbModel>();
+
     [StringLength(1000)]
     public string? PostalNumber { get; set; }
 
@@ -106,6 +109,11 @@ public class PostalGoodsClearanceDbModel
 
     [Range(-999999999, 999999999)]
     public double? PostalPackageValue { get; set; }
+
+    public string? ProcedureId { get; set; }
+
+    [ForeignKey(nameof(ProcedureId))]
+    public ProcedureDbModel? Procedure { get; set; } = null;
 
     [StringLength(1000)]
     public string? ReceiverSEmail { get; set; }

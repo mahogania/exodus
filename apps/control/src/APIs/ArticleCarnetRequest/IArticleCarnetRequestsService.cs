@@ -52,4 +52,11 @@ public interface IArticleCarnetRequestsService
     public Task<ArticleCarnetControl> GetArticleCarnetControl(
         ArticleCarnetRequestWhereUniqueInput uniqueId
     );
+
+    /// <summary>
+    /// Get a Common Carnet Request record for Article Carnet Request
+    /// </summary>
+    public Task<CommonCarnetRequest> GetCommonCarnetRequest(
+        ArticleCarnetRequestWhereUniqueInput uniqueId
+    );
 }

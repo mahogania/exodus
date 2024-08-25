@@ -84,6 +84,8 @@ public class ArticleCreateInput
 
     public string? RtcDecisionAuthorizationNumber { get; set; }
 
+    public List<SampleRequest>? SampleRequests { get; set; }
+
     public string? ShCode { get; set; }
 
     public string? SpecificCodeForClassificationOfGoods { get; set; }

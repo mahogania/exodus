@@ -109,6 +109,9 @@ public static class ArticlesSubmittedForVerificationsExtensions
                 model.LiquidatedTaxableBaseAmountInNcyOfTheArticle,
             LiquidatedTaxableBaseAmountInUsdOfTheArticle =
                 model.LiquidatedTaxableBaseAmountInUsdOfTheArticle,
+            ModelValueEvaluationVerifications = model
+                .ModelValueEvaluationVerifications?.Select(x => x.Id)
+                .ToList(),
             NumberOfTimesOfValueEvaluation = model.NumberOfTimesOfValueEvaluation,
             TaxesForVerification = model.TaxesForVerification?.Select(x => x.Id).ToList(),
             TotalLiquidatedWeightOfTheArticle = model.TotalLiquidatedWeightOfTheArticle,

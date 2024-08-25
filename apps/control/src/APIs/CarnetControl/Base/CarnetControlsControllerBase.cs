@@ -19,7 +19,7 @@ public abstract class CarnetControlsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Create one CarnetControl
+    /// Create one Carnet Control
     /// </summary>
     [HttpPost()]
     [Authorize(Roles = "user")]
@@ -33,7 +33,7 @@ public abstract class CarnetControlsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Delete one CarnetControl
+    /// Delete one Carnet Control
     /// </summary>
     [HttpDelete("{Id}")]
     [Authorize(Roles = "user")]
@@ -54,7 +54,7 @@ public abstract class CarnetControlsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Find many CarnetControls
+    /// Find many Carnet Controls
     /// </summary>
     [HttpGet()]
     [Authorize(Roles = "user")]
@@ -66,7 +66,7 @@ public abstract class CarnetControlsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Meta data about CarnetControl records
+    /// Meta data about Carnet Control records
     /// </summary>
     [HttpPost("meta")]
     public async Task<ActionResult<MetadataDto>> CarnetControlsMeta(
@@ -77,7 +77,7 @@ public abstract class CarnetControlsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Get one CarnetControl
+    /// Get one Carnet Control
     /// </summary>
     [HttpGet("{Id}")]
     [Authorize(Roles = "user")]
@@ -96,7 +96,7 @@ public abstract class CarnetControlsControllerBase : ControllerBase
     }
 
     /// <summary>
-    /// Update one CarnetControl
+    /// Update one Carnet Control
     /// </summary>
     [HttpPatch("{Id}")]
     [Authorize(Roles = "user")]
@@ -115,5 +115,17 @@ public abstract class CarnetControlsControllerBase : ControllerBase
         }
 
         return NoContent();
+    }
+
+    /// <summary>
+    /// Get a Common Carnet Request record for CarnetControl
+    /// </summary>
+    [HttpGet("{Id}/commonCarnetRequests")]
+    public async Task<ActionResult<List<CommonCarnetRequest>>> GetCommonCarnetRequest(
+        [FromRoute()] CarnetControlWhereUniqueInput uniqueId
+    )
+    {
+        var commonCarnetRequest = await _service.GetCommonCarnetRequest(uniqueId);
+        return Ok(commonCarnetRequest);
     }
 }

@@ -34,6 +34,8 @@ public class CommonExpressClearanceCreateInput
 
     public string? MasterBlNumber { get; set; }
 
+    public Procedure? Procedure { get; set; }
+
     public string? RequestDate { get; set; }
 
     public string? ShipName { get; set; }

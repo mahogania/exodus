@@ -10,19 +10,11 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
     public ControlDbContext(DbContextOptions<ControlDbContext> options)
         : base(options) { }
 
-    public DbSet<DirectImportationExportationDbModel> DirectImportationExportations { get; set; }
-
     public DbSet<CommonExpressClearanceDbModel> CommonExpressClearances { get; set; }
-
-    public DbSet<OriginDeterminingInformationDbModel> OriginDeterminingInformations { get; set; }
-
-    public DbSet<TemporaryAdmissionOfVehicleDbModel> TemporaryAdmissionOfVehicles { get; set; }
 
     public DbSet<PostalGoodsClearanceDbModel> PostalGoodsClearances { get; set; }
 
     public DbSet<ArticleDbModel> Articles { get; set; }
-
-    public DbSet<TemporaryAdmissionForPerfectionDbModel> TemporaryAdmissionForPerfections { get; set; }
 
     public DbSet<ForeignOperatorRequestDbModel> ForeignOperatorRequests { get; set; }
 
@@ -48,19 +40,11 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<ContainerOfTheDetailedDeclarationCustomsDbModel> ContainerOfTheDetailedDeclarationCustomsItems { get; set; }
 
-    public DbSet<ImportedGoodsInformationDbModel> ImportedGoodsInformations { get; set; }
-
     public DbSet<CancellationRequestDbModel> CancellationRequests { get; set; }
-
-    public DbSet<WarehouseTransferDbModel> WarehouseTransfers { get; set; }
-
-    public DbSet<RCODemandDbModel> RcoDemands { get; set; }
-
-    public DbSet<DetailOfRequestForOriginCertificateDbModel> DetailOfRequestForOriginCertificates { get; set; }
 
     public DbSet<RawMaterialDbModel> RawMaterials { get; set; }
 
-    public DbSet<ItineraryDbModel> Itineraries { get; set; }
+    public DbSet<DetailOfRequestForOriginCertificateDbModel> DetailOfRequestForOriginCertificates { get; set; }
 
     public DbSet<ModelofDetailedDeclarationDbModel> ModelofDetailedDeclarations { get; set; }
 
@@ -76,13 +60,11 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<ArticleAssessmentDbModel> ArticleAssessments { get; set; }
 
-    public DbSet<DetailOfTheApprovalOfTheRegimeRequestDbModel> DetailOfTheApprovalOfTheRegimeRequests { get; set; }
-
     public DbSet<PostalGoodsClearanceDetailDbModel> PostalGoodsClearanceDetails { get; set; }
 
     public DbSet<CommonOriginCertificateRequestDbModel> CommonOriginCertificateRequests { get; set; }
 
-    public DbSet<JournalDbModel> Journals { get; set; }
+    public DbSet<ProcedureDbModel> Procedures { get; set; }
 
     public DbSet<ExtendedPeriodCarnetRequestDbModel> ExtendedPeriodCarnetRequests { get; set; }
 
@@ -121,4 +103,8 @@ public class ControlDbContext : IdentityDbContext<IdentityUser>
     public DbSet<ContainerValueAssessmentDbModel> ContainerValueAssessments { get; set; }
 
     public DbSet<ModelValueEvaluationVerificationDbModel> ModelValueEvaluationVerifications { get; set; }
+
+    public DbSet<AnalysisRequestDbModel> AnalysisRequests { get; set; }
+
+    public DbSet<SampleRequestDbModel> SampleRequests { get; set; }
 }

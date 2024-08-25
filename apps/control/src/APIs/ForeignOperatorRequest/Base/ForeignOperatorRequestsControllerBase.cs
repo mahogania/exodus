@@ -124,12 +124,12 @@ public abstract class ForeignOperatorRequestsControllerBase : ControllerBase
     /// <summary>
     /// Get a Request record for Foreign Operator Request
     /// </summary>
-    [HttpGet("{Id}/journals")]
-    public async Task<ActionResult<List<Journal>>> GetRequest(
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetRequest(
         [FromRoute()] ForeignOperatorRequestWhereUniqueInput uniqueId
     )
     {
-        var journal = await _service.GetRequest(uniqueId);
-        return Ok(journal);
+        var procedure = await _service.GetRequest(uniqueId);
+        return Ok(procedure);
     }
 }

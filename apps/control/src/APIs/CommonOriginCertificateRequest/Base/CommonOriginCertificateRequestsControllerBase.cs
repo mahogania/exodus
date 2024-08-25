@@ -134,12 +134,12 @@ public abstract class CommonOriginCertificateRequestsControllerBase : Controller
     /// <summary>
     /// Get a Request record for Common Origin Certificate Request
     /// </summary>
-    [HttpGet("{Id}/journals")]
-    public async Task<ActionResult<List<Journal>>> GetRequest(
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetRequest(
         [FromRoute()] CommonOriginCertificateRequestWhereUniqueInput uniqueId
     )
     {
-        var journal = await _service.GetRequest(uniqueId);
-        return Ok(journal);
+        var procedure = await _service.GetRequest(uniqueId);
+        return Ok(procedure);
     }
 }

@@ -51,5 +51,5 @@ public interface ICommonOriginCertificateRequestsService
     /// <summary>
     /// Get a Request record for Common Origin Certificate Request
     /// </summary>
-    public Task<Journal> GetRequest(CommonOriginCertificateRequestWhereUniqueInput uniqueId);
+    public Task<Procedure> GetRequest(CommonOriginCertificateRequestWhereUniqueInput uniqueId);
 }

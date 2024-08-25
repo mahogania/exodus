@@ -47,5 +47,5 @@ public interface ICancellationRequestsService
     /// <summary>
     /// Get a Request record for Cancellation Request
     /// </summary>
-    public Task<Journal> GetRequest(CancellationRequestWhereUniqueInput uniqueId);
+    public Task<Procedure> GetRequest(CancellationRequestWhereUniqueInput uniqueId);
 }

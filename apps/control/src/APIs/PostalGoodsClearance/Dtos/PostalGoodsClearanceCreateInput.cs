@@ -64,11 +64,15 @@ public class PostalGoodsClearanceCreateInput
 
     public string? OriginPost { get; set; }
 
+    public List<PostalGoodsClearanceDetail>? PostalGoodsClearanceDetails { get; set; }
+
     public string? PostalNumber { get; set; }
 
     public string? PostalPackageCustomsClearanceRequestNumber { get; set; }
 
     public double? PostalPackageValue { get; set; }
+
+    public Procedure? Procedure { get; set; }
 
     public string? ReceiverSEmail { get; set; }
 

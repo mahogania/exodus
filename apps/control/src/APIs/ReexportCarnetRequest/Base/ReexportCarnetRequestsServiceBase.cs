@@ -39,6 +39,15 @@ public abstract class ReexportCarnetRequestsServiceBase : IReexportCarnetRequest
         {
             reexportCarnetRequest.Id = createDto.Id;
         }
+        if (createDto.CommonCarnetRequest != null)
+        {
+            reexportCarnetRequest.CommonCarnetRequest = await _context
+                .CommonCarnetRequests.Where(commonCarnetRequest =>
+                    createDto.CommonCarnetRequest.Id == commonCarnetRequest.Id
+                )
+                .FirstOrDefaultAsync();
+        }
+
         if (createDto.ReexportCarnetControl != null)
         {
             reexportCarnetRequest.ReexportCarnetControl = await _context
@@ -86,7 +95,8 @@ public abstract class ReexportCarnetRequestsServiceBase : IReexportCarnetRequest
     )
     {
         var reexportCarnetRequests = await _context
-            .ReexportCarnetRequests.Include(x => x.ReexportCarnetControl)
+            .ReexportCarnetRequests.Include(x => x.CommonCarnetRequest)
+            .Include(x => x.ReexportCarnetControl)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -160,6 +170,26 @@ public abstract class ReexportCarnetRequestsServiceBase : IReexportCarnetRequest
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Common Carnet Request record for Reexport Carnet Request
+    /// </summary>
+    public async Task<CommonCarnetRequest> GetCommonCarnetRequest(
+        ReexportCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var reexportCarnetRequest = await _context
+            .ReexportCarnetRequests.Where(reexportCarnetRequest =>
+                reexportCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(reexportCarnetRequest => reexportCarnetRequest.CommonCarnetRequest)
+            .FirstOrDefaultAsync();
+        if (reexportCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return reexportCarnetRequest.CommonCarnetRequest.ToDto();
     }
 
     /// <summary>

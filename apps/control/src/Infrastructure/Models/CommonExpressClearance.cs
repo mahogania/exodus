@@ -53,6 +53,11 @@ public class CommonExpressClearanceDbModel
     [StringLength(1000)]
     public string? MasterBlNumber { get; set; }
 
+    public string? ProcedureId { get; set; }
+
+    [ForeignKey(nameof(ProcedureId))]
+    public ProcedureDbModel? Procedure { get; set; } = null;
+
     [StringLength(1000)]
     public string? RequestDate { get; set; }
 

@@ -62,7 +62,7 @@ public class ForeignOperatorRequestDbModel
     public string? RequestId { get; set; }
 
     [ForeignKey(nameof(RequestId))]
-    public JournalDbModel? Request { get; set; } = null;
+    public ProcedureDbModel? Request { get; set; } = null;
 
     [StringLength(1000)]
     public string? RequestDate { get; set; }

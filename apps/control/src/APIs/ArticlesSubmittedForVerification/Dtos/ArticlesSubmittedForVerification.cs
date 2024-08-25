@@ -138,6 +138,8 @@ public class ArticlesSubmittedForVerification
 
     public double? LiquidatedTaxableBaseAmountInUsdOfTheArticle { get; set; }
 
+    public List<string>? ModelValueEvaluationVerifications { get; set; }
+
     public string? NumberOfTimesOfValueEvaluation { get; set; }
 
     public List<string>? TaxesForVerification { get; set; }

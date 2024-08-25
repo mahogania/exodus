@@ -122,6 +122,18 @@ public abstract class ImportCarnetRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
+    /// Get a Common Carnet Request record for Import Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/commonCarnetRequests")]
+    public async Task<ActionResult<List<CommonCarnetRequest>>> GetCommonCarnetRequest(
+        [FromRoute()] ImportCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var commonCarnetRequest = await _service.GetCommonCarnetRequest(uniqueId);
+        return Ok(commonCarnetRequest);
+    }
+
+    /// <summary>
     /// Get a Import Carnet Control record for Import Carnet Request
     /// </summary>
     [HttpGet("{Id}/importCarnetControls")]

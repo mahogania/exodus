@@ -122,6 +122,18 @@ public abstract class TransitCarnetRequestsControllerBase : ControllerBase
     }
 
     /// <summary>
+    /// Get a Common Carnet Request record for Transit Carnet Request
+    /// </summary>
+    [HttpGet("{Id}/commonCarnetRequests")]
+    public async Task<ActionResult<List<CommonCarnetRequest>>> GetCommonCarnetRequest(
+        [FromRoute()] TransitCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var commonCarnetRequest = await _service.GetCommonCarnetRequest(uniqueId);
+        return Ok(commonCarnetRequest);
+    }
+
+    /// <summary>
     /// Get a Transit Carnet Control record for Transit Carnet Request
     /// </summary>
     [HttpGet("{Id}/transitCarnetControls")]

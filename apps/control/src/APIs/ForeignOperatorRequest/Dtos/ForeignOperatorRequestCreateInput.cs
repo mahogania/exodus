@@ -38,7 +38,7 @@ public class ForeignOperatorRequestCreateInput
 
     public string? ProcessingStatusCode { get; set; }
 
-    public Journal? Request { get; set; }
+    public Procedure? Request { get; set; }
 
     public string? RequestDate { get; set; }
 

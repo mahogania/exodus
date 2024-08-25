@@ -4,6 +4,8 @@ public class ExtendedPeriodCarnetRequestCreateInput
 {
     public string? CarnetTypeCode { get; set; }
 
+    public CommonCarnetRequest? CommonCarnetRequest { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public ExtendedPeriodCarnetControl? ExtendedPeriodCarnetControl { get; set; }

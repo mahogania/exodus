@@ -61,6 +61,13 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
                 .ToListAsync();
         }
 
+        if (createDto.Procedure != null)
+        {
+            commonExpressClearance.Procedure = await _context
+                .Procedures.Where(procedure => createDto.Procedure.Id == procedure.Id)
+                .FirstOrDefaultAsync();
+        }
+
         _context.CommonExpressClearances.Add(commonExpressClearance);
         await _context.SaveChangesAsync();
 
@@ -100,6 +107,7 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
     {
         var commonExpressClearances = await _context
             .CommonExpressClearances.Include(x => x.Details)
+            .Include(x => x.Procedure)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -182,5 +190,23 @@ public abstract class CommonExpressClearancesServiceBase : ICommonExpressClearan
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Procedure record for Common Express Clearance
+    /// </summary>
+    public async Task<Procedure> GetProcedure(CommonExpressClearanceWhereUniqueInput uniqueId)
+    {
+        var commonExpressClearance = await _context
+            .CommonExpressClearances.Where(commonExpressClearance =>
+                commonExpressClearance.Id == uniqueId.Id
+            )
+            .Include(commonExpressClearance => commonExpressClearance.Procedure)
+            .FirstOrDefaultAsync();
+        if (commonExpressClearance == null)
+        {
+            throw new NotFoundException();
+        }
+        return commonExpressClearance.Procedure.ToDto();
     }
 }

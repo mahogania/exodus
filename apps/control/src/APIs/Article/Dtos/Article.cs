@@ -84,6 +84,8 @@ public class Article
 
     public string? RtcDecisionAuthorizationNumber { get; set; }
 
+    public List<string>? SampleRequests { get; set; }
+
     public string? ShCode { get; set; }
 
     public string? SpecificCodeForClassificationOfGoods { get; set; }

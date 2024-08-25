@@ -36,7 +36,7 @@ public abstract class RecourseRequestsServiceBase : IRecourseRequestsService
         if (createDto.Journal != null)
         {
             recourseRequest.Journal = await _context
-                .Journals.Where(journal => createDto.Journal.Id == journal.Id)
+                .Procedures.Where(procedure => createDto.Journal.Id == procedure.Id)
                 .FirstOrDefaultAsync();
         }
 
@@ -147,7 +147,7 @@ public abstract class RecourseRequestsServiceBase : IRecourseRequestsService
     /// <summary>
     /// Get a Journal record for Recourse Request
     /// </summary>
-    public async Task<Journal> GetJournal(RecourseRequestWhereUniqueInput uniqueId)
+    public async Task<Procedure> GetJournal(RecourseRequestWhereUniqueInput uniqueId)
     {
         var recourseRequest = await _context
             .RecourseRequests.Where(recourseRequest => recourseRequest.Id == uniqueId.Id)

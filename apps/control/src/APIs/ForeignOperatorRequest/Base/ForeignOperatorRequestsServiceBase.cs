@@ -59,7 +59,7 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
         if (createDto.Request != null)
         {
             foreignOperatorRequest.Request = await _context
-                .Journals.Where(journal => createDto.Request.Id == journal.Id)
+                .Procedures.Where(procedure => createDto.Request.Id == procedure.Id)
                 .FirstOrDefaultAsync();
         }
 
@@ -180,7 +180,7 @@ public abstract class ForeignOperatorRequestsServiceBase : IForeignOperatorReque
     /// <summary>
     /// Get a Request record for Foreign Operator Request
     /// </summary>
-    public async Task<Journal> GetRequest(ForeignOperatorRequestWhereUniqueInput uniqueId)
+    public async Task<Procedure> GetRequest(ForeignOperatorRequestWhereUniqueInput uniqueId)
     {
         var foreignOperatorRequest = await _context
             .ForeignOperatorRequests.Where(foreignOperatorRequest =>

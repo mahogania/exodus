@@ -81,5 +81,5 @@ public interface ICommonDetailedDeclarationsService
     /// <summary>
     /// Get a Journal record for Common Detailed Declaration
     /// </summary>
-    public Task<Journal> GetJournal(CommonDetailedDeclarationWhereUniqueInput uniqueId);
+    public Task<Procedure> GetJournal(CommonDetailedDeclarationWhereUniqueInput uniqueId);
 }

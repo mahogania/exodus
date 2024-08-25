@@ -9,6 +9,7 @@ public static class ServiceCollectionExtensions
     /// </summary>
     public static void RegisterServices(this IServiceCollection services)
     {
+        services.AddScoped<IAnalysisRequestsService, AnalysisRequestsService>();
         services.AddScoped<IAppealsService, AppealsService>();
         services.AddScoped<IArticlesService, ArticlesService>();
         services.AddScoped<IArticleAssessmentsService, ArticleAssessmentsService>();
@@ -42,14 +43,6 @@ public static class ServiceCollectionExtensions
             DetailOfRequestForOriginCertificatesService
         >();
         services.AddScoped<
-            IDetailOfTheApprovalOfTheRegimeRequestsService,
-            DetailOfTheApprovalOfTheRegimeRequestsService
-        >();
-        services.AddScoped<
-            IDirectImportationExportationsService,
-            DirectImportationExportationsService
-        >();
-        services.AddScoped<
             IExpectedReimportReexportArticlesService,
             ExpectedReimportReexportArticlesService
         >();
@@ -68,10 +61,7 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IForeignOperatorRequestsService, ForeignOperatorRequestsService>();
         services.AddScoped<IImportCarnetControlsService, ImportCarnetControlsService>();
         services.AddScoped<IImportCarnetRequestsService, ImportCarnetRequestsService>();
-        services.AddScoped<IImportedGoodsInformationsService, ImportedGoodsInformationsService>();
-        services.AddScoped<IItinerariesService, ItinerariesService>();
         services.AddScoped<IJointDocumentsService, JointDocumentsService>();
-        services.AddScoped<IJournalsService, JournalsService>();
         services.AddScoped<
             IModelofDetailedDeclarationsService,
             ModelofDetailedDeclarationsService
@@ -81,10 +71,6 @@ public static class ServiceCollectionExtensions
             ModelValueEvaluationVerificationsService
         >();
         services.AddScoped<IOperatorsService, OperatorsService>();
-        services.AddScoped<
-            IOriginDeterminingInformationsService,
-            OriginDeterminingInformationsService
-        >();
         services.AddScoped<IPostalGoodsClearancesService, PostalGoodsClearancesService>();
         services.AddScoped<
             IPostalGoodsClearanceDetailsService,
@@ -94,20 +80,13 @@ public static class ServiceCollectionExtensions
             IPostalParcelSimplifiedClearancesService,
             PostalParcelSimplifiedClearancesService
         >();
+        services.AddScoped<IProceduresService, ProceduresService>();
         services.AddScoped<IRawMaterialsService, RawMaterialsService>();
-        services.AddScoped<IRCODemandsService, RCODemandsService>();
         services.AddScoped<IRecourseRequestsService, RecourseRequestsService>();
         services.AddScoped<IReexportCarnetControlsService, ReexportCarnetControlsService>();
         services.AddScoped<IReexportCarnetRequestsService, ReexportCarnetRequestsService>();
+        services.AddScoped<ISampleRequestsService, SampleRequestsService>();
         services.AddScoped<ITaxForVerificationsService, TaxForVerificationsService>();
-        services.AddScoped<
-            ITemporaryAdmissionForPerfectionsService,
-            TemporaryAdmissionForPerfectionsService
-        >();
-        services.AddScoped<
-            ITemporaryAdmissionOfVehiclesService,
-            TemporaryAdmissionOfVehiclesService
-        >();
         services.AddScoped<ITransitCarnetControlsService, TransitCarnetControlsService>();
         services.AddScoped<ITransitCarnetRequestsService, TransitCarnetRequestsService>();
         services.AddScoped<IValueAssessmentsService, ValueAssessmentsService>();
@@ -115,6 +94,5 @@ public static class ServiceCollectionExtensions
         services.AddScoped<IVehiclesService, VehiclesService>();
         services.AddScoped<IVerificationResultsService, VerificationResultsService>();
         services.AddScoped<IVerificationResultDetailsService, VerificationResultDetailsService>();
-        services.AddScoped<IWarehouseTransfersService, WarehouseTransfersService>();
     }
 }

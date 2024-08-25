@@ -50,7 +50,7 @@ public abstract class CancellationRequestsServiceBase : ICancellationRequestsSer
         if (createDto.Request != null)
         {
             cancellationRequest.Request = await _context
-                .Journals.Where(journal => createDto.Request.Id == journal.Id)
+                .Procedures.Where(procedure => createDto.Request.Id == procedure.Id)
                 .FirstOrDefaultAsync();
         }
 
@@ -165,7 +165,7 @@ public abstract class CancellationRequestsServiceBase : ICancellationRequestsSer
     /// <summary>
     /// Get a Request record for Cancellation Request
     /// </summary>
-    public async Task<Journal> GetRequest(CancellationRequestWhereUniqueInput uniqueId)
+    public async Task<Procedure> GetRequest(CancellationRequestWhereUniqueInput uniqueId)
     {
         var cancellationRequest = await _context
             .CancellationRequests.Where(cancellationRequest =>

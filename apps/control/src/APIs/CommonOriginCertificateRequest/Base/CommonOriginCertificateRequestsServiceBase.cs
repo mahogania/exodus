@@ -87,7 +87,7 @@ public abstract class CommonOriginCertificateRequestsServiceBase
         if (createDto.Request != null)
         {
             commonOriginCertificateRequest.Request = await _context
-                .Journals.Where(journal => createDto.Request.Id == journal.Id)
+                .Procedures.Where(procedure => createDto.Request.Id == procedure.Id)
                 .FirstOrDefaultAsync();
         }
 
@@ -227,7 +227,7 @@ public abstract class CommonOriginCertificateRequestsServiceBase
     /// <summary>
     /// Get a Request record for Common Origin Certificate Request
     /// </summary>
-    public async Task<Journal> GetRequest(CommonOriginCertificateRequestWhereUniqueInput uniqueId)
+    public async Task<Procedure> GetRequest(CommonOriginCertificateRequestWhereUniqueInput uniqueId)
     {
         var commonOriginCertificateRequest = await _context
             .CommonOriginCertificateRequests.Where(commonOriginCertificateRequest =>

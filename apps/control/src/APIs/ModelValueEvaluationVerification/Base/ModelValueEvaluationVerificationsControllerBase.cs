@@ -131,4 +131,20 @@ public abstract class ModelValueEvaluationVerificationsControllerBase : Controll
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Articles Submitted For Verification record for Model Value Evaluation Verification
+    /// </summary>
+    [HttpGet("{Id}/articlesSubmittedForVerifications")]
+    public async Task<
+        ActionResult<List<ArticlesSubmittedForVerification>>
+    > GetArticlesSubmittedForVerification(
+        [FromRoute()] ModelValueEvaluationVerificationWhereUniqueInput uniqueId
+    )
+    {
+        var articlesSubmittedForVerification = await _service.GetArticlesSubmittedForVerification(
+            uniqueId
+        );
+        return Ok(articlesSubmittedForVerification);
+    }
 }

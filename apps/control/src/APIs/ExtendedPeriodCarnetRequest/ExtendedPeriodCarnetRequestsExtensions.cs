@@ -10,6 +10,7 @@ public static class ExtendedPeriodCarnetRequestsExtensions
         return new ExtendedPeriodCarnetRequest
         {
             CarnetTypeCode = model.CarnetTypeCode,
+            CommonCarnetRequest = model.CommonCarnetRequestId,
             CreatedAt = model.CreatedAt,
             ExtendedPeriodCarnetControl = model.ExtendedPeriodCarnetControl?.ToDto(),
             Id = model.Id,
@@ -32,6 +33,10 @@ public static class ExtendedPeriodCarnetRequestsExtensions
             SequenceNumber = updateDto.SequenceNumber
         };
 
+        if (updateDto.CommonCarnetRequest != null)
+        {
+            extendedPeriodCarnetRequest.CommonCarnetRequestId = updateDto.CommonCarnetRequest;
+        }
         if (updateDto.CreatedAt != null)
         {
             extendedPeriodCarnetRequest.CreatedAt = updateDto.CreatedAt.Value;

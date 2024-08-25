@@ -165,7 +165,7 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
         if (createDto.Journal != null)
         {
             commonDetailedDeclaration.Journal = await _context
-                .Journals.Where(journal => createDto.Journal.Id == journal.Id)
+                .Procedures.Where(procedure => createDto.Journal.Id == procedure.Id)
                 .FirstOrDefaultAsync();
         }
 
@@ -399,7 +399,7 @@ public abstract class CommonDetailedDeclarationsServiceBase : ICommonDetailedDec
     /// <summary>
     /// Get a Journal record for Common Detailed Declaration
     /// </summary>
-    public async Task<Journal> GetJournal(CommonDetailedDeclarationWhereUniqueInput uniqueId)
+    public async Task<Procedure> GetJournal(CommonDetailedDeclarationWhereUniqueInput uniqueId)
     {
         var commonDetailedDeclaration = await _context
               .CommonDetailedDeclarations.Where(commonDetailedDeclaration => commonDetailedDeclaration.Id == uniqueId.Id)

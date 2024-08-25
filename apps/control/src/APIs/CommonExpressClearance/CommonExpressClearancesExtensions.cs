@@ -25,6 +25,7 @@ public static class CommonExpressClearancesExtensions
             FirstRegistrationDateAndTime = model.FirstRegistrationDateAndTime,
             Id = model.Id,
             MasterBlNumber = model.MasterBlNumber,
+            Procedure = model.ProcedureId,
             RequestDate = model.RequestDate,
             ShipName = model.ShipName,
             TransmissionTypeCode = model.TransmissionTypeCode,
@@ -63,6 +64,10 @@ public static class CommonExpressClearancesExtensions
         if (updateDto.CreatedAt != null)
         {
             commonExpressClearance.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.Procedure != null)
+        {
+            commonExpressClearance.ProcedureId = updateDto.Procedure;
         }
         if (updateDto.UpdatedAt != null)
         {

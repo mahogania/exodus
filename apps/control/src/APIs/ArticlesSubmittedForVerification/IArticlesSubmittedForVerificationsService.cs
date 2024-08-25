@@ -81,6 +81,38 @@ public interface IArticlesSubmittedForVerificationsService
     );
 
     /// <summary>
+    /// Connect multiple Model Value Evaluation Verifications records to Articles Submitted For Verification
+    /// </summary>
+    public Task ConnectModelValueEvaluationVerifications(
+        ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        ModelValueEvaluationVerificationWhereUniqueInput[] modelValueEvaluationVerificationsId
+    );
+
+    /// <summary>
+    /// Disconnect multiple Model Value Evaluation Verifications records from Articles Submitted For Verification
+    /// </summary>
+    public Task DisconnectModelValueEvaluationVerifications(
+        ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        ModelValueEvaluationVerificationWhereUniqueInput[] modelValueEvaluationVerificationsId
+    );
+
+    /// <summary>
+    /// Find multiple Model Value Evaluation Verifications records for Articles Submitted For Verification
+    /// </summary>
+    public Task<List<ModelValueEvaluationVerification>> FindModelValueEvaluationVerifications(
+        ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        ModelValueEvaluationVerificationFindManyArgs ModelValueEvaluationVerificationFindManyArgs
+    );
+
+    /// <summary>
+    /// Update multiple Model Value Evaluation Verifications records for Articles Submitted For Verification
+    /// </summary>
+    public Task UpdateModelValueEvaluationVerifications(
+        ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        ModelValueEvaluationVerificationWhereUniqueInput[] modelValueEvaluationVerificationsId
+    );
+
+    /// <summary>
     /// Connect multiple Taxes For Verification records to Articles Submitted For Verification
     /// </summary>
     public Task ConnectTaxesForVerification(

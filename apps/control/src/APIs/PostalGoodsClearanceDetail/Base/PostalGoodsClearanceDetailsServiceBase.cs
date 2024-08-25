@@ -57,6 +57,14 @@ public abstract class PostalGoodsClearanceDetailsServiceBase : IPostalGoodsClear
         {
             postalGoodsClearanceDetail.Id = createDto.Id;
         }
+        if (createDto.PostalGoodsClearance != null)
+        {
+            postalGoodsClearanceDetail.PostalGoodsClearance = await _context
+                .PostalGoodsClearances.Where(postalGoodsClearance =>
+                    createDto.PostalGoodsClearance.Id == postalGoodsClearance.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.PostalGoodsClearanceDetails.Add(postalGoodsClearanceDetail);
         await _context.SaveChangesAsync();
@@ -100,7 +108,8 @@ public abstract class PostalGoodsClearanceDetailsServiceBase : IPostalGoodsClear
     )
     {
         var postalGoodsClearanceDetails = await _context
-            .PostalGoodsClearanceDetails.ApplyWhere(findManyArgs.Where)
+            .PostalGoodsClearanceDetails.Include(x => x.PostalGoodsClearance)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -177,5 +186,25 @@ public abstract class PostalGoodsClearanceDetailsServiceBase : IPostalGoodsClear
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Postal Goods Clearance record for Postal Goods Clearance Detail
+    /// </summary>
+    public async Task<PostalGoodsClearance> GetPostalGoodsClearance(
+        PostalGoodsClearanceDetailWhereUniqueInput uniqueId
+    )
+    {
+        var postalGoodsClearanceDetail = await _context
+            .PostalGoodsClearanceDetails.Where(postalGoodsClearanceDetail =>
+                postalGoodsClearanceDetail.Id == uniqueId.Id
+            )
+            .Include(postalGoodsClearanceDetail => postalGoodsClearanceDetail.PostalGoodsClearance)
+            .FirstOrDefaultAsync();
+        if (postalGoodsClearanceDetail == null)
+        {
+            throw new NotFoundException();
+        }
+        return postalGoodsClearanceDetail.PostalGoodsClearance.ToDto();
     }
 }

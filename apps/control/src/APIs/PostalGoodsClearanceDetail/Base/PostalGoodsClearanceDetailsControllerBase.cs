@@ -123,4 +123,16 @@ public abstract class PostalGoodsClearanceDetailsControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Postal Goods Clearance record for Postal Goods Clearance Detail
+    /// </summary>
+    [HttpGet("{Id}/postalGoodsClearances")]
+    public async Task<ActionResult<List<PostalGoodsClearance>>> GetPostalGoodsClearance(
+        [FromRoute()] PostalGoodsClearanceDetailWhereUniqueInput uniqueId
+    )
+    {
+        var postalGoodsClearance = await _service.GetPostalGoodsClearance(uniqueId);
+        return Ok(postalGoodsClearance);
+    }
 }

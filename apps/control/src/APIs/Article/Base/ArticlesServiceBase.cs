@@ -116,6 +116,15 @@ public abstract class ArticlesServiceBase : IArticlesService
                 .ToListAsync();
         }
 
+        if (createDto.SampleRequests != null)
+        {
+            article.SampleRequests = await _context
+                .SampleRequests.Where(sampleRequest =>
+                    createDto.SampleRequests.Select(t => t.Id).Contains(sampleRequest.Id)
+                )
+                .ToListAsync();
+        }
+
         if (createDto.Tax != null)
         {
             article.Tax = await _context
@@ -172,6 +181,7 @@ public abstract class ArticlesServiceBase : IArticlesService
             .Include(x => x.Model)
             .Include(x => x.Vehicle)
             .Include(x => x.ArticleAssessments)
+            .Include(x => x.SampleRequests)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -237,6 +247,15 @@ public abstract class ArticlesServiceBase : IArticlesService
             article.ArticleAssessments = await _context
                 .ArticleAssessments.Where(articleAssessment =>
                     updateDto.ArticleAssessments.Select(t => t).Contains(articleAssessment.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.SampleRequests != null)
+        {
+            article.SampleRequests = await _context
+                .SampleRequests.Where(sampleRequest =>
+                    updateDto.SampleRequests.Select(t => t).Contains(sampleRequest.Id)
                 )
                 .ToListAsync();
         }
@@ -385,6 +404,115 @@ public abstract class ArticlesServiceBase : IArticlesService
             throw new NotFoundException();
         }
         return article.CommonDetailedDeclaration.ToDto();
+    }
+
+    /// <summary>
+    /// Connect multiple Sample Requests records to Article
+    /// </summary>
+    public async Task ConnectSampleRequests(
+        ArticleWhereUniqueInput uniqueId,
+        SampleRequestWhereUniqueInput[] sampleRequestsId
+    )
+    {
+        var parent = await _context
+            .Articles.Include(x => x.SampleRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var sampleRequests = await _context
+            .SampleRequests.Where(t => sampleRequestsId.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+        if (sampleRequests.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var sampleRequestsToConnect = sampleRequests.Except(parent.SampleRequests);
+
+        foreach (var sampleRequest in sampleRequestsToConnect)
+        {
+            parent.SampleRequests.Add(sampleRequest);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Sample Requests records from Article
+    /// </summary>
+    public async Task DisconnectSampleRequests(
+        ArticleWhereUniqueInput uniqueId,
+        SampleRequestWhereUniqueInput[] sampleRequestsId
+    )
+    {
+        var parent = await _context
+            .Articles.Include(x => x.SampleRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var sampleRequests = await _context
+            .SampleRequests.Where(t => sampleRequestsId.Select(x => x.Id).Contains(t.Id))
+            .ToListAsync();
+
+        foreach (var sampleRequest in sampleRequests)
+        {
+            parent.SampleRequests?.Remove(sampleRequest);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple Sample Requests records for Article
+    /// </summary>
+    public async Task<List<SampleRequest>> FindSampleRequests(
+        ArticleWhereUniqueInput uniqueId,
+        SampleRequestFindManyArgs articleFindManyArgs
+    )
+    {
+        var sampleRequests = await _context
+            .SampleRequests.Where(m => m.ArticleId == uniqueId.Id)
+            .ApplyWhere(articleFindManyArgs.Where)
+            .ApplySkip(articleFindManyArgs.Skip)
+            .ApplyTake(articleFindManyArgs.Take)
+            .ApplyOrderBy(articleFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return sampleRequests.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple Sample Requests records for Article
+    /// </summary>
+    public async Task UpdateSampleRequests(
+        ArticleWhereUniqueInput uniqueId,
+        SampleRequestWhereUniqueInput[] sampleRequestsId
+    )
+    {
+        var article = await _context
+            .Articles.Include(t => t.SampleRequests)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (article == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var sampleRequests = await _context
+            .SampleRequests.Where(a => sampleRequestsId.Select(x => x.Id).Contains(a.Id))
+            .ToListAsync();
+
+        if (sampleRequests.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        article.SampleRequests = sampleRequests;
+        await _context.SaveChangesAsync();
     }
 
     /// <summary>

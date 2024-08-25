@@ -219,6 +219,106 @@ public abstract class ArticlesSubmittedForVerificationsControllerBase : Controll
     }
 
     /// <summary>
+    /// Connect multiple Model Value Evaluation Verifications records to Articles Submitted For Verification
+    /// </summary>
+    [HttpPost("{Id}/modelValueEvaluationVerifications")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> ConnectModelValueEvaluationVerifications(
+        [FromRoute()] ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        [FromQuery()]
+            ModelValueEvaluationVerificationWhereUniqueInput[] modelValueEvaluationVerificationsId
+    )
+    {
+        try
+        {
+            await _service.ConnectModelValueEvaluationVerifications(
+                uniqueId,
+                modelValueEvaluationVerificationsId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Model Value Evaluation Verifications records from Articles Submitted For Verification
+    /// </summary>
+    [HttpDelete("{Id}/modelValueEvaluationVerifications")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> DisconnectModelValueEvaluationVerifications(
+        [FromRoute()] ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        [FromBody()]
+            ModelValueEvaluationVerificationWhereUniqueInput[] modelValueEvaluationVerificationsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectModelValueEvaluationVerifications(
+                uniqueId,
+                modelValueEvaluationVerificationsId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple Model Value Evaluation Verifications records for Articles Submitted For Verification
+    /// </summary>
+    [HttpGet("{Id}/modelValueEvaluationVerifications")]
+    [Authorize(Roles = "user")]
+    public async Task<
+        ActionResult<List<ModelValueEvaluationVerification>>
+    > FindModelValueEvaluationVerifications(
+        [FromRoute()] ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        [FromQuery()] ModelValueEvaluationVerificationFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindModelValueEvaluationVerifications(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple Model Value Evaluation Verifications records for Articles Submitted For Verification
+    /// </summary>
+    [HttpPatch("{Id}/modelValueEvaluationVerifications")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> UpdateModelValueEvaluationVerifications(
+        [FromRoute()] ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        [FromBody()]
+            ModelValueEvaluationVerificationWhereUniqueInput[] modelValueEvaluationVerificationsId
+    )
+    {
+        try
+        {
+            await _service.UpdateModelValueEvaluationVerifications(
+                uniqueId,
+                modelValueEvaluationVerificationsId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
     /// Connect multiple Taxes For Verification records to Articles Submitted For Verification
     /// </summary>
     [HttpPost("{Id}/taxForVerifications")]

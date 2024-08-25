@@ -16,7 +16,7 @@ public class RecourseRequestDbModel
     public string? JournalId { get; set; }
 
     [ForeignKey(nameof(JournalId))]
-    public JournalDbModel? Journal { get; set; } = null;
+    public ProcedureDbModel? Journal { get; set; } = null;
 
     [Required()]
     public DateTime UpdatedAt { get; set; }

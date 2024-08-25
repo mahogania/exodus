@@ -127,12 +127,12 @@ public abstract class CommonActiveGoodsRequestsControllerBase : ControllerBase
     /// <summary>
     /// Get a Journal record for Common Active Goods Request
     /// </summary>
-    [HttpGet("{Id}/journals")]
-    public async Task<ActionResult<List<Journal>>> GetJournal(
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetJournal(
         [FromRoute()] CommonActiveGoodsRequestWhereUniqueInput uniqueId
     )
     {
-        var journal = await _service.GetJournal(uniqueId);
-        return Ok(journal);
+        var procedure = await _service.GetJournal(uniqueId);
+        return Ok(procedure);
     }
 }

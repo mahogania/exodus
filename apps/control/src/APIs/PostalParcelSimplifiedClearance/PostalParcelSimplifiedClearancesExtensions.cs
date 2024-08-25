@@ -45,6 +45,7 @@ public static class PostalParcelSimplifiedClearancesExtensions
             PersonalCustomsClearanceNumber = model.PersonalCustomsClearanceNumber,
             PersonalPurchaseOn = model.PersonalPurchaseOn,
             PostalParcelNumber = model.PostalParcelNumber,
+            Procedure = model.ProcedureId,
             Quantity = model.Quantity,
             ReasonsForArticlesSuspectedOfInfringingIntellectualPropertyRights =
                 model.ReasonsForArticlesSuspectedOfInfringingIntellectualPropertyRights,
@@ -127,6 +128,10 @@ public static class PostalParcelSimplifiedClearancesExtensions
         if (updateDto.CreatedAt != null)
         {
             postalParcelSimplifiedClearance.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.Procedure != null)
+        {
+            postalParcelSimplifiedClearance.ProcedureId = updateDto.Procedure;
         }
         if (updateDto.UpdatedAt != null)
         {

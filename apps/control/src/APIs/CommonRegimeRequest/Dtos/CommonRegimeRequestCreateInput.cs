@@ -34,7 +34,7 @@ public class CommonRegimeRequestCreateInput
 
     public string? Id { get; set; }
 
-    public Journal? Journal { get; set; }
+    public Procedure? Journal { get; set; }
 
     public string? ProcessingStatusCode { get; set; }
 

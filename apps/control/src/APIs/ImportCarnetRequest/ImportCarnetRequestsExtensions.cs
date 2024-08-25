@@ -11,6 +11,7 @@ public static class ImportCarnetRequestsExtensions
         {
             CarnetNumber = model.CarnetNumber,
             CarnetTypeCode = model.CarnetTypeCode,
+            CommonCarnetRequest = model.CommonCarnetRequestId,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
             ImportCarnetControl = model.ImportCarnetControlId,
@@ -34,6 +35,10 @@ public static class ImportCarnetRequestsExtensions
             ReferenceNo = updateDto.ReferenceNo
         };
 
+        if (updateDto.CommonCarnetRequest != null)
+        {
+            importCarnetRequest.CommonCarnetRequestId = updateDto.CommonCarnetRequest;
+        }
         if (updateDto.CreatedAt != null)
         {
             importCarnetRequest.CreatedAt = updateDto.CreatedAt.Value;

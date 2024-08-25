@@ -28,7 +28,7 @@ public class CancellationRequestCreateInput
 
     public string? ReferenceNumber { get; set; }
 
-    public Journal? Request { get; set; }
+    public Procedure? Request { get; set; }
 
     public string? SuppressionOn { get; set; }
 

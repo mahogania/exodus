@@ -132,4 +132,16 @@ public abstract class PostalParcelSimplifiedClearancesControllerBase : Controlle
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Procedure record for Postal Parcel Simplified Clearance
+    /// </summary>
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetProcedure(
+        [FromRoute()] PostalParcelSimplifiedClearanceWhereUniqueInput uniqueId
+    )
+    {
+        var procedure = await _service.GetProcedure(uniqueId);
+        return Ok(procedure);
+    }
 }

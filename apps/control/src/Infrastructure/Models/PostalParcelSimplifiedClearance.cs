@@ -95,6 +95,11 @@ public class PostalParcelSimplifiedClearanceDbModel
     [StringLength(1000)]
     public string? PostalParcelNumber { get; set; }
 
+    public string? ProcedureId { get; set; }
+
+    [ForeignKey(nameof(ProcedureId))]
+    public ProcedureDbModel? Procedure { get; set; } = null;
+
     [Range(-999999999, 999999999)]
     public double? Quantity { get; set; }
 

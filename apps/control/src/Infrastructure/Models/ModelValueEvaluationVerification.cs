@@ -9,6 +9,12 @@ public class ModelValueEvaluationVerificationDbModel
     [StringLength(1000)]
     public string? ArticleNumber { get; set; }
 
+    public string? ArticlesSubmittedForVerificationId { get; set; }
+
+    [ForeignKey(nameof(ArticlesSubmittedForVerificationId))]
+    public ArticlesSubmittedForVerificationDbModel? ArticlesSubmittedForVerification { get; set; } =
+        null;
+
     [Required()]
     public DateTime CreatedAt { get; set; }
 

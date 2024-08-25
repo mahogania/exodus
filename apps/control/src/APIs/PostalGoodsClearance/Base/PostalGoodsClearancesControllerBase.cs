@@ -120,4 +120,113 @@ public abstract class PostalGoodsClearancesControllerBase : ControllerBase
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Connect multiple Postal Goods Clearance Details records to Postal Goods Clearance
+    /// </summary>
+    [HttpPost("{Id}/postalGoodsClearanceDetails")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> ConnectPostalGoodsClearanceDetails(
+        [FromRoute()] PostalGoodsClearanceWhereUniqueInput uniqueId,
+        [FromQuery()] PostalGoodsClearanceDetailWhereUniqueInput[] postalGoodsClearanceDetailsId
+    )
+    {
+        try
+        {
+            await _service.ConnectPostalGoodsClearanceDetails(
+                uniqueId,
+                postalGoodsClearanceDetailsId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Postal Goods Clearance Details records from Postal Goods Clearance
+    /// </summary>
+    [HttpDelete("{Id}/postalGoodsClearanceDetails")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> DisconnectPostalGoodsClearanceDetails(
+        [FromRoute()] PostalGoodsClearanceWhereUniqueInput uniqueId,
+        [FromBody()] PostalGoodsClearanceDetailWhereUniqueInput[] postalGoodsClearanceDetailsId
+    )
+    {
+        try
+        {
+            await _service.DisconnectPostalGoodsClearanceDetails(
+                uniqueId,
+                postalGoodsClearanceDetailsId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Find multiple Postal Goods Clearance Details records for Postal Goods Clearance
+    /// </summary>
+    [HttpGet("{Id}/postalGoodsClearanceDetails")]
+    [Authorize(Roles = "user")]
+    public async Task<
+        ActionResult<List<PostalGoodsClearanceDetail>>
+    > FindPostalGoodsClearanceDetails(
+        [FromRoute()] PostalGoodsClearanceWhereUniqueInput uniqueId,
+        [FromQuery()] PostalGoodsClearanceDetailFindManyArgs filter
+    )
+    {
+        try
+        {
+            return Ok(await _service.FindPostalGoodsClearanceDetails(uniqueId, filter));
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+    }
+
+    /// <summary>
+    /// Update multiple Postal Goods Clearance Details records for Postal Goods Clearance
+    /// </summary>
+    [HttpPatch("{Id}/postalGoodsClearanceDetails")]
+    [Authorize(Roles = "user")]
+    public async Task<ActionResult> UpdatePostalGoodsClearanceDetails(
+        [FromRoute()] PostalGoodsClearanceWhereUniqueInput uniqueId,
+        [FromBody()] PostalGoodsClearanceDetailWhereUniqueInput[] postalGoodsClearanceDetailsId
+    )
+    {
+        try
+        {
+            await _service.UpdatePostalGoodsClearanceDetails(
+                uniqueId,
+                postalGoodsClearanceDetailsId
+            );
+        }
+        catch (NotFoundException)
+        {
+            return NotFound();
+        }
+
+        return NoContent();
+    }
+
+    /// <summary>
+    /// Get a Procedure record for Postal Goods Clearance
+    /// </summary>
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetProcedure(
+        [FromRoute()] PostalGoodsClearanceWhereUniqueInput uniqueId
+    )
+    {
+        var procedure = await _service.GetProcedure(uniqueId);
+        return Ok(procedure);
+    }
 }

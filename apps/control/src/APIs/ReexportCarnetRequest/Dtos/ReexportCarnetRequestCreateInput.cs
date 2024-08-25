@@ -6,6 +6,8 @@ public class ReexportCarnetRequestCreateInput
 
     public string? CarnetTypeCode { get; set; }
 
+    public CommonCarnetRequest? CommonCarnetRequest { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public string? Id { get; set; }

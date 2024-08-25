@@ -129,6 +129,9 @@ public class ArticleDbModel
     [StringLength(1000)]
     public string? RtcDecisionAuthorizationNumber { get; set; }
 
+    public List<SampleRequestDbModel>? SampleRequests { get; set; } =
+        new List<SampleRequestDbModel>();
+
     [StringLength(1000)]
     public string? ShCode { get; set; }
 

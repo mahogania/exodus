@@ -47,4 +47,11 @@ public interface IModelValueEvaluationVerificationsService
         ModelValueEvaluationVerificationWhereUniqueInput uniqueId,
         ModelValueEvaluationVerificationUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Articles Submitted For Verification record for Model Value Evaluation Verification
+    /// </summary>
+    public Task<ArticlesSubmittedForVerification> GetArticlesSubmittedForVerification(
+        ModelValueEvaluationVerificationWhereUniqueInput uniqueId
+    );
 }

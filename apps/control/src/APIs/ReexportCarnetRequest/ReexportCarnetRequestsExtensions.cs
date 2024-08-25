@@ -11,6 +11,7 @@ public static class ReexportCarnetRequestsExtensions
         {
             CarnetNumber = model.CarnetNumber,
             CarnetTypeCode = model.CarnetTypeCode,
+            CommonCarnetRequest = model.CommonCarnetRequestId,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
             ManagementNumberOfCarnet = model.ManagementNumberOfCarnet,
@@ -34,6 +35,10 @@ public static class ReexportCarnetRequestsExtensions
             ReferenceNo = updateDto.ReferenceNo
         };
 
+        if (updateDto.CommonCarnetRequest != null)
+        {
+            reexportCarnetRequest.CommonCarnetRequestId = updateDto.CommonCarnetRequest;
+        }
         if (updateDto.CreatedAt != null)
         {
             reexportCarnetRequest.CreatedAt = updateDto.CreatedAt.Value;

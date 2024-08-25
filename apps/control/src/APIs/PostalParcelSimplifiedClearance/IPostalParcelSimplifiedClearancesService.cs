@@ -47,4 +47,9 @@ public interface IPostalParcelSimplifiedClearancesService
         PostalParcelSimplifiedClearanceWhereUniqueInput uniqueId,
         PostalParcelSimplifiedClearanceUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Procedure record for Postal Parcel Simplified Clearance
+    /// </summary>
+    public Task<Procedure> GetProcedure(PostalParcelSimplifiedClearanceWhereUniqueInput uniqueId);
 }

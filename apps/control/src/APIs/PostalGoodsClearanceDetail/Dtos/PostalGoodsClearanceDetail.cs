@@ -34,6 +34,8 @@ public class PostalGoodsClearanceDetail
 
     public double? NetWeightOfTheArticle { get; set; }
 
+    public string? PostalGoodsClearance { get; set; }
+
     public double? Quantity { get; set; }
 
     public string? RequestNumberOfTheCustomsClearanceOfPostalParcels { get; set; }

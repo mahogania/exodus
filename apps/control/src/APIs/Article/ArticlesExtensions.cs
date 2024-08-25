@@ -51,6 +51,7 @@ public static class ArticlesExtensions
             ReferenceNumber = model.ReferenceNumber,
             RequestRegimeNumber = model.RequestRegimeNumber,
             RtcDecisionAuthorizationNumber = model.RtcDecisionAuthorizationNumber,
+            SampleRequests = model.SampleRequests?.Select(x => x.Id).ToList(),
             ShCode = model.ShCode,
             SpecificCodeForClassificationOfGoods = model.SpecificCodeForClassificationOfGoods,
             StartDateOfApcApproval = model.StartDateOfApcApproval,

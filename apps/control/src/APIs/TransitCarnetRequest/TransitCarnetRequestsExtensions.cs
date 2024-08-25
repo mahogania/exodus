@@ -10,6 +10,7 @@ public static class TransitCarnetRequestsExtensions
         return new TransitCarnetRequest
         {
             CarnetTypeCode = model.CarnetTypeCode,
+            CommonCarnetRequest = model.CommonCarnetRequestId,
             CreatedAt = model.CreatedAt,
             Id = model.Id,
             ManagementNumberOfCarnet = model.ManagementNumberOfCarnet,
@@ -32,6 +33,10 @@ public static class TransitCarnetRequestsExtensions
             ReferenceNo = updateDto.ReferenceNo
         };
 
+        if (updateDto.CommonCarnetRequest != null)
+        {
+            transitCarnetRequest.CommonCarnetRequestId = updateDto.CommonCarnetRequest;
+        }
         if (updateDto.CreatedAt != null)
         {
             transitCarnetRequest.CreatedAt = updateDto.CreatedAt.Value;

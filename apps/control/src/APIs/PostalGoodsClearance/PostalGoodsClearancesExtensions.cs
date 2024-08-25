@@ -42,10 +42,14 @@ public static class PostalGoodsClearancesExtensions
             OperationType = model.OperationType,
             OrdinaryCustomsClearanceOn = model.OrdinaryCustomsClearanceOn,
             OriginPost = model.OriginPost,
+            PostalGoodsClearanceDetails = model
+                .PostalGoodsClearanceDetails?.Select(x => x.Id)
+                .ToList(),
             PostalNumber = model.PostalNumber,
             PostalPackageCustomsClearanceRequestNumber =
                 model.PostalPackageCustomsClearanceRequestNumber,
             PostalPackageValue = model.PostalPackageValue,
+            Procedure = model.ProcedureId,
             ReceiverSEmail = model.ReceiverSEmail,
             ReceiverSId = model.ReceiverSId,
             ReceptionDateAlgerPort = model.ReceptionDateAlgerPort,
@@ -148,6 +152,10 @@ public static class PostalGoodsClearancesExtensions
         if (updateDto.CreatedAt != null)
         {
             postalGoodsClearance.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.Procedure != null)
+        {
+            postalGoodsClearance.ProcedureId = updateDto.Procedure;
         }
         if (updateDto.UpdatedAt != null)
         {

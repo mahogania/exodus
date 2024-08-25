@@ -227,12 +227,12 @@ public abstract class CommonDetailedDeclarationsControllerBase : ControllerBase
     /// <summary>
     /// Get a Journal record for Common Detailed Declaration
     /// </summary>
-    [HttpGet("{Id}/journals")]
-    public async Task<ActionResult<List<Journal>>> GetJournal(
+    [HttpGet("{Id}/procedures")]
+    public async Task<ActionResult<List<Procedure>>> GetJournal(
         [FromRoute()] CommonDetailedDeclarationWhereUniqueInput uniqueId
     )
     {
-        var journal = await _service.GetJournal(uniqueId);
-        return Ok(journal);
+        var procedure = await _service.GetJournal(uniqueId);
+        return Ok(procedure);
     }
 }

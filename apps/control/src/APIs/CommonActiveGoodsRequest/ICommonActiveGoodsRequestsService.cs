@@ -49,5 +49,5 @@ public interface ICommonActiveGoodsRequestsService
     /// <summary>
     /// Get a Journal record for Common Active Goods Request
     /// </summary>
-    public Task<Journal> GetJournal(CommonActiveGoodsRequestWhereUniqueInput uniqueId);
+    public Task<Procedure> GetJournal(CommonActiveGoodsRequestWhereUniqueInput uniqueId);
 }

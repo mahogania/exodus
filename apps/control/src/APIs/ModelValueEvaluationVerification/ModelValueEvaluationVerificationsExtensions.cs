@@ -12,6 +12,7 @@ public static class ModelValueEvaluationVerificationsExtensions
         return new ModelValueEvaluationVerification
         {
             ArticleNumber = model.ArticleNumber,
+            ArticlesSubmittedForVerification = model.ArticlesSubmittedForVerificationId,
             CreatedAt = model.CreatedAt,
             DateAndTimeOfFinalModification = model.DateAndTimeOfFinalModification,
             DateAndTimeOfInitialRecord = model.DateAndTimeOfInitialRecord,
@@ -59,6 +60,11 @@ public static class ModelValueEvaluationVerificationsExtensions
             ValueEvaluationContent = updateDto.ValueEvaluationContent
         };
 
+        if (updateDto.ArticlesSubmittedForVerification != null)
+        {
+            modelValueEvaluationVerification.ArticlesSubmittedForVerificationId =
+                updateDto.ArticlesSubmittedForVerification;
+        }
         if (updateDto.CreatedAt != null)
         {
             modelValueEvaluationVerification.CreatedAt = updateDto.CreatedAt.Value;

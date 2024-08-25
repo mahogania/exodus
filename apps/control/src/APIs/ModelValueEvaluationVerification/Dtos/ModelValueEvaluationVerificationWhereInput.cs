@@ -4,6 +4,8 @@ public class ModelValueEvaluationVerificationWhereInput
 {
     public string? ArticleNumber { get; set; }
 
+    public string? ArticlesSubmittedForVerification { get; set; }
+
     public DateTime? CreatedAt { get; set; }
 
     public DateTime? DateAndTimeOfFinalModification { get; set; }

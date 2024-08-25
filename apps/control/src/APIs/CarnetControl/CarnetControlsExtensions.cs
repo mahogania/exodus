@@ -13,6 +13,7 @@ public static class CarnetControlsExtensions
             AttachedFileId = model.AttachedFileId,
             AuthorizationDate = model.AuthorizationDate,
             CarnetTypeCode = model.CarnetTypeCode,
+            CommonCarnetRequest = model.CommonCarnetRequestId,
             CreatedAt = model.CreatedAt,
             DateAndTimeOfFinalModification = model.DateAndTimeOfFinalModification,
             DateAndTimeOfInitialRecord = model.DateAndTimeOfInitialRecord,
@@ -49,6 +50,10 @@ public static class CarnetControlsExtensions
             VerificationResultContent = updateDto.VerificationResultContent
         };
 
+        if (updateDto.CommonCarnetRequest != null)
+        {
+            carnetControl.CommonCarnetRequestId = updateDto.CommonCarnetRequest;
+        }
         if (updateDto.CreatedAt != null)
         {
             carnetControl.CreatedAt = updateDto.CreatedAt.Value;

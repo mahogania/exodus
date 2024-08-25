@@ -47,7 +47,7 @@ public class CancellationRequestDbModel
     public string? RequestId { get; set; }
 
     [ForeignKey(nameof(RequestId))]
-    public JournalDbModel? Request { get; set; } = null;
+    public ProcedureDbModel? Request { get; set; } = null;
 
     [StringLength(1000)]
     public string? SuppressionOn { get; set; }

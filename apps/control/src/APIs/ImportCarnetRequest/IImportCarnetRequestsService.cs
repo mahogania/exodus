@@ -45,6 +45,13 @@ public interface IImportCarnetRequestsService
     );
 
     /// <summary>
+    /// Get a Common Carnet Request record for Import Carnet Request
+    /// </summary>
+    public Task<CommonCarnetRequest> GetCommonCarnetRequest(
+        ImportCarnetRequestWhereUniqueInput uniqueId
+    );
+
+    /// <summary>
     /// Get a Import Carnet Control record for Import Carnet Request
     /// </summary>
     public Task<ImportCarnetControl> GetImportCarnetControl(

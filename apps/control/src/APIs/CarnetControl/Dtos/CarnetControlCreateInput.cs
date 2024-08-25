@@ -12,6 +12,8 @@ public class CarnetControlCreateInput
 
     public string? CarnetTypeCode { get; set; }
 
+    public CommonCarnetRequest? CommonCarnetRequest { get; set; }
+
     public DateTime CreatedAt { get; set; }
 
     public DateTime? DateAndTimeOfFinalModification { get; set; }

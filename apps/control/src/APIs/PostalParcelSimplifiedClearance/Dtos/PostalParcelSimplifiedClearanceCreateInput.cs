@@ -62,6 +62,8 @@ public class PostalParcelSimplifiedClearanceCreateInput
 
     public string? PostalParcelNumber { get; set; }
 
+    public Procedure? Procedure { get; set; }
+
     public double? Quantity { get; set; }
 
     public string? ReasonsForArticlesSuspectedOfInfringingIntellectualPropertyRights { get; set; }

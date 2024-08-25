@@ -150,6 +150,17 @@ public abstract class ArticlesSubmittedForVerificationsServiceBase
                 .ToListAsync();
         }
 
+        if (createDto.ModelValueEvaluationVerifications != null)
+        {
+            articlesSubmittedForVerification.ModelValueEvaluationVerifications = await _context
+                .ModelValueEvaluationVerifications.Where(modelValueEvaluationVerification =>
+                    createDto
+                        .ModelValueEvaluationVerifications.Select(t => t.Id)
+                        .Contains(modelValueEvaluationVerification.Id)
+                )
+                .ToListAsync();
+        }
+
         if (createDto.TaxesForVerification != null)
         {
             articlesSubmittedForVerification.TaxesForVerification = await _context
@@ -202,6 +213,7 @@ public abstract class ArticlesSubmittedForVerificationsServiceBase
         var articlesSubmittedForVerifications = await _context
             .ArticlesSubmittedForVerifications.Include(x => x.CommonVerifications)
             .Include(x => x.TaxesForVerification)
+            .Include(x => x.ModelValueEvaluationVerifications)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -272,6 +284,17 @@ public abstract class ArticlesSubmittedForVerificationsServiceBase
             articlesSubmittedForVerification.TaxesForVerification = await _context
                 .TaxForVerifications.Where(taxForVerification =>
                     updateDto.TaxesForVerification.Select(t => t).Contains(taxForVerification.Id)
+                )
+                .ToListAsync();
+        }
+
+        if (updateDto.ModelValueEvaluationVerifications != null)
+        {
+            articlesSubmittedForVerification.ModelValueEvaluationVerifications = await _context
+                .ModelValueEvaluationVerifications.Where(modelValueEvaluationVerification =>
+                    updateDto
+                        .ModelValueEvaluationVerifications.Select(t => t)
+                        .Contains(modelValueEvaluationVerification.Id)
                 )
                 .ToListAsync();
         }
@@ -405,6 +428,126 @@ public abstract class ArticlesSubmittedForVerificationsServiceBase
         }
 
         articlesSubmittedForVerification.CommonVerifications = commonVerifications;
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Connect multiple Model Value Evaluation Verifications records to Articles Submitted For Verification
+    /// </summary>
+    public async Task ConnectModelValueEvaluationVerifications(
+        ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        ModelValueEvaluationVerificationWhereUniqueInput[] modelValueEvaluationVerificationsId
+    )
+    {
+        var parent = await _context
+            .ArticlesSubmittedForVerifications.Include(x => x.ModelValueEvaluationVerifications)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var modelValueEvaluationVerifications = await _context
+            .ModelValueEvaluationVerifications.Where(t =>
+                modelValueEvaluationVerificationsId.Select(x => x.Id).Contains(t.Id)
+            )
+            .ToListAsync();
+        if (modelValueEvaluationVerifications.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        var modelValueEvaluationVerificationsToConnect = modelValueEvaluationVerifications.Except(
+            parent.ModelValueEvaluationVerifications
+        );
+
+        foreach (var modelValueEvaluationVerification in modelValueEvaluationVerificationsToConnect)
+        {
+            parent.ModelValueEvaluationVerifications.Add(modelValueEvaluationVerification);
+        }
+
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Disconnect multiple Model Value Evaluation Verifications records from Articles Submitted For Verification
+    /// </summary>
+    public async Task DisconnectModelValueEvaluationVerifications(
+        ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        ModelValueEvaluationVerificationWhereUniqueInput[] modelValueEvaluationVerificationsId
+    )
+    {
+        var parent = await _context
+            .ArticlesSubmittedForVerifications.Include(x => x.ModelValueEvaluationVerifications)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (parent == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var modelValueEvaluationVerifications = await _context
+            .ModelValueEvaluationVerifications.Where(t =>
+                modelValueEvaluationVerificationsId.Select(x => x.Id).Contains(t.Id)
+            )
+            .ToListAsync();
+
+        foreach (var modelValueEvaluationVerification in modelValueEvaluationVerifications)
+        {
+            parent.ModelValueEvaluationVerifications?.Remove(modelValueEvaluationVerification);
+        }
+        await _context.SaveChangesAsync();
+    }
+
+    /// <summary>
+    /// Find multiple Model Value Evaluation Verifications records for Articles Submitted For Verification
+    /// </summary>
+    public async Task<List<ModelValueEvaluationVerification>> FindModelValueEvaluationVerifications(
+        ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        ModelValueEvaluationVerificationFindManyArgs articlesSubmittedForVerificationFindManyArgs
+    )
+    {
+        var modelValueEvaluationVerifications = await _context
+            .ModelValueEvaluationVerifications.Where(m =>
+                m.ArticlesSubmittedForVerificationId == uniqueId.Id
+            )
+            .ApplyWhere(articlesSubmittedForVerificationFindManyArgs.Where)
+            .ApplySkip(articlesSubmittedForVerificationFindManyArgs.Skip)
+            .ApplyTake(articlesSubmittedForVerificationFindManyArgs.Take)
+            .ApplyOrderBy(articlesSubmittedForVerificationFindManyArgs.SortBy)
+            .ToListAsync();
+
+        return modelValueEvaluationVerifications.Select(x => x.ToDto()).ToList();
+    }
+
+    /// <summary>
+    /// Update multiple Model Value Evaluation Verifications records for Articles Submitted For Verification
+    /// </summary>
+    public async Task UpdateModelValueEvaluationVerifications(
+        ArticlesSubmittedForVerificationWhereUniqueInput uniqueId,
+        ModelValueEvaluationVerificationWhereUniqueInput[] modelValueEvaluationVerificationsId
+    )
+    {
+        var articlesSubmittedForVerification = await _context
+            .ArticlesSubmittedForVerifications.Include(t => t.ModelValueEvaluationVerifications)
+            .FirstOrDefaultAsync(x => x.Id == uniqueId.Id);
+        if (articlesSubmittedForVerification == null)
+        {
+            throw new NotFoundException();
+        }
+
+        var modelValueEvaluationVerifications = await _context
+            .ModelValueEvaluationVerifications.Where(a =>
+                modelValueEvaluationVerificationsId.Select(x => x.Id).Contains(a.Id)
+            )
+            .ToListAsync();
+
+        if (modelValueEvaluationVerifications.Count == 0)
+        {
+            throw new NotFoundException();
+        }
+
+        articlesSubmittedForVerification.ModelValueEvaluationVerifications =
+            modelValueEvaluationVerifications;
         await _context.SaveChangesAsync();
     }
 

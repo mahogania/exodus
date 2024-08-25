@@ -34,6 +34,8 @@ public class PostalGoodsClearanceDetailCreateInput
 
     public double? NetWeightOfTheArticle { get; set; }
 
+    public PostalGoodsClearance? PostalGoodsClearance { get; set; }
+
     public double? Quantity { get; set; }
 
     public string? RequestNumberOfTheCustomsClearanceOfPostalParcels { get; set; }

@@ -41,5 +41,5 @@ public interface IRecourseRequestsService
     /// <summary>
     /// Get a Journal record for Recourse Request
     /// </summary>
-    public Task<Journal> GetJournal(RecourseRequestWhereUniqueInput uniqueId);
+    public Task<Procedure> GetJournal(RecourseRequestWhereUniqueInput uniqueId);
 }

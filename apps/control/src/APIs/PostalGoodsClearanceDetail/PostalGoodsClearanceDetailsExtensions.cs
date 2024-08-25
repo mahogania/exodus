@@ -25,6 +25,7 @@ public static class PostalGoodsClearanceDetailsExtensions
             Id = model.Id,
             LiquidatedShCode = model.LiquidatedShCode,
             NetWeightOfTheArticle = model.NetWeightOfTheArticle,
+            PostalGoodsClearance = model.PostalGoodsClearanceId,
             Quantity = model.Quantity,
             RequestNumberOfTheCustomsClearanceOfPostalParcels =
                 model.RequestNumberOfTheCustomsClearanceOfPostalParcels,
@@ -72,6 +73,10 @@ public static class PostalGoodsClearanceDetailsExtensions
         if (updateDto.CreatedAt != null)
         {
             postalGoodsClearanceDetail.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.PostalGoodsClearance != null)
+        {
+            postalGoodsClearanceDetail.PostalGoodsClearanceId = updateDto.PostalGoodsClearance;
         }
         if (updateDto.UpdatedAt != null)
         {

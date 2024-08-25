@@ -47,7 +47,7 @@ public abstract class CommonActiveGoodsRequestsServiceBase : ICommonActiveGoodsR
         if (createDto.Journal != null)
         {
             commonActiveGoodsRequest.Journal = await _context
-                .Journals.Where(journal => createDto.Journal.Id == journal.Id)
+                .Procedures.Where(procedure => createDto.Journal.Id == procedure.Id)
                 .FirstOrDefaultAsync();
         }
 
@@ -182,7 +182,7 @@ public abstract class CommonActiveGoodsRequestsServiceBase : ICommonActiveGoodsR
     /// <summary>
     /// Get a Journal record for Common Active Goods Request
     /// </summary>
-    public async Task<Journal> GetJournal(CommonActiveGoodsRequestWhereUniqueInput uniqueId)
+    public async Task<Procedure> GetJournal(CommonActiveGoodsRequestWhereUniqueInput uniqueId)
     {
         var commonActiveGoodsRequest = await _context
             .CommonActiveGoodsRequests.Where(commonActiveGoodsRequest =>

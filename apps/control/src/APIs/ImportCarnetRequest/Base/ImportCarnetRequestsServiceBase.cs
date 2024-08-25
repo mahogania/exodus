@@ -39,6 +39,15 @@ public abstract class ImportCarnetRequestsServiceBase : IImportCarnetRequestsSer
         {
             importCarnetRequest.Id = createDto.Id;
         }
+        if (createDto.CommonCarnetRequest != null)
+        {
+            importCarnetRequest.CommonCarnetRequest = await _context
+                .CommonCarnetRequests.Where(commonCarnetRequest =>
+                    createDto.CommonCarnetRequest.Id == commonCarnetRequest.Id
+                )
+                .FirstOrDefaultAsync();
+        }
+
         if (createDto.ImportCarnetControl != null)
         {
             importCarnetRequest.ImportCarnetControl = await _context
@@ -84,7 +93,8 @@ public abstract class ImportCarnetRequestsServiceBase : IImportCarnetRequestsSer
     )
     {
         var importCarnetRequests = await _context
-            .ImportCarnetRequests.Include(x => x.ImportCarnetControl)
+            .ImportCarnetRequests.Include(x => x.CommonCarnetRequest)
+            .Include(x => x.ImportCarnetControl)
             .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
@@ -154,6 +164,26 @@ public abstract class ImportCarnetRequestsServiceBase : IImportCarnetRequestsSer
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Common Carnet Request record for Import Carnet Request
+    /// </summary>
+    public async Task<CommonCarnetRequest> GetCommonCarnetRequest(
+        ImportCarnetRequestWhereUniqueInput uniqueId
+    )
+    {
+        var importCarnetRequest = await _context
+            .ImportCarnetRequests.Where(importCarnetRequest =>
+                importCarnetRequest.Id == uniqueId.Id
+            )
+            .Include(importCarnetRequest => importCarnetRequest.CommonCarnetRequest)
+            .FirstOrDefaultAsync();
+        if (importCarnetRequest == null)
+        {
+            throw new NotFoundException();
+        }
+        return importCarnetRequest.CommonCarnetRequest.ToDto();
     }
 
     /// <summary>

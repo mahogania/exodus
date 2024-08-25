@@ -45,4 +45,9 @@ public interface ICommonExpressClearancesService
         CommonExpressClearanceWhereUniqueInput uniqueId,
         CommonExpressClearanceUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Procedure record for Common Express Clearance
+    /// </summary>
+    public Task<Procedure> GetProcedure(CommonExpressClearanceWhereUniqueInput uniqueId);
 }

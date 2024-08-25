@@ -208,6 +208,9 @@ public class ArticlesSubmittedForVerificationDbModel
     [Range(-999999999, 999999999)]
     public double? LiquidatedTaxableBaseAmountInUsdOfTheArticle { get; set; }
 
+    public List<ModelValueEvaluationVerificationDbModel>? ModelValueEvaluationVerifications { get; set; } =
+        new List<ModelValueEvaluationVerificationDbModel>();
+
     [StringLength(1000)]
     public string? NumberOfTimesOfValueEvaluation { get; set; }
 

@@ -52,6 +52,15 @@ public abstract class ModelValueEvaluationVerificationsServiceBase
         {
             modelValueEvaluationVerification.Id = createDto.Id;
         }
+        if (createDto.ArticlesSubmittedForVerification != null)
+        {
+            modelValueEvaluationVerification.ArticlesSubmittedForVerification = await _context
+                .ArticlesSubmittedForVerifications.Where(articlesSubmittedForVerification =>
+                    createDto.ArticlesSubmittedForVerification.Id
+                    == articlesSubmittedForVerification.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.ModelValueEvaluationVerifications.Add(modelValueEvaluationVerification);
         await _context.SaveChangesAsync();
@@ -94,7 +103,8 @@ public abstract class ModelValueEvaluationVerificationsServiceBase
     )
     {
         var modelValueEvaluationVerifications = await _context
-            .ModelValueEvaluationVerifications.ApplyWhere(findManyArgs.Where)
+            .ModelValueEvaluationVerifications.Include(x => x.ArticlesSubmittedForVerification)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -171,5 +181,27 @@ public abstract class ModelValueEvaluationVerificationsServiceBase
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Articles Submitted For Verification record for Model Value Evaluation Verification
+    /// </summary>
+    public async Task<ArticlesSubmittedForVerification> GetArticlesSubmittedForVerification(
+        ModelValueEvaluationVerificationWhereUniqueInput uniqueId
+    )
+    {
+        var modelValueEvaluationVerification = await _context
+            .ModelValueEvaluationVerifications.Where(modelValueEvaluationVerification =>
+                modelValueEvaluationVerification.Id == uniqueId.Id
+            )
+            .Include(modelValueEvaluationVerification =>
+                modelValueEvaluationVerification.ArticlesSubmittedForVerification
+            )
+            .FirstOrDefaultAsync();
+        if (modelValueEvaluationVerification == null)
+        {
+            throw new NotFoundException();
+        }
+        return modelValueEvaluationVerification.ArticlesSubmittedForVerification.ToDto();
     }
 }
