@@ -47,4 +47,11 @@ public interface IInspectorRatingCriteriaInspectorsService
         InspectorRatingCriteriaInspectorWhereUniqueInput uniqueId,
         InspectorRatingCriteriaInspectorUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Inspector Rating Criteria record for Inspector Rating Criteria Inspector
+    /// </summary>
+    public Task<InspectorRatingCriterion> GetInspectorRatingCriteria(
+        InspectorRatingCriteriaInspectorWhereUniqueInput uniqueId
+    );
 }

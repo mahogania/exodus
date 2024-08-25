@@ -131,4 +131,16 @@ public abstract class InspectorRatingCriteriaInspectorsControllerBase : Controll
 
         return NoContent();
     }
+
+    /// <summary>
+    /// Get a Inspector Rating Criteria record for Inspector Rating Criteria Inspector
+    /// </summary>
+    [HttpGet("{Id}/inspectorRatingCriteria")]
+    public async Task<ActionResult<List<InspectorRatingCriterion>>> GetInspectorRatingCriteria(
+        [FromRoute()] InspectorRatingCriteriaInspectorWhereUniqueInput uniqueId
+    )
+    {
+        var inspectorRatingCriterion = await _service.GetInspectorRatingCriteria(uniqueId);
+        return Ok(inspectorRatingCriterion);
+    }
 }

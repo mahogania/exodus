@@ -3,11 +3,11 @@ using Criteria.Infrastructure.Models;
 
 namespace Criteria.APIs.Extensions;
 
-public static class InspectorQuotationCriteriaExtensions
+public static class InspectorRatingCriteriaExtensions
 {
-    public static InspectorQuotationCriterion ToDto(this InspectorQuotationCriterionDbModel model)
+    public static InspectorRatingCriterion ToDto(this InspectorRatingCriterionDbModel model)
     {
-        return new InspectorQuotationCriterion
+        return new InspectorRatingCriterion
         {
             AgencyCode = model.AgencyCode,
             ApplicationPriority = model.ApplicationPriority,
@@ -15,6 +15,12 @@ public static class InspectorQuotationCriteriaExtensions
             EndApcCode = model.EndApcCode,
             EndFieldShCode = model.EndFieldShCode,
             Id = model.Id,
+            InspectorRatingCriteriaDeclarationModel = model
+                .InspectorRatingCriteriaDeclarationModel?.Select(x => x.Id)
+                .ToList(),
+            InspectorRatingCriteriaInspector = model
+                .InspectorRatingCriteriaInspector?.Select(x => x.Id)
+                .ToList(),
             ServiceCode = model.ServiceCode,
             StartApcCode = model.StartApcCode,
             StartFieldShCode = model.StartFieldShCode,
@@ -22,12 +28,12 @@ public static class InspectorQuotationCriteriaExtensions
         };
     }
 
-    public static InspectorQuotationCriterionDbModel ToModel(
-        this InspectorQuotationCriterionUpdateInput updateDto,
-        InspectorQuotationCriterionWhereUniqueInput uniqueId
+    public static InspectorRatingCriterionDbModel ToModel(
+        this InspectorRatingCriterionUpdateInput updateDto,
+        InspectorRatingCriterionWhereUniqueInput uniqueId
     )
     {
-        var inspectorQuotationCriterion = new InspectorQuotationCriterionDbModel
+        var inspectorRatingCriterion = new InspectorRatingCriterionDbModel
         {
             Id = uniqueId.Id,
             ApplicationPriority = updateDto.ApplicationPriority,
@@ -39,21 +45,21 @@ public static class InspectorQuotationCriteriaExtensions
 
         if (updateDto.AgencyCode != null)
         {
-            inspectorQuotationCriterion.AgencyCode = updateDto.AgencyCode;
+            inspectorRatingCriterion.AgencyCode = updateDto.AgencyCode;
         }
         if (updateDto.CreatedAt != null)
         {
-            inspectorQuotationCriterion.CreatedAt = updateDto.CreatedAt.Value;
+            inspectorRatingCriterion.CreatedAt = updateDto.CreatedAt.Value;
         }
         if (updateDto.ServiceCode != null)
         {
-            inspectorQuotationCriterion.ServiceCode = updateDto.ServiceCode;
+            inspectorRatingCriterion.ServiceCode = updateDto.ServiceCode;
         }
         if (updateDto.UpdatedAt != null)
         {
-            inspectorQuotationCriterion.UpdatedAt = updateDto.UpdatedAt.Value;
+            inspectorRatingCriterion.UpdatedAt = updateDto.UpdatedAt.Value;
         }
 
-        return inspectorQuotationCriterion;
+        return inspectorRatingCriterion;
     }
 }

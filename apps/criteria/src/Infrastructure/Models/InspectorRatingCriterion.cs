@@ -3,8 +3,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Criteria.Infrastructure.Models;
 
-[Table("InspectorQuotationCriteria")]
-public class InspectorQuotationCriterionDbModel
+[Table("InspectorRatingCriteria")]
+public class InspectorRatingCriterionDbModel
 {
     [Required()]
     [StringLength(1000)]
@@ -25,6 +25,12 @@ public class InspectorQuotationCriterionDbModel
     [Key()]
     [Required()]
     public string Id { get; set; }
+
+    public List<InspectorRatingCriteriaDeclarationModelDbModel>? InspectorRatingCriteriaDeclarationModel { get; set; } =
+        new List<InspectorRatingCriteriaDeclarationModelDbModel>();
+
+    public List<InspectorRatingCriteriaInspectorDbModel>? InspectorRatingCriteriaInspector { get; set; } =
+        new List<InspectorRatingCriteriaInspectorDbModel>();
 
     [Required()]
     [StringLength(1000)]

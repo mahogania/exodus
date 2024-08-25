@@ -10,6 +10,8 @@ public class InspectorRatingCriteriaInspectorCreateInput
 
     public string? InspectorId { get; set; }
 
+    public InspectorRatingCriterion? InspectorRatingCriteria { get; set; }
+
     public string? OfficeCode { get; set; }
 
     public string? ServiceCode { get; set; }

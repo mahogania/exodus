@@ -19,6 +19,11 @@ public class InspectorRatingCriteriaInspectorDbModel
     [StringLength(1000)]
     public string? InspectorId { get; set; }
 
+    public string? InspectorRatingCriteriaId { get; set; }
+
+    [ForeignKey(nameof(InspectorRatingCriteriaId))]
+    public InspectorRatingCriterionDbModel? InspectorRatingCriteria { get; set; } = null;
+
     [StringLength(1000)]
     public string? OfficeCode { get; set; }
 

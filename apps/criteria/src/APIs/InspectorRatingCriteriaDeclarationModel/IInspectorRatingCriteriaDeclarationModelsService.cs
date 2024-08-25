@@ -49,4 +49,11 @@ public interface IInspectorRatingCriteriaDeclarationModelsService
         InspectorRatingCriteriaDeclarationModelWhereUniqueInput uniqueId,
         InspectorRatingCriteriaDeclarationModelUpdateInput updateDto
     );
+
+    /// <summary>
+    /// Get a Inspector Rating Criteria record for Inspector Rating Criteria Declaration Model
+    /// </summary>
+    public Task<InspectorRatingCriterion> GetInspectorRatingCriteria(
+        InspectorRatingCriteriaDeclarationModelWhereUniqueInput uniqueId
+    );
 }

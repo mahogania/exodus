@@ -1,6 +1,6 @@
 namespace Criteria.APIs.Dtos;
 
-public class InspectorQuotationCriterionWhereUniqueInput
+public class InspectorRatingCriterionWhereUniqueInput
 {
     public string Id { get; set; }
 }

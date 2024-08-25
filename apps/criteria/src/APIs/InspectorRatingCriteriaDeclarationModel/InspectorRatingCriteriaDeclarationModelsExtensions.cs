@@ -15,6 +15,7 @@ public static class InspectorRatingCriteriaDeclarationModelsExtensions
             DeclarationTypeCode = model.DeclarationTypeCode,
             FieldSequenceNumber = model.FieldSequenceNumber,
             Id = model.Id,
+            InspectorRatingCriteria = model.InspectorRatingCriteriaId,
             OfficeCode = model.OfficeCode,
             ServiceCode = model.ServiceCode,
             UpdatedAt = model.UpdatedAt,
@@ -39,6 +40,11 @@ public static class InspectorRatingCriteriaDeclarationModelsExtensions
         if (updateDto.CreatedAt != null)
         {
             inspectorRatingCriteriaDeclarationModel.CreatedAt = updateDto.CreatedAt.Value;
+        }
+        if (updateDto.InspectorRatingCriteria != null)
+        {
+            inspectorRatingCriteriaDeclarationModel.InspectorRatingCriteriaId =
+                updateDto.InspectorRatingCriteria;
         }
         if (updateDto.UpdatedAt != null)
         {

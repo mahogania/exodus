@@ -10,6 +10,8 @@ public class InspectorRatingCriteriaDeclarationModelUpdateInput
 
     public string? Id { get; set; }
 
+    public string? InspectorRatingCriteria { get; set; }
+
     public string? OfficeCode { get; set; }
 
     public string? ServiceCode { get; set; }

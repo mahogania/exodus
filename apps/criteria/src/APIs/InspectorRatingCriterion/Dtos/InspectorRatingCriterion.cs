@@ -1,6 +1,6 @@
 namespace Criteria.APIs.Dtos;
 
-public class InspectorQuotationCriterion
+public class InspectorRatingCriterion
 {
     public string AgencyCode { get; set; }
 
@@ -13,6 +13,10 @@ public class InspectorQuotationCriterion
     public string? EndFieldShCode { get; set; }
 
     public string Id { get; set; }
+
+    public List<string>? InspectorRatingCriteriaDeclarationModel { get; set; }
+
+    public List<string>? InspectorRatingCriteriaInspector { get; set; }
 
     public string ServiceCode { get; set; }
 

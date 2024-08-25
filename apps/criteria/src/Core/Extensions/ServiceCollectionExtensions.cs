@@ -10,7 +10,6 @@ public static class ServiceCollectionExtensions
     public static void RegisterServices(this IServiceCollection services)
     {
         services.AddScoped<IAgentVisitsService, AgentVisitsService>();
-        services.AddScoped<IInspectorQuotationCriteriaService, InspectorQuotationCriteriaService>();
         services.AddScoped<IInspectorQuotationModesService, InspectorQuotationModesService>();
         services.AddScoped<IInspectorQuotationStatsService, InspectorQuotationStatsService>();
         services.AddScoped<
@@ -21,6 +20,7 @@ public static class ServiceCollectionExtensions
             IInspectorRatingCriteriaInspectorsService,
             InspectorRatingCriteriaInspectorsService
         >();
+        services.AddScoped<IInspectorRatingCriteriaService, InspectorRatingCriteriaService>();
         services.AddScoped<
             IInspectorVerifierDesignationsService,
             InspectorVerifierDesignationsService

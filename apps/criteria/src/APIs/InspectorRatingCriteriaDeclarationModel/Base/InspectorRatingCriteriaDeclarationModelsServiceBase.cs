@@ -41,6 +41,14 @@ public abstract class InspectorRatingCriteriaDeclarationModelsServiceBase
         {
             inspectorRatingCriteriaDeclarationModel.Id = createDto.Id;
         }
+        if (createDto.InspectorRatingCriteria != null)
+        {
+            inspectorRatingCriteriaDeclarationModel.InspectorRatingCriteria = await _context
+                .InspectorRatingCriteria.Where(inspectorRatingCriterion =>
+                    createDto.InspectorRatingCriteria.Id == inspectorRatingCriterion.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.InspectorRatingCriteriaDeclarationModels.Add(
             inspectorRatingCriteriaDeclarationModel
@@ -89,7 +97,8 @@ public abstract class InspectorRatingCriteriaDeclarationModelsServiceBase
     )
     {
         var inspectorRatingCriteriaDeclarationModels = await _context
-            .InspectorRatingCriteriaDeclarationModels.ApplyWhere(findManyArgs.Where)
+            .InspectorRatingCriteriaDeclarationModels.Include(x => x.InspectorRatingCriteria)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -172,5 +181,28 @@ public abstract class InspectorRatingCriteriaDeclarationModelsServiceBase
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Inspector Rating Criteria record for Inspector Rating Criteria Declaration Model
+    /// </summary>
+    public async Task<InspectorRatingCriterion> GetInspectorRatingCriteria(
+        InspectorRatingCriteriaDeclarationModelWhereUniqueInput uniqueId
+    )
+    {
+        var inspectorRatingCriteriaDeclarationModel = await _context
+            .InspectorRatingCriteriaDeclarationModels.Where(
+                inspectorRatingCriteriaDeclarationModel =>
+                    inspectorRatingCriteriaDeclarationModel.Id == uniqueId.Id
+            )
+            .Include(inspectorRatingCriteriaDeclarationModel =>
+                inspectorRatingCriteriaDeclarationModel.InspectorRatingCriteria
+            )
+            .FirstOrDefaultAsync();
+        if (inspectorRatingCriteriaDeclarationModel == null)
+        {
+            throw new NotFoundException();
+        }
+        return inspectorRatingCriteriaDeclarationModel.InspectorRatingCriteria.ToDto();
     }
 }

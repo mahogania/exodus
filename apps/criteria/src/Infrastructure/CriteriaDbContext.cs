@@ -20,7 +20,7 @@ public class CriteriaDbContext : IdentityDbContext<IdentityUser>
 
     public DbSet<AgentVisitDbModel> AgentVisits { get; set; }
 
-    public DbSet<InspectorQuotationCriterionDbModel> InspectorQuotationCriteria { get; set; }
+    public DbSet<InspectorRatingCriterionDbModel> InspectorRatingCriteria { get; set; }
 
     public DbSet<InspectorRatingCriteriaDeclarationModelDbModel> InspectorRatingCriteriaDeclarationModels { get; set; }
 

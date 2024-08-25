@@ -40,6 +40,14 @@ public abstract class InspectorRatingCriteriaInspectorsServiceBase
         {
             inspectorRatingCriteriaInspector.Id = createDto.Id;
         }
+        if (createDto.InspectorRatingCriteria != null)
+        {
+            inspectorRatingCriteriaInspector.InspectorRatingCriteria = await _context
+                .InspectorRatingCriteria.Where(inspectorRatingCriterion =>
+                    createDto.InspectorRatingCriteria.Id == inspectorRatingCriterion.Id
+                )
+                .FirstOrDefaultAsync();
+        }
 
         _context.InspectorRatingCriteriaInspectors.Add(inspectorRatingCriteriaInspector);
         await _context.SaveChangesAsync();
@@ -82,7 +90,8 @@ public abstract class InspectorRatingCriteriaInspectorsServiceBase
     )
     {
         var inspectorRatingCriteriaInspectors = await _context
-            .InspectorRatingCriteriaInspectors.ApplyWhere(findManyArgs.Where)
+            .InspectorRatingCriteriaInspectors.Include(x => x.InspectorRatingCriteria)
+            .ApplyWhere(findManyArgs.Where)
             .ApplySkip(findManyArgs.Skip)
             .ApplyTake(findManyArgs.Take)
             .ApplyOrderBy(findManyArgs.SortBy)
@@ -159,5 +168,27 @@ public abstract class InspectorRatingCriteriaInspectorsServiceBase
                 throw;
             }
         }
+    }
+
+    /// <summary>
+    /// Get a Inspector Rating Criteria record for Inspector Rating Criteria Inspector
+    /// </summary>
+    public async Task<InspectorRatingCriterion> GetInspectorRatingCriteria(
+        InspectorRatingCriteriaInspectorWhereUniqueInput uniqueId
+    )
+    {
+        var inspectorRatingCriteriaInspector = await _context
+            .InspectorRatingCriteriaInspectors.Where(inspectorRatingCriteriaInspector =>
+                inspectorRatingCriteriaInspector.Id == uniqueId.Id
+            )
+            .Include(inspectorRatingCriteriaInspector =>
+                inspectorRatingCriteriaInspector.InspectorRatingCriteria
+            )
+            .FirstOrDefaultAsync();
+        if (inspectorRatingCriteriaInspector == null)
+        {
+            throw new NotFoundException();
+        }
+        return inspectorRatingCriteriaInspector.InspectorRatingCriteria.ToDto();
     }
 }

@@ -5,5 +5,5 @@ using Microsoft.AspNetCore.Mvc;
 namespace Criteria.APIs.Dtos;
 
 [BindProperties(SupportsGet = true)]
-public class InspectorQuotationCriterionFindManyArgs
-    : FindManyInput<InspectorQuotationCriterion, InspectorQuotationCriterionWhereInput> { }
+public class InspectorRatingCriterionFindManyArgs
+    : FindManyInput<InspectorRatingCriterion, InspectorRatingCriterionWhereInput> { }
