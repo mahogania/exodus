@@ -10,6 +10,10 @@ public static class ServiceCollectionExtensions
     public static void RegisterServices(this IServiceCollection services)
     {
         services.AddScoped<IAgentVisitsService, AgentVisitsService>();
+        services.AddScoped<IClearanceFretContainersService, ClearanceFretContainersService>();
+        services.AddScoped<IClearanceFretInterfacesService, ClearanceFretInterfacesService>();
+        services.AddScoped<IForeignClientsService, ForeignClientsService>();
+        services.AddScoped<IInspectorChangesService, InspectorChangesService>();
         services.AddScoped<IInspectorQuotationModesService, InspectorQuotationModesService>();
         services.AddScoped<IInspectorQuotationStatsService, InspectorQuotationStatsService>();
         services.AddScoped<
@@ -25,6 +29,8 @@ public static class ServiceCollectionExtensions
             IInspectorVerifierDesignationsService,
             InspectorVerifierDesignationsService
         >();
+        services.AddScoped<IRvcIssuancesService, RvcIssuancesService>();
+        services.AddScoped<IServiceChangesService, ServiceChangesService>();
         services.AddScoped<IServiceQuotationCriteriaService, ServiceQuotationCriteriaService>();
     }
 }

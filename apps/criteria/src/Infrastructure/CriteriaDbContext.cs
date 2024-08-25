@@ -25,4 +25,16 @@ public class CriteriaDbContext : IdentityDbContext<IdentityUser>
     public DbSet<InspectorRatingCriteriaDeclarationModelDbModel> InspectorRatingCriteriaDeclarationModels { get; set; }
 
     public DbSet<InspectorRatingCriteriaInspectorDbModel> InspectorRatingCriteriaInspectors { get; set; }
+
+    public DbSet<ClearanceFretInterfaceDbModel> ClearanceFretInterfaces { get; set; }
+
+    public DbSet<ClearanceFretContainerDbModel> ClearanceFretContainers { get; set; }
+
+    public DbSet<ForeignClientDbModel> ForeignClients { get; set; }
+
+    public DbSet<ServiceChangeDbModel> ServiceChanges { get; set; }
+
+    public DbSet<RvcIssuanceDbModel> RvcIssuances { get; set; }
+
+    public DbSet<InspectorChangeDbModel> InspectorChanges { get; set; }
 }
