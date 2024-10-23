@@ -1,0 +1,150 @@
+datasource db {
+  provider = "mongodb"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model User {
+  createdAt DateTime @default(now())
+  email     String?  @unique
+  firstName String?
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  lastName  String?
+  password  String
+  roles     Json
+  updatedAt DateTime @updatedAt
+  username  String   @unique
+}
+
+model PropertyType {
+  createdAt                DateTime     @default(now())
+  dynamicPropertyInstances Property[]
+  id                       String       @id @default(auto()) @map("_id") @db.ObjectId
+  objectTypes              ObjectType[]
+  schema                   Json
+  updatedAt                DateTime     @updatedAt
+}
+
+model Property {
+  createdAt         DateTime      @default(now())
+  dynamicProperty   PropertyType? @relation(fields: [dynamicPropertyId], references: [id])
+  dynamicPropertyId String?       @db.ObjectId
+  id                String        @id @default(auto()) @map("_id") @db.ObjectId
+  object            Object?       @relation(fields: [objectId], references: [id])
+  objectId          String?       @db.ObjectId
+  updatedAt         DateTime      @updatedAt
+  value             Json?
+}
+
+model ObjectType {
+  PropertyTypes   PropertyType @relation(fields: [PropertyTypesId], references: [id])
+  PropertyTypesId String       @db.ObjectId
+  createdAt       DateTime     @default(now())
+  eventTypes      EventType    @relation(fields: [eventTypesId], references: [id])
+  eventTypesId    String       @db.ObjectId
+  id              String       @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt       DateTime     @updatedAt
+}
+
+model Object {
+  Properties      Property[]
+  actions         Action[]
+  associations    Association[] @relation(fields: [associationsIds], references: [id])
+  associationsIds String[]      @db.ObjectId
+  createdAt       DateTime      @default(now())
+  id              String        @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt       DateTime      @updatedAt
+}
+
+model EventType {
+  createdAt   DateTime     @default(now())
+  events      Event[]
+  id          String       @id @default(auto()) @map("_id") @db.ObjectId
+  objectTypes ObjectType[]
+  schema      Json?
+  updatedAt   DateTime     @updatedAt
+}
+
+model Event {
+  createdAt   DateTime   @default(now())
+  dateTime    DateTime?
+  eventType   EventType? @relation(fields: [eventTypeId], references: [id])
+  eventTypeId String?    @db.ObjectId
+  id          String     @id @default(auto()) @map("_id") @db.ObjectId
+  updatedAt   DateTime   @updatedAt
+  value       Json?
+}
+
+model AssociationType {
+  associations Association[]
+  createdAt    DateTime      @default(now())
+  id           String        @id @default(auto()) @map("_id") @db.ObjectId
+  schema       Json?
+  updatedAt    DateTime      @updatedAt
+}
+
+model Workflow {
+  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  steps     Step[]
+  updatedAt DateTime @updatedAt
+}
+
+model Task {
+  action    Action?       @relation(fields: [actionId], references: [id])
+  actionId  String?       @db.ObjectId
+  context   Json?
+  createdAt DateTime      @default(now())
+  id        String        @id @default(auto()) @map("_id") @db.ObjectId
+  kind      EnumTaskKind?
+  step      Step?         @relation(fields: [stepId], references: [id])
+  stepId    String?       @db.ObjectId
+  updatedAt DateTime      @updatedAt
+}
+
+model Action {
+  createdAt DateTime @default(now())
+  id        String   @id @default(auto()) @map("_id") @db.ObjectId
+  object    Object?  @relation(fields: [objectId], references: [id])
+  objectId  String?  @db.ObjectId
+  tasks     Task[]
+  updatedAt DateTime @updatedAt
+}
+
+model Association {
+  associationType   AssociationType? @relation(fields: [associationTypeId], references: [id])
+  associationTypeId String?          @db.ObjectId
+  createdAt         DateTime         @default(now())
+  id                String           @id @default(auto()) @map("_id") @db.ObjectId
+  object            Object[]         @relation(fields: [objectIds], references: [id])
+  objectIds         String[]         @db.ObjectId
+  updatedAt         DateTime         @updatedAt
+  value             Json?
+}
+
+model Step {
+  createdAt  DateTime      @default(now())
+  id         String        @id @default(auto()) @map("_id") @db.ObjectId
+  kind       EnumStepKind?
+  tasks      Task[]
+  updatedAt  DateTime      @updatedAt
+  workflow   Workflow?     @relation(fields: [workflowId], references: [id])
+  workflowId String?       @db.ObjectId
+}
+
+enum EnumTaskKind {
+  Human
+  System
+}
+
+enum EnumStepKind {
+  Enable
+  Concurrent
+  Choice
+  Disable
+  Suspend
+  Independent
+}
